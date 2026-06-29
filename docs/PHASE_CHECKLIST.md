@@ -49,7 +49,7 @@
 | [Platform Separation Strategy](./LOCALBRAIN_PLATFORM_SEPARATION_STRATEGY.md) — Platform vs Brain boundary | ✅ Planning — 2026-06-28 |
 | [Multi-Machine Network Plan](./LOCALBRAIN_MULTI_MACHINE_NETWORK_PLAN.md) | 📋 Future arc — LB-OS-107–114 |
 
-**Gate:** LB-OS-018 migration planner ✅ · Next: **LB-OS-019** filesystem mapping audit.
+**Gate:** LB-OS-019 filesystem audit ✅ · Next: **LB-OS-020** duplicate/version planner.
 
 ---
 
@@ -96,8 +96,8 @@
 | Slice | Name | Status |
 |-------|------|--------|
 | LB-OS-018 | Drive architecture & migration planner | ✅ Complete — [Burt packet](./burt_packets/LB-OS-018.md) |
-| LB-OS-019 | Full filesystem mapping audit | 📋 Next |
-| LB-OS-020 | Duplicate / version cleanup planner | ⬜ PLANNED |
+| LB-OS-019 | Full filesystem mapping audit | ✅ Complete — [Burt packet](./burt_packets/LB-OS-019.md) |
+| LB-OS-020 | Duplicate / version cleanup planner | 📋 Next |
 | LB-OS-021 | H:/ project filing system builder | ⬜ PLANNED |
 | LB-OS-022 | ChatGPT knowledge import pipeline | ⬜ PLANNED |
 | LB-OS-023 | Project memory transfer engine | ⬜ PLANNED |

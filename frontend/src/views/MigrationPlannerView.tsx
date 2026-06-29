@@ -72,6 +72,12 @@ export function MigrationPlannerView() {
           LB-OS-018 · Read-only planning · Updated {new Date(plan.observed_at).toLocaleTimeString()}
         </p>
         <p className="migration__rule">{plan.core_rule}</p>
+        <p className="migration__link-row">
+          <Link to="/migration/audit">Run LB-OS-019 filesystem mapping audit →</Link>
+          {plan.inventory_gate ? (
+            <span className="migration__gate-ok"> · Inventory gate complete</span>
+          ) : null}
+        </p>
         <ul className="migration__guardrails">
           {plan.guardrails.map((g) => (
             <li key={g}>{g}</li>

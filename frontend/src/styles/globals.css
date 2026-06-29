@@ -2790,6 +2790,29 @@ a {
   margin-left: 0.35rem;
 }
 
-.migration__error {
-  color: #b91c1c;
+.migration__actions-bar {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.migration__actions-bar a {
+  color: #2563eb;
+}
+
+.migration__gate-ok {
+  color: #047857;
+  font-size: 0.85rem;
+}
+
+.migration__link-row {
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+}
+
+.migration__link-row a {
+  color: #2563eb;
+  text-decoration: none;
 }

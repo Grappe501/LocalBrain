@@ -174,6 +174,18 @@ export type {
   PlacementAuditRow,
 } from "./migrationPlanner.js";
 export type {
+  CMisplacedWorkCandidate,
+  DuplicateWorkspaceCandidate,
+  FilesystemMappingAudit,
+  FolderInventoryStat,
+  HFolderMapNode,
+  MappingConfidenceLabel,
+  StaleFolderCandidate,
+  TopLevelDirectoryEntry,
+  UnclaimedFolderCandidate,
+  WorkspaceRootCoverage,
+} from "./filesystemAudit.js";
+export type {
   AssetIntelligenceForPath,
   AssetIntelligenceSummary,
   CleanupRecommendation,

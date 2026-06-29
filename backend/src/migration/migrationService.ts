@@ -7,6 +7,7 @@ import {
   buildHStructureProposal,
   buildMigrationArc,
 } from "./planGenerator.js";
+import { isInventoryGateComplete } from "./fsAudit/auditService.js";
 
 const GUARDRAILS = [
   "Read-only planning",
@@ -27,7 +28,7 @@ export function getMigrationPlannerOverview(): MigrationPlannerOverview {
     slice_id: "LB-OS-018",
     read_only: true,
     planning_only: true,
-    inventory_gate: false,
+    inventory_gate: isInventoryGateComplete(),
     doctrine: {
       c_drive_role: DRIVE_DOCTRINE.c_drive_role,
       h_drive_role: DRIVE_DOCTRINE.h_drive_role,

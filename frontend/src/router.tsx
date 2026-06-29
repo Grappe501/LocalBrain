@@ -10,6 +10,7 @@ import { ProgramOfficeView } from "./views/ProgramOfficeView";
 import { SystemHealthView } from "./views/SystemHealthView";
 import { AiProvidersView } from "./views/AiProvidersView";
 import { MigrationPlannerView } from "./views/MigrationPlannerView";
+import { FilesystemAuditView } from "./views/FilesystemAuditView";
 import { SettingsPage } from "./views/SettingsPage";
 import { LazyModuleRoute } from "./views/LazyModuleRoute";
 
@@ -29,6 +30,7 @@ export function AppRouter() {
         <Route path="system" element={<SystemHealthView />} />
         <Route path="system/providers" element={<AiProvidersView />} />
         <Route path="migration" element={<MigrationPlannerView />} />
+        <Route path="migration/audit" element={<FilesystemAuditView />} />
         <Route path="settings" element={<SettingsPage />} />
         {!loading &&
           departmentModules.flatMap((m) =>

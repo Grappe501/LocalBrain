@@ -162,7 +162,10 @@ export function buildArchiveStrategy(audit: DrivePlacementAudit): ArchiveStrateg
   };
 }
 
+import { isInventoryGateComplete } from "./fsAudit/auditService.js";
+
 export function buildApprovalChecklist(audit: DrivePlacementAudit): MigrationApprovalItem[] {
+  const inventoryDone = isInventoryGateComplete();
   return [
     {
       id: "doctrine-review",
@@ -199,10 +202,12 @@ export function buildApprovalChecklist(audit: DrivePlacementAudit): MigrationApp
     {
       id: "inventory-gate",
       label: "Complete filesystem mapping audit (LB-OS-019)",
-      detail: "Gate: no migration tool execution until inventory flag set",
-      risk: "high",
+      detail: inventoryDone
+        ? "H: mapping audit complete — inventory gate open for downstream planners"
+        : "Gate: no migration tool execution until inventory flag set",
+      risk: inventoryDone ? "low" : "high",
       required_before_execution: true,
-      completed: false,
+      completed: inventoryDone,
     },
     {
       id: "no-bulk-ops",
