@@ -13,6 +13,7 @@ import { filesRouter } from "./routes/files.js";
 import { knowledgeExplorerRouter } from "./routes/knowledgeExplorer.js";
 import { cosRouter } from "./routes/cos.js";
 import { systemRouter } from "./routes/system.js";
+import { epoRouter } from "./routes/epo.js";
 import { getRegisteredModules } from "./core/moduleLoader.js";
 import { runBackgroundIndex } from "./knowledgeExplorer/indexer.js";
 
@@ -36,6 +37,7 @@ app.use("/api", filesRouter);
 app.use("/api", knowledgeExplorerRouter);
 app.use("/api", cosRouter);
 app.use("/api", systemRouter);
+app.use("/api", epoRouter);
 
 app.listen(port, () => {
   const db = isDatabaseConnected();

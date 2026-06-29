@@ -3,6 +3,7 @@ import { useModuleRegistry } from "../context/ModuleRegistryContext";
 
 /** Kernel shell routes — not registered as modules. */
 const KERNEL_NAV_TAIL = [
+  { label: "Program Office", path: "/program-office" },
   { label: "Workspace", path: "/workspace/localbrain" },
   { label: "Knowledge Explorer", path: "/explorer" },
   { label: "Learn", path: "/learn" },

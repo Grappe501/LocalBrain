@@ -2,7 +2,7 @@
 
 **Project:** LocalBrain  
 **Slice:** LB-OS-012.5  
-**Status:** 📋 SPEC LOCKED — build after or parallel to LB-OS-012  
+**Status:** ✅ Complete  
 **Depends on:** LB-OS-011, LB-OS-010.5, LB-OS-106  
 **Authoritative spec:** [Executive Program Office](../LOCALBRAIN_EXECUTIVE_PROGRAM_OFFICE.md)
 
@@ -10,43 +10,28 @@
 
 ## Mission
 
-**Executive Program Office (EPO)** — mission control for the entire LocalBrain build. Executive Office core feature. **Not** Engineering Department.
+**Executive Program Office (EPO)** — read-only mission control for the entire LocalBrain build.
 
 ---
 
-## Hard boundaries
+## Exit criteria
 
 ```txt
-Read-only v1 — no editable checklist, no auto-execution
-Aggregate from checklist, docs/, git, APIs
-CoS explains blockers — not static "Not Started"
+[x] /program-office route + nav
+[x] GET /api/epo/overview · /slices/:id · /docs · /why/:id
+[x] Phase navigator · slice scoreboard · current/next panel
+[x] Documentation library (searchable)
+[x] Decision timeline · build graph stub
+[x] Coverage bars · "Why aren't we here yet?"
+[x] npm run check && npm run test pass
 ```
 
 ---
 
-## Build checklist
+## Commit
 
-```txt
-[ ] Route /executive/program (or /program-office)
-[ ] Executive Office nav: Briefing · Program Office · System Health · …
-[ ] Dashboard strip: progress, phase, current/next slice, health scores
-[ ] Phase navigator with drill-down
-[ ] Slice detail pages (LB-OS-###)
-[ ] Build dependency graph
-[ ] Documentation library (searchable docs/)
-[ ] Decision timeline (bootstrap)
-[ ] Live metrics panel
-[ ] Documentation coverage bars per slice
-[ ] "Why aren't we here yet?" CoS intent
-[ ] GET /api/epo/overview · /slices · /docs
-```
+`feat: add Executive Program Office scoreboard`
 
 ---
 
-## Commit (when complete)
-
-`feat: add Executive Program Office mission control`
-
----
-
-*LB-OS-012.5 · Executive Program Office · Spec locked · ⬜ Not started*
+*LB-OS-012.5 · Executive Program Office · ✅ Complete*

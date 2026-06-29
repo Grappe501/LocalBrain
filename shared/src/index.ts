@@ -18,6 +18,19 @@ export type {
   SystemUsageSnapshot,
 } from "./systemHealth.js";
 export type {
+  BuildGraphNodeStatus,
+  EpoBuildGraphNode,
+  EpoCoverageBars,
+  EpoDecisionEvent,
+  EpoDocEntry,
+  EpoLiveMetrics,
+  EpoOverview,
+  EpoPhaseSummary,
+  EpoSliceDetail,
+  EpoSliceSummary,
+  SliceStatus,
+} from "./epo.js";
+export type {
   CosCapability,
   CosOrchestration,
   CosOutcome,
