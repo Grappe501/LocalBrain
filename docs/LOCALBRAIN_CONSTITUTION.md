@@ -77,6 +77,7 @@ No system depends on OpenAI, Claude, or Ollama directly — vendors are implemen
 | System Evolution | Intelligence scoreboard | [Evolution](./LOCALBRAIN_SYSTEM_EVOLUTION.md) |
 | System Health | Machine + ops | LB-OS-011 |
 | Decisions | Decision Ledger | [Decision Ledger](./LOCALBRAIN_DECISION_LEDGER.md) |
+| Assumptions | Premises behind design | [Assumption Ledger](./LOCALBRAIN_ASSUMPTION_LEDGER.md) |
 
 ---
 
@@ -109,12 +110,15 @@ Phase 3 adds departments only on an **intelligent** executive layer (Phase 2 gat
 
 ## Article VII — Knowledge Model
 
-[Knowledge Sources](./LOCALBRAIN_KNOWLEDGE_SOURCES.md) · [Digital Asset Model](./LOCALBRAIN_DIGITAL_ASSET_MODEL.md) · Knowledge Explorer (LB-OS-005)
+[Knowledge Sources](./LOCALBRAIN_KNOWLEDGE_SOURCES.md) · [Digital Asset Model](./LOCALBRAIN_DIGITAL_ASSET_MODEL.md) · [Knowledge Taxonomy](./LOCALBRAIN_KNOWLEDGE_TAXONOMY.md) · Knowledge Explorer (LB-OS-005)
 
 ```txt
+Three knowledge classes (binding): Operational · Executive · Domain
 Index · explain · permission-gated read
 Registry · intelligence · recommend-only cleanup
 ```
+
+Operational knowledge ships with Platform; Executive and Domain knowledge are per-user Brain data.
 
 ---
 
@@ -152,9 +156,31 @@ Experience Maturity L0–L5 on every route · Dev mode shows badges; production 
 
 ---
 
+## Article XI — Five Gates Rule
+
+[Five Gates Rule](./LOCALBRAIN_FIVE_GATES_RULE.md) — **binding admission checklist** before any new capability:
+
+```txt
+1. System (Four Systems owner)
+2. Object (foundational object — no new without Article II amendment)
+3. Module (never kernel)
+4. Executive Question (EQ-* — if none, don't build)
+5. Executive Leverage (increases Steve's effectiveness)
+```
+
+**Phase 1 discipline:** No new top-level concepts until LB-OS-026. Complete 021–026 · tighten UX · H: filing · migration cutover · GPU prep without architecture churn.
+
+---
+
+## Article XII — Assumption Ledger
+
+[Assumption Ledger](./LOCALBRAIN_ASSUMPTION_LEDGER.md) — constitutional peer to Decision Ledger. Records **premises** behind design (single-user, SQLite, client platform) even when choices are reversible. Review on declared triggers (Phase 4, multi-user, GPU migration).
+
+---
+
 ## Amendment process
 
-1. Propose change in Decision Ledger + Phase Checklist change log  
+1. Propose change in Decision Ledger or Assumption Ledger + Phase Checklist change log  
 2. Update Constitution index if principle changes  
 3. Update downstream implementation guides  
 4. Never silently contradict Article II objects or Article IX safety
@@ -166,6 +192,10 @@ Experience Maturity L0–L5 on every route · Dev mode shows badges; production 
 ```text
 LOCALBRAIN_CONSTITUTION.md          ← you are here
 ├── LOCALBRAIN_FOUR_SYSTEMS.md      ← architecture lock (4+1 systems · Phase 4 complete)
+├── LOCALBRAIN_FIVE_GATES_RULE.md   ← admission checklist (Article XI)
+├── LOCALBRAIN_ASSUMPTION_LEDGER.md ← premises ledger (Article XII)
+├── LOCALBRAIN_KNOWLEDGE_TAXONOMY.md (Operational · Executive · Domain)
+├── LOCALBRAIN_ARCHITECTURE_DEBT.md (ENG-ADS-001 · Engineering scoreboard)
 ├── LOCALBRAIN_THREE_PHASE_ROADMAP.md
 ├── LOCALBRAIN_EXECUTIVE_INTELLIGENCE_CARDS.md (ENG-EIC-001 · LB-OS-020)
 ├── LOCALBRAIN_ACTION_PIPELINE.md

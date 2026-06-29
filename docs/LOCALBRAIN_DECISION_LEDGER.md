@@ -16,6 +16,8 @@ Architecture and business decisions today live in docs and chat. The Decision Le
 
 When CoS recommends a redesign, it checks the ledger before suggesting reversal.
 
+**Sibling:** [Assumption Ledger](./LOCALBRAIN_ASSUMPTION_LEDGER.md) — premises behind design (constitutional peer). Decisions record what was **chosen**; assumptions record what was **assumed**.
+
 ---
 
 ## Decision object (frozen)

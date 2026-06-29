@@ -16,6 +16,8 @@ Do not design for thousands of customers yet.
 
 The modular architecture already frozen (kernel → modules → knowledge sources → brain data → Chief of Staff) naturally supports commercialization **if** we keep the Platform / Brain boundary explicit from now on.
 
+**Knowledge classes:** [Knowledge Taxonomy](./LOCALBRAIN_KNOWLEDGE_TAXONOMY.md) — Operational (ships with product) · Executive (per user) · Domain (per workspace). Customers receive Operational knowledge on install; build Executive and Domain over time.
+
 ---
 
 ## Three layers

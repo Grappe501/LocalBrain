@@ -199,20 +199,21 @@ Keeps the executive experience responsive; scales heavy AI independently. See [G
 | Executive Leverage Score | Executive Intelligence | Real-world impact |
 | **Executive Cognitive Load** | Executive Intelligence | **Steve's attention load** |
 | System Evolution index | Executive Evolution | Learning growth |
+| Architecture Debt | Executive OS (Engineering) | Platform structural integrity |
 
-See [Executive Cognitive Load](./LOCALBRAIN_EXECUTIVE_COGNITIVE_LOAD.md) for ECL.
+See [Executive Cognitive Load](./LOCALBRAIN_EXECUTIVE_COGNITIVE_LOAD.md) for ECL · [Architecture Debt](./LOCALBRAIN_ARCHITECTURE_DEBT.md) for ADS.
 
 ---
 
-## Adding new capabilities (binding checklist)
+## Adding new capabilities
 
-Before any slice or feature:
+All admission through [Five Gates Rule](./LOCALBRAIN_FIVE_GATES_RULE.md) (Constitution Article XI). Supplemental platform health: [Architecture Debt Score](./LOCALBRAIN_ARCHITECTURE_DEBT.md).
 
-1. **Which system owns it?** (exactly one primary owner)
-2. **Which question does it answer?**
-3. **Does it introduce a vendor dependency outside Evolution providers?** (forbidden)
-4. **Does it duplicate a scoreboard?** (forbidden — link instead)
-5. **Does it require a new foundational object?** (Constitution amendment)
+Additional constraints (not separate gates):
+
+- No vendor dependency outside Evolution providers (forbidden)
+- No duplicate scoreboard (link instead)
+- Constitution amendment for new foundational objects
 
 If none of the four systems fit, the feature is **mis-scoped** — refactor before building.
 

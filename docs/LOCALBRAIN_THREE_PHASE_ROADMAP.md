@@ -202,3 +202,5 @@ The current **Phase 3 — Build the Company** slice arc delivers Organization Pl
 ## Four Platform Systems (architecture lock)
 
 [Four Platform Systems](./LOCALBRAIN_FOUR_SYSTEMS.md) declares the architecture **feature-complete through Phase 4**. Four cooperating systems today; Executive Organization OS later. New capabilities map to one system — not new pillars.
+
+**Phase 1 discipline (next several weeks):** No new top-level concepts. Complete **LB-OS-021–026** · tighten integration and UX · H: filing · migration · Personal OS cutover · GPU transition prep **without** architecture churn. Every slice passes [Five Gates](./LOCALBRAIN_FIVE_GATES_RULE.md).
