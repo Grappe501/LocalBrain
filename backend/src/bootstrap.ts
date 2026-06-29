@@ -5,6 +5,7 @@ import {
   runMigrations,
 } from "./db/database.js";
 import { loadModuleManifests } from "./core/moduleLoader.js";
+import { migrateKnowledgeExplorerTables } from "./knowledgeExplorer/migrate.js";
 import { initPermissionEngine } from "./safety/permissionEngine.js";
 import {
   migrateWorkspaceTables,
@@ -20,6 +21,7 @@ export function refreshPermissionEngine(): void {
 export function bootstrapApp(): void {
   runMigrations();
   migrateWorkspaceTables();
+  migrateKnowledgeExplorerTables();
   seedWorkspaces();
   syncFilesystemRootsToAllowedFolders();
   loadModuleManifests();

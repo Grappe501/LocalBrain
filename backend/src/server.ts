@@ -7,11 +7,14 @@ import { healthRouter } from "./health.js";
 import { safetyRouter } from "./routes/safety.js";
 import { workspacesRouter } from "./routes/workspaces.js";
 import { modulesRouter } from "./routes/modules.js";
+import { knowledgeExplorerRouter } from "./routes/knowledgeExplorer.js";
 import { getRegisteredModules } from "./core/moduleLoader.js";
+import { runBackgroundIndex } from "./knowledgeExplorer/indexer.js";
 
 const port = Number(process.env.LOCALBRAIN_PORT ?? 4545);
 
 bootstrapApp();
+runBackgroundIndex();
 
 const app = express();
 
@@ -22,6 +25,7 @@ app.use("/api", commandRouter);
 app.use("/api", safetyRouter);
 app.use("/api", workspacesRouter);
 app.use("/api", modulesRouter);
+app.use("/api", knowledgeExplorerRouter);
 
 app.listen(port, () => {
   const db = isDatabaseConnected();

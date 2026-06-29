@@ -50,7 +50,7 @@
 | LB-OS-003 | Filesystem permission engine v2 | ✅ COMPLETE |
 | LB-OS-004 | Workspace registry (LivingWorkspace) | ✅ Complete — event-driven registry, `/workspace/:id` |
 | LB-OS-106 | Core kernel + module loader | ✅ Complete — MODULARITY GATE |
-| LB-OS-005 | Knowledge Explorer + metadata index | ▶ READY — [Burt packet](./burt_packets/LB-OS-005.md) · [Knowledge Explorer](./LOCALBRAIN_KNOWLEDGE_EXPLORER.md) |
+| LB-OS-005 | Knowledge Explorer + metadata index | ✅ Complete |
 | LB-OS-006 | Storage intelligence dashboard | ⬜ PLANNED |
 | LB-OS-007 | System health monitor | ⬜ PLANNED |
 | LB-OS-008 | OpenAI chat command layer | ⬜ PLANNED |

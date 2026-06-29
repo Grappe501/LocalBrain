@@ -50,6 +50,59 @@ Folders are **not** the primary object. Workspaces and knowledge are.
 
 ---
 
+## Three operating modes (binding)
+
+Not just lenses — **how** Steve navigates:
+
+### 1. Browse Mode
+
+Traditional navigation. Fast. Minimal. Keyboard-friendly.
+
+```txt
+H:
+└── SOSWebsite
+```
+
+Physical tree + workspace overlay badges. No panels required.
+
+### 2. Understand Mode
+
+Click a folder — immediately see (local metadata, no AI call required):
+
+```txt
+Purpose · workspace · executive context · health · current focus
+Important files · recent activity · recommendations
+```
+
+### 3. Executive Mode
+
+Chief of Staff perspective — not *what's in this folder* but *why it matters today*:
+
+```txt
+Supports highest-priority workspace · inactive project · duplicate versions
+Deployment waiting · dormant folder · novel depends on this research
+```
+
+Decision support, not navigation.
+
+---
+
+## Workspace overlay (binding)
+
+Subtle badges on folder rows — filesystem stays familiar:
+
+```txt
+📁 RedDirt
+🟢 Healthy · 🎯 Active focus · 📌 Pinned
+
+📁 Old Campaign
+🟡 Dormant · 📦 Archive candidate
+```
+
+Overlay derives from LivingWorkspace flags, health_score, current_focus, and mtime — no new objects.
+
+---
+
 ## Six lenses (every node)
 
 Each folder/file node supports multiple views:
@@ -150,38 +203,44 @@ This is where LocalBrain feels like **Chief of Staff**, not a file browser.
 
 ---
 
-## Search philosophy (typed queries)
+## Search philosophy
 
-Every search box supports prefix filters:
-
-```txt
-file: budget.xlsx
-workspace: LocalBrain
-person: Chris
-campaign: Kelly
-novel: Grappe
-photo: Yellowstone
-decision: LivingWorkspace
-api: Census
-module: Database Studio
-agent: Chief of Staff
-```
-
-**005 scope:** `file:` · `workspace:` · path prefix — wired to index + registry.  
-**Later:** person, campaign, novel, photo, decision, api, module, agent via Knowledge Engine + graph.
-
-North star:
+### Typed search (entity-first)
 
 ```txt
-"Show me everything related to the Buffalo River article."
-→ without caring where it's stored
+file: · workspace: · person: · campaign: · decision: · module: · agent: …
 ```
+
+**005 scope:** `file:` · `workspace:` · path — wired to index + registry.
+
+### Action-first search (005+)
+
+```txt
+archive: · duplicate: · stale: · large: · health: · focus: · recent: · decision:
+```
+
+Examples: `duplicate:` → duplicate candidates · `focus:` → workspaces with current_focus · `stale:` → dormant paths.
+
+North star: *"Show me everything related to the Buffalo River article"* — without caring where it's stored.
+
+---
+
+## "Why am I seeing this?" (binding)
+
+When CoS or Executive Mode surfaces a folder:
+
+```txt
+Why am I seeing this?
+→ why it surfaced · owning workspace · what changed · decision facing
+```
+
+Transparency builds trust — not opaque AI recommendations.
 
 ---
 
 ## Performance rules (binding)
 
-The Knowledge Explorer **never scans all of H: on startup.**
+Never ask *"What files exist?"* on startup. Ask *"What changed?"*
 
 ```txt
 1. Load Workspace Registry immediately     (already live — LB-OS-004)
@@ -215,13 +274,14 @@ KnowledgeSource:    register filesystem roots as sources per workspace
 **Exit criteria (005):**
 
 ```txt
+[ ] Three modes: Browse · Understand · Executive
+[ ] Workspace overlay badges on tree nodes
 [ ] Tree shows approved workspace roots only — no full H: scan on startup
-[ ] Nodes resolve to LivingWorkspace where filesystem_roots match
-[ ] Cached metadata loads before background index completes
-[ ] Search: file: and workspace: prefixes work
-[ ] Explain this folder returns workspace + purpose stub (AI optional)
+[ ] Nodes resolve to LivingWorkspace via filesystem_roots
+[ ] Typed + action-first search (file: workspace: focus: stale: duplicate: …)
+[ ] Explain this folder + Why am I seeing this?
+[ ] Background incremental index
 [ ] Secrets/node_modules never indexed
-[ ] Six lens tabs visible — non-Physical lenses may be stub content
 ```
 
 **Commit:** `feat: add knowledge explorer tree and metadata index`

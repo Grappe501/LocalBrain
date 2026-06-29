@@ -141,7 +141,7 @@ See [Studio Blueprint](./LOCALBRAIN_STUDIO_BLUEPRINT.md) · [Command Layer](./LO
 | **LB-OS-003** | Filesystem permission engine v2 | 002 | ✅ Complete |
 | **LB-OS-004** | Workspace registry (LivingWorkspace) | 003 | ✅ **Complete** |
 | **LB-OS-106** | Core kernel + module loader | 004 | ✅ **Complete** — MODULARITY GATE |
-| **LB-OS-005** | Knowledge Explorer + metadata index | 106 | ▶ **READY** |
+| **LB-OS-005** | Knowledge Explorer + metadata index | 106 | ✅ **Complete** |
 | **LB-OS-006** | Storage intelligence dashboard | 005 | Large/dup/stale |
 | **LB-OS-007** | System health monitor (CPU/RAM/disk) | 002 | Metrics live |
 | **LB-OS-008** | OpenAI chat command layer | 002, 004 | AI commands |

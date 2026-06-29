@@ -3,7 +3,8 @@ import { useModuleRegistry } from "./context/ModuleRegistryContext";
 import { AppLayout } from "./shell/AppLayout";
 import { ExecutiveBriefing } from "./views/ExecutiveBriefing";
 import { ProjectRedirect, WorkspaceRoute } from "./views/WorkspaceRoute";
-import { ActionsStub, ExplorerStub } from "./views/StubPages";
+import { ActionsStub } from "./views/StubPages";
+import { KnowledgeExplorerView } from "./views/KnowledgeExplorerView";
 import { LearnStub } from "./views/LearnStub";
 import { SettingsPage } from "./views/SettingsPage";
 import { LazyModuleRoute } from "./views/LazyModuleRoute";
@@ -17,7 +18,7 @@ export function AppRouter() {
         <Route index element={<ExecutiveBriefing />} />
         <Route path="workspace/:workspaceId" element={<WorkspaceRoute />} />
         <Route path="project/:workspaceId" element={<ProjectRedirect />} />
-        <Route path="explorer" element={<ExplorerStub />} />
+        <Route path="explorer" element={<KnowledgeExplorerView />} />
         <Route path="learn" element={<LearnStub />} />
         <Route path="actions" element={<ActionsStub />} />
         <Route path="settings" element={<SettingsPage />} />
