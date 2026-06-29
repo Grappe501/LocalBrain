@@ -62,6 +62,10 @@ SUGGESTED DEEP-WORK BLOCK
 OPPORTUNITIES
   Reuse grant language from 2024 CountyWorkbench proposal
 
+CONSOLIDATION OPPORTUNITY
+  Reclaimable storage: 412 GB (estimated) · 14 folder merges · 8 orphans
+  Risk: low–medium · Nothing has changed — review consolidation planner
+
 QUESTIONS NEEDING YOUR DECISION
   Archive Phatlip v2 or merge into v3?
 ```
@@ -86,6 +90,7 @@ Sections are **configurable** — Steve toggles in settings.
 | Learning | ENG-LP-002, ENG-OJ-001 |
 | Deep-work | ENG-EO-005 + ENG-EO-007 |
 | Opportunities | ENG-KG-001, ENG-MR-002 |
+| Consolidation Opportunity | LB-OS-020 consolidation engine (read-only) |
 | Decisions | ENG-MM-001, pending signals |
 
 ---
@@ -143,6 +148,23 @@ Unread → Classify → Summarize → Suggest reply → Wait approval → Send
 Learns over time: urgency by sender, tone preferences, recurring threads, forgotten follow-ups.
 
 ENG-EO-006 · **never auto-send** in V1 without explicit approval.
+
+---
+
+## Consolidation Opportunity (LB-OS-020)
+
+Read-only briefing section — introduced with [Evidence-Based Consolidation Planner](./LOCALBRAIN_CONSOLIDATION_PLANNER.md).
+
+```txt
+CONSOLIDATION OPPORTUNITY
+  reclaimable_storage_bytes      — estimated from duplicate + superseded versions
+  workspace_simplification_count — folder merges + orphan workspaces
+  knowledge_opportunities        — future (category 5)
+  risk_score                     — evidence-grounded; max across open recommendations
+  executive_summary              — CoS narrative ("Nothing has changed.")
+```
+
+Links to `/migration/consolidation`. **No auto-consolidation** from briefing.
 
 ---
 

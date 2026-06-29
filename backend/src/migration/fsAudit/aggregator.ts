@@ -311,7 +311,7 @@ function buildRecommendations(input: {
   if (input.confidence < 60) {
     recs.push("Run Knowledge Explorer background index to improve mapping confidence");
   }
-  recs.push("Next: LB-OS-020 duplicate/version cleanup planner (dry-run reports)");
+  recs.push("Next: LB-OS-020 evidence-based consolidation planner (duplicates, versions, folders)");
   return recs;
 }
 

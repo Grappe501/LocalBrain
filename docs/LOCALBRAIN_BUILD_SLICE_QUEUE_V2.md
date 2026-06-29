@@ -157,7 +157,7 @@ See [Studio Blueprint](./LOCALBRAIN_STUDIO_BLUEPRINT.md) · [Command Layer](./LO
 | **LB-OS-017** | AI Provider Management | 016, 008 | **Provider spine** — registry, router, vault, flight recorder |
 | **LB-OS-018** | Drive architecture & migration planner | 017 | Migration start |
 | **LB-OS-019** | Full filesystem mapping audit | 018 | Inventory |
-| **LB-OS-020** | Duplicate / version cleanup planner | 019 | Dry-run only |
+| **LB-OS-020** | Evidence-based consolidation planner | 019 | Duplicates · versions · folders · simulate |
 | **LB-OS-021** | H:/ project filing system builder | 020 | Filing taxonomy |
 | **LB-OS-022** | ChatGPT knowledge import pipeline | 021 | Import |
 | **LB-OS-023** | Project memory transfer engine | 022 | Memory |
@@ -1141,29 +1141,36 @@ No moves, no deletes
 
 ---
 
-# LB-OS-020 — Duplicate / Version Cleanup Planner
+# LB-OS-020 — Evidence-Based Consolidation Planner
 
 **Depends on:** 019
 
-**Goal:** Duplicates report + plans only — **no auto cleanup**.
+**Goal:** Long-lived consolidation engine — duplicates, version chains, folder consolidation, evidence scores, CoS summary, simulate, Consolidation Opportunity briefing metric. **No auto cleanup.**
+
+**Spec:** [Consolidation Planner](./LOCALBRAIN_CONSOLIDATION_PLANNER.md) · [Burt packet](./burt_packets/LB-OS-020.md)
 
 **Build:**
 
 ```txt
-duplicates_report · latest_version_recommendation
-archive_plan · move_plan · delete_to_quarantine_plan
-approval_checklist UI — all items must be reviewed before OS-022 execution
+backend/src/consolidation/ — duplicate, version, folder intelligence + program/knowledge stubs
+evidenceScorer.ts — hash, filename, modified, workspace, references
+GET /api/consolidation/overview · /:category · POST /simulate (dry-run)
+UI /migration/consolidation — tabs: Duplicates | Versions | Folders | Programs | Knowledge | Ignored
+Executive Briefing: Consolidation Opportunity section
+Recommendation → Proposal → Approval only (LB-OS-010)
 ```
 
 **Exit criteria:**
 
 ```txt
-[ ] Duplicates identified with paths + hash
-[ ] Latest version recommended per group
-[ ] Plans generated — zero auto-execution
+[ ] Evidence score + why on every recommendation
+[ ] Executive summary (counts + estimated reclaim)
+[ ] Simulate panel — reversible projection, zero mutations
+[ ] Programs/Knowledge tabs stubbed for future
+[ ] Consolidation Opportunity on briefing (read-only)
 ```
 
-**Commit:** `feat: add duplicate and version cleanup planner`
+**Commit:** `feat: add evidence-based consolidation planner`
 
 ---
 

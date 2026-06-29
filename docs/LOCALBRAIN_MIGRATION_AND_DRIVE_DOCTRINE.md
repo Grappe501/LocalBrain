@@ -111,35 +111,36 @@ See [Safety Model § Migration & Reorganization](./LOCALBRAIN_SAFETY_MODEL.md#15
 
 ---
 
-## 4. Migration Arc (LB-OS-016–024)
+## 4. Migration Arc (LB-OS-018–026)
 
 | Slice | Name |
 |-------|------|
-| LB-OS-016 | Drive architecture & migration planner |
-| LB-OS-017 | Full filesystem mapping audit |
-| LB-OS-018 | Duplicate / version cleanup planner |
-| LB-OS-019 | H:/ project filing system builder |
-| LB-OS-020 | ChatGPT knowledge import pipeline |
-| LB-OS-021 | Project memory transfer engine |
-| LB-OS-022 | Legacy folder reorganization assistant |
-| LB-OS-023 | Personal system cutover plan |
-| LB-OS-024 | LocalBrain Personal OS launch |
+| LB-OS-018 | Drive architecture & migration planner |
+| LB-OS-019 | Full filesystem mapping audit |
+| LB-OS-020 | Evidence-based consolidation planner |
+| LB-OS-021 | H:/ project filing system builder |
+| LB-OS-022 | ChatGPT knowledge import pipeline |
+| LB-OS-023 | Project memory transfer engine |
+| LB-OS-024 | Legacy folder reorganization assistant |
+| LB-OS-025 | Personal system cutover plan |
+| LB-OS-026 | LocalBrain Personal OS launch |
 
-**Depends on:** LB-OS-015 (V1 release candidate) complete.
+**Depends on:** LB-OS-016 (V1) and LB-OS-017 (AI provider spine) complete.
+
+**Consolidation spec:** [Consolidation Planner](./LOCALBRAIN_CONSOLIDATION_PLANNER.md)
 
 ---
 
 ## 5. Phase Goals (Migration Arc)
 
-### LB-OS-016 — Drive Architecture & Migration Planner
+### LB-OS-018 — Drive Architecture & Migration Planner
 
 ```txt
 Codify C:/H: rules in permission engine
 Migration planner UI: phases, checklist, dry-run status
-"No migration actions until inventory complete" gate
 ```
 
-### LB-OS-017 — Full Filesystem Mapping Audit
+### LB-OS-019 — Full Filesystem Mapping Audit
 
 ```txt
 Read-only inventory of approved H: trees
@@ -148,15 +149,18 @@ Export: migration_inventory.json
 No moves
 ```
 
-### LB-OS-018 — Duplicate / Version Cleanup Planner
+### LB-OS-020 — Evidence-Based Consolidation Planner
 
 ```txt
-Duplicates report + latest-version recommendation
-Archive plan · move plan · quarantine plan
-Approval checklist — zero auto-execution
+Duplicates · version chains · folder consolidation (evidence scores)
+Tabs: Duplicates | Versions | Folders | Programs | Knowledge | Ignored
+Simulate dry-run · Consolidation Opportunity on Executive Briefing
+Recommendation → Proposal → Approval only — zero auto-execution
 ```
 
-### LB-OS-019 — H:/ Project Filing System Builder
+Spec: [Consolidation Planner](./LOCALBRAIN_CONSOLIDATION_PLANNER.md)
+
+### LB-OS-021 — H:/ Project Filing System Builder
 
 ```txt
 Standard folder taxonomy for H: projects
@@ -164,7 +168,7 @@ Apply filing templates (ACU, campaigns, etc.)
 Propose renames/moves — approval only
 ```
 
-### LB-OS-020 — ChatGPT Knowledge Import Pipeline
+### LB-OS-022 — ChatGPT Knowledge Import Pipeline
 
 ```txt
 Parse ChatGPT exports (JSON/Markdown)
@@ -173,7 +177,7 @@ Import writing voices + strategy fragments
 Never import secrets from exports blindly
 ```
 
-### LB-OS-021 — Project Memory Transfer Engine
+### LB-OS-023 — Project Memory Transfer Engine
 
 ```txt
 Cursor reports · build docs · requirements · handoffs
@@ -181,7 +185,7 @@ Link to project folders in registry
 Searchable project memory in SQLite
 ```
 
-### LB-OS-022 — Legacy Folder Reorganization Assistant
+### LB-OS-024 — Legacy Folder Reorganization Assistant
 
 ```txt
 AI-assisted reorg proposals from inventory + map
@@ -189,7 +193,7 @@ Step-by-step move batches with preview
 Rollback via backups + quarantine
 ```
 
-### LB-OS-023 — Personal System Cutover Plan
+### LB-OS-025 — Personal System Cutover Plan
 
 ```txt
 Checklist: what moves to LocalBrain-first workflow

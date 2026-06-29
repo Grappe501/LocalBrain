@@ -21,8 +21,8 @@ const MIGRATION_ARC: { slice_id: string; name: string; description: string }[] =
   },
   {
     slice_id: "LB-OS-020",
-    name: "Duplicate / version cleanup planner",
-    description: "Dry-run duplicates report — no auto cleanup",
+    name: "Evidence-based consolidation planner",
+    description: "Duplicates, version chains, folder consolidation — evidence + simulate",
   },
   {
     slice_id: "LB-OS-021",
@@ -156,7 +156,7 @@ export function buildArchiveStrategy(audit: DrivePlacementAudit): ArchiveStrateg
       })),
     ],
     retention_notes: [
-      "Duplicate/version decisions deferred to LB-OS-020",
+      "Duplicate/version decisions deferred to LB-OS-020 consolidation planner",
       "Bulk operations forbidden until approval checklist complete",
     ],
   };

@@ -137,9 +137,9 @@ H:/ = work projects, data, archives, documents, repos, media, storage
 |------------|-------|
 | Migration planner | LB-OS-016 |
 | Full H: filesystem audit | LB-OS-017 |
-| Duplicate/version planner (dry-run) | LB-OS-018 |
-| H: filing system builder | LB-OS-019 |
-| ChatGPT export import | LB-OS-020 |
+| Migration planner (drive doctrine) | LB-OS-018 |
+| Evidence-based consolidation planner | **LB-OS-020** |
+| ChatGPT export import | LB-OS-022 |
 | Project memory transfer | LB-OS-021 |
 | Legacy reorg assistant | LB-OS-022 |
 | Personal cutover plan | LB-OS-023 |
@@ -199,7 +199,7 @@ H:/ = work projects, data, archives, documents, repos, media, storage
 | Doctrine embedded | LB-OS-031 |
 | C:/H: drive mapper | LB-OS-032 |
 | Storage cleanup intelligence | LB-OS-033 |
-| Duplicate/version planner | LB-OS-034 |
+| Duplicate/version resolution (deepen) | LB-OS-034 — extends consolidation engine |
 | CPU/RAM/disk monitor (full) | LB-OS-035 |
 | Process/startup advisor | LB-OS-036 |
 | Safe cleanup execution | LB-OS-037 |

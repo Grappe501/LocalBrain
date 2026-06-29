@@ -44,12 +44,13 @@
 | [Relationship & Network Intelligence](./LOCALBRAIN_RELATIONSHIP_NETWORK_INTELLIGENCE_DEPARTMENT.md) | ✅ Complete — LB-OS-015 |
 | [Executive OS V1](./LOCALBRAIN_EXECUTIVE_OS_V1.md) | ✅ Release candidate — LB-OS-016 |
 | [AI Provider Management](./LOCALBRAIN_AI_PROVIDER_MANAGEMENT.md) | ✅ Complete — LB-OS-017 |
-| [Migration & Drive Doctrine](./LOCALBRAIN_MIGRATION_AND_DRIVE_DOCTRINE.md) | ✅ LB-OS-018 planner live |
+| [Migration & Drive Doctrine](./LOCALBRAIN_MIGRATION_AND_DRIVE_DOCTRINE.md) | ✅ LB-OS-018–019 |
+| [Consolidation Planner](./LOCALBRAIN_CONSOLIDATION_PLANNER.md) | 📋 Next — LB-OS-020 |
 | [Executive Program Office](./LOCALBRAIN_EXECUTIVE_PROGRAM_OFFICE.md) | ✅ Complete — LB-OS-012.5 |
 | [Platform Separation Strategy](./LOCALBRAIN_PLATFORM_SEPARATION_STRATEGY.md) — Platform vs Brain boundary | ✅ Planning — 2026-06-28 |
 | [Multi-Machine Network Plan](./LOCALBRAIN_MULTI_MACHINE_NETWORK_PLAN.md) | 📋 Future arc — LB-OS-107–114 |
 
-**Gate:** LB-OS-019 filesystem audit ✅ · Next: **LB-OS-020** duplicate/version planner.
+**Gate:** LB-OS-019 filesystem audit ✅ · Next: **LB-OS-020** Evidence-Based Consolidation Planner.
 
 ---
 
@@ -97,7 +98,7 @@
 |-------|------|--------|
 | LB-OS-018 | Drive architecture & migration planner | ✅ Complete — [Burt packet](./burt_packets/LB-OS-018.md) |
 | LB-OS-019 | Full filesystem mapping audit | ✅ Complete — [Burt packet](./burt_packets/LB-OS-019.md) |
-| LB-OS-020 | Duplicate / version cleanup planner | 📋 Next |
+| LB-OS-020 | Evidence-based consolidation planner | 📋 Next — [Spec](./LOCALBRAIN_CONSOLIDATION_PLANNER.md) · [Burt](./burt_packets/LB-OS-020.md) |
 | LB-OS-021 | H:/ project filing system builder | ⬜ PLANNED |
 | LB-OS-022 | ChatGPT knowledge import pipeline | ⬜ PLANNED |
 | LB-OS-023 | Project memory transfer engine | ⬜ PLANNED |

@@ -36,7 +36,7 @@ LB-OS-019       ✅ Full filesystem mapping audit
 
 **Verify:** `GET /api/migration/audit` · `GET /api/migration/audit/export`
 
-**Next:** [LB-OS-020 Duplicate / version cleanup planner](docs/burt_packets/LB-OS-019.md)
+**Next:** [LB-OS-020 Evidence-Based Consolidation Planner](docs/LOCALBRAIN_CONSOLIDATION_PLANNER.md)
 
 **Dev:** `npm run dev` → http://localhost:5174 · API http://localhost:4545
 
