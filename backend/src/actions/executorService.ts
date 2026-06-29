@@ -43,6 +43,8 @@ function dryRunMessage(row: ProposedActionRow, backupPath: string | null): strin
       return `Would move ${row.source_path} → ${row.target_path} · backup first`;
     case "quarantine_delete":
       return `Would quarantine ${row.source_path} → ${getQuarantineDir()} · backup first · no permanent delete`;
+    case "migration_cutover":
+      return `Migration cutover reserved for LB-OS-026 — approval gate only (${row.proposed_content ?? "n/a"})`;
     default:
       return "Unknown action";
   }
@@ -114,6 +116,10 @@ export function executeApprovedAction(
       case "quarantine_delete":
         ({ backupId, detail } = executeQuarantine(row));
         break;
+      case "migration_cutover":
+        throw new Error(
+          "Migration cutover execution blocked — requires LB-OS-026 Execution + Verification",
+        );
       default:
         throw new Error(`Unsupported action type: ${row.action_type}`);
     }

@@ -61,7 +61,7 @@
 | [Platform Separation Strategy](./LOCALBRAIN_PLATFORM_SEPARATION_STRATEGY.md) — Platform vs Brain boundary | ✅ Planning — 2026-06-28 |
 | [Multi-Machine Network Plan](./LOCALBRAIN_MULTI_MACHINE_NETWORK_PLAN.md) | 📋 Future arc — LB-OS-107–114 |
 
-**Gate:** LB-OS-024 ✅ · Next: **LB-OS-025** — Executive Approval.
+**Gate:** LB-OS-025 ✅ · Next: **LB-OS-026** — Execution + Verification.
 
 **Phase 1 finish arc:**
 
@@ -129,8 +129,8 @@
 | LB-OS-022 | Digital land survey | ✅ Complete — [Spec](./LOCALBRAIN_DIGITAL_LAND_SURVEY.md) · [Burt](./burt_packets/LB-OS-022.md) |
 | LB-OS-023 | Migration proof engine | ✅ Complete — [Spec](./LOCALBRAIN_PROOF_AND_CERTIFICATION.md) · [Burt](./burt_packets/LB-OS-023.md) |
 | LB-OS-024 | Migration planning engine | ✅ Complete — [Spec](./LOCALBRAIN_MIGRATION_PLAN.md) · [Burt](./burt_packets/LB-OS-024.md) |
-| LB-OS-025 | Executive approval | 📋 Next — [Burt](./burt_packets/LB-OS-025.md) |
-| LB-OS-026 | Execution + verification | ⬜ PLANNED — [Burt](./burt_packets/LB-OS-026.md) |
+| LB-OS-025 | Executive approval | ✅ Complete — [Burt](./burt_packets/LB-OS-025.md) |
+| LB-OS-026 | Execution + verification | 📋 Next — [Burt](./burt_packets/LB-OS-026.md) |
 
 **Gates:** Migration = 018–025 · Personal OS = 026
 

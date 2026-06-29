@@ -2,6 +2,11 @@ import type {
   DigitalLandSurveyReport,
   ExecutiveWorkspaceArchitectureReport,
   FilesystemMappingAudit,
+  MigrationApprovalCreateResponse,
+  MigrationApprovalOverview,
+  MigrationApprovalPackage,
+  MigrationApprovalRejectRequest,
+  MigrationApprovalSignRequest,
   MigrationPlan,
   MigrationPlanGenerateResponse,
   MigrationPlanOverview,
@@ -87,4 +92,66 @@ export async function fetchMigrationPlanById(planId: string): Promise<MigrationP
   const res = await fetch(`${API}/migration/plans/${encodeURIComponent(planId)}`);
   if (!res.ok) throw new Error("Failed to load migration plan");
   return res.json() as Promise<MigrationPlan>;
+}
+
+export async function fetchMigrationApprovals(): Promise<MigrationApprovalOverview> {
+  const res = await fetch(`${API}/migration/approvals`);
+  if (!res.ok) throw new Error("Failed to load migration approvals");
+  return res.json() as Promise<MigrationApprovalOverview>;
+}
+
+export async function createMigrationApprovalFromPlan(
+  planId: string,
+  requestedBy?: string,
+): Promise<MigrationApprovalCreateResponse> {
+  const res = await fetch(`${API}/migration/approvals/create-from-plan`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ plan_id: planId, requested_by: requestedBy }),
+  });
+  if (!res.ok) {
+    const body = (await res.json().catch(() => ({}))) as { error?: string };
+    throw new Error(body.error ?? "Failed to create approval package");
+  }
+  return res.json() as Promise<MigrationApprovalCreateResponse>;
+}
+
+export async function fetchMigrationApprovalById(
+  approvalId: string,
+): Promise<MigrationApprovalPackage> {
+  const res = await fetch(`${API}/migration/approvals/${encodeURIComponent(approvalId)}`);
+  if (!res.ok) throw new Error("Failed to load migration approval");
+  return res.json() as Promise<MigrationApprovalPackage>;
+}
+
+export async function signMigrationApproval(
+  approvalId: string,
+  body: MigrationApprovalSignRequest,
+): Promise<MigrationApprovalPackage> {
+  const res = await fetch(`${API}/migration/approvals/${encodeURIComponent(approvalId)}/sign`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+  if (!res.ok) {
+    const err = (await res.json().catch(() => ({}))) as { error?: string };
+    throw new Error(err.error ?? "Sign failed");
+  }
+  return res.json() as Promise<MigrationApprovalPackage>;
+}
+
+export async function rejectMigrationApproval(
+  approvalId: string,
+  body?: MigrationApprovalRejectRequest,
+): Promise<MigrationApprovalPackage> {
+  const res = await fetch(`${API}/migration/approvals/${encodeURIComponent(approvalId)}/reject`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body ?? {}),
+  });
+  if (!res.ok) {
+    const err = (await res.json().catch(() => ({}))) as { error?: string };
+    throw new Error(err.error ?? "Reject failed");
+  }
+  return res.json() as Promise<MigrationApprovalPackage>;
 }

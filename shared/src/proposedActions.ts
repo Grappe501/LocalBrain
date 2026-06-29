@@ -4,7 +4,8 @@ export type ProposedActionType =
   | "create_draft"
   | "edit_file"
   | "move"
-  | "quarantine_delete";
+  | "quarantine_delete"
+  | "migration_cutover";
 
 export type ProposedActionStatus =
   | "pending"

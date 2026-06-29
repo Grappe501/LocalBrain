@@ -52,6 +52,7 @@ export interface ProvenanceChain {
   simulation_id: string;
   plan_id: string;
   proposal_id: string | null;
+  approval_id: string | null;
 }
 
 export const PLANNING_ENGINE_ID = "ENG-PLN-001";

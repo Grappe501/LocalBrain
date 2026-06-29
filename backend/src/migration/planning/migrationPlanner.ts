@@ -148,6 +148,7 @@ function buildMigrationPlanForVariant(
     simulation_id: certificate.simulation_id,
     plan_id: planId,
     proposal_id: null,
+    approval_id: null,
   };
 
   const partialPlan = {

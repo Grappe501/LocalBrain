@@ -293,6 +293,24 @@ export type {
 } from "./migrationPlan.js";
 export { MIGRATION_PLAN_CORE_RULE } from "./migrationPlan.js";
 export type {
+  MigrationApprovalCreateRequest,
+  MigrationApprovalCreateResponse,
+  MigrationApprovalOverview,
+  MigrationApprovalPackage,
+  MigrationApprovalPlanSummary,
+  MigrationApprovalProvenance,
+  MigrationApprovalRejectRequest,
+  MigrationApprovalSignRequest,
+  MigrationApprovalStatus,
+  RiskAcknowledgement,
+  RollbackAcknowledgement,
+  SignOffChecklistItem,
+} from "./migrationApproval.js";
+export {
+  MIGRATION_APPROVAL_CORE_RULE,
+  MIGRATION_APPROVAL_ENGINE_ID,
+} from "./migrationApproval.js";
+export type {
   PlanConstraint,
   PlanConstraintStatus,
   PlanObjective,
