@@ -18,15 +18,26 @@ export function StubPage({ title, description, slice, extra }: StubPageProps) {
   );
 }
 
-export function ExplorerStub() {
+/** Route `/explorer` — internal name: Knowledge Explorer (LB-OS-005). */
+export function KnowledgeExplorerStub() {
   return (
     <StubPage
-      title="Explorer"
-      description="File explorer is a route — not the left-column spine. Real indexing arrives after LB-OS-005."
-      slice="LB-OS-005 — Explorer tree + file metadata"
+      title="Knowledge Explorer"
+      description="Not a file manager clone — six lenses over workspace roots: Physical, Knowledge, Workspace, Activity, Relationships, and AI. LocalBrain thinks Knowledge Source → Workspace → executive context; you still see folders."
+      slice="LB-OS-005 — Knowledge Explorer tree + metadata index"
+      extra={
+        <ul className="stub-page__list">
+          <li>Startup: workspace registry → cached metadata → visible tree → background index</li>
+          <li>Search: file: · workspace: prefixes</li>
+          <li>Signature: Explain this folder</li>
+        </ul>
+      }
     />
   );
 }
+
+/** @deprecated use KnowledgeExplorerStub */
+export const ExplorerStub = KnowledgeExplorerStub;
 
 export function ActionsStub() {
   return (

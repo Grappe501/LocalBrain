@@ -80,7 +80,7 @@ It consults the Digital Twin.
 |--------|--------------------------------------|
 | LivingWorkspace · WorkspaceEvent · WorkspaceLink | LB-OS-004 ✅ |
 | Decision | Early kernel slice (post-106) — ledger table + seed binding decisions |
-| KnowledgeSource | LB-OS-005+ explorer/index hooks; full engine post-046 |
+| KnowledgeSource | LB-OS-005 Knowledge Explorer; full engine post-046 |
 | Memory domains | LB-OS-051–052 recall slices |
 | Agent · Module · Engine | LB-OS-106 modularity gate + registry |
 | Digital Twin | Composed read model — grows as inputs land; no single "twin table" |

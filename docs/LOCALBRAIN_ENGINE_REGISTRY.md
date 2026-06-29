@@ -241,15 +241,15 @@ No studio calls another studio — studios call engines.
 
 ---
 
-### ENG-EX-001 — Explorer Service
+### ENG-EX-001 — Knowledge Explorer Service
 
 | Field | Value |
 |-------|-------|
-| **Responsibility** | Tree, metadata, breadcrumbs, selection — not the React view |
-| **Depends on** | ENG-FS-001, ENG-PR-001, ENG-SR-001 |
-| **Exposes** | `GET /api/explorer/tree` · `GET /api/explorer/metadata` |
+| **Responsibility** | Six-lens tree, path→workspace mapping, Explain folder, lazy metadata — not a file-manager clone |
+| **Depends on** | ENG-FS-001, ENG-WR-001, ENG-SR-001, ENG-KN-001 |
+| **Exposes** | `GET /api/knowledge-explorer/tree` · `/explain` · `/workspace-for-path` |
 | **Slices** | 005 |
-| **Docs** | [Explorer Blueprint](./LOCALBRAIN_EXPLORER_SYSTEM_BLUEPRINT.md) |
+| **Docs** | [Knowledge Explorer](./LOCALBRAIN_KNOWLEDGE_EXPLORER.md) |
 
 ---
 

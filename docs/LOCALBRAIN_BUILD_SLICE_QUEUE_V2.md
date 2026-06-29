@@ -107,7 +107,7 @@ PSP approve
 → LB-OS-003  Permission engine
 → LB-OS-004  Workspace registry (LivingWorkspace)
 → LB-OS-106  Core kernel boundaries + module loader   ← MODULARITY GATE
-→ LB-OS-005  Explorer / search foundation
+→ LB-OS-005  Knowledge Explorer / search foundation
 → LB-OS-006+ Everything else (studios = registered modules only)
 ```
 
@@ -141,7 +141,7 @@ See [Studio Blueprint](./LOCALBRAIN_STUDIO_BLUEPRINT.md) · [Command Layer](./LO
 | **LB-OS-003** | Filesystem permission engine v2 | 002 | ✅ Complete |
 | **LB-OS-004** | Workspace registry (LivingWorkspace) | 003 | ✅ **Complete** |
 | **LB-OS-106** | Core kernel + module loader | 004 | ✅ **Complete** — MODULARITY GATE |
-| **LB-OS-005** | Explorer tree + file metadata | 106 | Browse + index |
+| **LB-OS-005** | Knowledge Explorer + metadata index | 106 | ▶ **READY** |
 | **LB-OS-006** | Storage intelligence dashboard | 005 | Large/dup/stale |
 | **LB-OS-007** | System health monitor (CPU/RAM/disk) | 002 | Metrics live |
 | **LB-OS-008** | OpenAI chat command layer | 002, 004 | AI commands |
@@ -614,33 +614,39 @@ lazy_load_boundary
 
 ---
 
-# LB-OS-005 — Explorer Tree + File Metadata
+# LB-OS-005 — Knowledge Explorer (tree + metadata index)
 
 **Depends on:** 106
 
-**Goal:** Browse and search real approved folders; metadata in SQLite.
+**Doc:** [Knowledge Explorer](./LOCALBRAIN_KNOWLEDGE_EXPLORER.md) · **Burt packet:** [burt_packets/LB-OS-005.md](./burt_packets/LB-OS-005.md)
+
+**Goal:** Browse approved workspace roots with **six lenses** — not a Windows Explorer clone. Map paths → KnowledgeSource → LivingWorkspace. Never scan all of H: on startup.
 
 **Build:**
 
 ```txt
-Indexer: crawler, metadataExtractor, textExtractor, projectGuesser
+Indexer: background crawler, metadataExtractor, textExtractor (permission-gated)
 SQLite: file_index, index_runs, FTS5
-Explorer tree: lazy-load children from index
-Search in command bar + explorer filter
-File preview panel (metadata + excerpt, not full binary)
-API: /api/index/*, /api/search, /api/explorer/tree
+Knowledge Explorer UI at /explorer: lazy tree, lens tabs, workspace badges
+Startup: registry → cached metadata → visible folders → background index
+Search: file: · workspace: prefixes (+ path search)
+Explain this folder: minimal API (workspace context; AI in 008+)
+API: /api/knowledge-explorer/*, /api/index/*, /api/search
+Filesystem registered as KnowledgeSource per workspace root
 ```
 
 **Exit criteria:**
 
 ```txt
-[ ] Tree shows approved project folders only
-[ ] Search finds files by name/path/excerpt
-[ ] Clicking file shows preview in center panel
+[ ] Tree shows approved workspace roots only — no full H: scan on startup
+[ ] Nodes resolve to LivingWorkspace via filesystem_roots
+[ ] file: and workspace: search work
+[ ] Explain this folder returns workspace + metadata stub
+[ ] Six lens tabs (non-Physical may stub)
 [ ] Secrets/node_modules never indexed
 ```
 
-**Commit:** `feat: add explorer tree and file metadata index`
+**Commit:** `feat: add knowledge explorer tree and metadata index`
 
 **Maps v1 MRIDs:** LB-SEARCH-001–012, LB-DB-006, LB-DB-014, LB-API-006–007
 

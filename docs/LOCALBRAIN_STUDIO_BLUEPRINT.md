@@ -25,7 +25,7 @@ Files are one tab — not the project.
 LocalBrain
 ├── Home / Executive Briefing
 ├── Workspaces               → LivingWorkspace picker (004+)
-├── Explorer                 → ENG-EX-001 lens (005+)
+├── Knowledge Explorer       → ENG-EX-001 lens (005+) — not a file manager clone
 ├── Studios
 │   ├── Code Engineering
 │   ├── Writing

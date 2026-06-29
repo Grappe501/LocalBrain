@@ -54,6 +54,20 @@ Doc:       LOCALBRAIN_LIVING_WORKSPACE_MODEL.md
 Slice:     LB-OS-004
 ```
 
+### DEC-KE-001 — Knowledge Explorer replaces Explorer
+
+```txt
+Title:     LB-OS-005 builds Knowledge Explorer, not a file manager clone
+Reason:    Windows Explorer handles folders; LocalBrain's advantage is meaning —
+           six lenses, workspace mapping, typed search, Explain this folder.
+           Internal chain: Filesystem → KnowledgeSource → Workspace → executive_context.
+Date:      2026-06-28
+Status:    Binding
+Supersedes: Explorer-as-primary-object framing (pre-005)
+Doc:       LOCALBRAIN_KNOWLEDGE_EXPLORER.md
+Slice:     LB-OS-005
+```
+
 ### DEC-PL-001 — Host Platform (Layer 0)
 
 ```txt

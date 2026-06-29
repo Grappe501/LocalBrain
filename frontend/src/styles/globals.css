@@ -557,6 +557,13 @@ a {
   color: #6b7280;
 }
 
+.stub-page__list {
+  margin: 1rem 0 0;
+  padding-left: 1.25rem;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
 .module-stub-meta {
   margin-top: 1.25rem;
   font-size: 0.85rem;

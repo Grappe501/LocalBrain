@@ -5,7 +5,7 @@ import { useAppSettings } from "../context/AppSettingsContext";
 const PALETTE_ITEMS = [
   { label: "Executive Briefing", path: "/" },
   { label: "Living Workspace — localbrain", path: "/workspace/localbrain" },
-  { label: "Explorer (stub)", path: "/explorer" },
+  { label: "Knowledge Explorer (stub)", path: "/explorer" },
   { label: "Learn — OJT", path: "/learn" },
   { label: "Settings", path: "/settings" },
 ];
