@@ -142,26 +142,27 @@ See [Studio Blueprint](./LOCALBRAIN_STUDIO_BLUEPRINT.md) · [Command Layer](./LO
 | **LB-OS-004** | Workspace registry (LivingWorkspace) | 003 | ✅ **Complete** |
 | **LB-OS-106** | Core kernel + module loader | 004 | ✅ **Complete** — MODULARITY GATE |
 | **LB-OS-005** | Knowledge Explorer + metadata index | 106 | ✅ **Complete** |
-| **LB-OS-006** | Storage intelligence dashboard | 005 | Large/dup/stale |
-| **LB-OS-007** | System health monitor (CPU/RAM/disk) | 002 | Metrics live |
-| **LB-OS-008** | OpenAI chat command layer | 002, 004 | AI commands |
-| **LB-OS-009** | File read/summarize tools | 005, 008 | Read tools |
-| **LB-OS-010** | Approval-gated file management | 003, 009 | **V1 safety gate** |
-| **LB-OS-011** | Code engineering studio foundation | 009, 010, 106 | Burt/code module |
-| **LB-OS-012** | Writing dashboard foundation | 008, 106 | Writing module |
-| **LB-OS-013** | Social media drafting dashboard | 012, 106 | Social module |
-| **LB-OS-014** | System optimization advisor | 006, 007 | Advise + preview |
-| **LB-OS-015** | LocalBrain release candidate | 011–014 | **V1 ship** |
-| **LB-OS-016** | Drive architecture & migration planner | 015 | Migration start |
-| **LB-OS-017** | Full filesystem mapping audit | 016 | Inventory |
-| **LB-OS-018** | Duplicate / version cleanup planner | 017 | Dry-run only |
-| **LB-OS-019** | H:/ project filing system builder | 018 | Filing taxonomy |
-| **LB-OS-020** | ChatGPT knowledge import pipeline | 019 | Import |
-| **LB-OS-021** | Project memory transfer engine | 020 | Memory |
-| **LB-OS-022** | Legacy folder reorganization assistant | 021 | Reorg proposals |
-| **LB-OS-023** | Personal system cutover plan | 022 | Cutover |
-| **LB-OS-024** | LocalBrain Personal OS launch | 023 | **Personal OS launch** |
-| **LB-OS-025** | OJT coding academy doctrine (embedded) | 015 | Academy start |
+| **LB-OS-006** | Digital Asset Registry | 005 | ▶ **READY** |
+| **LB-OS-007** | Digital Asset Intelligence Engine | 006 | Health · collections · cleanup |
+| **LB-OS-008** | OpenAI chat command layer | 002, 004, 007 | AI commands |
+| **LB-OS-009** | System health monitor (CPU/RAM/disk) | 002 | *Renumbered from old 007* |
+| **LB-OS-010** | File read/summarize tools | 005, 008 | *Renumbered from old 009* |
+| **LB-OS-011** | Approval-gated file management | 003, 010 | **V1 safety gate** |
+| **LB-OS-012** | Code engineering studio foundation | 010, 011, 106 | Burt/code module |
+| **LB-OS-013** | Writing dashboard foundation | 008, 106 | Writing module |
+| **LB-OS-014** | Social media drafting dashboard | 013, 106 | Social module |
+| **LB-OS-015** | System optimization advisor | 006, 007 | Advise + preview |
+| **LB-OS-016** | LocalBrain release candidate | 012–015 | **V1 ship** |
+| **LB-OS-017** | Drive architecture & migration planner | 016 | Migration start |
+| **LB-OS-018** | Full filesystem mapping audit | 017 | Inventory |
+| **LB-OS-019** | Duplicate / version cleanup planner | 018 | Dry-run only |
+| **LB-OS-020** | H:/ project filing system builder | 019 | Filing taxonomy |
+| **LB-OS-021** | ChatGPT knowledge import pipeline | 020 | Import |
+| **LB-OS-022** | Project memory transfer engine | 021 | Memory |
+| **LB-OS-023** | Legacy folder reorganization assistant | 022 | Reorg proposals |
+| **LB-OS-024** | Personal system cutover plan | 023 | Cutover |
+| **LB-OS-025** | LocalBrain Personal OS launch | 024 | **Personal OS launch** |
+| **LB-OS-026** | OJT coding academy doctrine (embedded) | 016 | Academy start |
 | **LB-OS-026** | Build-along teaching mode | 025 | Teach toggle + closeouts |
 | **LB-OS-027** | Concept ladder + skill map | 026 | Curriculum map |
 | **LB-OS-028** | Interactive challenges from real code | 027 | Challenges |
@@ -295,7 +296,8 @@ OS Shell                  [██████████] LB-OS-002 ✅
 Permissions + Projects    [██░░░░░░░░] LB-OS-003 ✅ · 004 next
 Modular Core              [░░░░░░░░░░] LB-OS-106   MODULARITY GATE
 Explorer + Index          [░░░░░░░░░░] LB-OS-005
-Storage + System Health   [░░░░░░░░░░] LB-OS-006–007
+Storage + Asset Intelligence [░░░░░░░░░░] LB-OS-006–007
+System Health              [░░░░░░░░░░] LB-OS-009
 AI Command Layer          [░░░░░░░░░░] LB-OS-008–009
 Approval + File Ops       [░░░░░░░░░░] LB-OS-010
 Studios (Code/Write/Soc)  [░░░░░░░░░░] LB-OS-011–013
@@ -652,45 +654,80 @@ Filesystem registered as KnowledgeSource per workspace root
 
 ---
 
-# LB-OS-006 — Storage Intelligence Dashboard
+# LB-OS-006 — Digital Asset Registry
 
 **Depends on:** 005
 
-**Goal:** Storage advisor inside the same explorer foundation.
+**Doc:** [Digital Asset Model](./LOCALBRAIN_DIGITAL_ASSET_MODEL.md) · **Burt packet:** [burt_packets/LB-OS-006.md](./burt_packets/LB-OS-006.md)
+
+**Goal:** Central **Asset Registry** — everything Steve owns digitally, incrementally synced. Knowledge Explorer and CoS read the registry, not the raw filesystem on every action.
 
 **Build:**
 
 ```txt
-Storage scan job (metadata only, permission-gated):
-  large files · duplicate candidates (hash) · stale files (mtime)
-  bloated node_modules / dist / build folders (flag, don't delete)
-Right panel + /storage route: usage by project folder, top wasters
-Suggest cleanup — proposals only, no auto-delete
-```
-
-**V1 scope:**
-
-```txt
-Show usage · find large/duplicate/stale · suggest cleanup · preview plan
-Move/delete only after LB-OS-010
+digital_assets table — fingerprint, kind, lifecycle, workspace_id, health stub
+Migrate/evolve LB-OS-005 file_index → registry (single source of truth)
+Incremental sync job (background, permission-gated, no full H: on startup)
+Registry API: GET /api/assets, /stats, POST /sync
+Knowledge Explorer tree reads registry metadata first
+Asset kinds detector (extension/heuristic — document, code, photo, …)
 ```
 
 **Exit criteria:**
 
 ```txt
-[ ] Per-project storage breakdown visible
-[ ] Large and stale file reports generate
-[ ] Duplicate candidates listed with paths
-[ ] Cleanup is suggest-only
+[ ] Registry populated via incremental sync from approved roots
+[ ] Lifecycle stage on each asset (mtime heuristics OK)
+[ ] Explorer uses registry for node metadata
+[ ] No full-drive scan on startup
+[ ] file_index migration path clear (no duplicate indexes)
 ```
 
-**Commit:** `feat: add storage intelligence dashboard`
+**Commit:** `feat: add digital asset registry foundation`
 
-**New MRIDs:** LB-OS-006-001–005 (storage scan, duplicates, stale, UI, suggestions)
+**Maps engines:** ENG-DAR-001
 
 ---
 
-# LB-OS-007 — System Health Monitor (CPU / RAM / Disk)
+# LB-OS-007 — Digital Asset Intelligence Engine
+
+**Depends on:** 006
+
+**Doc:** [Digital Asset Model](./LOCALBRAIN_DIGITAL_ASSET_MODEL.md) · **Burt packet:** [burt_packets/LB-OS-007-asset-intelligence.md](./burt_packets/LB-OS-007-asset-intelligence.md)
+
+**Goal:** Intelligence over the registry — **not** "Storage Intelligence Dashboard." Storage cleanup is one capability among health, collections, duplicates, and CoS signals.
+
+**Build:**
+
+```txt
+Asset health scoring (good/poor signals per asset)
+Collections engine — dynamic, not folders (seed: focus workspace, this week, stale)
+Duplicate + version cluster detection from registry hashes/names
+Dormant asset rollup for CoS ("N assets · X GB dormant")
+Archive candidate proposals — suggest only, no delete (010+ for actions)
+Executive Mode + search: duplicate: stale: archive: use registry
+UI panel in Knowledge Explorer or /assets route
+```
+
+**Exit criteria:**
+
+```txt
+[ ] Per-asset health_score computed
+[ ] ≥3 dynamic collections defined
+[ ] Duplicate and dormant reports from registry
+[ ] Cleanup is suggest-only
+[ ] CoS/Executive insights cite registry stats
+```
+
+**Commit:** `feat: add digital asset intelligence engine`
+
+**Maps engines:** ENG-DAI-001
+
+---
+
+# LB-OS-009 — System Health Monitor (CPU / RAM / Disk)
+
+> **Renumbered:** was LB-OS-007 before Digital Asset track inserted. Implementation unchanged.
 
 **Depends on:** 002
 
@@ -753,7 +790,7 @@ openaiKeyPresent in health — never expose key
 [ ] Multi-turn chat works
 [ ] Missing key shows friendly error
 [ ] Chat aware of selected project
-[ ] No tools yet (LB-OS-009)
+[ ] No tools yet (LB-OS-010)
 ```
 
 **Commit:** `feat: add OpenAI chat command layer`
@@ -762,7 +799,9 @@ openaiKeyPresent in health — never expose key
 
 ---
 
-# LB-OS-009 — File Read / Summarize Tools
+# LB-OS-010 — File Read / Summarize Tools
+
+> **Renumbered:** was LB-OS-009.
 
 **Depends on:** 005, 008
 
@@ -793,9 +832,11 @@ Sources in center/right when AI cites files
 
 ---
 
-# LB-OS-010 — Approval-Gated File Management
+# LB-OS-011 — Approval-Gated File Management
 
-**Depends on:** 003, 009
+> **Renumbered:** was LB-OS-010.
+
+**Depends on:** 003, 010
 
 **Goal:** **V1 safety gate** — preview, approve, backup, log, quarantine.
 

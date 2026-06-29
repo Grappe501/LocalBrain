@@ -37,16 +37,17 @@ Every workspace · every department · every project · every relationship
 Every knowledge source · every codebase · every campaign · every manuscript
 ```
 
-**Primary feeds:** LivingWorkspace registry · WorkspaceEvents · WorkspaceLinks · Relationship Memory · Workspace Memory · Knowledge Sources
+**Primary feeds:** LivingWorkspace registry · WorkspaceEvents · WorkspaceLinks · **Digital Asset Registry** · Relationship Memory · Workspace Memory · Knowledge Sources
 
 ### 3. Your machine
 
 ```txt
 Storage · RAM · GPU · CPU · health · backups · deployment readiness
 Host platform · drive doctrine (C:/ vs H:/) · permission boundaries
+Digital Asset Registry — health, lifecycle, dormant counts (LB-OS-006+)
 ```
 
-**Primary feeds:** System Memory · ENG-ST-001 · ENG-PH-001 · Host Platform telemetry
+**Primary feeds:** System Memory · ENG-ST-001 · ENG-PH-001 · **ENG-DAR-001** · Host Platform telemetry
 
 ---
 

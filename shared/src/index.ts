@@ -23,6 +23,14 @@ export type {
   Module,
 } from "./foundation.js";
 export type {
+  AssetCollection,
+  AssetHealthSignals,
+  AssetLifecycleStage,
+  DigitalAsset,
+  DigitalAssetFingerprint,
+  DigitalAssetKind,
+} from "./digitalAsset.js";
+export type {
   ModuleCapabilityDeclaration,
   ModuleManifest,
   ModuleNavPlacement,

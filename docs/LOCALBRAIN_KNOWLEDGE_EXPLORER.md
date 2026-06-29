@@ -256,6 +256,18 @@ Startup stays fast even when H: contains millions of files.
 
 ---
 
+## Asset Registry (LB-OS-006+)
+
+LB-OS-005 `file_index` **evolves into** the central [Digital Asset Registry](./LOCALBRAIN_DIGITAL_ASSET_MODEL.md).
+
+```txt
+Knowledge Explorer → reads Asset Registry (not raw filesystem on every click)
+Registry → incremental sync from approved roots
+Chief of Staff → queries registry for dormant assets, duplicates, lifecycle
+```
+
+---
+
 ## LB-OS-005 build scope
 
 ```txt

@@ -23,7 +23,7 @@ UI: /explorer — KnowledgeExplorerView
 
 **Commit:** `feat: add knowledge explorer tree and metadata index`
 
-**Next:** LB-OS-006 Storage intelligence
+**Next:** LB-OS-006 Digital Asset Registry
 
 ---
 

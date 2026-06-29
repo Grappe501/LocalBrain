@@ -53,6 +53,7 @@ If it is not one of these ten, it specializes one of them.
 | New "project" object | `LivingWorkspace` + `workspace_type` |
 | New "timeline" object | `WorkspaceEvent` + event types |
 | New "database" object (user-facing) | `KnowledgeSource` + adapter |
+| New "file" intelligence blob | `DigitalAsset` registry record |
 | New "we decided X" blob | `Decision` in ledger |
 | New monolithic memory table | `Memory` in the correct domain |
 | New department object | `Module` manifest |
@@ -80,12 +81,13 @@ It consults the Digital Twin.
 |--------|--------------------------------------|
 | LivingWorkspace · WorkspaceEvent · WorkspaceLink | LB-OS-004 ✅ |
 | Decision | Early kernel slice (post-106) — ledger table + seed binding decisions |
-| KnowledgeSource | LB-OS-005 Knowledge Explorer; full engine post-046 |
+| DigitalAsset | LB-OS-006 registry · LB-OS-007 intelligence — [Digital Asset Model](./LOCALBRAIN_DIGITAL_ASSET_MODEL.md) |
+| KnowledgeSource | LB-OS-005 explorer; 006 registry ingest |
 | Memory domains | LB-OS-051–052 recall slices |
 | Agent · Module · Engine | LB-OS-106 modularity gate + registry |
 | Digital Twin | Composed read model — grows as inputs land; no single "twin table" |
 
-Shared TypeScript contracts: `@localbrain/shared` → `foundation.ts`
+Shared TypeScript contracts: `@localbrain/shared` → `foundation.ts`, `digitalAsset.ts`
 
 ---
 
@@ -93,7 +95,7 @@ Shared TypeScript contracts: `@localbrain/shared` → `foundation.ts`
 
 ```txt
 Millions of lines of code over many years — one mental model.
-Chief of Staff always knows: workspaces, decisions, sources, memory, agents, capabilities.
+Chief of Staff always knows: workspaces, assets, decisions, sources, memory, agents, capabilities.
 ```
 
 ---
@@ -103,9 +105,9 @@ Chief of Staff always knows: workspaces, decisions, sources, memory, agents, cap
 | Doc | Role |
 |-----|------|
 | [Digital Twin](./LOCALBRAIN_DIGITAL_TWIN.md) | Apex understanding for CoS |
+| [Digital Asset Model](./LOCALBRAIN_DIGITAL_ASSET_MODEL.md) | Asset registry + intelligence |
 | [Knowledge Sources](./LOCALBRAIN_KNOWLEDGE_SOURCES.md) | User-facing data abstraction |
 | [Decision Ledger](./LOCALBRAIN_DECISION_LEDGER.md) | Why we chose X |
-| [Memory Domains](./LOCALBRAIN_MEMORY_DOMAINS.md) | Split memory model |
 | [Living Workspace Model](./LOCALBRAIN_LIVING_WORKSPACE_MODEL.md) | Workspace object detail |
 | [Modular Architecture](./LOCALBRAIN_MODULAR_ARCHITECTURE.md) | Module + kernel boundary |
 

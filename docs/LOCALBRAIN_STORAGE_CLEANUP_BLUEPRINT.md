@@ -1,7 +1,7 @@
 # LocalBrain Storage Cleanup Blueprint v1.0
 
-> **Pillar 10 · Layers 1 & 3:** Folder/file cleanup + storage optimization.  
-> Doctrine: [System Optimization Doctrine](./LOCALBRAIN_SYSTEM_OPTIMIZATION_DOCTRINE.md) · Safety: [Safety Model §15](./LOCALBRAIN_SAFETY_MODEL.md#15-migration--reorganization-safety) · Queue: [LB-OS-033–034, 037](./LOCALBRAIN_BUILD_SLICE_QUEUE_V2.md#phase-5--system-optimization--performance-command-center-lb-os-031038)
+> **Capability of ENG-DAI-001** (Digital Asset Intelligence) — not a separate product.  
+> **Parent:** [Digital Asset Model](./LOCALBRAIN_DIGITAL_ASSET_MODEL.md) · Doctrine: [System Optimization Doctrine](./LOCALBRAIN_SYSTEM_OPTIMIZATION_DOCTRINE.md)
 
 ---
 
@@ -21,7 +21,7 @@ Primary scan target: **H:** approved project roots. C: observed for pressure onl
 
 | Report | Description | Slice |
 |--------|-------------|-------|
-| **Storage report** | Total / free / used per drive | 006 bootstrap · 033 full |
+| **Storage report** | Total / free / used per drive | 007 via DAI · 033 full |
 | **Large folder report** | Top N folders by size on H: | 006 · 033 |
 | **Duplicate candidates** | Hash + fuzzy name clusters | 006 stub · 034 full |
 | **Version clusters** | Multiple copies of same project/doc | 018 migration · 034 full |

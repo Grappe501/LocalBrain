@@ -54,6 +54,20 @@ Doc:       LOCALBRAIN_LIVING_WORKSPACE_MODEL.md
 Slice:     LB-OS-004
 ```
 
+### DEC-DA-001 — Digital Asset Registry replaces Storage Intelligence
+
+```txt
+Title:     LB-OS-006 builds Digital Asset Registry; 007 builds Asset Intelligence
+Reason:    Storage is one dimension. LocalBrain must understand everything Steve owns
+           digitally — role, health, lifecycle, collections — via a central registry
+           that Explorer and CoS query instead of repeated filesystem scans.
+Date:      2026-06-28
+Status:    Binding
+Supersedes: LB-OS-006 "Storage Intelligence Dashboard" naming
+Doc:       LOCALBRAIN_DIGITAL_ASSET_MODEL.md
+Slices:    LB-OS-006 (registry) · LB-OS-007 (intelligence)
+```
+
 ### DEC-KE-001 — Knowledge Explorer replaces Explorer
 
 ```txt

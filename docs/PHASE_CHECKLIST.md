@@ -37,36 +37,39 @@
 | [Memory Domains](./LOCALBRAIN_MEMORY_DOMAINS.md) | ✅ Spec |
 | `@localbrain/shared` foundation types | ✅ Contracts |
 
-**Gate:** Last major object-model change before module acceleration. Next: **LB-OS-005** Knowledge Explorer.
+| [Digital Asset Model](./LOCALBRAIN_DIGITAL_ASSET_MODEL.md) | ✅ Spec — LB-OS-006/007 |
+
+**Gate:** Next: **LB-OS-006** Digital Asset Registry.
 
 ---
 
-## Phase 1 — V1 OS Shell (LB-OS-001–015)
+## Phase 1 — V1 OS Shell (LB-OS-001–016)
 
 | Slice | Name | Status |
 |-------|------|--------|
 | LB-OS-001 | Repo scaffold | ✅ COMPLETE |
 | LB-OS-002 | OS shell + executive briefing + command stub | ✅ COMPLETE |
 | LB-OS-003 | Filesystem permission engine v2 | ✅ COMPLETE |
-| LB-OS-004 | Workspace registry (LivingWorkspace) | ✅ Complete — event-driven registry, `/workspace/:id` |
+| LB-OS-004 | Workspace registry (LivingWorkspace) | ✅ Complete |
 | LB-OS-106 | Core kernel + module loader | ✅ Complete — MODULARITY GATE |
 | LB-OS-005 | Knowledge Explorer + metadata index | ✅ Complete |
-| LB-OS-006 | Storage intelligence dashboard | ⬜ PLANNED |
-| LB-OS-007 | System health monitor | ⬜ PLANNED |
+| LB-OS-006 | Digital Asset Registry | ▶ READY — [Burt packet](./burt_packets/LB-OS-006.md) |
+| LB-OS-007 | Digital Asset Intelligence Engine | ⬜ PLANNED |
 | LB-OS-008 | OpenAI chat command layer | ⬜ PLANNED |
-| LB-OS-009 | File read/summarize tools | ⬜ PLANNED |
-| LB-OS-010 | Approval-gated file management | ⬜ PLANNED |
-| LB-OS-011 | Code engineering studio | ⬜ PLANNED |
-| LB-OS-012 | Writing dashboard | ⬜ PLANNED |
-| LB-OS-013 | Social media drafting | ⬜ PLANNED |
-| LB-OS-014 | System optimization advisor | ⬜ PLANNED |
-| LB-OS-015 | Release candidate | ⬜ PLANNED |
+| LB-OS-009 | System health monitor | ⬜ PLANNED *(renumbered)* |
+| LB-OS-010 | File read/summarize tools | ⬜ PLANNED *(renumbered)* |
+| LB-OS-011 | Approval-gated file management | ⬜ PLANNED *(renumbered)* |
+| LB-OS-012 | Code engineering studio | ⬜ PLANNED |
+| LB-OS-013 | Writing dashboard | ⬜ PLANNED |
+| LB-OS-014 | Social media drafting | ⬜ PLANNED |
+| LB-OS-015 | System optimization advisor | ⬜ PLANNED |
+| LB-OS-016 | Release candidate | ⬜ PLANNED |
 
-**Gates:** Shell = 002 · **Modularity = 106** · Safe = 010 · V1 ship = 015
+**Gates:** Shell = 002 · **Modularity = 106** · Safe = 011 · V1 ship = 016
 
 ---
 
-## Phase 2 — Migration & Personal OS (LB-OS-016–024)
+## Phase 2 — Migration & Personal OS (LB-OS-017–025)
 
 | Slice | Name | Status |
 |-------|------|--------|

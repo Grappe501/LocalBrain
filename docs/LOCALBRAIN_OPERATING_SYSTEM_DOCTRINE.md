@@ -564,7 +564,19 @@ V1 scaffold (slice 001) is foundation only — not the finished OS shell.
 
 **Queue:** [LOCALBRAIN_BUILD_SLICE_QUEUE_V2.md](./LOCALBRAIN_BUILD_SLICE_QUEUE_V2.md)
 
-**Foundation:** Project folders = filesystem folders. Explorer, storage, projects, and AI share one permission-gated foundation.
+**Foundation:** Workspaces · **Digital Asset Registry** · Knowledge Explorer · permission-gated sync. See [Digital Asset Model](./LOCALBRAIN_DIGITAL_ASSET_MODEL.md).
+
+---
+
+## Competitive moat (binding)
+
+```txt
+LocalBrain's advantage is not the AI model — it is understanding Steve's world.
+Models and APIs change; workspaces, assets, decisions, and relationships compound.
+Optimize world understanding first; plug in any model later.
+```
+
+See [Digital Asset Model](./LOCALBRAIN_DIGITAL_ASSET_MODEL.md) · [Digital Twin](./LOCALBRAIN_DIGITAL_TWIN.md).
 
 ---
 

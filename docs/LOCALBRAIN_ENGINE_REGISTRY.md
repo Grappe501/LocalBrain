@@ -253,14 +253,42 @@ No studio calls another studio — studios call engines.
 
 ---
 
+### ENG-DAR-001 — Digital Asset Registry
+
+| Field | Value |
+|-------|-------|
+| **Responsibility** | Central asset index — fingerprint, lifecycle, incremental sync; supersedes repeated filesystem scans |
+| **Depends on** | ENG-PM-001, ENG-WR-001, ENG-EX-001, ENG-SR-001 |
+| **Exposes** | `GET /api/assets` · `POST /api/assets/sync` · `GET /api/assets/stats` |
+| **Consumed by** | ENG-EX-001, ENG-DAI-001, ENG-DT-001, ENG-CS-001 |
+| **Slices** | 006 |
+| **Status** | PLANNED |
+| **Docs** | [Digital Asset Model](./LOCALBRAIN_DIGITAL_ASSET_MODEL.md) |
+
+---
+
+### ENG-DAI-001 — Digital Asset Intelligence Engine
+
+| Field | Value |
+|-------|-------|
+| **Responsibility** | Asset health, collections, duplicates, dormant rollup, cleanup proposals — storage is one capability |
+| **Depends on** | ENG-DAR-001, ENG-WR-001, ENG-LG-001 |
+| **Exposes** | `GET /api/assets/health` · `GET /api/collections` · cleanup proposals |
+| **Consumed by** | Knowledge Explorer Executive mode, CoS, ENG-ST-001 (legacy alias) |
+| **Slices** | 007 · 033–034 cleanup execute |
+| **Status** | PLANNED |
+| **Docs** | [Digital Asset Model](./LOCALBRAIN_DIGITAL_ASSET_MODEL.md) · [Storage Cleanup](./LOCALBRAIN_STORAGE_CLEANUP_BLUEPRINT.md) |
+
+---
+
 ### ENG-ST-001 — Storage Optimizer
 
 | Field | Value |
 |-------|-------|
-| **Responsibility** | Large folders, duplicates, stale, bloat, cleanup proposals |
-| **Depends on** | ENG-FS-001, ENG-SR-001, ENG-PM-001 |
-| **Exposes** | `GET /api/storage/report` · `GET /api/storage/duplicates` |
-| **Slices** | 006 · 033–034 · 037 execute |
+| **Responsibility** | **Capability surface of ENG-DAI-001** — large folders, duplicates, stale, bloat proposals |
+| **Depends on** | ENG-DAI-001, ENG-DAR-001 |
+| **Exposes** | `GET /api/storage/report` · `GET /api/storage/duplicates` (proxies to DAI) |
+| **Slices** | 007 · 033–034 · 037 execute |
 | **Docs** | [Storage Cleanup Blueprint](./LOCALBRAIN_STORAGE_CLEANUP_BLUEPRINT.md) |
 
 ---
@@ -1071,7 +1099,9 @@ ENG-HL-001 (Health)
 | 004 | PR, KP stub |
 | 005 | EX, SR, FS read |
 | 006 | ST partial |
-| 007 | PF, HL |
+| 006 | DAR |
+| 007 | DAI, ST via DAI |
+| 009 | PF, HL |
 | 008 | AI, CM wire, MM partial |
 | 009 | TL, FS read tools |
 | 010 | FS write path, BK, TL approve flow |
