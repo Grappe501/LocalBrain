@@ -6,6 +6,18 @@ export type {
   CommandStatusResponse,
 } from "./command.js";
 export type {
+  AiUsagePanel,
+  ApiStatus,
+  DiskVolumeHealth,
+  MachineHealthPanel,
+  OperationalHealthLabel,
+  OperationalHealthScore,
+  OperationsPanel,
+  StorageHealthPanel,
+  SystemHealthResponse,
+  SystemUsageSnapshot,
+} from "./systemHealth.js";
+export type {
   CosCapability,
   CosOrchestration,
   CosOutcome,

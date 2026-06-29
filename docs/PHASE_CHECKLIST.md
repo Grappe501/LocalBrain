@@ -39,7 +39,7 @@
 
 | [Digital Asset Model](./LOCALBRAIN_DIGITAL_ASSET_MODEL.md) | ✅ Spec — LB-OS-006/007 |
 
-**Gate:** Next: **LB-OS-011** System health monitor.
+**Gate:** Next: **LB-OS-012** Code engineering studio.
 
 ---
 
@@ -59,7 +59,7 @@
 | LB-OS-009 | Permission-gated file read/summarize | ✅ Complete — [Burt packet](./burt_packets/LB-OS-009.md) |
 | LB-OS-010 | Approval-gated file management | ✅ Complete — [Burt packet](./burt_packets/LB-OS-010.md) |
 | LB-OS-010.5 | Chief of Staff integration layer | ✅ Complete — [Burt packet](./burt_packets/LB-OS-010.5.md) |
-| LB-OS-011 | System health monitor | ⬜ PLANNED *(renumbered)* |
+| LB-OS-011 | System health & operations center | ✅ Complete — [Burt packet](./burt_packets/LB-OS-011.md) |
 | LB-OS-012 | Code engineering studio | ⬜ PLANNED |
 | LB-OS-013 | Writing dashboard | ⬜ PLANNED |
 | LB-OS-014 | Social media drafting | ⬜ PLANNED |

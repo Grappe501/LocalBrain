@@ -7,6 +7,7 @@ const KERNEL_NAV_TAIL = [
   { label: "Knowledge Explorer", path: "/explorer" },
   { label: "Learn", path: "/learn" },
   { label: "Actions", path: "/actions" },
+  { label: "System", path: "/system" },
   { label: "Settings", path: "/settings" },
 ] as const;
 

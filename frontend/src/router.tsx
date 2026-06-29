@@ -6,6 +6,7 @@ import { ProjectRedirect, WorkspaceRoute } from "./views/WorkspaceRoute";
 import { ActionsView } from "./views/ActionsView";
 import { KnowledgeExplorerView } from "./views/KnowledgeExplorerView";
 import { LearnStub } from "./views/LearnStub";
+import { SystemHealthView } from "./views/SystemHealthView";
 import { SettingsPage } from "./views/SettingsPage";
 import { LazyModuleRoute } from "./views/LazyModuleRoute";
 
@@ -21,6 +22,7 @@ export function AppRouter() {
         <Route path="explorer" element={<KnowledgeExplorerView />} />
         <Route path="learn" element={<LearnStub />} />
         <Route path="actions" element={<ActionsView />} />
+        <Route path="system" element={<SystemHealthView />} />
         <Route path="settings" element={<SettingsPage />} />
         {!loading &&
           departmentModules.flatMap((m) =>

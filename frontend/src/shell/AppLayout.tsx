@@ -3,6 +3,7 @@ import { CommandBar } from "./CommandBar";
 import { ContextPanel } from "./ContextPanel";
 import { DepartmentNav } from "./DepartmentNav";
 import { SafetyBanner } from "./SafetyBanner";
+import { SystemStatusDock } from "./SystemStatusDock";
 
 export function AppLayout() {
   return (
@@ -16,6 +17,7 @@ export function AppLayout() {
         </main>
         <ContextPanel />
       </div>
+      <SystemStatusDock />
     </div>
   );
 }
