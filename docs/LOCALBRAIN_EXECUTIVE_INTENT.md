@@ -1,6 +1,7 @@
 # Executive Mission Stack
 
 > **Phase:** 2 — Teach the Brain (first intelligence arc after Personal OS cutover)  
+> **System:** [Four Platform Systems](./LOCALBRAIN_FOUR_SYSTEMS.md) — **System 3: Executive Intelligence**  
 > **Engines:** ENG-EMS-001 Mission Stack · ENG-EI-001 Mission Alignment · ENG-AB-001 Attention Budget · ENG-MCP-001 Mission Completion Probability  
 > **Parent:** [Constitution](./LOCALBRAIN_CONSTITUTION.md) · [Three-Phase Roadmap](./LOCALBRAIN_THREE_PHASE_ROADMAP.md) · [Executive Question Registry](./LOCALBRAIN_EXECUTIVE_QUESTION_REGISTRY.md) · [Executive Leverage Score](./LOCALBRAIN_EXECUTIVE_LEVERAGE_SCORE.md)  
 > **Also known as:** Executive Intent (refined) — single-intent model superseded by Mission Stack, June 2026

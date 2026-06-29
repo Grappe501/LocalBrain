@@ -51,6 +51,19 @@ Platform — sellable engines and shell
 Brain — Steve's private data and workspaces
 ```
 
+### Four Platform Systems (binding)
+
+[Four Platform Systems](./LOCALBRAIN_FOUR_SYSTEMS.md) — architecture lock through Phase 4. Four cooperating systems (plus Organization OS later); **feature-complete** — new work fits inside them, not new pillars.
+
+```txt
+Executive OS           — Where am I working?
+Executive Memory OS    — What do we know?
+Executive Intelligence — What should I do?
+Executive Evolution    — How do we improve?
+```
+
+No system depends on OpenAI, Claude, or Ollama directly — vendors are implementation details (LB-OS-017).
+
 ---
 
 ## Article IV — Executive Office
@@ -152,6 +165,7 @@ Experience Maturity L0–L5 on every route · Dev mode shows badges; production 
 
 ```text
 LOCALBRAIN_CONSTITUTION.md          ← you are here
+├── LOCALBRAIN_FOUR_SYSTEMS.md      ← architecture lock (4+1 systems · Phase 4 complete)
 ├── LOCALBRAIN_THREE_PHASE_ROADMAP.md
 ├── LOCALBRAIN_EXECUTIVE_INTELLIGENCE_CARDS.md (ENG-EIC-001 · LB-OS-020)
 ├── LOCALBRAIN_ACTION_PIPELINE.md
@@ -160,6 +174,8 @@ LOCALBRAIN_CONSTITUTION.md          ← you are here
 ├── LOCALBRAIN_EXECUTIVE_INTENT.md (Executive Mission Stack · ENG-EMS-001 · MCP · Phase 2)
 ├── LOCALBRAIN_EXECUTIVE_MEMORY_OS.md (Memory OS · Memory Confidence · Phase 2–3)
 ├── LOCALBRAIN_MEMORY_DOMAINS.md (Memory foundational object · six domains)
+├── LOCALBRAIN_EXECUTIVE_COGNITIVE_LOAD.md (ENG-ECL-001 · System 3 · Phase 2)
+├── LOCALBRAIN_EXECUTIVE_LEVERAGE_SCORE.md (ENG-ELS-001)
 ├── LOCALBRAIN_PHASE1_INTEGRATION_PASS.md (LB-OS-020.5)
 ├── LOCALBRAIN_MASTER_SYSTEM_ARCHITECTURE.md
 ├── LOCALBRAIN_*_DEPARTMENT.md

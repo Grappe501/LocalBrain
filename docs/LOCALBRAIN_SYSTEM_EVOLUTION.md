@@ -1,9 +1,9 @@
 # System Evolution — Executive Office
 
-> **Planned slice:** LB-OS-035 (Phase 2 — Teach the Brain)  
+> **System:** [Executive Evolution](./LOCALBRAIN_FOUR_SYSTEMS.md) (System 4) · intelligence learning scoreboard  
 > **Engine:** ENG-EVO-001  
-> **Parent:** [Executive Office](./LOCALBRAIN_EXECUTIVE_OFFICE.md) · [Three-Phase Roadmap](./LOCALBRAIN_THREE_PHASE_ROADMAP.md)  
-> **Sibling:** [Executive Program Office](./LOCALBRAIN_EXECUTIVE_PROGRAM_OFFICE.md) — measures **construction**, not intelligence
+> **Parent:** [Four Platform Systems](./LOCALBRAIN_FOUR_SYSTEMS.md) · [Executive Office](./LOCALBRAIN_EXECUTIVE_OFFICE.md) · [Three-Phase Roadmap](./LOCALBRAIN_THREE_PHASE_ROADMAP.md)  
+> **Sibling:** [Executive Program Office](./LOCALBRAIN_EXECUTIVE_PROGRAM_OFFICE.md) (System 1) — measures **construction**, not intelligence
 
 ---
 

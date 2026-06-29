@@ -196,3 +196,9 @@ Phase 4 — Executive Organization Platform (teams · multi-business · coordina
 See [Executive Memory OS](./LOCALBRAIN_EXECUTIVE_MEMORY_OS.md) for the memory-before-reasoning architecture that bridges Phase 2 intelligence and Phase 3 knowledge durability.
 
 The current **Phase 3 — Build the Company** slice arc delivers Organization Platform capabilities on top of the Knowledge Platform substrate — new departments inherit Memory OS + Mission Stack without shell redesign.
+
+---
+
+## Four Platform Systems (architecture lock)
+
+[Four Platform Systems](./LOCALBRAIN_FOUR_SYSTEMS.md) declares the architecture **feature-complete through Phase 4**. Four cooperating systems today; Executive Organization OS later. New capabilities map to one system — not new pillars.

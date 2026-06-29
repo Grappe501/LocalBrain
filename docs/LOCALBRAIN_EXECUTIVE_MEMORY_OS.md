@@ -1,6 +1,7 @@
 # Executive Memory OS
 
 > **Phase:** 2–3 — Memory before reasoning (not Phase 1)  
+> **System:** [Four Platform Systems](./LOCALBRAIN_FOUR_SYSTEMS.md) — **System 2: Executive Memory OS**  
 > **Engine:** ENG-MEM-001 (planned) · **Metrics:** Memory Confidence (ENG-MC-001) · Context Efficiency (ENG-CE-001)  
 > **Parent:** [Constitution](./LOCALBRAIN_CONSTITUTION.md) · [Memory Domains](./LOCALBRAIN_MEMORY_DOMAINS.md) · [Executive Mission Stack](./LOCALBRAIN_EXECUTIVE_INTENT.md) · [Three-Phase Roadmap](./LOCALBRAIN_THREE_PHASE_ROADMAP.md)
 
