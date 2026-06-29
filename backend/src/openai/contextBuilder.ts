@@ -37,8 +37,8 @@ export function buildCommandContext(options: {
   const sections: string[] = [
     "You are the Chief of Staff for LocalBrain — Steve's AI Executive Operating System.",
     "Answer using ONLY the context below. Do not invent filesystem paths or claim you read files.",
-    "LB-OS-008 guardrails: no file writes, moves, deletes, cleanup execution, or tools.",
-    "Recommendations about storage/cleanup are suggest-only until approval gates ship.",
+    "LB-OS-010.5: file writes/moves/deletes only via user-approved Actions queue.",
+    "Orchestration may create pending proposals — never execute without approval.",
   ];
 
   if (active) {
@@ -111,6 +111,8 @@ export function buildCommandContext(options: {
       "User wants workspace explanation. Summarize executive_context, focus, success_definition, and health.",
     asset_stale:
       "User asks about stale/dormant/duplicate assets. Use intelligence summary and recommend-only cleanup cards.",
+    workspace_cleanup:
+      "User wants workspace cleanup. Summarize duplicate/dormant/archive candidates with system confidence and approval path.",
     briefing_summary:
       "User wants Executive Briefing summary. Synthesize briefing sections; note mock data where applicable.",
     file_read:
@@ -157,7 +159,9 @@ export function buildOfflineAnswer(options: {
         ? `Offline workspace brief — **${ws.title}**: ${ws.executive_context} Focus: ${ws.current_focus || "—"}. Health ${ws.health_score ?? "—"}.`
         : "No workspace context available offline.";
     case "asset_stale":
-      return `Offline asset intelligence: ${intel.dormant.count} dormant assets (${formatBytes(intel.dormant.bytes)}), ${intel.duplicate_groups} duplicate candidate groups. Recommend-only — no cleanup actions. Configure OPENAI_API_KEY for deeper analysis.`;
+      return `Offline asset intelligence: ${intel.dormant.count} dormant assets (${formatBytes(intel.dormant.bytes)}), ${intel.duplicate_groups} duplicate candidate groups. Recommend-only — use Actions queue for approved cleanup. Configure OPENAI_API_KEY for deeper analysis.`;
+    case "workspace_cleanup":
+      return `Offline CoS cleanup review: ${intel.duplicate_groups} duplicate groups, ${intel.dormant.count} dormant, ${intel.archive_candidates.count} archive candidates. No files changed. Use Create proposals in CommandBar to queue Actions.`;
     case "briefing_summary":
       return `Executive Briefing (mock): ${briefingAsContextText().slice(0, 500)}… Configure OPENAI_API_KEY for AI summary.`;
     default:

@@ -15,6 +15,7 @@ test("classifyCommand detects focus and briefing intents", () => {
   assert.equal(classifyCommand("Summarize my Executive Briefing mock").action_class, "briefing_summary");
   assert.equal(classifyCommand("Why is this asset flagged stale?").action_class, "asset_stale");
   assert.equal(classifyCommand("Explain the current workspace").action_class, "workspace_explain");
+  assert.equal(classifyCommand("Clean up my LocalBrain workspace.").action_class, "workspace_cleanup");
 });
 
 test("actionClassToIntent maps to command intents", () => {

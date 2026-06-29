@@ -6,6 +6,15 @@ export type {
   CommandStatusResponse,
 } from "./command.js";
 export type {
+  CosCapability,
+  CosOrchestration,
+  CosOutcome,
+  CosOutcomeType,
+  CosRecommendation,
+  CosRecommendationCategory,
+  SystemConfidence,
+} from "./cosOrchestration.js";
+export type {
   FileReadResult,
   FileSummarizeMode,
   FileSummarizeResult,

@@ -26,6 +26,12 @@ commandRouter.post("/command", async (req, res) => {
     typeof req.body?.asset_path === "string" ? req.body.asset_path : undefined;
   const file_path = typeof req.body?.file_path === "string" ? req.body.file_path : undefined;
   const tool = typeof req.body?.tool === "string" ? req.body.tool : undefined;
+  const create_proposals = req.body?.create_proposals === true;
+  const orchestration_id =
+    typeof req.body?.orchestration_id === "string" ? req.body.orchestration_id : undefined;
+  const recommendation_ids = Array.isArray(req.body?.recommendation_ids)
+    ? (req.body.recommendation_ids as string[])
+    : undefined;
 
   try {
     const response = await executeCommand({
@@ -34,6 +40,9 @@ commandRouter.post("/command", async (req, res) => {
       asset_path,
       file_path,
       tool: tool as CommandRequest["tool"],
+      create_proposals,
+      orchestration_id,
+      recommendation_ids,
     });
     res.json(response);
   } catch {

@@ -14,6 +14,9 @@ export async function sendCommand(options: {
   asset_path?: string;
   file_path?: string;
   tool?: "read_file" | "summarize_file" | "summarize_asset" | "summarize_folder";
+  create_proposals?: boolean;
+  orchestration_id?: string;
+  recommendation_ids?: string[];
 }): Promise<CommandResponse> {
   const res = await fetch("/api/command", {
     method: "POST",
@@ -25,4 +28,24 @@ export async function sendCommand(options: {
     throw new Error(data.message || "Command failed");
   }
   return data;
+}
+
+export async function createCosProposals(input: {
+  orchestration_id: string;
+  recommendation_ids?: string[];
+}): Promise<{ action_ids: string[]; skipped: number; actions_queue_path: string | null }> {
+  const res = await fetch("/api/cos/proposals", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(input),
+  });
+  if (!res.ok) {
+    const err = (await res.json()) as { error?: string };
+    throw new Error(err.error ?? "Failed to create proposals");
+  }
+  return (await res.json()) as {
+    action_ids: string[];
+    skipped: number;
+    actions_queue_path: string | null;
+  };
 }

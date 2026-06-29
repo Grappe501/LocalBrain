@@ -1,3 +1,4 @@
+import { recordOutcomeFromAction } from "../cos/outcomeStore.js";
 import fs from "node:fs";
 import path from "node:path";
 import type { ExecuteResult } from "@localbrain/shared";
@@ -17,6 +18,7 @@ export function approveAction(actionId: string): ProposedActionRow | null {
   if (!row || row.status !== "pending") return null;
   updateProposedStatus(actionId, "approved");
   appendActionLog(actionId, "approved", "User approved action");
+  recordOutcomeFromAction(actionId, "accepted", "User approved proposal");
   return getProposedAction(actionId);
 }
 
@@ -27,6 +29,7 @@ export function rejectAction(actionId: string, reason?: string): ProposedActionR
     execution_detail: reason ?? "User rejected",
   });
   appendActionLog(actionId, "rejected", reason ?? "User rejected");
+  recordOutcomeFromAction(actionId, "rejected", reason ?? "User rejected");
   return getProposedAction(actionId);
 }
 

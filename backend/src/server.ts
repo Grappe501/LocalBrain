@@ -11,6 +11,7 @@ import { assetsRouter } from "./routes/assets.js";
 import { actionsRouter } from "./routes/actions.js";
 import { filesRouter } from "./routes/files.js";
 import { knowledgeExplorerRouter } from "./routes/knowledgeExplorer.js";
+import { cosRouter } from "./routes/cos.js";
 import { getRegisteredModules } from "./core/moduleLoader.js";
 import { runBackgroundIndex } from "./knowledgeExplorer/indexer.js";
 
@@ -32,6 +33,7 @@ app.use("/api", assetsRouter);
 app.use("/api", actionsRouter);
 app.use("/api", filesRouter);
 app.use("/api", knowledgeExplorerRouter);
+app.use("/api", cosRouter);
 
 app.listen(port, () => {
   const db = isDatabaseConnected();

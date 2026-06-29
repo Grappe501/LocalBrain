@@ -26,6 +26,17 @@ const RULES: { action_class: CommandActionClass; patterns: RegExp[] }[] = [
     ],
   },
   {
+    action_class: "workspace_cleanup",
+    patterns: [
+      /\bclean\s*up\b/i,
+      /\bcleanup\b/i,
+      /\btidy\b/i,
+      /\bdeclutter/i,
+      /\borganize (my |the )?(localbrain )?workspace/i,
+      /\bworkspace cleanup/i,
+    ],
+  },
+  {
     action_class: "asset_stale",
     patterns: [
       /\bstale\b/i,
@@ -73,7 +84,7 @@ export function classifyCommand(message: string): ActionClassification {
 
 export function actionClassToIntent(
   actionClass: CommandActionClass,
-): "FOCUS_NEXT" | "EXPLAIN_WORKSPACE" | "ASSET_INTELLIGENCE" | "BRIEFING_SUMMARY" | "FILE_READ" | "FILE_SUMMARIZE" | "GENERAL" {
+): "FOCUS_NEXT" | "EXPLAIN_WORKSPACE" | "ASSET_INTELLIGENCE" | "WORKSPACE_CLEANUP" | "BRIEFING_SUMMARY" | "FILE_READ" | "FILE_SUMMARIZE" | "GENERAL" {
   switch (actionClass) {
     case "focus_priority":
       return "FOCUS_NEXT";
@@ -81,6 +92,8 @@ export function actionClassToIntent(
       return "EXPLAIN_WORKSPACE";
     case "asset_stale":
       return "ASSET_INTELLIGENCE";
+    case "workspace_cleanup":
+      return "WORKSPACE_CLEANUP";
     case "briefing_summary":
       return "BRIEFING_SUMMARY";
     case "file_read":

@@ -10,6 +10,7 @@ import { refreshIntelligence } from "./digitalAssets/intelligenceEngine.js";
 import { migrateKnowledgeExplorerTables } from "./knowledgeExplorer/migrate.js";
 import { migrateActionTables } from "./actions/migrate.js";
 import { ensureActionStorageDirs } from "./actions/actionPaths.js";
+import { migrateCosTables } from "./cos/migrate.js";
 import { migrateFileReadLogTable } from "./files/fileReadLog.js";
 import { migrateCommandLogTable } from "./openai/safeLog.js";
 import { initPermissionEngine } from "./safety/permissionEngine.js";
@@ -32,6 +33,7 @@ export function bootstrapApp(): void {
   migrateCommandLogTable();
   migrateFileReadLogTable();
   migrateActionTables();
+  migrateCosTables();
   ensureActionStorageDirs();
   refreshIntelligence();
   seedWorkspaces();

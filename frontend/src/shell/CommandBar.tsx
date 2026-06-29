@@ -1,24 +1,69 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import type { CommandResponse } from "@localbrain/shared";
-import { fetchCommandStatus, sendCommand } from "../api/command";
+import type { CommandResponse, CosRecommendation } from "@localbrain/shared";
+import { createCosProposals, fetchCommandStatus, sendCommand } from "../api/command";
 import { useActiveWorkspace } from "../context/ActiveWorkspaceContext";
 import { useAppSettings } from "../context/AppSettingsContext";
 import { MOCK_SIGNAL_COUNT } from "../data/mockLocalbrainWorkspace";
 import { CommandPalette } from "./CommandPalette";
+
+function confidenceClass(level: string): string {
+  return `command-bar__confidence command-bar__confidence--${level}`;
+}
+
+function RecommendationCard({
+  rec,
+  selected,
+  onToggle,
+}: {
+  rec: CosRecommendation;
+  selected: boolean;
+  onToggle: () => void;
+}) {
+  return (
+    <article className={`command-bar__rec ${selected ? "command-bar__rec--selected" : ""}`}>
+      <label className="command-bar__rec-check">
+        <input
+          type="checkbox"
+          checked={selected}
+          disabled={!rec.proposal_eligible}
+          onChange={onToggle}
+        />
+        <strong>{rec.what}</strong>
+      </label>
+      <p className={confidenceClass(rec.confidence)}>
+        Confidence: {rec.confidence.toUpperCase()}
+      </p>
+      <ul className="command-bar__rec-why">
+        {rec.why.map((w) => (
+          <li key={w}>{w}</li>
+        ))}
+      </ul>
+      <p className="command-bar__rec-if">
+        <span>If approved:</span> {rec.if_approved}
+      </p>
+    </article>
+  );
+}
 
 export function CommandBar() {
   const { workspace, loading } = useActiveWorkspace();
   const { setPaletteOpen } = useAppSettings();
   const [command, setCommand] = useState("");
   const [lastResponse, setLastResponse] = useState<CommandResponse | null>(null);
+  const [selectedRecIds, setSelectedRecIds] = useState<Set<string>>(new Set());
   const [keyConfigured, setKeyConfigured] = useState<boolean | null>(null);
   const [model, setModel] = useState<string>("");
   const [submitting, setSubmitting] = useState(false);
+  const [creatingProposals, setCreatingProposals] = useState(false);
 
   const pillId = workspace?.workspace_id ?? "localbrain";
   const pillTitle = workspace?.title ?? "LocalBrain";
   const pillFocus = workspace?.current_focus;
+
+  const orchestration = lastResponse?.orchestration ?? null;
+  const eligibleRecs =
+    orchestration?.recommendations.filter((r) => r.proposal_eligible) ?? [];
 
   useEffect(() => {
     void fetchCommandStatus()
@@ -39,6 +84,14 @@ export function CommandBar() {
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [setPaletteOpen]);
+
+  useEffect(() => {
+    if (orchestration) {
+      setSelectedRecIds(
+        new Set(eligibleRecs.map((r) => r.id)),
+      );
+    }
+  }, [orchestration?.orchestration_id]);
 
   async function submitCommand(event: React.FormEvent) {
     event.preventDefault();
@@ -69,6 +122,54 @@ export function CommandBar() {
       setCommand("");
     }
   }
+
+  async function handleCreateProposals() {
+    if (!orchestration || creatingProposals) return;
+
+    setCreatingProposals(true);
+    try {
+      const ids = Array.from(selectedRecIds);
+      const result = await createCosProposals({
+        orchestration_id: orchestration.orchestration_id,
+        recommendation_ids: ids.length > 0 ? ids : undefined,
+      });
+
+      setLastResponse((prev) =>
+        prev
+          ? {
+              ...prev,
+              proposed_action_ids: result.action_ids,
+              actions_queue_path: result.action_ids.length > 0 ? "/actions" : undefined,
+              message:
+                prev.message +
+                `\n\n**${result.action_ids.length} proposal(s)** added to Actions queue. Skipped ${result.skipped}.`,
+            }
+          : prev,
+      );
+    } catch (e) {
+      setLastResponse((prev) =>
+        prev
+          ? {
+              ...prev,
+              message: `${prev.message}\n\nCould not create proposals: ${e instanceof Error ? e.message : "error"}`,
+            }
+          : prev,
+      );
+    } finally {
+      setCreatingProposals(false);
+    }
+  }
+
+  function toggleRec(id: string) {
+    setSelectedRecIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  }
+
+  const proposalCount = lastResponse?.proposed_action_ids?.length ?? 0;
 
   return (
     <>
@@ -116,10 +217,10 @@ export function CommandBar() {
 
       <p className="command-bar__meta" role="status">
         {keyConfigured === null
-          ? "CoS command layer · checking API key…"
+          ? "CoS orchestration · checking API key…"
           : keyConfigured
-            ? `OpenAI ready · ${model || "default model"} · LB-OS-008`
-            : "OpenAI key not set — offline answers from workspace + asset registry"}
+            ? `OpenAI ready · ${model || "default model"} · LB-OS-010.5`
+            : "Offline orchestration — registry + intelligence · no auto-execution"}
       </p>
 
       {lastResponse ? (
@@ -133,9 +234,42 @@ export function CommandBar() {
             ) : null}
           </div>
           <p className="command-bar__response">{lastResponse.message}</p>
+
+          {orchestration && orchestration.recommendations.length > 0 ? (
+            <div className="command-bar__recs">
+              <h3 className="command-bar__recs-title">Recommendations</h3>
+              {orchestration.recommendations.map((rec) => (
+                <RecommendationCard
+                  key={rec.id}
+                  rec={rec}
+                  selected={selectedRecIds.has(rec.id)}
+                  onToggle={() => toggleRec(rec.id)}
+                />
+              ))}
+              {eligibleRecs.length > 0 && proposalCount === 0 ? (
+                <button
+                  type="button"
+                  className="command-bar__create-proposals"
+                  disabled={creatingProposals}
+                  onClick={() => void handleCreateProposals()}
+                >
+                  {creatingProposals ? "Creating…" : "Create proposals in Actions queue"}
+                </button>
+              ) : null}
+            </div>
+          ) : null}
+
+          {proposalCount > 0 || lastResponse.actions_queue_path ? (
+            <p className="command-bar__actions-link">
+              <Link to="/actions">
+                Review {proposalCount > 0 ? `${proposalCount} proposal(s)` : "Actions queue"} →
+              </Link>
+            </p>
+          ) : null}
+
           {lastResponse.context_used.length > 0 ? (
             <p className="command-bar__context">
-              Context: {lastResponse.context_used.join(", ")}
+              Capabilities: {lastResponse.context_used.join(", ")}
             </p>
           ) : null}
         </aside>

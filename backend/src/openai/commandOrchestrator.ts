@@ -1,4 +1,6 @@
 import type { CommandIntent, CommandResponse, CommandStatusResponse } from "@localbrain/shared";
+import { isOrchestratedAction } from "../cos/capabilityRouter.js";
+import { runOrchestrationPipeline } from "../cos/orchestrationPipeline.js";
 import { executeFileToolCommand } from "../files/fileCommandBridge.js";
 import { resolveFileToolRequest } from "../files/fileToolResolver.js";
 import {
@@ -17,6 +19,10 @@ export type CommandRequest = {
   asset_path?: string;
   file_path?: string;
   tool?: "read_file" | "summarize_file" | "summarize_asset" | "summarize_folder";
+  /** LB-OS-010.5: create pending proposals in Actions queue (never executes) */
+  create_proposals?: boolean;
+  orchestration_id?: string;
+  recommendation_ids?: string[];
 };
 
 export function getCommandStatus(): CommandStatusResponse {
@@ -52,6 +58,47 @@ export async function executeCommand(req: CommandRequest): Promise<CommandRespon
   }
 
   const { action_class } = classifyCommand(message);
+
+  if (isOrchestratedAction(action_class)) {
+    const keyConfigured = isOpenAiKeyConfigured();
+    const pipeline = runOrchestrationPipeline({
+      message,
+      actionClass: action_class,
+      workspaceId: req.workspace_id,
+      assetPath: req.asset_path,
+      create_proposals: req.create_proposals,
+      orchestration_id: req.orchestration_id,
+      recommendation_ids: req.recommendation_ids,
+    });
+
+    logCommandExchange({
+      intent: pipeline.intent,
+      action_class,
+      user_message: message,
+      response_message: pipeline.message,
+      tokens_estimate: estimateTokens(pipeline.message),
+      model: null,
+      key_configured: keyConfigured,
+    });
+
+    return {
+      intent: pipeline.intent,
+      action_class,
+      message: pipeline.message,
+      key_configured: keyConfigured,
+      model: keyConfigured ? getModelConfig().model : null,
+      tokens_estimate: estimateTokens(pipeline.message),
+      context_used: pipeline.context_used,
+      recommend_only: true,
+      logged: true,
+      orchestration: pipeline.orchestration,
+      proposed_action_ids:
+        pipeline.proposed_action_ids.length > 0 ? pipeline.proposed_action_ids : undefined,
+      actions_queue_path:
+        pipeline.proposed_action_ids.length > 0 ? "/actions" : undefined,
+    };
+  }
+
   const intent = actionClassToIntent(action_class);
   const keyConfigured = isOpenAiKeyConfigured();
   const { systemPrompt, contextUsed } = buildCommandContext({
