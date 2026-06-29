@@ -1,0 +1,22 @@
+{
+  "module_id": "writing-studio",
+  "name": "Writing",
+  "domain": "writing",
+  "version": "0.1.0",
+  "status": "active",
+  "routes": [{ "path": "/studio/writing", "pattern": "studio/writing/*" }],
+  "permissions": ["filesystem:read"],
+  "tools": [],
+  "agents": ["writing_chief"],
+  "data_sources": ["KS-DOCS", "KS-EXPLORER"],
+  "capabilities": [
+    {
+      "capability_id": "CAP-WR-001",
+      "dependencies": ["ENG-PM-001", "ENG-WR-001", "ENG-KE-001"]
+    }
+  ],
+  "dependencies": ["ENG-PM-001", "ENG-WR-001"],
+  "nav_placement": "department",
+  "lazy_load_boundary": "modules/writing-studio/Entry",
+  "description": "Writing Department — narrative engine, voice library, draft cockpit (LB-OS-013)"
+}

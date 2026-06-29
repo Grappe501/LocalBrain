@@ -103,6 +103,20 @@ export type {
   EngineeringScoreFactor,
 } from "./engineering.js";
 export type {
+  NarrativeCatalogEntry,
+  WritingDraftPreview,
+  WritingMode,
+  WritingModeId,
+  WritingOverview,
+  WritingProjectSummary,
+  WritingRecommendation,
+  WritingScore,
+  WritingScoreFactor,
+  WritingSourceFile,
+  WritingVoice,
+  WritingVoiceId,
+} from "./writing.js";
+export type {
   AssetIntelligenceForPath,
   AssetIntelligenceSummary,
   CleanupRecommendation,

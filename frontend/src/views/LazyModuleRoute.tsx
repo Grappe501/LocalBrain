@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 
 const ModuleStubPage = lazy(() => import("../modules/ModuleStubPage"));
 const EngineeringEntry = lazy(() => import("../modules/engineering-studio/Entry"));
+const WritingEntry = lazy(() => import("../modules/writing-studio/Entry"));
 
 type Props = {
   moduleId: string;
@@ -12,6 +13,14 @@ export function LazyModuleRoute({ moduleId }: Props) {
     return (
       <Suspense fallback={<p className="module-route-loading">Loading module…</p>}>
         <EngineeringEntry />
+      </Suspense>
+    );
+  }
+
+  if (moduleId === "writing-studio") {
+    return (
+      <Suspense fallback={<p className="module-route-loading">Loading module…</p>}>
+        <WritingEntry />
       </Suspense>
     );
   }
