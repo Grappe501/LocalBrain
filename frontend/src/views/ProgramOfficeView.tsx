@@ -1,11 +1,19 @@
 import { useCallback, useEffect, useState } from "react";
-import type { EpoCoverageBars, EpoOverview, EpoSliceDetail, EpoDocEntry, IntegrationAuditReport } from "@localbrain/shared";
+import type {
+  EpoCoverageBars,
+  EpoOverview,
+  EpoSliceDetail,
+  EpoDocEntry,
+  IntegrationAuditReport,
+  PlatformReadinessReport,
+} from "@localbrain/shared";
 import { ExecutiveQuestionShell } from "../components/ExecutiveQuestionShell";
 import {
   fetchEpoDocs,
   fetchEpoOverview,
   fetchEpoSlice,
   fetchEpoWhy,
+  fetchPlatformReadiness,
 } from "../api/epo";
 import { fetchIntegrationAudit } from "../api/integration";
 
@@ -46,20 +54,23 @@ export function ProgramOfficeView() {
   const [docQuery, setDocQuery] = useState("");
   const [phaseFilter, setPhaseFilter] = useState<string | null>(null);
   const [integration, setIntegration] = useState<IntegrationAuditReport | null>(null);
+  const [readiness, setReadiness] = useState<PlatformReadinessReport | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   const load = useCallback(async () => {
     try {
       setError(null);
-      const [ov, docList, integ] = await Promise.all([
+      const [ov, docList, integ, ready] = await Promise.all([
         fetchEpoOverview(),
         fetchEpoDocs(),
         fetchIntegrationAudit().catch(() => null),
+        fetchPlatformReadiness().catch(() => null),
       ]);
       setOverview(ov);
       setDocs(docList);
       setIntegration(integ);
+      setReadiness(ready);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Failed to load Program Office");
     } finally {
@@ -140,6 +151,105 @@ export function ProgramOfficeView() {
       </header>
 
       <ExecutiveQuestionShell route="/program-office" observedAt={overview.observed_at} />
+
+      {readiness ? (
+        <section className="epo-readiness" aria-label="LocalBrain V1 Readiness Dashboard">
+          <header className="epo-readiness__header">
+            <h2>LocalBrain V1 Readiness Dashboard</h2>
+            <p className="epo-readiness__meta">
+              {readiness.slice_id} · {readiness.engine_id} · {readiness.executive_os_version} ·{" "}
+              {readiness.certification_passed ? "Certification passed" : "Certification in progress"}
+            </p>
+            <p className="epo-readiness__rule">{readiness.core_rule}</p>
+          </header>
+
+          <div className="epo-readiness__prs">
+            <div className="epo-readiness__prs-score">
+              <span className="epo-readiness__prs-label">Platform Readiness Score</span>
+              <strong>{readiness.platform_readiness_score.percent}</strong>
+              <span className="epo-readiness__prs-band">
+                {readiness.platform_readiness_score.label.replace(/_/g, " ")}
+              </span>
+            </div>
+            <p className="epo-readiness__prs-summary">
+              {readiness.platform_readiness_score.summary}
+            </p>
+            <div className="epo-readiness__prs-components">
+              <ProgressBar
+                label="Architecture stability"
+                value={readiness.platform_readiness_score.components.architecture_stability}
+              />
+              <ProgressBar
+                label="Test health"
+                value={readiness.platform_readiness_score.components.test_health}
+              />
+              <ProgressBar
+                label="Documentation"
+                value={readiness.platform_readiness_score.components.documentation_completeness}
+              />
+              <ProgressBar
+                label="Live surface"
+                value={readiness.platform_readiness_score.components.live_surface_coverage}
+              />
+              <ProgressBar
+                label="Integration cohesion"
+                value={readiness.platform_readiness_score.components.integration_cohesion}
+              />
+            </div>
+          </div>
+
+          <p className="epo-readiness__freeze">{readiness.freeze_policy}</p>
+
+          <table className="epo-readiness__table">
+            <thead>
+              <tr>
+                <th>Area</th>
+                <th>Status</th>
+                <th>Detail</th>
+              </tr>
+            </thead>
+            <tbody>
+              {readiness.readiness_dashboard.map((row) => (
+                <tr key={row.area_id}>
+                  <td>{row.label}</td>
+                  <td>{row.display}</td>
+                  <td className="epo-readiness__detail">{row.detail}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          <div className="epo-readiness__grid">
+            <section>
+              <h3>Migration pipeline</h3>
+              <ul>
+                {readiness.migration_pipeline_stages.map((s) => (
+                  <li key={s.stage_id}>
+                    {s.complete ? "✓" : "○"} {s.label} ({s.slice_id})
+                  </li>
+                ))}
+              </ul>
+            </section>
+            <section>
+              <h3>Four Platform Systems</h3>
+              <ul>
+                {readiness.platform_systems.map((s) => (
+                  <li key={s.system_id}>
+                    {s.label}: {s.status}
+                    {s.owner_confirmed ? " · owner confirmed" : ""}
+                  </li>
+                ))}
+              </ul>
+            </section>
+            <section>
+              <h3>Route smoke</h3>
+              <p>
+                {readiness.route_smoke.passed} passed · {readiness.route_smoke.failed} failed
+              </p>
+            </section>
+          </div>
+        </section>
+      ) : null}
 
       {integration ? (
         <section className="epo-integration" aria-label="Phase 1 integration gate">

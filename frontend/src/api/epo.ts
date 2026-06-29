@@ -1,4 +1,4 @@
-import type { EpoOverview, EpoSliceDetail, EpoDocEntry } from "@localbrain/shared";
+import type { EpoOverview, EpoSliceDetail, EpoDocEntry, PlatformReadinessReport } from "@localbrain/shared";
 
 export async function fetchEpoOverview(): Promise<EpoOverview> {
   const res = await fetch("/api/epo/overview");
@@ -31,4 +31,10 @@ export async function fetchEpoWhy(sliceId: string): Promise<{
   const res = await fetch(`/api/epo/why/${encodeURIComponent(sliceId)}`);
   if (!res.ok) throw new Error("EPO why fetch failed");
   return (await res.json()) as { slice_id: string; explanation: string; confidence: string };
+}
+
+export async function fetchPlatformReadiness(): Promise<PlatformReadinessReport> {
+  const res = await fetch("/api/epo/readiness");
+  if (!res.ok) throw new Error("Platform readiness fetch failed");
+  return (await res.json()) as PlatformReadinessReport;
 }

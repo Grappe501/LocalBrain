@@ -54,7 +54,7 @@ export const SURFACE_REGISTRY: LiveSurfaceEntry[] = [
     label: "Executive Program Office",
     mode: "live",
     data_sources: ["PHASE_CHECKLIST", "BUILD_SLICE_QUEUE_V2", "git", "docs index"],
-    api_endpoints: ["/api/epo/overview", "/api/epo/docs", "/api/integration/audit"],
+    api_endpoints: ["/api/epo/overview", "/api/epo/docs", "/api/epo/readiness", "/api/integration/audit"],
     stub_sections: [],
     slice_id: "LB-OS-012.5",
     question_id: "EQ-002",

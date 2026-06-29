@@ -61,7 +61,7 @@
 | [Platform Separation Strategy](./LOCALBRAIN_PLATFORM_SEPARATION_STRATEGY.md) — Platform vs Brain boundary | ✅ Planning — 2026-06-28 |
 | [Multi-Machine Network Plan](./LOCALBRAIN_MULTI_MACHINE_NETWORK_PLAN.md) | 📋 Future arc — LB-OS-107–114 |
 
-**Gate:** LB-OS-026 ✅ · Phase 1 migration arc complete.
+**Gate:** LB-OS-026.5 ✅ · Phase 1 certification complete · **Executive OS v1.0-rc frozen**.
 
 **Phase 1 finish arc:**
 
@@ -131,6 +131,7 @@
 | LB-OS-024 | Migration planning engine | ✅ Complete — [Spec](./LOCALBRAIN_MIGRATION_PLAN.md) · [Burt](./burt_packets/LB-OS-024.md) |
 | LB-OS-025 | Executive approval | ✅ Complete — [Burt](./burt_packets/LB-OS-025.md) |
 | LB-OS-026 | Execution + verification | ✅ Complete — [Burt](./burt_packets/LB-OS-026.md) |
+| LB-OS-026.5 | Phase 1 certification & hardening | ✅ Complete — [Spec](./LOCALBRAIN_PHASE1_CERTIFICATION.md) · [Burt](./burt_packets/LB-OS-026.5.md) |
 
 **Gates:** Migration = 018–025 · Personal OS = 026
 

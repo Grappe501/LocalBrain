@@ -280,6 +280,24 @@ export type {
   PlatformStabilityReport,
 } from "./platformStability.js";
 export type {
+  MigrationPipelineStage,
+  PlaceholderRouteEntry,
+  PlatformReadinessLabel,
+  PlatformReadinessReport,
+  PlatformReadinessScore,
+  PlatformReadinessScoreComponents,
+  PlatformSystemId,
+  PlatformSystemOwnershipRow,
+  ReadinessAreaStatus,
+  ReadinessDashboardRow,
+} from "./platformReadiness.js";
+export {
+  EXECUTIVE_OS_V1_FREEZE_POLICY,
+  PLATFORM_READINESS_CORE_RULE,
+  PLATFORM_READINESS_ENGINE_ID,
+  RECOMMENDED_PHASE_2_SEQUENCE,
+} from "./platformReadiness.js";
+export type {
   MigrationPlan,
   MigrationPlanDependencyNode,
   MigrationPlanDiff,

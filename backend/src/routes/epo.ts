@@ -1,7 +1,12 @@
 import { Router } from "express";
 import { getEpoOverview, getEpoSliceDetail, listDocumentationLibrary } from "../epo/epoService.js";
+import { getPlatformReadinessReport } from "../certification/platformReadinessService.js";
 
 export const epoRouter = Router();
+
+epoRouter.get("/epo/readiness", (_req, res) => {
+  res.json(getPlatformReadinessReport());
+});
 
 epoRouter.get("/epo/overview", (_req, res) => {
   res.json(getEpoOverview());
