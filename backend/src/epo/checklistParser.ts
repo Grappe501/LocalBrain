@@ -9,6 +9,15 @@ export type ParsedSlice = {
   status: SliceStatus;
   raw_status: string;
   burt_packet_path: string | null;
+  phase_id: string;
+  phase_label: string;
+};
+
+export type ParsedPhase = {
+  phase_id: string;
+  label: string;
+  slice_ids: string[];
+  gate_text: string | null;
 };
 
 const SLICE_ROW =
@@ -17,7 +26,7 @@ const SLICE_ROW =
 function parseStatus(raw: string): SliceStatus {
   const s = raw.trim();
   if (/✅|COMPLETE|Complete/i.test(s)) return "complete";
-  if (/📋|Spec locked/i.test(s)) return "spec_locked";
+  if (/📋|Next|Spec locked/i.test(s)) return "spec_locked";
   if (/in progress|IN PROGRESS/i.test(s)) return "in_progress";
   if (/⬜|PLANNED/i.test(s)) return "planned";
   return "not_started";
@@ -28,30 +37,77 @@ function extractBurtLink(cell: string): string | null {
   if (m) return `docs/burt_packets/${m[1]}`;
   const m2 = cell.match(/burt_packets\/([^\s)]+\.md)/i);
   if (m2) return `docs/burt_packets/${m2[1]}`;
+  const spec = cell.match(/\(\.\/(LOCALBRAIN[^)]+\.md)\)/i);
+  if (spec) return `docs/${spec[1]}`;
   return null;
 }
 
+function slugPhaseId(label: string): string {
+  return label
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "")
+    .slice(0, 48);
+}
+
+function burtPacketExists(sliceId: string): string | null {
+  const candidates = [
+    `docs/burt_packets/${sliceId}.md`,
+    `docs/burt_packets/${sliceId.replace(/\./g, "-")}.md`,
+  ];
+  for (const rel of candidates) {
+    if (fs.existsSync(path.join(getRepoRoot(), rel))) return rel;
+  }
+  const dir = path.join(getRepoRoot(), "docs", "burt_packets");
+  if (!fs.existsSync(dir)) return null;
+  const base = sliceId.toLowerCase().replace(/\./g, "");
+  const hit = fs.readdirSync(dir).find((f) => f.toLowerCase().includes(base));
+  return hit ? `docs/burt_packets/${hit}` : null;
+}
+
+/** Parse all LB-OS slice tables from PHASE_CHECKLIST.md (all phases). */
 export function parsePhaseChecklistSlices(): ParsedSlice[] {
   const checklistPath = path.join(getRepoRoot(), "docs", "PHASE_CHECKLIST.md");
   const text = fs.readFileSync(checklistPath, "utf8");
   const lines = text.split("\n");
   const slices: ParsedSlice[] = [];
-  let inPhase1 = false;
+  let currentPhaseId = "unknown";
+  let currentPhaseLabel = "Unknown";
+  let inSliceTable = false;
 
   for (const line of lines) {
-    if (line.includes("## Phase 1 — V1 OS Shell")) {
-      inPhase1 = true;
+    const phaseHeader = line.match(/^##\s+(.+)/);
+    if (phaseHeader) {
+      const title = phaseHeader[1].trim();
+      if (title.startsWith("Phase ") || title.includes("Phase")) {
+        currentPhaseLabel = title.replace(/^Phase\s+[\d.]+\s*[—–-]\s*/i, "").trim() || title;
+        currentPhaseId = slugPhaseId(title);
+      }
+      inSliceTable = false;
       continue;
     }
-    if (inPhase1 && line.startsWith("## ") && !line.includes("Phase 1")) {
-      break;
+
+    if (line.match(/^\|\s*Slice\s*\|/i)) {
+      inSliceTable = true;
+      continue;
     }
-    if (!inPhase1) continue;
+
+    if (inSliceTable && line.startsWith("## ")) {
+      inSliceTable = false;
+      continue;
+    }
+
+    if (!inSliceTable) continue;
+    if (line.match(/^\|\s*[-:]+\s*\|/)) continue;
 
     const m = line.match(SLICE_ROW);
-    if (!m) continue;
+    if (!m) {
+      if (line.trim() === "" || line.startsWith("**Gate")) inSliceTable = false;
+      continue;
+    }
+
     const [, slice_id, name, raw_status] = m;
-    if (slice_id === "Slice" || slice_id.includes("---")) continue;
+    if (slice_id === "Slice") continue;
 
     slices.push({
       slice_id,
@@ -59,28 +115,77 @@ export function parsePhaseChecklistSlices(): ParsedSlice[] {
       status: parseStatus(raw_status),
       raw_status: raw_status.trim(),
       burt_packet_path: extractBurtLink(raw_status) ?? burtPacketExists(slice_id),
+      phase_id: currentPhaseId,
+      phase_label: currentPhaseLabel,
     });
   }
 
   return slices;
 }
 
-function burtPacketExists(sliceId: string): string | null {
-  const normalized = sliceId.replace(/\./g, "-");
-  const candidates = [
-    `docs/burt_packets/${sliceId}.md`,
-    `docs/burt_packets/${normalized}.md`,
-    `docs/burt_packets/${sliceId.replace(".", "-")}.md`,
-  ];
-  for (const rel of candidates) {
-    if (fs.existsSync(path.join(getRepoRoot(), rel))) return rel;
+/** Dynamic phase groupings from checklist headers + slice tables. */
+export function parsePhaseSections(): ParsedPhase[] {
+  const checklistPath = path.join(getRepoRoot(), "docs", "PHASE_CHECKLIST.md");
+  const text = fs.readFileSync(checklistPath, "utf8");
+  const lines = text.split("\n");
+  const phases: ParsedPhase[] = [];
+  let current: ParsedPhase | null = null;
+  let inSliceTable = false;
+
+  for (const line of lines) {
+    const phaseHeader = line.match(/^##\s+(.+)/);
+    if (phaseHeader) {
+      const title = phaseHeader[1].trim();
+      if (title.startsWith("Phase ") || title.includes("Phase")) {
+        if (current) phases.push(current);
+        current = {
+          phase_id: slugPhaseId(title),
+          label: title.replace(/^Phase\s+[\d.]+\s*[—–-]\s*/i, "").trim() || title,
+          slice_ids: [],
+          gate_text: null,
+        };
+        inSliceTable = false;
+      }
+      continue;
+    }
+
+    if (!current) continue;
+
+    const gateMatch = line.match(/^\*\*Gates?:\*\*\s*(.+)/i);
+    if (gateMatch) {
+      current.gate_text = gateMatch[1].trim();
+      continue;
+    }
+
+    if (line.match(/^\|\s*Slice\s*\|/i)) {
+      inSliceTable = true;
+      continue;
+    }
+
+    if (inSliceTable && line.startsWith("## ")) {
+      inSliceTable = false;
+      continue;
+    }
+
+    if (!inSliceTable) continue;
+    if (line.match(/^\|\s*[-:]+\s*\|/)) continue;
+
+    const m = line.match(SLICE_ROW);
+    if (!m) continue;
+    const [, slice_id] = m;
+    if (slice_id === "Slice") continue;
+    current.slice_ids.push(slice_id);
   }
-  const dir = path.join(getRepoRoot(), "docs", "burt_packets");
-  if (!fs.existsSync(dir)) return null;
-  const files = fs.readdirSync(dir);
-  const base = sliceId.toLowerCase();
-  const hit = files.find((f) => f.toLowerCase().includes(base.replace(/\./g, "")));
-  return hit ? `docs/burt_packets/${hit}` : null;
+
+  if (current) phases.push(current);
+
+  const globalGate = parseGateLine();
+  if (globalGate && phases.length > 0) {
+    const migration = phases.find((p) => p.label.toLowerCase().includes("migration"));
+    if (migration && !migration.gate_text) migration.gate_text = globalGate;
+  }
+
+  return phases;
 }
 
 export function parseGateLine(): string | null {

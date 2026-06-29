@@ -20,7 +20,9 @@ export type {
 export type {
   BuildGraphNodeStatus,
   EpoBuildGraphNode,
+  EpoBuildVelocity,
   EpoCoverageBars,
+  EpoCurrentSprint,
   EpoDecisionEvent,
   EpoDocEntry,
   EpoLiveMetrics,

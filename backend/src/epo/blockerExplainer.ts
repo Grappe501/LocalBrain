@@ -1,14 +1,14 @@
 import type { BuildGraphNodeStatus, SliceStatus } from "@localbrain/shared";
-import { SLICE_DEPENDENCIES } from "./epoData.js";
 import type { ParsedSlice } from "./checklistParser.js";
 
 export function explainBlocker(
   slice: ParsedSlice,
   allSlices: Map<string, ParsedSlice>,
+  dependencies: Record<string, string[]>,
 ): string | null {
   if (slice.status === "complete") return null;
 
-  const deps = SLICE_DEPENDENCIES[slice.slice_id] ?? [];
+  const deps = dependencies[slice.slice_id] ?? [];
   const incomplete = deps.filter((d) => {
     const dep = allSlices.get(d);
     return !dep || dep.status !== "complete";
@@ -39,19 +39,48 @@ export function explainBlocker(
   return null;
 }
 
-export function toGraphStatus(status: SliceStatus, blocked: boolean): BuildGraphNodeStatus {
-  if (status === "complete") return "complete";
-  if (blocked) return "blocked";
-  if (status === "in_progress") return "in_progress";
-  if (status === "spec_locked") return "waiting";
-  if (status === "planned") return "not_started";
-  return "not_started";
+export function toLifecycleStatus(
+  slice: ParsedSlice,
+  allSlices: Map<string, ParsedSlice>,
+  dependencies: Record<string, string[]>,
+  currentSliceId: string | null,
+  hasTests: boolean,
+): BuildGraphNodeStatus {
+  const blocked = isBlocked(slice.slice_id, allSlices, dependencies);
+
+  if (slice.status === "complete") {
+    return "released";
+  }
+  if (blocked) return "planned";
+  if (slice.slice_id === currentSliceId || slice.status === "in_progress") {
+    return hasTests ? "testing" : "in_progress";
+  }
+  if (slice.status === "spec_locked") {
+    return "ready";
+  }
+  return "planned";
 }
 
-export function isBlocked(sliceId: string, allSlices: Map<string, ParsedSlice>): boolean {
-  const deps = SLICE_DEPENDENCIES[sliceId] ?? [];
+export function isBlocked(
+  sliceId: string,
+  allSlices: Map<string, ParsedSlice>,
+  dependencies: Record<string, string[]>,
+): boolean {
+  const deps = dependencies[sliceId] ?? [];
   return deps.some((d) => {
     const dep = allSlices.get(d);
     return !dep || dep.status !== "complete";
   });
+}
+
+/** @deprecated Use toLifecycleStatus */
+export function toGraphStatus(
+  status: SliceStatus,
+  blocked: boolean,
+): BuildGraphNodeStatus {
+  if (status === "complete") return "released";
+  if (blocked) return "planned";
+  if (status === "in_progress") return "in_progress";
+  if (status === "spec_locked") return "ready";
+  return "planned";
 }

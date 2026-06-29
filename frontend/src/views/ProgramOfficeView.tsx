@@ -126,7 +126,7 @@ export function ProgramOfficeView() {
       <header className="epo__header">
         <h1>Executive Program Office</h1>
         <p className="epo__meta">
-          Read-only mission control · LB-OS-012.5 · Updated{" "}
+          Read-only mission control · {overview.build_state_engine_id} · Updated{" "}
           {new Date(overview.observed_at).toLocaleTimeString()}
         </p>
       </header>
@@ -180,6 +180,87 @@ export function ProgramOfficeView() {
           <div>
             <dt>API today</dt>
             <dd>${m.api_cost_today_usd.toFixed(2)} · {m.tokens_today.toLocaleString()} tokens</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section className="epo-sprint" aria-label="Current sprint">
+        <h2>Current Sprint</h2>
+        <div className="epo-sprint__cols">
+          <div>
+            <h3>Completed</h3>
+            <ul>
+              {overview.current_sprint.completed.map((id) => (
+                <li key={id}>
+                  <button type="button" onClick={() => void selectSlice(id)}>
+                    {id}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3>In Progress</h3>
+            <ul>
+              {overview.current_sprint.in_progress.length > 0 ? (
+                overview.current_sprint.in_progress.map((id) => (
+                  <li key={id}>
+                    <button type="button" onClick={() => void selectSlice(id)}>
+                      {id}
+                    </button>
+                  </li>
+                ))
+              ) : (
+                <li className="epo-sprint__empty">—</li>
+              )}
+            </ul>
+          </div>
+          <div>
+            <h3>Queued</h3>
+            <ul>
+              {overview.current_sprint.queued.map((id) => (
+                <li key={id}>
+                  <button type="button" onClick={() => void selectSlice(id)}>
+                    {id}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="epo-velocity" aria-label="Build velocity">
+        <h2>Build Velocity</h2>
+        <p className="epo-velocity__period">Last {overview.build_velocity.period_days} days</p>
+        <dl className="epo-velocity__dl">
+          <div>
+            <dt>Slices completed</dt>
+            <dd>{overview.build_velocity.slices_completed}</dd>
+          </div>
+          <div>
+            <dt>Commits</dt>
+            <dd>{overview.build_velocity.commits_count}</dd>
+          </div>
+          <div>
+            <dt>Documents changed</dt>
+            <dd>{overview.build_velocity.documents_changed}</dd>
+          </div>
+          <div>
+            <dt>LOC (TS)</dt>
+            <dd>{overview.build_velocity.loc_count.toLocaleString()}</dd>
+          </div>
+          <div>
+            <dt>Tests</dt>
+            <dd>{overview.build_velocity.tests_count}</dd>
+          </div>
+          <div>
+            <dt>Avg slice duration</dt>
+            <dd>
+              {overview.build_velocity.average_slice_duration_days != null
+                ? `${overview.build_velocity.average_slice_duration_days} days`
+                : "—"}
+            </dd>
           </div>
         </dl>
       </section>
@@ -290,6 +371,19 @@ export function ProgramOfficeView() {
               <time>{d.date}</time>
               <strong>{d.title}</strong>
               <p>{d.summary}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="epo-commits">
+        <h2>Commit Timeline</h2>
+        <ul className="epo-commit-list">
+          {overview.commit_timeline.map((c) => (
+            <li key={c.hash}>
+              <time>{c.date}</time>
+              <code>{c.hash}</code>
+              <span>{c.subject}</span>
             </li>
           ))}
         </ul>

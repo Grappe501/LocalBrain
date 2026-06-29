@@ -1777,8 +1777,126 @@ a {
   border-left-color: #22c55e;
 }
 
+.epo-graph__node--released {
+  border-left-color: #16a34a;
+}
+
+.epo-graph__node--committed {
+  border-left-color: #22c55e;
+}
+
+.epo-graph__node--ready {
+  border-left-color: #3b82f6;
+}
+
+.epo-graph__node--in_progress,
+.epo-graph__node--in-progress {
+  border-left-color: #f59e0b;
+}
+
+.epo-graph__node--testing {
+  border-left-color: #a855f7;
+}
+
+.epo-graph__node--planned {
+  border-left-color: #cbd5e1;
+}
+
 .epo-graph__node--blocked {
   border-left-color: #ef4444;
+}
+
+.epo-sprint {
+  margin-bottom: 1.25rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  background: #fff;
+}
+
+.epo-sprint__cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.epo-sprint h3 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #64748b;
+  margin: 0 0 0.5rem;
+}
+
+.epo-sprint ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.epo-sprint li button {
+  background: none;
+  border: none;
+  color: #1e40af;
+  cursor: pointer;
+  padding: 0.15rem 0;
+  font-weight: 600;
+}
+
+.epo-sprint__empty {
+  color: #94a3b8;
+}
+
+.epo-velocity {
+  margin-bottom: 1.25rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  background: #f8fafc;
+}
+
+.epo-velocity__period {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin: 0 0 0.75rem;
+}
+
+.epo-velocity__dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.5rem 1rem;
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.epo-velocity__dl dt {
+  font-weight: 600;
+  color: #64748b;
+}
+
+.epo-velocity__dl dd {
+  margin: 0;
+}
+
+.epo-commit-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem;
+  font-size: 0.8rem;
+}
+
+.epo-commit-list li {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  gap: 0.5rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.epo-commit-list code {
+  font-family: ui-monospace, monospace;
+  color: #475569;
 }
 
 .epo-graph__node button {

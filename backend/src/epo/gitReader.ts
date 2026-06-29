@@ -3,7 +3,7 @@ import { getRepoRoot } from "../db/repoRoot.js";
 
 export function getRecentCommits(limit = 8): { hash: string; subject: string; date: string }[] {
   try {
-    const out = execSync(`git log -${limit} --format=%h|%s|%aI`, {
+    const out = execSync(`git log -${limit} --format="%h|%s|%aI"`, {
       cwd: getRepoRoot(),
       encoding: "utf8",
       stdio: ["pipe", "pipe", "pipe"],

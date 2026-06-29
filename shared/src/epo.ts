@@ -8,12 +8,29 @@ export type SliceStatus =
   | "not_started";
 
 export type BuildGraphNodeStatus =
-  | "complete"
+  | "planned"
+  | "ready"
   | "in_progress"
-  | "blocked"
-  | "waiting"
-  | "not_started"
-  | "spec_locked";
+  | "testing"
+  | "committed"
+  | "released"
+  | "blocked";
+
+export interface EpoCurrentSprint {
+  completed: string[];
+  in_progress: string[];
+  queued: string[];
+}
+
+export interface EpoBuildVelocity {
+  period_days: number;
+  slices_completed: number;
+  commits_count: number;
+  documents_changed: number;
+  loc_count: number;
+  tests_count: number;
+  average_slice_duration_days: number | null;
+}
 
 export interface EpoCoverageBars {
   implementation: number;
@@ -96,6 +113,10 @@ export interface EpoOverview {
   slices: EpoSliceSummary[];
   build_graph: EpoBuildGraphNode[];
   decisions: EpoDecisionEvent[];
+  current_sprint: EpoCurrentSprint;
+  build_velocity: EpoBuildVelocity;
+  commit_timeline: { hash: string; subject: string; date: string }[];
+  build_state_engine_id: string;
   read_only: true;
   observed_at: string;
 }
