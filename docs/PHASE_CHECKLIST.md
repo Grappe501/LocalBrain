@@ -1,0 +1,268 @@
+# Phase Checklist — LocalBrain
+
+> **Execution map:** [Build Slice Queue v2.0](./LOCALBRAIN_BUILD_SLICE_QUEUE_V2.md)  
+> **Migration:** [Migration & Drive Doctrine](./LOCALBRAIN_MIGRATION_AND_DRIVE_DOCTRINE.md)
+
+---
+
+## Phase 0.5 — Product Strategy Phase (PSP)
+
+| Deliverable | Status |
+|-------------|--------|
+| [Product Strategy Phase](./LOCALBRAIN_PRODUCT_STRATEGY_PHASE.md) | ✅ |
+| [Master System Architecture](./LOCALBRAIN_MASTER_SYSTEM_ARCHITECTURE.md) | ✅ |
+| [Engine Registry](./LOCALBRAIN_ENGINE_REGISTRY.md) | ✅ |
+| [Studio Blueprint](./LOCALBRAIN_STUDIO_BLUEPRINT.md) | ✅ |
+| [Command Layer](./LOCALBRAIN_COMMAND_LAYER.md) | ✅ |
+| [Enterprise Capability Matrix](./LOCALBRAIN_ENTERPRISE_CAPABILITY_MATRIX.md) | ✅ |
+| [Executive Domains](./LOCALBRAIN_EXECUTIVE_DOMAINS.md) | ✅ |
+| [Accounting & CFO Division](./LOCALBRAIN_ACCOUNTING_CFO_DIVISION.md) | ✅ |
+| [Modular Architecture](./LOCALBRAIN_MODULAR_ARCHITECTURE.md) | ✅ |
+| Steve review & approval | ✅ 2026-06-28 |
+| LB-OS-002 Burt packet | ✅ [burt_packets/LB-OS-002.md](./burt_packets/LB-OS-002.md) |
+
+**Gate:** PSP approved — LB-OS-002 **READY**
+
+---
+
+## Phase 1 — V1 OS Shell (LB-OS-001–015)
+
+| Slice | Name | Status |
+|-------|------|--------|
+| LB-OS-001 | Repo scaffold | ✅ COMPLETE |
+| LB-OS-002 | OS shell + executive briefing + command stub | ✅ COMPLETE |
+| LB-OS-003 | Filesystem permission engine v2 | ⬜ PLANNED — [Burt packet](./burt_packets/LB-OS-003.md) |
+| LB-OS-004 | Project folder registry | ⬜ PLANNED |
+| LB-OS-106 | Core kernel + module loader | ⬜ PLANNED |
+| LB-OS-005 | Explorer tree + file metadata | ⬜ PLANNED |
+| LB-OS-006 | Storage intelligence dashboard | ⬜ PLANNED |
+| LB-OS-007 | System health monitor | ⬜ PLANNED |
+| LB-OS-008 | OpenAI chat command layer | ⬜ PLANNED |
+| LB-OS-009 | File read/summarize tools | ⬜ PLANNED |
+| LB-OS-010 | Approval-gated file management | ⬜ PLANNED |
+| LB-OS-011 | Code engineering studio | ⬜ PLANNED |
+| LB-OS-012 | Writing dashboard | ⬜ PLANNED |
+| LB-OS-013 | Social media drafting | ⬜ PLANNED |
+| LB-OS-014 | System optimization advisor | ⬜ PLANNED |
+| LB-OS-015 | Release candidate | ⬜ PLANNED |
+
+**Gates:** Shell = 002 · **Modularity = 106** · Safe = 010 · V1 ship = 015
+
+---
+
+## Phase 2 — Migration & Personal OS (LB-OS-016–024)
+
+| Slice | Name | Status |
+|-------|------|--------|
+| LB-OS-016 | Drive architecture & migration planner | ⬜ PLANNED |
+| LB-OS-017 | Full filesystem mapping audit | ⬜ PLANNED |
+| LB-OS-018 | Duplicate / version cleanup planner | ⬜ PLANNED |
+| LB-OS-019 | H:/ project filing system builder | ⬜ PLANNED |
+| LB-OS-020 | ChatGPT knowledge import pipeline | ⬜ PLANNED |
+| LB-OS-021 | Project memory transfer engine | ⬜ PLANNED |
+| LB-OS-022 | Legacy folder reorganization assistant | ⬜ PLANNED |
+| LB-OS-023 | Personal system cutover plan | ⬜ PLANNED |
+| LB-OS-024 | Personal OS launch | ⬜ PLANNED |
+
+**Gates:** Migration = 016–023 · Personal OS = 024
+
+```txt
+C:/ = programs only · H:/ = Steve's work world
+No auto cleanup — dry-run reports before any reorg
+```
+
+---
+
+## Phase 4 — OJT Coding Academy (LB-OS-025–030)
+
+| Slice | Name | Status |
+|-------|------|--------|
+| LB-OS-025 | OJT academy doctrine embedded | ⬜ PLANNED |
+| LB-OS-026 | Build-along teaching mode | ⬜ PLANNED |
+| LB-OS-027 | Concept ladder + skill map | ⬜ PLANNED |
+| LB-OS-028 | Interactive challenges | ⬜ PLANNED |
+| LB-OS-029 | Coding progress dashboard | ⬜ PLANNED |
+| LB-OS-030 | Certification / portfolio | ⬜ PLANNED |
+
+**Doc:** [OJT Coding Academy](./LOCALBRAIN_OJT_CODING_ACADEMY.md) · **Gate:** Academy = 030
+
+```txt
+Teach Me While We Build: ON/OFF
+Closeouts include OJT lesson when ON (manual until LB-OS-026)
+```
+
+---
+
+## Phase 5 — Optimization Command Center (LB-OS-031–038)
+
+| Slice | Name | Status |
+|-------|------|--------|
+| LB-OS-031 | System optimization doctrine embedded | ⬜ PLANNED |
+| LB-OS-032 | C:/H: drive architecture mapper | ⬜ PLANNED |
+| LB-OS-033 | Storage cleanup intelligence | ⬜ PLANNED |
+| LB-OS-034 | Duplicate/version planner | ⬜ PLANNED |
+| LB-OS-035 | CPU/RAM/disk monitor (full) | ⬜ PLANNED |
+| LB-OS-036 | Process/startup advisor | ⬜ PLANNED |
+| LB-OS-037 | Safe cleanup execution center | ⬜ PLANNED |
+| LB-OS-038 | System efficiency dashboard | ⬜ PLANNED |
+
+**Gate:** Optimization command = 038 · **Never clean first**
+
+---
+
+## Phase 6 — Direct API Performance (LB-OS-039–046)
+
+| Slice | Name | Status |
+|-------|------|--------|
+| LB-OS-039 | Direct API performance doctrine embedded | ⬜ PLANNED |
+| LB-OS-040 | API usage monitor + rate-limit awareness | ⬜ PLANNED |
+| LB-OS-041 | Context cache + prompt-prefix strategy | ⬜ PLANNED |
+| LB-OS-042 | Request queue + retry engine | ⬜ PLANNED |
+| LB-OS-043 | Streaming response engine (full) | ⬜ PLANNED |
+| LB-OS-044 | Model router (fast/deep/code/writing) | ⬜ PLANNED |
+| LB-OS-045 | Local context compression engine | ⬜ PLANNED |
+| LB-OS-046 | API performance dashboard | ⬜ PLANNED |
+
+**Gate:** API performance = 046
+
+---
+
+## Phase 7 — Token Economy & Memory (LB-OS-047–055)
+
+| Slice | Name | Status |
+|-------|------|--------|
+| LB-OS-047 | Token economy doctrine embedded | ⬜ PLANNED |
+| LB-OS-048 | Token usage logger | ⬜ PLANNED |
+| LB-OS-049 | Estimated cost monitor | ⬜ PLANNED |
+| LB-OS-050 | Project/client chargeback reports | ⬜ PLANNED |
+| LB-OS-051 | Memory compression pipeline | ⬜ PLANNED |
+| LB-OS-052 | Chunked recall engine | ⬜ PLANNED |
+| LB-OS-053 | Style learning engine | ⬜ PLANNED |
+| LB-OS-054 | Learning pace + OJT adaptation | ⬜ PLANNED |
+| LB-OS-055 | Token/Memory/Learning dashboard | ⬜ PLANNED |
+
+**Gate:** Token economy = 055
+
+---
+
+## Phase 8 — Provider-Neutral AI (LB-OS-056–065)
+
+| Slice | Name | Status |
+|-------|------|--------|
+| LB-OS-056 | Provider-neutral AI doctrine | ⬜ PLANNED |
+| LB-OS-057 | AI provider router interface | ⬜ PLANNED |
+| LB-OS-058 | OpenAI provider adapter | ⬜ PLANNED |
+| LB-OS-059 | Claude adapter placeholder | ⬜ PLANNED |
+| LB-OS-060 | Grok adapter placeholder | ⬜ PLANNED |
+| LB-OS-061 | Model capability registry | ⬜ PLANNED |
+| LB-OS-062 | GPU server migration + bundle | ⬜ PLANNED |
+| LB-OS-063 | Local model runtime (Ollama) | ⬜ PLANNED |
+| LB-OS-064 | Provider cost/performance dashboard | ⬜ PLANNED |
+| LB-OS-065 | Smart model selection engine | ⬜ PLANNED |
+
+**Gate:** Provider-neutral AI = 065
+
+---
+
+## Phase 9 — Neural Network Lab (LB-OS-066–075)
+
+| Slice | Name | Status |
+|-------|------|--------|
+| LB-OS-066 | Neural lab doctrine | ⬜ PLANNED |
+| LB-OS-067 | GPU runtime environment | ⬜ PLANNED |
+| LB-OS-068 | Training data capture | ⬜ PLANNED |
+| LB-OS-069 | Dataset privacy filter | ⬜ PLANNED |
+| LB-OS-070 | Fine-tuning experiment tracker | ⬜ PLANNED |
+| LB-OS-071 | Train → serve adapter | ⬜ PLANNED |
+| LB-OS-072 | Small classifier lab | ⬜ PLANNED |
+| LB-OS-073 | Steve writing fine-tune | ⬜ PLANNED |
+| LB-OS-074 | Burt scoring model | ⬜ PLANNED |
+| LB-OS-075 | Neural Lab dashboard | ⬜ PLANNED |
+
+**Gate:** Neural lab = 075 (Track B) · **Doc:** [Neural Network Lab](./LOCALBRAIN_LOCAL_NEURAL_NETWORK_LAB.md)
+
+---
+
+## Phase 10 — AI Evolution (LB-OS-076–082) · Track A
+
+| Slice | Name | Status |
+|-------|------|--------|
+| LB-OS-076 | Evolution + dual-track doctrine | ⬜ PLANNED |
+| LB-OS-077 | AI capability registry | ⬜ PLANNED |
+| LB-OS-078 | Capability router | ⬜ PLANNED |
+| LB-OS-079 | Self-measurement pipeline | ⬜ PLANNED |
+| LB-OS-080 | Outcome scorecard | ⬜ PLANNED |
+| LB-OS-081 | Preference learner | ⬜ PLANNED |
+| LB-OS-082 | Evolution dashboard | ⬜ PLANNED |
+
+**Gate:** AI evolution = 082 · **Doc:** [AI Evolution Engine](./LOCALBRAIN_AI_EVOLUTION_ENGINE.md)
+
+---
+
+## Phase 11 — Chief of Staff (LB-OS-083–086) · Track A
+
+| Slice | Name | Status |
+|-------|------|--------|
+| LB-OS-083 | Chief of Staff doctrine | ⬜ PLANNED |
+| LB-OS-084 | Proactive signal engine | ⬜ PLANNED |
+| LB-OS-085 | Conflict/stale/version detectors | ⬜ PLANNED |
+| LB-OS-086 | Briefing UI | ⬜ PLANNED |
+
+**Gate:** Chief of Staff = 086 (CoS layer)
+
+---
+
+## Phase 12 — Executive Office (LB-OS-087–096) · Track A
+
+| Slice | Name | Status |
+|-------|------|--------|
+| LB-OS-087 | Executive Office doctrine | ⬜ PLANNED |
+| LB-OS-088 | CoS orchestrator + dept routing | ⬜ PLANNED |
+| LB-OS-089 | Executive briefing (default home) | ⬜ PLANNED |
+| LB-OS-090 | Calendar intelligence | ⬜ PLANNED |
+| LB-OS-091 | Email intelligence | ⬜ PLANNED |
+| LB-OS-092 | Department chief framework | ⬜ PLANNED |
+| LB-OS-093 | Photography division | ⬜ PLANNED |
+| LB-OS-094 | Podcast division | ⬜ PLANNED |
+| LB-OS-095 | Effectiveness metrics (MWI) | ⬜ PLANNED |
+| LB-OS-096 | Executive Office home | ⬜ PLANNED |
+
+**Gate:** Executive Office = 096 · **Doc:** [Executive Office](./LOCALBRAIN_EXECUTIVE_OFFICE.md)
+
+---
+
+## Phase 13 — Enterprise Domains & Data (LB-OS-097–105) · Track A
+
+| Slice | Name | Status |
+|-------|------|--------|
+| LB-OS-097 | Enterprise matrix + coherence doctrine | ⬜ PLANNED |
+| LB-OS-098 | Data platform foundation | ⬜ PLANNED |
+| LB-OS-099 | Database Studio | ⬜ PLANNED |
+| LB-OS-100 | Relationship intelligence | ⬜ PLANNED |
+| LB-OS-101 | Accounting & CFO division | ⬜ PLANNED |
+| LB-OS-102 | Novel Studio foundation | ⬜ PLANNED |
+| LB-OS-103 | Research data connectors | ⬜ PLANNED |
+| LB-OS-104 | Creative division + domain nav | ⬜ PLANNED |
+| LB-OS-105 | Matrix UI + OJT real-work linker | ⬜ PLANNED |
+
+**Gate:** Enterprise map = 105 · **Docs:** [Enterprise Capability Matrix](./LOCALBRAIN_ENTERPRISE_CAPABILITY_MATRIX.md) · [Modular Architecture](./LOCALBRAIN_MODULAR_ARCHITECTURE.md) · [Accounting & CFO](./LOCALBRAIN_ACCOUNTING_CFO_DIVISION.md)
+
+*(LB-OS-106 runs in Phase 1 — MODULARITY GATE after 004.)*
+
+---
+
+## Change Log
+
+| Date | Change |
+|------|--------|
+| 2026-06-28 | Migration & Drive Doctrine + LB-OS-016–024 arc |
+| 2026-06-28 | PSP approved · LB-OS-002 READY · localbrain home · CFO briefing-only |
+| 2026-06-28 | LB-OS-106 MOVED EARLY — MODULARITY GATE after 004, before 005 |
+| 2026-06-28 | Modular Architecture — thin core, plugins |
+| 2026-06-28 | Enterprise Domains + Capability Matrix · CFO from start · LB-OS-097–105 |
+| 2026-06-28 | Pillar 17 Executive Office · AI Executive OS · LB-OS-087–096 |
+| 2026-06-28 | Build Slice Queue v2.0 authoritative |
+
+---
+
+*Phase checklist · 2026-06-28*
