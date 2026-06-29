@@ -122,7 +122,9 @@ OUT: new foundational objects
 OUT: collapsing Three Worlds into filesystem-first UX
 ```
 
-Mutations: **023 simulate → 024 propose → approve → execute**.
+Mutations: **023 proof → 024 propose → approve → execute**.
+
+See [Proof & Certification](./LOCALBRAIN_PROOF_AND_CERTIFICATION.md).
 
 ---
 

@@ -252,6 +252,30 @@ export {
   STANDARD_WORKSPACE_LOCATION_ROLES,
 } from "./projectionLocation.js";
 export type {
+  EvidenceProvenance,
+  MigrationProofOverview,
+  MigrationProofSimulateRequest,
+  MigrationProofSimulateResponse,
+  MigrationSimulation,
+  MigrationSimulationActionType,
+  MigrationSimulationBatch,
+  ProofCertificate,
+  ProofCertificateResult,
+  ProofCheck,
+  ProofCheckStatus,
+  ProofContext,
+  ProofDimensionId,
+  ProofDimensionResult,
+  ProofProvider,
+  ProofScore,
+  RecommendationConfidence,
+} from "./proofAndCertification.js";
+export {
+  PROOF_CERTIFICATION_THRESHOLDS,
+  PROOF_CORE_RULE,
+  PROOF_DIMENSION_LABELS,
+} from "./proofAndCertification.js";
+export type {
   AssetIntelligenceForPath,
   AssetIntelligenceSummary,
   CleanupRecommendation,

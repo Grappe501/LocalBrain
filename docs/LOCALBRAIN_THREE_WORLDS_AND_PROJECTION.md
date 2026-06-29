@@ -152,6 +152,21 @@ Digital Asset     →  Physical File                   →  H:\…\chapter-07.do
 
 **Migration is translation:** change projection, not workspace identity.
 
+### Evidence → Proof → Certification (023+)
+
+Platform lifecycle for high-impact operations — not migration-specific:
+
+```txt
+Evidence      What do we know?           (019 · 020 · 022)
+Proof         Can we safely act?         (023 — deterministic only)
+Certification May 024 generate proposals? (Proof Certificate)
+Proposal      What exactly to do?        (024)
+Approval      Human authorized?          (LB-OS-010)
+Execution     What changed?              (026+)
+```
+
+See [Proof & Certification](./LOCALBRAIN_PROOF_AND_CERTIFICATION.md).
+
 ```txt
 Workspace: RedDirt          ← Logical World (unchanged)
 

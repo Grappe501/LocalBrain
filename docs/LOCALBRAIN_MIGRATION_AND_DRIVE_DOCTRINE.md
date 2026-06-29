@@ -196,10 +196,14 @@ Read-only · Map the estate. Do not change the estate.
 Spec: LOCALBRAIN_DIGITAL_LAND_SURVEY.md
 ```
 
-### LB-OS-023 — Migration Simulation
+### LB-OS-023 — Migration Proof Engine
 
 ```txt
-Dry-run batches from blueprints · impact · rollback preview · zero execution
+Deterministic Proof Score · six ProofProviders · Proof Certificate (immutable)
+Migration simulation dry-run (SIM-*) · zero filesystem mutations
+Evidence vs Proof vs Recommendation Confidence kept separate
+Certification gates 024 proposal generation
+Spec: LOCALBRAIN_PROOF_AND_CERTIFICATION.md
 ```
 
 ### LB-OS-024 — Migration Proposal Builder
