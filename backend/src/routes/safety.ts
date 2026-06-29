@@ -31,9 +31,10 @@ safetyRouter.get("/safety/status", (_req, res) => {
     allowedFolderCount,
     forbiddenRuleCount: getForbiddenRuleCount(),
     dbConnected,
-    fileToolsEnabled: false,
+    fileToolsEnabled: true,
+    writeToolsEnabled: true,
     message:
-      "Permission engine active (LB-OS-003). File tools still disabled until LB-OS-005+.",
+      "Permission engine active (LB-OS-003). Read tools (009). Write/move/quarantine require approval (010).",
   });
 });
 

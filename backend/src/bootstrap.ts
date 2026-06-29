@@ -8,8 +8,10 @@ import { loadModuleManifests } from "./core/moduleLoader.js";
 import { migrateDigitalAssetTables } from "./digitalAssets/assetRegistry.js";
 import { refreshIntelligence } from "./digitalAssets/intelligenceEngine.js";
 import { migrateKnowledgeExplorerTables } from "./knowledgeExplorer/migrate.js";
-import { migrateCommandLogTable } from "./openai/safeLog.js";
+import { migrateActionTables } from "./actions/migrate.js";
+import { ensureActionStorageDirs } from "./actions/actionPaths.js";
 import { migrateFileReadLogTable } from "./files/fileReadLog.js";
+import { migrateCommandLogTable } from "./openai/safeLog.js";
 import { initPermissionEngine } from "./safety/permissionEngine.js";
 import {
   migrateWorkspaceTables,
@@ -29,6 +31,8 @@ export function bootstrapApp(): void {
   migrateDigitalAssetTables();
   migrateCommandLogTable();
   migrateFileReadLogTable();
+  migrateActionTables();
+  ensureActionStorageDirs();
   refreshIntelligence();
   seedWorkspaces();
   syncFilesystemRootsToAllowedFolders();

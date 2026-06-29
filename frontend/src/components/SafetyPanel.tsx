@@ -55,7 +55,7 @@ export function SafetyPanel() {
   return (
     <section className="safety-panel">
       <h2>Safety &amp; Permissions</h2>
-      <p className="safety-panel__slice">LB-OS-003 — Permission engine v2</p>
+      <p className="safety-panel__slice">LB-OS-003 · Write tools gated by LB-OS-010 approval</p>
 
       {error ? <p className="safety-panel__error">{error}</p> : null}
 

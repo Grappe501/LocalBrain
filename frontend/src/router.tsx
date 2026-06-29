@@ -3,7 +3,7 @@ import { useModuleRegistry } from "./context/ModuleRegistryContext";
 import { AppLayout } from "./shell/AppLayout";
 import { ExecutiveBriefing } from "./views/ExecutiveBriefing";
 import { ProjectRedirect, WorkspaceRoute } from "./views/WorkspaceRoute";
-import { ActionsStub } from "./views/StubPages";
+import { ActionsView } from "./views/ActionsView";
 import { KnowledgeExplorerView } from "./views/KnowledgeExplorerView";
 import { LearnStub } from "./views/LearnStub";
 import { SettingsPage } from "./views/SettingsPage";
@@ -20,7 +20,7 @@ export function AppRouter() {
         <Route path="project/:workspaceId" element={<ProjectRedirect />} />
         <Route path="explorer" element={<KnowledgeExplorerView />} />
         <Route path="learn" element={<LearnStub />} />
-        <Route path="actions" element={<ActionsStub />} />
+        <Route path="actions" element={<ActionsView />} />
         <Route path="settings" element={<SettingsPage />} />
         {!loading &&
           departmentModules.flatMap((m) =>

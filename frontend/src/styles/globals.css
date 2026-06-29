@@ -1152,3 +1152,137 @@ a {
   font-size: 0.85rem;
   cursor: pointer;
 }
+
+.actions-view {
+  padding: 1rem 1.25rem;
+  max-width: 1100px;
+}
+
+.actions-view__header h1 {
+  margin: 0 0 0.25rem;
+}
+
+.actions-view__meta {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin: 0 0 1rem;
+}
+
+.actions-view__tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.actions-view__tab {
+  padding: 0.4rem 0.85rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  background: #fff;
+  cursor: pointer;
+}
+
+.actions-view__tab--active {
+  background: #1e40af;
+  color: #fff;
+  border-color: #1e40af;
+}
+
+.actions-view__body {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 1rem;
+}
+
+.actions-view__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.actions-view__item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  text-align: left;
+  padding: 0.65rem;
+  margin-bottom: 0.35rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  background: #fff;
+  cursor: pointer;
+}
+
+.actions-view__item--selected {
+  border-color: #1e40af;
+  background: #eff6ff;
+}
+
+.actions-view__status {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.actions-view__status--pending {
+  color: #b45309;
+}
+
+.actions-view__status--approved {
+  color: #15803d;
+}
+
+.actions-view__status--blocked {
+  color: #b91c1c;
+}
+
+.actions-view__diff {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  padding: 0.75rem;
+  font-size: 0.8rem;
+  overflow: auto;
+  max-height: 280px;
+}
+
+.actions-view__buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.actions-view__buttons button {
+  padding: 0.45rem 0.85rem;
+  border-radius: 0.375rem;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  cursor: pointer;
+}
+
+.actions-view__result {
+  background: #ecfdf5;
+  border: 1px solid #6ee7b7;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 0.375rem;
+}
+
+.actions-view__history {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.actions-view__meta-dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25rem 1rem;
+  font-size: 0.85rem;
+}
+
+.actions-view__detail {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  background: #fafafa;
+}

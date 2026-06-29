@@ -8,6 +8,7 @@ import { safetyRouter } from "./routes/safety.js";
 import { workspacesRouter } from "./routes/workspaces.js";
 import { modulesRouter } from "./routes/modules.js";
 import { assetsRouter } from "./routes/assets.js";
+import { actionsRouter } from "./routes/actions.js";
 import { filesRouter } from "./routes/files.js";
 import { knowledgeExplorerRouter } from "./routes/knowledgeExplorer.js";
 import { getRegisteredModules } from "./core/moduleLoader.js";
@@ -28,6 +29,7 @@ app.use("/api", safetyRouter);
 app.use("/api", workspacesRouter);
 app.use("/api", modulesRouter);
 app.use("/api", assetsRouter);
+app.use("/api", actionsRouter);
 app.use("/api", filesRouter);
 app.use("/api", knowledgeExplorerRouter);
 

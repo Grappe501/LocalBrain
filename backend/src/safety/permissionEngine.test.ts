@@ -47,13 +47,14 @@ test("node_modules segment is denied", () => {
   assert.match(result.reason, /ignored segment/i);
 });
 
-test("write action denied until LB-OS-010", () => {
+test("write action allowed inside roots via approval gate", () => {
   const result = engine().checkPath({
     path: path.join(ALLOWED, "README.md"),
     action: "write",
   });
-  assert.equal(result.allowed, false);
-  assert.match(result.reason, /LB-OS-010/);
+  assert.equal(result.allowed, true);
+  assert.equal(result.level, "EDIT");
+  assert.match(result.reason, /approval gate/i);
 });
 
 test("path outside allowed roots is denied", () => {

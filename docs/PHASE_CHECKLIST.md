@@ -39,7 +39,7 @@
 
 | [Digital Asset Model](./LOCALBRAIN_DIGITAL_ASSET_MODEL.md) | ✅ Spec — LB-OS-006/007 |
 
-**Gate:** Next: **LB-OS-010** Approval-gated file management.
+**Gate:** Next: **LB-OS-011** System health monitor *(renumbered)* or Code Engineering Studio.
 
 ---
 
@@ -57,15 +57,15 @@
 | LB-OS-007 | Digital Asset Intelligence Engine | ✅ Complete — [Burt packet](./burt_packets/LB-OS-007-asset-intelligence.md) |
 | LB-OS-008 | OpenAI chat command layer | ✅ Complete — [Burt packet](./burt_packets/LB-OS-008.md) |
 | LB-OS-009 | Permission-gated file read/summarize | ✅ Complete — [Burt packet](./burt_packets/LB-OS-009.md) |
-| LB-OS-010 | System health monitor | ⬜ PLANNED *(renumbered)* |
-| LB-OS-011 | Approval-gated file management | ⬜ PLANNED *(renumbered)* |
+| LB-OS-010 | Approval-gated file management | ✅ Complete — [Burt packet](./burt_packets/LB-OS-010.md) |
+| LB-OS-011 | System health monitor | ⬜ PLANNED *(renumbered)* |
 | LB-OS-012 | Code engineering studio | ⬜ PLANNED |
 | LB-OS-013 | Writing dashboard | ⬜ PLANNED |
 | LB-OS-014 | Social media drafting | ⬜ PLANNED |
 | LB-OS-015 | System optimization advisor | ⬜ PLANNED |
 | LB-OS-016 | Release candidate | ⬜ PLANNED |
 
-**Gates:** Shell = 002 · **Modularity = 106** · Safe = 011 · V1 ship = 016
+**Gates:** Shell = 002 · **Modularity = 106** · Safe = 010 · V1 ship = 016
 
 ---
 

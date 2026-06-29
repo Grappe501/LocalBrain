@@ -8,7 +8,7 @@ import {
   matchesForbiddenPrefix,
   normalizeAndResolve,
 } from "./pathValidator.js";
-import type { PathCheckInput, PathCheckResult, PermissionAction } from "./types.js";
+import type { PathCheckInput, PathCheckResult, PermissionAction, PermissionLevel } from "./types.js";
 
 const WRITE_ACTIONS: PermissionAction[] = ["write", "delete"];
 
@@ -48,14 +48,7 @@ export function createPermissionEngine(options: PermissionEngineOptions) {
     }
 
     if (WRITE_ACTIONS.includes(action)) {
-      const result: PathCheckResult = {
-        allowed: false,
-        level: "FORBIDDEN",
-        reason: "Write and delete tools not enabled until LB-OS-010+",
-        normalizedPath: resolved,
-      };
-      logDecision?.(resolved, action, result);
-      return result;
+      // LB-OS-010: validate path only — execution requires approval workflow
     }
 
     const forbiddenPrefix = matchesForbiddenPrefix(resolved, FORBIDDEN_PATH_PREFIXES);
@@ -117,10 +110,20 @@ export function createPermissionEngine(options: PermissionEngineOptions) {
       return result;
     }
 
+    const level: PermissionLevel =
+      action === "delete"
+        ? "DELETE_QUARANTINE"
+        : action === "write"
+          ? "EDIT"
+          : "READ_ONLY";
+
     const result: PathCheckResult = {
       allowed: true,
-      level: "READ_ONLY",
-      reason: `Allowed for ${action} (permission engine v2)`,
+      level,
+      reason:
+        WRITE_ACTIONS.includes(action)
+          ? `Path allowed for ${action} via approval gate (LB-OS-010)`
+          : `Allowed for ${action} (permission engine v2)`,
       normalizedPath: resolved,
     };
     logDecision?.(resolved, action, result);

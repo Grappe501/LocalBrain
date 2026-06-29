@@ -13,6 +13,15 @@ export type {
   FolderManifestResult,
 } from "./fileTools.js";
 export type {
+  ActionLogEntry,
+  ActionLogEventType,
+  BackupRecord,
+  ExecuteResult,
+  ProposedAction,
+  ProposedActionStatus,
+  ProposedActionType,
+} from "./proposedActions.js";
+export type {
   LivingWorkspace,
   WorkspaceEvent,
   WorkspaceEventType,
