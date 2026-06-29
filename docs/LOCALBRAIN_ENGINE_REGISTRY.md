@@ -246,16 +246,29 @@ No studio calls another studio — studios call engines.
 
 ---
 
-### ENG-PR-001 — Project Registry
+### ENG-WR-001 — Workspace Registry (LivingWorkspace)
 
 | Field | Value |
 |-------|-------|
-| **Responsibility** | Registered H: roots, workspace IDs, project types |
+| **Responsibility** | `LivingWorkspace` objects — types, roots, flags, executive_context, graph links |
 | **Depends on** | ENG-PM-001, ENG-CF-001 |
-| **Exposes** | `GET/POST /api/projects` · `projects` table |
-| **Consumed by** | Living Workspaces, all studios |
+| **Exposes** | `GET/POST /api/workspaces` · `living_workspaces` table · `workspace_links` |
+| **Consumed by** | CoS, Living Workspace dashboard, all studios, Explorer (005+) |
+| **Doc** | [Living Workspace Model](./LOCALBRAIN_LIVING_WORKSPACE_MODEL.md) |
 | **Slices** | 004 |
-| **Status** | PLANNED |
+| **Status** | READY (spec) |
+
+*(Supersedes ENG-PR-001 "Project Registry" naming for LB-OS-004+.)*
+
+---
+
+### ENG-PR-001 — Project Registry *(superseded → ENG-WR-001)*
+
+| Field | Value |
+|-------|-------|
+| **Responsibility** | ~~Registered H: roots, workspace IDs, project types~~ → use **ENG-WR-001** |
+| **Slices** | 004 renamed |
+| **Status** | SUPERSEDED |
 
 ---
 
@@ -297,15 +310,15 @@ No studio calls another studio — studios call engines.
 
 ## Layer 3 — Knowledge Services
 
-### ENG-KP-001 — Project Intelligence
+### ENG-KP-001 — Workspace Intelligence (Living Workspace)
 
 | Field | Value |
 |-------|-------|
-| **Responsibility** | Living Workspace aggregate — health, signals, next actions |
-| **Depends on** | ENG-PR-001, ENG-MM-001, ENG-VR-001, ENG-KD-001, ENG-KC-001 |
-| **Exposes** | `GET /api/workspaces/:id` · `GET /api/workspaces/:id/signals` |
-| **Slices** | 004 stub · 024 full |
-| **Status** | PLANNED |
+| **Responsibility** | Living Workspace dashboard — health, signals, CoS blocks, next actions |
+| **Depends on** | ENG-WR-001, ENG-MM-001, ENG-VR-001, ENG-KD-001, ENG-KC-001 |
+| **Exposes** | `GET /api/workspaces/:id` · signals · mission/phase/slice progress |
+| **Slices** | 004 dashboard · 024 full tabs |
+| **Status** | READY (spec) |
 
 ---
 

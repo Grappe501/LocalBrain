@@ -23,8 +23,9 @@ Files are one tab — not the project.
 
 ```txt
 LocalBrain
-├── Home / Projects          → Living Workspace picker
-├── Explorer                 → ENG-EX-001 lens
+├── Home / Executive Briefing
+├── Workspaces               → LivingWorkspace picker (004+)
+├── Explorer                 → ENG-EX-001 lens (005+)
 ├── Studios
 │   ├── Code Engineering
 │   ├── Writing
@@ -38,15 +39,16 @@ LocalBrain
 └── Settings
 ```
 
-**Persistent chrome:** CommandBar · ContextPanel · project pill
+**Persistent chrome:** CommandBar · ContextPanel · **active workspace** pill (from registry)
 
 ---
 
 ## Living Workspace Dashboard
 
-**Route:** `/project/:workspaceId` · **Primary home candidate**
+**Route:** `/workspace/:workspaceId` · **Compat:** `/project/:workspaceId` → redirect  
+**Model:** [Living Workspace Model](./LOCALBRAIN_LIVING_WORKSPACE_MODEL.md)
 
-The **Project Dashboard** is the flagship studio — every project type uses this shell with different signal emphasis.
+The **Living Workspace** is the flagship object — every `workspace_type` uses this shell with different signal emphasis. **Not** a "project dashboard."
 
 ### Layout
 
@@ -78,21 +80,31 @@ The **Project Dashboard** is the flagship studio — every project type uses thi
 
 ### Workspace types
 
-| Type | Extra emphasis |
-|------|----------------|
-| `codebase` | Build, git, tests, Burt |
-| `campaign` | Writing, deploy, claims |
-| `grant` | Documentation, deadlines, compliance |
-| `novel` | Writing, research, versions |
-| `hybrid` | All tabs, configurable priority |
-| `meta` | LocalBrain self — engine registry, queue |
+| Type | Examples | Extra emphasis |
+|------|----------|----------------|
+| `meta` | localbrain | Self-build, engine registry, queue |
+| `engineering` | ACU, LocalBrain builds | Burt, git, tests |
+| `campaign` | RedDirt, CountyWorkbench | Writing, deploy, compliance |
+| `novel` | Novel studio | Canon, chapters, continuity |
+| `research` | VoteMatch | Data sources, voters, GIS |
+| `database` | Database Studio context | ETL, SQL, imports |
+| `finance` | CFO workspace | Books, compliance |
+| `photography` | Photo division | Sessions, deliverables |
+| `podcast` | Podcast division | Episodes, production |
+| `learning` | OJT | Skills, slices unlocked |
+| `personal` | General Files | Life admin |
+| `executive` | CoS cross-cutting | Briefings, priorities |
+
+Legacy aliases (`codebase`, `grant`, `hybrid`) map to types above in registry — do not add parallel models.
 
 ### Slice mapping
 
 ```txt
-004 — project registry + workspace stub
-024 — full Living Workspace
-002 — single mock workspace (RedDirt or LocalBrain)
+004 — Workspace registry + localbrain LivingWorkspace dashboard
+106 — modularity gate (before explorer)
+005 — explorer scopes to active workspace filesystem_roots
+024 — full Living Workspace tabs (Files, Build, Memory, …)
+002 — mock replaced by 004 data-driven /workspace/localbrain
 ```
 
 ---

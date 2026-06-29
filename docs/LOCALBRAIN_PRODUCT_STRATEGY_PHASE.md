@@ -254,7 +254,8 @@ No new `LB-OS-###` slices for PSP — this is **Phase 0.5 documentation**, not i
 | [Enterprise Capability Matrix](./LOCALBRAIN_ENTERPRISE_CAPABILITY_MATRIX.md) | Post-PSP planning apex (097+) |
 | [Executive Domains](./LOCALBRAIN_EXECUTIVE_DOMAINS.md) | Life domains · four modes |
 | [Accounting & CFO](./LOCALBRAIN_ACCOUNTING_CFO_DIVISION.md) | Finance domain — from the start |
-| [Modular Architecture](./LOCALBRAIN_MODULAR_ARCHITECTURE.md) | Thin core · plugins · LOC budgets |
+| [Living Workspace Model](./LOCALBRAIN_LIVING_WORKSPACE_MODEL.md) | Core object — LB-OS-004 |
+| [Burt packet LB-OS-004](./burt_packets/LB-OS-004.md) | Workspace registry execution |
 | [Burt Script Generator Plan](./LOCALBRAIN_BURT_SCRIPT_GENERATOR_PLAN.md) | Self-build output format |
 
 ---

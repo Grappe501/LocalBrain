@@ -29,7 +29,7 @@ LB-OS-001  ✅ Repo scaffold
 PSP        ✅ APPROVED — 2026-06-28
 LB-OS-002  ✅ Executive briefing shell
 LB-OS-003  ✅ Permission engine v2
-LB-OS-004  ▶ NEXT — project registry
+LB-OS-004  ▶ READY — Workspace registry ([Living Workspace Model](docs/LOCALBRAIN_LIVING_WORKSPACE_MODEL.md))
 ```
 
 **Critical path after PSP:**
@@ -94,9 +94,9 @@ curl http://localhost:4545/api/health
 
 ## Next Step
 
-1. **Execute LB-OS-004** — Project / Living Workspace registry  
-2. **Spine:** 004 → 106 (MODULARITY GATE) → 005 explorer  
-3. **Visual test:** `npm run dev` → http://localhost:5174/settings (Safety panel)
+1. **Execute LB-OS-004** — [Burt packet](docs/burt_packets/LB-OS-004.md) · LivingWorkspace foundation  
+2. **Spine:** 004 registry → 106 (MODULARITY GATE) → 005 explorer  
+3. **Visual test:** http://localhost:5174/workspace/localbrain
 
 ---
 

@@ -26,7 +26,7 @@ and AI assistant are ONE foundation — not separate modules.
 ```txt
 1. Shell first          — LB-OS-002
 2. Safety second        — LB-OS-003
-3. Workspace registry   — LB-OS-004
+3. Workspace registry   — LB-OS-004  (LivingWorkspace — not "projects")
 4. Modularity fourth    — LB-OS-106 (MODULARITY GATE)
 5. Everything else      — registered modules only
 ```
@@ -105,7 +105,7 @@ Module manifests: after LB-OS-004 + LB-OS-106 — not in 002
 PSP approve
 → LB-OS-002  Executive shell mock
 → LB-OS-003  Permission engine
-→ LB-OS-004  Project / Living Workspace registry
+→ LB-OS-004  Workspace registry (LivingWorkspace)
 → LB-OS-106  Core kernel boundaries + module loader   ← MODULARITY GATE
 → LB-OS-005  Explorer / search foundation
 → LB-OS-006+ Everything else (studios = registered modules only)
@@ -139,7 +139,7 @@ See [Studio Blueprint](./LOCALBRAIN_STUDIO_BLUEPRINT.md) · [Command Layer](./LO
 | **LB-OS-001** | Repo scaffold | — | ✅ Complete |
 | **LB-OS-002** | OS Shell + executive briefing + command stub | 001, PSP | ✅ Complete |
 | **LB-OS-003** | Filesystem permission engine v2 | 002 | ✅ Complete |
-| **LB-OS-004** | Project folder registry | 003 | Projects = folders |
+| **LB-OS-004** | Workspace registry (LivingWorkspace) | 003 | ▶ **READY** |
 | **LB-OS-106** | Core kernel + module loader | 004 | **MODULARITY GATE** |
 | **LB-OS-005** | Explorer tree + file metadata | 106 | Browse + index |
 | **LB-OS-006** | Storage intelligence dashboard | 005 | Large/dup/stale |
@@ -509,35 +509,55 @@ Safety status · allowed list · forbidden list · test C:/Windows denied · H:/
 
 ---
 
-# LB-OS-004 — Project Folder Registry
+# LB-OS-004 — Workspace Registry (LivingWorkspace)
+
+**Status:** ▶ **READY** — architectural spec locked 2026-06-28
 
 **Depends on:** 003
 
-**Goal:** **Project folders = filesystem folders.** One registry, not parallel systems.
+**Doc:** [Living Workspace Model](./LOCALBRAIN_LIVING_WORKSPACE_MODEL.md) · **Burt packet:** [burt_packets/LB-OS-004.md](./burt_packets/LB-OS-004.md)
+
+**Goal:** **`LivingWorkspace`** is the core object — not "Project Registry." A project is one `workspace_type`. Chief of Staff thinks in workspaces.
 
 **Build:**
 
 ```txt
-SQLite: projects table — id, name, root_path (absolute), profile_json
-Seed Steve's projects: General Files, RedDirt, ACU, CountyWorkbench,
-  VoteMatch, SOS Public, AJAX, Phatlip, LocalBrain
-API: GET/POST projects, select active project
-Explorer left panel: projects list = registered folder roots
-Linking a project = registering an allowed folder path
-No separate "virtual project" without a folder
+SQLite: living_workspaces, workspace_links (graph-ready), active_workspace
+shared/src/workspace.ts — LivingWorkspace types
+Workspace registry service + permission sync on filesystem_roots
+API: GET/POST /api/workspaces · GET /api/workspaces/:id · POST select · GET links
+Seed localbrain — full template (mission, phase, slices, executive_context, avatar/color/icon, flags)
+Seed stubs: reddirt, acu, countyworkbench, votematch, general (roots where known)
+Frontend: /workspace/:id dashboard · /project/:id → redirect
+Command bar pill from active workspace registry
+```
+
+**Key fields:** `executive_context`, `workspace_avatar`, `workspace_color`, `workspace_icon`, flags (pinned/recent/favorite/archived/hidden/ai_recommended/needs_attention), graph-ready links (empty OK).
+
+**Local visual test:**
+
+```txt
+npm run dev → http://localhost:5174/workspace/localbrain
+Full template · pill from registry · /project/localbrain redirects
 ```
 
 **Exit criteria:**
 
 ```txt
-[ ] Each project points to a real folder path
-[ ] Selecting project scopes explorer tree root
-[ ] Cannot register forbidden paths
+[ ] living_workspaces table — not "projects"
+[ ] localbrain matches Living Workspace Model template
+[ ] executive_context on localbrain
+[ ] filesystem_roots sync to allowed_folders
+[ ] /workspace/:id data-driven dashboard
+[ ] Active workspace in command bar pill
+[ ] Local visual test passed
 ```
 
-**Commit:** `feat: add project folder registry`
+**Commit:** `feat: add workspace registry and LivingWorkspace foundation`
 
-**Maps v1 MRIDs:** LB-PROJ-001–004, LB-DB-009
+**Maps engines:** ENG-WR-001 (workspace registry), ENG-KP-001, ENG-PM-001, ENG-CF-001
+
+**Next:** LB-OS-106 MODULARITY GATE
 
 ---
 

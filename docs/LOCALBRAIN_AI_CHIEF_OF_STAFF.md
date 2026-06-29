@@ -25,6 +25,13 @@ CALL IT: Chief of Staff.
 The Chief of Staff **coordinates departments** and **surfaces what matters** before Steve asks.
 
 ```txt
+CoS thinks in workspaces — not folders.
+"Open RedDirt workspace" · "Summarize Novel workspace" · "Switch to Database Studio"
+```
+
+See [Living Workspace Model](./LOCALBRAIN_LIVING_WORKSPACE_MODEL.md) · `executive_context` on every workspace.
+
+```txt
 This intelligence does not require a bigger LLM.
 It requires excellent architecture, rich project memory, thoughtful tooling,
 and continuous learning (Pillars 12, 15, knowledge graph, Living Workspaces).

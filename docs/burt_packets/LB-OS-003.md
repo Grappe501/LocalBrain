@@ -243,6 +243,6 @@ ENG-CF-001 — Settings / allowed folders config
 
 ## Next slice
 
-LB-OS-004 — Project folder registry (links projects to allowed folder roots).
+LB-OS-004 — Workspace registry ([Living Workspace Model](../LOCALBRAIN_LIVING_WORKSPACE_MODEL.md)).
 
 **After 004:** LB-OS-106 MODULARITY GATE before LB-OS-005 explorer.

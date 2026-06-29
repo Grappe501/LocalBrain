@@ -32,7 +32,7 @@
 | LB-OS-001 | Repo scaffold | ✅ COMPLETE |
 | LB-OS-002 | OS shell + executive briefing + command stub | ✅ COMPLETE |
 | LB-OS-003 | Filesystem permission engine v2 | ✅ COMPLETE |
-| LB-OS-004 | Project folder registry | ⬜ PLANNED |
+| LB-OS-004 | Workspace registry (LivingWorkspace) | ▶ READY — [Burt packet](./burt_packets/LB-OS-004.md) |
 | LB-OS-106 | Core kernel + module loader | ⬜ PLANNED |
 | LB-OS-005 | Explorer tree + file metadata | ⬜ PLANNED |
 | LB-OS-006 | Storage intelligence dashboard | ⬜ PLANNED |
@@ -257,7 +257,8 @@ Closeouts include OJT lesson when ON (manual until LB-OS-026)
 |------|--------|
 | 2026-06-28 | Migration & Drive Doctrine + LB-OS-016–024 arc |
 | 2026-06-28 | PSP approved · LB-OS-002 READY · localbrain home · CFO briefing-only |
-| 2026-06-28 | LB-OS-106 MOVED EARLY — MODULARITY GATE after 004, before 005 |
+| 2026-06-28 | LivingWorkspace model · LB-OS-004 assigned (workspace registry, not projects) |
+| 2026-06-28 | LB-OS-003 permission engine complete |
 | 2026-06-28 | Modular Architecture — thin core, plugins |
 | 2026-06-28 | Enterprise Domains + Capability Matrix · CFO from start · LB-OS-097–105 |
 | 2026-06-28 | Pillar 17 Executive Office · AI Executive OS · LB-OS-087–096 |
