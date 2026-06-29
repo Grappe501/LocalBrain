@@ -160,6 +160,20 @@ export type {
   WorkspaceProviderOverride,
 } from "./aiProviders.js";
 export type {
+  ArchiveStrategyDraft,
+  DataClassification,
+  DriveDoctrinePanel,
+  DriveLetter,
+  DrivePlacementAudit,
+  DriveVolumeSummary,
+  HStructureProposal,
+  MigrationApprovalItem,
+  MigrationPhasePreview,
+  MigrationPlannerOverview,
+  MigrationRiskLevel,
+  PlacementAuditRow,
+} from "./migrationPlanner.js";
+export type {
   AssetIntelligenceForPath,
   AssetIntelligenceSummary,
   CleanupRecommendation,

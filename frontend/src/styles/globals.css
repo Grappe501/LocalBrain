@@ -2609,3 +2609,187 @@ a {
   color: #2563eb;
   text-decoration: none;
 }
+
+/* LB-OS-018 Migration Planner */
+.migration {
+  padding: 1.25rem 1.5rem 2rem;
+  max-width: 1200px;
+}
+
+.migration__header h1 {
+  margin: 0.25rem 0;
+}
+
+.migration__crumb a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.migration__meta,
+.migration__note {
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.migration__rule {
+  font-family: ui-monospace, monospace;
+  background: #f8fafc;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  border: 1px solid #e2e8f0;
+  font-size: 0.85rem;
+}
+
+.migration__guardrails {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.75rem;
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0;
+  font-size: 0.8rem;
+  color: #b45309;
+}
+
+.migration__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.migration__panel {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  background: #fff;
+}
+
+.migration__panel h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+}
+
+.migration__dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+}
+
+.migration__dl dt {
+  color: #64748b;
+}
+
+.migration__list {
+  margin: 0.5rem 0 0;
+  padding-left: 1.1rem;
+  font-size: 0.875rem;
+}
+
+.migration__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.migration__table th,
+.migration__table td {
+  border: 1px solid #e2e8f0;
+  padding: 0.35rem 0.5rem;
+  text-align: left;
+}
+
+.migration__path {
+  word-break: break-all;
+  max-width: 220px;
+}
+
+.migration-risk {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  padding: 0.1rem 0.35rem;
+  border-radius: 0.25rem;
+}
+
+.migration-risk--low {
+  background: #ecfdf5;
+  color: #047857;
+}
+
+.migration-risk--medium {
+  background: #fffbeb;
+  color: #b45309;
+}
+
+.migration-risk--high {
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.migration-risk--critical {
+  background: #7f1d1d;
+  color: #fff;
+}
+
+.migration__arc {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.migration__arc-item {
+  border-left: 3px solid #cbd5e1;
+  padding: 0.35rem 0 0.35rem 0.75rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.migration__arc-item--complete {
+  border-color: #22c55e;
+}
+
+.migration__arc-item--current {
+  border-color: #2563eb;
+  background: #eff6ff;
+}
+
+.migration__arc-status {
+  margin-left: 0.5rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.migration__gate {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: #b45309;
+}
+
+.migration__checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.migration__checklist li {
+  border-bottom: 1px solid #f1f5f9;
+  padding: 0.5rem 0;
+  font-size: 0.85rem;
+}
+
+.migration__check--done {
+  opacity: 0.65;
+}
+
+.migration__required {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  color: #b45309;
+  margin-left: 0.35rem;
+}
+
+.migration__error {
+  color: #b91c1c;
+}

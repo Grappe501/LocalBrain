@@ -16,6 +16,7 @@ const KERNEL_NAV = [
   { label: "Actions", path: "/actions" },
   { label: "System", path: "/system" },
   { label: "Learn", path: "/learn" },
+  { label: "Migration", path: "/migration" },
   { label: "Settings", path: "/settings" },
 ] as const;
 

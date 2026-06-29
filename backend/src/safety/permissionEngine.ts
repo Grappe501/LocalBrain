@@ -8,6 +8,11 @@ import {
   matchesForbiddenPrefix,
   normalizeAndResolve,
 } from "./pathValidator.js";
+import {
+  cDriveOverrideAllowed,
+  isCDriveProjectRoot,
+} from "../migration/driveDoctrine.js";
+import { logPermissionCheck } from "../db/database.js";
 import type { PathCheckInput, PathCheckResult, PermissionAction, PermissionLevel } from "./types.js";
 
 const WRITE_ACTIONS: PermissionAction[] = ["write", "delete"];
@@ -174,6 +179,22 @@ export function createPermissionEngine(options: PermissionEngineOptions) {
         allowed: false,
         level: "FORBIDDEN",
         reason: `Forbidden secret pattern: ${secret}`,
+        normalizedPath: resolved,
+      };
+    }
+
+    if (isCDriveProjectRoot(resolved) && !cDriveOverrideAllowed()) {
+      logPermissionCheck(
+        resolved,
+        "register_root",
+        false,
+        "LB-OS-018: C: is for programs — use H: for project workspace roots",
+      );
+      return {
+        allowed: false,
+        level: "FORBIDDEN",
+        reason:
+          "C: drive is for programs only — register project folders on H:. Set LOCALBRAIN_ALLOW_C_PROJECT_ROOT=1 to override (logged).",
         normalizedPath: resolved,
       };
     }

@@ -20,6 +20,7 @@ import { dataIntelligenceRouter } from "./routes/dataIntelligence.js";
 import { relationshipNetworkRouter } from "./routes/relationshipNetwork.js";
 import { v1Router } from "./routes/v1.js";
 import { providersRouter } from "./routes/providers.js";
+import { migrationRouter } from "./routes/migration.js";
 import { getRegisteredModules } from "./core/moduleLoader.js";
 import { runBackgroundIndex } from "./knowledgeExplorer/indexer.js";
 
@@ -50,6 +51,7 @@ app.use("/api", dataIntelligenceRouter);
 app.use("/api", relationshipNetworkRouter);
 app.use("/api", v1Router);
 app.use("/api", providersRouter);
+app.use("/api", migrationRouter);
 
 app.listen(port, () => {
   const db = isDatabaseConnected();

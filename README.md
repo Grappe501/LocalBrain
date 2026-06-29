@@ -30,11 +30,12 @@ LB-OS-012.5     ✅ Executive Program Office
 LB-OS-012–015   ✅ Engineering · Writing · Data & Intelligence · Relationships
 LB-OS-016       ✅ Executive OS V1 milestone (release candidate)
 LB-OS-017       ✅ AI Provider Management
+LB-OS-018       ✅ Drive architecture & migration planner
 ```
 
-**Verify:** `GET /api/v1/acceptance` · `GET /api/providers` · [AI Providers](/system/providers)
+**Verify:** `GET /api/v1/acceptance` · `GET /api/providers` · `GET /api/migration/planner`
 
-**Next:** [LB-OS-018 Drive architecture & migration planner](docs/LOCALBRAIN_MIGRATION_AND_DRIVE_DOCTRINE.md)
+**Next:** [LB-OS-019 Full filesystem mapping audit](docs/burt_packets/LB-OS-018.md)
 
 **Dev:** `npm run dev` → http://localhost:5174 · API http://localhost:4545
 
