@@ -148,11 +148,11 @@ See [Studio Blueprint](./LOCALBRAIN_STUDIO_BLUEPRINT.md) · [Command Layer](./LO
 | **LB-OS-009** | System health monitor (CPU/RAM/disk) | 002 | *Renumbered from old 007* |
 | **LB-OS-010** | File read/summarize tools | 005, 008 | *Renumbered from old 009* |
 | **LB-OS-011** | Approval-gated file management | 003, 010 | **V1 safety gate** |
-| **LB-OS-012** | Code engineering studio foundation | 010, 011, 106 | Burt/code module |
-| **LB-OS-013** | Writing dashboard foundation | 008, 106 | Writing module |
-| **LB-OS-014** | Social media drafting dashboard | 013, 106 | Social module |
-| **LB-OS-015** | System optimization advisor | 006, 007 | Advise + preview |
-| **LB-OS-016** | LocalBrain release candidate | 012–015 | **V1 ship** |
+| **LB-OS-012** | Engineering Department foundation | 010, 010.5, 011, 106 | Chief + workspace + Code Studio tab |
+| **LB-OS-013** | Writing Department foundation | 008, 106 | Writing module |
+| **LB-OS-014** | Database Department foundation | 106, 098 | Database Studio seed |
+| **LB-OS-015** | Relationship Intelligence | 004, 106 | Contacts / CRM seed |
+| **LB-OS-016** | Executive OS V1 milestone | 012–015 | **V1 ship** |
 | **LB-OS-017** | Drive architecture & migration planner | 016 | Migration start |
 | **LB-OS-018** | Full filesystem mapping audit | 017 | Inventory |
 | **LB-OS-019** | Duplicate / version cleanup planner | 018 | Dry-run only |
@@ -867,35 +867,53 @@ Actions route /actions — Pending/Approved/Rejected/Executed/Blocked
 
 ---
 
-# LB-OS-011 — Code Engineering Studio Foundation
+# LB-OS-012 — Engineering Department Foundation
 
-**Depends on:** 009, 010, **106**
+**Depends on:** 010, 010.5, 011, **106**
 
-**Gate:** Must ship as `modules/code-studio/` with full manifest — not shell hard-code.
+**Spec:** [Engineering Department](./LOCALBRAIN_ENGINEERING_DEPARTMENT.md) · **Burt packet:** [LB-OS-012](./burt_packets/LB-OS-012.md)
 
-**Goal:** Cursor replacement seed — Burt scripts, repo context, repair mode.
+**Gate:** Must ship as `modules/engineering-studio/` with manifest — department shell, not IDE.
+
+**Goal:** Engineering Department with Chief routing, workspace dashboard, Code Studio tab, Engineering Score stub, Burt packet flow.
 
 **Build:**
 
 ```txt
-backend/src/burt/* — templates, build/audit/repair generators
-Burt Script Writer agent in agent registry UI
-Center workspace: Code tab (chat + packet output)
-Generate BURT / CURSOR EXECUTION SCRIPT from project context
-Packets saved as drafts (approval-gated)
+Engineering Department view (/studio/engineering)
+Engineering Chief — Explain this project
+Engineering Score stub (9 factors)
+Code Studio workspace tab (read + chat, not Monaco IDE)
+Burt: generate → preview → approve → export
+GET /api/engineering/overview · /explain · /score
+Specialist routing table (stubs)
+```
+
+**Not in 012:**
+
+```txt
+In-browser code editor · shell · git writes · API impact graph
 ```
 
 **Exit criteria:**
 
 ```txt
-[ ] Generate valid LB-OS-### packet
-[ ] ACU "latest report → next script" manual test passes
-[ ] Audit mode is read-only
+[ ] Explain this project returns full envelope
+[ ] Engineering Score visible on department home
+[ ] Burt packet preview + export path (approval-gated)
+[ ] Code Studio is tab inside department, not standalone product
+[ ] Read-only except approved proposals
 ```
 
-**Commit:** `feat: add code engineering studio foundation`
+**Commit:** `feat: add Engineering Department foundation`
 
 **Maps v1 MRIDs:** LB-BURT-001–010, LB-AGENT-003–004, LB-UI-007
+
+---
+
+# LB-OS-012 (legacy queue note) — superseded
+
+*Former "Code Engineering Studio Foundation" content moved to Engineering Department spec. Code Studio = workspace inside department.*
 
 ---
 

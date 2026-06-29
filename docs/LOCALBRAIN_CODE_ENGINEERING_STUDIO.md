@@ -1,5 +1,8 @@
 # LocalBrain Code Engineering Studio v1.0
 
+> **⚠️ Scope moved:** This doc describes the **Code Studio workspace** inside the **[Engineering Department](./LOCALBRAIN_ENGINEERING_DEPARTMENT.md)** (LB-OS-012).  
+> The department is **not** a code editor. Code Studio is one lens on repo-scoped engineering work.
+
 > **Pillar 3:** Cursor replacement path.  
 > Doctrine: [Operating System Doctrine v2.0](./LOCALBRAIN_OPERATING_SYSTEM_DOCTRINE.md) · Roadmap: [Cursor Replacement Roadmap](./LOCALBRAIN_CURSOR_REPLACEMENT_ROADMAP.md)
 
@@ -7,43 +10,37 @@
 
 ## Vision
 
-LocalBrain Code Studio manages the full loop:
+Code Studio workspace manages the loop:
 
 ```txt
 Plan → Code → Validate → Repair → Document → Commit guidance → Next slice
 ```
 
-Cursor remains available for edge cases. LocalBrain becomes the **default** for Steve's owned repos.
+Engineering Chief routes here when work is repo-scoped. Cursor remains available for edge cases.
 
 ---
 
 ## Studio Capabilities
 
-| Capability | V1 bootstrap | Full studio |
-|------------|--------------|-------------|
-| Read repo safely | Slice 008 | Scoped repo context |
-| Architecture map | Slice 013 | Live diagram + drift detect |
-| Find bugs / gaps | Agent: codebase_auditor | CI-style audit reports |
-| Write code | Approval-gated writes 011 | In-studio editor + diff |
-| Patch plans | Slice 010 preview | Multi-file plans |
-| Generate files | create_file_draft | Template library |
-| Preview diffs | Slice 010–011 | Side-by-side studio |
-| Explain errors | Chat + read tools | Error → repair script |
-| Repair passes | Burt repair mode | Auto-suggest fix slice |
-| Commit summaries | LB-BURT-004 | Git-aware (read-only V1) |
-| Slice build loop | LB-BURT-001–010 | MRID progress bars in UI |
-| Requirement registry | docs + future UI | Editable MRID board |
+| Capability | LB-OS-012 bootstrap | Full department |
+|------------|---------------------|-----------------|
+| Read repo safely | ✅ via file tools 009 | Scoped repo context |
+| Explain this project | ✅ Engineering Chief | Full graph |
+| Architecture map | Module manifest graph | Live diagram + drift |
+| Find bugs / gaps | Stub | codebase_auditor |
+| Write code | Approval-gated 010 | In-studio diff |
+| Burt packets | Generate → preview → export | Execute locally (later) |
+| Engineering Score | Stub | Full factors |
 
 ---
 
-## Agents
+## Agents (within department)
 
 | Agent | Role |
 |-------|------|
-| `burt_script_writer` | Generate Cursor/Burt packets |
-| `codebase_auditor` | Read-only repo audit |
-| `general_localbrain` | Ad-hoc engineering questions |
-| Project agents (ACU, etc.) | Domain-scoped engineering |
+| `engineering_chief` | Routes, synthesizes, Explain this project |
+| `burt_script_writer` | Burt packet generation |
+| Specialists | See [Engineering Department](./LOCALBRAIN_ENGINEERING_DEPARTMENT.md) |
 
 ---
 
@@ -56,29 +53,14 @@ Right:  sources · tool calls · approvals · validation output
 Bottom: terminal output (future gated) · test results
 ```
 
-Bootstrap: chat + right panel (LB-UI-011) on `/chat`.
-
----
-
-## Build Loop Integration
-
-```txt
-1. Steve or Burt identifies next slice (LB-BURT-010)
-2. Studio generates BURT / CURSOR EXECUTION SCRIPT
-3. Cursor or in-studio agent executes slice
-4. Validation commands run (LB-BURT-006 library)
-5. Closeout report filed (LB-BURT-007)
-6. Registry + progress bar updated
-```
-
-Packets: [Burt Script Generator Plan](./LOCALBRAIN_BURT_SCRIPT_GENERATOR_PLAN.md)
+LB-OS-012 bootstrap: department dashboard + Code Studio tab (read + chat), not full IDE.
 
 ---
 
 ## Safety
 
 ```txt
-No auto_git_commit / auto_git_push in V1
+No auto_git_commit / auto_git_push
 No shell execution in V1
 Writes only through approval engine
 Repo scope: LocalBrain + approved project roots only
@@ -86,15 +68,4 @@ Repo scope: LocalBrain + approved project roots only
 
 ---
 
-## Acceptance
-
-```txt
-[ ] V1: generate valid LB-SLICE packet from ACU closeout
-[ ] V2: repo map for LocalBrain repo in UI
-[ ] V3: preview multi-file patch before approve
-[ ] V4: in-studio validate (typecheck/test) display
-```
-
----
-
-*Code engineering studio version 1.0 · 2026-06-28*
+*Code Studio workspace · part of Engineering Department · 2026-06-28*

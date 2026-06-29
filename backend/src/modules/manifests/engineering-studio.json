@@ -7,7 +7,7 @@
   "routes": [{ "path": "/studio/engineering", "pattern": "studio/engineering/*" }],
   "permissions": ["filesystem:read"],
   "tools": [],
-  "agents": ["agent-burt"],
+  "agents": ["engineering_chief", "burt_script_writer"],
   "data_sources": [],
   "capabilities": [
     {
@@ -18,5 +18,5 @@
   "dependencies": ["ENG-PM-001", "ENG-WR-001"],
   "nav_placement": "department",
   "lazy_load_boundary": "modules/engineering-studio/Entry",
-  "description": "Code engineering studio — stub until LB-OS-011"
+  "description": "Engineering Department — Code Studio is one workspace inside (LB-OS-012)"
 }

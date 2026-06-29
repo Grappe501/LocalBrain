@@ -48,7 +48,7 @@ Engineering  Writing    Operations   Media      Research
 | Department | Chief agent ID | Studio / surface | Primary KPIs |
 |------------|----------------|------------------|--------------|
 | **Executive Office** | `chief_of_staff` | Briefing home | Meaningful work index |
-| **Engineering** | `engineering_chief` | Code Studio | Slices shipped, validation pass |
+| **Engineering** | `engineering_chief` | Engineering Department (Code Studio workspace) | Engineering Score, slices shipped |
 | **Writing** | `writing_chief` | Writing Studio | Accepted drafts, rewrite % |
 | **Operations** | `operations_chief` | Campaign + grants | Deadlines met, claims gate |
 | **Media** | `media_chief` | Social Studio | Published, engagement prep |
@@ -77,17 +77,27 @@ Steve does **not** need to pick "Code Studio" first — CoS routes.
 
 ---
 
-## Engineering department (example)
+## Engineering department
 
 ```txt
 Engineering Chief
-├── burt_script_writer
-├── codebase_auditor
-├── general_localbrain (engineering mode)
-└── deployment_checklist_agent
+├── eng_architecture
+├── eng_code_generation
+├── eng_code_review
+├── eng_testing
+├── eng_documentation
+├── eng_security
+├── eng_performance
+├── eng_deployment
+├── eng_database
+├── eng_devops
+├── eng_build_planning
+└── burt_script_writer
 ```
 
-Maps to LB-OS-011 Code Studio — accessed via chief, not only via nav.
+Maps to **LB-OS-012 Engineering Department** — [full spec](./LOCALBRAIN_ENGINEERING_DEPARTMENT.md). Code Studio is one workspace; accessed via Chief or nav.
+
+**Explain this project** and **Engineering Score** are department-level capabilities, not Code Studio-only.
 
 ---
 

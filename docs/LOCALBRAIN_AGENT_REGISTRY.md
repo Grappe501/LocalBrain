@@ -38,7 +38,7 @@ New agents gain: `reports_to`, `department_id` (LB-OS-092).
 
 | id | Domain | Slice | Role |
 |----|--------|-------|------|
-| `engineering_chief` | Engineering | 092 | Builds, Burt, architecture |
+| `engineering_chief` | Engineering | 012, 092 | Department Chief — routes specialists, Explain this project, Engineering Score |
 | `creative_chief` | Creative | 104 | Novel Studio, writing, canon |
 | `research_chief` | Research | 103 | Voters, census, GIS, elections |
 | `data_chief` | Data | 098 | Data platform, Database Studio |
@@ -182,6 +182,30 @@ Find the latest Cursor report and write the next Burt script.
 ```
 
 **MRID:** LB-AGENT-004
+
+**Department:** Engineering — internal capability; flow: generate → preview → approve → export to Cursor.
+
+---
+
+## Engineering specialists (LB-OS-012+ · planned)
+
+Routed by `engineering_chief`. Stub IDs in 012; full behavior in later slices.
+
+| id | Purpose |
+|----|---------|
+| `eng_architecture` | Structure, module graph, boundaries |
+| `eng_code_generation` | Drafts and patches (proposal-only) |
+| `eng_code_review` | Diff review, standards |
+| `eng_testing` | Test plans, coverage gaps |
+| `eng_documentation` | README, ADRs |
+| `eng_security` | Secrets, permissions surface |
+| `eng_performance` | Complexity, hot paths |
+| `eng_deployment` | Release readiness |
+| `eng_database` | Schema, migrations |
+| `eng_devops` | CI, env proposals |
+| `eng_build_planning` | Slices, MRIDs, sprint |
+
+**Spec:** [Engineering Department](./LOCALBRAIN_ENGINEERING_DEPARTMENT.md)
 
 ---
 

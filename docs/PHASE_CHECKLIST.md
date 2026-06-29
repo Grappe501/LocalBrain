@@ -38,9 +38,10 @@
 | `@localbrain/shared` foundation types | ✅ Contracts |
 
 | [Digital Asset Model](./LOCALBRAIN_DIGITAL_ASSET_MODEL.md) | ✅ Spec — LB-OS-006/007 |
+| [Engineering Department](./LOCALBRAIN_ENGINEERING_DEPARTMENT.md) | 📋 Spec locked — LB-OS-012 |
 | [Multi-Machine Network Plan](./LOCALBRAIN_MULTI_MACHINE_NETWORK_PLAN.md) | 📋 Future arc — LB-OS-107–114 |
 
-**Gate:** Next: **LB-OS-012** Code engineering studio.
+**Gate:** Next: **LB-OS-012** Engineering Department — [spec](./LOCALBRAIN_ENGINEERING_DEPARTMENT.md).
 
 ---
 
@@ -61,11 +62,11 @@
 | LB-OS-010 | Approval-gated file management | ✅ Complete — [Burt packet](./burt_packets/LB-OS-010.md) |
 | LB-OS-010.5 | Chief of Staff integration layer | ✅ Complete — [Burt packet](./burt_packets/LB-OS-010.5.md) |
 | LB-OS-011 | System health & operations center | ✅ Complete — [Burt packet](./burt_packets/LB-OS-011.md) |
-| LB-OS-012 | Code engineering studio | ⬜ PLANNED |
-| LB-OS-013 | Writing dashboard | ⬜ PLANNED |
-| LB-OS-014 | Social media drafting | ⬜ PLANNED |
-| LB-OS-015 | System optimization advisor | ⬜ PLANNED |
-| LB-OS-016 | Release candidate | ⬜ PLANNED |
+| LB-OS-012 | Engineering Department | 📋 Spec locked — [Burt packet](./burt_packets/LB-OS-012.md) · [Spec](./LOCALBRAIN_ENGINEERING_DEPARTMENT.md) |
+| LB-OS-013 | Writing Department | ⬜ PLANNED |
+| LB-OS-014 | Database Department | ⬜ PLANNED |
+| LB-OS-015 | Relationship Intelligence | ⬜ PLANNED |
+| LB-OS-016 | Executive OS V1 milestone | ⬜ PLANNED |
 
 **Gates:** Shell = 002 · **Modularity = 106** · Safe = 010 · V1 ship = 016
 
@@ -300,7 +301,7 @@ Steve = owner · Actions = approval-gated · Audit = always on (when team ships)
 
 | Date | Change |
 |------|--------|
-| 2026-06-28 | LB-OS-011 system health + status dock complete |
+| 2026-06-28 | LB-OS-012 redefined: Engineering Department (Code Studio = workspace); V1 tail 013–016 resequenced |
 | 2026-06-28 | Future arc: Multi-Machine & Cloud Archive (LB-OS-107–114) + 5 planning docs |
 | 2026-06-28 | Migration & Drive Doctrine + LB-OS-016–024 arc |
 | 2026-06-28 | PSP approved · LB-OS-002 READY · localbrain home · CFO briefing-only |
