@@ -132,12 +132,60 @@ a {
   font-weight: 700;
 }
 
+.command-bar__meta {
+  margin: 0;
+  padding: 0.25rem 1.25rem;
+  font-size: 0.75rem;
+  color: var(--shell-muted);
+  background: var(--shell-bg);
+}
+
+.command-bar__response-panel {
+  margin: 0;
+  padding: 0.75rem 1.25rem;
+  background: #eff6ff;
+  border-bottom: 1px solid #bfdbfe;
+}
+
+.command-bar__response-header {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 0.35rem;
+  font-size: 0.75rem;
+}
+
+.command-bar__intent {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.command-bar__intent--missing_key {
+  color: #b45309;
+}
+
+.command-bar__intent--error {
+  color: #b91c1c;
+}
+
+.command-bar__tokens {
+  color: #64748b;
+}
+
 .command-bar__response {
   margin: 0;
-  padding: 0.35rem 1.25rem;
-  font-size: 0.8rem;
-  background: #dbeafe;
-  color: #1e40af;
+  padding: 0;
+  font-size: 0.875rem;
+  background: transparent;
+  color: #1e3a8a;
+  line-height: 1.5;
+}
+
+.command-bar__context {
+  margin: 0.5rem 0 0;
+  font-size: 0.75rem;
+  color: #64748b;
 }
 
 .department-nav {

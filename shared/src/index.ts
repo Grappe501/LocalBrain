@@ -1,5 +1,11 @@
 export { APP_VERSION, type HealthResponse } from "./types.js";
 export type {
+  CommandActionClass,
+  CommandIntent,
+  CommandResponse,
+  CommandStatusResponse,
+} from "./command.js";
+export type {
   LivingWorkspace,
   WorkspaceEvent,
   WorkspaceEventType,

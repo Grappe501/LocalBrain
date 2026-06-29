@@ -1,24 +1,33 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import type { CommandResponse } from "@localbrain/shared";
+import { fetchCommandStatus, sendCommand } from "../api/command";
 import { useActiveWorkspace } from "../context/ActiveWorkspaceContext";
 import { useAppSettings } from "../context/AppSettingsContext";
 import { MOCK_SIGNAL_COUNT } from "../data/mockLocalbrainWorkspace";
 import { CommandPalette } from "./CommandPalette";
 
-type CommandStubResponse = {
-  intent: string;
-  message: string;
-};
-
 export function CommandBar() {
   const { workspace, loading } = useActiveWorkspace();
   const { setPaletteOpen } = useAppSettings();
   const [command, setCommand] = useState("");
-  const [lastResponse, setLastResponse] = useState<string | null>(null);
+  const [lastResponse, setLastResponse] = useState<CommandResponse | null>(null);
+  const [keyConfigured, setKeyConfigured] = useState<boolean | null>(null);
+  const [model, setModel] = useState<string>("");
+  const [submitting, setSubmitting] = useState(false);
 
   const pillId = workspace?.workspace_id ?? "localbrain";
   const pillTitle = workspace?.title ?? "LocalBrain";
   const pillFocus = workspace?.current_focus;
+
+  useEffect(() => {
+    void fetchCommandStatus()
+      .then((s) => {
+        setKeyConfigured(s.key_configured);
+        setModel(s.model);
+      })
+      .catch(() => setKeyConfigured(false));
+  }, []);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -34,20 +43,31 @@ export function CommandBar() {
   async function submitCommand(event: React.FormEvent) {
     event.preventDefault();
     const message = command.trim();
-    if (!message) return;
+    if (!message || submitting) return;
 
+    setSubmitting(true);
     try {
-      const res = await fetch("/api/command", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message }),
+      const data = await sendCommand({
+        message,
+        workspace_id: pillId,
       });
-      const data = (await res.json()) as CommandStubResponse;
-      setLastResponse(`${data.intent}: ${data.message}`);
+      setLastResponse(data);
     } catch {
-      setLastResponse("STUB: backend unavailable (start npm run dev)");
+      setLastResponse({
+        intent: "ERROR",
+        action_class: "general_query",
+        message: "Backend unavailable — start npm run dev",
+        key_configured: false,
+        model: null,
+        tokens_estimate: null,
+        context_used: [],
+        recommend_only: true,
+        logged: false,
+      });
+    } finally {
+      setSubmitting(false);
+      setCommand("");
     }
-    setCommand("");
   }
 
   return (
@@ -70,13 +90,18 @@ export function CommandBar() {
           <input
             type="text"
             className="command-bar__input"
-            placeholder="Command the OS… (Ctrl+Space for palette)"
+            placeholder={
+              keyConfigured === false
+                ? "Ask CoS (offline — set OPENAI_API_KEY)…"
+                : "Ask the Chief of Staff… (Ctrl+Space for palette)"
+            }
             value={command}
             onChange={(e) => setCommand(e.target.value)}
             aria-label="Chief of Staff command input"
+            disabled={submitting}
           />
-          <button type="submit" className="command-bar__submit">
-            Route
+          <button type="submit" className="command-bar__submit" disabled={submitting}>
+            {submitting ? "…" : "Ask CoS"}
           </button>
         </form>
 
@@ -89,10 +114,31 @@ export function CommandBar() {
         </button>
       </header>
 
+      <p className="command-bar__meta" role="status">
+        {keyConfigured === null
+          ? "CoS command layer · checking API key…"
+          : keyConfigured
+            ? `OpenAI ready · ${model || "default model"} · LB-OS-008`
+            : "OpenAI key not set — offline answers from workspace + asset registry"}
+      </p>
+
       {lastResponse ? (
-        <p className="command-bar__response" role="status">
-          Last command: {lastResponse}
-        </p>
+        <aside className="command-bar__response-panel" role="status">
+          <div className="command-bar__response-header">
+            <span className={`command-bar__intent command-bar__intent--${lastResponse.intent.toLowerCase()}`}>
+              {lastResponse.intent}
+            </span>
+            {lastResponse.tokens_estimate != null ? (
+              <span className="command-bar__tokens">~{lastResponse.tokens_estimate} tokens</span>
+            ) : null}
+          </div>
+          <p className="command-bar__response">{lastResponse.message}</p>
+          {lastResponse.context_used.length > 0 ? (
+            <p className="command-bar__context">
+              Context: {lastResponse.context_used.join(", ")}
+            </p>
+          ) : null}
+        </aside>
       ) : null}
 
       <CommandPalette />
