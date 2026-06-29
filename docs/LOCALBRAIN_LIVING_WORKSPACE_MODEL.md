@@ -55,6 +55,26 @@ Specialization is **`workspace_type`** + type-specific **`profile_json`** — no
 
 ---
 
+## Workspace DNA (LB-OS-021+)
+
+Executive Workspace Architecture extends LivingWorkspace with **immutable identity** — filesystem paths are projections, not owners:
+
+```txt
+Workspace ID · Mission (link) · Owner · Created · Purpose · Success Definition
+Filesystem Root (current + recommended via Blueprint)
+Knowledge Sources[] · Primary Department · Mission Category · Lifecycle · Health
+```
+
+See [Executive Workspace Architecture](./LOCALBRAIN_EXECUTIVE_WORKSPACE_ARCHITECTURE.md). Rule: **workspace owns folder — never the reverse.**
+
+Hierarchy:
+
+```txt
+Executive Mission → Living Workspace → Knowledge Sources → Digital Assets → Filesystem
+```
+
+---
+
 ## LivingWorkspace — full field model
 
 Every workspace **eventually** knows (004 implements core + stubs; links may be empty arrays):

@@ -159,11 +159,11 @@ See [Studio Blueprint](./LOCALBRAIN_STUDIO_BLUEPRINT.md) · [Command Layer](./LO
 | **LB-OS-019** | Full filesystem mapping audit | 018 | Inventory |
 | **LB-OS-020** | Executive consolidation briefing (Executive Intelligence) | 019 | Briefing · score · evidence providers · simulate |
 | **LB-OS-020.5** | Phase 1 integration pass (Question Registry) | 020 | EQ map · measurable cohesion · 021 gate |
-| **LB-OS-021** | H:/ project filing system builder | 020.5 | Filing taxonomy |
-| **LB-OS-022** | ChatGPT knowledge import pipeline | 021 | Import |
-| **LB-OS-023** | Project memory transfer engine | 022 | Memory |
-| **LB-OS-024** | Legacy folder reorganization assistant | 023 | Reorg proposals |
-| **LB-OS-025** | Personal system cutover plan | 024 | Cutover |
+| **LB-OS-021** | Executive workspace architecture builder | 020.5 | Workspace DNA · org tree · blueprints |
+| **LB-OS-022** | Digital land survey | 021 | Orphans · boundaries · survey complete |
+| **LB-OS-023** | Migration simulation | 022 | Dry-run batches · rollback preview |
+| **LB-OS-024** | Migration proposal builder | 023 | proposed_actions from simulations |
+| **LB-OS-025** | Cutover planner | 024 | Sign-off · domain replacements |
 | **LB-OS-026** | LocalBrain Personal OS launch | 025 | **Personal OS launch** |
 | **LB-OS-027** | OJT coding academy doctrine (embedded) | 016 | Academy start |
 | **LB-OS-028** | Build-along teaching mode | 027 | Teach toggle + closeouts |
@@ -1209,109 +1209,119 @@ Question Registry: 100% Phase 1 questions → one primary_route
 
 ---
 
-# LB-OS-021 — H:/ Project Filing System Builder
+# LB-OS-021 — Executive Workspace Architecture Builder
 
 **Depends on:** 020.5
 
-**Goal:** Standard filing taxonomy for H: projects.
+**Spec:** [Executive Workspace Architecture](./LOCALBRAIN_EXECUTIVE_WORKSPACE_ARCHITECTURE.md)
+
+**Goal:** Physical manifestation of the Executive OS — workspace owns folder, not reverse.
 
 **Build:**
 
 ```txt
-Filing templates per project type (ACU, campaign, civic, code)
-Propose folder creates/renames — proposed_actions only
-H:/ taxonomy doc generated for Steve review
+Workspace DNA (extends LivingWorkspace — identity · mission link · filesystem_root)
+Organization Tree (Steve → Projects/Campaigns/Creative/… — not raw folder tree)
+Workspace Blueprint per workspace (current/recommended root · confidence · impact · simulation flag)
+Digital Land Survey contract + initial pass (full survey in 022)
+Read-only · zero disk mutations
 ```
 
 **Exit criteria:**
 
 ```txt
-[ ] Templates defined for major projects
-[ ] Proposals require LB-OS-010 approval
+[ ] Blueprint generator from audit + registry + consolidation evidence
+[ ] Organization tree UI · EQ-014/EQ-015 routes
+[ ] Survey report API (orphans · conflicts · empty lots)
+[ ] Five Gates satisfied
 ```
 
-**Commit:** `feat: add H drive project filing system builder`
+**Commit:** `feat: add executive workspace architecture builder`
 
 ---
 
-# LB-OS-022 — ChatGPT Knowledge Import Pipeline
+# LB-OS-022 — Digital Land Survey
 
 **Depends on:** 021
 
-**Goal:** Import/map ChatGPT exports into project memory.
+**Spec:** [Executive Workspace Architecture](./LOCALBRAIN_EXECUTIVE_WORKSPACE_ARCHITECTURE.md)
+
+**Goal:** Complete land survey before any migration move.
 
 **Build:**
 
 ```txt
-Parse export JSON/Markdown
-Map threads → projects · index excerpts into file_index / memory tables
-Import voice/strategy fragments to writing_voices
-Scan exports for secrets — block patterns
+Full survey: existing folders · workspace ownership · orphans · boundary conflicts
+Naming inconsistencies · empty namespace · future expansion capacity
+Survey report UI · links to blueprints · read-only
 ```
 
 **Exit criteria:**
 
 ```txt
-[ ] Sample export imports successfully
-[ ] Content searchable by project
-[ ] No secrets imported
+[ ] Survey covers approved H: trees from LB-OS-019
+[ ] Every orphan and conflict listed with workspace recommendation
+[ ] Zero moves
 ```
 
-**Commit:** `feat: add ChatGPT knowledge import pipeline`
+**Commit:** `feat: add digital land survey for workspace migration`
 
 ---
 
-# LB-OS-023 — Project Memory Transfer Engine
+# LB-OS-023 — Migration Simulation
 
 **Depends on:** 022
 
-**Goal:** Transfer Cursor reports, build docs, handoffs into unified memory.
+**Goal:** Dry-run migration batches from blueprints.
 
 **Build:**
 
 ```txt
-Detect: CLOSEOUT, REPORT, HANDOFF, REGISTRY, QUEUE files on H:
-Link to project registry · searchable memory graph
-requirements + old plans indexed
+Simulate recommended root changes · batch moves · renames (preview only)
+Impact: files · folders · broken refs · workspace integrity
+Reuse consolidation simulation patterns (LB-OS-020)
+Link simulation → workspace · mission · EQ
 ```
 
 **Exit criteria:**
 
 ```txt
-[ ] ACU Cursor reports mapped and searchable
-[ ] Build docs linked to projects
+[ ] Simulation produces zero filesystem changes
+[ ] Each batch traceable to Workspace Blueprint
+[ ] Rollback preview documented per batch
 ```
 
-**Commit:** `feat: add project memory transfer engine`
+**Commit:** `feat: add migration simulation for workspace architecture`
 
 ---
 
-# LB-OS-024 — Legacy Folder Reorganization Assistant
+# LB-OS-024 — Migration Proposal Builder
 
 **Depends on:** 023
 
-**Goal:** Execute approved reorg from plans (020–021) in batches.
+**Goal:** Generate proposed_actions from approved simulations.
 
 **Build:**
 
 ```txt
-Batch move executor — uses approval plans only
-Preview each batch · backup · log · rollback path
-AI assistant explains each batch before submit
+Proposal generator from simulation results
+Batch preview · backup plan · log schema
+AI explains each batch before submit (assistant copy only)
 ```
 
 **Exit criteria:**
 
 ```txt
-[ ] Reorg runs only from approved plan
-[ ] Every batch logged + backed up
+[ ] Proposals require LB-OS-010 approval
+[ ] Every proposal links workspace_id + blueprint_id + simulation_id
+[ ] No execution in this slice
 ```
 
-**Commit:** `feat: add legacy folder reorganization assistant`
+**Commit:** `feat: add migration proposal builder`
 
 ---
 
-# LB-OS-025 — Personal System Cutover Plan
+# LB-OS-025 — Cutover Planner
 
 **Depends on:** 024
 
@@ -1320,9 +1330,10 @@ AI assistant explains each batch before submit
 **Build:**
 
 ```txt
-Cutover checklist doc generator
+Cutover checklist generator
 Per-domain: ChatGPT · Cursor · Explorer · Notion replacements
 Rollback plan if cutover fails
+Executive Workspace Architecture acceptance gate
 ```
 
 **Exit criteria:**
@@ -1330,9 +1341,10 @@ Rollback plan if cutover fails
 ```txt
 [ ] Checklist complete and signed off by Steve
 [ ] Rollback documented
+[ ] All blueprints reviewed against survey
 ```
 
-**Commit:** `feat: add personal system cutover plan`
+**Commit:** `feat: add personal os cutover planner`
 
 ---
 
@@ -1340,33 +1352,36 @@ Rollback plan if cutover fails
 
 **Depends on:** 025
 
-**Goal:** Personal OS launch — digital life mapped and preserved.
+**Goal:** Personal OS launch — workspace-first · mission-traceable.
 
 **Build:**
 
 ```txt
-Final acceptance against migration + OS doctrine
+Final acceptance against migration + workspace architecture doctrine
 Launch notes · operator guide update
 Mark LocalBrain primary for Steve's H: work world
+Execute approved proposals only (from 024 queue — batched)
 ```
 
 **North star:**
 
 ```txt
 LocalBrain maps, reorganizes, and preserves Steve's digital life —
-then becomes the primary interface for managing it going forward.
+workspace-first — then becomes the primary interface.
 ```
 
 **Exit criteria:**
 
 ```txt
-[ ] Migration inventory complete
-[ ] Knowledge import verified
+[ ] Workspace architecture accepted
+[ ] Digital land survey complete
 [ ] Steve uses LocalBrain as first-open app for H: work
-[ ] ChatGPT/Cursor/Explorer reduced for mapped domains
+[ ] Approved migration batches executed with backup + log
 ```
 
-**Commit:** `feat: LocalBrain personal OS launch`
+**Commit:** `feat: personal os launch milestone`
+
+**Deferred (Phase 2 import arc):** ChatGPT knowledge import · project memory transfer — not blocking 026.
 
 ---
 

@@ -119,11 +119,11 @@ See [Safety Model § Migration & Reorganization](./LOCALBRAIN_SAFETY_MODEL.md#15
 | LB-OS-019 | Full filesystem mapping audit |
 | LB-OS-020 | Executive consolidation briefing (first Executive Intelligence) |
 | LB-OS-020.5 | Phase 1 integration pass |
-| LB-OS-021 | H:/ project filing system builder |
-| LB-OS-022 | ChatGPT knowledge import pipeline |
-| LB-OS-023 | Project memory transfer engine |
-| LB-OS-024 | Legacy folder reorganization assistant |
-| LB-OS-025 | Personal system cutover plan |
+| LB-OS-021 | Executive workspace architecture builder |
+| LB-OS-022 | Digital land survey |
+| LB-OS-023 | Migration simulation |
+| LB-OS-024 | Migration proposal builder |
+| LB-OS-025 | Cutover planner |
 | LB-OS-026 | LocalBrain Personal OS launch |
 
 **Depends on:** LB-OS-016 (V1) and LB-OS-017 (AI provider spine) complete.
@@ -174,54 +174,50 @@ Do not rush 021 until metric gate passes
 
 Spec: [Phase 1 Integration Pass](./LOCALBRAIN_PHASE1_INTEGRATION_PASS.md) · [Executive Question Registry](./LOCALBRAIN_EXECUTIVE_QUESTION_REGISTRY.md)
 
-### LB-OS-021 — H:/ Project Filing System Builder
+### LB-OS-021 — Executive Workspace Architecture Builder
+
+**Not a folder builder.** Workspace owns `filesystem_root` — folders are projection.
 
 ```txt
-Standard folder taxonomy for H: projects
-Apply filing templates (ACU, campaigns, etc.)
-Propose renames/moves — approval only
+Hierarchy: Mission → Living Workspace → Knowledge Sources → Digital Assets → Filesystem
+Workspace DNA · Organization Tree · Workspace Blueprints (read-only)
+Digital Land Survey contract · zero disk mutations
+Spec: LOCALBRAIN_EXECUTIVE_WORKSPACE_ARCHITECTURE.md
 ```
 
-### LB-OS-022 — ChatGPT Knowledge Import Pipeline
+### LB-OS-022 — Digital Land Survey
 
 ```txt
-Parse ChatGPT exports (JSON/Markdown)
-Map conversations → projects · index excerpts
-Import writing voices + strategy fragments
-Never import secrets from exports blindly
+Full survey: folders · ownership · orphans · boundaries · naming · empty lots · expansion capacity
+Read-only · precedes any move
 ```
 
-### LB-OS-023 — Project Memory Transfer Engine
+### LB-OS-023 — Migration Simulation
 
 ```txt
-Cursor reports · build docs · requirements · handoffs
-Link to project folders in registry
-Searchable project memory in SQLite
+Dry-run batches from blueprints · impact · rollback preview · zero execution
 ```
 
-### LB-OS-024 — Legacy Folder Reorganization Assistant
+### LB-OS-024 — Migration Proposal Builder
 
 ```txt
-AI-assisted reorg proposals from inventory + map
-Step-by-step move batches with preview
-Rollback via backups + quarantine
+proposed_actions from approved simulations · LB-OS-010 approval gate
+Traceable: workspace → blueprint → simulation
 ```
 
-### LB-OS-025 — Personal System Cutover Plan
+### LB-OS-025 — Cutover Planner
 
 ```txt
-Checklist: what moves to LocalBrain-first workflow
-ChatGPT/Cursor/Explorer deprecation plan per domain
-Steve sign-off document
+Sign-off checklist · domain replacements (ChatGPT/Cursor/Explorer) · rollback plan
 ```
 
-### LB-OS-026 — LocalBrain Personal OS Launch
+### LB-OS-026 — Personal OS Launch
 
 ```txt
-Migration complete · LocalBrain primary interface
-Full acceptance · celebration closeout
-Steve lives in LocalBrain daily
+LocalBrain primary · execute approved proposals only · workspace-first acceptance
 ```
+
+**Deferred (Phase 2 import arc):** ChatGPT knowledge import · project memory transfer — not blocking Personal OS launch.
 
 ---
 

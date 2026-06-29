@@ -168,7 +168,7 @@ Experience Maturity L0–L5 on every route · Dev mode shows badges; production 
 5. Executive Leverage (increases Steve's effectiveness)
 ```
 
-**Phase 1 discipline:** No new top-level concepts until LB-OS-026. Complete 021–026 · tighten UX · H: filing · migration cutover · GPU prep without architecture churn.
+**Phase 1 discipline:** No new top-level concepts until LB-OS-026. Complete 021–026 (Executive Workspace Architecture arc) · GPU prep without architecture churn.
 
 ---
 
@@ -192,6 +192,7 @@ Experience Maturity L0–L5 on every route · Dev mode shows badges; production 
 ```text
 LOCALBRAIN_CONSTITUTION.md          ← you are here
 ├── LOCALBRAIN_FOUR_SYSTEMS.md      ← architecture lock (4+1 systems · Phase 4 complete)
+├── LOCALBRAIN_EXECUTIVE_WORKSPACE_ARCHITECTURE.md (LB-OS-021 · Workspace DNA · blueprints)
 ├── LOCALBRAIN_FIVE_GATES_RULE.md   ← admission checklist (Article XI)
 ├── LOCALBRAIN_ASSUMPTION_LEDGER.md ← premises ledger (Article XII)
 ├── LOCALBRAIN_KNOWLEDGE_TAXONOMY.md (Operational · Executive · Domain)

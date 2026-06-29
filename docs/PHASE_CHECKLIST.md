@@ -61,7 +61,18 @@
 | [Platform Separation Strategy](./LOCALBRAIN_PLATFORM_SEPARATION_STRATEGY.md) — Platform vs Brain boundary | ✅ Planning — 2026-06-28 |
 | [Multi-Machine Network Plan](./LOCALBRAIN_MULTI_MACHINE_NETWORK_PLAN.md) | 📋 Future arc — LB-OS-107–114 |
 
-**Gate:** LB-OS-020.5 ✅ · Next: **LB-OS-021** — H:/ project filing system builder (integration gate passed).
+**Gate:** LB-OS-020.5 ✅ · Next: **LB-OS-021** — Executive Workspace Architecture Builder (integration gate passed).
+
+**Phase 1 finish arc:**
+
+```txt
+021  Executive Workspace Architecture
+022  Digital Land Survey
+023  Migration Simulation
+024  Migration Proposal Builder
+025  Cutover Planner
+026  Personal OS Launch
+```
 
 ---
 
@@ -114,11 +125,11 @@
 | LB-OS-019.7 | Experience Maturity (ENG-EXP-001) | ✅ Complete — [Burt packet](./burt_packets/LB-OS-019.7.md) |
 | LB-OS-020 | Executive consolidation briefing (first Executive Intelligence) | ✅ Complete — [Spec](./LOCALBRAIN_CONSOLIDATION_PLANNER.md) · [Burt](./burt_packets/LB-OS-020.md) |
 | LB-OS-020.5 | Phase 1 integration pass — executive OS cohesion | ✅ Complete — [Spec](./LOCALBRAIN_PHASE1_INTEGRATION_PASS.md) · [Burt](./burt_packets/LB-OS-020.5.md) |
-| LB-OS-021 | H:/ project filing system builder | 📋 Next |
-| LB-OS-022 | ChatGPT knowledge import pipeline | ⬜ PLANNED |
-| LB-OS-023 | Project memory transfer engine | ⬜ PLANNED |
-| LB-OS-024 | Legacy folder reorganization assistant | ⬜ PLANNED |
-| LB-OS-025 | Personal system cutover plan | ⬜ PLANNED |
+| LB-OS-021 | Executive workspace architecture builder | 📋 Next — [Spec](./LOCALBRAIN_EXECUTIVE_WORKSPACE_ARCHITECTURE.md) · [Burt](./burt_packets/LB-OS-021.md) |
+| LB-OS-022 | Digital land survey | ⬜ PLANNED |
+| LB-OS-023 | Migration simulation | ⬜ PLANNED |
+| LB-OS-024 | Migration proposal builder | ⬜ PLANNED |
+| LB-OS-025 | Cutover planner | ⬜ PLANNED |
 | LB-OS-026 | LocalBrain Personal OS launch | ⬜ PLANNED |
 
 **Gates:** Migration = 018–025 · Personal OS = 026

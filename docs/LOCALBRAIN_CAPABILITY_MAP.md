@@ -140,15 +140,16 @@ H:/ = work projects, data, archives, documents, repos, media, storage
 | Migration planner (drive doctrine) | LB-OS-018 |
 | Executive consolidation briefing (Executive Intelligence) | **LB-OS-020** |
 | Phase 1 integration pass | **LB-OS-020.5** |
-| ChatGPT export import | LB-OS-022 |
-| Project memory transfer | LB-OS-021 |
-| Legacy reorg assistant | LB-OS-022 |
-| Personal cutover plan | LB-OS-023 |
-| Personal OS launch | LB-OS-024 |
+| Executive workspace architecture | **LB-OS-021** |
+| Digital land survey | LB-OS-022 |
+| Migration simulation | LB-OS-023 |
+| Migration proposal builder | LB-OS-024 |
+| Cutover planner | LB-OS-025 |
+| Personal OS launch | LB-OS-026 |
 
-**Imports/maps:** ChatGPT exports, Cursor reports, build docs, voices, requirements, handoffs.
+**Deferred (Phase 2 import arc):** ChatGPT export import · project memory transfer.
 
-**Rule:** inventory → map → report → plan → approve → act. **No auto cleanup.**
+**Rule:** workspace blueprint → survey → simulate → propose → approve → act. **Filesystem is last layer.**
 
 **Doc:** [Migration & Drive Doctrine](./LOCALBRAIN_MIGRATION_AND_DRIVE_DOCTRINE.md)
 

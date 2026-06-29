@@ -144,8 +144,8 @@ Photography · Podcast · CFO · CRM · GIS · Census · Campaigns · Calendar �
 
 ```text
 Now        → LB-OS-020 (Executive Intelligence — consolidation briefing)
-Next       → LB-OS-021 (H:/ filing system builder — integration gate passed at 020.5)
-Then       → LB-OS-021–026 (Phase 1 exit — Personal OS)
+Next       → LB-OS-021 (Executive Workspace Architecture Builder — integration gate passed at 020.5)
+Then       → LB-OS-021–026 (workspace-first migration arc · Personal OS)
 After      → Phase 2: System Evolution, ELS, CoS learning, dept L3+
 Later      → Phase 3: new departments on intelligent core
 ```
@@ -203,4 +203,4 @@ The current **Phase 3 — Build the Company** slice arc delivers Organization Pl
 
 [Four Platform Systems](./LOCALBRAIN_FOUR_SYSTEMS.md) declares the architecture **feature-complete through Phase 4**. Four cooperating systems today; Executive Organization OS later. New capabilities map to one system — not new pillars.
 
-**Phase 1 discipline (next several weeks):** No new top-level concepts. Complete **LB-OS-021–026** · tighten integration and UX · H: filing · migration · Personal OS cutover · GPU transition prep **without** architecture churn. Every slice passes [Five Gates](./LOCALBRAIN_FIVE_GATES_RULE.md).
+**Phase 1 discipline (next several weeks):** No new top-level concepts. Complete **LB-OS-021–026** (Executive Workspace Architecture → Personal OS) · tighten integration and UX · GPU transition prep **without** architecture churn. Every slice passes [Five Gates](./LOCALBRAIN_FIVE_GATES_RULE.md).

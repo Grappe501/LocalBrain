@@ -111,7 +111,7 @@ Pure construction visibility (EPO internals) passes via Gate 4 as EQ-002 — not
 
 ## Phase 1 focus (binding)
 
-**No new top-level concepts** until LB-OS-026 closes. Apply Five Gates to **021–026** slices only. Tighten integration · UX · H: filing · migration · Personal OS cutover · GPU prep **without** architecture churn.
+Apply Five Gates to **021–026** slices only. Executive Workspace Architecture arc · GPU prep **without** architecture churn.
 
 ---
 
