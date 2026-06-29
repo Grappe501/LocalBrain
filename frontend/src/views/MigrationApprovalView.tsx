@@ -164,6 +164,8 @@ export function MigrationApprovalView() {
         <p className="migration__link-row">
           <Link to="/migration/planning">Planning (024) →</Link>
           {" · "}
+          <Link to="/migration/cutover">Cutover (026) →</Link>
+          {" · "}
           <Link to="/migration/proof">Proof (023) →</Link>
         </p>
         <ul className="migration__guardrails">

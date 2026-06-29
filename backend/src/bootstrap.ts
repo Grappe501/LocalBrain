@@ -17,6 +17,7 @@ import { migrateFilesystemAuditTables } from "./migration/fsAudit/migrate.js";
 import { migrateProofTables } from "./migration/proof/migrate.js";
 import { migratePlanningTables } from "./migration/planning/migrate.js";
 import { migrateApprovalTables } from "./migration/approval/migrate.js";
+import { migrateCutoverTables } from "./migration/cutover/migrate.js";
 import { migrateConsolidationTables } from "./consolidation/consolidationScore.js";
 import { migrateProviderTables } from "./providers/migrate.js";
 import { initPermissionEngine } from "./safety/permissionEngine.js";
@@ -42,6 +43,7 @@ export function bootstrapApp(): void {
   migrateProofTables();
   migratePlanningTables();
   migrateApprovalTables();
+  migrateCutoverTables();
   migrateConsolidationTables();
   migrateFileReadLogTable();
   migrateActionTables();

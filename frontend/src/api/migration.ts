@@ -7,6 +7,9 @@ import type {
   MigrationApprovalPackage,
   MigrationApprovalRejectRequest,
   MigrationApprovalSignRequest,
+  MigrationCutoverOverview,
+  MigrationCutoverRun,
+  CutoverPreflightResult,
   MigrationPlan,
   MigrationPlanGenerateResponse,
   MigrationPlanOverview,
@@ -154,4 +157,54 @@ export async function rejectMigrationApproval(
     throw new Error(err.error ?? "Reject failed");
   }
   return res.json() as Promise<MigrationApprovalPackage>;
+}
+
+export async function fetchMigrationCutover(): Promise<MigrationCutoverOverview> {
+  const res = await fetch(`${API}/migration/cutover`);
+  if (!res.ok) throw new Error("Failed to load migration cutover");
+  return res.json() as Promise<MigrationCutoverOverview>;
+}
+
+export async function runMigrationCutoverPreflight(
+  approvalId: string,
+): Promise<CutoverPreflightResult> {
+  const res = await fetch(`${API}/migration/cutover/preflight`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ approval_id: approvalId }),
+  });
+  if (!res.ok) {
+    const err = (await res.json().catch(() => ({}))) as { error?: string };
+    throw new Error(err.error ?? "Preflight failed");
+  }
+  return res.json() as Promise<CutoverPreflightResult>;
+}
+
+export async function runMigrationCutover(approvalId: string): Promise<MigrationCutoverRun> {
+  const res = await fetch(`${API}/migration/cutover/run`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ approval_id: approvalId }),
+  });
+  if (!res.ok) {
+    const err = (await res.json().catch(() => ({}))) as { error?: string };
+    throw new Error(err.error ?? "Cutover run failed");
+  }
+  return res.json() as Promise<MigrationCutoverRun>;
+}
+
+export async function rollbackMigrationCutover(
+  cutoverId: string,
+  reason?: string,
+): Promise<MigrationCutoverRun> {
+  const res = await fetch(`${API}/migration/cutover/rollback`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ cutover_id: cutoverId, reason }),
+  });
+  if (!res.ok) {
+    const err = (await res.json().catch(() => ({}))) as { error?: string };
+    throw new Error(err.error ?? "Rollback failed");
+  }
+  return res.json() as Promise<MigrationCutoverRun>;
 }

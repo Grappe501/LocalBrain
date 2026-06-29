@@ -24,6 +24,13 @@ import {
   rejectMigrationApproval,
   signMigrationApproval,
 } from "../migration/approval/executiveApprovalService.js";
+import {
+  getMigrationCutoverById,
+  getMigrationCutoverOverview,
+  rollbackMigrationCutover,
+  runMigrationCutover,
+  runMigrationCutoverPreflight,
+} from "../migration/cutover/cutoverService.js";
 
 export const migrationRouter = Router();
 
@@ -175,4 +182,56 @@ migrationRouter.post("/migration/approvals/:approvalId/reject", (req, res) => {
   } catch (e) {
     res.status(400).json({ error: e instanceof Error ? e.message : "Reject failed" });
   }
+});
+
+migrationRouter.get("/migration/cutover", (_req, res) => {
+  res.json(getMigrationCutoverOverview());
+});
+
+migrationRouter.post("/migration/cutover/preflight", (req, res) => {
+  try {
+    const body = (req.body ?? {}) as { approval_id?: string };
+    if (!body.approval_id) {
+      res.status(400).json({ error: "approval_id required" });
+      return;
+    }
+    res.json(runMigrationCutoverPreflight(body.approval_id));
+  } catch (e) {
+    res.status(400).json({ error: e instanceof Error ? e.message : "Preflight failed" });
+  }
+});
+
+migrationRouter.post("/migration/cutover/run", (req, res) => {
+  try {
+    const body = (req.body ?? {}) as { approval_id?: string };
+    if (!body.approval_id) {
+      res.status(400).json({ error: "approval_id required" });
+      return;
+    }
+    res.status(201).json(runMigrationCutover(body.approval_id));
+  } catch (e) {
+    res.status(400).json({ error: e instanceof Error ? e.message : "Cutover run failed" });
+  }
+});
+
+migrationRouter.post("/migration/cutover/rollback", (req, res) => {
+  try {
+    const body = (req.body ?? {}) as { cutover_id?: string; reason?: string };
+    if (!body.cutover_id) {
+      res.status(400).json({ error: "cutover_id required" });
+      return;
+    }
+    res.json(rollbackMigrationCutover(body.cutover_id, body.reason));
+  } catch (e) {
+    res.status(400).json({ error: e instanceof Error ? e.message : "Rollback failed" });
+  }
+});
+
+migrationRouter.get("/migration/cutover/:cutoverId", (req, res) => {
+  const run = getMigrationCutoverById(req.params.cutoverId);
+  if (!run) {
+    res.status(404).json({ error: "Cutover run not found" });
+    return;
+  }
+  res.json(run);
 });

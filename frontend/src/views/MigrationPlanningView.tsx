@@ -155,6 +155,8 @@ export function MigrationPlanningView() {
           <Link to="/migration/digital-land-survey">Land Survey (022) →</Link>
           {" · "}
           <Link to="/migration/approval">Executive Approval (025) →</Link>
+          {" · "}
+          <Link to="/migration/cutover">Cutover (026) →</Link>
         </p>
         <div className="migration__actions-bar">
           <button type="button" disabled={generating} onClick={() => void handleGenerate()}>

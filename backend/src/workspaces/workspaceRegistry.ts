@@ -224,6 +224,35 @@ export function createWorkspace(input: {
   return ws;
 }
 
+export function updateWorkspaceFilesystemRoots(
+  workspaceId: string,
+  roots: string[],
+): LivingWorkspace | { error: string } {
+  const ws = getWorkspace(workspaceId);
+  if (!ws) return { error: "Workspace not found" };
+
+  const validation = validateFilesystemRoots(roots);
+  if (!validation.ok) return { error: validation.reason };
+
+  const updated: LivingWorkspace = {
+    ...ws,
+    filesystem_roots: validation.normalized,
+    updated_at: new Date().toISOString(),
+  };
+
+  upsertWorkspace(updated);
+  syncFilesystemRootsToAllowedFolders();
+
+  appendWorkspaceEvent({
+    workspace_id: workspaceId,
+    event_type: "filesystem_root_added",
+    title: "Filesystem projection updated",
+    detail: `Cutover verification applied projection: ${validation.normalized.join(", ")}`,
+  });
+
+  return updated;
+}
+
 export function syncFilesystemRootsToAllowedFolders(): void {
   const db = getDatabase();
   const insert = db.prepare(

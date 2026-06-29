@@ -14,8 +14,12 @@ export function getQuarantineDir(): string {
   return path.join(getLocalDataDir(), "quarantine");
 }
 
+export function getCutoverRunsDir(): string {
+  return path.join(getLocalDataDir(), "cutover_runs");
+}
+
 export function ensureActionStorageDirs(): void {
-  for (const dir of [getLocalDataDir(), getBackupDir(), getQuarantineDir()]) {
+  for (const dir of [getLocalDataDir(), getBackupDir(), getQuarantineDir(), getCutoverRunsDir()]) {
     fs.mkdirSync(dir, { recursive: true });
   }
 }

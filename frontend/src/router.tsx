@@ -17,6 +17,7 @@ import { DigitalLandSurveyView } from "./views/DigitalLandSurveyView";
 import { MigrationProofView } from "./views/MigrationProofView";
 import { MigrationPlanningView } from "./views/MigrationPlanningView";
 import { MigrationApprovalView } from "./views/MigrationApprovalView";
+import { MigrationCutoverView } from "./views/MigrationCutoverView";
 import { SettingsPage } from "./views/SettingsPage";
 import { LazyModuleRoute } from "./views/LazyModuleRoute";
 
@@ -43,6 +44,7 @@ export function AppRouter() {
         <Route path="migration/proof" element={<MigrationProofView />} />
         <Route path="migration/planning" element={<MigrationPlanningView />} />
         <Route path="migration/approval" element={<MigrationApprovalView />} />
+        <Route path="migration/cutover" element={<MigrationCutoverView />} />
         <Route path="settings" element={<SettingsPage />} />
         {!loading &&
           departmentModules.flatMap((m) =>

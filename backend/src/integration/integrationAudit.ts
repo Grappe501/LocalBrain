@@ -31,6 +31,7 @@ export const EXECUTIVE_SHELL_ROUTES = [
   "/migration/proof",
   "/migration/planning",
   "/migration/approval",
+  "/migration/cutover",
   "/workspace/:workspaceId",
   "/studio/engineering",
   "/studio/writing",

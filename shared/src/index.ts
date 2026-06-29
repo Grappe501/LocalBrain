@@ -306,10 +306,31 @@ export type {
   RollbackAcknowledgement,
   SignOffChecklistItem,
 } from "./migrationApproval.js";
-export {
-  MIGRATION_APPROVAL_CORE_RULE,
+export { MIGRATION_APPROVAL_CORE_RULE,
   MIGRATION_APPROVAL_ENGINE_ID,
 } from "./migrationApproval.js";
+export type {
+  CutoverExecutionStep,
+  CutoverPreflightCheck,
+  CutoverPreflightResult,
+  CutoverRollbackStep,
+  CutoverRunRequest,
+  CutoverRollbackRequest,
+  CutoverRunStatus,
+  CutoverStepStatus,
+  CutoverVerificationCheck,
+  FailureRecoveryStatus,
+  MigrationCutoverOverview,
+  MigrationCutoverRun,
+  PersonalOsLaunchChecklistItem,
+  Phase1LaunchReport,
+  VerificationCheckStatus,
+} from "./migrationCutover.js";
+export {
+  MIGRATION_CUTOVER_CORE_RULE,
+  MIGRATION_CUTOVER_ENGINE_ID,
+  MIGRATION_CUTOVER_VERIFICATION_RULE,
+} from "./migrationCutover.js";
 export type {
   PlanConstraint,
   PlanConstraintStatus,

@@ -27,6 +27,8 @@ local_data/backups/*
 !local_data/backups/.gitkeep
 local_data/quarantine/*
 !local_data/quarantine/.gitkeep
+local_data/cutover_runs/*
+!local_data/cutover_runs/.gitkeep
 local_data/project_profiles/*
 !local_data/project_profiles/.gitkeep
 

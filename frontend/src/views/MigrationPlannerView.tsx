@@ -89,6 +89,8 @@ export function MigrationPlannerView() {
           <Link to="/migration/planning">Migration Planning (LB-OS-024) →</Link>
           {" · "}
           <Link to="/migration/approval">Executive Approval (LB-OS-025) →</Link>
+          {" · "}
+          <Link to="/migration/cutover">Cutover (LB-OS-026) →</Link>
           {plan.inventory_gate ? (
             <span className="migration__gate-ok"> · Inventory gate complete</span>
           ) : null}

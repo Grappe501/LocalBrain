@@ -3732,6 +3732,58 @@ a {
   margin-top: 0.5rem;
 }
 
+/* LB-OS-026 — Migration Cutover */
+.cutover__verification-rule {
+  color: #475569;
+  font-style: italic;
+}
+
+.cutover-controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.cutover-controls select {
+  padding: 0.4rem;
+  max-width: 420px;
+}
+
+.cutover-controls__empty {
+  color: #64748b;
+}
+
+.cutover-check--pass {
+  color: #166534;
+}
+
+.cutover-check--warn {
+  color: #854d0e;
+}
+
+.cutover-check--fail {
+  color: #991b1b;
+}
+
+.cutover-step--completed {
+  color: #166534;
+}
+
+.cutover-step--failed {
+  color: #991b1b;
+}
+
+.cutover-step--deferred {
+  color: #64748b;
+}
+
+.cutover-launch-report__ready {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
 /* LB-OS-020 — Executive Consolidation Briefing + EIC */
 .consolidation {
   max-width: 960px;
