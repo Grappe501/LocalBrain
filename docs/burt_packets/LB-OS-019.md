@@ -37,6 +37,8 @@ GET /api/migration/audit/export   — migration_inventory.json
 
 `/migration/audit` — FilesystemAuditView
 
+**Next slice:** [LB-OS-020 Evidence-Based Consolidation Planner](./LB-OS-020.md)
+
 ---
 
 ## Commit
