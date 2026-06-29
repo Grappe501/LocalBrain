@@ -188,9 +188,12 @@ Spec: LOCALBRAIN_EXECUTIVE_WORKSPACE_ARCHITECTURE.md · LOCALBRAIN_THREE_WORLDS_
 ### LB-OS-022 — Digital Land Survey
 
 ```txt
-Physical World survey (H · C · future providers) + logical projection bindings
-Orphans · boundaries · naming · empty namespace · expansion capacity
-Read-only · precedes any move
+Geographic survey of Physical World — not merely inventory (019)
+DigitalLandSurveyReport: topology · utilization · ownership · coverage
+Orphans · duplicates · empty chains · oversized media · archive candidates
+Activity signals · migration complexity · projection coverage (Location-aware)
+Read-only · Map the estate. Do not change the estate.
+Spec: LOCALBRAIN_DIGITAL_LAND_SURVEY.md
 ```
 
 ### LB-OS-023 — Migration Simulation

@@ -1,11 +1,12 @@
 import { randomUUID } from "node:crypto";
 import path from "node:path";
-import type {
-  FilesystemMappingAudit,
-  LivingWorkspace,
-  Projection,
-  WorkspaceBlueprint,
-  WorkspaceDNA,
+import {
+  DEFAULT_PRIMARY_LOCATION,
+  type FilesystemMappingAudit,
+  type LivingWorkspace,
+  type Projection,
+  type WorkspaceBlueprint,
+  type WorkspaceDNA,
 } from "@localbrain/shared";
 import {
   missionCategoryForWorkspace,
@@ -33,6 +34,7 @@ export function buildProjection(
 ): Projection {
   return {
     projection_id: randomUUID(),
+    ...DEFAULT_PRIMARY_LOCATION,
     logical_type: "living_workspace",
     logical_id: ws.workspace_id,
     projection_kind: "filesystem_root",

@@ -95,25 +95,59 @@ Three years from now: H: + GPU + Google Drive + NAS + USB + cloud — **Executiv
 
 ```txt
 Projection {
-  logical_type       — living_workspace · knowledge_source · digital_asset · memory · relationship · …
-  logical_id         — stable id in Logical World
-  projection_kind    — filesystem_root · sqlite_db · physical_file · contact_record · …
-  physical_ref       — path · URI · provider_id + relative_path · device label
+  logical_type        — living_workspace · knowledge_source · digital_asset · memory · relationship · …
+  logical_id          — stable id in Logical World
+  location_id         — stable semantic slot within workspace footprint
+  location_label      — human label (e.g. Primary Development · Documentation · GPU Training Data)
+  location_role       — primary · documentation · media · database · backup · archive · training · sync · general
+  projection_kind     — filesystem_root · sqlite_db · physical_file · contact_record · …
   storage_provider_id — optional (future) · null = legacy direct path
-  status             — active · stale · missing · planned
+  physical_ref        — path · URI · provider_id + relative_path · device label
+  status              — active · stale · missing · planned
   observed_at
 }
+```
+
+### Location (Projection Layer — not a foundational object)
+
+**Location** is the semantic slot between Projection and Physical storage. It answers *what role* bytes play in a workspace — not *where* they live today.
+
+```txt
+Workspace:     ContactListSOS          (Logical World — never changes)
+Location:      Primary Development     (semantic slot — stable across migrations)
+Provider:      Windows Local           (Physical World — swappable)
+Physical ref:  H:\Projects\Campaigns\ContactListSOS
+```
+
+Same Location after migration:
+
+```txt
+Location:      Primary Development     (unchanged)
+Provider:      NAS
+Physical ref:  \\Server\Projects\Campaigns\ContactListSOS
+```
+
+**Multiple projections per workspace:** one logical workspace may bind many locations (Source Code · Documentation · Images · Database · Backups · Cloud Archive · GPU Training Data). Phase 1 migration arc defaults filesystem roots to `Primary Development`; 022 surveys projection coverage across roles.
+
+```txt
+Workspace
+      ↓
+Projection (kind + status)
+      ↓
+Location (semantic slot)
+      ↓
+Storage Provider
+      ↓
+Physical Path
 ```
 
 ### Examples
 
 ```txt
-Living Workspace  →  Filesystem Root     H:\Projects\RedDirt  (today)
-Living Workspace  →  Filesystem Root     provider:primary · Projects\Campaigns\RedDirt  (future)
-Knowledge Source  →  SQLite              localbrain.db
-Digital Asset     →  Physical File       H:\…\chapter-07.docx
-Memory            →  Storage             memory_entries table + optional file ref
-Relationship      →  Contact Record      CRM row · vCard path
+Living Workspace  →  Location: Primary Development  →  Provider: primary  →  H:\Projects\RedDirt
+Living Workspace  →  Location: Documentation        →  Provider: primary  →  H:\Projects\RedDirt\docs
+Knowledge Source  →  Location: Database              →  SQLite localbrain.db
+Digital Asset     →  Physical File                   →  H:\…\chapter-07.docx
 ```
 
 **Migration is translation:** change projection, not workspace identity.
@@ -164,20 +198,24 @@ Commercialization: one customer has `C:`/`D:`; another Mac + external SSD; anoth
 
 ## Digital Land Survey (Physical World survey)
 
-022 surveys the **Physical World**, not "folders" as the primary concept.
+022 surveys the **Physical World** as a **geographic estate** — not merely "what files exist" (019) but *what the digital land actually looks like*.
+
+**Core rule:** Map the estate. Do not change the estate.
 
 ```txt
-Physical World Survey
-────────────────────────
-H              Healthy · 2.1 TB · SSD · Primary
-NAS            Healthy · 12 TB · Archive        (future)
-Google Drive   Connected · 4.8 TB · Cloud      (future)
-GPU Server     Offline · Expected · 6 weeks    (future)
-────────────────────────
-Logical bindings: workspace projections · orphans · conflicts
+Physical World Survey (022)
+────────────────────────────
+Storage topology · drive utilization · folder ownership confidence
+Workspace coverage · orphaned data · duplicate storage regions
+Empty folder chains · oversized media · archive candidates
+Activity/growth signals · migration complexity · projection coverage
+────────────────────────────
+Logical bindings: workspace · location · projection · provider · path
 ```
 
-Folder inventory (LB-OS-019) feeds Physical World evidence; survey output links projections to Logical World ownership.
+Folder inventory (LB-OS-019) feeds survey evidence; 021 blueprints feed migration complexity and projection coverage.
+
+**Spec:** [Digital Land Survey](./LOCALBRAIN_DIGITAL_LAND_SURVEY.md) · [Burt packet](./burt_packets/LB-OS-022.md)
 
 ---
 

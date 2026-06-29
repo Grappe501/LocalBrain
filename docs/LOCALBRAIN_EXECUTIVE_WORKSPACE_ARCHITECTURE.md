@@ -69,7 +69,8 @@ Example:
 
 ```txt
 Logical:   workspace_id = contactlistsos
-Projection: filesystem_root → H:\Projects\ContactListSOS   (Physical World)
+Location:  Primary Development
+Projection: filesystem_root → provider: primary → H:\Projects\Campaigns\ContactListSOS
 ```
 
 ### 2. Workspace Blueprint (translation preview)

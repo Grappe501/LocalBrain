@@ -28,6 +28,7 @@ test("buildWorkspaceDNA uses projections not raw paths as identity", () => {
     assert.ok(dna.projections.length >= 1);
     assert.equal(dna.projections[0].logical_type, "living_workspace");
     assert.equal(dna.projections[0].logical_id, "localbrain");
+    assert.equal(dna.projections[0].location_label, "Primary Development");
   } finally {
     shutdownApp();
   }

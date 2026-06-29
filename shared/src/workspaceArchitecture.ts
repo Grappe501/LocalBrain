@@ -3,6 +3,8 @@
  * Three Worlds: Executive → Logical → Projection → Physical
  */
 
+import type { ProjectionLocationRef } from "./projectionLocation.js";
+
 export type ProjectionKind =
   | "filesystem_root"
   | "sqlite_db"
@@ -19,7 +21,7 @@ export type LogicalProjectionType =
   | "memory"
   | "relationship";
 
-export interface Projection {
+export interface Projection extends ProjectionLocationRef {
   projection_id: string;
   logical_type: LogicalProjectionType;
   logical_id: string;

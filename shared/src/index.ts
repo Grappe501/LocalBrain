@@ -226,6 +226,32 @@ export type {
   WorkspaceDNA,
 } from "./workspaceArchitecture.js";
 export type {
+  DigitalLandSurveyReport,
+  LandSurveyActivitySignals,
+  LandSurveyArchiveCandidate,
+  LandSurveyConfidenceLabel,
+  LandSurveyDriveUtilization,
+  LandSurveyDuplicateRegion,
+  LandSurveyEmptyFolderChain,
+  LandSurveyFolderOwnership,
+  LandSurveyMigrationComplexity,
+  LandSurveyOrphanedData,
+  LandSurveyOversizedMedia,
+  LandSurveyProjectionCoverage,
+  LandSurveyStorageTopology,
+  LandSurveyWorkspaceCoverage,
+} from "./digitalLandSurvey.js";
+export type {
+  LocationRole,
+  ProjectionLocationRef,
+} from "./projectionLocation.js";
+export {
+  DEFAULT_PRIMARY_LOCATION,
+  PRIMARY_LOCATION_ID,
+  PRIMARY_LOCATION_LABEL,
+  STANDARD_WORKSPACE_LOCATION_ROLES,
+} from "./projectionLocation.js";
+export type {
   AssetIntelligenceForPath,
   AssetIntelligenceSummary,
   CleanupRecommendation,
