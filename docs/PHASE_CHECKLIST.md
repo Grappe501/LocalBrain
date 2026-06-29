@@ -53,12 +53,14 @@
 | [System Evolution](./LOCALBRAIN_SYSTEM_EVOLUTION.md) — intelligence scoreboard (ENG-EVO-001) | 📋 LB-OS-035 Phase 2 |
 | [Executive Leverage Score](./LOCALBRAIN_EXECUTIVE_LEVERAGE_SCORE.md) — ENG-ELS-001 impact metric | 📋 Phase 2 |
 | [Product Naming](./LOCALBRAIN_PRODUCT_NAMING.md) — EOS product vs LocalBrain engine | ✅ Planning |
-| [Consolidation Planner](./LOCALBRAIN_CONSOLIDATION_PLANNER.md) | 📋 Next — LB-OS-020 |
+| [Consolidation Planner](./LOCALBRAIN_CONSOLIDATION_PLANNER.md) — first Executive Intelligence · EIC | 📋 Next — LB-OS-020 |
+| [Executive Intelligence Cards](./LOCALBRAIN_EXECUTIVE_INTELLIGENCE_CARDS.md) · [Action Pipeline](./LOCALBRAIN_ACTION_PIPELINE.md) | 📋 Introduced LB-OS-020 |
+| [Phase 1 Integration Pass](./LOCALBRAIN_PHASE1_INTEGRATION_PASS.md) — cohesion before 021–026 | 📋 After LB-OS-020 |
 | [Executive Program Office](./LOCALBRAIN_EXECUTIVE_PROGRAM_OFFICE.md) | ✅ Complete — LB-OS-012.5 |
 | [Platform Separation Strategy](./LOCALBRAIN_PLATFORM_SEPARATION_STRATEGY.md) — Platform vs Brain boundary | ✅ Planning — 2026-06-28 |
 | [Multi-Machine Network Plan](./LOCALBRAIN_MULTI_MACHINE_NETWORK_PLAN.md) | 📋 Future arc — LB-OS-107–114 |
 
-**Gate:** LB-OS-019 filesystem audit ✅ · Next: **LB-OS-020** Evidence-Based Consolidation Planner.
+**Gate:** LB-OS-019 filesystem audit ✅ · Next: **LB-OS-020** Executive Consolidation Briefing (first Executive Intelligence) · then **LB-OS-020.5** Integration Pass.
 
 ---
 
@@ -109,8 +111,9 @@
 | LB-OS-019.5 | Executive Program Office synchronization (ENG-BLD-001) | ✅ Complete — [Burt packet](./burt_packets/LB-OS-019.5.md) |
 | LB-OS-019.6 | Live surface audit & wiring fix (ENG-SRF-001) | ✅ Complete — [Burt packet](./burt_packets/LB-OS-019.6.md) |
 | LB-OS-019.7 | Experience Maturity (ENG-EXP-001) | ✅ Complete — [Burt packet](./burt_packets/LB-OS-019.7.md) |
-| LB-OS-020 | Evidence-based consolidation planner | 📋 Next — [Spec](./LOCALBRAIN_CONSOLIDATION_PLANNER.md) · [Burt](./burt_packets/LB-OS-020.md) |
-| LB-OS-021 | H:/ project filing system builder | ⬜ PLANNED |
+| LB-OS-020 | Executive consolidation briefing (first Executive Intelligence) | 📋 Next — [Spec](./LOCALBRAIN_CONSOLIDATION_PLANNER.md) · [Burt](./burt_packets/LB-OS-020.md) |
+| LB-OS-020.5 | Phase 1 integration pass — executive OS cohesion | 📋 After 020 — [Spec](./LOCALBRAIN_PHASE1_INTEGRATION_PASS.md) · [Burt](./burt_packets/LB-OS-020.5.md) |
+| LB-OS-021 | H:/ project filing system builder | ⬜ PLANNED (after 020.5) |
 | LB-OS-022 | ChatGPT knowledge import pipeline | ⬜ PLANNED |
 | LB-OS-023 | Project memory transfer engine | ⬜ PLANNED |
 | LB-OS-024 | Legacy folder reorganization assistant | ⬜ PLANNED |

@@ -117,7 +117,8 @@ See [Safety Model § Migration & Reorganization](./LOCALBRAIN_SAFETY_MODEL.md#15
 |-------|------|
 | LB-OS-018 | Drive architecture & migration planner |
 | LB-OS-019 | Full filesystem mapping audit |
-| LB-OS-020 | Evidence-based consolidation planner |
+| LB-OS-020 | Executive consolidation briefing (first Executive Intelligence) |
+| LB-OS-020.5 | Phase 1 integration pass |
 | LB-OS-021 | H:/ project filing system builder |
 | LB-OS-022 | ChatGPT knowledge import pipeline |
 | LB-OS-023 | Project memory transfer engine |
@@ -149,16 +150,28 @@ Export: migration_inventory.json
 No moves
 ```
 
-### LB-OS-020 — Evidence-Based Consolidation Planner
+### LB-OS-020 — Executive Consolidation Briefing (Executive Intelligence)
+
+**Phase shift:** first slice where LocalBrain **reasons** about the environment — not only inventories it.
 
 ```txt
-Duplicates · version chains · folder consolidation (evidence scores)
-Tabs: Duplicates | Versions | Folders | Programs | Knowledge | Ignored
-Simulate dry-run · Consolidation Opportunity on Executive Briefing
-Recommendation → Proposal → Approval only — zero auto-execution
+Executive Consolidation Briefing — opportunity · priorities · risk · Consolidation Score
+Pipeline: Registry → Evidence → Consolidation → Simulation → EIC Briefing → Proposals
+Introduces: Executive Intelligence Cards (ENG-EIC-001) · universal 7-score standard · [Action Pipeline](./LOCALBRAIN_ACTION_PIPELINE.md)
+Decision-friction narratives · evidence scores · simulate dry-run
+Recommendation → Simulation → Proposal → Approval only — zero auto-execution
 ```
 
 Spec: [Consolidation Planner](./LOCALBRAIN_CONSOLIDATION_PLANNER.md)
+
+### LB-OS-020.5 — Phase 1 Integration Pass
+
+```txt
+Cohesion sprint after 020 — cross-links, drill-downs, CoS deep links, shell consistency
+No new features before 021–026 migration arc
+```
+
+Spec: [Phase 1 Integration Pass](./LOCALBRAIN_PHASE1_INTEGRATION_PASS.md)
 
 ### LB-OS-021 — H:/ Project Filing System Builder
 

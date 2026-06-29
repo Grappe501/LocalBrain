@@ -24,14 +24,14 @@ System Evolution is a **projection of learning and usefulness** (decisions, outc
 
 ```text
 Executive Office
-    Executive Briefing           ← morning narrative
+    Executive Briefing           ← Executive Intelligence Cards (ENG-EIC-001 · LB-OS-020)
     Program Office (EPO)         ← build mission control  ✅ LB-OS-012.5
     System Evolution             ← intelligence scoreboard  📋 LB-OS-035
     System Health                ← machine + ops
     Decisions                    ← decision ledger
 ```
 
-**Route (planned):** `/executive/evolution` or `/system-evolution`
+Phase 2 surfaces **learning cards** as Executive Intelligence Cards — same model as consolidation (020).
 
 ---
 

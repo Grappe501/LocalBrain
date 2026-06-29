@@ -8,7 +8,7 @@
 
 ## Principle
 
-Every morning Steve opens LocalBrain → **Executive Briefing** — not a widget dashboard.
+Every morning Steve opens LocalBrain → **Executive Briefing** — a curated stack of **[Executive Intelligence Cards](./LOCALBRAIN_EXECUTIVE_INTELLIGENCE_CARDS.md)**, not a widget dashboard.
 
 ```txt
 An exceptional human Chief of Staff prepares the day.
@@ -63,8 +63,9 @@ OPPORTUNITIES
   Reuse grant language from 2024 CountyWorkbench proposal
 
 CONSOLIDATION OPPORTUNITY
-  Reclaimable storage: 412 GB (estimated) · 14 folder merges · 8 orphans
-  Risk: low–medium · Nothing has changed — review consolidation planner
+  Consolidation Score: 92/100 Healthy (↑4) · 387 GB reclaimable · 24 min review
+  Top priority: ContactListSOS version chains — reduces "which folder is current?" friction
+  Risk: 0 high · 12 medium · 186 low · Nothing has changed
 
 QUESTIONS NEEDING YOUR DECISION
   Archive Phatlip v2 or merge into v3?
@@ -90,7 +91,7 @@ Sections are **configurable** — Steve toggles in settings.
 | Learning | ENG-LP-002, ENG-OJ-001 |
 | Deep-work | ENG-EO-005 + ENG-EO-007 |
 | Opportunities | ENG-KG-001, ENG-MR-002 |
-| Consolidation Opportunity | LB-OS-020 consolidation engine (read-only) |
+| Consolidation Opportunity | LB-OS-020 Executive Briefing + ENG-CNS-001 (read-only) |
 | Decisions | ENG-MM-001, pending signals |
 
 ---
@@ -153,18 +154,23 @@ ENG-EO-006 · **never auto-send** in V1 without explicit approval.
 
 ## Consolidation Opportunity (LB-OS-020)
 
-Read-only briefing section — introduced with [Evidence-Based Consolidation Planner](./LOCALBRAIN_CONSOLIDATION_PLANNER.md).
+Read-only briefing section — introduced with [Evidence-Based Consolidation Planner](./LOCALBRAIN_CONSOLIDATION_PLANNER.md). Primary surface is the **Executive Consolidation Briefing** (`/migration/consolidation`).
 
 ```txt
 CONSOLIDATION OPPORTUNITY
+  consolidation_score            — 0–100 · band · trend (ENG-CNS-001)
   reclaimable_storage_bytes      — estimated from duplicate + superseded versions
-  workspace_simplification_count — folder merges + orphan workspaces
-  knowledge_opportunities        — future (category 5)
-  risk_score                     — evidence-grounded; max across open recommendations
-  executive_summary              — CoS narrative ("Nothing has changed.")
+  workspace_simplification         — High | Medium | Low
+  duplicate_confidence           — aggregate evidence %
+  estimated_review_minutes       — time to review top priorities
+  risk_band                        — high / medium / low item counts
+  top_priority_summary             — #1 decision-friction narrative
+  executive_summary                — "Nothing has been changed."
 ```
 
 Links to `/migration/consolidation`. **No auto-consolidation** from briefing.
+
+**Copy rule:** prefer decision-friction insight ("which folder is current?") over raw counts ("4 copies").
 
 ---
 

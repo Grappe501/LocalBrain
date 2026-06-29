@@ -51,7 +51,18 @@ Calendar: deep-work hours protected
 
 ---
 
-## Dashboard surfaces
+## Consolidation Score (ENG-CNS-001)
+
+Digital environment health — introduced with [Consolidation Planner](./LOCALBRAIN_CONSOLIDATION_PLANNER.md) (LB-OS-020).
+
+```txt
+Consolidation Score — duplicate density · fragmentation · orphans · archive · naming · storage efficiency
+Surfaces: Consolidation Briefing · Executive Briefing Consolidation Opportunity block
+```
+
+Complements department scores (Operational Health, Engineering, Relationship) and executive scoreboards (EPO, System Evolution, ELS).
+
+---
 
 ```txt
 Executive briefing footer: "This week MWI: 72 (↑8)"

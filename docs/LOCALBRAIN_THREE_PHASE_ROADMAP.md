@@ -40,10 +40,11 @@ Each phase has a **success question**, **exit criteria**, and **tracked metrics*
 | Departments foundation (Eng/Writing/Data/Rel) | LB-OS-012–015 | ✅ |
 | AI Provider spine | LB-OS-017 | ✅ |
 | Migration planning complete | LB-OS-018–019 | ✅ |
-| Consolidation planner | LB-OS-020 | 📋 Next |
+| Executive consolidation briefing (first Executive Intelligence) | LB-OS-020 | 📋 Next |
+| Phase 1 integration pass (cohesion) | LB-OS-020.5 | 📋 After 020 |
 | Personal OS cutover ready | LB-OS-021–026 | ⬜ |
 
-**Phase 1 gate:** LB-OS-026 Personal OS launch — trustworthy permissions, approvals, live executive shell, H: world represented.
+**Phase 1 gate:** LB-OS-026 Personal OS launch — plus **Executive Intelligence layer** (EIC + Simulation pipeline) and cohesive cross-links from 020.5.
 
 ### Phase 1 metrics (representation)
 
@@ -116,11 +117,28 @@ Photography · Podcast · CFO · CRM · GIS · Census · Campaigns · Calendar �
 ## Slice ordering
 
 ```text
-Now        → LB-OS-020 (consolidation)
-Next       → LB-OS-021–026 (Phase 1 exit — Personal OS)
-Then       → Phase 2: System Evolution, ELS, CoS learning, dept L3+
+Now        → LB-OS-020 (Executive Intelligence — consolidation briefing)
+Next       → LB-OS-020.5 (Phase 1 integration pass — cohesion sprint)
+Then       → LB-OS-021–026 (Phase 1 exit — Personal OS)
+After      → Phase 2: System Evolution, ELS, CoS learning, dept L3+
 Later      → Phase 3: new departments on intelligent core
 ```
+
+---
+
+## Phase 1 completion vision
+
+When Phase 1 exits (026 + 020.5), LocalBrain is more than a local AI shell:
+
+```txt
+Executive Office     — knows the state of Steve's work
+Chief of Staff       — coordinates departments via shared Executive Intelligence Cards
+Object model         — workspaces · knowledge · assets · decisions · relationships
+Intelligence layer   — EIC surfaces opportunities system-wide with universal scoring
+Action pipeline      — Simulation → Approval → Verification → Learning builds trust
+```
+
+That foundation makes Phase 2 **teach a coherent executive OS** — not independent tools.
 
 ---
 
@@ -132,6 +150,6 @@ Later      → Phase 3: new departments on intelligent core
 | **System Evolution** | Intelligence growth | ENG-EVO-001 | What did the system learn? |
 | **Executive Leverage Score** | Real-world impact | ENG-ELS-001 | How much more effective am I? |
 
-**Executive Briefing** leads with ELS (impact), then narrative — not feature count.
+**Executive Briefing** leads with ELS (impact), then **Executive Intelligence Cards** — not feature count.
 
 Never merge these into one dashboard.

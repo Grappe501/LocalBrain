@@ -59,7 +59,7 @@ Brain — Steve's private data and workspaces
 
 | Surface | Role | Doc |
 | ------- | ---- | --- |
-| Executive Briefing | Morning narrative · **ELS headline** | CoS + ELS |
+| Executive Briefing | Morning **Executive Intelligence Cards** · ELS headline (Phase 2) | [EIC](./LOCALBRAIN_EXECUTIVE_INTELLIGENCE_CARDS.md) · CoS |
 | Program Office | Construction scoreboard | [EPO](./LOCALBRAIN_EXECUTIVE_PROGRAM_OFFICE.md) |
 | System Evolution | Intelligence scoreboard | [Evolution](./LOCALBRAIN_SYSTEM_EVOLUTION.md) |
 | System Health | Machine + ops | LB-OS-011 |
@@ -72,12 +72,15 @@ Brain — Steve's private data and workspaces
 [AI Chief of Staff](./LOCALBRAIN_AI_CHIEF_OF_STAFF.md) · [Command Layer](./LOCALBRAIN_COMMAND_LAYER.md)
 
 ```txt
-CoS → Capability Router → departments / providers → outcomes
+CoS → Capability Router → departments / providers → Executive Intelligence Cards
 No direct vendor SDK calls from business logic (LB-OS-017)
-Recommendations → Actions queue → Steve approves → execute
+[Action Pipeline](./LOCALBRAIN_ACTION_PIPELINE.md):
+  Recommendation → Simulation → Proposal → Approval → Execution → Verification → Learning
 ```
 
 Phase 2 success: CoS **improves decisions**, not only describes state.
+
+**LB-OS-020** introduces **Executive Intelligence Cards** (ENG-EIC-001) and **Simulation as first-class** — the shared presentation and trust model for all departments.
 
 ---
 
@@ -112,11 +115,12 @@ Six domains + apex Digital Twin compose Steve's world for CoS context.
 
 ## Article IX — Safety Model
 
-[Permission engine](./LOCALBRAIN_OPERATING_SYSTEM_DOCTRINE.md) (LB-OS-003) · Approval workflow (LB-OS-010)
+[Permission engine](./LOCALBRAIN_OPERATING_SYSTEM_DOCTRINE.md) (LB-OS-003) · Approval workflow (LB-OS-010) · [Action Pipeline](./LOCALBRAIN_ACTION_PIPELINE.md)
 
 ```txt
 Read tools gated · Write/move/quarantine require approval
 No silent writes · No auto-delete · Quarantine before destroy
+Simulation before proposal (Steve may waive) · Verification after execution · Learning (Phase 2)
 ```
 
 ---
@@ -149,6 +153,10 @@ Experience Maturity L0–L5 on every route · Dev mode shows badges; production 
 ```text
 LOCALBRAIN_CONSTITUTION.md          ← you are here
 ├── LOCALBRAIN_THREE_PHASE_ROADMAP.md
+├── LOCALBRAIN_EXECUTIVE_INTELLIGENCE_CARDS.md (ENG-EIC-001 · LB-OS-020)
+├── LOCALBRAIN_ACTION_PIPELINE.md
+├── LOCALBRAIN_CONSOLIDATION_PLANNER.md   (LB-OS-020 Executive Intelligence)
+├── LOCALBRAIN_PHASE1_INTEGRATION_PASS.md (LB-OS-020.5)
 ├── LOCALBRAIN_MASTER_SYSTEM_ARCHITECTURE.md
 ├── LOCALBRAIN_*_DEPARTMENT.md
 ├── LOCALBRAIN_BUILD_SLICE_QUEUE_V2.md

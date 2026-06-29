@@ -138,7 +138,8 @@ H:/ = work projects, data, archives, documents, repos, media, storage
 | Migration planner | LB-OS-016 |
 | Full H: filesystem audit | LB-OS-017 |
 | Migration planner (drive doctrine) | LB-OS-018 |
-| Evidence-based consolidation planner | **LB-OS-020** |
+| Executive consolidation briefing (Executive Intelligence) | **LB-OS-020** |
+| Phase 1 integration pass | **LB-OS-020.5** |
 | ChatGPT export import | LB-OS-022 |
 | Project memory transfer | LB-OS-021 |
 | Legacy reorg assistant | LB-OS-022 |

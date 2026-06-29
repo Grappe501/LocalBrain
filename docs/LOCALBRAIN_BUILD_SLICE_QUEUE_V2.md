@@ -157,8 +157,9 @@ See [Studio Blueprint](./LOCALBRAIN_STUDIO_BLUEPRINT.md) · [Command Layer](./LO
 | **LB-OS-017** | AI Provider Management | 016, 008 | **Provider spine** — registry, router, vault, flight recorder |
 | **LB-OS-018** | Drive architecture & migration planner | 017 | Migration start |
 | **LB-OS-019** | Full filesystem mapping audit | 018 | Inventory |
-| **LB-OS-020** | Evidence-based consolidation planner | 019 | Duplicates · versions · folders · simulate |
-| **LB-OS-021** | H:/ project filing system builder | 020 | Filing taxonomy |
+| **LB-OS-020** | Executive consolidation briefing (Executive Intelligence) | 019 | Briefing · score · evidence providers · simulate |
+| **LB-OS-020.5** | Phase 1 integration pass | 020 | Cohesion · cross-links · drill-downs |
+| **LB-OS-021** | H:/ project filing system builder | 020.5 | Filing taxonomy |
 | **LB-OS-022** | ChatGPT knowledge import pipeline | 021 | Import |
 | **LB-OS-023** | Project memory transfer engine | 022 | Memory |
 | **LB-OS-024** | Legacy folder reorganization assistant | 023 | Reorg proposals |
@@ -1141,42 +1142,67 @@ No moves, no deletes
 
 ---
 
-# LB-OS-020 — Evidence-Based Consolidation Planner
+# LB-OS-020 — Executive Consolidation Briefing (Executive Intelligence)
 
 **Depends on:** 019
 
-**Goal:** Long-lived consolidation engine — duplicates, version chains, folder consolidation, evidence scores, CoS summary, simulate, Consolidation Opportunity briefing metric. **No auto cleanup.**
+**Reframe:** First **Executive Intelligence** slice — LocalBrain reasons about the environment; primary output is an **Executive Consolidation Briefing**, not a candidate list.
+
+**Goal:** Evidence-provider pipeline → Consolidation Score (ENG-CNS-001) → briefing-first UI → simulate → Executive Briefing hook. Decision-friction narratives. **No auto cleanup.**
 
 **Spec:** [Consolidation Planner](./LOCALBRAIN_CONSOLIDATION_PLANNER.md) · [Burt packet](./burt_packets/LB-OS-020.md)
 
 **Build:**
 
 ```txt
-backend/src/consolidation/ — duplicate, version, folder intelligence + program/knowledge stubs
-evidenceScorer.ts — hash, filename, modified, workspace, references
-GET /api/consolidation/overview · /:category · POST /simulate (dry-run)
-UI /migration/consolidation — tabs: Duplicates | Versions | Folders | Programs | Knowledge | Ignored
-Executive Briefing: Consolidation Opportunity section
-Recommendation → Proposal → Approval only (LB-OS-010)
+Pipeline: Registry → Evidence → Consolidation → Simulation → EIC Briefing → Proposals
+shared/executiveIntelligenceCard.ts · consolidation providers · simulationEngine (shared)
+GET /api/consolidation/briefing · /:category · POST /simulate
+UI /migration/consolidation — EIC stack hero + drill-down tabs
+Consolidation Score + Consolidation Opportunity on Executive Briefing
+Action Pipeline: Recommendation → Simulation → Proposal → Approval (010)
 ```
 
 **Exit criteria:**
 
 ```txt
-[ ] Evidence score + why on every recommendation
-[ ] Executive summary (counts + estimated reclaim)
-[ ] Simulate panel — reversible projection, zero mutations
-[ ] Programs/Knowledge tabs stubbed for future
-[ ] Consolidation Opportunity on briefing (read-only)
+[ ] Executive Intelligence Cards with universal seven scores
+[ ] Simulation first-class on each card before Proposal
+[ ] Executive Consolidation Briefing as primary surface
+[ ] Consolidation Score with trend
+[ ] Evidence providers extensible
+[ ] Programs/Knowledge tabs stubbed
 ```
 
 **Commit:** `feat: add evidence-based consolidation planner`
 
 ---
 
-# LB-OS-021 — H:/ Project Filing System Builder
+# LB-OS-020.5 — Phase 1 Integration Pass
 
 **Depends on:** 020
+
+**Goal:** One cohesion sprint — cross-links, drill-downs, CoS deep links, EPO metric sources, Executive Office shell consistency. **No new features.**
+
+**Spec:** [Phase 1 Integration Pass](./LOCALBRAIN_PHASE1_INTEGRATION_PASS.md) · [Burt packet](./burt_packets/LB-OS-020.5.md)
+
+**Exit criteria:**
+
+```txt
+[ ] Integration audit complete
+[ ] Workspace ↔ asset ↔ decision cross-links on live data
+[ ] CoS recommendations → actionable routes
+[ ] EPO metrics drill to source data
+[ ] Priority routes consistent Executive Office chrome
+```
+
+**Commit:** `fix: phase 1 integration pass — executive OS cohesion`
+
+---
+
+# LB-OS-021 — H:/ Project Filing System Builder
+
+**Depends on:** 020.5
 
 **Goal:** Standard filing taxonomy for H: projects.
 

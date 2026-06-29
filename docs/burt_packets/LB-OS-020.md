@@ -1,22 +1,48 @@
 # LB-OS-020 — Evidence-Based Consolidation Planner
 
+> **Reframe:** First **Executive Intelligence** slice — introduces **Executive Intelligence Cards** (ENG-EIC-001)  
 > **Internal name:** Consolidation Planner (not Duplicate Planner)  
 > **Depends on:** LB-OS-019  
-> **Spec:** [Consolidation Planner](../LOCALBRAIN_CONSOLIDATION_PLANNER.md)
+> **Spec:** [Consolidation Planner](../LOCALBRAIN_CONSOLIDATION_PLANNER.md) · [EIC](../LOCALBRAIN_EXECUTIVE_INTELLIGENCE_CARDS.md) · [Action Pipeline](../LOCALBRAIN_ACTION_PIPELINE.md)
 
 ---
 
 ## Goal
 
-Long-lived **evidence-based consolidation** capability: duplicates, version chains, folder consolidation, with stubs for program/knowledge — executive summary, simulate, and Consolidation Opportunity briefing metric. **Never executes.**
+LocalBrain begins **reasoning** about Steve's environment. Primary output: **Executive Consolidation Briefing** = summary header + stack of **Executive Intelligence Cards** (universal seven-score standard). Includes Consolidation Score (ENG-CNS-001), evidence providers, **Simulation as first-class** stage, Executive Briefing hook. **Never executes.**
 
 ---
 
-## Categories (tabs)
+## Permanent concepts (first introduction)
+
+| Concept | Doc |
+| ------- | --- |
+| Executive Intelligence Cards | [EIC](../LOCALBRAIN_EXECUTIVE_INTELLIGENCE_CARDS.md) |
+| Universal 7 scores | Importance · Confidence · Urgency · Effort · Benefit · Friction · Risk |
+| Action Pipeline | Recommendation → **Simulation** → Proposal → Approval → Execution → Verification → Learning |
+
+---
+
+## Pipeline (build in this order)
 
 ```txt
-Duplicates · Versions · Folders · Programs (stub) · Knowledge (stub) · Ignored
+Registry → Evidence Engine → Consolidation Engine → Simulation Engine (shared)
+         → Briefing (EIC[]) → Proposal Generator → Actions Queue (010+)
 ```
+
+020 ships: Recommendation + Simulation + EIC briefing. Proposals only on explicit Steve action.
+
+---
+
+## Evidence providers (v1)
+
+| Provider | Status |
+| -------- | ------ |
+| `DuplicateEvidenceProvider` | ✅ Implement |
+| `VersionEvidenceProvider` | ✅ Implement |
+| `FolderEvidenceProvider` | ✅ Implement |
+| `ProgramEvidenceProvider` | 🔜 Stub |
+| `KnowledgeEvidenceProvider` | 🔜 Stub |
 
 ---
 
@@ -24,34 +50,43 @@ Duplicates · Versions · Folders · Programs (stub) · Knowledge (stub) · Igno
 
 | # | Deliverable |
 |---|-------------|
-| 1 | `shared/src/consolidation.ts` — types, evidence score, categories |
-| 2 | `backend/src/consolidation/` — duplicate, version, folder intelligence + stubs |
-| 3 | Evidence scorer — hash, filename, modified, workspace, references |
-| 4 | `GET /api/consolidation/overview` — CoS executive summary |
-| 5 | `GET /api/consolidation/:category` — tab data |
-| 6 | `POST /api/consolidation/simulate` — if-approved projection (no writes) |
-| 7 | UI `/migration/consolidation` — tabs + simulate panel |
-| 8 | Executive Briefing: **Consolidation Opportunity** section |
-| 9 | Proposals → Actions queue only after Steve approval |
+| 1 | `shared/src/executiveIntelligenceCard.ts` — EIC + universal scores (ENG-EIC-001) |
+| 2 | `shared/src/consolidation.ts` — consolidation + Consolidation Score types |
+| 3 | `backend/src/intelligence/cardComposer.ts` — normalize → EIC |
+| 4 | `backend/src/simulation/simulationEngine.ts` — shared dry-run contract |
+| 5 | `backend/src/consolidation/providers/*` + engines + `briefingComposer.ts` → EIC[] |
+| 6 | `GET /api/consolidation/briefing` — cards + summary |
+| 7 | `GET /api/consolidation/:category` · `POST /api/consolidation/simulate` |
+| 8 | UI `/migration/consolidation` — **EIC stack** hero + drill-down tabs |
+| 9 | Consolidation Opportunity on Executive Briefing (top card summary) |
+| 10 | Proposals → Actions only after Steve approval |
 
 ---
 
-## Flow
+## Executive Intelligence Card (required per priority)
 
 ```txt
-Recommendation → Proposal → Approval → Execution → Verification
+Title · Category · Priority
+Scores: Importance · Confidence · Urgency · Effort · Benefit · Friction · Risk
+Evidence % · Executive Impact · Estimated Time · Estimated Benefit
+Pipeline: Recommendation ✓ · Simulation Available · Proposal Not generated
+Actions: Review · Simulate · Generate Proposal · Dismiss
 ```
-
-020 stops at **Recommendation** and **Simulate**. Proposals created only when Steve explicitly requests.
 
 ---
 
-## Guardrails
+## Do not build
 
-```txt
-No moves · No deletes · No cleanup execution · No bulk actions · No cloud sync
-Read-only analysis · Evidence on every row
-```
+- Table-row priorities without EIC component
+- Per-department custom scoring UI
+- Auto-merge/delete · monolithic engine · list-first utility report
+- Skip Simulation before Proposal (Steve may waive with ack)
+
+---
+
+## After this slice
+
+**LB-OS-020.5** — adopt EIC cross-links on existing surfaces where data exists.
 
 ---
 
@@ -60,11 +95,3 @@ Read-only analysis · Evidence on every row
 ```txt
 feat: add evidence-based consolidation planner
 ```
-
----
-
-## Do not build
-
-- Auto-merge, auto-delete, or background consolidation
-- Whole-drive scans beyond LB-OS-019 inventory scope
-- Program/knowledge execution (stubs + copy only in 020)

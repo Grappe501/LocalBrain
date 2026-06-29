@@ -36,7 +36,7 @@ LB-OS-019       ✅ Full filesystem mapping audit
 
 **Verify:** `GET /api/migration/audit` · `GET /api/migration/audit/export`
 
-**Next:** [LB-OS-020 Evidence-Based Consolidation Planner](docs/LOCALBRAIN_CONSOLIDATION_PLANNER.md)
+**Next:** [LB-OS-020 Executive Consolidation Briefing](docs/LOCALBRAIN_CONSOLIDATION_PLANNER.md) · then [LB-OS-020.5 Integration Pass](docs/LOCALBRAIN_PHASE1_INTEGRATION_PASS.md)
 
 **Dev:** `npm run dev` → http://localhost:5174 · API http://localhost:4545
 

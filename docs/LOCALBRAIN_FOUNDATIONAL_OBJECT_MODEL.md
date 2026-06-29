@@ -59,6 +59,7 @@ If it is not one of these ten, it specializes one of them.
 | New department object | `Module` manifest |
 | New backend service | `Engine` in registry |
 | New AI persona | `Agent` in registry |
+| New recommendation UI row type | `ExecutiveIntelligenceCard` — [EIC](./LOCALBRAIN_EXECUTIVE_INTELLIGENCE_CARDS.md) |
 
 ---
 
