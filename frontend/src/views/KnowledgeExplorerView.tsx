@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { sendCommand } from "../api/command";
 import {
   fetchExecutiveInsights,
   fetchExplain,
@@ -37,6 +38,8 @@ export function KnowledgeExplorerView() {
   const [indexStatus, setIndexStatus] = useState<string>("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [cosResponse, setCosResponse] = useState<string | null>(null);
+  const [cosLoading, setCosLoading] = useState(false);
 
   const loadTree = useCallback(async (path?: string) => {
     const data = await fetchExplorerTree(path);
@@ -77,9 +80,31 @@ export function KnowledgeExplorerView() {
     return () => clearInterval(t);
   }, [loadTree, refreshIndexStatus]);
 
+  async function askCosAboutAsset(path: string) {
+    setCosLoading(true);
+    setCosResponse(null);
+    try {
+      const res = await sendCommand({
+        message: "Summarize this selected asset (read-only, permission-gated).",
+        asset_path: path,
+        tool: "summarize_asset",
+      });
+      setCosResponse(
+        res.source_path
+          ? `Source: ${res.source_path}\n\n${res.message}`
+          : res.message,
+      );
+    } catch (e) {
+      setCosResponse(e instanceof Error ? e.message : "CoS request failed");
+    } finally {
+      setCosLoading(false);
+    }
+  }
+
   async function selectNode(node: ExplorerTreeNode) {
     setSelected(node);
     setWhy(null);
+    setCosResponse(null);
     if (mode === "understand" || mode === "executive") {
       try {
         const ex = await fetchExplain(node.path);
@@ -131,7 +156,7 @@ export function KnowledgeExplorerView() {
       <header className="ke-explorer__header">
         <h1>Knowledge Explorer</h1>
         <p className="ke-explorer__meta">
-          {indexStatus} · Intelligence · recommend only · LB-OS-007
+          {indexStatus} · Read-only file tools · LB-OS-009
         </p>
       </header>
 
@@ -327,6 +352,20 @@ export function KnowledgeExplorerView() {
                   ))}
                 </ul>
               </>
+            ) : null}
+            <button
+              type="button"
+              className="ke-explorer__why-btn"
+              onClick={() => void askCosAboutAsset(explain.path)}
+              disabled={cosLoading}
+            >
+              {cosLoading ? "Asking CoS…" : "Ask CoS about this asset"}
+            </button>
+            {cosResponse ? (
+              <div className="ke-explorer__cos-response">
+                <h3>Chief of Staff</h3>
+                <pre>{cosResponse}</pre>
+              </div>
             ) : null}
             <button
               type="button"

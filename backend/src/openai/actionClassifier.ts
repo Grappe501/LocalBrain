@@ -38,6 +38,19 @@ const RULES: { action_class: CommandActionClass; patterns: RegExp[] }[] = [
     ],
   },
   {
+    action_class: "file_summarize",
+    patterns: [
+      /\bsummarize (this )?(file|asset|folder|selected)\b/i,
+      /\bask cos about\b/i,
+      /\babout this asset\b/i,
+      /\bfolder manifest\b/i,
+    ],
+  },
+  {
+    action_class: "file_read",
+    patterns: [/\bread (this )?(file|content)\b/i, /\bshow (file )?content\b/i],
+  },
+  {
     action_class: "briefing_summary",
     patterns: [
       /\bbriefing\b/i,
@@ -60,7 +73,7 @@ export function classifyCommand(message: string): ActionClassification {
 
 export function actionClassToIntent(
   actionClass: CommandActionClass,
-): "FOCUS_NEXT" | "EXPLAIN_WORKSPACE" | "ASSET_INTELLIGENCE" | "BRIEFING_SUMMARY" | "GENERAL" {
+): "FOCUS_NEXT" | "EXPLAIN_WORKSPACE" | "ASSET_INTELLIGENCE" | "BRIEFING_SUMMARY" | "FILE_READ" | "FILE_SUMMARIZE" | "GENERAL" {
   switch (actionClass) {
     case "focus_priority":
       return "FOCUS_NEXT";
@@ -70,6 +83,10 @@ export function actionClassToIntent(
       return "ASSET_INTELLIGENCE";
     case "briefing_summary":
       return "BRIEFING_SUMMARY";
+    case "file_read":
+      return "FILE_READ";
+    case "file_summarize":
+      return "FILE_SUMMARIZE";
     default:
       return "GENERAL";
   }

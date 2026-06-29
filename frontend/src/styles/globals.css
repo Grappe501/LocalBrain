@@ -1072,6 +1072,21 @@ a {
   border-left: 3px solid #f59e0b;
 }
 
+.ke-explorer__cos-response {
+  margin: 1rem 0;
+  padding: 0.75rem;
+  border: 1px solid #bfdbfe;
+  border-radius: 0.375rem;
+  background: #eff6ff;
+}
+
+.ke-explorer__cos-response pre {
+  margin: 0.5rem 0 0;
+  white-space: pre-wrap;
+  font-size: 0.85rem;
+  font-family: inherit;
+}
+
 .ke-explorer__collections {
   font-size: 0.9rem;
 }

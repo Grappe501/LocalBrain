@@ -1,4 +1,6 @@
 import type { CommandIntent, CommandResponse, CommandStatusResponse } from "@localbrain/shared";
+import { executeFileToolCommand } from "../files/fileCommandBridge.js";
+import { resolveFileToolRequest } from "../files/fileToolResolver.js";
 import {
   actionClassToIntent,
   classifyCommand,
@@ -13,6 +15,8 @@ export type CommandRequest = {
   message: string;
   workspace_id?: string;
   asset_path?: string;
+  file_path?: string;
+  tool?: "read_file" | "summarize_file" | "summarize_asset" | "summarize_folder";
 };
 
 export function getCommandStatus(): CommandStatusResponse {
@@ -40,6 +44,11 @@ export async function executeCommand(req: CommandRequest): Promise<CommandRespon
       recommend_only: true,
       logged: false,
     };
+  }
+
+  const fileTool = resolveFileToolRequest(req);
+  if (fileTool) {
+    return executeFileToolCommand(fileTool.kind, fileTool.path, req);
   }
 
   const { action_class } = classifyCommand(message);

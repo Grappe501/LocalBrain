@@ -1,6 +1,7 @@
 import { Router } from "express";
 import type { CommandResponse, CommandStatusResponse } from "@localbrain/shared";
 import { executeCommand, getCommandStatus } from "./openai/commandOrchestrator.js";
+import type { CommandRequest } from "./openai/commandOrchestrator.js";
 
 export type { CommandResponse, CommandStatusResponse };
 
@@ -23,9 +24,17 @@ commandRouter.post("/command", async (req, res) => {
     typeof req.body?.workspace_id === "string" ? req.body.workspace_id : undefined;
   const asset_path =
     typeof req.body?.asset_path === "string" ? req.body.asset_path : undefined;
+  const file_path = typeof req.body?.file_path === "string" ? req.body.file_path : undefined;
+  const tool = typeof req.body?.tool === "string" ? req.body.tool : undefined;
 
   try {
-    const response = await executeCommand({ message, workspace_id, asset_path });
+    const response = await executeCommand({
+      message,
+      workspace_id,
+      asset_path,
+      file_path,
+      tool: tool as CommandRequest["tool"],
+    });
     res.json(response);
   } catch {
     const fallback: CommandResponse = {

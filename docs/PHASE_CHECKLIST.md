@@ -39,7 +39,7 @@
 
 | [Digital Asset Model](./LOCALBRAIN_DIGITAL_ASSET_MODEL.md) | ✅ Spec — LB-OS-006/007 |
 
-**Gate:** Next: **LB-OS-009** File Read / Summarize Tools (or LB-OS-010 per queue renumber).
+**Gate:** Next: **LB-OS-010** Approval-gated file management.
 
 ---
 
@@ -56,8 +56,8 @@
 | LB-OS-006 | Digital Asset Registry | ✅ Complete — [Burt packet](./burt_packets/LB-OS-006.md) |
 | LB-OS-007 | Digital Asset Intelligence Engine | ✅ Complete — [Burt packet](./burt_packets/LB-OS-007-asset-intelligence.md) |
 | LB-OS-008 | OpenAI chat command layer | ✅ Complete — [Burt packet](./burt_packets/LB-OS-008.md) |
-| LB-OS-009 | System health monitor | ⬜ PLANNED *(renumbered)* |
-| LB-OS-010 | File read/summarize tools | ⬜ PLANNED *(renumbered)* |
+| LB-OS-009 | Permission-gated file read/summarize | ✅ Complete — [Burt packet](./burt_packets/LB-OS-009.md) |
+| LB-OS-010 | System health monitor | ⬜ PLANNED *(renumbered)* |
 | LB-OS-011 | Approval-gated file management | ⬜ PLANNED *(renumbered)* |
 | LB-OS-012 | Code engineering studio | ⬜ PLANNED |
 | LB-OS-013 | Writing dashboard | ⬜ PLANNED |

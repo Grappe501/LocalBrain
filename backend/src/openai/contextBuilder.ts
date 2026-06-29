@@ -113,6 +113,10 @@ export function buildCommandContext(options: {
       "User asks about stale/dormant/duplicate assets. Use intelligence summary and recommend-only cleanup cards.",
     briefing_summary:
       "User wants Executive Briefing summary. Synthesize briefing sections; note mock data where applicable.",
+    file_read:
+      "User wants file content — handled by read_file tool; do not invent content.",
+    file_summarize:
+      "User wants file or folder summary — handled by summarize tools; manifest-only for folders.",
     general_query:
       "Answer helpfully using workspace and asset intelligence context. Stay within registry metadata.",
   };

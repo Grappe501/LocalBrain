@@ -9,6 +9,7 @@ import { migrateDigitalAssetTables } from "./digitalAssets/assetRegistry.js";
 import { refreshIntelligence } from "./digitalAssets/intelligenceEngine.js";
 import { migrateKnowledgeExplorerTables } from "./knowledgeExplorer/migrate.js";
 import { migrateCommandLogTable } from "./openai/safeLog.js";
+import { migrateFileReadLogTable } from "./files/fileReadLog.js";
 import { initPermissionEngine } from "./safety/permissionEngine.js";
 import {
   migrateWorkspaceTables,
@@ -27,6 +28,7 @@ export function bootstrapApp(): void {
   migrateKnowledgeExplorerTables();
   migrateDigitalAssetTables();
   migrateCommandLogTable();
+  migrateFileReadLogTable();
   refreshIntelligence();
   seedWorkspaces();
   syncFilesystemRootsToAllowedFolders();

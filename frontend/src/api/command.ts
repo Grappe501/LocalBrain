@@ -12,6 +12,8 @@ export async function sendCommand(options: {
   message: string;
   workspace_id?: string;
   asset_path?: string;
+  file_path?: string;
+  tool?: "read_file" | "summarize_file" | "summarize_asset" | "summarize_folder";
 }): Promise<CommandResponse> {
   const res = await fetch("/api/command", {
     method: "POST",

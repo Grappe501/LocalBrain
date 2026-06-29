@@ -6,6 +6,13 @@ export type {
   CommandStatusResponse,
 } from "./command.js";
 export type {
+  FileReadResult,
+  FileSummarizeMode,
+  FileSummarizeResult,
+  FolderManifestEntry,
+  FolderManifestResult,
+} from "./fileTools.js";
+export type {
   LivingWorkspace,
   WorkspaceEvent,
   WorkspaceEventType,

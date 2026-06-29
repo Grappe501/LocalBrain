@@ -6,6 +6,8 @@ export type CommandIntent =
   | "EXPLAIN_WORKSPACE"
   | "ASSET_INTELLIGENCE"
   | "BRIEFING_SUMMARY"
+  | "FILE_READ"
+  | "FILE_SUMMARIZE"
   | "GENERAL"
   | "ERROR";
 
@@ -14,6 +16,8 @@ export type CommandActionClass =
   | "workspace_explain"
   | "asset_stale"
   | "briefing_summary"
+  | "file_read"
+  | "file_summarize"
   | "general_query";
 
 export interface CommandResponse {
@@ -24,9 +28,11 @@ export interface CommandResponse {
   model: string | null;
   tokens_estimate: number | null;
   context_used: string[];
-  /** Always true in LB-OS-008 — no tools or file ops */
+  /** Read-only file tools in 009 — still no writes */
   recommend_only: true;
   logged: boolean;
+  source_path?: string | null;
+  file_read_logged?: boolean;
 }
 
 export interface CommandStatusResponse {
