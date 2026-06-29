@@ -38,11 +38,12 @@
 | `@localbrain/shared` foundation types | ✅ Contracts |
 
 | [Digital Asset Model](./LOCALBRAIN_DIGITAL_ASSET_MODEL.md) | ✅ Spec — LB-OS-006/007 |
-| [Engineering Department](./LOCALBRAIN_ENGINEERING_DEPARTMENT.md) | 📋 Spec locked — LB-OS-012 |
+| [Engineering Department](./LOCALBRAIN_ENGINEERING_DEPARTMENT.md) | ✅ Complete — LB-OS-012 |
 | [Executive Program Office](./LOCALBRAIN_EXECUTIVE_PROGRAM_OFFICE.md) | ✅ Complete — LB-OS-012.5 |
+| [Platform Separation Strategy](./LOCALBRAIN_PLATFORM_SEPARATION_STRATEGY.md) — Platform vs Brain boundary | ✅ Planning — 2026-06-28 |
 | [Multi-Machine Network Plan](./LOCALBRAIN_MULTI_MACHINE_NETWORK_PLAN.md) | 📋 Future arc — LB-OS-107–114 |
 
-**Gate:** Next: **LB-OS-012** Engineering Department — [spec](./LOCALBRAIN_ENGINEERING_DEPARTMENT.md).
+**Gate:** Next: **LB-OS-013** Writing Department.
 
 ---
 
@@ -64,8 +65,8 @@
 | LB-OS-010.5 | Chief of Staff integration layer | ✅ Complete — [Burt packet](./burt_packets/LB-OS-010.5.md) |
 | LB-OS-011 | System health & operations center | ✅ Complete — [Burt packet](./burt_packets/LB-OS-011.md) |
 | LB-OS-012.5 | Executive Program Office (EPO) | ✅ Complete — [Burt packet](./burt_packets/LB-OS-012.5.md) · [Spec](./LOCALBRAIN_EXECUTIVE_PROGRAM_OFFICE.md) |
-| LB-OS-012 | Engineering Department | 📋 Spec locked — [Burt packet](./burt_packets/LB-OS-012.md) · [Spec](./LOCALBRAIN_ENGINEERING_DEPARTMENT.md) |
-| LB-OS-013 | Writing Department | ⬜ PLANNED |
+| LB-OS-012 | Engineering Department | ✅ Complete — [Burt packet](./burt_packets/LB-OS-012.md) · [Spec](./LOCALBRAIN_ENGINEERING_DEPARTMENT.md) |
+| LB-OS-013 | Writing Department | 📋 Next |
 | LB-OS-014 | Database Department | ⬜ PLANNED |
 | LB-OS-015 | Relationship Intelligence | ⬜ PLANNED |
 | LB-OS-016 | Executive OS V1 milestone | ⬜ PLANNED |
@@ -303,6 +304,7 @@ Steve = owner · Actions = approval-gated · Audit = always on (when team ships)
 
 | Date | Change |
 |------|--------|
+| 2026-06-29 | LB-OS-012 Engineering Department — knowledge graph, score, six tabs, EPO integration |
 | 2026-06-28 | LB-OS-012.5 Executive Program Office scoreboard complete |
 | 2026-06-28 | LB-OS-012 redefined: Engineering Department (Code Studio = workspace); V1 tail 013–016 resequenced |
 | 2026-06-28 | Future arc: Multi-Machine & Cloud Archive (LB-OS-107–114) + 5 planning docs |

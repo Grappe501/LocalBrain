@@ -168,6 +168,10 @@ export function ProgramOfficeView() {
             <dd>{m.operational_health_score}</dd>
           </div>
           <div>
+            <dt>Engineering Score</dt>
+            <dd>{m.engineering_score ?? "—"}</dd>
+          </div>
+          <div>
             <dt>Completed / Remaining</dt>
             <dd>
               {m.completed_slices} / {m.remaining_slices}

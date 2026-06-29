@@ -3,7 +3,7 @@
   "name": "Engineering",
   "domain": "engineering",
   "version": "0.0.1",
-  "status": "stub",
+  "status": "active",
   "routes": [{ "path": "/studio/engineering", "pattern": "studio/engineering/*" }],
   "permissions": ["filesystem:read"],
   "tools": [],

@@ -81,6 +81,7 @@ export interface EpoLiveMetrics {
   api_cost_today_usd: number;
   tokens_today: number;
   operational_health_score: number;
+  engineering_score: number | null;
 }
 
 export interface EpoOverview {

@@ -14,6 +14,7 @@ import { knowledgeExplorerRouter } from "./routes/knowledgeExplorer.js";
 import { cosRouter } from "./routes/cos.js";
 import { systemRouter } from "./routes/system.js";
 import { epoRouter } from "./routes/epo.js";
+import { engineeringRouter } from "./routes/engineering.js";
 import { getRegisteredModules } from "./core/moduleLoader.js";
 import { runBackgroundIndex } from "./knowledgeExplorer/indexer.js";
 
@@ -38,6 +39,7 @@ app.use("/api", knowledgeExplorerRouter);
 app.use("/api", cosRouter);
 app.use("/api", systemRouter);
 app.use("/api", epoRouter);
+app.use("/api", engineeringRouter);
 
 app.listen(port, () => {
   const db = isDatabaseConnected();

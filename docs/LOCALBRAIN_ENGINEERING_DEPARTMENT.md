@@ -10,8 +10,10 @@
 
 ```txt
 Stop thinking: code editor
-Start thinking: Engineering Department
+Start thinking: Engineering Department — self-aware over the Platform it builds
 ```
+
+The department maintains an **Engineering Knowledge Graph** (internal composed view — **not** an eleventh foundational object). It connects repositories, modules, engines, capabilities, knowledge sources, workspaces, decisions, Burt packets, tests, and slices so the Engineering Chief can answer dependency and impact questions from graph traversal, not LLM inference every time.
 
 Steve talks to the **Engineering Chief**. The Chief routes to specialists. Work flows through the same operational loop as the rest of LocalBrain:
 
@@ -67,7 +69,50 @@ Code Studio is **one lens** — not the department.
 
 ---
 
-## Engineering workspace model
+## Engineering Knowledge Graph (internal)
+
+**Not** a foundational object — a **composed read model** inside the Engineering Department (see [Platform Separation Strategy](./LOCALBRAIN_PLATFORM_SEPARATION_STRATEGY.md)).
+
+```txt
+Repositories
+    ↓
+Modules → Engines → Capabilities
+    ↓
+Knowledge Sources · Workspaces · Decision Ledger
+    ↓
+Burt Packets · Tests · Build Slices
+```
+
+**V1 queries (read-only):**
+
+```txt
+Which modules depend on the Permission Engine?
+What decisions affect Knowledge Explorer?
+Which Burt packet introduced the Digital Asset Registry?
+Show every slice related to Chief of Staff.
+If I modify permissionEngine.ts, what else is affected?  → Impact Analysis
+```
+
+Built from manifests, engine seeds, workspace registry, checklist, and docs index. Expands as Verify and CI artifacts land.
+
+---
+
+## Department UI — six tabs (LB-OS-012)
+
+| Tab | Purpose |
+|-----|---------|
+| **Overview** | Engineering Score (8 expandable factors), sprint, slice, repos, tests, debt, Chief recommendation |
+| **Architecture** | Knowledge graph summary, kernel/modules/engines, **Impact Analysis** |
+| **Projects** | Engineering LivingWorkspaces + **Explain this project** |
+| **Burt** | Generate preview, history, export path (propose-only in V1) |
+| **Knowledge** | Architecture docs, API/schema inventory, specialist registry |
+| **Learn** | OJT stub — concepts, level, lesson, challenge |
+
+Route: `/studio/engineering`
+
+---
+
+## Workspaces inside the department (legacy panels)
 
 Every engineering workspace (LivingWorkspace type `engineering` or linked project) exposes:
 
@@ -158,21 +203,34 @@ Packets stored in department memory + linked from workspace **Recent Burt packet
 
 Composite 0–100 — engineering counterpart to **Operational Health Score** (LB-OS-011).
 
-| Factor | Weight (stub) | Signals |
-|--------|---------------|---------|
-| Architecture | 0.15 | Module boundaries, circular deps (future) |
-| Tests | 0.15 | Test file presence, last run (future) |
-| Coverage | 0.10 | Coverage reports when available |
-| Documentation | 0.10 | README, ADRs, doc coverage heuristics |
-| Technical debt | 0.15 | Registry flags, TODO density (future) |
-| Complexity | 0.10 | File size, dependency depth (future) |
-| Performance | 0.10 | Perf budget flags (future) |
-| Security | 0.10 | Permission engine alignment, secret scan |
-| Deployment readiness | 0.05 | Build pass, manifest status |
+| Factor | Weight (V1) | Signals |
+|--------|-------------|---------|
+| Architecture | 0.15 | Module boundaries, active vs stub manifests |
+| Documentation | 0.12 | Architecture/engineering docs, README |
+| Testing | 0.15 | `*.test.ts` file count |
+| Technical debt | 0.15 | TODO density, pending approvals |
+| Performance | 0.10 | Build artifact heuristics |
+| Security | 0.13 | Permission engine presence |
+| Deployment | 0.10 | Active modules, package scripts |
+| Knowledge coverage | 0.10 | Engineering graph edge density |
 
 V1: **stub score** from available signals (module manifest health, test script presence, docs files, pending approvals on repo). Factors expand as tooling ships.
 
-Displayed on Engineering Department home. **Program-wide** engineering status lives in **Executive Program Office** (EPO), not Engineering nav.
+Displayed on Engineering Department home. **Program-wide** status also surfaces in **Executive Program Office** (`engineering_score` metric). EPO remains build truth; Engineering Department owns engineering intelligence.
+
+---
+
+## EPO integration
+
+When a slice completes, the system reflects reality without manual updates:
+
+```txt
+Engineering Department  → score, graph, project state
+Executive Program Office → global scoreboard, slice status
+Decision Timeline       → architectural changelog entries
+Documentation Library   → new docs indexed on next read
+Operational Health      → recalculates when ops signals change
+```
 
 ---
 

@@ -87,6 +87,22 @@ export type {
   DigitalAssetKind,
 } from "./digitalAsset.js";
 export type {
+  EngGraphEdge,
+  EngGraphNode,
+  EngGraphNodeKind,
+  BurtPacketPreview,
+  BurtPacketSummary,
+  EngineeringExplainResponse,
+  EngineeringImpactResult,
+  EngineeringKnowledgeGraph,
+  EngineeringLearnStub,
+  EngineeringOverview,
+  EngineeringProjectSummary,
+  EngineeringRecommendation,
+  EngineeringScore,
+  EngineeringScoreFactor,
+} from "./engineering.js";
+export type {
   AssetIntelligenceForPath,
   AssetIntelligenceSummary,
   CleanupRecommendation,

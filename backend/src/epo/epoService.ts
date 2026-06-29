@@ -19,6 +19,7 @@ import { EPO_PHASES, SLICE_DEPENDENCIES } from "./epoData.js";
 import { explainBlocker, isBlocked, toGraphStatus } from "./blockerExplainer.js";
 import { computeCoverage, extractBurtMission } from "./coverageHeuristics.js";
 import { getRecentCommits } from "./gitReader.js";
+import { computeEngineeringScore } from "../engineering/engineeringScore.js";
 
 function sliceMap() {
   const slices = parsePhaseChecklistSlices();
@@ -54,8 +55,8 @@ function findCurrentAndNext(slices: EpoSliceSummary[]): {
       !(s.blocker_explanation?.startsWith("Waiting") ?? false),
   );
   const preferred =
-    specLockedReady.find((s) => s.slice_id === "LB-OS-012.5") ??
     specLockedReady.find((s) => s.slice_id === "LB-OS-012") ??
+    specLockedReady.find((s) => s.slice_id === "LB-OS-012.5") ??
     specLockedReady[0];
   const current = inProgress ?? preferred ?? null;
 
@@ -127,6 +128,7 @@ export function getEpoOverview(): EpoOverview {
   const modules = getRegisteredModules();
   const workspaces = listWorkspaces().filter((w) => !w.flags.hidden);
   const docs = listDocumentationLibrary();
+  const engScore = computeEngineeringScore().score;
 
   return {
     current_phase_label: phaseLabel,
@@ -147,6 +149,7 @@ export function getEpoOverview(): EpoOverview {
       api_cost_today_usd: usage.cost_usd_today,
       tokens_today: usage.tokens_today,
       operational_health_score: usage.operational_health_score,
+      engineering_score: engScore,
     },
     phases: buildPhases(map),
     slices,
