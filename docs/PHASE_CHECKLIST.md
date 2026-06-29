@@ -38,6 +38,7 @@
 | `@localbrain/shared` foundation types | ✅ Contracts |
 
 | [Digital Asset Model](./LOCALBRAIN_DIGITAL_ASSET_MODEL.md) | ✅ Spec — LB-OS-006/007 |
+| [Multi-Machine Network Plan](./LOCALBRAIN_MULTI_MACHINE_NETWORK_PLAN.md) | 📋 Future arc — LB-OS-107–114 |
 
 **Gate:** Next: **LB-OS-012** Code engineering studio.
 
@@ -271,10 +272,36 @@ Closeouts include OJT lesson when ON (manual until LB-OS-026)
 
 ---
 
+## Phase 14 — Multi-Machine & Cloud Archive (LB-OS-107–114) · Future
+
+> **Planning only.** Build local single-user V1 first. Do not implement networking in Phase 1.
+
+| Slice | Name | Status |
+|-------|------|--------|
+| LB-OS-107 | Multi-machine doctrine | 📋 PLANNED — [Network plan](./LOCALBRAIN_MULTI_MACHINE_NETWORK_PLAN.md) |
+| LB-OS-108 | LocalBrain server/client topology | 📋 PLANNED — [Shared server brain](./LOCALBRAIN_SHARED_SERVER_BRAIN.md) |
+| LB-OS-109 | Network device registry | 📋 PLANNED |
+| LB-OS-110 | Remote drive knowledge source | 📋 PLANNED |
+| LB-OS-111 | Google Drive archive connector | 📋 PLANNED — [Drive archive](./LOCALBRAIN_GOOGLE_DRIVE_ARCHIVE_PLAN.md) |
+| LB-OS-112 | Team workspace permissions | 📋 PLANNED — [Team model](./LOCALBRAIN_TEAM_WORKSPACE_MODEL.md) |
+| LB-OS-113 | Multi-user audit trail | 📋 PLANNED |
+| LB-OS-114 | Network operations dashboard | 📋 PLANNED — [Device dashboard](./LOCALBRAIN_NETWORK_DEVICE_DASHBOARD.md) |
+
+**Gate:** After V1 ship (LB-OS-016) + personal OS cutover (LB-OS-024). Ethernet preferred; Wi-Fi acceptable; Bluetooth not for bulk sync.
+
+```txt
+H:/ = active work · Google Drive = archive · LocalBrain = index + sync awareness
+Steve = owner · Actions = approval-gated · Audit = always on (when team ships)
+```
+
+---
+
 ## Change Log
 
 | Date | Change |
 |------|--------|
+| 2026-06-28 | LB-OS-011 system health + status dock complete |
+| 2026-06-28 | Future arc: Multi-Machine & Cloud Archive (LB-OS-107–114) + 5 planning docs |
 | 2026-06-28 | Migration & Drive Doctrine + LB-OS-016–024 arc |
 | 2026-06-28 | PSP approved · LB-OS-002 READY · localbrain home · CFO briefing-only |
 | 2026-06-28 | LivingWorkspace model · LB-OS-004 assigned (workspace registry, not projects) |
