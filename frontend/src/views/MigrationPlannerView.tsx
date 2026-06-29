@@ -81,6 +81,8 @@ export function MigrationPlannerView() {
           <Link to="/migration/consolidation">Executive Consolidation Briefing (LB-OS-020) →</Link>
           {" · "}
           <Link to="/migration/workspace-architecture">Workspace Architecture (LB-OS-021) →</Link>
+          {" · "}
+          <Link to="/migration/digital-land-survey">Digital Land Survey (LB-OS-022) →</Link>
           {plan.inventory_gate ? (
             <span className="migration__gate-ok"> · Inventory gate complete</span>
           ) : null}

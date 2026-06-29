@@ -13,6 +13,7 @@ import { MigrationPlannerView } from "./views/MigrationPlannerView";
 import { FilesystemAuditView } from "./views/FilesystemAuditView";
 import { ConsolidationBriefingView } from "./views/ConsolidationBriefingView";
 import { WorkspaceArchitectureView } from "./views/WorkspaceArchitectureView";
+import { DigitalLandSurveyView } from "./views/DigitalLandSurveyView";
 import { SettingsPage } from "./views/SettingsPage";
 import { LazyModuleRoute } from "./views/LazyModuleRoute";
 
@@ -35,6 +36,7 @@ export function AppRouter() {
         <Route path="migration/audit" element={<FilesystemAuditView />} />
         <Route path="migration/consolidation" element={<ConsolidationBriefingView />} />
         <Route path="migration/workspace-architecture" element={<WorkspaceArchitectureView />} />
+        <Route path="migration/digital-land-survey" element={<DigitalLandSurveyView />} />
         <Route path="settings" element={<SettingsPage />} />
         {!loading &&
           departmentModules.flatMap((m) =>

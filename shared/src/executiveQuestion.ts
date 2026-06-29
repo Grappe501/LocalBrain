@@ -172,11 +172,11 @@ export const PHASE_1_EXECUTIVE_QUESTIONS: ExecutiveQuestion[] = [
     canonical_question: "What is on my H: drive?",
     owner_department: "Migration Audit",
     primary_route: "/migration/audit",
-    supporting_engines: ["ENG-MIG-002"],
+    supporting_engines: ["ENG-MIG-002", "ENG-DLS-001"],
     supporting_workspaces: [],
     answer_surface: "dashboard",
     answer_confidence: 90,
-    summary_only_routes: [],
+    summary_only_routes: ["/migration/digital-land-survey"],
   },
   {
     question_id: "EQ-010",

@@ -3288,6 +3288,64 @@ a {
   }
 }
 
+/* LB-OS-022 — Digital Land Survey */
+.dls__summary {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.92rem;
+  color: #475569;
+}
+
+.dls__summary p {
+  margin: 0.35rem 0;
+}
+
+.dls__note {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin: 0.75rem 0 0;
+}
+
+.dls__coverage {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.dls__coverage:first-child {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.dls__coverage h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+}
+
+.dls__pct {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #64748b;
+}
+
+.dls__missing {
+  font-size: 0.85rem;
+  color: #854d0e;
+  margin: 0.35rem 0 0;
+}
+
+.dls__dup {
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+  background: #fef2f2;
+}
+
 /* LB-OS-020 — Executive Consolidation Briefing + EIC */
 .consolidation {
   max-width: 960px;

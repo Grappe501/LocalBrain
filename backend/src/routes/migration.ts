@@ -6,6 +6,7 @@ import {
   runFilesystemMappingAudit,
 } from "../migration/fsAudit/auditService.js";
 import { getExecutiveWorkspaceArchitecture } from "../migration/workspaceArchitecture/workspaceArchitectureService.js";
+import { getDigitalLandSurvey } from "../migration/digitalLandSurvey/digitalLandSurveyService.js";
 
 export const migrationRouter = Router();
 
@@ -42,4 +43,9 @@ migrationRouter.get("/migration/audit/export", (req, res) => {
 
 migrationRouter.get("/migration/workspace-architecture", (_req, res) => {
   res.json(getExecutiveWorkspaceArchitecture());
+});
+
+migrationRouter.get("/migration/digital-land-survey", (req, res) => {
+  const refresh = req.query.refresh === "1";
+  res.json(getDigitalLandSurvey({ refreshAudit: refresh }));
 });

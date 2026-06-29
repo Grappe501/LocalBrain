@@ -1,4 +1,5 @@
 import type {
+  DigitalLandSurveyReport,
   ExecutiveWorkspaceArchitectureReport,
   FilesystemMappingAudit,
   MigrationPlannerOverview,
@@ -27,4 +28,11 @@ export async function fetchWorkspaceArchitecture(): Promise<ExecutiveWorkspaceAr
   const res = await fetch(`${API}/migration/workspace-architecture`);
   if (!res.ok) throw new Error("Failed to load workspace architecture");
   return res.json() as Promise<ExecutiveWorkspaceArchitectureReport>;
+}
+
+export async function fetchDigitalLandSurvey(refresh = false): Promise<DigitalLandSurveyReport> {
+  const q = refresh ? "?refresh=1" : "";
+  const res = await fetch(`${API}/migration/digital-land-survey${q}`);
+  if (!res.ok) throw new Error("Failed to load digital land survey");
+  return res.json() as Promise<DigitalLandSurveyReport>;
 }

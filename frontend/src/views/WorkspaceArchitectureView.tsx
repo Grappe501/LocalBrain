@@ -156,6 +156,8 @@ export function WorkspaceArchitectureView() {
           <Link to="/migration/audit">Filesystem Audit (EQ-015) →</Link>
           {" · "}
           <Link to="/migration/consolidation">Consolidation Briefing →</Link>
+          {" · "}
+          <Link to="/migration/digital-land-survey">Digital Land Survey (022) →</Link>
         </p>
         <ul className="migration__guardrails">
           <li>Workspace identity is Logical — paths are projections only</li>
