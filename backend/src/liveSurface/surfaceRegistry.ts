@@ -270,7 +270,7 @@ export const SURFACE_REGISTRY: LiveSurfaceEntry[] = [
     maturity_level: 3,
     target_maturity_level: 4,
     next_upgrade_slice: "LB-OS-024",
-    next_upgrade_summary: "Certified proof enables migration proposal builder",
+    next_upgrade_summary: "Certified proof enables constraint-aware planning",
   },
   {
     route: "/migration/proof",
@@ -292,6 +292,31 @@ export const SURFACE_REGISTRY: LiveSurfaceEntry[] = [
     maturity_level: 3,
     target_maturity_level: 4,
     next_upgrade_slice: "LB-OS-024",
-    next_upgrade_summary: "Proposal builder consumes Proof Certificates",
+    next_upgrade_summary: "Certified proof enables constraint-aware planning",
+  },
+  {
+    route: "/migration/planning",
+    label: "Migration Planning Engine",
+    mode: "live",
+    data_sources: [
+      "Proof Certificates",
+      "LB-OS-021 blueprints",
+      "Planning Engine ENG-PLN-001",
+    ],
+    api_endpoints: [
+      "/api/migration/plans",
+      "/api/migration/plans/generate",
+      "/api/migration/plans/:planId",
+    ],
+    stub_sections: [
+      { label: "Proposals", reason: "LB-OS-025 — references MigrationPlan only" },
+      { label: "Execution", reason: "LB-OS-026 — approved proposals only" },
+    ],
+    slice_id: "LB-OS-024",
+    question_id: "EQ-014",
+    maturity_level: 3,
+    target_maturity_level: 4,
+    next_upgrade_slice: "LB-OS-025",
+    next_upgrade_summary: "Executive approval proposals reference plans",
   },
 ];

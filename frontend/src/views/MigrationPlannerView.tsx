@@ -85,6 +85,8 @@ export function MigrationPlannerView() {
           <Link to="/migration/digital-land-survey">Digital Land Survey (LB-OS-022) →</Link>
           {" · "}
           <Link to="/migration/proof">Migration Proof Engine (LB-OS-023) →</Link>
+          {" · "}
+          <Link to="/migration/planning">Migration Planning (LB-OS-024) →</Link>
           {plan.inventory_gate ? (
             <span className="migration__gate-ok"> · Inventory gate complete</span>
           ) : null}

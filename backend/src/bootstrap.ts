@@ -15,6 +15,7 @@ import { migrateFileReadLogTable } from "./files/fileReadLog.js";
 import { migrateCommandLogTable } from "./openai/safeLog.js";
 import { migrateFilesystemAuditTables } from "./migration/fsAudit/migrate.js";
 import { migrateProofTables } from "./migration/proof/migrate.js";
+import { migratePlanningTables } from "./migration/planning/migrate.js";
 import { migrateConsolidationTables } from "./consolidation/consolidationScore.js";
 import { migrateProviderTables } from "./providers/migrate.js";
 import { initPermissionEngine } from "./safety/permissionEngine.js";
@@ -38,6 +39,7 @@ export function bootstrapApp(): void {
   migrateProviderTables();
   migrateFilesystemAuditTables();
   migrateProofTables();
+  migratePlanningTables();
   migrateConsolidationTables();
   migrateFileReadLogTable();
   migrateActionTables();

@@ -3470,6 +3470,128 @@ a {
   cursor: not-allowed;
 }
 
+/* LB-OS-024 — Migration Planning Engine */
+.plan-executive {
+  margin: 1.5rem 0;
+}
+
+.plan-executive__title {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+.plan-executive__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.plan-executive__empty {
+  color: #64748b;
+  margin: 1rem 0;
+}
+
+.plan-card {
+  border: 2px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+  background: #fff;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.plan-card:hover {
+  border-color: #94a3b8;
+}
+
+.plan-card--selected {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 1px #2563eb;
+}
+
+.plan-card--conservative {
+  background: #f8fafc;
+}
+
+.plan-card--balanced {
+  background: #f0f9ff;
+}
+
+.plan-card--aggressive {
+  background: #fefce8;
+}
+
+.plan-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.75rem;
+}
+
+.plan-card__header h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.plan-card__badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #2563eb;
+  background: #dbeafe;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+}
+
+.plan-card__metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.35rem 0.75rem;
+  margin: 0;
+}
+
+.plan-card__metrics dt {
+  font-size: 0.7rem;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.plan-card__metrics dd {
+  margin: 0;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.plan-card__id {
+  margin: 0.75rem 0 0;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-family: ui-monospace, monospace;
+}
+
+.plan-constraint--pass {
+  color: #166534;
+}
+
+.plan-constraint--warn {
+  color: #854d0e;
+}
+
+.plan-constraint--fail {
+  color: #991b1b;
+}
+
+.plan-ops {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.9rem;
+}
+
+.plan-ops__ws {
+  color: #64748b;
+  font-size: 0.8rem;
+}
+
 /* LB-OS-020 — Executive Consolidation Briefing + EIC */
 .consolidation {
   max-width: 960px;

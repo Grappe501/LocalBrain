@@ -29,6 +29,7 @@ export const EXECUTIVE_SHELL_ROUTES = [
   "/migration/workspace-architecture",
   "/migration/digital-land-survey",
   "/migration/proof",
+  "/migration/planning",
   "/workspace/:workspaceId",
   "/studio/engineering",
   "/studio/writing",

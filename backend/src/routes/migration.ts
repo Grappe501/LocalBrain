@@ -1,4 +1,5 @@
 import { Router } from "express";
+import type { PlanVariantStrategy } from "@localbrain/shared";
 import { getMigrationPlannerOverview } from "../migration/migrationService.js";
 import {
   exportFilesystemAuditJson,
@@ -11,6 +12,11 @@ import {
   getMigrationProofOverview,
   runMigrationProofSimulation,
 } from "../migration/proof/migrationProofService.js";
+import {
+  generateMigrationPlans,
+  getMigrationPlanById,
+  getMigrationPlansOverview,
+} from "../migration/planning/migrationPlanService.js";
 
 export const migrationRouter = Router();
 
@@ -61,4 +67,35 @@ migrationRouter.get("/migration/proof", (_req, res) => {
 migrationRouter.post("/migration/proof/simulate", (req, res) => {
   const body = (req.body ?? {}) as { workspace_ids?: string[] };
   res.json(runMigrationProofSimulation({ workspace_ids: body.workspace_ids }));
+});
+
+migrationRouter.get("/migration/plans", (_req, res) => {
+  res.json(getMigrationPlansOverview());
+});
+
+migrationRouter.post("/migration/plans/generate", (req, res) => {
+  try {
+    const body = (req.body ?? {}) as { certificate_id?: string; variants?: string[] };
+    if (!body.certificate_id) {
+      res.status(400).json({ error: "certificate_id required" });
+      return;
+    }
+    res.json(
+      generateMigrationPlans({
+        certificate_id: body.certificate_id,
+        variants: body.variants as PlanVariantStrategy[] | undefined,
+      }),
+    );
+  } catch (e) {
+    res.status(400).json({ error: e instanceof Error ? e.message : "Plan generation failed" });
+  }
+});
+
+migrationRouter.get("/migration/plans/:planId", (req, res) => {
+  const plan = getMigrationPlanById(req.params.planId);
+  if (!plan) {
+    res.status(404).json({ error: "Plan not found" });
+    return;
+  }
+  res.json(plan);
 });

@@ -146,6 +146,8 @@ export function MigrationProofView() {
           <Link to="/migration/digital-land-survey">Digital Land Survey (022) →</Link>
           {" · "}
           <Link to="/migration/workspace-architecture">Workspace Architecture (021) →</Link>
+          {" · "}
+          <Link to="/migration/planning">Migration Planning (024) →</Link>
         </p>
         <div className="migration__actions-bar">
           <button type="button" disabled={simulating} onClick={() => void handleSimulate()}>

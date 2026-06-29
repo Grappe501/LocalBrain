@@ -79,6 +79,8 @@ export function DigitalLandSurveyView() {
           {" · "}
           <Link to="/migration/proof">Migration Proof (023) →</Link>
           {" · "}
+          <Link to="/migration/planning">Migration Planning (024) →</Link>
+          {" · "}
           <Link to="/migration/audit">Filesystem Audit (019) →</Link>
         </p>
         <ul className="migration__guardrails">

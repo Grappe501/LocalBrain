@@ -165,7 +165,7 @@ export const PHASE_1_EXECUTIVE_QUESTIONS: ExecutiveQuestion[] = [
     supporting_workspaces: [],
     answer_surface: "dashboard",
     answer_confidence: 88,
-    summary_only_routes: ["/migration/workspace-architecture", "/migration/proof"],
+    summary_only_routes: ["/migration/workspace-architecture", "/migration/proof", "/migration/planning"],
   },
   {
     question_id: "EQ-015",
