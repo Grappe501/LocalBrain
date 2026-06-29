@@ -31,21 +31,21 @@ CoS briefing hooks: asset counts by lifecycle
 ## Exit criteria
 
 ```txt
-[ ] Health score computed per asset from fingerprint heuristics
-[ ] At least 3 seed collections (focus workspace, touched this week, stale)
-[ ] duplicate: and stale: search use registry not ad-hoc scans
-[ ] Cleanup proposals — no auto-delete
-[ ] Executive Mode insights cite registry stats
+[x] Health score computed per asset from fingerprint heuristics
+[x] At least 3 seed collections (focus workspace, touched this week, stale)
+[x] duplicate: and stale: search use registry not ad-hoc scans
+[x] Cleanup proposals — no auto-delete
+[x] Executive Mode insights cite registry stats
 ```
 
 ---
 
 ## Commit
 
-`feat: add digital asset intelligence engine`
+`feat: add digital asset intelligence recommendations`
 
 **Next:** LB-OS-008 OpenAI Command Layer
 
 ---
 
-*LB-OS-007 · Digital Asset Intelligence · PLANNED*
+*LB-OS-007 · Digital Asset Intelligence · ✅ Complete*

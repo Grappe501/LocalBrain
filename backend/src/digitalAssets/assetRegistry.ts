@@ -6,8 +6,10 @@ import {
   detectAssetKind,
   inferLifecycleStage,
   pathToAssetId,
-  stubHealthScore,
 } from "./assetUtils.js";
+import { computeHealthScore } from "./assetHealth.js";
+import { getCollectionIdsForAsset } from "./collectionsEngine.js";
+import { seedIntelligenceCollections } from "./collectionsEngine.js";
 
 export type DigitalAssetRow = {
   asset_id: string;
@@ -85,28 +87,8 @@ export function migrateDigitalAssetTables(): void {
     CREATE INDEX IF NOT EXISTS idx_digital_assets_mtime ON digital_assets(modified_at);
   `);
 
-  seedStubCollections();
+  seedIntelligenceCollections();
   migrateFileIndexRowsToDigitalAssets();
-}
-
-function seedStubCollections(): void {
-  const db = getDatabase();
-  const insert = db.prepare(
-    `INSERT OR IGNORE INTO asset_collections (collection_id, title, description, query, asset_count)
-     VALUES (@collection_id, @title, @description, @query, NULL)`,
-  );
-  insert.run({
-    collection_id: "col-stub-focus",
-    title: "Active workspace focus",
-    description: "Stub — populated in LB-OS-007",
-    query: "focus:",
-  });
-  insert.run({
-    collection_id: "col-stub-week",
-    title: "Touched this week",
-    description: "Stub — populated in LB-OS-007",
-    query: "recent:",
-  });
 }
 
 /** One-time migration: LB-OS-005 file_index → digital_assets (006). */
@@ -163,10 +145,9 @@ export type UpsertAssetInput = {
 export function upsertDigitalAsset(input: UpsertAssetInput): DigitalAssetRow {
   const kind = detectAssetKind(input.name, input.is_directory);
   const lifecycle = inferLifecycleStage(input.mtime, input.is_directory);
-  const health = stubHealthScore(lifecycle, input.workspace_id);
   const assetId = pathToAssetId(input.path);
 
-  const row = {
+  const draftRow = {
     asset_id: assetId,
     path: input.path,
     name: input.name,
@@ -180,13 +161,17 @@ export function upsertDigitalAsset(input: UpsertAssetInput): DigitalAssetRow {
     workspace_id: input.workspace_id,
     knowledge_source_id: "filesystem",
     owner: "steve",
-    health_score: health,
+    health_score: null as number | null,
     lifecycle_stage: lifecycle,
     duplicate_group_id: null as string | null,
     version_cluster_id: null as string | null,
     summary: input.is_directory ? "directory" : "",
     tags_json: "[]",
+    synced_at: "",
   };
+  draftRow.health_score = computeHealthScore(draftRow as DigitalAssetRow);
+
+  const row = draftRow;
 
   getDatabase()
     .prepare(
@@ -346,7 +331,7 @@ export function rowToDigitalAsset(row: DigitalAssetRow) {
       version_cluster_id: row.version_cluster_id,
       summary: row.summary || null,
     },
-    collection_ids: [] as string[],
+    collection_ids: getCollectionIdsForAsset(row.asset_id),
     relationship_ids: [] as string[],
     tags: JSON.parse(row.tags_json) as string[],
   };

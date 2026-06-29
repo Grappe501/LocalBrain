@@ -131,7 +131,7 @@ export function KnowledgeExplorerView() {
       <header className="ke-explorer__header">
         <h1>Knowledge Explorer</h1>
         <p className="ke-explorer__meta">
-          {indexStatus} · Registry first · incremental sync · LB-OS-006
+          {indexStatus} · Intelligence · recommend only · LB-OS-007
         </p>
       </header>
 
@@ -228,7 +228,7 @@ export function KnowledgeExplorerView() {
                   <dt>Lifecycle</dt>
                   <dd>{explain.asset.lifecycle_stage}</dd>
                   <dt>Health</dt>
-                  <dd>{explain.asset.health_score ?? "—"}</dd>
+                  <dd>{explain.intelligence?.health_score ?? explain.asset.health_score ?? "—"}</dd>
                   <dt>Size</dt>
                   <dd>{explain.asset.size_bytes ?? "—"}</dd>
                   <dt>Modified</dt>
@@ -240,6 +240,43 @@ export function KnowledgeExplorerView() {
                   <dt>Workspace</dt>
                   <dd>{explain.asset.workspace_id ?? explain.workspace?.title ?? "—"}</dd>
                 </dl>
+                {explain.intelligence ? (
+                  <>
+                    <h4>Health signals</h4>
+                    <ul className="ke-explorer__signals">
+                      {Object.entries(explain.intelligence.health_signals).map(([k, v]) => (
+                        <li key={k}>
+                          {v ? "✓" : "·"} {k.replace(/_/g, " ")}
+                        </li>
+                      ))}
+                    </ul>
+                    {explain.intelligence.duplicate_candidates.length > 0 ? (
+                      <>
+                        <h4>Duplicate candidates</h4>
+                        <p className="ke-explorer__meta">Candidates only — no dedupe actions.</p>
+                        <ul>
+                          {explain.intelligence.duplicate_candidates.map((g) => (
+                            <li key={g.group_id}>
+                              {g.match_reason}: {g.assets.map((a) => a.name).join(", ")}
+                            </li>
+                          ))}
+                        </ul>
+                      </>
+                    ) : null}
+                    {explain.intelligence.recommendations.length > 0 ? (
+                      <>
+                        <h4>Recommendations</h4>
+                        <ul className="ke-explorer__recs">
+                          {explain.intelligence.recommendations.map((r) => (
+                            <li key={r.id} className={`ke-rec ke-rec--${r.risk}`}>
+                              <strong>{r.title}</strong> — {r.message}
+                            </li>
+                          ))}
+                        </ul>
+                      </>
+                    ) : null}
+                  </>
+                ) : null}
                 <p className="ke-explorer__meta">{explain.index_status}</p>
               </div>
             ) : selected && !selected.in_registry ? (
@@ -257,8 +294,17 @@ export function KnowledgeExplorerView() {
                 <p className="ke-explorer__context">{explain.workspace.executive_context}</p>
               </div>
             ) : null}
-            {explain.collections.length === 0 ? (
-              <p className="ke-explorer__meta">Collections: stub (LB-OS-007)</p>
+            {explain.collections.length > 0 ? (
+              <>
+                <h3>Collections</h3>
+                <ul className="ke-explorer__collections">
+                  {explain.collections.map((c) => (
+                    <li key={c.collection_id}>
+                      {c.title} — {c.asset_count ?? 0} assets
+                    </li>
+                  ))}
+                </ul>
+              </>
             ) : null}
             {explain.important_files.length > 0 ? (
               <>
@@ -294,11 +340,23 @@ export function KnowledgeExplorerView() {
 
         {mode === "executive" ? (
           <section className="ke-explorer__panel">
-            <h2>Executive — why it matters today</h2>
+            <h2>Executive — cleanup recommendations</h2>
+            <p className="ke-explorer__meta">Recommend only · no archive, delete, or move actions</p>
             <ul className="ke-explorer__insights">
               {insights.map((ins) => (
                 <li key={ins.id} className={`ke-insight ke-insight--${ins.severity}`}>
+                  {ins.title ? <h3 className="ke-insight__title">{ins.title}</h3> : null}
                   <p>{ins.message}</p>
+                  {ins.asset_count != null ? (
+                    <p className="ke-insight__meta">
+                      {ins.asset_count} assets
+                      {ins.bytes_estimate != null
+                        ? ` · ${Math.round(ins.bytes_estimate / (1024 * 1024))} MB`
+                        : null}
+                      {ins.risk ? ` · risk ${ins.risk}` : null}
+                      {ins.recommend_only ? " · recommend only" : null}
+                    </p>
+                  ) : null}
                   <p className="ke-insight__why">{ins.why}</p>
                   {ins.path ? (
                     <button

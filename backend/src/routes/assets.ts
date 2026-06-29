@@ -7,9 +7,47 @@ import {
   listAssets,
   rowToDigitalAsset,
 } from "../digitalAssets/assetRegistry.js";
+import {
+  detectDuplicateCandidates,
+  getAssetIntelligenceForPath,
+  getCleanupRecommendations,
+  getIntelligenceSummary,
+  refreshIntelligence,
+} from "../digitalAssets/intelligenceEngine.js";
 import { isIndexing, runBackgroundIndex } from "../knowledgeExplorer/indexer.js";
 
 export const assetsRouter = Router();
+
+assetsRouter.get("/assets/intelligence/summary", (_req, res) => {
+  res.json({ summary: getIntelligenceSummary() });
+});
+
+assetsRouter.get("/assets/intelligence/recommendations", (_req, res) => {
+  res.json({ recommendations: getCleanupRecommendations() });
+});
+
+assetsRouter.get("/assets/intelligence/duplicates", (_req, res) => {
+  res.json({ groups: detectDuplicateCandidates(), candidate_only: true });
+});
+
+assetsRouter.get("/assets/intelligence/path", (req, res) => {
+  const pathQuery = typeof req.query.path === "string" ? req.query.path : "";
+  if (!pathQuery) {
+    res.status(400).json({ error: "path query required" });
+    return;
+  }
+  const intel = getAssetIntelligenceForPath(pathQuery);
+  if (!intel) {
+    res.status(404).json({ error: "Asset not in registry" });
+    return;
+  }
+  res.json({ intelligence: intel });
+});
+
+assetsRouter.post("/assets/intelligence/refresh", (_req, res) => {
+  const result = refreshIntelligence();
+  res.json({ refreshed: true, ...result, recommend_only: true });
+});
 
 assetsRouter.get("/assets/stats", (_req, res) => {
   res.json({ stats: getRegistryStats() });

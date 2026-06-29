@@ -3,7 +3,14 @@ import path from "node:path";
 import { listWorkspaces } from "../workspaces/workspaceRegistry.js";
 import { getWorkspaceEvents } from "../workspaces/workspaceEvents.js";
 import { normalizeAndResolve } from "../safety/pathValidator.js";
+import type { AssetHealthSignals, CleanupRecommendation } from "@localbrain/shared";
 import { getAssetByPath, getRegistryStats } from "../digitalAssets/assetRegistry.js";
+import {
+  getAssetIntelligenceForPath,
+  getCleanupRecommendations,
+  getIntelligenceSummary,
+} from "../digitalAssets/intelligenceEngine.js";
+import { listPopulatedCollections } from "../digitalAssets/collectionsEngine.js";
 import { getIndexedPath, getLatestIndexRun } from "./indexer.js";
 import { resolveWorkspaceForPath } from "./pathWorkspace.js";
 import { listTreeChildren } from "./treeService.js";
@@ -39,6 +46,17 @@ export type ExplainFolderResult = {
     in_registry: boolean;
   } | null;
   collections: { collection_id: string; title: string; asset_count: number | null }[];
+  intelligence: {
+    health_signals: AssetHealthSignals;
+    health_score: number;
+    duplicate_candidates: {
+      group_id: string;
+      match_reason: string;
+      candidate_only: true;
+      assets: { path: string; name: string }[];
+    }[];
+    recommendations: CleanupRecommendation[];
+  } | null;
 };
 
 export type ExecutiveInsight = {
@@ -48,6 +66,11 @@ export type ExecutiveInsight = {
   path?: string;
   workspace_id?: string;
   why: string;
+  recommend_only?: boolean;
+  risk?: "low" | "medium" | "high";
+  title?: string;
+  asset_count?: number;
+  bytes_estimate?: number;
 };
 
 export type WhySeeingThisResult = {
@@ -106,9 +129,23 @@ export function explainFolder(rawPath: string): ExplainFolderResult | null {
   }
 
   const duplicate_risks: string[] = [];
-  if (!stats.isDirectory() && cached) {
-    duplicate_risks.push("Check duplicate: search with duplicate: prefix after index completes.");
+  const intel = getAssetIntelligenceForPath(resolved);
+  if (intel?.duplicate_candidates.length) {
+    for (const group of intel.duplicate_candidates) {
+      duplicate_risks.push(
+        `Duplicate candidate: ${group.assets.length} assets with ${group.match_reason.toLowerCase()}`,
+      );
+    }
+  } else if (!stats.isDirectory() && cached) {
+    duplicate_risks.push("Search duplicate: prefix to find name+size candidates in registry.");
   }
+
+  const populatedCollections = listPopulatedCollections();
+  const assetCollections = assetRow
+    ? populatedCollections.filter((c) =>
+        intel?.related_collections.some((r) => r.collection_id === c.collection_id),
+      )
+    : populatedCollections.slice(0, 4);
 
   return {
     path: resolved,
@@ -141,7 +178,7 @@ export function explainFolder(rawPath: string): ExplainFolderResult | null {
           asset_id: assetRow.asset_id,
           kind: assetRow.kind,
           lifecycle_stage: assetRow.lifecycle_stage,
-          health_score: assetRow.health_score,
+          health_score: intel?.health_score ?? assetRow.health_score,
           hash: assetRow.hash,
           size_bytes: assetRow.size_bytes,
           created_at: assetRow.created_at,
@@ -150,12 +187,63 @@ export function explainFolder(rawPath: string): ExplainFolderResult | null {
           in_registry: true,
         }
       : null,
-    collections: [],
+    collections: assetCollections.map((c) => ({
+      collection_id: c.collection_id,
+      title: c.title,
+      asset_count: c.asset_count,
+    })),
+    intelligence: intel,
   };
 }
 
 export function getExecutiveInsights(rootPath?: string): ExecutiveInsight[] {
   const insights: ExecutiveInsight[] = [];
+  const summary = getIntelligenceSummary();
+
+  if (summary.dormant.count > 0) {
+    const gb = (summary.dormant.bytes / (1024 * 1024 * 1024)).toFixed(1);
+    insights.push({
+      id: "intel-dormant-summary",
+      severity: summary.dormant.bytes > 1024 * 1024 * 1024 ? "warn" : "info",
+      title: "Dormant assets",
+      message: `${summary.dormant.count.toLocaleString()} dormant assets · ${gb} GB — review recommended.`,
+      why: "Digital Asset Registry lifecycle analysis · recommend only · no auto-cleanup.",
+      recommend_only: true,
+      risk: summary.dormant.bytes > 1024 * 1024 * 1024 ? "medium" : "low",
+      asset_count: summary.dormant.count,
+      bytes_estimate: summary.dormant.bytes,
+    });
+  }
+
+  if (summary.duplicate_groups > 0) {
+    insights.push({
+      id: "intel-duplicate-summary",
+      severity: "info",
+      title: "Duplicate candidates",
+      message: `${summary.duplicate_groups} duplicate groups detected in registry.`,
+      why: "Matched by filename + size · candidates only · no dedupe actions.",
+      recommend_only: true,
+      risk: "low",
+    });
+  }
+
+  for (const rec of getCleanupRecommendations()) {
+    if (rec.id.startsWith("rec-ws-")) continue;
+    insights.push({
+      id: rec.id,
+      severity: rec.risk === "medium" ? "warn" : "info",
+      title: rec.title,
+      message: rec.message,
+      workspace_id: rec.workspace_id,
+      why: rec.why.join(" "),
+      recommend_only: true,
+      risk: rec.risk,
+      asset_count: rec.asset_count,
+      bytes_estimate: rec.bytes_estimate,
+      path: rec.paths_sample?.[0],
+    });
+  }
+
   const workspaces = listWorkspaces().filter((w) => !w.flags.hidden);
 
   for (const ws of workspaces.sort((a, b) => b.priority - a.priority)) {
@@ -228,6 +316,12 @@ export function whyAmISeeingThis(rawPath: string, context?: string): WhySeeingTh
     surfaced_because.push("Workspace health is strong — likely priority.");
   }
   if (ex.stale_hint) surfaced_because.push(ex.stale_hint);
+  if (ex.intelligence?.duplicate_candidates.length) {
+    surfaced_because.push("Asset flagged as duplicate candidate in registry.");
+  }
+  if (ex.intelligence?.recommendations.length) {
+    surfaced_because.push(...ex.intelligence.recommendations.map((r) => r.message));
+  }
   if (surfaced_because.length === 0) surfaced_because.push("Path is under an approved workspace root.");
 
   const what_changed = ex.recent_activity.map((a) => `${a.title} (${a.created_at})`);

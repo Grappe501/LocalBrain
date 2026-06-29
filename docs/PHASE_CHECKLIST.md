@@ -39,7 +39,7 @@
 
 | [Digital Asset Model](./LOCALBRAIN_DIGITAL_ASSET_MODEL.md) | ✅ Spec — LB-OS-006/007 |
 
-**Gate:** Next: **LB-OS-007** Digital Asset Intelligence Engine.
+**Gate:** Next: **LB-OS-008** OpenAI Command Layer.
 
 ---
 
@@ -54,7 +54,7 @@
 | LB-OS-106 | Core kernel + module loader | ✅ Complete — MODULARITY GATE |
 | LB-OS-005 | Knowledge Explorer + metadata index | ✅ Complete |
 | LB-OS-006 | Digital Asset Registry | ✅ Complete — [Burt packet](./burt_packets/LB-OS-006.md) |
-| LB-OS-007 | Digital Asset Intelligence Engine | ⬜ PLANNED |
+| LB-OS-007 | Digital Asset Intelligence Engine | ✅ Complete — [Burt packet](./burt_packets/LB-OS-007-asset-intelligence.md) |
 | LB-OS-008 | OpenAI chat command layer | ⬜ PLANNED |
 | LB-OS-009 | System health monitor | ⬜ PLANNED *(renumbered)* |
 | LB-OS-010 | File read/summarize tools | ⬜ PLANNED *(renumbered)* |

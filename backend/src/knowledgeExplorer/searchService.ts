@@ -1,7 +1,7 @@
 import { getDatabase } from "../db/database.js";
+import { isLargeAsset, LARGE_BYTES } from "../digitalAssets/assetHealth.js";
 import { listWorkspaces } from "../workspaces/workspaceRegistry.js";
 import { parseSearchQuery, type ParsedSearchQuery } from "./searchParser.js";
-import type { FileIndexRow } from "./migrate.js";
 
 export type SearchResultItem = {
   kind: "file" | "workspace" | "insight";
@@ -12,14 +12,14 @@ export type SearchResultItem = {
 };
 
 const STALE_DAYS = 90;
-const LARGE_BYTES = 10 * 1024 * 1024;
 
 function searchFiles(term: string, limit: number): SearchResultItem[] {
   const db = getDatabase();
   if (!term) {
     const rows = db
       .prepare(
-        "SELECT path, name FROM file_index WHERE is_directory = 0 ORDER BY mtime DESC LIMIT ?",
+        `SELECT path, name FROM digital_assets WHERE is_directory = 0
+         ORDER BY modified_at DESC LIMIT ?`,
       )
       .all(limit) as { path: string; name: string }[];
     return rows.map((r) => ({
@@ -122,15 +122,16 @@ function searchStale(limit: number): SearchResultItem[] {
   const cutoff = new Date(Date.now() - STALE_DAYS * 86400000).toISOString();
   const rows = getDatabase()
     .prepare(
-      `SELECT path, name, mtime FROM file_index
-       WHERE is_directory = 0 AND mtime < ?
-       ORDER BY mtime ASC LIMIT ?`,
+      `SELECT path, name, modified_at FROM digital_assets
+       WHERE is_directory = 0
+         AND (lifecycle_stage IN ('dormant', 'archive_candidate') OR modified_at < ?)
+       ORDER BY modified_at ASC LIMIT ?`,
     )
-    .all(cutoff, limit) as FileIndexRow[];
+    .all(cutoff, limit) as { path: string; name: string; modified_at: string | null }[];
   return rows.map((r) => ({
     kind: "file" as const,
     title: r.name,
-    subtitle: `Stale · ${r.mtime ?? "unknown"}`,
+    subtitle: `Stale · ${r.modified_at ?? "unknown"} · registry`,
     path: r.path,
   }));
 }
@@ -138,15 +139,15 @@ function searchStale(limit: number): SearchResultItem[] {
 function searchLarge(limit: number): SearchResultItem[] {
   const rows = getDatabase()
     .prepare(
-      `SELECT path, name, size_bytes FROM file_index
+      `SELECT path, name, size_bytes FROM digital_assets
        WHERE is_directory = 0 AND size_bytes >= ?
        ORDER BY size_bytes DESC LIMIT ?`,
     )
-    .all(LARGE_BYTES, limit) as FileIndexRow[];
+    .all(LARGE_BYTES, limit) as { path: string; name: string; size_bytes: number | null }[];
   return rows.map((r) => ({
     kind: "file" as const,
     title: r.name,
-    subtitle: `${Math.round((r.size_bytes ?? 0) / (1024 * 1024))} MB`,
+    subtitle: `${Math.round((r.size_bytes ?? 0) / (1024 * 1024))} MB · registry`,
     path: r.path,
   }));
 }
@@ -154,16 +155,16 @@ function searchLarge(limit: number): SearchResultItem[] {
 function searchDuplicate(limit: number): SearchResultItem[] {
   const rows = getDatabase()
     .prepare(
-      `SELECT name, COUNT(*) AS c, GROUP_CONCAT(path, ' | ') AS paths
-       FROM file_index WHERE is_directory = 0
-       GROUP BY LOWER(name) HAVING c > 1
+      `SELECT name, size_bytes, COUNT(*) AS c, GROUP_CONCAT(path, ' | ') AS paths
+       FROM digital_assets WHERE is_directory = 0 AND size_bytes IS NOT NULL
+       GROUP BY LOWER(name), size_bytes HAVING c > 1
        LIMIT ?`,
     )
-    .all(limit) as { name: string; paths: string }[];
+    .all(limit) as { name: string; paths: string; c: number }[];
   return rows.map((r) => ({
     kind: "insight" as const,
     title: r.name,
-    subtitle: `Duplicate name · ${r.paths}`,
+    subtitle: `Duplicate candidate · ${r.c} matches · registry`,
     path: r.paths.split(" | ")[0],
   }));
 }
@@ -171,13 +172,13 @@ function searchDuplicate(limit: number): SearchResultItem[] {
 function searchRecent(limit: number): SearchResultItem[] {
   const rows = getDatabase()
     .prepare(
-      "SELECT path, name, mtime FROM file_index ORDER BY mtime DESC LIMIT ?",
+      "SELECT path, name, modified_at FROM digital_assets ORDER BY modified_at DESC LIMIT ?",
     )
-    .all(limit) as FileIndexRow[];
+    .all(limit) as { path: string; name: string; modified_at: string | null }[];
   return rows.map((r) => ({
     kind: "file" as const,
     title: r.name,
-    subtitle: r.mtime ?? "",
+    subtitle: r.modified_at ?? "",
     path: r.path,
   }));
 }

@@ -31,6 +31,14 @@ export type {
   DigitalAssetKind,
 } from "./digitalAsset.js";
 export type {
+  AssetIntelligenceForPath,
+  AssetIntelligenceSummary,
+  CleanupRecommendation,
+  DuplicateCandidateGroup,
+  RecommendationRisk,
+  WorkspaceStorageSummary,
+} from "./assetIntelligence.js";
+export type {
   ModuleCapabilityDeclaration,
   ModuleManifest,
   ModuleNavPlacement,

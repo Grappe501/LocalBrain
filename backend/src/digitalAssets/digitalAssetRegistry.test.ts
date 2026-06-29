@@ -59,14 +59,13 @@ test("getRegistryStats includes lifecycle breakdown", () => {
   const stats = getRegistryStats();
   assert.ok(stats.total_assets >= 1);
   assert.ok(typeof stats.by_lifecycle === "object");
-  assert.equal(stats.collections_count, 2);
+  assert.equal(stats.collections_count, 4);
 });
 
-test("listCollections returns stub collections", () => {
+test("listCollections returns intelligence collections", () => {
   bootstrapApp();
   const cols = listCollections();
-  assert.equal(cols.length, 2);
-  assert.ok(cols.every((c) => c.asset_count === null));
+  assert.equal(cols.length, 4);
 });
 
 test("tree nodes include registry metadata when indexed", () => {

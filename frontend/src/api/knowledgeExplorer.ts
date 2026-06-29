@@ -51,6 +51,33 @@ export type ExplainFolderResult = {
     in_registry: boolean;
   } | null;
   collections: { collection_id: string; title: string; asset_count: number | null }[];
+  intelligence: {
+    health_signals: {
+      fresh: boolean;
+      referenced_recently: boolean;
+      active_workspace: boolean;
+      has_backup: boolean;
+      no_duplicates: boolean;
+      indexed: boolean;
+      tagged: boolean;
+      understood: boolean;
+    };
+    health_score: number;
+    duplicate_candidates: {
+      group_id: string;
+      match_reason: string;
+      candidate_only: true;
+      assets: { path: string; name: string }[];
+    }[];
+    recommendations: {
+      id: string;
+      title: string;
+      message: string;
+      risk: "low" | "medium" | "high";
+      recommend_only: true;
+      why: string[];
+    }[];
+  } | null;
 };
 
 export type ExecutiveInsight = {
@@ -60,6 +87,11 @@ export type ExecutiveInsight = {
   path?: string;
   workspace_id?: string;
   why: string;
+  recommend_only?: boolean;
+  risk?: "low" | "medium" | "high";
+  title?: string;
+  asset_count?: number;
+  bytes_estimate?: number;
 };
 
 export type WhySeeingThisResult = {
