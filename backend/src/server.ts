@@ -21,6 +21,7 @@ import { relationshipNetworkRouter } from "./routes/relationshipNetwork.js";
 import { v1Router } from "./routes/v1.js";
 import { providersRouter } from "./routes/providers.js";
 import { migrationRouter } from "./routes/migration.js";
+import { consolidationRouter } from "./routes/consolidation.js";
 import { liveSurfaceRouter } from "./routes/liveSurface.js";
 import { getRegisteredModules } from "./core/moduleLoader.js";
 import { runBackgroundIndex } from "./knowledgeExplorer/indexer.js";
@@ -53,6 +54,7 @@ app.use("/api", relationshipNetworkRouter);
 app.use("/api", v1Router);
 app.use("/api", providersRouter);
 app.use("/api", migrationRouter);
+app.use("/api", consolidationRouter);
 app.use("/api", liveSurfaceRouter);
 
 app.listen(port, () => {

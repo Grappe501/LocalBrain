@@ -15,7 +15,7 @@ test("projectWorkspaceLive syncs localbrain from build state", () => {
   const ws = getWorkspace("localbrain");
   assert.ok(ws);
   const projected = projectWorkspaceLive(ws!);
-  assert.ok(projected.current_focus.includes("LB-OS-020"));
+  assert.ok(projected.current_focus.includes("LB-OS-020.5"));
   assert.ok((projected.profile.completed_slices ?? []).includes("LB-OS-019"));
 });
 

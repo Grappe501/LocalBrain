@@ -214,6 +214,30 @@ export type {
   WorkspaceStorageSummary,
 } from "./assetIntelligence.js";
 export type {
+  ConsolidationCategory,
+  ConsolidationCategoryResponse,
+  ConsolidationOpportunitySummary,
+  ConsolidationRiskAssessment,
+  ConsolidationScore,
+  ConsolidationScoreBand,
+  ConsolidationScoreComponents,
+  ConsolidationSimulateRequest,
+  ConsolidationSimulationResult,
+  ExecutiveConsolidationBriefing,
+  OverallOpportunity,
+  WorkspaceSimplificationLevel,
+} from "./consolidation.js";
+export type {
+  EvidenceSignalPublic,
+  ExecutiveIntelligenceCard,
+  IntelligenceCardCategory,
+  IntelligenceCardPriority,
+  IntelligencePipelineStage,
+  IntelligencePipelineState,
+  IntelligenceScores,
+  PipelineStageStatus,
+} from "./executiveIntelligenceCard.js";
+export type {
   ModuleCapabilityDeclaration,
   ModuleManifest,
   ModuleNavPlacement,

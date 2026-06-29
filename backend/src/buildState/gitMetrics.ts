@@ -93,7 +93,9 @@ function inferSliceFromSubject(subject: string): string[] {
     [/writing department/i, "LB-OS-013"],
     [/engineering department/i, "LB-OS-012"],
     [/program office/i, "LB-OS-012.5"],
+    [/Executive Consolidation Briefing/i, "LB-OS-020"],
     [/consolidation planner/i, "LB-OS-020"],
+    [/EIC foundation/i, "LB-OS-020"],
   ];
   for (const [re, id] of patterns) {
     if (re.test(lower)) hits.push(id);

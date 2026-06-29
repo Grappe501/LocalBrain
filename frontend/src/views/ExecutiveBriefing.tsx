@@ -1,14 +1,48 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import type { V1AcceptanceReport } from "@localbrain/shared";
+import type { ConsolidationOpportunitySummary, V1AcceptanceReport } from "@localbrain/shared";
 import { useActiveWorkspace } from "../context/ActiveWorkspaceContext";
 import { MOCK_BRIEFING_SECTIONS, MOCK_MWI_FOOTER } from "../data/mockBriefing";
 import { fetchV1Acceptance } from "../api/v1Spine";
+import { fetchConsolidationOpportunity } from "../api/consolidation";
 import { V1MilestoneBanner } from "../components/V1MilestoneBanner";
+
+function formatBytes(bytes: number): string {
+  if (bytes >= 1024 ** 3) return `${(bytes / 1024 ** 3).toFixed(1)} GB`;
+  if (bytes >= 1024 ** 2) return `${(bytes / 1024 ** 2).toFixed(1)} MB`;
+  return `${Math.round(bytes / 1024)} KB`;
+}
+
+function ConsolidationOpportunitySection({ opp }: { opp: ConsolidationOpportunitySummary }) {
+  return (
+    <section className="briefing-section">
+      <h2 className="briefing-section__title">Consolidation opportunity</h2>
+      <ul className="briefing-section__lines">
+        <li>
+          Consolidation Score: {opp.consolidation_score}/100 {opp.score_band}
+          {opp.trend_label ? ` · ${opp.trend_label}` : ""}
+        </li>
+        <li>
+          {formatBytes(opp.reclaimable_storage_bytes)} reclaimable · {opp.estimated_review_minutes}{" "}
+          min review · {opp.workspace_simplification} simplification
+        </li>
+        {opp.top_priority_summary ? <li>{opp.top_priority_summary}</li> : null}
+        <li>
+          Risk: {opp.risk_assessment.high} high · {opp.risk_assessment.medium} medium ·{" "}
+          {opp.risk_assessment.low} low · {opp.executive_summary}
+        </li>
+        <li>
+          <Link to="/migration/consolidation">Open Executive Consolidation Briefing →</Link>
+        </li>
+      </ul>
+    </section>
+  );
+}
 
 export function ExecutiveBriefing() {
   const { workspace, loading } = useActiveWorkspace();
   const [v1, setV1] = useState<V1AcceptanceReport | null>(null);
+  const [consolidation, setConsolidation] = useState<ConsolidationOpportunitySummary | null>(null);
   const wsId = workspace?.workspace_id ?? "localbrain";
   const wsTitle = workspace?.title ?? "LocalBrain";
   const wsFocus = workspace?.current_focus;
@@ -17,6 +51,9 @@ export function ExecutiveBriefing() {
     void fetchV1Acceptance()
       .then(setV1)
       .catch(() => setV1(null));
+    void fetchConsolidationOpportunity()
+      .then(setConsolidation)
+      .catch(() => setConsolidation(null));
   }, []);
 
   return (
@@ -53,6 +90,8 @@ export function ExecutiveBriefing() {
           </ul>
         </section>
       ))}
+
+      {consolidation ? <ConsolidationOpportunitySection opp={consolidation} /> : null}
 
       {v1 && !v1.overall_pass ? (
         <section className="briefing-section briefing-section--attention">

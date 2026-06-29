@@ -213,6 +213,9 @@ export function FilesystemAuditView() {
         </Panel>
 
         <Panel title="Next-step recommendations">
+          <p className="migration__link-row">
+            <Link to="/migration/consolidation">Open Executive Consolidation Briefing (LB-OS-020) →</Link>
+          </p>
           <ul className="migration__list">
             {audit.recommendations.map((r) => (
               <li key={r}>{r}</li>
