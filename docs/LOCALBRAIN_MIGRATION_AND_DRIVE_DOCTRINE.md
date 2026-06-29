@@ -201,7 +201,7 @@ ChatGPT/Cursor/Explorer deprecation plan per domain
 Steve sign-off document
 ```
 
-### LB-OS-024 — LocalBrain Personal OS Launch
+### LB-OS-026 — LocalBrain Personal OS Launch
 
 ```txt
 Migration complete · LocalBrain primary interface
@@ -211,13 +211,13 @@ Steve lives in LocalBrain daily
 
 ---
 
-## 6. Relationship to V1 (LB-OS-002–015)
+## 6. Relationship to V1 (LB-OS-002–016)
 
 ```txt
-V1 (002–015): Build the OS shell — browse, chat, approve, advise
-Migration (016–024): Fill it with Steve's life and cut over
+V1 (002–016): Build the OS shell — browse, chat, approve, advise
+Migration (018–026): Fill it with Steve's life and cut over
 
-Do not start migration arc until V1 ship gate (015) passes.
+Do not start migration arc until V1 ship gate (016) passes.
 Do not skip dry-run reports in any migration slice.
 ```
 
