@@ -9,6 +9,7 @@ import {
   verifyProvider,
 } from "../api/providers";
 import { ProviderCard } from "../components/ProviderCard";
+import { LiveSurfaceBanner } from "../components/LiveSurfaceBanner";
 
 export function AiProvidersView() {
   const [overview, setOverview] = useState<AIProvidersOverview | null>(null);
@@ -52,6 +53,8 @@ export function AiProvidersView() {
 
   return (
     <div className="ai-providers">
+      <LiveSurfaceBanner route="/system/providers" />
+
       <header className="ai-providers__header">
         <p className="ai-providers__crumb">
           <Link to="/system">System</Link> / AI Providers
@@ -63,6 +66,9 @@ export function AiProvidersView() {
         </p>
         <p className="ai-providers__rule">
           Chief of Staff → Capability Router → AI Provider Manager → Provider Adapter → vendor
+        </p>
+        <p className="ai-providers__eq-link">
+          Machine and ops health: <Link to="/system">How healthy is my system? (EQ-003)</Link>
         </p>
       </header>
 

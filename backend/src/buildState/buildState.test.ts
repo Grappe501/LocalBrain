@@ -14,7 +14,7 @@ test("parsePhaseChecklistSlices reads all phase tables", () => {
   assert.ok(slices.some((s) => s.slice_id === "LB-OS-017" && s.status === "complete"));
   assert.ok(slices.some((s) => s.slice_id === "LB-OS-019" && s.status === "complete"));
   assert.ok(slices.some((s) => s.slice_id === "LB-OS-020" && s.status === "complete"));
-  assert.ok(slices.some((s) => s.slice_id === "LB-OS-020.5" && s.status === "spec_locked"));
+  assert.ok(slices.some((s) => s.slice_id === "LB-OS-020.5" && s.status === "complete"));
 });
 
 test("parseSliceRegistry loads dependencies from queue", () => {
@@ -34,16 +34,18 @@ test("parsePhaseSections derives phases from checklist", () => {
 
 test("computeBuildState projects current sprint and velocity", () => {
   const state = computeBuildState();
-  assert.equal(state.current_slice_id, "LB-OS-020.5");
+  assert.equal(state.current_slice_id, "LB-OS-021");
   assert.ok(
     state.build_graph.some((n) => n.slice_id === "LB-OS-020" && n.status === "released"),
   );
-  assert.ok(state.current_sprint.in_progress.includes("LB-OS-020.5"));
+  assert.ok(
+    state.build_graph.some((n) => n.slice_id === "LB-OS-020.5" && n.status === "released"),
+  );
   assert.ok(state.build_velocity.commits_count >= 0);
   assert.ok(state.build_graph.some((n) => n.slice_id === "LB-OS-019" && n.status === "released"));
   assert.ok(
     state.build_graph.some(
-      (n) => n.slice_id === "LB-OS-020.5" && (n.status === "in_progress" || n.status === "ready"),
+      (n) => n.slice_id === "LB-OS-021" && (n.status === "in_progress" || n.status === "ready" || n.status === "planned"),
     ),
   );
 });
@@ -52,9 +54,12 @@ test("getEpoOverview exposes build state engine fields", () => {
   const overview = getEpoOverview();
   assert.equal(overview.read_only, true);
   assert.equal(overview.build_state_engine_id, BUILD_STATE_ENGINE_ID);
-  assert.equal(overview.current_slice_id, "LB-OS-020.5");
+  assert.equal(overview.current_slice_id, "LB-OS-021");
   assert.ok(overview.phases.length >= 4);
-  assert.ok(overview.current_sprint.queued.includes("LB-OS-021"));
+  assert.ok(
+    overview.current_sprint.queued.includes("LB-OS-022") ||
+      overview.current_sprint.in_progress.includes("LB-OS-021"),
+  );
   assert.ok(overview.commit_timeline.length > 0);
   assert.ok(overview.experience_maturity.length >= 10);
   assert.equal(overview.experience_maturity_engine_id, "ENG-EXP-001");

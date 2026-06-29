@@ -3391,3 +3391,122 @@ a {
 .eic__path {
   word-break: break-all;
 }
+
+/* Executive Question Registry — LB-OS-020.5 */
+.eq-header {
+  margin: 0 0 1.25rem;
+  padding: 0.85rem 1rem;
+  border-left: 3px solid #0f766e;
+  background: #f0fdfa;
+  border-radius: 0 6px 6px 0;
+}
+
+.eq-header__id {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #0f766e;
+  text-transform: uppercase;
+}
+
+.eq-header__question {
+  margin: 0.25rem 0 0.35rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #134e4a;
+}
+
+.eq-header__owner {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.eq-crosslinks {
+  margin: 0 0 1.5rem;
+  padding: 0.75rem 1rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+}
+
+.eq-crosslinks__title {
+  margin: 0 0 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #64748b;
+}
+
+.eq-crosslinks__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+}
+
+.eq-crosslinks__list a {
+  font-size: 0.9rem;
+  color: #0f766e;
+  text-decoration: none;
+}
+
+.eq-crosslinks__list a:hover {
+  text-decoration: underline;
+}
+
+.epo-integration {
+  margin: 1.25rem 0 1.75rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid #99f6e4;
+  border-radius: 8px;
+  background: #f0fdfa;
+}
+
+.epo-integration h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+}
+
+.epo-integration__meta {
+  margin: 0 0 0.75rem;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.epo-integration__metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  gap: 0.35rem 1rem;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.epo-integration__metrics dt {
+  font-weight: 600;
+  color: #475569;
+}
+
+.epo-integration__metrics dd {
+  margin: 0 0 0.5rem;
+}
+
+.command-bar__rec-route {
+  margin: 0.35rem 0 0;
+  font-size: 0.85rem;
+}
+
+.command-bar__rec-route a {
+  color: #0f766e;
+  font-weight: 600;
+}
+
+.ai-providers__eq-link {
+  margin: 0.35rem 0 0;
+  font-size: 0.9rem;
+  color: #64748b;
+}

@@ -1,9 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import type { SystemHealthResponse } from "@localbrain/shared";
-import { fetchEpoOverview } from "../api/epo";
 import { fetchSystemHealth } from "../api/system";
-import { LiveSurfaceBanner } from "../components/LiveSurfaceBanner";
+import { ExecutiveQuestionShell } from "../components/ExecutiveQuestionShell";
 
 function formatBytes(bytes: number | null): string {
   if (bytes === null) return "—";
@@ -36,22 +35,13 @@ function Panel({
 
 export function SystemHealthView() {
   const [health, setHealth] = useState<SystemHealthResponse | null>(null);
-  const [epoGate, setEpoGate] = useState<string | null>(null);
-  const [epoCurrent, setEpoCurrent] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   const load = useCallback(async () => {
     try {
       setError(null);
-      const [data, epo] = await Promise.all([fetchSystemHealth(), fetchEpoOverview()]);
-      setHealth(data);
-      setEpoGate(epo.gate_text);
-      setEpoCurrent(
-        epo.current_slice_id
-          ? `${epo.current_slice_id} — ${epo.current_slice_name ?? ""}`
-          : null,
-      );
+      setHealth(await fetchSystemHealth());
     } catch (e) {
       setError(e instanceof Error ? e.message : "Failed to load system health");
     } finally {
@@ -87,7 +77,7 @@ export function SystemHealthView() {
 
   return (
     <div className="system-health">
-      <LiveSurfaceBanner route="/system" observedAt={health.observed_at} />
+      <ExecutiveQuestionShell route="/system" observedAt={health.observed_at} />
 
       <header className="system-health__header">
         <h1>System Health &amp; Operations Center</h1>
@@ -181,15 +171,12 @@ export function SystemHealthView() {
           </dl>
         </Panel>
 
-        <Panel title="Executive build state">
-          <dl className="system-health__dl">
-            <dt>Current slice</dt>
-            <dd>{epoCurrent ?? "—"}</dd>
-            <dt>Gate</dt>
-            <dd>{epoGate ?? "—"}</dd>
-          </dl>
+        <Panel title="Build progress">
           <p className="system-health__link-row">
-            <Link to="/program-office">Open Program Office →</Link>
+            Slice status and gate live on Program Office — authoritative for EQ-002.
+          </p>
+          <p className="system-health__link-row">
+            <Link to="/program-office">How is the build progressing? →</Link>
           </p>
         </Panel>
       </div>

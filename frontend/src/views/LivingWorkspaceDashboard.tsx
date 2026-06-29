@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import type { LivingWorkspace, WorkspaceEvent, WorkspaceLinkRow } from "@localbrain/shared";
 import { fetchWorkspaceLive } from "../api/workspaces";
 import { useActiveWorkspace } from "../context/ActiveWorkspaceContext";
-import { LiveSurfaceBanner } from "../components/LiveSurfaceBanner";
+import { ExecutiveQuestionShell } from "../components/ExecutiveQuestionShell";
 import { WorkspaceCoSBlock } from "../components/WorkspaceCoSBlock";
 import { WorkspaceEventTimeline } from "../components/WorkspaceEventTimeline";
 import { WorkspaceHeader } from "../components/WorkspaceHeader";
@@ -72,7 +72,7 @@ export function LivingWorkspaceDashboard({ workspaceId }: Props) {
         ← Executive Briefing
       </Link>
 
-      <LiveSurfaceBanner route={`/workspace/${workspaceId}`} observedAt={observedAt ?? undefined} />
+      <ExecutiveQuestionShell route={`/workspace/${workspaceId}`} observedAt={observedAt ?? undefined} />
 
       <WorkspaceHeader workspace={workspace} />
 

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import type { ActionLogEntry, BackupRecord, ExecuteResult, ProposedAction } from "@localbrain/shared";
-import { LiveSurfaceBanner } from "../components/LiveSurfaceBanner";
+import { ExecutiveQuestionShell } from "../components/ExecutiveQuestionShell";
 import {
   approveActionApi,
   executeActionApi,
@@ -84,7 +84,7 @@ export function ActionsView() {
 
   return (
     <article className="actions-view">
-      <LiveSurfaceBanner route="/actions" observedAt={observedAt ?? undefined} />
+      <ExecutiveQuestionShell route="/actions" observedAt={observedAt ?? undefined} />
 
       <header className="actions-view__header">
         <h1>Actions</h1>

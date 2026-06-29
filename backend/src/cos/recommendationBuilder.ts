@@ -10,6 +10,22 @@ import { listWorkspaces } from "../workspaces/workspaceRegistry.js";
 
 const MAX_SAMPLE_PATHS = 5;
 
+const ROUTE_BY_CATEGORY: Record<
+  CosRecommendation["category"],
+  { primary_route: string; question_id: string }
+> = {
+  duplicate: { primary_route: "/migration/consolidation", question_id: "EQ-005" },
+  dormant: { primary_route: "/explorer", question_id: "EQ-004" },
+  archive: { primary_route: "/explorer", question_id: "EQ-004" },
+  large: { primary_route: "/explorer", question_id: "EQ-004" },
+  workspace_storage: { primary_route: "/workspace/localbrain", question_id: "EQ-007" },
+};
+
+function withExecutiveRoute(rec: CosRecommendation): CosRecommendation {
+  const route = ROUTE_BY_CATEGORY[rec.category];
+  return { ...rec, primary_route: route.primary_route, question_id: route.question_id };
+}
+
 function samplePaths(paths: string[]): string[] {
   return paths.slice(0, MAX_SAMPLE_PATHS);
 }
@@ -189,7 +205,7 @@ export function buildCleanupRecommendations(options: {
     if (archiveRec) recs.push(archiveRec);
   }
 
-  return recs;
+  return recs.map(withExecutiveRoute);
 }
 
 export function formatRecommendationsMessage(
@@ -232,8 +248,7 @@ export function buildAssetStaleRecommendations(assetPath?: string): CosRecommend
     .get(assetPath) as DigitalAssetRow | undefined;
 
   if (!row) {
-    return [
-      {
+    return [withExecutiveRoute({
         id: "rec-cos-asset-unknown",
         category: "dormant",
         what: `Asset not in registry: ${assetPath}`,
@@ -243,8 +258,7 @@ export function buildAssetStaleRecommendations(assetPath?: string): CosRecommend
         asset_count: 0,
         paths_sample: [assetPath],
         proposal_eligible: false,
-      },
-    ];
+      })];
   }
 
   const recs: CosRecommendation[] = [];
@@ -281,5 +295,6 @@ export function buildAssetStaleRecommendations(assetPath?: string): CosRecommend
     });
   }
 
-  return recs.length > 0 ? recs : buildCleanupRecommendations({ workspaceId: row.workspace_id ?? "localbrain" });
+  const result = recs.length > 0 ? recs : buildCleanupRecommendations({ workspaceId: row.workspace_id ?? "localbrain" });
+  return result.map(withExecutiveRoute);
 }

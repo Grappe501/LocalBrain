@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { sendCommand } from "../api/command";
-import { LiveSurfaceBanner } from "../components/LiveSurfaceBanner";
+import { ExecutiveQuestionShell } from "../components/ExecutiveQuestionShell";
 import {
   fetchExecutiveInsights,
   fetchExplain,
@@ -161,7 +161,7 @@ export function KnowledgeExplorerView() {
         </p>
       </header>
 
-      <LiveSurfaceBanner route="/explorer" />
+      <ExecutiveQuestionShell route="/explorer" />
 
       <div className="ke-explorer__modes" role="tablist">
         {(["browse", "understand", "executive"] as const).map((m) => (

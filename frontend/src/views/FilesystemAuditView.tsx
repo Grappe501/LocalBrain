@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import type { FilesystemMappingAudit } from "@localbrain/shared";
 import { auditExportUrl, fetchFilesystemAudit } from "../api/migration";
+import { ExecutiveQuestionShell } from "../components/ExecutiveQuestionShell";
 
 function formatBytes(bytes: number): string {
   if (bytes >= 1024 ** 3) return `${(bytes / 1024 ** 3).toFixed(1)} GB`;
@@ -62,6 +63,8 @@ export function FilesystemAuditView() {
 
   return (
     <div className="migration">
+      <ExecutiveQuestionShell route="/migration/audit" observedAt={audit.observed_at} />
+
       <header className="migration__header">
         <p className="migration__crumb">
           <Link to="/migration">Migration</Link> / Filesystem Mapping Audit

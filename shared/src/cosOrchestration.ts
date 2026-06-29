@@ -30,9 +30,12 @@ export interface CosRecommendation {
   /** When true, user may generate quarantine proposals for this recommendation */
   proposal_eligible: boolean;
   workspace_id?: string;
+  /** Authoritative route for this recommendation (ENG-EQ-001) */
+  primary_route?: string;
+  question_id?: string;
 }
 
-export type CosOutcomeType = "accepted" | "rejected" | "modified";
+export type CosOutcomeType = "accepted" | "rejected";
 
 export interface CosOutcome {
   id: number;

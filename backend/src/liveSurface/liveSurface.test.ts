@@ -6,16 +6,18 @@ import { getWorkspace } from "../workspaces/workspaceRegistry.js";
 import { SURFACE_REGISTRY } from "./surfaceRegistry.js";
 
 test("surface registry covers priority routes", () => {
-  assert.ok(SURFACE_REGISTRY.length >= 10);
+  assert.ok(SURFACE_REGISTRY.length >= 12);
   assert.ok(SURFACE_REGISTRY.some((s) => s.route.includes("/workspace")));
   assert.ok(SURFACE_REGISTRY.some((s) => s.route === "/actions"));
+  assert.ok(SURFACE_REGISTRY.some((s) => s.route === "/" && s.question_id === "EQ-001"));
+  assert.ok(SURFACE_REGISTRY.some((s) => s.route === "/migration/audit" && s.question_id === "EQ-015"));
 });
 
 test("projectWorkspaceLive syncs localbrain from build state", () => {
   const ws = getWorkspace("localbrain");
   assert.ok(ws);
   const projected = projectWorkspaceLive(ws!);
-  assert.ok(projected.current_focus.includes("LB-OS-020.5"));
+  assert.ok(projected.current_focus.includes("LB-OS-021"));
   assert.ok((projected.profile.completed_slices ?? []).includes("LB-OS-019"));
 });
 

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { LiveSurfaceBanner } from "../../components/LiveSurfaceBanner";
+import { ExecutiveQuestionShell } from "../../components/ExecutiveQuestionShell";
 import type {
   RelationshipHealthScore,
   RelationshipNetworkOverview,
@@ -119,7 +119,7 @@ export function RelationshipNetworkView() {
         <p className="rel-dept__philosophy">{overview.philosophy}</p>
       </header>
 
-      <LiveSurfaceBanner route="/studio/relationships" observedAt={overview.observed_at} />
+      <ExecutiveQuestionShell route="/studio/relationships" observedAt={overview.observed_at} />
 
       <aside className="writing-dept__guardrails">
         {overview.guardrails.map((g) => (

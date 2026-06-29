@@ -6,7 +6,7 @@ import type {
   ExecutiveConsolidationBriefing,
   ExecutiveIntelligenceCard,
 } from "@localbrain/shared";
-import { LiveSurfaceBanner } from "../components/LiveSurfaceBanner";
+import { ExecutiveQuestionShell } from "../components/ExecutiveQuestionShell";
 import { ExecutiveIntelligenceCardView } from "../components/ExecutiveIntelligenceCard";
 import {
   dismissConsolidationCard,
@@ -132,7 +132,7 @@ export function ConsolidationBriefingView() {
 
   return (
     <div className="consolidation">
-      <LiveSurfaceBanner route="/migration/consolidation" />
+      <ExecutiveQuestionShell route="/migration/consolidation" />
 
       <header className="consolidation__header">
         <p className="consolidation__crumb">

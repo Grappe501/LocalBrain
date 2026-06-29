@@ -1,12 +1,13 @@
 import { useCallback, useEffect, useState } from "react";
-import type { EpoCoverageBars, EpoOverview, EpoSliceDetail, EpoDocEntry } from "@localbrain/shared";
-import { LiveSurfaceBanner } from "../components/LiveSurfaceBanner";
+import type { EpoCoverageBars, EpoOverview, EpoSliceDetail, EpoDocEntry, IntegrationAuditReport } from "@localbrain/shared";
+import { ExecutiveQuestionShell } from "../components/ExecutiveQuestionShell";
 import {
   fetchEpoDocs,
   fetchEpoOverview,
   fetchEpoSlice,
   fetchEpoWhy,
 } from "../api/epo";
+import { fetchIntegrationAudit } from "../api/integration";
 
 function ProgressBar({ label, value }: { label: string; value: number }) {
   return (
@@ -44,15 +45,21 @@ export function ProgramOfficeView() {
   const [docs, setDocs] = useState<EpoDocEntry[]>([]);
   const [docQuery, setDocQuery] = useState("");
   const [phaseFilter, setPhaseFilter] = useState<string | null>(null);
+  const [integration, setIntegration] = useState<IntegrationAuditReport | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   const load = useCallback(async () => {
     try {
       setError(null);
-      const [ov, docList] = await Promise.all([fetchEpoOverview(), fetchEpoDocs()]);
+      const [ov, docList, integ] = await Promise.all([
+        fetchEpoOverview(),
+        fetchEpoDocs(),
+        fetchIntegrationAudit().catch(() => null),
+      ]);
       setOverview(ov);
       setDocs(docList);
+      setIntegration(integ);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Failed to load Program Office");
     } finally {
@@ -132,7 +139,36 @@ export function ProgramOfficeView() {
         </p>
       </header>
 
-      <LiveSurfaceBanner route="/program-office" observedAt={overview.observed_at} />
+      <ExecutiveQuestionShell route="/program-office" observedAt={overview.observed_at} />
+
+      {integration ? (
+        <section className="epo-integration" aria-label="Phase 1 integration gate">
+          <h2>Executive Question Cohesion</h2>
+          <p className="epo-integration__meta">
+            {integration.engine_id} · {integration.slice_id} ·{" "}
+            {integration.targets_met ? "Gate open for LB-OS-021" : "Gate not met"}
+          </p>
+          <dl className="epo-integration__metrics">
+            <dt>Cross-route links</dt>
+            <dd>
+              {integration.metrics.cross_route_links} / {integration.targets.cross_route_links_min}+
+            </dd>
+            <dt>Orphan priority pages</dt>
+            <dd>{integration.metrics.orphan_pages}</dd>
+            <dt>Duplicate executive summaries</dt>
+            <dd>{integration.metrics.duplicate_executive_summaries}</dd>
+            <dt>EIC executive surfaces</dt>
+            <dd>{integration.metrics.eic_surfaces}</dd>
+            <dt>Shell consistency</dt>
+            <dd>{integration.metrics.shell_consistency_percent}%</dd>
+            <dt>Questions with authoritative route</dt>
+            <dd>
+              {integration.metrics.questions_with_authoritative_route} /{" "}
+              {integration.metrics.total_questions}
+            </dd>
+          </dl>
+        </section>
+      ) : null}
 
       <section className="epo-maturity" aria-label="Experience maturity roadmap">
         <h2>Experience Maturity</h2>

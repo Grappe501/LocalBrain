@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { LiveSurfaceBanner } from "../../components/LiveSurfaceBanner";
+import { ExecutiveQuestionShell } from "../../components/ExecutiveQuestionShell";
 import type {
   WritingDraftPreview,
   WritingModeId,
@@ -130,7 +130,7 @@ export function WritingDepartmentView() {
         </p>
       </header>
 
-      <LiveSurfaceBanner route="/studio/writing" observedAt={overview.observed_at} />
+      <ExecutiveQuestionShell route="/studio/writing" observedAt={overview.observed_at} />
 
       <aside className="writing-dept__guardrails" aria-label="Writing guardrails">
         {overview.guardrails.map((g) => (

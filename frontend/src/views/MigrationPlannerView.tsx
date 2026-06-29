@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import type { MigrationPlannerOverview, MigrationRiskLevel } from "@localbrain/shared";
 import { fetchMigrationPlanner } from "../api/migration";
+import { ExecutiveQuestionShell } from "../components/ExecutiveQuestionShell";
 
 function formatBytes(bytes: number | null): string {
   if (bytes === null) return "—";
@@ -63,6 +64,8 @@ export function MigrationPlannerView() {
 
   return (
     <div className="migration">
+      <ExecutiveQuestionShell route="/migration" observedAt={plan.observed_at} />
+
       <header className="migration__header">
         <p className="migration__crumb">
           <Link to="/program-office">Program Office</Link> / Migration Planner

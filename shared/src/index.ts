@@ -238,6 +238,21 @@ export type {
   PipelineStageStatus,
 } from "./executiveIntelligenceCard.js";
 export type {
+  CrossRouteLink,
+  ExecutiveQuestion,
+  IntegrationAuditMetrics,
+  IntegrationAuditReport,
+  IntegrationAuditTargets,
+} from "./executiveQuestion.js";
+export {
+  INTEGRATION_TARGETS,
+  PHASE_1_EXECUTIVE_QUESTIONS,
+  QUESTION_RELATED_IDS,
+  buildCrossRouteLinks,
+  getRelatedLinksForRoute,
+  matchQuestionForRoute,
+} from "./executiveQuestion.js";
+export type {
   ModuleCapabilityDeclaration,
   ModuleManifest,
   ModuleNavPlacement,

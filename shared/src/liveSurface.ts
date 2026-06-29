@@ -22,6 +22,8 @@ export interface LiveSurfaceEntry {
   target_maturity_level: ExperienceMaturityLevel;
   next_upgrade_slice: string | null;
   next_upgrade_summary: string;
+  /** ENG-EQ-001 — authoritative executive question (LB-OS-020.5) */
+  question_id?: string;
 }
 
 export interface LiveSurfaceAudit {

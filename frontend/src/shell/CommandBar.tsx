@@ -15,11 +15,14 @@ function RecommendationCard({
   rec,
   selected,
   onToggle,
+  workspaceId,
 }: {
   rec: CosRecommendation;
   selected: boolean;
   onToggle: () => void;
+  workspaceId: string;
 }) {
+  const primaryHref = rec.primary_route?.replace(":workspaceId", workspaceId);
   return (
     <article className={`command-bar__rec ${selected ? "command-bar__rec--selected" : ""}`}>
       <label className="command-bar__rec-check">
@@ -31,6 +34,13 @@ function RecommendationCard({
         />
         <strong>{rec.what}</strong>
       </label>
+      {primaryHref ? (
+        <p className="command-bar__rec-route">
+          <Link to={primaryHref}>
+            {rec.question_id ? `${rec.question_id}: ` : ""}View authoritative answer →
+          </Link>
+        </p>
+      ) : null}
       <p className={confidenceClass(rec.confidence)}>
         Confidence: {rec.confidence.toUpperCase()}
       </p>
@@ -244,6 +254,7 @@ export function CommandBar() {
                   rec={rec}
                   selected={selectedRecIds.has(rec.id)}
                   onToggle={() => toggleRec(rec.id)}
+                  workspaceId={pillId}
                 />
               ))}
               {eligibleRecs.length > 0 && proposalCount === 0 ? (

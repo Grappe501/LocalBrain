@@ -6,6 +6,8 @@ import { MOCK_BRIEFING_SECTIONS, MOCK_MWI_FOOTER } from "../data/mockBriefing";
 import { fetchV1Acceptance } from "../api/v1Spine";
 import { fetchConsolidationOpportunity } from "../api/consolidation";
 import { V1MilestoneBanner } from "../components/V1MilestoneBanner";
+import { ExecutiveQuestionHub } from "../components/ExecutiveQuestionHeader";
+import { ExecutiveQuestionShell } from "../components/ExecutiveQuestionShell";
 
 function formatBytes(bytes: number): string {
   if (bytes >= 1024 ** 3) return `${(bytes / 1024 ** 3).toFixed(1)} GB`;
@@ -58,6 +60,8 @@ export function ExecutiveBriefing() {
 
   return (
     <article className="executive-briefing">
+      <ExecutiveQuestionShell route="/" showCrossLinks={false} />
+
       <header className="executive-briefing__header">
         <h1>Good morning, Steve.</h1>
         <p className="executive-briefing__workspace">
@@ -107,6 +111,8 @@ export function ExecutiveBriefing() {
           </ul>
         </section>
       ) : null}
+
+      <ExecutiveQuestionHub />
 
       <footer className="executive-briefing__footer">
         <p>{MOCK_MWI_FOOTER}</p>
