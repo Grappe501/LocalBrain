@@ -13,6 +13,7 @@ import { ensureActionStorageDirs } from "./actions/actionPaths.js";
 import { migrateCosTables } from "./cos/migrate.js";
 import { migrateFileReadLogTable } from "./files/fileReadLog.js";
 import { migrateCommandLogTable } from "./openai/safeLog.js";
+import { migrateProviderTables } from "./providers/migrate.js";
 import { initPermissionEngine } from "./safety/permissionEngine.js";
 import {
   migrateWorkspaceTables,
@@ -31,6 +32,7 @@ export function bootstrapApp(): void {
   migrateKnowledgeExplorerTables();
   migrateDigitalAssetTables();
   migrateCommandLogTable();
+  migrateProviderTables();
   migrateFileReadLogTable();
   migrateActionTables();
   migrateCosTables();

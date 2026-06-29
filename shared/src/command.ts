@@ -49,5 +49,5 @@ export interface CommandStatusResponse {
   key_configured: boolean;
   model: string;
   ready: boolean;
-  provider: "openai";
+  provider: string;
 }

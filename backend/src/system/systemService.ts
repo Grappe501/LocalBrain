@@ -50,6 +50,8 @@ export function getSystemUsage(): SystemUsageSnapshot {
     indexing: health.operations.indexing_active,
     pending_approvals: health.operations.pending_approvals,
     api_status: health.ai.api_status,
+    primary_provider_id: health.ai.primary_provider_id,
+    primary_provider_label: health.ai.primary_provider_label,
     tokens_today: health.ai.tokens_today,
     cost_usd_today: health.ai.estimated_cost_usd_today,
     model: health.ai.model,
@@ -72,7 +74,11 @@ export function formatDockLine(usage: SystemUsageSnapshot): string {
   const cost = `$${usage.cost_usd_today.toFixed(2)}`;
   const tokens = formatTokenCount(usage.tokens_today);
 
-  return `CPU ${cpu} · RAM ${ram} · Disk C ${diskC} · Disk H ${diskH} · API ${cost} today · ${tokens} tokens`;
+  const apiIcon =
+    usage.api_status === "online" ? "🟢" : usage.api_status === "offline" ? "🔴" : "⚪";
+  const providerLabel = usage.primary_provider_label || "API";
+
+  return `CPU ${cpu} · RAM ${ram} · Disk C ${diskC} · Disk H ${diskH} · API ${apiIcon} ${providerLabel} · ${cost} today · ${tokens} tokens`;
 }
 
 export { formatCostUsd, formatTokenCount };

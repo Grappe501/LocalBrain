@@ -2497,3 +2497,115 @@ a {
   border-color: #fcd34d;
   background: #fffbeb;
 }
+
+/* LB-OS-017 AI Provider Management */
+.ai-providers {
+  padding: 1.25rem 1.5rem 2rem;
+  max-width: 1200px;
+}
+
+.ai-providers__header h1 {
+  margin: 0.25rem 0;
+}
+
+.ai-providers__crumb a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.ai-providers__meta,
+.ai-providers__rule {
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.ai-providers__rule {
+  font-family: ui-monospace, monospace;
+  background: #f8fafc;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  border: 1px solid #e2e8f0;
+}
+
+.ai-providers__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1rem;
+  margin: 1.25rem 0 2rem;
+}
+
+.provider-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  background: #fff;
+}
+
+.provider-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.provider-card__header h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.provider-card__dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  margin: 0.75rem 0;
+}
+
+.provider-card__dl dt {
+  color: #64748b;
+}
+
+.provider-card__credential input[type="password"] {
+  width: 100%;
+  margin-top: 0.25rem;
+  padding: 0.4rem 0.5rem;
+}
+
+.provider-card__actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.provider-card__note {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin: 0.5rem 0 0;
+}
+
+.ai-providers__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.ai-providers__table th,
+.ai-providers__table td {
+  border: 1px solid #e2e8f0;
+  padding: 0.35rem 0.5rem;
+  text-align: left;
+}
+
+.ai-providers__reason {
+  max-width: 280px;
+  word-break: break-word;
+}
+
+.system-health__link-row {
+  margin: 0 0 0.5rem;
+}
+
+.system-health__link-row a {
+  color: #2563eb;
+  text-decoration: none;
+}

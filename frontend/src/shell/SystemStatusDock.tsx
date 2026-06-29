@@ -31,10 +31,10 @@ export function SystemStatusDock() {
 
   return (
     <Link
-      to="/system"
+      to="/system/providers"
       className={`system-dock ${attention ? "system-dock--attention" : ""}`}
-      title="Open System Health & Operations Center (read-only)"
-      aria-label="System status dock — open health center"
+      title="Open AI Providers (status, spend, routing)"
+      aria-label="System status dock — open AI providers"
     >
       {usage?.indexing ? (
         <span className="system-dock__badge" aria-hidden>

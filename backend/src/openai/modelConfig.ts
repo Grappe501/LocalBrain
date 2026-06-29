@@ -1,3 +1,5 @@
+import { isProviderCredentialConfigured, isAnyProviderConfigured } from "../providers/credentials.js";
+
 export type ModelConfig = {
   model: string;
   maxOutputTokens: number;
@@ -13,10 +15,11 @@ export function getModelConfig(): ModelConfig {
 }
 
 export function isOpenAiKeyConfigured(): boolean {
-  return Boolean(process.env.OPENAI_API_KEY?.trim());
+  return isProviderCredentialConfigured("openai");
 }
 
+/** @deprecated Use provider vault — only openaiAdapter should resolve keys */
 export function getOpenAiApiKey(): string | null {
-  const key = process.env.OPENAI_API_KEY?.trim();
-  return key || null;
+  if (!isOpenAiKeyConfigured()) return null;
+  return isAnyProviderConfigured() ? "***" : null;
 }

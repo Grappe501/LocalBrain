@@ -146,6 +146,20 @@ export type {
 } from "./relationshipNetwork.js";
 export type { V1AcceptanceReport, V1Guardrail, V1SpineCheck } from "./v1Spine.js";
 export type {
+  AICapability,
+  AICredentialStatus,
+  AIFlightRecordPublic,
+  AIProviderHealthStatus,
+  AIProviderId,
+  AIProviderPublic,
+  AIProvidersDockSummary,
+  AIProvidersOverview,
+  AIProviderVerifyResult,
+  SaveAIProviderCredentialRequest,
+  UpdateAIProviderRequest,
+  WorkspaceProviderOverride,
+} from "./aiProviders.js";
+export type {
   AssetIntelligenceForPath,
   AssetIntelligenceSummary,
   CleanupRecommendation,

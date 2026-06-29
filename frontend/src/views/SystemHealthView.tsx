@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import type { SystemHealthResponse } from "@localbrain/shared";
 import { fetchSystemHealth } from "../api/system";
 
@@ -132,9 +133,12 @@ export function SystemHealthView() {
         </Panel>
 
         <Panel title="AI usage">
+          <p className="system-health__link-row">
+            <Link to="/system/providers">Open AI Providers →</Link>
+          </p>
           <dl className="system-health__dl">
             <dt>Provider</dt>
-            <dd>{health.ai.provider}</dd>
+            <dd>{health.ai.primary_provider_label || health.ai.provider}</dd>
             <dt>Model</dt>
             <dd>{health.ai.model}</dd>
             <dt>API status</dt>

@@ -1,17 +1,26 @@
-import type { CommandIntent, CommandResponse, CommandStatusResponse } from "@localbrain/shared";
+import type { CommandActionClass, CommandIntent, CommandResponse, CommandStatusResponse } from "@localbrain/shared";
 import { isOrchestratedAction } from "../cos/capabilityRouter.js";
 import { runOrchestrationPipeline } from "../cos/orchestrationPipeline.js";
 import { executeFileToolCommand } from "../files/fileCommandBridge.js";
 import { resolveFileToolRequest } from "../files/fileToolResolver.js";
+import { ProviderAdapterError } from "../providers/adapterTypes.js";
+import { isAiRoutingAvailable, routeCompletion } from "../providers/router.js";
+import { getProvidersOverview } from "../providers/manager.js";
 import {
   actionClassToIntent,
   classifyCommand,
   estimateTokens,
 } from "./actionClassifier.js";
 import { buildCommandContext, buildOfflineAnswer } from "./contextBuilder.js";
-import { chatCompletion, OpenAiClientError } from "./openaiClient.js";
 import { getModelConfig, isOpenAiKeyConfigured } from "./modelConfig.js";
 import { logCommandExchange } from "./safeLog.js";
+
+function actionClassToCapability(actionClass: CommandActionClass): "reasoning" | "fast_summary" {
+  if (actionClass === "briefing_summary" || actionClass === "general_query") {
+    return "reasoning";
+  }
+  return "fast_summary";
+}
 
 export type CommandRequest = {
   message: string;
@@ -27,12 +36,13 @@ export type CommandRequest = {
 
 export function getCommandStatus(): CommandStatusResponse {
   const { model } = getModelConfig();
+  const overview = getProvidersOverview();
   const keyConfigured = isOpenAiKeyConfigured();
   return {
     key_configured: keyConfigured,
     model,
-    ready: keyConfigured,
-    provider: "openai",
+    ready: overview.any_configured,
+    provider: overview.primary_provider_id ?? "openai",
   };
 }
 
@@ -119,19 +129,32 @@ export async function executeCommand(req: CommandRequest): Promise<CommandRespon
       actionClass: action_class,
       workspaceId: req.workspace_id,
     });
+  } else if (!isAiRoutingAvailable()) {
+    finalIntent = "MISSING_KEY";
+    responseMessage = buildOfflineAnswer({
+      actionClass: action_class,
+      workspaceId: req.workspace_id,
+    });
   } else {
     try {
-      const result = await chatCompletion([
-        { role: "system", content: systemPrompt },
-        { role: "user", content: message },
-      ]);
+      const capability = actionClassToCapability(action_class);
+      const result = await routeCompletion({
+        capability,
+        messages: [
+          { role: "system", content: systemPrompt },
+          { role: "user", content: message },
+        ],
+        workspace_id: req.workspace_id,
+        agent_id: "chief_of_staff",
+      });
       responseMessage = result.content;
       usedModel = result.model;
-      tokensEstimate = result.usage?.total_tokens ?? estimateTokens(systemPrompt + message + result.content);
+      tokensEstimate =
+        result.usage?.total_tokens ?? estimateTokens(systemPrompt + message + result.content);
     } catch (e) {
       finalIntent = "ERROR";
-      if (e instanceof OpenAiClientError) {
-        responseMessage = `Chief of Staff could not reach OpenAI: ${e.message}`;
+      if (e instanceof ProviderAdapterError) {
+        responseMessage = `Chief of Staff could not reach AI provider: ${e.message}`;
       } else {
         responseMessage = "Chief of Staff encountered an unexpected error.";
       }

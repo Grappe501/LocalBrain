@@ -31,7 +31,10 @@ export type ApiStatus = "online" | "offline" | "not_configured";
 
 export interface AiUsagePanel {
   openai_configured: boolean;
-  provider: "openai";
+  provider: string;
+  primary_provider_id: string | null;
+  primary_provider_label: string;
+  providers_configured: number;
   model: string;
   api_status: ApiStatus;
   tokens_today: number;
@@ -82,6 +85,8 @@ export interface SystemUsageSnapshot {
   indexing: boolean;
   pending_approvals: number;
   api_status: ApiStatus;
+  primary_provider_id: string | null;
+  primary_provider_label: string;
   tokens_today: number;
   cost_usd_today: number;
   model: string;

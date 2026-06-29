@@ -1,8 +1,15 @@
-import { getModelConfig, getOpenAiApiKey } from "./modelConfig.js";
+import { getModelConfig } from "./modelConfig.js";
 
 export type ChatMessage = {
   role: "system" | "user" | "assistant";
   content: string;
+};
+
+export type ChatCompletionOptions = {
+  apiKey: string;
+  model?: string;
+  maxOutputTokens?: number;
+  temperature?: number;
 };
 
 export type OpenAiChatResult = {
@@ -21,14 +28,23 @@ export class OpenAiClientError extends Error {
   }
 }
 
-/** Direct OpenAI Chat Completions — backend only, no SDK. */
-export async function chatCompletion(messages: ChatMessage[]): Promise<OpenAiChatResult> {
-  const key = getOpenAiApiKey();
+/**
+ * Direct OpenAI Chat Completions — **openaiAdapter only** (LB-OS-017).
+ * Do not call from business logic; use providers/router.ts.
+ */
+export async function chatCompletion(
+  messages: ChatMessage[],
+  options: ChatCompletionOptions,
+): Promise<OpenAiChatResult> {
+  const key = options.apiKey?.trim();
   if (!key) {
     throw new OpenAiClientError("OPENAI_API_KEY not configured");
   }
 
-  const { model, maxOutputTokens, temperature } = getModelConfig();
+  const defaults = getModelConfig();
+  const model = options.model ?? defaults.model;
+  const maxOutputTokens = options.maxOutputTokens ?? defaults.maxOutputTokens;
+  const temperature = options.temperature ?? defaults.temperature;
 
   const res = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",

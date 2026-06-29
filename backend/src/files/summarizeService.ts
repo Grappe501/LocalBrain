@@ -2,7 +2,8 @@ import fs from "node:fs";
 import type { FileSummarizeMode, FileSummarizeResult } from "@localbrain/shared";
 import { getAssetByPath } from "../digitalAssets/assetRegistry.js";
 import { getAssetIntelligenceForPath } from "../digitalAssets/intelligenceEngine.js";
-import { chatCompletion } from "../openai/openaiClient.js";
+import { ProviderAdapterError } from "../providers/adapterTypes.js";
+import { isAiRoutingAvailable, routeCompletion } from "../providers/router.js";
 import { estimateTokens } from "../openai/actionClassifier.js";
 import { isOpenAiKeyConfigured, getModelConfig } from "../openai/modelConfig.js";
 import { logFileAccess } from "./fileReadLog.js";
@@ -44,7 +45,7 @@ async function summarizeText(options: {
     .filter(Boolean)
     .join("\n");
 
-  if (!isOpenAiKeyConfigured()) {
+  if (!isOpenAiKeyConfigured() || !isAiRoutingAvailable()) {
     return {
       summary: offlineSummary(
         options.manifestOnly ? "Folder manifest" : "File excerpt",
@@ -56,19 +57,31 @@ async function summarizeText(options: {
     };
   }
 
-  const result = await chatCompletion([
-    { role: "system", content: SUMMARIZE_SYSTEM },
-    {
-      role: "user",
-      content: `${userTask}\n\n${payload}`,
-    },
-  ]);
+  try {
+    const result = await routeCompletion({
+      capability: "fast_summary",
+      messages: [
+        { role: "system", content: SUMMARIZE_SYSTEM },
+        { role: "user", content: `${userTask}\n\n${payload}` },
+      ],
+      department_id: "kernel",
+      agent_id: "file_summarizer",
+    });
 
-  return {
-    summary: result.content,
-    model: result.model,
-    tokens_estimate: result.usage?.total_tokens ?? estimateTokens(payload + result.content),
-  };
+    return {
+      summary: result.content,
+      model: result.model,
+      tokens_estimate:
+        result.usage?.total_tokens ?? estimateTokens(payload + result.content),
+    };
+  } catch (e) {
+    const detail = e instanceof ProviderAdapterError ? e.message : "summarize failed";
+    return {
+      summary: `[AI unavailable] ${detail}`,
+      model: null,
+      tokens_estimate: estimateTokens(payload),
+    };
+  }
 }
 
 export async function summarizeFile(

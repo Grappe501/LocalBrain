@@ -29,11 +29,12 @@ LB-OS-001–011   ✅ Foundation + safety + CoS + system health
 LB-OS-012.5     ✅ Executive Program Office
 LB-OS-012–015   ✅ Engineering · Writing · Data & Intelligence · Relationships
 LB-OS-016       ✅ Executive OS V1 milestone (release candidate)
+LB-OS-017       ✅ AI Provider Management
 ```
 
-**Verify:** `GET /api/v1/acceptance` · [Executive OS V1](docs/LOCALBRAIN_EXECUTIVE_OS_V1.md)
+**Verify:** `GET /api/v1/acceptance` · `GET /api/providers` · [AI Providers](/system/providers)
 
-**Next:** [LB-OS-017 AI Provider Management](docs/LOCALBRAIN_AI_PROVIDER_MANAGEMENT.md) — then Migration (018+)
+**Next:** [LB-OS-018 Drive architecture & migration planner](docs/LOCALBRAIN_MIGRATION_AND_DRIVE_DOCTRINE.md)
 
 **Dev:** `npm run dev` → http://localhost:5174 · API http://localhost:4545
 
