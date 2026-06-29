@@ -15,6 +15,12 @@ Right question:  "How much more effective am I because LocalBrain exists?"
 
 The **Executive Leverage Score** is the most important number in the system — the top line of the **Executive Briefing** each morning.
 
+**Phase 2:** ELS measures outcomes **against [Executive Intent](./LOCALBRAIN_EXECUTIVE_INTENT.md)**, not activity alone:
+
+```txt
+Intent Completed % → Leverage → Time Saved → Recommendations Accepted → Friction Removed
+```
+
 | Scoreboard | Measures |
 | ---------- | -------- |
 | Program Office | Build progress |

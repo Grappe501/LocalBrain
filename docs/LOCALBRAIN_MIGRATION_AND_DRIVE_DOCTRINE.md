@@ -167,11 +167,12 @@ Spec: [Consolidation Planner](./LOCALBRAIN_CONSOLIDATION_PLANNER.md)
 ### LB-OS-020.5 — Phase 1 Integration Pass
 
 ```txt
-Cohesion sprint after 020 — cross-links, drill-downs, CoS deep links, shell consistency
-No new features before 021–026 migration arc
+Executive Question Registry — one authoritative answer per question
+Measurable cohesion: cross-links ≥90 · orphans 0 · duplicate summaries 0 · EIC everywhere · shell 100%
+Do not rush 021 until metric gate passes
 ```
 
-Spec: [Phase 1 Integration Pass](./LOCALBRAIN_PHASE1_INTEGRATION_PASS.md)
+Spec: [Phase 1 Integration Pass](./LOCALBRAIN_PHASE1_INTEGRATION_PASS.md) · [Executive Question Registry](./LOCALBRAIN_EXECUTIVE_QUESTION_REGISTRY.md)
 
 ### LB-OS-021 — H:/ Project Filing System Builder
 

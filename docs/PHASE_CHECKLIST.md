@@ -55,12 +55,13 @@
 | [Product Naming](./LOCALBRAIN_PRODUCT_NAMING.md) — EOS product vs LocalBrain engine | ✅ Planning |
 | [Consolidation Planner](./LOCALBRAIN_CONSOLIDATION_PLANNER.md) — first Executive Intelligence · EIC | ✅ LB-OS-020 |
 | [Executive Intelligence Cards](./LOCALBRAIN_EXECUTIVE_INTELLIGENCE_CARDS.md) · [Action Pipeline](./LOCALBRAIN_ACTION_PIPELINE.md) | ✅ Introduced LB-OS-020 |
-| [Phase 1 Integration Pass](./LOCALBRAIN_PHASE1_INTEGRATION_PASS.md) — cohesion before 021–026 | 📋 Next — LB-OS-020.5 |
+| [Phase 1 Integration Pass](./LOCALBRAIN_PHASE1_INTEGRATION_PASS.md) — Executive Question Registry + measurable cohesion | 📋 Next — LB-OS-020.5 |
+| [Executive Question Registry](./LOCALBRAIN_EXECUTIVE_QUESTION_REGISTRY.md) — one authoritative answer per question | 📋 LB-OS-020.5 |
 | [Executive Program Office](./LOCALBRAIN_EXECUTIVE_PROGRAM_OFFICE.md) | ✅ Complete — LB-OS-012.5 |
 | [Platform Separation Strategy](./LOCALBRAIN_PLATFORM_SEPARATION_STRATEGY.md) — Platform vs Brain boundary | ✅ Planning — 2026-06-28 |
 | [Multi-Machine Network Plan](./LOCALBRAIN_MULTI_MACHINE_NETWORK_PLAN.md) | 📋 Future arc — LB-OS-107–114 |
 
-**Gate:** LB-OS-020 Executive Consolidation Briefing ✅ · Next: **LB-OS-020.5** Phase 1 Integration Pass.
+**Gate:** LB-OS-020 ✅ · Next: **LB-OS-020.5** — every Executive Question has one authoritative answer (do not rush 021).
 
 ---
 

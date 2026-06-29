@@ -78,9 +78,9 @@ No direct vendor SDK calls from business logic (LB-OS-017)
   Recommendation → Simulation → Proposal → Approval → Execution → Verification → Learning
 ```
 
-Phase 2 success: CoS **improves decisions**, not only describes state.
+Phase 2 success: CoS **improves decisions**, not only describes state — guided by [Executive Intent](./LOCALBRAIN_EXECUTIVE_INTENT.md) (Phase 2; not Phase 1).
 
-**LB-OS-020** introduces **Executive Intelligence Cards** (ENG-EIC-001) and **Simulation as first-class** — the shared presentation and trust model for all departments.
+**LB-OS-020** introduced **Executive Intelligence Cards** (ENG-EIC-001) and **Simulation as first-class**. **Phase 2 (reserved):** Executive Intent + Attention Budget — do not build until after 026.
 
 ---
 
@@ -156,6 +156,8 @@ LOCALBRAIN_CONSTITUTION.md          ← you are here
 ├── LOCALBRAIN_EXECUTIVE_INTELLIGENCE_CARDS.md (ENG-EIC-001 · LB-OS-020)
 ├── LOCALBRAIN_ACTION_PIPELINE.md
 ├── LOCALBRAIN_CONSOLIDATION_PLANNER.md   (LB-OS-020 Executive Intelligence)
+├── LOCALBRAIN_EXECUTIVE_QUESTION_REGISTRY.md (ENG-EQ-001 · LB-OS-020.5)
+├── LOCALBRAIN_EXECUTIVE_INTENT.md (ENG-EI-001 · Phase 2)
 ├── LOCALBRAIN_PHASE1_INTEGRATION_PASS.md (LB-OS-020.5)
 ├── LOCALBRAIN_MASTER_SYSTEM_ARCHITECTURE.md
 ├── LOCALBRAIN_*_DEPARTMENT.md

@@ -1,29 +1,65 @@
 # Phase 1 Integration Pass
 
 > **Slice:** LB-OS-020.5  
-> **Depends on:** LB-OS-020 (Consolidation Planner — first Executive Intelligence)  
+> **Depends on:** LB-OS-020 (Executive Consolidation Intelligence)  
 > **Precedes:** LB-OS-021–026 (migration arc completion)  
-> **Parent:** [Three-Phase Roadmap](./LOCALBRAIN_THREE_PHASE_ROADMAP.md) · [Constitution](./LOCALBRAIN_CONSTITUTION.md)
+> **Parent:** [Three-Phase Roadmap](./LOCALBRAIN_THREE_PHASE_ROADMAP.md) · [Constitution](./LOCALBRAIN_CONSTITUTION.md) · [Executive Question Registry](./LOCALBRAIN_EXECUTIVE_QUESTION_REGISTRY.md)
 
 ---
 
-## Purpose
+## Milestone context
 
-After LB-OS-020 ships, **pause feature expansion** for one short sprint. The objective is **not** new capabilities — it is making everything already built feel like **one cohesive Executive Operating System**.
+**LB-OS-020** marks the transition from an **information system** to a **reasoning system** (Executive Intelligence Cards, Simulation, Consolidation Score).
 
-Standalone excellent components ≠ an Executive OS. Integration eliminates friction and compounds day-to-day value faster than several additional features.
+**LB-OS-020.5** marks the transition from **features** to **Executive Questions** — one authoritative answer per question, one cohesive Executive OS.
 
 ```txt
-020 = first reasoning slice
-020.5 = first cohesion slice
-021–026 = migration completion on a unified shell
+020   = first reasoning slice
+020.5 = first cohesion slice (Question Registry + measurable integration)
+021–026 = migration completion on unified shell — do not rush past 020.5
 ```
+
+---
+
+## Binding objective
+
+> **Every Executive Question has exactly one authoritative answer.**
+
+Not three dashboards that partially overlap. See [Executive Question Registry](./LOCALBRAIN_EXECUTIVE_QUESTION_REGISTRY.md).
+
+Examples:
+
+| Steve asks | Authoritative route | Not also |
+| ---------- | ------------------- | -------- |
+| What should I work on next? | `/` (Briefing) | Three partial dashboards |
+| How healthy is my **system**? | `/system` | Program Office |
+| How healthy is my **engineering** work? | `/studio/engineering` | System, EPO |
+| What should I consolidate? | `/migration/consolidation` | Full duplicate on Briefing (summary + link only) |
 
 ---
 
 ## Success question
 
-> **Does the system feel like one product, or a collection of modules?**
+> **Does every Executive Question have exactly one authoritative answer?**
+
+Secondary: Does the system feel like one product, not a collection of modules?
+
+---
+
+## Measurable cohesion (gate metrics)
+
+Audit at **start** and **end** of slice. Targets are binding exit criteria.
+
+| Metric | Target |
+| ------ | ------ |
+| Cross-route links | **90+** |
+| Orphan pages (priority routes) | **0** |
+| Duplicate executive summaries | **0** |
+| EIC on executive answer surfaces | **All** (where recommendations exist) |
+| Consistent shell (banner, crumbs, guardrails) | **100%** priority routes |
+| Phase 1 questions with single authoritative route | **100%** per registry |
+
+Store baseline counts in integration audit artifact (`docs/integration_audit_020.5.md` or checklist gate line).
 
 ---
 
@@ -31,27 +67,30 @@ Standalone excellent components ≠ an Executive OS. Integration eliminates fric
 
 | Integration | Target |
 | ----------- | ------ |
-| **Departments ↔ workspaces** | Every department links naturally to related Living Workspaces |
+| **Question Registry** | Every priority route maps to EQ-*; duplicates resolved |
+| **Departments ↔ workspaces** | Every department links to related Living Workspaces |
 | **Workspaces ↔ assets** | Every workspace surfaces relevant digital assets |
-| **Assets ↔ context** | Every asset links back to workspace + related decisions |
-| **Program Office ↔ data** | Every EPO metric drills into underlying build/evidence data |
-| **CoS ↔ action surfaces** | Every CoS recommendation renders as EIC with deep link + Simulation available |
-| **EIC adoption** | Departments with live recommendations use Executive Intelligence Card component |
-| **Routes ↔ Executive Office** | Consistent look, navigation, and interaction model on priority routes |
-| **Briefing ↔ scoreboards** | EPO construction · Consolidation Score · (future) System Evolution / ELS hooks visible and linked |
+| **Assets ↔ context** | Every asset links back to workspace + decisions |
+| **Program Office ↔ data** | EPO metrics drill to build/evidence data — not system health |
+| **System ↔ machine** | System health owns machine/ops — not build progress |
+| **CoS ↔ questions** | Recommendations deep-link to **primary_route** for that question |
+| **EIC adoption** | All executive recommendation surfaces use EIC component |
+| **Briefing ↔ scoreboards** | Summary + link only; full answer on authoritative route |
+| **Routes ↔ Executive Office** | Consistent shell on all priority routes |
 
 ---
 
 ## Scope boundaries
 
 ```txt
-IN:  cross-links, drill-downs, empty states, nav consistency, maturity badges audit
-IN:  LiveSurfaceBanner / workspace projection gaps on priority routes
-IN:  CoS recommendation → deep-link wiring where data already exists
+IN:  Question Registry, cross-links, drill-downs, dedupe summaries, nav consistency
+IN:  LiveSurfaceBanner + question subtitle on priority routes
+IN:  Integration audit with before/after metrics
+IN:  CoS → primary_route deep links
 
-OUT: new departments, new engines, new migration execution, cloud sync
-OUT: Phase 2 intelligence (System Evolution, ELS instrumentation)
-OUT: LB-OS-021+ filing, import, reorg, cutover features
+OUT: new departments, new engines, migration execution (021+)
+OUT: System Evolution / ELS full implementation (Phase 2)
+OUT: Auto-consolidation or file mutations
 ```
 
 ---
@@ -60,37 +99,47 @@ OUT: LB-OS-021+ filing, import, reorg, cutover features
 
 | # | Deliverable |
 |---|-------------|
-| 1 | Integration audit doc (gaps list → closed or explicitly deferred) |
-| 2 | Cross-link pass: workspace ↔ asset ↔ decision on priority entities |
-| 3 | EPO metric drill-downs where stubbed |
-| 4 | CoS → route deep links for open recommendations |
-| 5 | Executive shell consistency pass (priority routes from ENG-SRF-001 registry) |
-| 6 | Smoke / integration tests for critical navigation paths |
+| 1 | Integration audit — baseline metrics + gap list |
+| 2 | [Executive Question Registry](./LOCALBRAIN_EXECUTIVE_QUESTION_REGISTRY.md) wired in code (`questionRegistry.ts`) |
+| 3 | Cross-link pass: workspace ↔ asset ↔ decision |
+| 4 | Remove or link duplicate summaries (0 duplicates at exit) |
+| 5 | EPO / System / Briefing boundary enforcement per EQ map |
+| 6 | EIC spread to all executive pages with recommendations |
+| 7 | Shell consistency pass (100% priority routes) |
+| 8 | Smoke / integration tests for critical navigation paths |
+| 9 | Final audit — all metric targets met |
 
 ---
 
 ## Exit criteria
 
 ```txt
-[ ] Integration audit complete — no orphan priority routes without cross-links plan
-[ ] Department pages link to related workspaces (where registry data exists)
-[ ] Workspace detail surfaces linked assets
-[ ] Asset detail links workspace + decisions (when present)
-[ ] EPO panels drill to source (build state, consolidation score, health)
-[ ] CoS recommendations include actionable deep links
-[ ] Priority routes pass Live Surface audit + consistent Executive Office chrome
-[ ] PHASE_CHECKLIST gate updated — 021 unblocked
+[ ] Integration audit: baseline recorded, final meets all metric targets
+[ ] Question Registry: 100% Phase 1 questions have one primary_route
+[ ] 0 orphan priority routes · 0 duplicate executive summaries
+[ ] 90+ cross-route links · 100% shell consistency on priority routes
+[ ] EIC on all executive recommendation surfaces
+[ ] CoS / Briefing link to authoritative routes (not duplicate full answers)
+[ ] PHASE_CHECKLIST gate updated — 021 unblocked only after metrics pass
 ```
 
-**Commit:** `fix: phase 1 integration pass — executive OS cohesion`
+**Commit:** `fix: phase 1 integration pass — executive question registry and cohesion`
+
+---
+
+## Strategic note
+
+Do **not** rush into LB-OS-021 because it is next numerically. Complete 020.5 until the system **genuinely feels like one Executive OS**. Every future department (Finance, Photography, Calendar, Gmail, CRM, GPU, multi-user) inherits this coherence.
+
+At this maturity, **cohesion is as valuable as another capability**.
 
 ---
 
 ## Slice ordering (binding)
 
 ```txt
-LB-OS-020  → Consolidation Planner (Executive Intelligence)
-LB-OS-020.5 → Phase 1 Integration Pass (this doc)
+LB-OS-020   → Executive Intelligence (reasoning)
+LB-OS-020.5 → Integration Pass (questions + cohesion) ← you are here
 LB-OS-021–026 → Migration arc · Personal OS launch
 ```
 

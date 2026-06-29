@@ -158,7 +158,7 @@ See [Studio Blueprint](./LOCALBRAIN_STUDIO_BLUEPRINT.md) · [Command Layer](./LO
 | **LB-OS-018** | Drive architecture & migration planner | 017 | Migration start |
 | **LB-OS-019** | Full filesystem mapping audit | 018 | Inventory |
 | **LB-OS-020** | Executive consolidation briefing (Executive Intelligence) | 019 | Briefing · score · evidence providers · simulate |
-| **LB-OS-020.5** | Phase 1 integration pass | 020 | Cohesion · cross-links · drill-downs |
+| **LB-OS-020.5** | Phase 1 integration pass (Question Registry) | 020 | EQ map · measurable cohesion · 021 gate |
 | **LB-OS-021** | H:/ project filing system builder | 020.5 | Filing taxonomy |
 | **LB-OS-022** | ChatGPT knowledge import pipeline | 021 | Import |
 | **LB-OS-023** | Project memory transfer engine | 022 | Memory |
@@ -1182,21 +1182,30 @@ Action Pipeline: Recommendation → Simulation → Proposal → Approval (010)
 
 **Depends on:** 020
 
-**Goal:** One cohesion sprint — cross-links, drill-downs, CoS deep links, EPO metric sources, Executive Office shell consistency. **No new features.**
+**Objective:** **Every Executive Question has exactly one authoritative answer.** Measurable cohesion — not open-ended polish.
 
-**Spec:** [Phase 1 Integration Pass](./LOCALBRAIN_PHASE1_INTEGRATION_PASS.md) · [Burt packet](./burt_packets/LB-OS-020.5.md)
+**Spec:** [Phase 1 Integration Pass](./LOCALBRAIN_PHASE1_INTEGRATION_PASS.md) · [Executive Question Registry](./LOCALBRAIN_EXECUTIVE_QUESTION_REGISTRY.md) · [Burt packet](./burt_packets/LB-OS-020.5.md)
+
+**Metrics (audit before → after):**
+
+```txt
+Cross-route links ≥ 90 · Orphan pages = 0 · Duplicate summaries = 0
+EIC on all executive surfaces · Shell consistency 100% priority routes
+Question Registry: 100% Phase 1 questions → one primary_route
+```
 
 **Exit criteria:**
 
 ```txt
-[ ] Integration audit complete
-[ ] Workspace ↔ asset ↔ decision cross-links on live data
-[ ] CoS recommendations → actionable routes
-[ ] EPO metrics drill to source data
-[ ] Priority routes consistent Executive Office chrome
+[ ] Integration audit baseline + final metrics pass
+[ ] questionRegistry.ts wired · EQ map on priority routes
+[ ] No duplicate full answers across Briefing / EPO / System / departments
+[ ] 021 blocked until gate passes
 ```
 
-**Commit:** `fix: phase 1 integration pass — executive OS cohesion`
+**Commit:** `fix: phase 1 integration pass — executive question registry and cohesion`
+
+**Do not rush LB-OS-021** — future departments inherit this coherence.
 
 ---
 

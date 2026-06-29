@@ -84,7 +84,23 @@ Each phase has a **success question**, **exit criteria**, and **tracked metrics*
 | Writing | "Here are your novels." | "Chapter 7 stale six months; depends on characters changed in Chapter 3." |
 | Research | "Voter database." | "Answer exists in three sources — here's the shortest path." |
 
-**Phase 2 deliverables:** [System Evolution](./LOCALBRAIN_SYSTEM_EVOLUTION.md) (ENG-EVO-001), CoS outcome learning, [Executive Leverage Score](./LOCALBRAIN_EXECUTIVE_LEVERAGE_SCORE.md) (ENG-ELS-001).
+**Phase 2 deliverables:** [Executive Intent](./LOCALBRAIN_EXECUTIVE_INTENT.md) (ENG-EI-001) · Attention Budget (ENG-AB-001) · Executive Question Router · [System Evolution](./LOCALBRAIN_SYSTEM_EVOLUTION.md) (ENG-EVO-001) · CoS outcome learning · [Executive Leverage Score](./LOCALBRAIN_EXECUTIVE_LEVERAGE_SCORE.md) (ENG-ELS-001).
+
+**Phase 2 build order:**
+
+```txt
+Personal OS cutover (026)
+  ↓
+Executive Intent Engine
+  ↓
+Attention Budget
+  ↓
+Executive Question Router (intent-filtered EQ)
+  ↓
+Adaptive Prioritization (EIC rank)
+  ↓
+Executive Leverage optimization
+```
 
 ---
 
@@ -118,7 +134,7 @@ Photography · Podcast · CFO · CRM · GIS · Census · Campaigns · Calendar �
 
 ```text
 Now        → LB-OS-020 (Executive Intelligence — consolidation briefing)
-Next       → LB-OS-020.5 (Phase 1 integration pass — cohesion sprint)
+Next       → LB-OS-020.5 (Question Registry — one answer per Executive Question; metric gate before 021)
 Then       → LB-OS-021–026 (Phase 1 exit — Personal OS)
 After      → Phase 2: System Evolution, ELS, CoS learning, dept L3+
 Later      → Phase 3: new departments on intelligent core
