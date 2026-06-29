@@ -2286,3 +2286,167 @@ a {
   margin-bottom: 0.35rem;
   font-size: 0.85rem;
 }
+
+/* Relationship & Network Intelligence — LB-OS-015 */
+.rel-dept {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem 1.25rem 2rem;
+}
+
+.rel-dept__header h1 {
+  margin: 0 0 0.25rem;
+}
+
+.rel-dept__meta {
+  color: #64748b;
+  font-size: 0.85rem;
+  margin: 0 0 0.5rem;
+}
+
+.rel-dept__philosophy {
+  font-size: 0.9rem;
+  color: #334155;
+  font-style: italic;
+  margin: 0 0 0.75rem;
+}
+
+.rel-dept__error {
+  color: #b91c1c;
+}
+
+.rel-dept__people-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.rel-dept__people-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0;
+  flex-wrap: wrap;
+}
+
+.rel-dept__people-list button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  color: #1e40af;
+  padding: 0;
+}
+
+.rel-dept__status {
+  font-size: 0.65rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+
+.rel-dept__status--active {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.rel-dept__status--warm {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.rel-dept__status--dormant {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.rel-dept__strength {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.rel-dept__profile-detail {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.rel-dept__timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-left: 2px solid #cbd5e1;
+  padding-left: 1rem;
+}
+
+.rel-dept__timeline li {
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+}
+
+.rel-dept__timeline time {
+  display: block;
+  font-size: 0.7rem;
+  color: #64748b;
+}
+
+.rel-dept__event-type {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  color: #6366f1;
+  margin-left: 0.5rem;
+}
+
+.rel-dept__org-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.rel-dept__org-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  background: #fafafa;
+}
+
+.rel-dept__org-kind {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.rel-dept__path {
+  font-size: 0.85rem;
+  background: #f8fafc;
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  border: 1px solid #e2e8f0;
+}
+
+.rel-dept__engagement {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.rel-dept__engagement li {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  background: #fff;
+}
+
+.rel-dept__engagement--high {
+  border-color: #fca5a5;
+  background: #fef2f2;
+}
+
+.rel-dept__engagement--medium {
+  border-color: #fcd34d;
+  background: #fffbeb;
+}

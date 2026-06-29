@@ -17,6 +17,7 @@ import { epoRouter } from "./routes/epo.js";
 import { engineeringRouter } from "./routes/engineering.js";
 import { writingRouter } from "./routes/writing.js";
 import { dataIntelligenceRouter } from "./routes/dataIntelligence.js";
+import { relationshipNetworkRouter } from "./routes/relationshipNetwork.js";
 import { getRegisteredModules } from "./core/moduleLoader.js";
 import { runBackgroundIndex } from "./knowledgeExplorer/indexer.js";
 
@@ -44,6 +45,7 @@ app.use("/api", epoRouter);
 app.use("/api", engineeringRouter);
 app.use("/api", writingRouter);
 app.use("/api", dataIntelligenceRouter);
+app.use("/api", relationshipNetworkRouter);
 
 app.listen(port, () => {
   const db = isDatabaseConnected();

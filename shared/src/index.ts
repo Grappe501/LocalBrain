@@ -132,6 +132,19 @@ export type {
   QueryPlanPreview,
 } from "./dataIntelligence.js";
 export type {
+  EngagementRecommendation,
+  NetworkGraph,
+  NetworkGraphEdge,
+  NetworkGraphNode,
+  OrganizationProfile,
+  RelationshipChiefRecommendation,
+  RelationshipHealthScore,
+  RelationshipLearnStub,
+  RelationshipNetworkOverview,
+  RelationshipProfile,
+  RelationshipTimelineEvent,
+} from "./relationshipNetwork.js";
+export type {
   AssetIntelligenceForPath,
   AssetIntelligenceSummary,
   CleanupRecommendation,

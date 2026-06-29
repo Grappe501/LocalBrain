@@ -1,0 +1,22 @@
+{
+  "module_id": "relationship-studio",
+  "name": "Relationships",
+  "domain": "relationships",
+  "version": "0.1.0",
+  "status": "active",
+  "routes": [{ "path": "/studio/relationships", "pattern": "studio/relationships/*" }],
+  "permissions": ["filesystem:read"],
+  "tools": [],
+  "agents": ["relationship_chief"],
+  "data_sources": ["contacts_intel"],
+  "capabilities": [
+    {
+      "capability_id": "CAP-RL-001",
+      "dependencies": ["ENG-PM-001", "ENG-WR-001", "ENG-KE-001"]
+    }
+  ],
+  "dependencies": ["ENG-PM-001", "ENG-WR-001"],
+  "nav_placement": "department",
+  "lazy_load_boundary": "modules/relationship-studio/Entry",
+  "description": "Relationship & Network Intelligence — social knowledge, not CRM (LB-OS-015)"
+}

@@ -41,11 +41,12 @@
 | [Engineering Department](./LOCALBRAIN_ENGINEERING_DEPARTMENT.md) | ✅ Complete — LB-OS-012 |
 | [Writing Department](./LOCALBRAIN_WRITING_DEPARTMENT.md) | ✅ Complete — LB-OS-013 |
 | [Data & Intelligence Department](./LOCALBRAIN_DATA_INTELLIGENCE_DEPARTMENT.md) | ✅ Complete — LB-OS-014 |
+| [Relationship & Network Intelligence](./LOCALBRAIN_RELATIONSHIP_NETWORK_INTELLIGENCE_DEPARTMENT.md) | ✅ Complete — LB-OS-015 |
 | [Executive Program Office](./LOCALBRAIN_EXECUTIVE_PROGRAM_OFFICE.md) | ✅ Complete — LB-OS-012.5 |
 | [Platform Separation Strategy](./LOCALBRAIN_PLATFORM_SEPARATION_STRATEGY.md) — Platform vs Brain boundary | ✅ Planning — 2026-06-28 |
 | [Multi-Machine Network Plan](./LOCALBRAIN_MULTI_MACHINE_NETWORK_PLAN.md) | 📋 Future arc — LB-OS-107–114 |
 
-**Gate:** Next: **LB-OS-015** Relationship Intelligence.
+**Gate:** Next: **LB-OS-016** Executive OS V1 milestone.
 
 ---
 
@@ -70,8 +71,8 @@
 | LB-OS-012 | Engineering Department | ✅ Complete — [Burt packet](./burt_packets/LB-OS-012.md) · [Spec](./LOCALBRAIN_ENGINEERING_DEPARTMENT.md) |
 | LB-OS-013 | Writing Department | ✅ Complete — [Burt packet](./burt_packets/LB-OS-013.md) · [Spec](./LOCALBRAIN_WRITING_DEPARTMENT.md) |
 | LB-OS-014 | Data & Intelligence Department | ✅ Complete — [Burt packet](./burt_packets/LB-OS-014.md) · [Spec](./LOCALBRAIN_DATA_INTELLIGENCE_DEPARTMENT.md) |
-| LB-OS-015 | Relationship Intelligence | 📋 Next |
-| LB-OS-016 | Executive OS V1 milestone | ⬜ PLANNED |
+| LB-OS-015 | Relationship & Network Intelligence | ✅ Complete — [Burt packet](./burt_packets/LB-OS-015.md) · [Spec](./LOCALBRAIN_RELATIONSHIP_NETWORK_INTELLIGENCE_DEPARTMENT.md) |
+| LB-OS-016 | Executive OS V1 milestone | 📋 Next |
 
 **Gates:** Shell = 002 · **Modularity = 106** · Safe = 010 · V1 ship = 016
 
@@ -306,6 +307,7 @@ Steve = owner · Actions = approval-gated · Audit = always on (when team ships)
 
 | Date | Change |
 |------|--------|
+| 2026-06-29 | LB-OS-015 Relationship & Network Intelligence — social knowledge, graph, timeline, engagement |
 | 2026-06-29 | LB-OS-014 Data & Intelligence Department — sources, query plans, lineage, graph |
 | 2026-06-29 | LB-OS-013 Writing Department — modes, voices, draft preview, sources |
 | 2026-06-29 | LB-OS-012 Engineering Department — knowledge graph, score, six tabs, EPO integration |
