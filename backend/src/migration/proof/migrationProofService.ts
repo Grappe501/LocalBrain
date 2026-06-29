@@ -153,6 +153,7 @@ export function runMigrationProofSimulation(
     })),
     result,
     core_rule: PROOF_CORE_RULE,
+    plan_eligible: result === "certified",
     proposal_eligible: result === "certified",
   };
 

@@ -276,6 +276,23 @@ export {
   PROOF_DIMENSION_LABELS,
 } from "./proofAndCertification.js";
 export type {
+  ArchitectureDebtBand,
+  PlatformStabilityReport,
+} from "./platformStability.js";
+export type {
+  MigrationPlan,
+  MigrationPlanDependencyNode,
+  MigrationPlanDiff,
+  MigrationPlanGenerateRequest,
+  MigrationPlanGenerateResponse,
+  MigrationPlanOperation,
+  MigrationPlanOverview,
+  MigrationPlanRollbackStep,
+  MigrationPlanStatus,
+  MigrationOperationKind,
+} from "./migrationPlan.js";
+export { MIGRATION_PLAN_CORE_RULE } from "./migrationPlan.js";
+export type {
   AssetIntelligenceForPath,
   AssetIntelligenceSummary,
   CleanupRecommendation,

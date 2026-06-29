@@ -40,6 +40,7 @@ test("simulate produces SIM and CERT ids with proof score", () => {
     assert.ok(certificate.proof_score.percent >= 0);
     assert.ok(certificate.proof_score.dimension_results.length === 6);
     assert.equal(certificate.proposal_eligible, certificate.result === "certified");
+    assert.equal(certificate.plan_eligible, certificate.result === "certified");
     assert.ok(certificate.evidence.survey_observed_at);
   } finally {
     shutdownApp();

@@ -73,7 +73,9 @@ export interface ProofCertificate {
   blueprint_refs: { workspace_id: string; title: string; confidence_percent: number }[];
   result: ProofCertificateResult;
   core_rule: string;
-  /** True only when result === certified */
+  /** True when certified — gates LB-OS-024 Migration Plan generation */
+  plan_eligible: boolean;
+  /** True when certified — 025 proposals require an existing plan_id */
   proposal_eligible: boolean;
 }
 

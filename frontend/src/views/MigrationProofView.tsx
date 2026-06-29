@@ -58,7 +58,10 @@ function CertificateCard({ cert }: { cert: ProofCertificate }) {
       </p>
       <p>
         Proposal eligible:{" "}
-        <strong>{cert.proposal_eligible ? "Yes (024 may proceed)" : "No — re-proof required"}</strong>
+        <strong>
+          {cert.plan_eligible ? "Plan eligible (024)" : "No"} ·{" "}
+          {cert.proposal_eligible ? "Proposal path open after plan (025)" : "Re-proof required"}
+        </strong>
       </p>
       <div className="proof-cert__dims">
         {cert.proof_score.dimension_results.map((d) => (

@@ -56,8 +56,11 @@ Current Phase             Core Executive OS
 Current Slice             LB-OS-012 Engineering Department
 Next Slice                LB-OS-013 Writing Department
 Operational Health        94
+Platform Stability        96%   ← redesign risk indicator (ENG-PST-001)
 Engineering Score         87
 ```
+
+See [Platform Stability](./LOCALBRAIN_PLATFORM_STABILITY.md).
 
 | Metric | Source (auto) |
 |--------|----------------|

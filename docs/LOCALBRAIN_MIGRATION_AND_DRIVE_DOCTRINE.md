@@ -201,28 +201,32 @@ Spec: LOCALBRAIN_DIGITAL_LAND_SURVEY.md
 ```txt
 Deterministic Proof Score · six ProofProviders · Proof Certificate (immutable)
 Migration simulation dry-run (SIM-*) · zero filesystem mutations
-Evidence vs Proof vs Recommendation Confidence kept separate
-Certification gates 024 proposal generation
+plan_eligible gates 024 Migration Plan — not proposals directly
 Spec: LOCALBRAIN_PROOF_AND_CERTIFICATION.md
 ```
 
-### LB-OS-024 — Migration Proposal Builder
+### LB-OS-024 — Migration Planning Engine
 
 ```txt
-proposed_actions from approved simulations · LB-OS-010 approval gate
-Traceable: workspace → blueprint → simulation
+Migration Plan (PLAN-*) from certified certificate only
+Dependency graph · rollback plan embedded · plan diff
+Core rule: If we execute this, what exactly happens?
+No approval · no execution · no proposals in 024
+Spec: LOCALBRAIN_MIGRATION_PLAN.md
 ```
 
-### LB-OS-025 — Cutover Planner
+### LB-OS-025 — Executive Approval
 
 ```txt
-Sign-off checklist · domain replacements (ChatGPT/Cursor/Explorer) · rollback plan
+Proposal (PROP-*) references MigrationPlan only — does not invent operations
+LB-OS-010 approval gate · What exactly will happen? vs Do you approve?
 ```
 
-### LB-OS-026 — Personal OS Launch
+### LB-OS-026 — Execution + Verification
 
 ```txt
-LocalBrain primary · execute approved proposals only · workspace-first acceptance
+Execute approved proposals only · verify projection integrity
+Personal OS launch · rollback from plan rollback_plan
 ```
 
 **Deferred (Phase 2 import arc):** ChatGPT knowledge import · project memory transfer — not blocking Personal OS launch.
