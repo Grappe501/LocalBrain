@@ -1,6 +1,7 @@
 # LocalBrain Memory Recall Architecture v1.0
 
 > **Pillar 12 · Memory & recall.**  
+> **Domain model:** [Memory Domains](./LOCALBRAIN_MEMORY_DOMAINS.md) — six independent memory types (foundational object: **Memory**).  
 > Token economy: [Token Economy Engine](./LOCALBRAIN_TOKEN_ECONOMY_ENGINE.md) · Queue: LB-OS-051–052
 
 ---

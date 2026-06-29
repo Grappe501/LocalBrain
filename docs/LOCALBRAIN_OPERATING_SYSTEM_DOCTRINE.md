@@ -90,10 +90,69 @@ file explorer, writing dashboard, campaign command center, and local AI operatin
 
 ```txt
 LocalBrain is not an app inside the computer.
-LocalBrain becomes the control layer over the computer.
+LocalBrain becomes the executive operating shell — the interface Steve lives in daily.
 ```
 
 The AI reasons. The OS shell executes — through permission gates, previews, logs, and undo.
+
+**Important:** LocalBrain can replace Windows as Steve's **main working interface**, but it does **not** replace the host operating system. Hardware, drivers, networking, GPU, file permissions, USB, and display still require an OS underneath.
+
+---
+
+## Host Platform (Layer 0)
+
+```txt
+Layer 0 — Host Platform
+  Windows · Linux · macOS · future server · cloud node
+
+Layer 1 — LocalBrain Kernel (permissions, registry, engines, memory, agents)
+
+Layers 2–5 — Executive operating shell (everything above the kernel is yours)
+```
+
+LocalBrain sits **above** the host platform — portable for the next decade, not Windows-specific.
+
+We do **not** bypass the host platform at first. We **sit on top of it** and make Steve rarely need to touch it directly.
+
+### What LocalBrain becomes the default interface for
+
+```txt
+Files and folders · search · projects/workspaces · writing · coding
+Email/calendar · system health · storage cleanup · AI command center
+Photo/podcast workflows · database work
+```
+
+### What LocalBrain cannot safely do early
+
+```txt
+Replace the host platform kernel
+Bypass host platform drivers
+Directly control GPU outside OS/runtime
+Manage hardware without OS permissions
+Ignore the host security model (ACLs, UAC, sandboxing, etc.)
+```
+
+LocalBrain **respects** the permission engine and host platform boundaries — it orchestrates work; it does not become a hypervisor.
+
+Full layer stack + frozen objects: [Foundational Object Model](./LOCALBRAIN_FOUNDATIONAL_OBJECT_MODEL.md)
+
+### Future server topology (when GPU server arrives)
+
+```txt
+Windows Server / Windows Pro — easiest continuity with current desktop
+Linux                    — best for AI/GPU/server workloads
+Dual machine             — Windows desktop + Linux GPU server
+```
+
+**Binding recommendation:**
+
+```txt
+Keep the daily machine on Windows.
+Run LocalBrain UI locally on that machine.
+Move heavy AI/GPU/backend services to the new server later — likely Linux.
+```
+
+Familiar Windows desktop + LocalBrain as control shell + GPU server as power engine. See [GPU Server Migration Plan](./LOCALBRAIN_GPU_SERVER_MIGRATION_PLAN.md).
 
 ---
 

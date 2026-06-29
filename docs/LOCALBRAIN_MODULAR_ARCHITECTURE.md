@@ -10,6 +10,8 @@
 
 LocalBrain is a **large executive operating system** in scope. It must **not** become a bloated monolith.
 
+**Foundational objects:** Module is one of ten frozen objects — see [Foundational Object Model](./LOCALBRAIN_FOUNDATIONAL_OBJECT_MODEL.md). Layer 1 is the **LocalBrain Kernel**; modules load above it after LB-OS-106.
+
 ```txt
 The danger is not lines of code.
 The danger is tight coupling.

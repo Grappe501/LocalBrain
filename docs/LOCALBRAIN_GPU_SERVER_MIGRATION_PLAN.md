@@ -9,7 +9,9 @@
 
 When Steve's **GPU server** arrives, LocalBrain moves without re-architecting — runtime config + portable `local_data` + indexes.
 
-Target: NVIDIA or AMD Radeon GPU on Windows with [Ollama](https://ollama.com) or LM Studio for local inference.
+Target: NVIDIA or AMD GPU — host OS may be **Windows** (desktop continuity) or **Linux** (recommended for dedicated GPU/inference server).
+
+**Steve's recommended topology:** Windows daily desktop running LocalBrain UI locally; separate GPU server (likely Linux) for heavy AI/backend workloads. LocalBrain calls the server over the network — same pattern as Option B below.
 
 ---
 
@@ -105,9 +107,12 @@ Archive old local_data backup · update DNS/bookmarks · H: drive may move or st
 
 ```txt
 Option A: GPU server IS the LocalBrain host (H: local or mapped)
-Option B: GPU server = inference box; LocalBrain on laptop calls http://gpu:11434
+Option B: GPU server = inference/backend box; LocalBrain on Windows desktop calls http://gpu:11434  ← recommended
 Option C: Both on same machine after desk upgrade
+Option D: Windows desktop + Linux GPU server (dual machine — best of both worlds)
 ```
+
+**Recommendation:** Option B or D — keep Windows as the daily interface layer; run Ollama/inference on Linux GPU server when available. Windows Server/Pro remains valid for single-box continuity.
 
 ENG-PRV-003 local adapter reads `OLLAMA_BASE_URL` from ENG-CF-001.
 

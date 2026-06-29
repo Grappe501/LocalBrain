@@ -21,7 +21,7 @@ No studio calls another studio — studios call engines.
 
 ---
 
-## Layer 1 — Core OS Services
+## Layer 1 — LocalBrain Kernel
 
 ### ENG-ID-001 — Identity & User Profile
 
@@ -124,11 +124,25 @@ No studio calls another studio — studios call engines.
 | Field | Value |
 |-------|-------|
 | **Responsibility** | Entities (project, file, req, slice, person), relations, cross-links |
-| **Depends on** | ENG-SR-001, ENG-MM-001, ENG-PR-001 |
+| **Depends on** | ENG-SR-001, ENG-MM-001, ENG-KN-001 |
 | **Exposes** | `GET /api/graph/entity/:id` · `GET /api/graph/related` |
-| **Consumed by** | Knowledge services, Living Workspaces |
+| **Consumed by** | Knowledge services, Living Workspaces, Digital Twin |
 | **Slices** | Post-024 (full) · partial from 021 |
 | **Status** | DEFERRED |
+
+---
+
+### ENG-KN-001 — Knowledge Engine
+
+| Field | Value |
+|-------|-------|
+| **Responsibility** | Route queries to **Knowledge Sources** — hide storage mechanics from CoS |
+| **Depends on** | ENG-PM-001, ENG-LG-001, ENG-SR-001 |
+| **Exposes** | `GET /api/knowledge/sources` · `POST /api/knowledge/query` |
+| **Consumed by** | Chief of Staff, all studios, Digital Twin |
+| **Slices** | 005+ filesystem source · post-046 semantic |
+| **Status** | PLANNED |
+| **Docs** | [Knowledge Sources](./LOCALBRAIN_KNOWLEDGE_SOURCES.md) |
 
 ---
 
@@ -136,12 +150,41 @@ No studio calls another studio — studios call engines.
 
 | Field | Value |
 |-------|-------|
-| **Responsibility** | Conversations, closeouts, decisions, handoffs, session continuity |
+| **Responsibility** | Six **Memory** domains — personal, workspace, system, relationship, learning, executive |
 | **Depends on** | ENG-LG-001 |
-| **Exposes** | `conversations` · `memory_entries` · `GET /api/memory/project/:id` |
-| **Consumed by** | ENG-KP-001, ENG-AI-001, Burt generator |
-| **Slices** | 008 partial · 021 full |
+| **Exposes** | `conversations` · domain-scoped recall · `GET /api/memory/:domain` |
+| **Consumed by** | ENG-KP-001, ENG-AI-001, ENG-DT-001, Burt generator |
+| **Slices** | 008 partial · 051–054 |
 | **Status** | PLANNED |
+| **Docs** | [Memory Domains](./LOCALBRAIN_MEMORY_DOMAINS.md) · [Memory Recall](./LOCALBRAIN_MEMORY_RECALL_ARCHITECTURE.md) |
+
+---
+
+### ENG-DL-001 — Decision Ledger
+
+| Field | Value |
+|-------|-------|
+| **Responsibility** | Binding **Decision** records — architectural and business choices with rationale |
+| **Depends on** | ENG-LG-001 |
+| **Exposes** | `GET /api/decisions` · `GET /api/decisions/:id` |
+| **Consumed by** | Chief of Staff, Digital Twin, Executive Briefing |
+| **Slices** | Post-106 kernel |
+| **Status** | PLANNED |
+| **Docs** | [Decision Ledger](./LOCALBRAIN_DECISION_LEDGER.md) |
+
+---
+
+### ENG-DT-001 — Digital Twin Composer
+
+| Field | Value |
+|-------|-------|
+| **Responsibility** | Composed apex view — You · company · machine — for CoS consultation |
+| **Depends on** | ENG-WR-001, ENG-MM-001, ENG-KN-001, ENG-DL-001, ENG-ST-001 |
+| **Exposes** | `GET /api/twin/snapshot` · briefing inputs |
+| **Consumed by** | ENG-CS-001 Chief of Staff, Executive Briefing |
+| **Slices** | Incremental from 004 · full post-052 |
+| **Status** | PLANNED |
+| **Docs** | [Digital Twin](./LOCALBRAIN_DIGITAL_TWIN.md) |
 
 ---
 

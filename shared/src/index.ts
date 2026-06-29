@@ -8,3 +8,17 @@ export type {
   WorkspaceProfile,
   WorkspaceType,
 } from "./workspace.js";
+export type {
+  Agent,
+  Capability,
+  Decision,
+  DecisionStatus,
+  Engine,
+  EngineStatus,
+  KnowledgeSource,
+  KnowledgeSourceKind,
+  KnowledgeSourceStatus,
+  MemoryDomain,
+  MemoryRecord,
+  Module,
+} from "./foundation.js";

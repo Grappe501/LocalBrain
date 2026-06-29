@@ -23,9 +23,12 @@ Steve approves everything risky.
 ### One foundation
 
 ```txt
-Project folders = filesystem folders on H:/
-Living Workspace = intelligence layer over those folders
-Engines = shared services all lenses call
+Layer 0 — Host Platform     Windows · Linux · macOS · server · cloud node
+Layer 1 — LocalBrain Kernel permissions · registry · engines · agents · audit
+Living Workspace            intelligence layer over H:/ project folders
+Digital Twin                composed apex — CoS consults, does not reconstruct
+Knowledge Sources           user-facing data abstraction (not "databases")
+Foundational objects (10)   frozen — see Foundational Object Model
 ```
 
 ### North star
@@ -40,39 +43,46 @@ C:/ programs · H:/ work/data.
 
 ---
 
-## 2. Five-Layer Model
+## 2. Layer Model (0–5)
 
 ```txt
 ┌─────────────────────────────────────────────────────────────┐
+│  Layer 0 — Host Platform                                    │
+│  Windows · Linux · macOS · future server · cloud node       │
+│  Hardware · drivers · networking · GPU runtime · ACLs       │
+├─────────────────────────────────────────────────────────────┤
 │  Layer 5 — Universal Command Layer                          │
-│  Ctrl+Space · intent · routing · context carry              │
+│  Chief of Staff · Ctrl+Space · intent · routing             │
 ├─────────────────────────────────────────────────────────────┤
-│  Layer 4 — Productivity Studios (user-facing lenses)        │
+│  Layer 4 — Productivity Studios (lazy-loaded modules)       │
 │  Code · Writing · Campaign · Research · Social · SysAdmin   │
-│  Project Dashboard (Living Workspace)                       │
+│  Living Workspace dashboard                                 │
 ├─────────────────────────────────────────────────────────────┤
-│  Layer 3 — Knowledge Services (understanding)               │
-│  Project · docs · code · writing · campaign · research      │
-│  Learning · OJT Academy                                     │
+│  Layer 3 — Knowledge Services                               │
+│  Knowledge Engine · recall · graph · learning · OJT         │
 ├─────────────────────────────────────────────────────────────┤
-│  Layer 2 — System Services (the machine)                    │
-│  Drive · explorer · storage · performance · backup          │
-│  Projects registry · environment · version · health         │
+│  Layer 2 — System Services                                  │
+│  Explorer · storage · performance · backup · health         │
 ├─────────────────────────────────────────────────────────────┤
-│  Layer 1 — Core OS Services (invisible kernel)            │
-│  Identity · orchestration · agents · tools · permissions    │
-│  Filesystem · search · knowledge graph · memory             │
-│  Automation · settings · logging                            │
+│  Layer 1 — LocalBrain Kernel                                │
+│  Identity · permissions · agents · tools · workspace registry│
+│  Memory domains · decision ledger · logging · automation    │
 └─────────────────────────────────────────────────────────────┘
 ```
 
-**Rule:** Layers 1–3 are backend engines. Layer 4 is frontend studios. Layer 5 spans all.
+**Rule:** Layer 0 is **Host Platform** — portable, not Windows-only. Layer 1 is the **LocalBrain Kernel**. Layers 2–5 are the executive shell. LocalBrain does not replace Layer 0.
+
+**Digital Twin:** Composed read model across layers — [Digital Twin](./LOCALBRAIN_DIGITAL_TWIN.md). Chief of Staff consults it; does not rebuild Steve's world each session.
+
+**Foundational objects (frozen):** [Foundational Object Model](./LOCALBRAIN_FOUNDATIONAL_OBJECT_MODEL.md)
+
+Host framing: [Operating System Doctrine — Host Platform](./LOCALBRAIN_OPERATING_SYSTEM_DOCTRINE.md#host-platform-layer-0)
 
 ---
 
-## 3. Layer 1 — Core OS Services
+## 3. Layer 1 — LocalBrain Kernel
 
-Invisible infrastructure. No direct UI except settings/debug.
+Invisible infrastructure. No direct UI except settings/debug. This layer **is** the LocalBrain Kernel.
 
 | Engine | ID | One-line job |
 |--------|-----|--------------|
@@ -84,7 +94,10 @@ Invisible infrastructure. No direct UI except settings/debug.
 | Filesystem engine | ENG-FS-001 | Read, write, move, quarantine (gated) |
 | Search/index engine | ENG-SR-001 | Full-text index, filters, semantic (later) |
 | Knowledge graph | ENG-KG-001 | Entities, relations, cross-project links |
-| Memory engine | ENG-MM-001 | Conversations, decisions, closeouts, handoffs |
+| Knowledge engine | ENG-KN-001 | Route queries to Knowledge Sources — [Knowledge Sources](./LOCALBRAIN_KNOWLEDGE_SOURCES.md) |
+| Memory engine | ENG-MM-001 | Six memory domains — [Memory Domains](./LOCALBRAIN_MEMORY_DOMAINS.md) |
+| Decision ledger | ENG-DL-001 | Binding architectural/business decisions — [Decision Ledger](./LOCALBRAIN_DECISION_LEDGER.md) |
+| Digital Twin composer | ENG-DT-001 | Composed apex view for CoS — [Digital Twin](./LOCALBRAIN_DIGITAL_TWIN.md) |
 | Automation engine | ENG-AU-001 | Scheduled/triggered flows (approval-gated) |
 | Settings/config | ENG-CF-001 | `.env` presence, feature flags, drive doctrine |
 | Logging & audit | ENG-LG-001 | Action log, tool log, immutable audit trail |
@@ -412,6 +425,11 @@ Post-038             → Knowledge graph full · automation · semantic search
 ## Document Hierarchy
 
 ```txt
+LOCALBRAIN_FOUNDATIONAL_OBJECT_MODEL.md   ← ten frozen objects + layer stack
+LOCALBRAIN_DIGITAL_TWIN.md
+LOCALBRAIN_KNOWLEDGE_SOURCES.md
+LOCALBRAIN_DECISION_LEDGER.md
+LOCALBRAIN_MEMORY_DOMAINS.md
 LOCALBRAIN_MASTER_SYSTEM_ARCHITECTURE.md  ← YOU ARE HERE
 LOCALBRAIN_ENGINE_REGISTRY.md
 LOCALBRAIN_STUDIO_BLUEPRINT.md

@@ -39,6 +39,10 @@ and continuous learning (Pillars 12, 15, knowledge graph, Living Workspaces).
 
 The GPU server **accelerates** — it is not a **prerequisite** for Chief of Staff behavior.
 
+**Digital Twin (binding):** CoS **consults** the Digital Twin — composed from workspaces, memory domains, knowledge sources, system health, and the decision ledger. It does **not** reconstruct Steve's world from scratch each morning.
+
+See [Digital Twin](./LOCALBRAIN_DIGITAL_TWIN.md) · [Decision Ledger](./LOCALBRAIN_DECISION_LEDGER.md) · [Foundational Object Model](./LOCALBRAIN_FOUNDATIONAL_OBJECT_MODEL.md)
+
 **Parent:** Pillar 17 [Executive Office](./LOCALBRAIN_EXECUTIVE_OFFICE.md) owns briefings, calendar, email, prioritization, effectiveness.
 
 ---
