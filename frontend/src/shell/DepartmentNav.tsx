@@ -1,36 +1,38 @@
 import { NavLink } from "react-router-dom";
 import { useModuleRegistry } from "../context/ModuleRegistryContext";
 
-/** Kernel shell routes — not registered as modules. */
-const KERNEL_NAV_TAIL = [
+/** V1 shipped departments — active modules only in nav (LB-OS-016). */
+const V1_DEPARTMENT_ORDER = [
+  "engineering-studio",
+  "writing-studio",
+  "data-studio",
+  "relationship-studio",
+] as const;
+
+const KERNEL_NAV = [
   { label: "Program Office", path: "/program-office" },
   { label: "Workspace", path: "/workspace/localbrain" },
-  { label: "Knowledge Explorer", path: "/explorer" },
-  { label: "Learn", path: "/learn" },
+  { label: "Explorer", path: "/explorer" },
   { label: "Actions", path: "/actions" },
   { label: "System", path: "/system" },
+  { label: "Learn", path: "/learn" },
   { label: "Settings", path: "/settings" },
 ] as const;
 
 export function DepartmentNav() {
-  const { departmentModules, loading, loadOrder } = useModuleRegistry();
+  const { departmentModules, loading } = useModuleRegistry();
 
-  const orderedDepartments = loadOrder
-    .map((id) => departmentModules.find((m) => m.module_id === id))
-    .filter((m): m is NonNullable<typeof m> => Boolean(m));
-
-  const departmentItems =
-    orderedDepartments.length > 0
-      ? orderedDepartments
-      : departmentModules;
+  const v1Departments = V1_DEPARTMENT_ORDER.map((id) =>
+    departmentModules.find((m) => m.module_id === id && m.status === "active"),
+  ).filter((m): m is NonNullable<typeof m> => Boolean(m));
 
   const navItems = [
-    { label: "Executive", path: "/" },
-    ...departmentItems.map((m) => ({
+    { label: "Briefing", path: "/" },
+    ...v1Departments.map((m) => ({
       label: m.name,
       path: m.routes[0]?.path ?? `/studio/${m.domain}`,
     })),
-    ...KERNEL_NAV_TAIL,
+    ...KERNEL_NAV,
   ];
 
   return (
@@ -38,7 +40,7 @@ export function DepartmentNav() {
       <p className="department-nav__note">
         {loading
           ? "Loading module manifests…"
-          : `${departmentModules.length} departments from manifests · LB-OS-106`}
+          : `Executive OS V1 · ${v1Departments.length} departments · kernel + CoS`}
       </p>
       <ul className="department-nav__list">
         {navItems.map((dept) => (

@@ -22,21 +22,24 @@ H:/ = work projects, data, archives, documents, repos, media, storage
 
 ---
 
-## Build Status
+## Build Status — Executive OS V1 ✅
 
 ```txt
-LB-OS-001  ✅ Repo scaffold
-PSP        ✅ APPROVED — 2026-06-28
-LB-OS-002  ✅ Executive briefing shell
-LB-OS-003  ✅ Permission engine v2
-LB-OS-004  ▶ READY — Workspace registry ([Living Workspace Model](docs/LOCALBRAIN_LIVING_WORKSPACE_MODEL.md))
+LB-OS-001–011   ✅ Foundation + safety + CoS + system health
+LB-OS-012.5     ✅ Executive Program Office
+LB-OS-012–015   ✅ Engineering · Writing · Data & Intelligence · Relationships
+LB-OS-016       ✅ Executive OS V1 milestone (release candidate)
 ```
 
-**Critical path after PSP:**
+**Verify:** `GET /api/v1/acceptance` · [Executive OS V1](docs/LOCALBRAIN_EXECUTIVE_OS_V1.md)
 
-```txt
-002 → 003 → 004 → 106 (MODULARITY GATE) → 005 → 006+
-```
+**Next:** Phase 2 Migration — LB-OS-017+
+
+**Dev:** `npm run dev` → http://localhost:5174 · API http://localhost:4545
+
+---
+
+## Legacy build notes
 
 ---
 

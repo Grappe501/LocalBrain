@@ -144,6 +144,7 @@ export type {
   RelationshipProfile,
   RelationshipTimelineEvent,
 } from "./relationshipNetwork.js";
+export type { V1AcceptanceReport, V1Guardrail, V1SpineCheck } from "./v1Spine.js";
 export type {
   AssetIntelligenceForPath,
   AssetIntelligenceSummary,

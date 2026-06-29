@@ -7,52 +7,36 @@ export const MOCK_BRIEFING_SECTIONS: BriefingSection[] = [
   {
     title: "Today's priorities",
     lines: [
-      "1. LocalBrain — LB-OS-002 shell (self-build meta)",
-      "2. Review PSP closeout and assign LB-OS-003",
-      "3. Engine registry alignment for Burt packets",
+      "1. Review Program Office — V1 spine status",
+      "2. Engineering / Writing / Data / Relationships departments",
+      "3. Clear pending approvals in Actions queue",
     ],
   },
   {
-    title: "Calendar",
-    lines: ["10:00 Deep work block · 3h free — shell + permission engine"],
-  },
-  {
-    title: "Email requiring attention",
-    lines: ["2 unread flagged · mock thread · reply suggested"],
-  },
-  {
-    title: "Projects at risk",
-    lines: ["LocalBrain: awaiting LB-OS-003 permission engine"],
-  },
-  {
-    title: "Recent accomplishments",
-    lines: ["LB-OS-001 scaffold complete · PSP approved"],
+    title: "Executive OS V1",
+    lines: [
+      "Release candidate hardening — LB-OS-016",
+      "Operational loop: Observe → Understand → Plan → Recommend → Approve → Execute → Verify → Learn",
+      "Four foundational departments online",
+    ],
   },
   {
     title: "Pending approvals",
-    lines: ["None — filesystem tools disabled until LB-OS-003+"],
-  },
-  {
-    title: "Token spend",
-    lines: ["Yesterday: $0.00 (mock) · Month: $0.00 · Not connected"],
-  },
-  {
-    title: "Finance & CFO",
-    lines: [
-      "LocalBrain: self-build budget on track (mock)",
-      "Household: on budget (mock)",
-      "Action: expense classifications after CFO module (LB-OS-101)",
-    ],
+    lines: ["Check Actions queue — all file writes approval-gated"],
   },
   {
     title: "System health",
-    lines: ["Metrics not connected · planned LB-OS-007"],
+    lines: ["Status dock (bottom-right) · full panels at /system"],
+  },
+  {
+    title: "Finance & CFO",
+    lines: ["Briefing section only in V1 — CFO module deferred"],
   },
   {
     title: "Suggested deep-work block",
-    lines: ["8:00–11:00 — LocalBrain shell hardening"],
+    lines: ["Use Command layer (Ctrl+Space) for CoS intents · departments for domain work"],
   },
 ];
 
 export const MOCK_MWI_FOOTER =
-  "Meaningful Work Index: not measured yet — mock footer (LB-OS-095)";
+  "Executive OS V1 — Meaningful Work Index ships post-milestone (LB-OS-095)";

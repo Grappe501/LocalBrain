@@ -49,15 +49,24 @@ function findCurrentAndNext(slices: EpoSliceSummary[]): {
   phaseLabel: string;
 } {
   const inProgress = slices.find((s) => s.status === "in_progress");
+  const v1Order = [
+    "LB-OS-012",
+    "LB-OS-012.5",
+    "LB-OS-013",
+    "LB-OS-014",
+    "LB-OS-015",
+    "LB-OS-016",
+  ];
+  const firstIncomplete = v1Order
+    .map((id) => slices.find((s) => s.slice_id === id))
+    .find((s) => s && s.status !== "complete");
+
   const specLockedReady = slices.filter(
     (s) =>
       s.status === "spec_locked" &&
       !(s.blocker_explanation?.startsWith("Waiting") ?? false),
   );
-  const preferred =
-    specLockedReady.find((s) => s.slice_id === "LB-OS-012") ??
-    specLockedReady.find((s) => s.slice_id === "LB-OS-012.5") ??
-    specLockedReady[0];
+  const preferred = firstIncomplete ?? specLockedReady[0] ?? null;
   const current = inProgress ?? preferred ?? null;
 
   const next =
