@@ -146,7 +146,16 @@ export type {
   RelationshipProfile,
   RelationshipTimelineEvent,
 } from "./relationshipNetwork.js";
-export type { V1AcceptanceReport, V1Guardrail, V1SpineCheck } from "./v1Spine.js";
+export type {
+  LiveSurfaceAudit,
+  LiveSurfaceEntry,
+  LiveSurfaceMode,
+  LiveSurfaceSmokeReport,
+  LiveSurfaceSmokeResult,
+  LiveSurfaceStubSection,
+  WorkspaceLinkRow,
+  WorkspaceLiveEnvelope,
+} from "./liveSurface.js";
 export type {
   AICapability,
   AICredentialStatus,
@@ -206,3 +215,4 @@ export {
   validateModuleManifest,
   validateModuleRegistry,
 } from "./moduleManifest.js";
+export type { V1AcceptanceReport, V1Guardrail, V1SpineCheck } from "./v1Spine.js";

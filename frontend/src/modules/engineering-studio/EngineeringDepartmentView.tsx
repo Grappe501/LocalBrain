@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { LiveSurfaceBanner } from "../../components/LiveSurfaceBanner";
 import type {
   BurtPacketPreview,
   EngineeringExplainResponse,
@@ -157,6 +158,8 @@ export function EngineeringDepartmentView() {
           {new Date(overview.observed_at).toLocaleTimeString()}
         </p>
       </header>
+
+      <LiveSurfaceBanner route="/studio/engineering" observedAt={overview.observed_at} />
 
       <nav className="eng-dept__tabs" aria-label="Engineering tabs">
         {TABS.map((t) => (

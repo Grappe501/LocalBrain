@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { LiveSurfaceBanner } from "../../components/LiveSurfaceBanner";
 import type {
   DataHealthScore,
   DataIntelligenceOverview,
@@ -119,6 +120,8 @@ export function DataIntelligenceView() {
           {new Date(overview.observed_at).toLocaleTimeString()}
         </p>
       </header>
+
+      <LiveSurfaceBanner route="/studio/data" observedAt={overview.observed_at} />
 
       <aside className="writing-dept__guardrails">
         {overview.guardrails.map((g) => (

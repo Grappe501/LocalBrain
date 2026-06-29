@@ -1,6 +1,8 @@
 import { Router } from "express";
 import type { WorkspaceType } from "@localbrain/shared";
 import { refreshPermissionEngine } from "../bootstrap.js";
+import { getWorkspaceLiveEnvelope } from "../liveSurface/liveSurfaceService.js";
+import { projectWorkspaceLive } from "../liveSurface/workspaceProjection.js";
 import { getWorkspaceEvents } from "../workspaces/workspaceEvents.js";
 import { getWorkspaceLinks } from "../workspaces/workspaceLinks.js";
 import {
@@ -34,7 +36,20 @@ workspacesRouter.get("/workspaces/:id", (req, res) => {
     res.status(404).json({ error: "Workspace not found" });
     return;
   }
-  res.json({ workspace });
+  res.json({
+    workspace: projectWorkspaceLive(workspace),
+    live_projection: req.params.id === "localbrain",
+    observed_at: new Date().toISOString(),
+  });
+});
+
+workspacesRouter.get("/workspaces/:id/live", (req, res) => {
+  const envelope = getWorkspaceLiveEnvelope(req.params.id);
+  if (!envelope) {
+    res.status(404).json({ error: "Workspace not found" });
+    return;
+  }
+  res.json(envelope);
 });
 
 workspacesRouter.get("/workspaces/:id/events", (req, res) => {

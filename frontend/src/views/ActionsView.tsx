@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import type { ActionLogEntry, BackupRecord, ExecuteResult, ProposedAction } from "@localbrain/shared";
+import { LiveSurfaceBanner } from "../components/LiveSurfaceBanner";
 import {
   approveActionApi,
   executeActionApi,
@@ -20,6 +21,7 @@ export function ActionsView() {
   const [selected, setSelected] = useState<ProposedAction | null>(null);
   const [lastResult, setLastResult] = useState<ExecuteResult | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [observedAt, setObservedAt] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   const load = useCallback(async () => {
@@ -34,6 +36,7 @@ export function ActionsView() {
       setActions(acts);
       setLog(logEntries);
       setBackups(backupRows);
+      setObservedAt(new Date().toISOString());
     } catch (e) {
       setError(e instanceof Error ? e.message : "Failed to load actions");
     } finally {
@@ -81,6 +84,8 @@ export function ActionsView() {
 
   return (
     <article className="actions-view">
+      <LiveSurfaceBanner route="/actions" observedAt={observedAt ?? undefined} />
+
       <header className="actions-view__header">
         <h1>Actions</h1>
         <p className="actions-view__meta">
@@ -132,6 +137,9 @@ export function ActionsView() {
                   </span>
                   <strong>{a.title}</strong>
                   <span>{a.action_type}</span>
+                  {a.requested_by === "chief_of_staff" ? (
+                    <span className="actions-view__cos-badge">CoS</span>
+                  ) : null}
                 </button>
               </li>
             ))}
@@ -147,6 +155,8 @@ export function ActionsView() {
               <dd>{selected.action_type}</dd>
               <dt>Status</dt>
               <dd>{selected.status}</dd>
+              <dt>Requested by</dt>
+              <dd>{selected.requested_by}</dd>
               {selected.source_path ? (
                 <>
                   <dt>Source</dt>

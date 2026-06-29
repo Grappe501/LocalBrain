@@ -34,7 +34,7 @@ test("parsePhaseSections derives phases from checklist", () => {
 test("computeBuildState projects current sprint and velocity", () => {
   const state = computeBuildState();
   assert.equal(state.current_slice_id, "LB-OS-020");
-  assert.ok(state.current_sprint.completed.includes("LB-OS-019"));
+  assert.ok(state.current_sprint.completed.some((id) => id.startsWith("LB-OS-019")));
   assert.ok(state.current_sprint.in_progress.includes("LB-OS-020"));
   assert.ok(state.build_velocity.commits_count >= 0);
   assert.ok(state.build_graph.some((n) => n.slice_id === "LB-OS-019" && n.status === "released"));

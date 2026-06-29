@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import type { LivingWorkspace, WorkspaceEvent } from "@localbrain/shared";
-import { fetchWorkspace, fetchWorkspaceEvents } from "../api/workspaces";
+import type { LivingWorkspace, WorkspaceEvent, WorkspaceLinkRow } from "@localbrain/shared";
+import { fetchWorkspaceLive } from "../api/workspaces";
 import { useActiveWorkspace } from "../context/ActiveWorkspaceContext";
+import { LiveSurfaceBanner } from "../components/LiveSurfaceBanner";
 import { WorkspaceCoSBlock } from "../components/WorkspaceCoSBlock";
 import { WorkspaceEventTimeline } from "../components/WorkspaceEventTimeline";
 import { WorkspaceHeader } from "../components/WorkspaceHeader";
@@ -16,6 +17,8 @@ export function LivingWorkspaceDashboard({ workspaceId }: Props) {
   const { selectWorkspace } = useActiveWorkspace();
   const [workspace, setWorkspace] = useState<LivingWorkspace | null>(null);
   const [events, setEvents] = useState<WorkspaceEvent[]>([]);
+  const [links, setLinks] = useState<WorkspaceLinkRow[]>([]);
+  const [observedAt, setObservedAt] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -24,13 +27,12 @@ export function LivingWorkspaceDashboard({ workspaceId }: Props) {
     async function load() {
       try {
         setError(null);
-        const [ws, ev] = await Promise.all([
-          fetchWorkspace(workspaceId),
-          fetchWorkspaceEvents(workspaceId),
-        ]);
+        const envelope = await fetchWorkspaceLive(workspaceId);
         if (cancelled) return;
-        setWorkspace(ws);
-        setEvents(ev);
+        setWorkspace(envelope.workspace);
+        setEvents(envelope.events);
+        setLinks(envelope.links);
+        setObservedAt(envelope.observed_at);
         await selectWorkspace(workspaceId);
       } catch (e) {
         if (!cancelled) {
@@ -70,6 +72,8 @@ export function LivingWorkspaceDashboard({ workspaceId }: Props) {
         ← Executive Briefing
       </Link>
 
+      <LiveSurfaceBanner route={`/workspace/${workspaceId}`} observedAt={observedAt ?? undefined} />
+
       <WorkspaceHeader workspace={workspace} />
 
       {flagEntries.length > 0 ? (
@@ -94,9 +98,23 @@ export function LivingWorkspaceDashboard({ workspaceId }: Props) {
       <WorkspaceCoSBlock workspace={workspace} />
       <WorkspaceEventTimeline events={events} />
 
-      <section className="workspace-card workspace-card--muted">
+      <section className="workspace-card">
         <h2>Links &amp; integrations</h2>
-        <p>Repositories, contacts, and graph links — coming in later slices (empty stubs in 004).</p>
+        {links.length === 0 ? (
+          <p className="workspace-card__muted">
+            No graph links registered yet — live API returns an empty set until LB-OS-021+ filing
+            system connects repositories and contacts.
+          </p>
+        ) : (
+          <ul className="workspace-links">
+            {links.map((link) => (
+              <li key={link.id}>
+                <strong>{link.to_entity_type}</strong> {link.to_entity_id}
+                {link.relationship_type ? ` · ${link.relationship_type}` : null}
+              </li>
+            ))}
+          </ul>
+        )}
       </section>
     </article>
   );

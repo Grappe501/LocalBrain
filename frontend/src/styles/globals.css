@@ -1,18 +1,7 @@
 :root {
-  color-scheme: light dark;
+  color-scheme: dark;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   line-height: 1.5;
-  color: #1a1a1a;
-  background: #e8eaed;
-  --shell-bg: #0f1419;
-  --shell-surface: #1a2332;
-  --shell-border: #2d3a4d;
-  --shell-text: #e8edf4;
-  --shell-muted: #8b9cb3;
-  --accent: #3b82f6;
-  --accent-soft: #1e3a5f;
-  --warn-bg: #fef3c7;
-  --warn-text: #92400e;
 }
 
 * {
@@ -33,7 +22,6 @@ a {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #f0f2f5;
 }
 
 .command-bar {
@@ -1899,13 +1887,83 @@ a {
   color: #475569;
 }
 
-.epo-graph__node button {
-  background: none;
-  border: none;
+.actions-view__cos-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: #dbeafe;
   color: #1e40af;
-  cursor: pointer;
-  font-weight: 600;
+  padding: 0.1rem 0.35rem;
+  border-radius: 0.25rem;
+}
+
+.live-surface {
+  margin-bottom: 1rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.375rem;
+  border: 1px solid #e2e8f0;
+  font-size: 0.8rem;
+  background: #f8fafc;
+}
+
+.live-surface--live {
+  border-left: 3px solid #22c55e;
+}
+
+.live-surface--partial {
+  border-left: 3px solid #f59e0b;
+}
+
+.live-surface--stub {
+  border-left: 3px solid #94a3b8;
+}
+
+.live-surface__badge {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-right: 0.5rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 0.25rem;
+}
+
+.live-surface__badge--live {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.live-surface__badge--partial {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.live-surface__badge--stub {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.live-surface__meta {
+  color: #64748b;
+}
+
+.live-surface__stubs {
+  margin: 0.5rem 0 0;
+  padding-left: 1.1rem;
+  color: #64748b;
+}
+
+.workspace-links {
+  list-style: none;
   padding: 0;
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.workspace-card__muted {
+  color: #64748b;
+  font-size: 0.85rem;
 }
 
 .epo-decision-list {

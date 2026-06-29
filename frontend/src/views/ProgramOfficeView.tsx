@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import type { EpoCoverageBars, EpoOverview, EpoSliceDetail, EpoDocEntry } from "@localbrain/shared";
+import { LiveSurfaceBanner } from "../components/LiveSurfaceBanner";
 import {
   fetchEpoDocs,
   fetchEpoOverview,
@@ -130,6 +131,8 @@ export function ProgramOfficeView() {
           {new Date(overview.observed_at).toLocaleTimeString()}
         </p>
       </header>
+
+      <LiveSurfaceBanner route="/program-office" observedAt={overview.observed_at} />
 
       <section className="epo-dashboard" aria-label="Program dashboard">
         <div className="epo-dashboard__progress">

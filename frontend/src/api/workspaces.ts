@@ -1,4 +1,4 @@
-import type { LivingWorkspace, WorkspaceEvent } from "@localbrain/shared";
+import type { LivingWorkspace, WorkspaceEvent, WorkspaceLinkRow, WorkspaceLiveEnvelope } from "@localbrain/shared";
 
 export async function fetchWorkspaces(flag?: string): Promise<LivingWorkspace[]> {
   const url = flag ? `/api/workspaces?flag=${encodeURIComponent(flag)}` : "/api/workspaces";
@@ -27,6 +27,12 @@ export async function fetchWorkspaceEvents(id: string): Promise<WorkspaceEvent[]
   if (!res.ok) throw new Error(`Workspace events failed: ${res.status}`);
   const data = (await res.json()) as { events: WorkspaceEvent[] };
   return data.events;
+}
+
+export async function fetchWorkspaceLive(id: string): Promise<WorkspaceLiveEnvelope> {
+  const res = await fetch(`/api/workspaces/${encodeURIComponent(id)}/live`);
+  if (!res.ok) throw new Error(`Workspace live envelope failed: ${res.status}`);
+  return (await res.json()) as WorkspaceLiveEnvelope;
 }
 
 export async function selectWorkspace(id: string): Promise<LivingWorkspace> {
