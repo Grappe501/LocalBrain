@@ -5,6 +5,7 @@ import {
   runMigrations,
 } from "./db/database.js";
 import { loadModuleManifests } from "./core/moduleLoader.js";
+import { migrateDigitalAssetTables } from "./digitalAssets/assetRegistry.js";
 import { migrateKnowledgeExplorerTables } from "./knowledgeExplorer/migrate.js";
 import { initPermissionEngine } from "./safety/permissionEngine.js";
 import {
@@ -22,6 +23,7 @@ export function bootstrapApp(): void {
   runMigrations();
   migrateWorkspaceTables();
   migrateKnowledgeExplorerTables();
+  migrateDigitalAssetTables();
   seedWorkspaces();
   syncFilesystemRootsToAllowedFolders();
   loadModuleManifests();

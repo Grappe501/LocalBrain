@@ -973,6 +973,31 @@ a {
   color: #4b5563;
 }
 
+.ke-explorer__asset-block {
+  margin: 1rem 0;
+  padding: 0.75rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  background: #fff;
+}
+
+.ke-explorer__fingerprint {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25rem 1rem;
+  margin: 0.5rem 0;
+  font-size: 0.85rem;
+}
+
+.ke-explorer__fingerprint dt {
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.ke-explorer__fingerprint dd {
+  margin: 0;
+}
+
 .ke-explorer__insights {
   list-style: none;
   padding: 0;

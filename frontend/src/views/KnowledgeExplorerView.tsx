@@ -46,12 +46,15 @@ export function KnowledgeExplorerView() {
 
   const refreshIndexStatus = useCallback(async () => {
     const s = await fetchIndexStatus();
+    const registryLine = s.registry
+      ? ` · ${s.registry.total_assets} assets in registry`
+      : "";
     setIndexStatus(
       s.indexing
-        ? "Background index running…"
+        ? `Background sync running…${registryLine}`
         : s.latest_run
-          ? `Index ${s.latest_run.status} · ${s.latest_run.paths_scanned} paths`
-          : "Index not started",
+          ? `Index ${s.latest_run.status} · ${s.latest_run.paths_scanned} paths${registryLine}`
+          : `Digital Asset Registry${registryLine || " · ready"}`,
     );
   }, []);
 
@@ -128,7 +131,7 @@ export function KnowledgeExplorerView() {
       <header className="ke-explorer__header">
         <h1>Knowledge Explorer</h1>
         <p className="ke-explorer__meta">
-          {indexStatus} · Registry first · incremental index · LB-OS-005
+          {indexStatus} · Registry first · incremental sync · LB-OS-006
         </p>
       </header>
 
@@ -216,6 +219,32 @@ export function KnowledgeExplorerView() {
           <section className="ke-explorer__panel">
             <h2>Understand — {explain.name}</h2>
             <p>{explain.purpose}</p>
+            {explain.asset ? (
+              <div className="ke-explorer__asset-block">
+                <h3>Digital Asset Registry</h3>
+                <dl className="ke-explorer__fingerprint">
+                  <dt>Kind</dt>
+                  <dd>{explain.asset.kind}</dd>
+                  <dt>Lifecycle</dt>
+                  <dd>{explain.asset.lifecycle_stage}</dd>
+                  <dt>Health</dt>
+                  <dd>{explain.asset.health_score ?? "—"}</dd>
+                  <dt>Size</dt>
+                  <dd>{explain.asset.size_bytes ?? "—"}</dd>
+                  <dt>Modified</dt>
+                  <dd>{explain.asset.modified_at ?? "—"}</dd>
+                  <dt>Created</dt>
+                  <dd>{explain.asset.created_at ?? "—"}</dd>
+                  <dt>Hash</dt>
+                  <dd>{explain.asset.hash ?? "—"}</dd>
+                  <dt>Workspace</dt>
+                  <dd>{explain.asset.workspace_id ?? explain.workspace?.title ?? "—"}</dd>
+                </dl>
+                <p className="ke-explorer__meta">{explain.index_status}</p>
+              </div>
+            ) : selected && !selected.in_registry ? (
+              <p className="ke-explorer__meta">Not yet in Digital Asset Registry — sync pending.</p>
+            ) : null}
             {explain.workspace ? (
               <div className="ke-explorer__workspace-block">
                 <h3>{explain.workspace.title}</h3>
@@ -227,6 +256,9 @@ export function KnowledgeExplorerView() {
                 </p>
                 <p className="ke-explorer__context">{explain.workspace.executive_context}</p>
               </div>
+            ) : null}
+            {explain.collections.length === 0 ? (
+              <p className="ke-explorer__meta">Collections: stub (LB-OS-007)</p>
             ) : null}
             {explain.important_files.length > 0 ? (
               <>

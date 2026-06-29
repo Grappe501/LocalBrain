@@ -3,6 +3,7 @@ import path from "node:path";
 import { listWorkspaces } from "../workspaces/workspaceRegistry.js";
 import { getWorkspaceEvents } from "../workspaces/workspaceEvents.js";
 import { normalizeAndResolve } from "../safety/pathValidator.js";
+import { getAssetByPath, getRegistryStats } from "../digitalAssets/assetRegistry.js";
 import { getIndexedPath, getLatestIndexRun } from "./indexer.js";
 import { resolveWorkspaceForPath } from "./pathWorkspace.js";
 import { listTreeChildren } from "./treeService.js";
@@ -25,6 +26,19 @@ export type ExplainFolderResult = {
   duplicate_risks: string[];
   stale_hint: string | null;
   index_status: string;
+  asset: {
+    asset_id: string;
+    kind: string;
+    lifecycle_stage: string;
+    health_score: number | null;
+    hash: string | null;
+    size_bytes: number | null;
+    created_at: string | null;
+    modified_at: string | null;
+    workspace_id: string | null;
+    in_registry: boolean;
+  } | null;
+  collections: { collection_id: string; title: string; asset_count: number | null }[];
 };
 
 export type ExecutiveInsight = {
@@ -82,6 +96,8 @@ export function explainFolder(rawPath: string): ExplainFolderResult | null {
 
   const events = ws ? getWorkspaceEvents(ws.workspace_id).slice(-3).reverse() : [];
   const run = getLatestIndexRun();
+  const registry = getRegistryStats();
+  const assetRow = getAssetByPath(resolved);
 
   let stale_hint: string | null = null;
   if (cached?.mtime) {
@@ -117,7 +133,24 @@ export function explainFolder(rawPath: string): ExplainFolderResult | null {
     recommendations,
     duplicate_risks,
     stale_hint,
-    index_status: run ? `${run.status} · ${run.paths_scanned} paths` : "not started",
+    index_status: run
+      ? `${run.status} · ${run.paths_scanned} paths · registry ${registry.total_assets} assets`
+      : `registry ${registry.total_assets} assets`,
+    asset: assetRow
+      ? {
+          asset_id: assetRow.asset_id,
+          kind: assetRow.kind,
+          lifecycle_stage: assetRow.lifecycle_stage,
+          health_score: assetRow.health_score,
+          hash: assetRow.hash,
+          size_bytes: assetRow.size_bytes,
+          created_at: assetRow.created_at,
+          modified_at: assetRow.modified_at,
+          workspace_id: assetRow.workspace_id,
+          in_registry: true,
+        }
+      : null,
+    collections: [],
   };
 }
 

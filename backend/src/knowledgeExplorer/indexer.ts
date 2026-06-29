@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { upsertDigitalAsset } from "../digitalAssets/assetRegistry.js";
 import { getDatabase } from "../db/database.js";
 import { getPermissionEngine } from "../safety/permissionEngine.js";
 import { hasIgnoredSegment, matchesSecretName } from "../safety/ignoreRules.js";
@@ -28,39 +29,15 @@ function shouldSkipPath(resolved: string): boolean {
   return !check.allowed;
 }
 
-function upsertFileIndex(entry: Omit<FileIndexRow, "indexed_at">): void {
-  const db = getDatabase();
-  db.prepare(
-    `INSERT INTO file_index (path, name, is_directory, size_bytes, mtime, workspace_id, excerpt, indexed_at)
-     VALUES (@path, @name, @is_directory, @size_bytes, @mtime, @workspace_id, @excerpt, datetime('now'))
-     ON CONFLICT(path) DO UPDATE SET
-       name = excluded.name,
-       is_directory = excluded.is_directory,
-       size_bytes = excluded.size_bytes,
-       mtime = excluded.mtime,
-       workspace_id = excluded.workspace_id,
-       excerpt = excluded.excerpt,
-       indexed_at = datetime('now')`,
-  ).run(entry);
-
-  db.prepare("DELETE FROM file_index_fts WHERE path = ?").run(entry.path);
-  db.prepare("INSERT INTO file_index_fts (path, name, excerpt) VALUES (?, ?, ?)").run(
-    entry.path,
-    entry.name,
-    entry.excerpt,
-  );
-}
-
 function indexPath(resolved: string, stats: fs.Stats): void {
   const ws = resolveWorkspaceForPath(resolved);
-  upsertFileIndex({
+  upsertDigitalAsset({
     path: resolved,
     name: path.basename(resolved),
-    is_directory: stats.isDirectory() ? 1 : 0,
+    is_directory: stats.isDirectory(),
     size_bytes: stats.isFile() ? stats.size : null,
     mtime: stats.mtime.toISOString(),
     workspace_id: ws?.workspace_id ?? null,
-    excerpt: stats.isDirectory() ? "directory" : "",
   });
 }
 

@@ -13,6 +13,11 @@ export type ExplorerTreeNode = {
   workspace_id: string | null;
   workspace_title: string | null;
   overlay: ExplorerOverlayBadge[];
+  asset_id: string | null;
+  kind: string | null;
+  lifecycle_stage: string | null;
+  health_score: number | null;
+  in_registry: boolean;
 };
 
 export type ExplainFolderResult = {
@@ -33,6 +38,19 @@ export type ExplainFolderResult = {
   duplicate_risks: string[];
   stale_hint: string | null;
   index_status: string;
+  asset: {
+    asset_id: string;
+    kind: string;
+    lifecycle_stage: string;
+    health_score: number | null;
+    hash: string | null;
+    size_bytes: number | null;
+    created_at: string | null;
+    modified_at: string | null;
+    workspace_id: string | null;
+    in_registry: boolean;
+  } | null;
+  collections: { collection_id: string; title: string; asset_count: number | null }[];
 };
 
 export type ExecutiveInsight = {
@@ -110,11 +128,23 @@ export async function fetchExplorerSearch(q: string): Promise<SearchResultItem[]
 export async function fetchIndexStatus(): Promise<{
   indexing: boolean;
   latest_run: { status: string; paths_scanned: number } | null;
+  registry?: {
+    total_assets: number;
+    by_lifecycle: Record<string, number>;
+    dormant_bytes_estimate: number;
+    collections_count: number;
+  };
 }> {
   const res = await fetch("/api/knowledge-explorer/index/status");
   if (!res.ok) throw new Error("Index status failed");
   return (await res.json()) as {
     indexing: boolean;
     latest_run: { status: string; paths_scanned: number } | null;
+    registry?: {
+      total_assets: number;
+      by_lifecycle: Record<string, number>;
+      dormant_bytes_estimate: number;
+      collections_count: number;
+    };
   };
 }

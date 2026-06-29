@@ -4,6 +4,7 @@ import {
   getExecutiveInsights,
   whyAmISeeingThis,
 } from "../knowledgeExplorer/explainService.js";
+import { getRegistryStats } from "../digitalAssets/assetRegistry.js";
 import {
   getLatestIndexRun,
   isIndexing,
@@ -66,6 +67,7 @@ knowledgeExplorerRouter.get("/knowledge-explorer/index/status", (_req, res) => {
   res.json({
     indexing: isIndexing(),
     latest_run: getLatestIndexRun(),
+    registry: getRegistryStats(),
   });
 });
 

@@ -69,12 +69,12 @@ Knowledge Explorer tree **reads registry first**, filesystem second for cache mi
 ## Exit criteria
 
 ```txt
-[ ] digital_assets table populated from incremental sync
-[ ] file_index migration path documented in code
-[ ] Explorer tree uses registry for metadata where available
-[ ] Lifecycle stage assigned per asset
-[ ] No full-drive scan on startup
-[ ] npm run check && npm run test pass
+[x] digital_assets table populated from incremental sync
+[x] file_index migration path documented in code
+[x] Explorer tree uses registry for metadata where available
+[x] Lifecycle stage assigned per asset
+[x] No full-drive scan on startup
+[x] npm run check && npm run test pass
 ```
 
 ---
@@ -87,4 +87,4 @@ Knowledge Explorer tree **reads registry first**, filesystem second for cache mi
 
 ---
 
-*LB-OS-006 · Digital Asset Registry · READY*
+*LB-OS-006 · Digital Asset Registry · ✅ Complete*
