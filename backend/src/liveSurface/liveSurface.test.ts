@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { getLiveSurfaceAudit, runLiveSurfaceSmoke } from "./liveSurfaceService.js";
 import { projectWorkspaceLive } from "./workspaceProjection.js";
+import { computeBuildState } from "../buildState/buildStateEngine.js";
 import { getWorkspace } from "../workspaces/workspaceRegistry.js";
 import { SURFACE_REGISTRY } from "./surfaceRegistry.js";
 
@@ -16,8 +17,10 @@ test("surface registry covers priority routes", () => {
 test("projectWorkspaceLive syncs localbrain from build state", () => {
   const ws = getWorkspace("localbrain");
   assert.ok(ws);
+  const state = computeBuildState();
   const projected = projectWorkspaceLive(ws!);
-  assert.ok(projected.current_focus.includes("LB-OS-021"));
+  assert.ok(state.current_slice_id);
+  assert.ok(projected.current_focus.includes(state.current_slice_id!));
   assert.ok((projected.profile.completed_slices ?? []).includes("LB-OS-019"));
 });
 

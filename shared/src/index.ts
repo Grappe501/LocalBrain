@@ -206,6 +206,26 @@ export type {
   WorkspaceRootCoverage,
 } from "./filesystemAudit.js";
 export type {
+  ExecutiveWorkspaceArchitectureReport,
+  LogicalProjectionType,
+  OrganizationNodeKind,
+  OrganizationTreeNode,
+  PhysicalVolumeSurvey,
+  PhysicalWorldBindingIssue,
+  PhysicalWorldBindingIssueKind,
+  PhysicalWorldSurvey,
+  Projection,
+  ProjectionKind,
+  ProjectionStatus,
+  StorageProviderHealth,
+  StorageProviderRole,
+  StorageProviderStub,
+  StorageProviderType,
+  WorkspaceBlueprint,
+  WorkspaceBlueprintMigrationImpact,
+  WorkspaceDNA,
+} from "./workspaceArchitecture.js";
+export type {
   AssetIntelligenceForPath,
   AssetIntelligenceSummary,
   CleanupRecommendation,

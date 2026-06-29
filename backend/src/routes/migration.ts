@@ -5,6 +5,7 @@ import {
   getLatestFilesystemAudit,
   runFilesystemMappingAudit,
 } from "../migration/fsAudit/auditService.js";
+import { getExecutiveWorkspaceArchitecture } from "../migration/workspaceArchitecture/workspaceArchitectureService.js";
 
 export const migrationRouter = Router();
 
@@ -37,4 +38,8 @@ migrationRouter.get("/migration/audit/export", (req, res) => {
     'attachment; filename="migration_inventory.json"',
   );
   res.send(json);
+});
+
+migrationRouter.get("/migration/workspace-architecture", (_req, res) => {
+  res.json(getExecutiveWorkspaceArchitecture());
 });

@@ -79,6 +79,8 @@ export function MigrationPlannerView() {
           <Link to="/migration/audit">Run LB-OS-019 filesystem mapping audit →</Link>
           {" · "}
           <Link to="/migration/consolidation">Executive Consolidation Briefing (LB-OS-020) →</Link>
+          {" · "}
+          <Link to="/migration/workspace-architecture">Workspace Architecture (LB-OS-021) →</Link>
           {plan.inventory_gate ? (
             <span className="migration__gate-ok"> · Inventory gate complete</span>
           ) : null}

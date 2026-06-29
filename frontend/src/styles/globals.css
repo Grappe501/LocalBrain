@@ -3127,6 +3127,167 @@ a {
   text-decoration: none;
 }
 
+/* LB-OS-021 — Executive Workspace Architecture */
+.ewa-tree {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ewa-tree__node {
+  margin: 0.25rem 0;
+  font-size: 0.92rem;
+}
+
+.ewa-tree__label {
+  font-weight: 600;
+}
+
+.ewa-tree__id {
+  margin-left: 0.5rem;
+  color: #64748b;
+  font-size: 0.8rem;
+}
+
+.ewa__subhead {
+  font-size: 0.95rem;
+  margin: 1rem 0 0.35rem;
+}
+
+.ewa__projections {
+  list-style: none;
+  margin: 0.35rem 0 0;
+  padding: 0;
+}
+
+.ewa__projections li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: baseline;
+  margin: 0.35rem 0;
+}
+
+.ewa__status {
+  font-size: 0.75rem;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.ewa__status--active {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.ewa__status--planned {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.ewa__status--missing,
+.ewa__status--stale {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.ewa__kind {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.ewa__empty {
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.ewa-dna {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.ewa-dna:first-child {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.ewa-dna__meta {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #64748b;
+}
+
+.ewa-blueprint {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.ewa-blueprint__header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  align-items: baseline;
+  margin-bottom: 0.75rem;
+}
+
+.ewa-blueprint__header h3 {
+  margin: 0;
+  flex: 1 1 100%;
+}
+
+.ewa-blueprint__id {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.ewa-blueprint__confidence {
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+}
+
+.ewa-blueprint__confidence--excellent,
+.ewa-blueprint__confidence--good {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.ewa-blueprint__confidence--fair,
+.ewa-blueprint__confidence--planned {
+  background: #fef9c3;
+  color: #854d0e;
+}
+
+.ewa-blueprint__columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.ewa-blueprint__columns h4 {
+  margin: 0 0 0.35rem;
+  font-size: 0.85rem;
+  color: #475569;
+}
+
+.ewa-blueprint__impact {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin: 0.5rem 0 0;
+}
+
+@media (max-width: 720px) {
+  .ewa-blueprint__columns {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* LB-OS-020 — Executive Consolidation Briefing + EIC */
 .consolidation {
   max-width: 960px;

@@ -1,4 +1,8 @@
-import type { FilesystemMappingAudit, MigrationPlannerOverview } from "@localbrain/shared";
+import type {
+  ExecutiveWorkspaceArchitectureReport,
+  FilesystemMappingAudit,
+  MigrationPlannerOverview,
+} from "@localbrain/shared";
 
 const API = "/api";
 
@@ -17,4 +21,10 @@ export async function fetchFilesystemAudit(refresh = false): Promise<FilesystemM
 
 export function auditExportUrl(refresh = false): string {
   return `${API}/migration/audit/export${refresh ? "?refresh=1" : ""}`;
+}
+
+export async function fetchWorkspaceArchitecture(): Promise<ExecutiveWorkspaceArchitectureReport> {
+  const res = await fetch(`${API}/migration/workspace-architecture`);
+  if (!res.ok) throw new Error("Failed to load workspace architecture");
+  return res.json() as Promise<ExecutiveWorkspaceArchitectureReport>;
 }

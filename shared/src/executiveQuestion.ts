@@ -161,11 +161,11 @@ export const PHASE_1_EXECUTIVE_QUESTIONS: ExecutiveQuestion[] = [
     canonical_question: "How should I migrate my world?",
     owner_department: "Migration Planner",
     primary_route: "/migration",
-    supporting_engines: ["ENG-MIG-001"],
+    supporting_engines: ["ENG-MIG-001", "ENG-EWA-001"],
     supporting_workspaces: [],
     answer_surface: "dashboard",
     answer_confidence: 88,
-    summary_only_routes: [],
+    summary_only_routes: ["/migration/workspace-architecture"],
   },
   {
     question_id: "EQ-015",
@@ -258,7 +258,10 @@ export function matchQuestionForRoute(
     if (q.primary_route.includes(":")) {
       const prefix = q.primary_route.split(":")[0];
       if (normalized.startsWith(prefix)) return q;
-    } else if (normalized === q.primary_route) {
+    } else if (
+      normalized === q.primary_route ||
+      q.summary_only_routes.includes(normalized)
+    ) {
       return q;
     }
   }
