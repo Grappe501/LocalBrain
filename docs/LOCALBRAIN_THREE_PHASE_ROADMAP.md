@@ -40,9 +40,9 @@ Each phase has a **success question**, **exit criteria**, and **tracked metrics*
 | Departments foundation (Eng/Writing/Data/Rel) | LB-OS-012–015 | ✅ |
 | AI Provider spine | LB-OS-017 | ✅ |
 | Migration planning complete | LB-OS-018–019 | ✅ |
-| Executive consolidation briefing (first Executive Intelligence) | LB-OS-020 | 📋 Next |
-| Phase 1 integration pass (cohesion) | LB-OS-020.5 | 📋 After 020 |
-| Personal OS cutover ready | LB-OS-021–026 | ⬜ |
+| Executive consolidation briefing (first Executive Intelligence) | LB-OS-020 | ✅ |
+| Phase 1 integration pass (cohesion) | LB-OS-020.5 | ✅ |
+| Personal OS cutover ready | LB-OS-021–026 | 📋 Next |
 
 **Phase 1 gate:** LB-OS-026 Personal OS launch — plus **Executive Intelligence layer** (EIC + Simulation pipeline) and cohesive cross-links from 020.5.
 
@@ -84,22 +84,32 @@ Each phase has a **success question**, **exit criteria**, and **tracked metrics*
 | Writing | "Here are your novels." | "Chapter 7 stale six months; depends on characters changed in Chapter 3." |
 | Research | "Voter database." | "Answer exists in three sources — here's the shortest path." |
 
-**Phase 2 deliverables:** [Executive Intent](./LOCALBRAIN_EXECUTIVE_INTENT.md) (ENG-EI-001) · Attention Budget (ENG-AB-001) · Executive Question Router · [System Evolution](./LOCALBRAIN_SYSTEM_EVOLUTION.md) (ENG-EVO-001) · CoS outcome learning · [Executive Leverage Score](./LOCALBRAIN_EXECUTIVE_LEVERAGE_SCORE.md) (ENG-ELS-001).
+**Phase 2 deliverables:** [Executive Mission Stack](./LOCALBRAIN_EXECUTIVE_INTENT.md) (ENG-EMS-001) · Mission Alignment (ENG-EI-001) · Adaptive Attention Budget (ENG-AB-001) · Mission Completion Probability (ENG-MCP-001) · Executive Question Router · [System Evolution](./LOCALBRAIN_SYSTEM_EVOLUTION.md) (ENG-EVO-001) · Mission Memory · [Executive Leverage Score](./LOCALBRAIN_EXECUTIVE_LEVERAGE_SCORE.md) (ENG-ELS-001).
 
 **Phase 2 build order:**
 
 ```txt
 Personal OS cutover (026)
   ↓
-Executive Intent Engine
+Executive Intelligence (EIC + Simulation — Phase 1 foundation)
   ↓
-Attention Budget
+Mission Stack Engine
   ↓
-Executive Question Router (intent-filtered EQ)
+Attention Budget (adaptive modes)
   ↓
-Adaptive Prioritization (EIC rank)
+Executive Question Router (mission-filtered EQ)
+  ↓
+Mission Alignment Scoring
+  ↓
+Adaptive Prioritization (EIC rank · intentional deferrals)
+  ↓
+Mission Completion Probability (MCP — CoS north star)
   ↓
 Executive Leverage optimization
+  ↓
+Mission Memory
+  ↓
+Predictive Chief of Staff
 ```
 
 ---
@@ -134,7 +144,7 @@ Photography · Podcast · CFO · CRM · GIS · Census · Campaigns · Calendar �
 
 ```text
 Now        → LB-OS-020 (Executive Intelligence — consolidation briefing)
-Next       → LB-OS-020.5 (Question Registry — one answer per Executive Question; metric gate before 021)
+Next       → LB-OS-021 (H:/ filing system builder — integration gate passed at 020.5)
 Then       → LB-OS-021–026 (Phase 1 exit — Personal OS)
 After      → Phase 2: System Evolution, ELS, CoS learning, dept L3+
 Later      → Phase 3: new departments on intelligent core

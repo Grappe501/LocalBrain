@@ -13,12 +13,12 @@ Wrong question:  "How many features does LocalBrain have?"
 Right question:  "How much more effective am I because LocalBrain exists?"
 ```
 
-The **Executive Leverage Score** is the most important number in the system — the top line of the **Executive Briefing** each morning.
+The **Executive Leverage Score** is the most important composite in the system — a top line of the **Executive Briefing** each morning.
 
-**Phase 2:** ELS measures outcomes **against [Executive Intent](./LOCALBRAIN_EXECUTIVE_INTENT.md)**, not activity alone:
+**Phase 2:** ELS measures outcomes **against [Mission Stack](./LOCALBRAIN_EXECUTIVE_INTENT.md) completion**, not activity alone. **[Mission Completion Probability (MCP)](./LOCALBRAIN_EXECUTIVE_INTENT.md#mission-completion-probability-mcp--eng-mcp-001)** is the Chief of Staff's optimization target; ELS is the longer-horizon impact score built from MCP trends and accepted outcomes:
 
 ```txt
-Intent Completed % → Leverage → Time Saved → Recommendations Accepted → Friction Removed
+Primary Mission Completed % → MCP trend → Leverage → Time Saved → Recommendations Accepted → Friction Removed
 ```
 
 | Scoreboard | Measures |

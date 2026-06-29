@@ -117,7 +117,7 @@ Steve asks (natural language)
   → Never duplicate full answer on secondary surface
 ```
 
-**Prerequisite for Phase 2:** [Executive Intent](./LOCALBRAIN_EXECUTIVE_INTENT.md) filters which questions CoS surfaces (after 026).
+**Prerequisite for Phase 2:** [Executive Mission Stack](./LOCALBRAIN_EXECUTIVE_INTENT.md) filters which questions CoS surfaces and scopes mission-specific question variants (registry unchanged; routing filtered by active mission).
 
 ---
 
