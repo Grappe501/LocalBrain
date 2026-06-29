@@ -1,0 +1,22 @@
+{
+  "module_id": "media-studio",
+  "name": "Media",
+  "domain": "media",
+  "version": "0.0.1",
+  "status": "stub",
+  "routes": [{ "path": "/studio/media", "pattern": "studio/media/*" }],
+  "permissions": ["filesystem:read"],
+  "tools": [],
+  "agents": ["agent-media"],
+  "data_sources": [],
+  "capabilities": [
+    {
+      "capability_id": "CAP-ME-001",
+      "dependencies": ["ENG-PM-001", "ENG-FS-001", "ENG-WR-001"]
+    }
+  ],
+  "dependencies": ["ENG-PM-001", "ENG-WR-001"],
+  "nav_placement": "department",
+  "lazy_load_boundary": "modules/media-studio/Entry",
+  "description": "Photo, podcast, and media studio — stub"
+}

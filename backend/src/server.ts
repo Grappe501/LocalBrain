@@ -6,6 +6,8 @@ import { commandRouter } from "./command.js";
 import { healthRouter } from "./health.js";
 import { safetyRouter } from "./routes/safety.js";
 import { workspacesRouter } from "./routes/workspaces.js";
+import { modulesRouter } from "./routes/modules.js";
+import { getRegisteredModules } from "./core/moduleLoader.js";
 
 const port = Number(process.env.LOCALBRAIN_PORT ?? 4545);
 
@@ -19,9 +21,12 @@ app.use("/api", healthRouter);
 app.use("/api", commandRouter);
 app.use("/api", safetyRouter);
 app.use("/api", workspacesRouter);
+app.use("/api", modulesRouter);
 
 app.listen(port, () => {
   const db = isDatabaseConnected();
+  const modules = getRegisteredModules();
   console.log(`LocalBrain backend listening on http://localhost:${port}`);
   console.log(`Permission engine v2 — database ${db ? "connected" : "FAILED"}`);
+  console.log(`Module loader — ${modules.length} manifests registered (LB-OS-106)`);
 });

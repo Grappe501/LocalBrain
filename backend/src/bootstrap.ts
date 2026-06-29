@@ -4,6 +4,7 @@ import {
   isDatabaseConnected,
   runMigrations,
 } from "./db/database.js";
+import { loadModuleManifests } from "./core/moduleLoader.js";
 import { initPermissionEngine } from "./safety/permissionEngine.js";
 import {
   migrateWorkspaceTables,
@@ -21,6 +22,7 @@ export function bootstrapApp(): void {
   migrateWorkspaceTables();
   seedWorkspaces();
   syncFilesystemRootsToAllowedFolders();
+  loadModuleManifests();
   refreshPermissionEngine();
 }
 

@@ -1,0 +1,22 @@
+{
+  "module_id": "finance-studio",
+  "name": "Finance",
+  "domain": "finance",
+  "version": "0.0.1",
+  "status": "stub",
+  "routes": [{ "path": "/studio/finance", "pattern": "studio/finance/*" }],
+  "permissions": ["filesystem:read"],
+  "tools": [],
+  "agents": ["agent-cfo"],
+  "data_sources": [],
+  "capabilities": [
+    {
+      "capability_id": "CAP-FI-001",
+      "dependencies": ["ENG-PM-001", "ENG-MM-001", "ENG-WR-001"]
+    }
+  ],
+  "dependencies": ["ENG-PM-001", "ENG-WR-001"],
+  "nav_placement": "department",
+  "lazy_load_boundary": "modules/finance-studio/Entry",
+  "description": "CFO and finance studio — stub; briefing-only in LB-OS-002"
+}

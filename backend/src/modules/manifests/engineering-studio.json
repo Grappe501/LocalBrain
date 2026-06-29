@@ -1,0 +1,22 @@
+{
+  "module_id": "engineering-studio",
+  "name": "Engineering",
+  "domain": "engineering",
+  "version": "0.0.1",
+  "status": "stub",
+  "routes": [{ "path": "/studio/engineering", "pattern": "studio/engineering/*" }],
+  "permissions": ["filesystem:read"],
+  "tools": [],
+  "agents": ["agent-burt"],
+  "data_sources": [],
+  "capabilities": [
+    {
+      "capability_id": "CAP-ENG-001",
+      "dependencies": ["ENG-PM-001", "ENG-FS-001", "ENG-WR-001"]
+    }
+  ],
+  "dependencies": ["ENG-PM-001", "ENG-WR-001"],
+  "nav_placement": "department",
+  "lazy_load_boundary": "modules/engineering-studio/Entry",
+  "description": "Code engineering studio — stub until LB-OS-011"
+}

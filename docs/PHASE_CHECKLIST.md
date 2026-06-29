@@ -49,7 +49,7 @@
 | LB-OS-002 | OS shell + executive briefing + command stub | ✅ COMPLETE |
 | LB-OS-003 | Filesystem permission engine v2 | ✅ COMPLETE |
 | LB-OS-004 | Workspace registry (LivingWorkspace) | ✅ Complete — event-driven registry, `/workspace/:id` |
-| LB-OS-106 | Core kernel + module loader | ⬜ PLANNED |
+| LB-OS-106 | Core kernel + module loader | ✅ Complete — MODULARITY GATE |
 | LB-OS-005 | Explorer tree + file metadata | ⬜ PLANNED |
 | LB-OS-006 | Storage intelligence dashboard | ⬜ PLANNED |
 | LB-OS-007 | System health monitor | ⬜ PLANNED |

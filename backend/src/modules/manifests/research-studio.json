@@ -1,0 +1,22 @@
+{
+  "module_id": "research-studio",
+  "name": "Research",
+  "domain": "research",
+  "version": "0.0.1",
+  "status": "stub",
+  "routes": [{ "path": "/studio/research", "pattern": "studio/research/*" }],
+  "permissions": ["filesystem:read"],
+  "tools": [],
+  "agents": ["agent-research"],
+  "data_sources": [],
+  "capabilities": [
+    {
+      "capability_id": "CAP-RE-001",
+      "dependencies": ["ENG-PM-001", "ENG-KN-001", "ENG-SR-001", "ENG-WR-001"]
+    }
+  ],
+  "dependencies": ["ENG-PM-001", "ENG-WR-001"],
+  "nav_placement": "department",
+  "lazy_load_boundary": "modules/research-studio/Entry",
+  "description": "Research and voter intelligence studio — stub"
+}

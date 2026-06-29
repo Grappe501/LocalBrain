@@ -1,0 +1,22 @@
+{
+  "module_id": "creative-studio",
+  "name": "Creative",
+  "domain": "creative",
+  "version": "0.0.1",
+  "status": "stub",
+  "routes": [{ "path": "/studio/creative", "pattern": "studio/creative/*" }],
+  "permissions": ["filesystem:read"],
+  "tools": [],
+  "agents": ["agent-writing"],
+  "data_sources": [],
+  "capabilities": [
+    {
+      "capability_id": "CAP-CR-001",
+      "dependencies": ["ENG-PM-001", "ENG-MM-001", "ENG-WR-001"]
+    }
+  ],
+  "dependencies": ["ENG-PM-001", "ENG-WR-001"],
+  "nav_placement": "department",
+  "lazy_load_boundary": "modules/creative-studio/Entry",
+  "description": "Writing and creative studio — stub until LB-OS-012"
+}

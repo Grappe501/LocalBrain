@@ -1,0 +1,22 @@
+{
+  "module_id": "system-studio",
+  "name": "System",
+  "domain": "system",
+  "version": "0.0.1",
+  "status": "stub",
+  "routes": [{ "path": "/studio/system", "pattern": "studio/system/*" }],
+  "permissions": ["filesystem:read"],
+  "tools": [],
+  "agents": ["agent-sysadmin"],
+  "data_sources": [],
+  "capabilities": [
+    {
+      "capability_id": "CAP-SY-001",
+      "dependencies": ["ENG-PM-001", "ENG-ST-001", "ENG-PH-001", "ENG-WR-001"]
+    }
+  ],
+  "dependencies": ["ENG-PM-001", "ENG-WR-001"],
+  "nav_placement": "department",
+  "lazy_load_boundary": "modules/system-studio/Entry",
+  "description": "System admin and health studio — stub until LB-OS-006/007"
+}

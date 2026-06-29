@@ -1,15 +1,19 @@
+import type { ReactNode } from "react";
+
 type StubPageProps = {
   title: string;
   description: string;
   slice?: string;
+  extra?: ReactNode;
 };
 
-export function StubPage({ title, description, slice }: StubPageProps) {
+export function StubPage({ title, description, slice, extra }: StubPageProps) {
   return (
     <article className="stub-page">
       <h1>{title}</h1>
       <p>{description}</p>
       {slice ? <p className="stub-page__slice">{slice}</p> : null}
+      {extra}
     </article>
   );
 }

@@ -22,3 +22,14 @@ export type {
   MemoryRecord,
   Module,
 } from "./foundation.js";
+export type {
+  ModuleCapabilityDeclaration,
+  ModuleManifest,
+  ModuleNavPlacement,
+  ModuleRouteDeclaration,
+  ModuleStatus,
+} from "./moduleManifest.js";
+export {
+  validateModuleManifest,
+  validateModuleRegistry,
+} from "./moduleManifest.js";

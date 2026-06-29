@@ -1,14 +1,8 @@
 import { NavLink } from "react-router-dom";
+import { useModuleRegistry } from "../context/ModuleRegistryContext";
 
-const DEPARTMENTS = [
-  { label: "Executive", path: "/" },
-  { label: "Engineering", path: "/studio/engineering" },
-  { label: "Creative", path: "/studio/creative" },
-  { label: "Data", path: "/studio/data" },
-  { label: "Finance", path: "/studio/finance" },
-  { label: "Media", path: "/studio/media" },
-  { label: "Research", path: "/studio/research" },
-  { label: "System", path: "/studio/system" },
+/** Kernel shell routes — not registered as modules. */
+const KERNEL_NAV_TAIL = [
   { label: "Workspace", path: "/workspace/localbrain" },
   { label: "Explorer", path: "/explorer" },
   { label: "Learn", path: "/learn" },
@@ -17,11 +11,35 @@ const DEPARTMENTS = [
 ] as const;
 
 export function DepartmentNav() {
+  const { departmentModules, loading, loadOrder } = useModuleRegistry();
+
+  const orderedDepartments = loadOrder
+    .map((id) => departmentModules.find((m) => m.module_id === id))
+    .filter((m): m is NonNullable<typeof m> => Boolean(m));
+
+  const departmentItems =
+    orderedDepartments.length > 0
+      ? orderedDepartments
+      : departmentModules;
+
+  const navItems = [
+    { label: "Executive", path: "/" },
+    ...departmentItems.map((m) => ({
+      label: m.name,
+      path: m.routes[0]?.path ?? `/studio/${m.domain}`,
+    })),
+    ...KERNEL_NAV_TAIL,
+  ];
+
   return (
-    <nav className="department-nav" aria-label="Department navigation placeholders">
-      <p className="department-nav__note">Placeholders — module manifests after LB-OS-106</p>
+    <nav className="department-nav" aria-label="Department navigation">
+      <p className="department-nav__note">
+        {loading
+          ? "Loading module manifests…"
+          : `${departmentModules.length} departments from manifests · LB-OS-106`}
+      </p>
       <ul className="department-nav__list">
-        {DEPARTMENTS.map((dept) => (
+        {navItems.map((dept) => (
           <li key={dept.path}>
             <NavLink
               to={dept.path}

@@ -557,6 +557,28 @@ a {
   color: #6b7280;
 }
 
+.module-stub-meta {
+  margin-top: 1.25rem;
+  font-size: 0.85rem;
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  gap: 0.35rem 1rem;
+}
+
+.module-stub-meta dt {
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.module-stub-meta dd {
+  margin: 0;
+}
+
+.module-route-loading {
+  padding: 1.5rem;
+  color: #6b7280;
+}
+
 .settings-page__hint {
   font-size: 0.9rem;
   color: #4b5563;

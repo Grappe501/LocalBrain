@@ -1,16 +1,16 @@
 import { Navigate, Route, Routes } from "react-router-dom";
+import { useModuleRegistry } from "./context/ModuleRegistryContext";
 import { AppLayout } from "./shell/AppLayout";
 import { ExecutiveBriefing } from "./views/ExecutiveBriefing";
 import { ProjectRedirect, WorkspaceRoute } from "./views/WorkspaceRoute";
-import {
-  ActionsStub,
-  ExplorerStub,
-} from "./views/StubPages";
+import { ActionsStub, ExplorerStub } from "./views/StubPages";
 import { LearnStub } from "./views/LearnStub";
-import { StudioStub } from "./views/StudioStub";
 import { SettingsPage } from "./views/SettingsPage";
+import { LazyModuleRoute } from "./views/LazyModuleRoute";
 
 export function AppRouter() {
+  const { departmentModules, loading } = useModuleRegistry();
+
   return (
     <Routes>
       <Route element={<AppLayout />}>
@@ -18,10 +18,20 @@ export function AppRouter() {
         <Route path="workspace/:workspaceId" element={<WorkspaceRoute />} />
         <Route path="project/:workspaceId" element={<ProjectRedirect />} />
         <Route path="explorer" element={<ExplorerStub />} />
-        <Route path="studio/*" element={<StudioStub />} />
         <Route path="learn" element={<LearnStub />} />
         <Route path="actions" element={<ActionsStub />} />
         <Route path="settings" element={<SettingsPage />} />
+        {!loading &&
+          departmentModules.flatMap((m) =>
+            m.routes.map((route) => (
+              <Route
+                key={`${m.module_id}-${route.path}`}
+                path={route.pattern}
+                element={<LazyModuleRoute moduleId={m.module_id} />}
+              />
+            )),
+          )}
+        <Route path="studio/*" element={<Navigate to="/" replace />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>
