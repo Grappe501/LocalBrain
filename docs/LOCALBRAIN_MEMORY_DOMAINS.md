@@ -61,7 +61,7 @@ Relationship Memory is queryable without loading full workspace graphs
 Executive Memory is short-lived synthesis + pointers — not a duplicate of everything
 ```
 
-Recall pipeline ([Memory Recall](./LOCALBRAIN_MEMORY_RECALL_ARCHITECTURE.md)) selects domains by intent before pre-flight.
+Recall pipeline ([Memory Recall](./LOCALBRAIN_MEMORY_RECALL_ARCHITECTURE.md)) selects domains by intent before pre-flight. **Phase 2+:** [Executive Memory OS](./LOCALBRAIN_EXECUTIVE_MEMORY_OS.md) operates this layer at runtime — Memory Confidence, Context Window, domain-scoped recall before CoS reasoning.
 
 ---
 
@@ -99,6 +99,7 @@ Binding **Decisions** live in the Decision Ledger. **Executive Memory** may cach
 | Doc | Role |
 |-----|------|
 | [Memory Recall Architecture](./LOCALBRAIN_MEMORY_RECALL_ARCHITECTURE.md) | Layered pipeline (raw → embedding) |
+| [Executive Memory OS](./LOCALBRAIN_EXECUTIVE_MEMORY_OS.md) | Memory-before-reasoning layer · Memory Confidence · Context Window |
 | [Digital Twin](./LOCALBRAIN_DIGITAL_TWIN.md) | Composed consumer |
 | [Decision Ledger](./LOCALBRAIN_DECISION_LEDGER.md) | Binding choices |
 

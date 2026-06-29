@@ -203,7 +203,9 @@ MCP outputs:
 
 ## Mission Memory (late Phase 2)
 
-The system learns Steve's patterns over time:
+The system learns Steve's patterns over time — see [Executive Memory OS](./LOCALBRAIN_EXECUTIVE_MEMORY_OS.md) for the full memory-before-reasoning pipeline, Memory Confidence, and Executive Context Window.
+
+Mission Memory is the **Executive Memory** partition of Memory OS:
 
 - When he works best (time-of-day effectiveness)
 - Typical engineering session length
@@ -214,7 +216,7 @@ The system learns Steve's patterns over time:
 
 CoS evolves from **recommendation engine** → **strategic partner** that understands habits and helps improve them.
 
-Mission Memory feeds MCP and adaptive Attention Budget. Local only; inspectable; Steve can dispute inferences.
+Mission Memory feeds MCP and adaptive Attention Budget. Local only; inspectable; Steve can dispute inferences. Full Memory OS architecture: [Executive Memory OS](./LOCALBRAIN_EXECUTIVE_MEMORY_OS.md).
 
 ---
 

@@ -179,3 +179,20 @@ That foundation makes Phase 2 **teach a coherent executive OS** — not independ
 **Executive Briefing** leads with ELS (impact), then **Executive Intelligence Cards** — not feature count.
 
 Never merge these into one dashboard.
+
+---
+
+## Long-term platform evolution
+
+Beyond the three measurable phases, LocalBrain evolves through four platform stages:
+
+```txt
+Phase 1 — Executive OS           (trustworthy shell · approval gates · EQ · EIC)
+Phase 2 — Executive Intelligence (Mission Stack · MCP · predictive CoS)
+Phase 3 — Executive Knowledge Platform (Memory OS · provenance · Context Efficiency)
+Phase 4 — Executive Organization Platform (teams · multi-business · coordination)
+```
+
+See [Executive Memory OS](./LOCALBRAIN_EXECUTIVE_MEMORY_OS.md) for the memory-before-reasoning architecture that bridges Phase 2 intelligence and Phase 3 knowledge durability.
+
+The current **Phase 3 — Build the Company** slice arc delivers Organization Platform capabilities on top of the Knowledge Platform substrate — new departments inherit Memory OS + Mission Stack without shell redesign.
