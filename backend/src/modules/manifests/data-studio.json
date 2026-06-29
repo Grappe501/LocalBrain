@@ -1,22 +1,22 @@
 {
   "module_id": "data-studio",
-  "name": "Data",
+  "name": "Data & Intelligence",
   "domain": "data",
-  "version": "0.0.1",
-  "status": "stub",
+  "version": "0.1.0",
+  "status": "active",
   "routes": [{ "path": "/studio/data", "pattern": "studio/data/*" }],
   "permissions": ["filesystem:read"],
   "tools": [],
-  "agents": ["agent-data"],
-  "data_sources": ["localbrain_db"],
+  "agents": ["data_chief"],
+  "data_sources": ["localbrain_db", "filesystem_index", "digital_asset_registry"],
   "capabilities": [
     {
-      "capability_id": "CAP-DA-001",
-      "dependencies": ["ENG-PM-001", "ENG-KN-001", "ENG-WR-001"]
+      "capability_id": "CAP-DI-001",
+      "dependencies": ["ENG-PM-001", "ENG-KE-001", "ENG-WR-001", "ENG-DA-001"]
     }
   ],
   "dependencies": ["ENG-PM-001", "ENG-WR-001"],
   "nav_placement": "department",
   "lazy_load_boundary": "modules/data-studio/Entry",
-  "description": "Database and data studio — stub until database module slice"
+  "description": "Data & Intelligence Department — knowledge sources, query plans, lineage (LB-OS-014)"
 }

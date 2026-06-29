@@ -117,6 +117,21 @@ export type {
   WritingVoiceId,
 } from "./writing.js";
 export type {
+  DataHealthScore,
+  DataHealthScoreFactor,
+  DataInsight,
+  DataIntelligenceOverview,
+  DataLearnStub,
+  DataLineageResult,
+  DataLineageStep,
+  DataRecommendation,
+  DataRelationshipEdge,
+  DataRelationshipGraph,
+  DataRelationshipNode,
+  KnowledgeSourcePanel,
+  QueryPlanPreview,
+} from "./dataIntelligence.js";
+export type {
   AssetIntelligenceForPath,
   AssetIntelligenceSummary,
   CleanupRecommendation,

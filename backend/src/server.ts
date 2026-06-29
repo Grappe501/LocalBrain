@@ -16,6 +16,7 @@ import { systemRouter } from "./routes/system.js";
 import { epoRouter } from "./routes/epo.js";
 import { engineeringRouter } from "./routes/engineering.js";
 import { writingRouter } from "./routes/writing.js";
+import { dataIntelligenceRouter } from "./routes/dataIntelligence.js";
 import { getRegisteredModules } from "./core/moduleLoader.js";
 import { runBackgroundIndex } from "./knowledgeExplorer/indexer.js";
 
@@ -42,6 +43,7 @@ app.use("/api", systemRouter);
 app.use("/api", epoRouter);
 app.use("/api", engineeringRouter);
 app.use("/api", writingRouter);
+app.use("/api", dataIntelligenceRouter);
 
 app.listen(port, () => {
   const db = isDatabaseConnected();
