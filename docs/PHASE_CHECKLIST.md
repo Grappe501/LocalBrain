@@ -61,7 +61,7 @@
 | [Platform Separation Strategy](./LOCALBRAIN_PLATFORM_SEPARATION_STRATEGY.md) — Platform vs Brain boundary | ✅ Planning — 2026-06-28 |
 | [Multi-Machine Network Plan](./LOCALBRAIN_MULTI_MACHINE_NETWORK_PLAN.md) | 📋 Future arc — LB-OS-107–114 |
 
-**Gate:** LB-OS-022 ✅ · Next: **LB-OS-023** — Migration Simulation.
+**Gate:** LB-OS-023 ✅ · Next: **LB-OS-024** — Migration Proposal Builder.
 
 **Phase 1 finish arc:**
 
@@ -127,8 +127,8 @@
 | LB-OS-020.5 | Phase 1 integration pass — executive OS cohesion | ✅ Complete — [Spec](./LOCALBRAIN_PHASE1_INTEGRATION_PASS.md) · [Burt](./burt_packets/LB-OS-020.5.md) |
 | LB-OS-021 | Executive workspace architecture builder | ✅ Complete — [Spec](./LOCALBRAIN_EXECUTIVE_WORKSPACE_ARCHITECTURE.md) · [Burt](./burt_packets/LB-OS-021.md) |
 | LB-OS-022 | Digital land survey | ✅ Complete — [Spec](./LOCALBRAIN_DIGITAL_LAND_SURVEY.md) · [Burt](./burt_packets/LB-OS-022.md) |
-| LB-OS-023 | Migration simulation | 📋 Next |
-| LB-OS-024 | Migration proposal builder | ⬜ PLANNED |
+| LB-OS-023 | Migration proof engine | ✅ Complete — [Spec](./LOCALBRAIN_PROOF_AND_CERTIFICATION.md) · [Burt](./burt_packets/LB-OS-023.md) |
+| LB-OS-024 | Migration proposal builder | 📋 Next |
 | LB-OS-025 | Cutover planner | ⬜ PLANNED |
 | LB-OS-026 | LocalBrain Personal OS launch | ⬜ PLANNED |
 

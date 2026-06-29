@@ -3346,6 +3346,130 @@ a {
   background: #fef2f2;
 }
 
+/* LB-OS-023 — Migration Proof Engine */
+.proof__thresholds,
+.proof__subhead {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin: 0.75rem 0 0;
+}
+
+.proof-dim {
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.proof-dim--pass {
+  border-left: 3px solid #16a34a;
+}
+
+.proof-dim--warn {
+  border-left: 3px solid #ca8a04;
+}
+
+.proof-dim--fail {
+  border-left: 3px solid #dc2626;
+}
+
+.proof-dim__header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.proof-dim__header h3 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.proof-dim__score {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.proof-dim__checks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.85rem;
+}
+
+.proof-check {
+  margin: 0.25rem 0;
+}
+
+.proof-check--pass {
+  color: #166534;
+}
+
+.proof-check--warn {
+  color: #854d0e;
+}
+
+.proof-check--fail {
+  color: #991b1b;
+}
+
+.proof-cert {
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.proof-cert--certified {
+  background: #f0fdf4;
+}
+
+.proof-cert--conditional {
+  background: #fefce8;
+}
+
+.proof-cert--rejected {
+  background: #fef2f2;
+}
+
+.proof-cert__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+}
+
+.proof-cert__header h3 {
+  margin: 0;
+}
+
+.proof-cert__result {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.proof-cert__meta {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.migration__actions-bar button {
+  padding: 0.5rem 1rem;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.migration__actions-bar button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 /* LB-OS-020 — Executive Consolidation Briefing + EIC */
 .consolidation {
   max-width: 960px;

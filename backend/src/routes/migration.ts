@@ -7,6 +7,10 @@ import {
 } from "../migration/fsAudit/auditService.js";
 import { getExecutiveWorkspaceArchitecture } from "../migration/workspaceArchitecture/workspaceArchitectureService.js";
 import { getDigitalLandSurvey } from "../migration/digitalLandSurvey/digitalLandSurveyService.js";
+import {
+  getMigrationProofOverview,
+  runMigrationProofSimulation,
+} from "../migration/proof/migrationProofService.js";
 
 export const migrationRouter = Router();
 
@@ -48,4 +52,13 @@ migrationRouter.get("/migration/workspace-architecture", (_req, res) => {
 migrationRouter.get("/migration/digital-land-survey", (req, res) => {
   const refresh = req.query.refresh === "1";
   res.json(getDigitalLandSurvey({ refreshAudit: refresh }));
+});
+
+migrationRouter.get("/migration/proof", (_req, res) => {
+  res.json(getMigrationProofOverview());
+});
+
+migrationRouter.post("/migration/proof/simulate", (req, res) => {
+  const body = (req.body ?? {}) as { workspace_ids?: string[] };
+  res.json(runMigrationProofSimulation({ workspace_ids: body.workspace_ids }));
 });

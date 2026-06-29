@@ -77,6 +77,8 @@ export function DigitalLandSurveyView() {
         <p className="migration__link-row">
           <Link to="/migration/workspace-architecture">Workspace Architecture (021) →</Link>
           {" · "}
+          <Link to="/migration/proof">Migration Proof (023) →</Link>
+          {" · "}
           <Link to="/migration/audit">Filesystem Audit (019) →</Link>
         </p>
         <ul className="migration__guardrails">
