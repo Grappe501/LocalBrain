@@ -138,7 +138,7 @@ See [Studio Blueprint](./LOCALBRAIN_STUDIO_BLUEPRINT.md) · [Command Layer](./LO
 |-------|------|---------|------|
 | **LB-OS-001** | Repo scaffold | — | ✅ Complete |
 | **LB-OS-002** | OS Shell + executive briefing + command stub | 001, PSP | ✅ Complete |
-| **LB-OS-003** | Filesystem permission engine v2 | 002 | Safety core |
+| **LB-OS-003** | Filesystem permission engine v2 | 002 | ✅ Complete |
 | **LB-OS-004** | Project folder registry | 003 | Projects = folders |
 | **LB-OS-106** | Core kernel + module loader | 004 | **MODULARITY GATE** |
 | **LB-OS-005** | Explorer tree + file metadata | 106 | Browse + index |
@@ -292,7 +292,7 @@ H:/ = work projects, data, archives, documents, repos, media, storage
 
 ```txt
 OS Shell                  [██████████] LB-OS-002 ✅
-Permissions + Projects    [░░░░░░░░░░] LB-OS-003–004
+Permissions + Projects    [██░░░░░░░░] LB-OS-003 ✅ · 004 next
 Modular Core              [░░░░░░░░░░] LB-OS-106   MODULARITY GATE
 Explorer + Index          [░░░░░░░░░░] LB-OS-005
 Storage + System Health   [░░░░░░░░░░] LB-OS-006–007
@@ -453,6 +453,8 @@ Manual: briefing home, localbrain context, 8 cards, CFO in briefing, CoS label
 ---
 
 # LB-OS-003 — Filesystem Permission Engine v2
+
+**Status:** ✅ **COMPLETE** — 2026-06-28
 
 **Depends on:** 002
 

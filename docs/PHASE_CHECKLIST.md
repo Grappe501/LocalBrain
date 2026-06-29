@@ -31,7 +31,7 @@
 |-------|------|--------|
 | LB-OS-001 | Repo scaffold | ✅ COMPLETE |
 | LB-OS-002 | OS shell + executive briefing + command stub | ✅ COMPLETE |
-| LB-OS-003 | Filesystem permission engine v2 | ⬜ PLANNED — [Burt packet](./burt_packets/LB-OS-003.md) |
+| LB-OS-003 | Filesystem permission engine v2 | ✅ COMPLETE |
 | LB-OS-004 | Project folder registry | ⬜ PLANNED |
 | LB-OS-106 | Core kernel + module loader | ⬜ PLANNED |
 | LB-OS-005 | Explorer tree + file metadata | ⬜ PLANNED |

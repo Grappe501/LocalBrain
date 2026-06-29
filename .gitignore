@@ -17,6 +17,8 @@ credentials.json
 token.json
 
 local_data/*.db
+local_data/*.db-shm
+local_data/*.db-wal
 local_data/logs/*
 !local_data/logs/.gitkeep
 local_data/indexes/*

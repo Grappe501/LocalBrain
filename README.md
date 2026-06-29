@@ -28,6 +28,8 @@ H:/ = work projects, data, archives, documents, repos, media, storage
 LB-OS-001  ✅ Repo scaffold
 PSP        ✅ APPROVED — 2026-06-28
 LB-OS-002  ✅ Executive briefing shell
+LB-OS-003  ✅ Permission engine v2
+LB-OS-004  ▶ NEXT — project registry
 ```
 
 **Critical path after PSP:**
@@ -92,9 +94,9 @@ curl http://localhost:4545/api/health
 
 ## Next Step
 
-1. **Execute LB-OS-003** — Permission engine  
-2. **Spine:** 003 safety → 004 registry → 106 modularity → modules  
-3. Self-build v1 gate remains LB-OS-011 (Burt generator + engine registry context)
+1. **Execute LB-OS-004** — Project / Living Workspace registry  
+2. **Spine:** 004 → 106 (MODULARITY GATE) → 005 explorer  
+3. **Visual test:** `npm run dev` → http://localhost:5174/settings (Safety panel)
 
 ---
 

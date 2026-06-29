@@ -1,4 +1,5 @@
 import { useAppSettings } from "../context/AppSettingsContext";
+import { SafetyPanel } from "../components/SafetyPanel";
 
 export function SettingsPage() {
   const { teachMeWhileWeBuild, setTeachMeWhileWeBuild } = useAppSettings();
@@ -19,7 +20,8 @@ export function SettingsPage() {
           ? "ON — closeouts will include OJT blocks after LB-OS-026."
           : "OFF — build mode only."}
       </p>
-      <p className="stub-page__slice">Additional settings arrive in later slices.</p>
+
+      <SafetyPanel />
     </article>
   );
 }

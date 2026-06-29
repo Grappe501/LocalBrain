@@ -379,6 +379,131 @@ a {
   color: #6b7280;
 }
 
+.settings-page__hint {
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.safety-panel {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.safety-panel h2 {
+  margin-top: 0;
+}
+
+.safety-panel__slice {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-top: 0;
+}
+
+.safety-panel__section,
+.safety-panel__status {
+  margin-bottom: 1.25rem;
+}
+
+.safety-panel__section h3,
+.safety-panel__status h3,
+.safety-panel__test h3 {
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #4b5563;
+}
+
+.safety-panel__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.safety-panel__list li {
+  padding: 0.35rem 0;
+  border-bottom: 1px solid #f3f4f6;
+  font-size: 0.85rem;
+}
+
+.safety-panel__list--compact li {
+  padding: 0.2rem 0;
+}
+
+.safety-panel__label {
+  display: block;
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.safety-panel__message {
+  font-size: 0.85rem;
+  color: #1d4ed8;
+  font-weight: 600;
+}
+
+.safety-panel__muted {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.safety-panel__error {
+  color: #b91c1c;
+  font-weight: 600;
+}
+
+.safety-panel__toggle {
+  background: #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  padding: 0.4rem 0.75rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.safety-panel__forbidden h4 {
+  margin: 0.75rem 0 0.25rem;
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.safety-panel__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.safety-panel__field input,
+.safety-panel__field select {
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  font-weight: 400;
+}
+
+.safety-panel__result {
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.safety-panel__result--allow {
+  background: #ecfdf5;
+  border: 1px solid #6ee7b7;
+  color: #065f46;
+}
+
+.safety-panel__result--deny {
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
+  color: #991b1b;
+}
+
 .teach-toggle {
   display: flex;
   align-items: center;
