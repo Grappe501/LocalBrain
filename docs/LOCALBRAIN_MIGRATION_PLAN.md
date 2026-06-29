@@ -1,8 +1,8 @@
 # Migration Plan
 
-> **Slice:** LB-OS-024 (Planning) · **Engine:** ENG-MPL-001  
+> **Slice:** LB-OS-024 (Planning) · **Planner:** ENG-MPL-001 · **Engine:** ENG-PLN-001  
 > **Depends on:** LB-OS-023 Proof Certificate  
-> **Parent:** [Proof & Certification](./LOCALBRAIN_PROOF_AND_CERTIFICATION.md) · [Migration & Drive Doctrine](./LOCALBRAIN_MIGRATION_AND_DRIVE_DOCTRINE.md)
+> **Parent:** [Planning Engine](./LOCALBRAIN_PLANNING_ENGINE.md) · [Proof & Certification](./LOCALBRAIN_PROOF_AND_CERTIFICATION.md)
 
 ---
 
@@ -32,11 +32,78 @@ Proposal Generator (025)
 If we execute this, what exactly happens?
 ```
 
-No approval in 024. No execution. Planning only.
+No approval in 024. No execution. Planning only — **within constraints**.
 
 ---
 
-## Example plan
+## Constraints (required)
+
+```txt
+✓ Maximum downtime: 0
+✓ Maximum simultaneous moves bounded
+✓ Preserve workspace identity · projection integrity
+✓ Preserve backups · rollback path
+✓ Never cross forbidden roots
+✓ Respect Five Gates
+```
+
+Each constraint: `pass` | `warn` | `fail` — evaluated deterministically on every plan.
+
+---
+
+## Objectives
+
+```txt
+Primary:   Reduce fragmentation
+Secondary: Reduce duplicate storage · Shorten paths · Minimize operations · Preserve rollback
+```
+
+Objective fulfillment contributes to **Plan Quality** score.
+
+---
+
+## Plan variants
+
+| Variant | Goal |
+| ------- | ---- |
+| Conservative | Lowest risk |
+| Balanced | Best overall (default recommendation) |
+| Aggressive | Maximum cleanup |
+
+One certificate → multiple immutable plans. Only one proceeds to Proposal (025).
+
+---
+
+## Plan Quality (deterministic)
+
+```txt
+Evidence Confidence   98
+Proof Score           96
+Plan Quality          93   ← efficiency · risk · rollback · ops · duration · objectives
+```
+
+Separate from Proof Score — never LLM-generated.
+
+---
+
+## Immutable provenance
+
+```txt
+AUD-* → SUR-* → CERT-* → PLAN-* → PROP-*
+```
+
+Every plan embeds full `ProvenanceChain` from evidence through certificate.
+
+---
+
+## Executive surface
+
+```txt
+Migration Plan — Balanced Strategy
+Quality 93 · Risk Low · 12 min · Rollback 4 min · 143 ops
+Ready for Proposal: YES
+Alternatives: Conservative · Aggressive
+```
 
 ```txt
 PLAN-000031
@@ -137,11 +204,14 @@ Mirrors large-scale infrastructure change management: investigate → validate �
 ## LB-OS-024 scope
 
 ```txt
-IN:  MigrationPlan contract · dependency graph · rollback plan
-IN:  Plan generation from certified certificate only
-IN:  Plan diff · GET/POST plan API · planning UI
-OUT: Proposals (025) · approval · execution · LLM operation invention
+IN:  Constraint-aware MigrationPlan · objectives · Plan Quality score
+IN:  Variant generation (conservative · balanced · aggressive)
+IN:  Immutable provenance chain · dependency graph · rollback plan
+IN:  Plan diff · planning API · executive decision UI
+OUT: Proposals (025) · approval · execution · LLM plan scoring
 ```
+
+See [Planning Engine](./LOCALBRAIN_PLANNING_ENGINE.md) for generic ENG-PLN-001 contract.
 
 ---
 

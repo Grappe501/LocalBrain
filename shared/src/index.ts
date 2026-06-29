@@ -293,6 +293,23 @@ export type {
 } from "./migrationPlan.js";
 export { MIGRATION_PLAN_CORE_RULE } from "./migrationPlan.js";
 export type {
+  PlanConstraint,
+  PlanConstraintStatus,
+  PlanObjective,
+  PlanQualityScore,
+  PlanRiskLabel,
+  PlanVariantStrategy,
+  PlannerGenerateRequest,
+  PlannerGenerateResponse,
+  ProvenanceChain,
+} from "./planningEngine.js";
+export {
+  DEFAULT_MIGRATION_CONSTRAINTS,
+  MIGRATION_PLANNER_ID,
+  PLANNING_ENGINE_ID,
+  PLAN_VARIANT_LABELS,
+} from "./planningEngine.js";
+export type {
   AssetIntelligenceForPath,
   AssetIntelligenceSummary,
   CleanupRecommendation,

@@ -1,40 +1,28 @@
 # LB-OS-024 — Migration Planning Engine
 
 > **Depends on:** LB-OS-023 ✅  
-> **Spec:** [Migration Plan](../LOCALBRAIN_MIGRATION_PLAN.md) · [Proof & Certification](../LOCALBRAIN_PROOF_AND_CERTIFICATION.md)  
+> **Spec:** [Planning Engine](../LOCALBRAIN_PLANNING_ENGINE.md) · [Migration Plan](../LOCALBRAIN_MIGRATION_PLAN.md)  
 > **Next:** LB-OS-025 Executive Approval
 
 ---
 
 ## Goal
 
-Generate **Migration Plans** from certified proof — not proposals.
+First **Planning Engine** implementation (ENG-MPL-001) — constraint-aware plans from certified proof.
 
 ```txt
-Certificate → Plan (sequence + rollback + dependency graph)
-Core rule: If we execute this, what exactly happens?
+Certificate → Plan(s) with constraints · objectives · quality score
+Core rule: If we execute this, what exactly happens — within rules?
 ```
-
----
-
-## Five Gates
-
-| Gate | Answer |
-| ---- | ------ |
-| System | Executive OS |
-| Object | ProofCertificate → MigrationPlan |
-| Module | Migration / planning |
-| EQ | EQ-014 |
-| Leverage | Executable clarity before approval |
 
 ---
 
 ## Build
 
 ```txt
-shared/     MigrationPlan · operations · dependency graph · PlanDiff
-backend/    Plan generator from certificate · rollback plan · diff engine
-frontend/   Plan viewer · dependency graph · plan diff UI
+shared/     planningEngine.ts · migrationPlan.ts (constraints · objectives · quality)
+backend/    MigrationPlanner · variant generator · quality scorer · provenance chain
+frontend/   Executive plan card · alternatives · ready-for-proposal gate
 ```
 
 ---
@@ -42,10 +30,12 @@ frontend/   Plan viewer · dependency graph · plan diff UI
 ## Deliverables
 
 ```txt
-PLAN-* ids · dependency-ordered operations
-Rollback plan embedded in plan (not on proposal)
-Plan diff (operations · bytes · duration)
-Requires certified certificate — plan_eligible gate
+PLAN-* immutable · provenance AUD→SUR→CERT→PLAN
+Constraints evaluated on every plan
+Objectives + Plan Quality score (deterministic)
+Variants: conservative · balanced · aggressive
+Plan diff · recommended_plan_id for CoS
+ready_for_proposal when constraints pass + quality threshold
 ```
 
 ---
@@ -53,9 +43,9 @@ Requires certified certificate — plan_eligible gate
 ## Guardrails
 
 ```txt
-Read-only planning · No approval · No execution · No proposals in 024
-Deterministic operation sequencing from blueprint + simulation
-No LLM operation invention
+Read-only · No approval · No execution · No proposals in 024
+Deterministic planning only — no LLM plan scoring
+Optimize within constraints — not unconstrained
 ```
 
 ---
@@ -63,9 +53,10 @@ No LLM operation invention
 ## Exit criteria
 
 ```txt
-[ ] Plan generated only from certified certificates
-[ ] Dependency graph + rollback plan on every plan
-[ ] Plan diff API between two plans
+[ ] Three variants from one certified certificate
+[ ] Constraints + objectives on every plan
+[ ] Plan Quality separate from Proof Score
+[ ] Immutable provenance chain
 [ ] Zero filesystem mutations
 ```
 
@@ -75,4 +66,4 @@ No LLM operation invention
 
 ---
 
-*Burt packet · LB-OS-024 · Planning not Proposal*
+*Burt packet · LB-OS-024 · ENG-MPL-001 under ENG-PLN-001*
