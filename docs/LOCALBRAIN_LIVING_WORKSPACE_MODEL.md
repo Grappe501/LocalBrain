@@ -65,15 +65,21 @@ Filesystem Root (current + recommended via Blueprint)
 Knowledge Sources[] · Primary Department · Mission Category · Lifecycle · Health
 ```
 
-See [Executive Workspace Architecture](./LOCALBRAIN_EXECUTIVE_WORKSPACE_ARCHITECTURE.md). Rule: **workspace owns folder — never the reverse.**
+See [Executive Workspace Architecture](./LOCALBRAIN_EXECUTIVE_WORKSPACE_ARCHITECTURE.md). Rule: **workspace owns identity — projection owns path.**
 
-Hierarchy:
+Hierarchy ([Three Worlds](./LOCALBRAIN_THREE_WORLDS_AND_PROJECTION.md)):
 
 ```txt
-Executive Mission → Living Workspace → Knowledge Sources → Digital Assets → Filesystem
+Executive World → Logical World → Projection Layer → Physical World
 ```
 
----
+Within Logical World:
+
+```txt
+Living Workspace → Knowledge Sources → Digital Assets → (projections to Physical World)
+```
+
+Rule: **workspace owns identity — projection owns path.** Migration translates projections; workspace_id never changes.
 
 ## LivingWorkspace — full field model
 

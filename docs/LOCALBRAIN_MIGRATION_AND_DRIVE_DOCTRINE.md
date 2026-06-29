@@ -176,19 +176,20 @@ Spec: [Phase 1 Integration Pass](./LOCALBRAIN_PHASE1_INTEGRATION_PASS.md) · [Ex
 
 ### LB-OS-021 — Executive Workspace Architecture Builder
 
-**Not a folder builder.** Workspace owns `filesystem_root` — folders are projection.
+**Logical World + Projection Layer.** Not a folder builder.
 
 ```txt
-Hierarchy: Mission → Living Workspace → Knowledge Sources → Digital Assets → Filesystem
-Workspace DNA · Organization Tree · Workspace Blueprints (read-only)
-Digital Land Survey contract · zero disk mutations
-Spec: LOCALBRAIN_EXECUTIVE_WORKSPACE_ARCHITECTURE.md
+Three Worlds: Executive · Logical · Physical — Projection between Logical and Physical
+Workspace DNA · Organization Tree · Blueprints (projection translation preview)
+Physical World survey seed · StorageProvider types stub only
+Spec: LOCALBRAIN_EXECUTIVE_WORKSPACE_ARCHITECTURE.md · LOCALBRAIN_THREE_WORLDS_AND_PROJECTION.md
 ```
 
 ### LB-OS-022 — Digital Land Survey
 
 ```txt
-Full survey: folders · ownership · orphans · boundaries · naming · empty lots · expansion capacity
+Physical World survey (H · C · future providers) + logical projection bindings
+Orphans · boundaries · naming · empty namespace · expansion capacity
 Read-only · precedes any move
 ```
 

@@ -4,40 +4,38 @@
 > **Depends on:** LB-OS-020.5 (integration gate passed)  
 > **Engine:** ENG-EWA-001 (planned)  
 > **System:** [Executive OS](./LOCALBRAIN_FOUR_SYSTEMS.md) (System 1)  
-> **Parent:** [Migration & Drive Doctrine](./LOCALBRAIN_MIGRATION_AND_DRIVE_DOCTRINE.md) · [Living Workspace Model](./LOCALBRAIN_LIVING_WORKSPACE_MODEL.md) · [Five Gates](./LOCALBRAIN_FIVE_GATES_RULE.md)
+> **Parent:** [Three Worlds & Projection](./LOCALBRAIN_THREE_WORLDS_AND_PROJECTION.md) · [Migration & Drive Doctrine](./LOCALBRAIN_MIGRATION_AND_DRIVE_DOCTRINE.md) · [Living Workspace Model](./LOCALBRAIN_LIVING_WORKSPACE_MODEL.md) · [Five Gates](./LOCALBRAIN_FIVE_GATES_RULE.md)
 
 ---
 
 ## Principle
 
-LB-OS-021 is **not** a folder builder. It is the **Executive Workspace Architecture Builder** — the physical manifestation of the Executive OS on disk.
+LB-OS-021 is the **Executive Workspace Architecture Builder** — mapping the **Logical World** onto the **Physical World** through **Projections**. Not a folder builder.
 
 ```txt
-Wrong framing:  Where should this folder go?
-Right framing:  Which Living Workspace owns this?
+Wrong:  Where should this folder go?
+Right:  Which Living Workspace owns this — and what is its projection?
 ```
 
-**Folders are an implementation detail.** The workspace owns the folder — never the reverse.
+**Migration = translate Logical → Physical.** Workspace identity never changes; only projections change.
+
+See [Three Worlds](./LOCALBRAIN_THREE_WORLDS_AND_PROJECTION.md).
 
 ---
 
-## Binding hierarchy
-
-Filesystem is the **last** layer, not the first:
+## Binding stack
 
 ```txt
-Executive Mission          (Phase 2 — Mission Stack; stub links in 021)
+Executive World        What am I trying to accomplish?     (Mission · EQ · EIC — Phase 2+)
         ↓
-Living Workspace           (owns identity · Workspace DNA)
+Logical World          How is knowledge organized?         (Workspace · Asset · Memory · …)
         ↓
-Knowledge Sources          (ingest · index · catalog)
+Projection Layer       Logical object → physical representation
         ↓
-Digital Assets             (registry · intelligence)
-        ↓
-Filesystem                 (projection · filesystem_root)
+Physical World         Where are the bytes?                (H: · C: · future providers)
 ```
 
-This preserves months of architecture: the Executive OS owns the logical world; H: is one projection.
+**No drive letters in Executive or Logical worlds.**
 
 ---
 
@@ -46,159 +44,123 @@ This preserves months of architecture: the Executive OS owns the logical world; 
 | Gate | Answer |
 | ---- | ------ |
 | **System** | Executive OS |
-| **Object** | LivingWorkspace (+ KnowledgeSource · DigitalAsset links) |
+| **Object** | LivingWorkspace (+ KnowledgeSource · DigitalAsset · **Projection interface**) |
 | **Module** | Migration / workspace architecture module (not kernel) |
-| **Executive Question** | EQ-014 — *How should I migrate my world?* · EQ-015 — *What is on my H: drive?* |
-| **Leverage** | Safe Personal OS cutover; workspace-first migration traceability |
+| **Executive Question** | EQ-014 · EQ-015 |
+| **Leverage** | Safe Personal OS cutover; projection-traceable migration |
+
+**Not** a new foundational object — Projection is a permanent interface ([spec](./LOCALBRAIN_THREE_WORLDS_AND_PROJECTION.md)).
 
 ---
 
 ## Deliverables (021)
 
-### 1. Workspace DNA
+### 1. Workspace DNA (Logical World)
 
-Every workspace gets **immutable identity** — everything else derives from it:
+Immutable identity — projections are mutable:
 
 ```txt
-Workspace ID
-Mission                    (link · label · Phase 2 mission_id stub)
-Owner
-Created
-Purpose
-Success Definition
-Filesystem Root            (current + recommended)
-Knowledge Sources[]
-Primary Department
-Mission Category
-Lifecycle
-Health
+Workspace ID · Mission · Owner · Created · Purpose · Success Definition
+Knowledge Sources[] · Primary Department · Mission Category · Lifecycle · Health
+Projections[]          — current filesystem_root(s) · recommended (blueprint)
 ```
-
-Extends [LivingWorkspace](./LOCALBRAIN_LIVING_WORKSPACE_MODEL.md) — no new foundational object.
 
 Example:
 
 ```txt
-H:\Projects\ContactListSOS\   ← projection
-
-Living Workspace: ContactListSOS
-filesystem_roots: [ H:\Projects\ContactListSOS ]
+Logical:   workspace_id = contactlistsos
+Projection: filesystem_root → H:\Projects\ContactListSOS   (Physical World)
 ```
 
-### 2. Workspace Blueprint (before touching disk)
+### 2. Workspace Blueprint (translation preview)
 
-Per workspace — **read-only** · **simulation-ready** · **zero moves**:
+Read-only · simulation-ready · **zero moves**:
 
 ```txt
 Workspace:        RedDirt
-Current Root:     H:\OldProjects\Campaigns\RedDirt
-Recommended Root: H:\Projects\Campaigns\RedDirt
+Logical ID:       reddirt
+Current Projection:
+  Physical:       H:\OldProjects\Campaigns\RedDirt
+Recommended Projection:
+  Physical:       H:\Projects\Campaigns\RedDirt
+  Provider:       primary (H) — StorageProvider stub for future multi-backend
 Confidence:       98%
-Why:              Matches drive doctrine · org tree · audit evidence
-Migration Impact: 12 folders · 241 files · 0 broken workspace refs
+Migration Impact: 12 folders · 241 files · 0 broken projections
 Simulation:       Available
 ```
 
-Blueprints compose from LB-OS-019 audit + LB-OS-020 consolidation + workspace registry.
-
-### 3. Organization Tree (not folder tree)
-
-Executive structure — each node maps to **Living Workspace**, **Collection**, or **Archive**:
+### 3. Organization Tree (Logical — not folder tree)
 
 ```txt
-Steve
-├── Projects
-│   ├── Campaigns
-│   ├── Creative
-│   ├── Research
-│   └── Business
-├── Education
-├── Archives
-├── Shared
-└── System
+Steve → Projects → Campaigns · Creative · Research · Business
+     → Education · Archives · Shared · System
 ```
 
-Rendered in UI as **organization tree**; filesystem paths are derived labels on nodes.
+Nodes map to Living Workspace · Collection · Archive. Paths are **derived projections**, not tree keys.
 
-### 4. Digital Land Survey (foundation for 022)
+### 4. Physical World Survey (foundation for 022)
 
-021 ships the **survey contract** and initial pass; **022** completes full Digital Land Survey engine.
+021 ships **Projection** types + initial Physical World survey; **022** completes Digital Land Survey.
 
-Survey maps before any move:
+Surveys **Physical World** first, then logical bindings:
 
 ```txt
-Existing folders
-Existing workspace ownership
-Orphans (folder without workspace · workspace without folder)
-Boundary conflicts
-Naming inconsistencies
-Empty lots (unused namespace)
-Future expansion capacity
+Physical: H — Healthy · 2.1 TB · SSD · Primary
+Logical:  workspace projections · orphans · boundary conflicts · empty namespace
 ```
-
-Like surveying land before building a house.
 
 ---
 
 ## Explicit non-goals (021)
 
 ```txt
-OUT: folder creation on disk
-OUT: folder moves · renames · deletes
-OUT: auto-migration execution
-OUT: ChatGPT import (deferred — Phase 2 import arc)
+OUT: StorageProvider runtime (types/stub only)
+OUT: Cloud · NAS · GPU storage backends
+OUT: folder creation · moves · renames · deletes
 OUT: new foundational objects
+OUT: collapsing Three Worlds into filesystem-first UX
 ```
 
-All mutations remain **023+ simulation → 024 proposals → approval → execution**.
+Mutations: **023 simulate → 024 propose → approve → execute**.
 
 ---
 
 ## Commercialization
 
-Customers never receive `H:\Projects\`. They receive an **Executive Workspace Blueprint** installer flow:
+Customers configure **Storage Providers** and projections — not `H:\Projects\`:
 
 ```txt
-Where do you keep Projects? Archives? Media? Documents? Backups?
-        ↓
-Generate physical layout from Organization Tree + Workspace DNA
-        ↓
-Platform grows with them
+Executive World + Logical World  →  identical platform
+Physical World + Projections     →  per customer
 ```
-
-See [Knowledge Taxonomy](./LOCALBRAIN_KNOWLEDGE_TAXONOMY.md) · [Platform Separation](./LOCALBRAIN_PLATFORM_SEPARATION_STRATEGY.md).
 
 ---
 
-## Phase 1 finish arc (revised binding)
+## Phase 1 finish arc
 
 ```txt
-021  Executive Workspace Architecture     ← blueprints · org tree · Workspace DNA
-022  Digital Land Survey                   ← full survey · orphans · boundaries
-023  Migration Simulation                  ← dry-run batches · impact · rollback preview
-024  Migration Proposal Builder            ← proposed_actions from approved simulations
-025  Cutover Planner                       ← sign-off · domain replacements · rollback
-026  Personal OS Launch                    ← LocalBrain primary for Steve's work world
+021  Executive Workspace Architecture + Projection contracts
+022  Digital Land Survey (Physical World)
+023  Migration Simulation (projection translation)
+024  Migration Proposal Builder
+025  Cutover Planner
+026  Personal OS Launch
 ```
-
-Every proposed change traceable to **workspace → mission → executive purpose** before any file moves.
-
-**Deferred from old arc (Phase 2 import arc, slice TBD):** ChatGPT knowledge import · project memory transfer — not blocking Personal OS launch.
 
 ---
 
 ## Exit criteria (021)
 
 ```txt
-[ ] Workspace DNA schema extended in shared + registry
-[ ] Organization Tree model + Steve canonical tree seeded
-[ ] Workspace Blueprint generator (read-only) per registered workspace
-[ ] Blueprint UI route · EQ-014/EQ-015 shell · LiveSurfaceBanner
-[ ] Digital Land Survey contract + initial survey report API
-[ ] Zero filesystem mutations in 021 code paths
-[ ] Integration with LB-OS-019 audit + LB-OS-020 consolidation evidence
-[ ] Five Gates checklist in Burt packet
-[ ] PHASE_CHECKLIST updated
+[ ] Projection interface in shared (not foundational object)
+[ ] Workspace DNA + projections[] on LivingWorkspace envelope
+[ ] Organization Tree seeded
+[ ] Blueprint generator: logical id + current/recommended projection
+[ ] Physical World survey contract + initial H:/C: report
+[ ] Blueprint UI · EQ-014/EQ-015 shell
+[ ] Zero filesystem mutations
+[ ] StorageProvider type stub only (no runtime)
+[ ] Five Gates · PHASE_CHECKLIST
 ```
 
 **Commit:** `feat: add executive workspace architecture builder`
@@ -208,10 +170,10 @@ Every proposed change traceable to **workspace → mission → executive purpose
 ## Related docs
 
 | Doc | Role |
-| --- | ---- |
-| [Migration Doctrine](./LOCALBRAIN_MIGRATION_AND_DRIVE_DOCTRINE.md) | C:/H: rules |
-| [Consolidation Planner](./LOCALBRAIN_CONSOLIDATION_PLANNER.md) | Evidence for blueprints |
-| [Action Pipeline](./LOCALBRAIN_ACTION_PIPELINE.md) | 024+ proposal flow |
+| --- | --- |
+| [Three Worlds & Projection](./LOCALBRAIN_THREE_WORLDS_AND_PROJECTION.md) | Architecture lock |
+| [Migration Doctrine](./LOCALBRAIN_MIGRATION_AND_DRIVE_DOCTRINE.md) | C:/H: Phase 1 |
+| [Consolidation Planner](./LOCALBRAIN_CONSOLIDATION_PLANNER.md) | Blueprint evidence |
 
 ---
 

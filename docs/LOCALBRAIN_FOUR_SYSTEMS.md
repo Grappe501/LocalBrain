@@ -18,7 +18,9 @@ SYSTEM 4 — Executive Evolution       (Get smarter)
 SYSTEM 5 — Executive Organization OS (Run an organization)  ← Phase 4+, not yet
 ```
 
-**Architecture is feature-complete through Phase 4.** From here, expansion means modules, engines, providers, and workflows inside these systems — not new foundational pillars.
+**Architecture is feature-complete through Phase 4.** Expansion via modules inside systems — not new pillars.
+
+**Three Worlds:** [Executive · Logical · Physical](./LOCALBRAIN_THREE_WORLDS_AND_PROJECTION.md) with **Projection Layer** between Logical and Physical. Storage backends change; executive and logical models do not.
 
 ---
 

@@ -1,19 +1,20 @@
 # LB-OS-021 — Executive Workspace Architecture Builder
 
 > **Depends on:** LB-OS-020.5 ✅  
-> **Spec:** [Executive Workspace Architecture](../LOCALBRAIN_EXECUTIVE_WORKSPACE_ARCHITECTURE.md)  
-> **Next:** LB-OS-022 Digital Land Survey
+> **Spec:** [Executive Workspace Architecture](../LOCALBRAIN_EXECUTIVE_WORKSPACE_ARCHITECTURE.md) · [Three Worlds & Projection](../LOCALBRAIN_THREE_WORLDS_AND_PROJECTION.md)  
+> **Next:** LB-OS-022 Digital Land Survey (Physical World)
 
 ---
 
 ## Goal
 
-Build the **physical manifestation of the Executive OS** — not folders first.
+Map **Logical World → Projection Layer → Physical World**. Not folders first.
 
 ```txt
-Living Workspace owns filesystem_root
-Organization Tree · Workspace DNA · Workspace Blueprints
-Digital Land Survey contract (full survey in 022)
+Executive World   (unchanged in 021 — stub mission links only)
+Logical World     Workspace DNA · Organization Tree
+Projection Layer  current + recommended projections per workspace
+Physical World    H:/C: survey seed (full survey in 022)
 Zero disk mutations
 ```
 
@@ -24,28 +25,30 @@ Zero disk mutations
 | Gate | Answer |
 | ---- | ------ |
 | System | Executive OS |
-| Object | LivingWorkspace |
+| Object | LivingWorkspace + Projection interface |
 | Module | Migration / workspace architecture |
 | EQ | EQ-014 · EQ-015 |
-| Leverage | Traceable · safe migration path to Personal OS |
+| Leverage | Translation-safe migration to Personal OS |
 
 ---
 
 ## Build
 
 ```txt
-shared/     Workspace DNA types · OrganizationTree · WorkspaceBlueprint · LandSurveyReport (contract)
-backend/    Blueprint generator · org tree service · survey initial pass · routes
-frontend/   Organization tree view · blueprint cards · survey summary (read-only)
-docs/       Spec linked · checklist gate
+shared/     Projection types · StorageProvider stub · WorkspaceBlueprint · PhysicalWorldSurvey
+backend/    Blueprint generator · org tree · projection registry · survey API
+frontend/   Organization tree · blueprint cards · physical world summary
 ```
 
 ---
 
-## Hierarchy (binding)
+## Binding rules
 
 ```txt
-Executive Mission → Living Workspace → Knowledge Sources → Digital Assets → Filesystem
+Workspace identity is Logical — never tied to a drive letter as primary key
+Migration = change projection, not workspace_id
+StorageProvider: interface/types only — no cloud/NAS runtime in 021
+Three Worlds must not collapse in UI copy or data model
 ```
 
 ---
@@ -53,21 +56,11 @@ Executive Mission → Living Workspace → Knowledge Sources → Digital Assets 
 ## Exit criteria
 
 ```txt
-[ ] Workspace DNA fields on LivingWorkspace envelope
-[ ] Organization Tree seeded (Steve canonical)
-[ ] Blueprint per workspace: current/recommended root · confidence · impact · simulation flag
-[ ] Initial Digital Land Survey report (orphans · conflicts · empty lots)
-[ ] No mkdir · mv · rename on disk
-[ ] Tests for blueprint + survey read paths
-[ ] Five Gates satisfied
-```
-
----
-
-## Out of scope
-
-```txt
-Folder moves · ChatGPT import · memory transfer · cutover execution
+[ ] Projection contract in shared
+[ ] Blueprints show current vs recommended projection per workspace
+[ ] Physical World survey (H + C) with logical orphan/conflict links
+[ ] No mkdir · mv · rename
+[ ] Tests for blueprint + projection read paths
 ```
 
 ---

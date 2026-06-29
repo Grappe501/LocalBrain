@@ -86,6 +86,26 @@ Review:      Only via Constitution amendment
 Related:     LOCALBRAIN_FOUR_SYSTEMS.md
 ```
 
+### ASM-ARCH-002 — Three Worlds separation
+
+```txt
+Assumption:  Executive · Logical · Physical worlds remain separable; migration changes projections only
+Why:         Storage backends will multiply (GPU · cloud · NAS); executive/logical models must not churn
+Status:      Active
+Evidence:    Successful (architecture lock 2026-06)
+Review:      StorageProvider implementation · Phase 3
+Related:     LOCALBRAIN_THREE_WORLDS_AND_PROJECTION.md
+```
+
+### ASM-ARCH-003 — StorageProvider deferred to post-021
+
+```txt
+Assumption:  Phase 1 uses direct path projections (H: · C:); StorageProvider runtime comes later
+Why:         021 delivers Logical World + Projection contract without multi-backend complexity
+Status:      Active
+Review:      First non-local volume integration (cloud/NAS slice)
+```
+
 ### ASM-AI-001 — Provider abstraction before vendor spread
 
 ```txt

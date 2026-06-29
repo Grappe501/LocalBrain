@@ -41,8 +41,10 @@ These ten objects are **stable for the life of the product**. New capability is 
 | **Engine** | Shared backend service the kernel hosts | 📋 Spec — [Engine Registry](./LOCALBRAIN_ENGINE_REGISTRY.md) |
 
 ```txt
-If it is not one of these ten, it specializes one of them.
+If it is not one of these ten, it specializes one of them — or projects through the Projection Layer.
 ```
+
+**Projection** maps logical entities to physical storage — [Three Worlds & Projection](./LOCALBRAIN_THREE_WORLDS_AND_PROJECTION.md). Not an eleventh foundational object.
 
 ---
 

@@ -38,6 +38,8 @@ Module · Engine · Action · Person · Organization
 
 No new core object types without Constitution amendment.
 
+**Projection Layer:** Permanent interface (logical → physical) — **not** an eleventh object. See [Three Worlds & Projection](./LOCALBRAIN_THREE_WORLDS_AND_PROJECTION.md).
+
 ---
 
 ## Article III — Layer Architecture
@@ -53,16 +55,19 @@ Brain — Steve's private data and workspaces
 
 ### Four Platform Systems (binding)
 
-[Four Platform Systems](./LOCALBRAIN_FOUR_SYSTEMS.md) — architecture lock through Phase 4. Four cooperating systems (plus Organization OS later); **feature-complete** — new work fits inside them, not new pillars.
+[Four Platform Systems](./LOCALBRAIN_FOUR_SYSTEMS.md) — architecture lock through Phase 4.
+
+[Three Worlds & Projection](./LOCALBRAIN_THREE_WORLDS_AND_PROJECTION.md) — Executive · Logical · Physical worlds; Projection Layer between Logical and Physical. **Durable endpoint** — storage backends change; executive and logical models do not.
 
 ```txt
-Executive OS           — Where am I working?
-Executive Memory OS    — What do we know?
-Executive Intelligence — What should I do?
-Executive Evolution    — How do we improve?
+Executive OS           — Where am I working? (surfaces)
+Executive Intelligence — What should I do? (Executive World)
+Logical World          — Workspaces · assets · memory (no drive letters)
+Projection Layer       — Logical object → physical representation
+Physical World         — Bytes (H: · C: · future providers)
 ```
 
-No system depends on OpenAI, Claude, or Ollama directly — vendors are implementation details (LB-OS-017).
+Four cooperating platform systems — see [Four Platform Systems](./LOCALBRAIN_FOUR_SYSTEMS.md). No vendor dependencies in business logic (LB-OS-017).
 
 ---
 
@@ -192,6 +197,7 @@ Experience Maturity L0–L5 on every route · Dev mode shows badges; production 
 ```text
 LOCALBRAIN_CONSTITUTION.md          ← you are here
 ├── LOCALBRAIN_FOUR_SYSTEMS.md      ← architecture lock (4+1 systems · Phase 4 complete)
+├── LOCALBRAIN_THREE_WORLDS_AND_PROJECTION.md (Executive · Logical · Physical · Projection)
 ├── LOCALBRAIN_EXECUTIVE_WORKSPACE_ARCHITECTURE.md (LB-OS-021 · Workspace DNA · blueprints)
 ├── LOCALBRAIN_FIVE_GATES_RULE.md   ← admission checklist (Article XI)
 ├── LOCALBRAIN_ASSUMPTION_LEDGER.md ← premises ledger (Article XII)
