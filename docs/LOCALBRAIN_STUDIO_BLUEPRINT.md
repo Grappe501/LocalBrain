@@ -23,19 +23,21 @@ Files are one tab — not the project.
 
 ```txt
 LocalBrain
-├── Home / Executive Briefing
-├── Workspaces               → LivingWorkspace picker (004+)
-├── Knowledge Explorer       → ENG-EX-001 lens (005+) — not a file manager clone
-├── Studios
-│   ├── Code Engineering
+├── Executive Office
+│   ├── Executive Briefing          → default home `/`
+│   ├── Program Office (EPO)        → build mission control (LB-OS-012.5)
+│   ├── System Health               → /system
+│   ├── Decisions                   → decision ledger
+│   ├── Documentation Library       → EPO searchable docs
+│   └── Operational Metrics         → EPO live metrics
+├── Workspaces                      → LivingWorkspace picker (004+)
+├── Knowledge Explorer              → ENG-EX-001 lens (005+)
+├── Departments / Studios
+│   ├── Engineering Department      → Code Studio workspace inside (012)
 │   ├── Writing
-│   ├── Campaign
-│   ├── Research
-│   ├── Social Media
-│   └── System Admin
-├── Learn (OJT)              → ENG-OJ-001
-├── Actions                  → approvals cockpit
-├── Agents                   → agent picker admin
+│   └── …
+├── Learn (OJT)
+├── Actions                         → approvals cockpit
 └── Settings
 ```
 

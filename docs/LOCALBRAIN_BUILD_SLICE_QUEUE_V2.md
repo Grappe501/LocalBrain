@@ -149,6 +149,7 @@ See [Studio Blueprint](./LOCALBRAIN_STUDIO_BLUEPRINT.md) · [Command Layer](./LO
 | **LB-OS-010** | File read/summarize tools | 005, 008 | *Renumbered from old 009* |
 | **LB-OS-011** | Approval-gated file management | 003, 010 | **V1 safety gate** |
 | **LB-OS-012** | Engineering Department foundation | 010, 010.5, 011, 106 | Chief + workspace + Code Studio tab |
+| **LB-OS-012.5** | Executive Program Office (EPO) | 011, 010.5, 106 | Mission control — Executive Office, read-only |
 | **LB-OS-013** | Writing Department foundation | 008, 106 | Writing module |
 | **LB-OS-014** | Database Department foundation | 106, 098 | Database Studio seed |
 | **LB-OS-015** | Relationship Intelligence | 004, 106 | Contacts / CRM seed |

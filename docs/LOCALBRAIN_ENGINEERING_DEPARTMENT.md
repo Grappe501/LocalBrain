@@ -172,7 +172,7 @@ Composite 0–100 — engineering counterpart to **Operational Health Score** (L
 
 V1: **stub score** from available signals (module manifest health, test script presence, docs files, pending approvals on repo). Factors expand as tooling ships.
 
-Displayed on Engineering Department home and in Executive Briefing engineering section.
+Displayed on Engineering Department home. **Program-wide** engineering status lives in **Executive Program Office** (EPO), not Engineering nav.
 
 ---
 

@@ -30,15 +30,35 @@ The Executive Office is **not another studio**. It sits **above** every studio.
 
 ```txt
 Chief of Staff (lead AI — not "assistant")
-Executive briefings (morning default — not dashboard-first)
+Executive Briefing (morning default)
+Executive Program Office (EPO — build mission control)  ← LB-OS-012.5
 Calendar intelligence
 Email intelligence (classify → summarize → suggest → approve → send)
 Project prioritization · workload balancing · delegation
 Strategic recommendations · decision support
 Personal productivity metrics · long-term goals
+System Health · Decisions · Documentation Library · Operational Metrics (via EPO)
 ```
 
 Everything else in LocalBrain exists to **support the Executive Office**.
+
+**EPO spec:** [Executive Program Office](./LOCALBRAIN_EXECUTIVE_PROGRAM_OFFICE.md) — progress, build graph, doc library, "why aren't we here yet?"
+
+---
+
+## Executive Office navigation (target)
+
+```txt
+Executive Office
+    Executive Briefing
+    Program Office (EPO)
+    System Health
+    Decisions
+    Documentation Library
+    Operational Metrics
+```
+
+EPO is where Steve sees **structural build truth**. Briefing is **narrative**. Engineering Department **does** engineering work; EPO **reports** it.
 
 ---
 
