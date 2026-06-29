@@ -36,11 +36,12 @@ C:/ = programs only — not project workspace.
  (=H: folders) Studio  Dashboard Interface  Partner   Knowledge      Command Center
     │            │                              │              │              │
     └────────────┴──── Storage + Health ───────┴──────────────┴──────────────┘
-                              LB-OS-005–007        LB-OS-016–024    LB-OS-031–038
-                                                                    LB-OS-039–046 (API perf)
-                                                                    LB-OS-047–055 (token economy)
-                                                                    LB-OS-056–065 (provider AI)
-                                                                    LB-OS-066–075 (neural lab)
+                              LB-OS-005–007        LB-OS-018–026    LB-OS-033–040
+                                                                    LB-OS-017 (AI providers)
+                                                                    LB-OS-041–048 (API perf)
+                                                                    LB-OS-049–057 (token economy)
+                                                                    LB-OS-058–067 (provider deepen)
+                                                                    LB-OS-068–075 (neural lab)
 ```
 
 ---
@@ -51,6 +52,7 @@ C:/ = programs only — not project workspace.
 |------------|-------|
 | OS shell + command bar | LB-OS-002 |
 | OpenAI chat | LB-OS-008 |
+| AI Provider Management (registry, router, vault, flight recorder) | **LB-OS-017** |
 | Tool router + read/summarize | LB-OS-009 |
 | Right panel: AI actions, approvals | LB-OS-002, 010 |
 
@@ -162,7 +164,8 @@ H:/ = work projects, data, archives, documents, repos, media, storage
 | Optimization command | LB-OS-031–038 |
 | API performance | LB-OS-039–046 |
 | Token economy & memory | LB-OS-047–055 |
-| Provider-neutral AI | LB-OS-056–065 |
+| Provider-neutral AI (foundation) | **LB-OS-017** |
+| Provider-neutral AI (deepen) | LB-OS-058–067 |
 | Neural network lab | LB-OS-066–075 (Track B stubs) |
 | AI evolution | LB-OS-076–082 (Track A) |
 | AI Chief of Staff | LB-OS-083–086 (Track A) |
@@ -257,7 +260,8 @@ H:/ = work projects, data, archives, documents, repos, media, storage
 
 | Capability | Slice |
 |------------|-------|
-| Provider-neutral doctrine | LB-OS-056 |
+| AI Provider Management (registry, router, vault) | **LB-OS-017** |
+| Provider-neutral doctrine (embedded) | LB-OS-058 |
 | AI provider router interface | LB-OS-057 |
 | OpenAI provider adapter | LB-OS-058 |
 | Claude adapter placeholder | LB-OS-059 |

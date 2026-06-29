@@ -23,6 +23,15 @@ The permission engine is the gatekeeper.
 The user is the final authority.
 ```
 
+## AI Provider Rule (binding from LB-OS-017)
+
+```txt
+No business logic calls OpenAI, Anthropic, or any vendor SDK directly.
+All LLM traffic: Chief of Staff → Capability Router → AI Provider Manager → Provider Adapter.
+```
+
+Spec: [AI Provider Management](./LOCALBRAIN_AI_PROVIDER_MANAGEMENT.md)
+
 ---
 
 # 1. Permission Levels

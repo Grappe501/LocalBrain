@@ -10,7 +10,7 @@
 LocalBrain starts with **OpenAI** (Steve's first API key) but must **never** be locked to one vendor.
 
 ```txt
-OpenAI              ← bootstrap provider (LB-OS-058)
+OpenAI              ← bootstrap via LB-OS-017 AI Provider Manager (wraps LB-OS-008 client)
 Anthropic / Claude  ← adapter placeholder (LB-OS-059)
 xAI / Grok          ← adapter placeholder (LB-OS-060)
 Google Gemini       ← future adapter
@@ -46,7 +46,9 @@ Provider adapter (OpenAI · Claude · Grok · Local · …)
 ENG-TE-001 usage log · ENG-TE-004 pre-flight · ENG-PRV-007 outcome learning
 ```
 
-**Refactor path:** LB-OS-008 direct OpenAI → LB-OS-057 router interface → LB-OS-058 OpenAI adapter behind router.
+**Refactor path:** LB-OS-008 direct OpenAI → **LB-OS-017** AI Provider Management (registry, router, vault, flight recorder) → LB-OS-058+ hardening slices.
+
+**Canonical spec:** [AI Provider Management](./LOCALBRAIN_AI_PROVIDER_MANAGEMENT.md)
 
 ---
 

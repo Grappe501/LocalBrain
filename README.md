@@ -33,7 +33,7 @@ LB-OS-016       ✅ Executive OS V1 milestone (release candidate)
 
 **Verify:** `GET /api/v1/acceptance` · [Executive OS V1](docs/LOCALBRAIN_EXECUTIVE_OS_V1.md)
 
-**Next:** Phase 2 Migration — LB-OS-017+
+**Next:** [LB-OS-017 AI Provider Management](docs/LOCALBRAIN_AI_PROVIDER_MANAGEMENT.md) — then Migration (018+)
 
 **Dev:** `npm run dev` → http://localhost:5174 · API http://localhost:4545
 

@@ -113,10 +113,13 @@ Stub departments (finance, media, research, system) hidden from nav until they s
 ## After V1
 
 ```txt
-Phase 2 — Migration & Personal OS (LB-OS-017+)
+LB-OS-017 — AI Provider Management (provider spine — before migration)
+Phase 2 — Migration & Personal OS (LB-OS-018+)
 Relationship imports · ChatGPT archive · drive mapping
 Phase 3+ — Verify/Learn depth · OJT Academy · multi-machine arc
 ```
+
+Spec: [AI Provider Management](./LOCALBRAIN_AI_PROVIDER_MANAGEMENT.md)
 
 ---
 

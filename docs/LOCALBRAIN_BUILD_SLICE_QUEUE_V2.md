@@ -154,56 +154,57 @@ See [Studio Blueprint](./LOCALBRAIN_STUDIO_BLUEPRINT.md) · [Command Layer](./LO
 | **LB-OS-014** | Database Department foundation | 106, 098 | Database Studio seed |
 | **LB-OS-015** | Relationship Intelligence | 004, 106 | Contacts / CRM seed |
 | **LB-OS-016** | Executive OS V1 milestone | 012–015 | **V1 ship** |
-| **LB-OS-017** | Drive architecture & migration planner | 016 | Migration start |
-| **LB-OS-018** | Full filesystem mapping audit | 017 | Inventory |
-| **LB-OS-019** | Duplicate / version cleanup planner | 018 | Dry-run only |
-| **LB-OS-020** | H:/ project filing system builder | 019 | Filing taxonomy |
-| **LB-OS-021** | ChatGPT knowledge import pipeline | 020 | Import |
-| **LB-OS-022** | Project memory transfer engine | 021 | Memory |
-| **LB-OS-023** | Legacy folder reorganization assistant | 022 | Reorg proposals |
-| **LB-OS-024** | Personal system cutover plan | 023 | Cutover |
-| **LB-OS-025** | LocalBrain Personal OS launch | 024 | **Personal OS launch** |
-| **LB-OS-026** | OJT coding academy doctrine (embedded) | 016 | Academy start |
-| **LB-OS-026** | Build-along teaching mode | 025 | Teach toggle + closeouts |
-| **LB-OS-027** | Concept ladder + skill map | 026 | Curriculum map |
-| **LB-OS-028** | Interactive challenges from real code | 027 | Challenges |
-| **LB-OS-029** | Steve coding progress dashboard | 028 | Progress UI |
-| **LB-OS-030** | Certification / portfolio evidence | 029 | **Academy complete** |
-| **LB-OS-031** | System optimization doctrine (embedded) | 015 | Optimization start |
-| **LB-OS-032** | C:/ and H:/ drive architecture mapper | 031 | Drive map |
-| **LB-OS-033** | Storage cleanup intelligence | 032 | Storage reports |
-| **LB-OS-034** | Duplicate and version resolution planner | 033 | Dup/version plans |
-| **LB-OS-035** | CPU/RAM/disk performance monitor (full) | 031 | Performance full |
-| **LB-OS-036** | Process and startup advisor | 035 | Advisory only |
-| **LB-OS-037** | Safe cleanup execution center | 034, 010 | Gated cleanup |
-| **LB-OS-038** | System efficiency dashboard | 036, 037 | **Optimization command** |
-| **LB-OS-039** | Direct API performance doctrine (embedded) | 015 | API perf start |
-| **LB-OS-040** | API usage monitor + rate-limit awareness | 039, 008 | Usage visible |
-| **LB-OS-041** | Context cache + prompt-prefix strategy | 040, 005 | Cache live |
-| **LB-OS-042** | Request queue + retry engine | 040 | Queue + backoff |
-| **LB-OS-043** | Streaming response engine (full) | 008, 040 | Stream UX |
-| **LB-OS-044** | Model router (fast/deep/code/writing) | 039 | Model routing |
-| **LB-OS-045** | Local context compression engine | 041 | Compress before send |
-| **LB-OS-046** | API performance dashboard | 040–045 | **API performance command** |
-| **LB-OS-047** | Token economy doctrine (embedded) | 046 | Token economy start |
-| **LB-OS-048** | Token usage logger | 047, 040 | Per-call attribution |
-| **LB-OS-049** | Estimated cost monitor | 048 | $ estimates live |
-| **LB-OS-050** | Project/client chargeback reports | 049 | Chargeback reports |
-| **LB-OS-051** | Memory compression pipeline | 048, 021 | Layered memory |
-| **LB-OS-052** | Chunked recall engine | 051, 005 | Recall before send |
-| **LB-OS-053** | Style learning engine | 052 | User patterns |
-| **LB-OS-054** | Learning pace + OJT adaptation | 053, 026 | Teach more/less |
-| **LB-OS-055** | Token/Memory/Learning dashboard | 048–054 | **Token economy command** |
-| **LB-OS-056** | Provider-neutral AI doctrine (embedded) | 055 | Provider AI start |
-| **LB-OS-057** | AI provider router interface | 056, 008 | Router core |
-| **LB-OS-058** | OpenAI provider adapter | 057 | Refactor off direct calls |
-| **LB-OS-059** | Claude provider adapter placeholder | 057 | Anthropic stub |
-| **LB-OS-060** | Grok provider adapter placeholder | 057 | xAI stub |
-| **LB-OS-061** | Model capability registry | 057 | Model catalog |
-| **LB-OS-062** | GPU server migration plan + bundle | 061, 063 | Cutover ready |
-| **LB-OS-063** | Local model runtime adapter (Ollama) | 057 | Local stub |
-| **LB-OS-064** | Provider cost/performance dashboard | 058–063 | Compare providers |
-| **LB-OS-065** | Smart model selection engine | 061, 054 | **Provider-neutral AI** |
+| **LB-OS-017** | AI Provider Management | 016, 008 | **Provider spine** — registry, router, vault, flight recorder |
+| **LB-OS-018** | Drive architecture & migration planner | 017 | Migration start |
+| **LB-OS-019** | Full filesystem mapping audit | 018 | Inventory |
+| **LB-OS-020** | Duplicate / version cleanup planner | 019 | Dry-run only |
+| **LB-OS-021** | H:/ project filing system builder | 020 | Filing taxonomy |
+| **LB-OS-022** | ChatGPT knowledge import pipeline | 021 | Import |
+| **LB-OS-023** | Project memory transfer engine | 022 | Memory |
+| **LB-OS-024** | Legacy folder reorganization assistant | 023 | Reorg proposals |
+| **LB-OS-025** | Personal system cutover plan | 024 | Cutover |
+| **LB-OS-026** | LocalBrain Personal OS launch | 025 | **Personal OS launch** |
+| **LB-OS-027** | OJT coding academy doctrine (embedded) | 016 | Academy start |
+| **LB-OS-028** | Build-along teaching mode | 027 | Teach toggle + closeouts |
+| **LB-OS-029** | Concept ladder + skill map | 028 | Curriculum map |
+| **LB-OS-030** | Interactive challenges from real code | 029 | Challenges |
+| **LB-OS-031** | Steve coding progress dashboard | 030 | Progress UI |
+| **LB-OS-032** | Certification / portfolio evidence | 031 | **Academy complete** |
+| **LB-OS-033** | System optimization doctrine (embedded) | 015 | Optimization start |
+| **LB-OS-034** | C:/ and H:/ drive architecture mapper | 033 | Drive map |
+| **LB-OS-035** | Storage cleanup intelligence | 034 | Storage reports |
+| **LB-OS-036** | Duplicate and version resolution planner | 035 | Dup/version plans |
+| **LB-OS-037** | CPU/RAM/disk performance monitor (full) | 033 | Performance full |
+| **LB-OS-038** | Process and startup advisor | 037 | Advisory only |
+| **LB-OS-039** | Safe cleanup execution center | 036, 010 | Gated cleanup |
+| **LB-OS-040** | System efficiency dashboard | 038, 039 | **Optimization command** |
+| **LB-OS-041** | Direct API performance doctrine (embedded) | 015 | API perf start |
+| **LB-OS-042** | API usage monitor + rate-limit awareness | 041, 008 | Usage visible |
+| **LB-OS-043** | Context cache + prompt-prefix strategy | 042, 005 | Cache live |
+| **LB-OS-044** | Request queue + retry engine | 042 | Queue + backoff |
+| **LB-OS-045** | Streaming response engine (full) | 008, 042 | Stream UX |
+| **LB-OS-046** | Model router (fast/deep/code/writing) | 041 | Model routing |
+| **LB-OS-047** | Local context compression engine | 043 | Compress before send |
+| **LB-OS-048** | API performance dashboard | 042–047 | **API performance command** |
+| **LB-OS-049** | Token economy doctrine (embedded) | 048 | Token economy start |
+| **LB-OS-050** | Token usage logger | 049, 042 | Per-call attribution |
+| **LB-OS-051** | Estimated cost monitor | 050 | $ estimates live |
+| **LB-OS-052** | Project/client chargeback reports | 051 | Chargeback reports |
+| **LB-OS-053** | Memory compression pipeline | 050, 023 | Layered memory |
+| **LB-OS-054** | Chunked recall engine | 053, 005 | Recall before send |
+| **LB-OS-055** | Style learning engine | 054 | User patterns |
+| **LB-OS-056** | Learning pace + OJT adaptation | 055, 028 | Teach more/less |
+| **LB-OS-057** | Token/Memory/Learning dashboard | 050–056 | **Token economy command** |
+| **LB-OS-058** | Provider-neutral AI doctrine (embedded) | 057, **017** | Deepens 017 foundation |
+| **LB-OS-059** | AI provider router interface | 058, 017 | Router extensions |
+| **LB-OS-060** | OpenAI provider adapter | 059 | Hardening |
+| **LB-OS-061** | Claude provider adapter placeholder | 059 | Anthropic stub |
+| **LB-OS-062** | Grok provider adapter placeholder | 059 | xAI stub |
+| **LB-OS-063** | Model capability registry | 059 | Model catalog |
+| **LB-OS-064** | GPU server migration plan + bundle | 063, 065 | Cutover ready |
+| **LB-OS-065** | Local model runtime adapter (Ollama) | 059 | Local stub |
+| **LB-OS-066** | Provider cost/performance dashboard | 060–065 | Compare providers |
+| **LB-OS-067** | Smart model selection engine | 063, 056 | **Provider-neutral AI** |
 | **LB-OS-066** | Local Neural Network Lab doctrine | 065 | Neural lab start |
 | **LB-OS-067** | GPU runtime environment plan | 063, 062 | Train + serve stack |
 | **LB-OS-068** | Training data capture pipeline | 066 | Data capture |
@@ -1054,17 +1055,41 @@ Version bump · release notes
 
 ---
 
-# Phase 3 — Migration & Personal OS Launch (LB-OS-016–024)
+# Phase 3 — Migration & Personal OS Launch (LB-OS-018–026)
 
 > **Final major build phase.** Map, reorganize, preserve Steve's digital life.  
+> **Prerequisite:** [LB-OS-017 AI Provider Management](./LOCALBRAIN_AI_PROVIDER_MANAGEMENT.md) — provider spine before migration/GPU expansion.  
 > Doctrine: [Migration & Drive Doctrine](./LOCALBRAIN_MIGRATION_AND_DRIVE_DOCTRINE.md)  
 > **Rule:** Reports and plans before any move/delete. No auto-cleanup.
 
 ---
 
-# LB-OS-016 — Drive Architecture & Migration Planner
+# LB-OS-017 — AI Provider Management
 
-**Depends on:** 015
+**Depends on:** 016, 008
+
+**Goal:** First-class AI operating environment — registry, credential vault, capability router, flight recorder, System UI + dock.
+
+**Spec:** [AI Provider Management](./LOCALBRAIN_AI_PROVIDER_MANAGEMENT.md) · [Burt packet](./burt_packets/LB-OS-017.md)
+
+**Build:**
+
+```txt
+backend/src/providers/ — manager, router, vault, flightRecorder, adapters
+Refactor commandOrchestrator → router (no direct openaiClient from business logic)
+GET/PUT /api/providers · POST verify · flight log query
+UI /system/providers · dock API line (status · spend · tokens)
+```
+
+**Binding rule:** Nothing calls OpenAI/vendors directly — CoS → Capability Router → Provider Manager → Adapter.
+
+**Commit:** `feat: add AI Provider Management foundation`
+
+---
+
+# LB-OS-018 — Drive Architecture & Migration Planner
+
+**Depends on:** 017
 
 **Goal:** Enforce C:/H: separation; migration planner shell.
 
@@ -1074,7 +1099,7 @@ Version bump · release notes
 Drive rules in permissionEngine: H: = project roots, C: = warn/block as project root
 UI: drive badges, C: warning banner
 Migration planner route /migration — phase checklist, dry-run status
-Gate: no migration tool calls until inventory flag set (LB-OS-017)
+Gate: no migration tool calls until inventory flag set (LB-OS-019)
 ```
 
 **Exit criteria:**
@@ -1082,16 +1107,16 @@ Gate: no migration tool calls until inventory flag set (LB-OS-017)
 ```txt
 [ ] C: cannot be registered as project folder without override + log
 [ ] H: default for new project registration
-[ ] Migration planner UI shows 016–024 arc
+[ ] Migration planner UI shows 018–026 arc
 ```
 
 **Commit:** `feat: add drive architecture and migration planner`
 
 ---
 
-# LB-OS-017 — Full Filesystem Mapping Audit
+# LB-OS-019 — Full Filesystem Mapping Audit
 
-**Depends on:** 016
+**Depends on:** 018
 
 **Goal:** Read-only inventory of approved H: trees.
 
@@ -1116,9 +1141,9 @@ No moves, no deletes
 
 ---
 
-# LB-OS-018 — Duplicate / Version Cleanup Planner
+# LB-OS-020 — Duplicate / Version Cleanup Planner
 
-**Depends on:** 017
+**Depends on:** 019
 
 **Goal:** Duplicates report + plans only — **no auto cleanup**.
 
@@ -1142,9 +1167,9 @@ approval_checklist UI — all items must be reviewed before OS-022 execution
 
 ---
 
-# LB-OS-019 — H:/ Project Filing System Builder
+# LB-OS-021 — H:/ Project Filing System Builder
 
-**Depends on:** 018
+**Depends on:** 020
 
 **Goal:** Standard filing taxonomy for H: projects.
 
@@ -1167,9 +1192,9 @@ H:/ taxonomy doc generated for Steve review
 
 ---
 
-# LB-OS-020 — ChatGPT Knowledge Import Pipeline
+# LB-OS-022 — ChatGPT Knowledge Import Pipeline
 
-**Depends on:** 019
+**Depends on:** 021
 
 **Goal:** Import/map ChatGPT exports into project memory.
 
@@ -1194,9 +1219,9 @@ Scan exports for secrets — block patterns
 
 ---
 
-# LB-OS-021 — Project Memory Transfer Engine
+# LB-OS-023 — Project Memory Transfer Engine
 
-**Depends on:** 020
+**Depends on:** 022
 
 **Goal:** Transfer Cursor reports, build docs, handoffs into unified memory.
 
@@ -1219,11 +1244,11 @@ requirements + old plans indexed
 
 ---
 
-# LB-OS-022 — Legacy Folder Reorganization Assistant
+# LB-OS-024 — Legacy Folder Reorganization Assistant
 
-**Depends on:** 021
+**Depends on:** 023
 
-**Goal:** Execute approved reorg from plans (018–019) in batches.
+**Goal:** Execute approved reorg from plans (020–021) in batches.
 
 **Build:**
 
@@ -1244,9 +1269,9 @@ AI assistant explains each batch before submit
 
 ---
 
-# LB-OS-023 — Personal System Cutover Plan
+# LB-OS-025 — Personal System Cutover Plan
 
-**Depends on:** 022
+**Depends on:** 024
 
 **Goal:** Steve sign-off — LocalBrain becomes primary interface.
 
@@ -1269,9 +1294,9 @@ Rollback plan if cutover fails
 
 ---
 
-# LB-OS-024 — LocalBrain Personal OS Launch
+# LB-OS-026 — LocalBrain Personal OS Launch
 
-**Depends on:** 023
+**Depends on:** 025
 
 **Goal:** Personal OS launch — digital life mapped and preserved.
 
@@ -1828,9 +1853,11 @@ PDF/Markdown export for Steve's records
 
 # LB-OS-056 — Provider-Neutral AI Doctrine (Embedded)
 
-**Depends on:** 055
+**Depends on:** 055, **017**
 
-**Goal:** Pillar 13 in product; no direct OpenAI from business logic rule; AI Provider card stub.
+**Goal:** Pillar 13 doctrine embedded in product; deepens **LB-OS-017** foundation (router + adapters already live in 017).
+
+**Note:** Core provider spine ships in **LB-OS-017**. This slice adds doctrine UI card + outcome-learning hooks without changing the 017 call path.
 
 **Commit:** `feat: embed provider-neutral AI doctrine`
 

@@ -43,11 +43,22 @@
 | [Data & Intelligence Department](./LOCALBRAIN_DATA_INTELLIGENCE_DEPARTMENT.md) | ✅ Complete — LB-OS-014 |
 | [Relationship & Network Intelligence](./LOCALBRAIN_RELATIONSHIP_NETWORK_INTELLIGENCE_DEPARTMENT.md) | ✅ Complete — LB-OS-015 |
 | [Executive OS V1](./LOCALBRAIN_EXECUTIVE_OS_V1.md) | ✅ Release candidate — LB-OS-016 |
+| [AI Provider Management](./LOCALBRAIN_AI_PROVIDER_MANAGEMENT.md) | 📋 Next — LB-OS-017 |
 | [Executive Program Office](./LOCALBRAIN_EXECUTIVE_PROGRAM_OFFICE.md) | ✅ Complete — LB-OS-012.5 |
 | [Platform Separation Strategy](./LOCALBRAIN_PLATFORM_SEPARATION_STRATEGY.md) — Platform vs Brain boundary | ✅ Planning — 2026-06-28 |
 | [Multi-Machine Network Plan](./LOCALBRAIN_MULTI_MACHINE_NETWORK_PLAN.md) | 📋 Future arc — LB-OS-107–114 |
 
-**Gate:** V1 shipped — **LB-OS-016** Executive OS V1 milestone ✅ · Next: Phase 2 Migration (LB-OS-017+).
+**Gate:** V1 shipped — **LB-OS-016** ✅ · Next: **LB-OS-017** AI Provider Management · then Migration (018+).
+
+---
+
+## Phase 1.5 — AI Operating Environment
+
+| Slice | Name | Status |
+|-------|------|--------|
+| LB-OS-017 | AI Provider Management | 📋 **Next** — [Spec](./LOCALBRAIN_AI_PROVIDER_MANAGEMENT.md) · [Burt packet](./burt_packets/LB-OS-017.md) |
+
+**Gate:** Provider spine before migration · no direct vendor SDK calls from business logic
 
 ---
 
@@ -79,21 +90,21 @@
 
 ---
 
-## Phase 2 — Migration & Personal OS (LB-OS-017–025)
+## Phase 2 — Migration & Personal OS (LB-OS-018–026)
 
 | Slice | Name | Status |
 |-------|------|--------|
-| LB-OS-017 | Drive architecture & migration planner | 📋 Next |
-| LB-OS-018 | Full filesystem mapping audit | ⬜ PLANNED |
-| LB-OS-019 | Duplicate / version cleanup planner | ⬜ PLANNED |
-| LB-OS-019 | H:/ project filing system builder | ⬜ PLANNED |
-| LB-OS-020 | ChatGPT knowledge import pipeline | ⬜ PLANNED |
-| LB-OS-021 | Project memory transfer engine | ⬜ PLANNED |
-| LB-OS-022 | Legacy folder reorganization assistant | ⬜ PLANNED |
-| LB-OS-023 | Personal system cutover plan | ⬜ PLANNED |
-| LB-OS-024 | Personal OS launch | ⬜ PLANNED |
+| LB-OS-018 | Drive architecture & migration planner | ⬜ PLANNED |
+| LB-OS-019 | Full filesystem mapping audit | ⬜ PLANNED |
+| LB-OS-020 | Duplicate / version cleanup planner | ⬜ PLANNED |
+| LB-OS-021 | H:/ project filing system builder | ⬜ PLANNED |
+| LB-OS-022 | ChatGPT knowledge import pipeline | ⬜ PLANNED |
+| LB-OS-023 | Project memory transfer engine | ⬜ PLANNED |
+| LB-OS-024 | Legacy folder reorganization assistant | ⬜ PLANNED |
+| LB-OS-025 | Personal system cutover plan | ⬜ PLANNED |
+| LB-OS-026 | LocalBrain Personal OS launch | ⬜ PLANNED |
 
-**Gates:** Migration = 016–023 · Personal OS = 024
+**Gates:** Migration = 018–025 · Personal OS = 026
 
 ```txt
 C:/ = programs only · H:/ = Steve's work world
@@ -102,22 +113,22 @@ No auto cleanup — dry-run reports before any reorg
 
 ---
 
-## Phase 4 — OJT Coding Academy (LB-OS-025–030)
+## Phase 4 — OJT Coding Academy (LB-OS-027–032)
 
 | Slice | Name | Status |
 |-------|------|--------|
-| LB-OS-025 | OJT academy doctrine embedded | ⬜ PLANNED |
-| LB-OS-026 | Build-along teaching mode | ⬜ PLANNED |
-| LB-OS-027 | Concept ladder + skill map | ⬜ PLANNED |
-| LB-OS-028 | Interactive challenges | ⬜ PLANNED |
-| LB-OS-029 | Coding progress dashboard | ⬜ PLANNED |
-| LB-OS-030 | Certification / portfolio | ⬜ PLANNED |
+| LB-OS-027 | OJT academy doctrine embedded | ⬜ PLANNED |
+| LB-OS-028 | Build-along teaching mode | ⬜ PLANNED |
+| LB-OS-029 | Concept ladder + skill map | ⬜ PLANNED |
+| LB-OS-030 | Interactive challenges | ⬜ PLANNED |
+| LB-OS-031 | Coding progress dashboard | ⬜ PLANNED |
+| LB-OS-032 | Certification / portfolio | ⬜ PLANNED |
 
-**Doc:** [OJT Coding Academy](./LOCALBRAIN_OJT_CODING_ACADEMY.md) · **Gate:** Academy = 030
+**Doc:** [OJT Coding Academy](./LOCALBRAIN_OJT_CODING_ACADEMY.md) · **Gate:** Academy = 032
 
 ```txt
 Teach Me While We Build: ON/OFF
-Closeouts include OJT lesson when ON (manual until LB-OS-026)
+Closeouts include OJT lesson when ON (manual until LB-OS-028)
 ```
 
 ---

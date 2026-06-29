@@ -53,10 +53,13 @@ Executive Office
     Executive Briefing
     Program Office (EPO)
     System Health
+    AI Providers (link → /system/providers)
     Decisions
     Documentation Library
     Operational Metrics
 ```
+
+**AI Providers** live under **System** (`/system/providers`); Executive Office links there for spend attribution and routing policy. Spec: [AI Provider Management](./LOCALBRAIN_AI_PROVIDER_MANAGEMENT.md).
 
 EPO is where Steve sees **structural build truth**. Briefing is **narrative**. Engineering Department **does** engineering work; EPO **reports** it.
 
