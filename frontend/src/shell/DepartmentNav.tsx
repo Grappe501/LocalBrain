@@ -9,7 +9,7 @@ const DEPARTMENTS = [
   { label: "Media", path: "/studio/media" },
   { label: "Research", path: "/studio/research" },
   { label: "System", path: "/studio/system" },
-  { label: "Workspace", path: "/project/localbrain" },
+  { label: "Workspace", path: "/workspace/localbrain" },
   { label: "Explorer", path: "/explorer" },
   { label: "Learn", path: "/learn" },
   { label: "Actions", path: "/actions" },

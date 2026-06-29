@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useActiveWorkspace } from "../context/ActiveWorkspaceContext";
 import { useAppSettings } from "../context/AppSettingsContext";
-import { LOCALBRAIN_WORKSPACE, MOCK_SIGNAL_COUNT } from "../data/mockLocalbrainWorkspace";
+import { MOCK_SIGNAL_COUNT } from "../data/mockLocalbrainWorkspace";
 import { CommandPalette } from "./CommandPalette";
 
 type CommandStubResponse = {
@@ -10,9 +11,14 @@ type CommandStubResponse = {
 };
 
 export function CommandBar() {
+  const { workspace, loading } = useActiveWorkspace();
   const { setPaletteOpen } = useAppSettings();
   const [command, setCommand] = useState("");
   const [lastResponse, setLastResponse] = useState<string | null>(null);
+
+  const pillId = workspace?.workspace_id ?? "localbrain";
+  const pillTitle = workspace?.title ?? "LocalBrain";
+  const pillFocus = workspace?.current_focus;
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -49,9 +55,14 @@ export function CommandBar() {
       <header className="command-bar">
         <div className="command-bar__brand">
           <span className="command-bar__cos-label">Chief of Staff</span>
-          <Link to="/project/localbrain" className="command-bar__pill">
-            <span className="command-bar__pill-name">{LOCALBRAIN_WORKSPACE.name}</span>
-            <span className="command-bar__pill-id">{LOCALBRAIN_WORKSPACE.id}</span>
+          <Link to={`/workspace/${pillId}`} className="command-bar__pill">
+            <span className="command-bar__pill-name">
+              {loading ? "…" : pillTitle}
+            </span>
+            <span className="command-bar__pill-id">{pillId}</span>
+            {pillFocus ? (
+              <span className="command-bar__pill-focus">{pillFocus}</span>
+            ) : null}
           </Link>
         </div>
 

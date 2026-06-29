@@ -127,7 +127,63 @@ export function createPermissionEngine(options: PermissionEngineOptions) {
     return result;
   }
 
-  return { checkPath };
+  function validateFilesystemRoot(inputPath: string): PathCheckResult {
+    return checkPath({ path: inputPath, action: "list" });
+  }
+
+  /** Register a new workspace root — forbidden/secret checks only (not yet in allowed list). */
+  function validateNewFilesystemRoot(inputPath: string): PathCheckResult {
+    const raw = inputPath?.trim() ?? "";
+    if (!raw) {
+      return { allowed: false, level: "FORBIDDEN", reason: "Path is empty" };
+    }
+
+    let resolved: string;
+    try {
+      resolved = normalizeAndResolve(raw);
+    } catch {
+      return { allowed: false, level: "FORBIDDEN", reason: "Path could not be resolved" };
+    }
+
+    const forbiddenPrefix = matchesForbiddenPrefix(resolved, FORBIDDEN_PATH_PREFIXES);
+    if (forbiddenPrefix) {
+      return {
+        allowed: false,
+        level: "FORBIDDEN",
+        reason: `Path is inside forbidden location: ${forbiddenPrefix}`,
+        normalizedPath: resolved,
+      };
+    }
+
+    const ignored = hasIgnoredSegment(resolved);
+    if (ignored) {
+      return {
+        allowed: false,
+        level: "FORBIDDEN",
+        reason: `Path contains ignored segment: ${ignored}`,
+        normalizedPath: resolved,
+      };
+    }
+
+    const secret = matchesSecretName(resolved);
+    if (secret) {
+      return {
+        allowed: false,
+        level: "FORBIDDEN",
+        reason: `Forbidden secret pattern: ${secret}`,
+        normalizedPath: resolved,
+      };
+    }
+
+    return {
+      allowed: true,
+      level: "READ_ONLY",
+      reason: "Valid filesystem root for workspace registration",
+      normalizedPath: resolved,
+    };
+  }
+
+  return { checkPath, validateFilesystemRoot, validateNewFilesystemRoot };
 }
 
 let defaultEngine: ReturnType<typeof createPermissionEngine> | null = null;

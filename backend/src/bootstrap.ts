@@ -5,15 +5,33 @@ import {
   runMigrations,
 } from "./db/database.js";
 import { initPermissionEngine } from "./safety/permissionEngine.js";
+import {
+  migrateWorkspaceTables,
+  seedWorkspaces,
+  syncFilesystemRootsToAllowedFolders,
+} from "./workspaces/workspaceRegistry.js";
 
-export function bootstrapSafety(): void {
-  runMigrations();
+export function refreshPermissionEngine(): void {
   const folders = getAllowedFoldersFromDb();
   initPermissionEngine(folders.map((f) => f.path));
 }
 
-export function shutdownSafety(): void {
+export function bootstrapApp(): void {
+  runMigrations();
+  migrateWorkspaceTables();
+  seedWorkspaces();
+  syncFilesystemRootsToAllowedFolders();
+  refreshPermissionEngine();
+}
+
+export function shutdownApp(): void {
   closeDatabase();
 }
 
 export { isDatabaseConnected };
+
+/** @deprecated use bootstrapApp */
+export const bootstrapSafety = bootstrapApp;
+
+/** @deprecated use shutdownApp */
+export const shutdownSafety = shutdownApp;

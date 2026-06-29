@@ -4,7 +4,7 @@ import { useAppSettings } from "../context/AppSettingsContext";
 
 const PALETTE_ITEMS = [
   { label: "Executive Briefing", path: "/" },
-  { label: "Living Workspace — localbrain", path: "/project/localbrain" },
+  { label: "Living Workspace — localbrain", path: "/workspace/localbrain" },
   { label: "Explorer (stub)", path: "/explorer" },
   { label: "Learn — OJT", path: "/learn" },
   { label: "Settings", path: "/settings" },
@@ -34,7 +34,7 @@ export function CommandPalette() {
     >
       <div className="command-palette" onClick={(e) => e.stopPropagation()}>
         <h2 className="command-palette__title">Chief of Staff — quick route</h2>
-        <p className="command-palette__hint">Stub palette · LB-OS-002</p>
+        <p className="command-palette__hint">Quick route · LB-OS-004</p>
         <ul className="command-palette__list">
           {PALETTE_ITEMS.map((item) => (
             <li key={item.path}>

@@ -25,6 +25,22 @@
 
 ---
 
+## Architecture lock (2026-06-28)
+
+| Deliverable | Status |
+|-------------|--------|
+| [Foundational Object Model](./LOCALBRAIN_FOUNDATIONAL_OBJECT_MODEL.md) — 10 frozen objects | ✅ Binding |
+| [Host Platform Layer 0](./LOCALBRAIN_OPERATING_SYSTEM_DOCTRINE.md#host-platform-layer-0) | ✅ Binding |
+| [Digital Twin](./LOCALBRAIN_DIGITAL_TWIN.md) | ✅ Spec |
+| [Knowledge Sources](./LOCALBRAIN_KNOWLEDGE_SOURCES.md) | ✅ Spec |
+| [Decision Ledger](./LOCALBRAIN_DECISION_LEDGER.md) | ✅ Spec |
+| [Memory Domains](./LOCALBRAIN_MEMORY_DOMAINS.md) | ✅ Spec |
+| `@localbrain/shared` foundation types | ✅ Contracts |
+
+**Gate:** Last major object-model change before module acceleration. Next: **LB-OS-106** modularity gate.
+
+---
+
 ## Phase 1 — V1 OS Shell (LB-OS-001–015)
 
 | Slice | Name | Status |
@@ -32,7 +48,7 @@
 | LB-OS-001 | Repo scaffold | ✅ COMPLETE |
 | LB-OS-002 | OS shell + executive briefing + command stub | ✅ COMPLETE |
 | LB-OS-003 | Filesystem permission engine v2 | ✅ COMPLETE |
-| LB-OS-004 | Workspace registry (LivingWorkspace) | ▶ READY — [Burt packet](./burt_packets/LB-OS-004.md) |
+| LB-OS-004 | Workspace registry (LivingWorkspace) | ✅ Complete — event-driven registry, `/workspace/:id` |
 | LB-OS-106 | Core kernel + module loader | ⬜ PLANNED |
 | LB-OS-005 | Explorer tree + file metadata | ⬜ PLANNED |
 | LB-OS-006 | Storage intelligence dashboard | ⬜ PLANNED |

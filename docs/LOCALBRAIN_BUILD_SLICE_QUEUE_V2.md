@@ -139,7 +139,7 @@ See [Studio Blueprint](./LOCALBRAIN_STUDIO_BLUEPRINT.md) · [Command Layer](./LO
 | **LB-OS-001** | Repo scaffold | — | ✅ Complete |
 | **LB-OS-002** | OS Shell + executive briefing + command stub | 001, PSP | ✅ Complete |
 | **LB-OS-003** | Filesystem permission engine v2 | 002 | ✅ Complete |
-| **LB-OS-004** | Workspace registry (LivingWorkspace) | 003 | ▶ **READY** |
+| **LB-OS-004** | Workspace registry (LivingWorkspace) | 003 | ✅ **Complete** |
 | **LB-OS-106** | Core kernel + module loader | 004 | **MODULARITY GATE** |
 | **LB-OS-005** | Explorer tree + file metadata | 106 | Browse + index |
 | **LB-OS-006** | Storage intelligence dashboard | 005 | Large/dup/stale |

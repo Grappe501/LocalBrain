@@ -1,14 +1,15 @@
 import cors from "cors";
 import express from "express";
-import { bootstrapSafety } from "./bootstrap.js";
+import { bootstrapApp } from "./bootstrap.js";
 import { isDatabaseConnected } from "./db/database.js";
 import { commandRouter } from "./command.js";
 import { healthRouter } from "./health.js";
 import { safetyRouter } from "./routes/safety.js";
+import { workspacesRouter } from "./routes/workspaces.js";
 
 const port = Number(process.env.LOCALBRAIN_PORT ?? 4545);
 
-bootstrapSafety();
+bootstrapApp();
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use("/api", healthRouter);
 app.use("/api", commandRouter);
 app.use("/api", safetyRouter);
+app.use("/api", workspacesRouter);
 
 app.listen(port, () => {
   const db = isDatabaseConnected();

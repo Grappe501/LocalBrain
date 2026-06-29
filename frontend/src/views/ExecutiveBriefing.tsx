@@ -1,20 +1,30 @@
 import { Link } from "react-router-dom";
+import { useActiveWorkspace } from "../context/ActiveWorkspaceContext";
 import { MOCK_BRIEFING_SECTIONS, MOCK_MWI_FOOTER } from "../data/mockBriefing";
-import { LOCALBRAIN_WORKSPACE } from "../data/mockLocalbrainWorkspace";
 
 export function ExecutiveBriefing() {
+  const { workspace, loading } = useActiveWorkspace();
+  const wsId = workspace?.workspace_id ?? "localbrain";
+  const wsTitle = workspace?.title ?? "LocalBrain";
+  const wsFocus = workspace?.current_focus;
+
   return (
     <article className="executive-briefing">
       <header className="executive-briefing__header">
         <h1>Good morning, Steve.</h1>
         <p className="executive-briefing__workspace">
           Workspace:{" "}
-          <Link to="/project/localbrain">
-            {LOCALBRAIN_WORKSPACE.name} ({LOCALBRAIN_WORKSPACE.id})
+          <Link to={`/workspace/${wsId}`}>
+            {loading ? "…" : wsTitle} ({wsId})
           </Link>
-          · {LOCALBRAIN_WORKSPACE.path}
+          {wsFocus ? (
+            <>
+              {" "}
+              · Current focus: <strong>{wsFocus}</strong>
+            </>
+          ) : null}
         </p>
-        <p className="executive-briefing__meta">Executive Briefing · mock · LB-OS-002</p>
+        <p className="executive-briefing__meta">Executive Briefing · LB-OS-004</p>
       </header>
 
       {MOCK_BRIEFING_SECTIONS.map((section) => (

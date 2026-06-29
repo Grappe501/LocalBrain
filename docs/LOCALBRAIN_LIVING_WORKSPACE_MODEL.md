@@ -84,6 +84,8 @@ Every workspace **eventually** knows (004 implements core + stubs; links may be 
 | `health_score` | number? | 0–100 |
 | `risk_score` | number? | 0–100 |
 | **`executive_context`** | string | **Plain-language strategic context** — why this exists, what success looks like, what matters now, how it fits Steve's goals |
+| **`current_focus`** | string | **What the workspace is working on right now** — distinct from `status` (e.g. "Complete Permission Engine", "Finish Chapter 8") |
+| **`success_definition`** | string | **Plain English outcome** — lets CoS evaluate whether work is moving toward the defined result |
 | `workspace_avatar` | string | Visual recognition — emoji or avatar key |
 | `workspace_color` | string | Hex — nav/shell accent |
 | `workspace_icon` | string | Icon id for shell |
@@ -124,6 +126,39 @@ Empty links OK in 004 — schema exists so Novel/CFO/Research plug in later with
 
 ---
 
+## Event-driven history (`workspace_events`)
+
+LivingWorkspace is **event-driven from day one**. The registry stores not only current state but **how it got there**.
+
+```txt
+workspace_created
+mission_updated
+focus_updated
+success_definition_updated
+slice_completed
+burt_packet_generated
+deployment_failed
+cos_recommendation
+decision_accepted
+workspace_archived
+…
+```
+
+Each event: `event_type`, `title`, `detail`, `actor`, `metadata_json`, `created_at`.
+
+This enables:
+
+```txt
+Timeline · audit trail · replay · richer CoS briefings ("what changed")
+AI summaries · future training data
+```
+
+Append-only in 004 — no event editing UI required yet.
+
+**Object model freeze (binding):** Ten foundational objects are frozen — see [Foundational Object Model](./LOCALBRAIN_FOUNDATIONAL_OBJECT_MODEL.md). New capability arrives via engines, modules, workspace types, and capabilities — not new core objects.
+
+---
+
 ## LocalBrain workspace template (reference)
 
 When Steve opens **`localbrain`**:
@@ -131,6 +166,10 @@ When Steve opens **`localbrain`**:
 ```txt
 Workspace: LocalBrain
 Health: Excellent
+Current Focus:
+  Workspace registry and LivingWorkspace foundation (LB-OS-004)
+Success Definition:
+  A modular AI Executive Operating System that becomes Steve's primary interface for work.
 Mission:
   Build Steve's Executive Operating System
 Current Phase:
@@ -152,6 +191,8 @@ executive_context:
   LocalBrain is Steve's second brain and operating company — not a chatbot.
   Success = meaningful work compounds weekly. Current priority: thin core,
   safe permissions, workspace-first navigation, modules after 106.
+Timeline (workspace_events):
+  Workspace Created → Mission Updated → Slice Completed → Focus Updated → …
 ```
 
 This layout is the **template for every future workspace** (campaign, novel, finance, etc.).
@@ -176,8 +217,11 @@ One registry — explorer (005+) scopes to active workspace roots.
 /workspace/:workspaceId     Living Workspace dashboard (primary)
 /project/:workspaceId     301 → /workspace/:workspaceId (compat from 002)
 GET  /api/workspaces
+GET  /api/workspaces/active
 GET  /api/workspaces/:id
+GET  /api/workspaces/:id/events
 POST /api/workspaces/:id/select   — active workspace for shell pill
+POST /api/workspaces              — create (roots validated)
 GET  /api/workspaces/:id/links    — stub empty array OK
 ```
 

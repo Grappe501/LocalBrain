@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { AppLayout } from "./shell/AppLayout";
 import { ExecutiveBriefing } from "./views/ExecutiveBriefing";
-import { LivingWorkspaceMock } from "./views/LivingWorkspaceMock";
+import { ProjectRedirect, WorkspaceRoute } from "./views/WorkspaceRoute";
 import {
   ActionsStub,
   ExplorerStub,
@@ -15,7 +15,8 @@ export function AppRouter() {
     <Routes>
       <Route element={<AppLayout />}>
         <Route index element={<ExecutiveBriefing />} />
-        <Route path="project/localbrain" element={<LivingWorkspaceMock />} />
+        <Route path="workspace/:workspaceId" element={<WorkspaceRoute />} />
+        <Route path="project/:workspaceId" element={<ProjectRedirect />} />
         <Route path="explorer" element={<ExplorerStub />} />
         <Route path="studio/*" element={<StudioStub />} />
         <Route path="learn" element={<LearnStub />} />
