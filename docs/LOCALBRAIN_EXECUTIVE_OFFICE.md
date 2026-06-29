@@ -32,6 +32,7 @@ The Executive Office is **not another studio**. It sits **above** every studio.
 Chief of Staff (lead AI — not "assistant")
 Executive Briefing (morning default)
 Executive Program Office (EPO — build mission control)  ← LB-OS-012.5
+System Evolution (intelligence scoreboard)              ← LB-OS-035 planned
 Calendar intelligence
 Email intelligence (classify → summarize → suggest → approve → send)
 Project prioritization · workload balancing · delegation
@@ -42,7 +43,10 @@ System Health · Decisions · Documentation Library · Operational Metrics (via 
 
 Everything else in LocalBrain exists to **support the Executive Office**.
 
-**EPO spec:** [Executive Program Office](./LOCALBRAIN_EXECUTIVE_PROGRAM_OFFICE.md) — progress, build graph, doc library, "why aren't we here yet?"
+**EPO spec:** [Executive Program Office](./LOCALBRAIN_EXECUTIVE_PROGRAM_OFFICE.md) — progress, build graph, doc library, "why aren't we here yet?"  
+**Evolution spec:** [System Evolution](./LOCALBRAIN_SYSTEM_EVOLUTION.md) — what the system learned, maturity gains, CoS accuracy (Phase 2).  
+**Impact metric:** [Executive Leverage Score](./LOCALBRAIN_EXECUTIVE_LEVERAGE_SCORE.md) — ELS headline on Executive Briefing (Phase 2).  
+**Constitution:** [LOCALBRAIN_CONSTITUTION.md](./LOCALBRAIN_CONSTITUTION.md) — canonical index for all doctrine.
 
 ---
 

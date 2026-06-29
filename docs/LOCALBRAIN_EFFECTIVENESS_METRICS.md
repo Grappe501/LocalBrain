@@ -12,6 +12,8 @@ Did Steve accomplish more meaningful work this week
 than he would have without LocalBrain?
 ```
 
+**Primary index:** [Executive Leverage Score (ELS)](./LOCALBRAIN_EXECUTIVE_LEVERAGE_SCORE.md) — top line of Executive Briefing.
+
 **Not:** "How many AI features does LocalBrain have?"
 
 ---

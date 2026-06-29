@@ -34,7 +34,8 @@ What is under-documented?
 ```txt
 Executive Office
     Executive Briefing      ← morning narrative
-    Program Office (EPO)    ← build mission control  ★ this doc
+    Program Office (EPO)    ← build mission control  ★ construction
+    System Evolution        ← intelligence scoreboard ★ learning (LB-OS-035)
     System Health           ← machine + ops (LB-OS-011)
     Decisions               ← decision ledger + timeline
     Documentation Library   ← searchable doc portal

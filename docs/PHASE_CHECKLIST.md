@@ -48,6 +48,11 @@
 | [Build State Engine](./burt_packets/LB-OS-019.5.md) — ENG-BLD-001 data-driven EPO | ✅ LB-OS-019.5 |
 | [Live Surface Audit](./burt_packets/LB-OS-019.6.md) — ENG-SRF-001 route wiring | ✅ LB-OS-019.6 |
 | [Experience Maturity](./burt_packets/LB-OS-019.7.md) — ENG-EXP-001 L0–L5 roadmap | ✅ LB-OS-019.7 |
+| [Three-Phase Roadmap](./LOCALBRAIN_THREE_PHASE_ROADMAP.md) — Build → Teach → Company (measurable gates) | ✅ Strategy 2026-06 |
+| [Constitution v1](./LOCALBRAIN_CONSTITUTION.md) — canonical index + Articles I–X | ✅ Strategy 2026-06 |
+| [System Evolution](./LOCALBRAIN_SYSTEM_EVOLUTION.md) — intelligence scoreboard (ENG-EVO-001) | 📋 LB-OS-035 Phase 2 |
+| [Executive Leverage Score](./LOCALBRAIN_EXECUTIVE_LEVERAGE_SCORE.md) — ENG-ELS-001 impact metric | 📋 Phase 2 |
+| [Product Naming](./LOCALBRAIN_PRODUCT_NAMING.md) — EOS product vs LocalBrain engine | ✅ Planning |
 | [Consolidation Planner](./LOCALBRAIN_CONSOLIDATION_PLANNER.md) | 📋 Next — LB-OS-020 |
 | [Executive Program Office](./LOCALBRAIN_EXECUTIVE_PROGRAM_OFFICE.md) | ✅ Complete — LB-OS-012.5 |
 | [Platform Separation Strategy](./LOCALBRAIN_PLATFORM_SEPARATION_STRATEGY.md) — Platform vs Brain boundary | ✅ Planning — 2026-06-28 |

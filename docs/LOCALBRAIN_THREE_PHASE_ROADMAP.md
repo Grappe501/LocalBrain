@@ -1,0 +1,137 @@
+# LocalBrain Three-Phase Roadmap
+
+> **Strategic checkpoint** — June 2026  
+> **Status:** Binding direction for slice ordering after LB-OS-020  
+> Related: [Constitution](./LOCALBRAIN_CONSTITUTION.md) · [System Evolution](./LOCALBRAIN_SYSTEM_EVOLUTION.md) · [Executive Leverage Score](./LOCALBRAIN_EXECUTIVE_LEVERAGE_SCORE.md) · [Product Naming](./LOCALBRAIN_PRODUCT_NAMING.md)
+
+---
+
+## Overview
+
+Each phase has a **success question**, **exit criteria**, and **tracked metrics**. Phases are not slogans — they are measurable gates.
+
+| Phase | Name | Success question | End state |
+| ----- | ---- | ---------------- | --------- |
+| **1** | Build the Brain | *Can LocalBrain accurately represent your world?* | LocalBrain **knows** your world |
+| **2** | Teach the Brain | *Can LocalBrain improve your decisions?* | LocalBrain **helps you think** |
+| **3** | Build the Company | *Can LocalBrain coordinate multiple departments?* | LocalBrain **helps you run an organization** |
+
+**Do not skip Phase 2.** Feature count without intelligence produces a complicated app, not an Executive OS.
+
+---
+
+## Phase 1 — Build the Brain (mostly complete)
+
+### Success question
+
+> **Can LocalBrain accurately represent your world?**
+
+### Exit criteria
+
+| Criterion | Slice / engine | Status |
+| --------- | -------------- | ------ |
+| Executive OS spine complete | LB-OS-002, 106 | ✅ |
+| Living Workspaces operational | LB-OS-004 | ✅ |
+| Knowledge Explorer operational | LB-OS-005 | ✅ |
+| Digital Asset Registry operational | LB-OS-006–007 | ✅ |
+| CoS orchestration operational | LB-OS-008, 010.5 | ✅ |
+| Permission + approval workflow | LB-OS-003, 010 | ✅ |
+| Program Office (construction) | LB-OS-012.5, ENG-BLD-001 | ✅ |
+| Departments foundation (Eng/Writing/Data/Rel) | LB-OS-012–015 | ✅ |
+| AI Provider spine | LB-OS-017 | ✅ |
+| Migration planning complete | LB-OS-018–019 | ✅ |
+| Consolidation planner | LB-OS-020 | 📋 Next |
+| Personal OS cutover ready | LB-OS-021–026 | ⬜ |
+
+**Phase 1 gate:** LB-OS-026 Personal OS launch — trustworthy permissions, approvals, live executive shell, H: world represented.
+
+### Phase 1 metrics (representation)
+
+- Workspace coverage (% of Steve's active projects registered)
+- Asset index coverage (files under permission-gated roots)
+- Live surface audit pass rate (priority routes wired)
+- Migration readiness (inventory gate, consolidation evidence)
+
+---
+
+## Phase 2 — Teach the Brain (next strategic focus)
+
+### Success question
+
+> **Can LocalBrain improve your decisions?**
+
+### Track metrics
+
+| Metric | Meaning |
+| ------ | ------- |
+| Recommendation acceptance rate | CoS proposals Steve accepts vs rejects |
+| Time saved | Hours/minutes attributed to LocalBrain (honest estimates) |
+| Proposal accuracy | Outcomes match CoS predictions |
+| Learning growth | Decisions → reusable knowledge; maturity L1→L3 crossings |
+| False-positive rate | Bad recommendations / noise |
+| Reusable knowledge extracted | Decision Ledger citations in later work |
+| Executive insight quality | Steve-rated usefulness of briefings |
+
+**Phase 2 gate:** System Evolution shows month-over-month improvement on ≥3 metrics; priority routes reach **L3** (CoS insights).
+
+### Intelligence examples (L3 target)
+
+| Domain | Today (L1–L2) | Target (L3+) |
+| ------ | ------------- | ------------ |
+| Executive | "42 workspaces." | "Three consume time without advancing; one should be this week's priority." |
+| Engineering | "57 modules." | "Permission Engine is a dependency hotspot — extract interface before three slices." |
+| Writing | "Here are your novels." | "Chapter 7 stale six months; depends on characters changed in Chapter 3." |
+| Research | "Voter database." | "Answer exists in three sources — here's the shortest path." |
+
+**Phase 2 deliverables:** [System Evolution](./LOCALBRAIN_SYSTEM_EVOLUTION.md) (ENG-EVO-001), CoS outcome learning, [Executive Leverage Score](./LOCALBRAIN_EXECUTIVE_LEVERAGE_SCORE.md) (ENG-ELS-001).
+
+---
+
+## Phase 3 — Build the Company
+
+### Success question
+
+> **Can LocalBrain coordinate multiple departments?**
+
+### Track metrics
+
+| Metric | Meaning |
+| ------ | ------- |
+| Department coverage | Active departments vs planned matrix |
+| Automation coverage | Workflows approval-gated → automated |
+| Cross-department workflows | CoS routes spanning studios |
+| Team readiness | Multi-user / role model (when live) |
+| Multi-machine readiness | LB-OS-107–114 arc |
+| GPU utilization | Inference capacity used productively |
+| External integrations | Calendar, Gmail, CRM, etc. live |
+
+**Phase 3 gate:** New department ships without shell/CoS redesign; ELS trend positive with org-scale workflows.
+
+### Planned domains
+
+Photography · Podcast · CFO · CRM · GIS · Census · Campaigns · Calendar · Gmail · Team collaboration · GPU · Multi-machine
+
+---
+
+## Slice ordering
+
+```text
+Now        → LB-OS-020 (consolidation)
+Next       → LB-OS-021–026 (Phase 1 exit — Personal OS)
+Then       → Phase 2: System Evolution, ELS, CoS learning, dept L3+
+Later      → Phase 3: new departments on intelligent core
+```
+
+---
+
+## Three scoreboards (binding)
+
+| Surface | Measures | Engine | Question |
+| ------- | -------- | ------ | -------- |
+| **Program Office** | Construction | ENG-BLD-001 | What did we build? |
+| **System Evolution** | Intelligence growth | ENG-EVO-001 | What did the system learn? |
+| **Executive Leverage Score** | Real-world impact | ENG-ELS-001 | How much more effective am I? |
+
+**Executive Briefing** leads with ELS (impact), then narrative — not feature count.
+
+Never merge these into one dashboard.
