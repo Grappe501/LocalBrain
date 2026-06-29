@@ -47,6 +47,7 @@
 | [Migration & Drive Doctrine](./LOCALBRAIN_MIGRATION_AND_DRIVE_DOCTRINE.md) | ✅ LB-OS-018–019 |
 | [Build State Engine](./burt_packets/LB-OS-019.5.md) — ENG-BLD-001 data-driven EPO | ✅ LB-OS-019.5 |
 | [Live Surface Audit](./burt_packets/LB-OS-019.6.md) — ENG-SRF-001 route wiring | ✅ LB-OS-019.6 |
+| [Experience Maturity](./burt_packets/LB-OS-019.7.md) — ENG-EXP-001 L0–L5 roadmap | ✅ LB-OS-019.7 |
 | [Consolidation Planner](./LOCALBRAIN_CONSOLIDATION_PLANNER.md) | 📋 Next — LB-OS-020 |
 | [Executive Program Office](./LOCALBRAIN_EXECUTIVE_PROGRAM_OFFICE.md) | ✅ Complete — LB-OS-012.5 |
 | [Platform Separation Strategy](./LOCALBRAIN_PLATFORM_SEPARATION_STRATEGY.md) — Platform vs Brain boundary | ✅ Planning — 2026-06-28 |
@@ -102,6 +103,7 @@
 | LB-OS-019 | Full filesystem mapping audit | ✅ Complete — [Burt packet](./burt_packets/LB-OS-019.md) |
 | LB-OS-019.5 | Executive Program Office synchronization (ENG-BLD-001) | ✅ Complete — [Burt packet](./burt_packets/LB-OS-019.5.md) |
 | LB-OS-019.6 | Live surface audit & wiring fix (ENG-SRF-001) | ✅ Complete — [Burt packet](./burt_packets/LB-OS-019.6.md) |
+| LB-OS-019.7 | Experience Maturity (ENG-EXP-001) | ✅ Complete — [Burt packet](./burt_packets/LB-OS-019.7.md) |
 | LB-OS-020 | Evidence-based consolidation planner | 📋 Next — [Spec](./LOCALBRAIN_CONSOLIDATION_PLANNER.md) · [Burt](./burt_packets/LB-OS-020.md) |
 | LB-OS-021 | H:/ project filing system builder | ⬜ PLANNED |
 | LB-OS-022 | ChatGPT knowledge import pipeline | ⬜ PLANNED |

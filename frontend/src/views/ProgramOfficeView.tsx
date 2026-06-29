@@ -134,6 +134,49 @@ export function ProgramOfficeView() {
 
       <LiveSurfaceBanner route="/program-office" observedAt={overview.observed_at} />
 
+      <section className="epo-maturity" aria-label="Experience maturity roadmap">
+        <h2>Experience Maturity</h2>
+        <p className="epo-maturity__intro">
+          {overview.experience_maturity_engine_id} — every route is live <em>and</em> maturing toward
+          executive-quality usefulness. Badges visible in development builds only.
+        </p>
+        <div className="epo-maturity__table-wrap">
+          <table className="epo-maturity__table">
+            <thead>
+              <tr>
+                <th>Route</th>
+                <th>Surface</th>
+                <th>Maturity</th>
+                <th>Target</th>
+                <th>Next upgrade</th>
+                <th>Upgrade path</th>
+              </tr>
+            </thead>
+            <tbody>
+              {overview.experience_maturity.map((row) => (
+                <tr key={row.route}>
+                  <td>
+                    <code>{row.route}</code>
+                  </td>
+                  <td>
+                    <span className={`epo-maturity__mode epo-maturity__mode--${row.surface_mode}`}>
+                      {row.surface_mode}
+                    </span>
+                  </td>
+                  <td>
+                    <strong>L{row.maturity_level}</strong>
+                    <span className="epo-maturity__label">{row.maturity_label}</span>
+                  </td>
+                  <td>L{row.target_level}</td>
+                  <td>{row.next_upgrade_slice ?? "—"}</td>
+                  <td className="epo-maturity__summary">{row.next_upgrade_summary}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
       <section className="epo-dashboard" aria-label="Program dashboard">
         <div className="epo-dashboard__progress">
           <span className="epo-dashboard__label">Overall Progress</span>

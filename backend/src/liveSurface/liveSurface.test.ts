@@ -28,5 +28,8 @@ test("live surface smoke passes for all priority pages", () => {
 test("getLiveSurfaceAudit returns engine id", () => {
   const audit = getLiveSurfaceAudit();
   assert.equal(audit.engine_id, "ENG-SRF-001");
+  assert.equal(audit.experience_maturity_engine_id, "ENG-EXP-001");
   assert.ok(audit.surfaces.length >= 10);
+  assert.ok(audit.experience_maturity.length >= 10);
+  assert.equal(audit.experience_maturity.find((r) => r.route.includes("workspace"))?.maturity_level, 1);
 });

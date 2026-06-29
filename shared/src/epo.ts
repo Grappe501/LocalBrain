@@ -1,4 +1,4 @@
-/** Executive Program Office contracts — LB-OS-012.5 (read-only) */
+import type { ExperienceMaturityRow } from "./experienceMaturity.js";
 
 export type SliceStatus =
   | "complete"
@@ -117,6 +117,8 @@ export interface EpoOverview {
   build_velocity: EpoBuildVelocity;
   commit_timeline: { hash: string; subject: string; date: string }[];
   build_state_engine_id: string;
+  experience_maturity: ExperienceMaturityRow[];
+  experience_maturity_engine_id: string;
   read_only: true;
   observed_at: string;
 }

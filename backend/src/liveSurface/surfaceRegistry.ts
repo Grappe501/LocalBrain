@@ -1,8 +1,9 @@
 import type { LiveSurfaceEntry } from "@localbrain/shared";
 
 export const LIVE_SURFACE_ENGINE_ID = "ENG-SRF-001";
+export const EXPERIENCE_MATURITY_ENGINE_ID = "ENG-EXP-001";
 
-/** Canonical surface registry — every visible route is live, partial, or explicitly stubbed. */
+/** Canonical surface registry — live/partial/stub plus experience maturity roadmap. */
 export const SURFACE_REGISTRY: LiveSurfaceEntry[] = [
   {
     route: "/workspace/:workspaceId",
@@ -12,6 +13,10 @@ export const SURFACE_REGISTRY: LiveSurfaceEntry[] = [
     api_endpoints: ["/api/workspaces/:id", "/api/workspaces/:id/events", "/api/workspaces/:id/links"],
     stub_sections: [],
     slice_id: "LB-OS-004",
+    maturity_level: 1,
+    target_maturity_level: 5,
+    next_upgrade_slice: "LB-OS-033",
+    next_upgrade_summary: "Chief recommendations, momentum, deadlines, likely next action (L3)",
   },
   {
     route: "/actions",
@@ -21,6 +26,10 @@ export const SURFACE_REGISTRY: LiveSurfaceEntry[] = [
     api_endpoints: ["/api/actions/proposed", "/api/actions/log", "/api/actions/backups"],
     stub_sections: [],
     slice_id: "LB-OS-010",
+    maturity_level: 2,
+    target_maturity_level: 5,
+    next_upgrade_slice: "LB-OS-033",
+    next_upgrade_summary: "Batch recommendations, risk scoring, impact estimation (L4)",
   },
   {
     route: "/program-office",
@@ -30,6 +39,10 @@ export const SURFACE_REGISTRY: LiveSurfaceEntry[] = [
     api_endpoints: ["/api/epo/overview", "/api/epo/docs"],
     stub_sections: [],
     slice_id: "LB-OS-012.5",
+    maturity_level: 2,
+    target_maturity_level: 5,
+    next_upgrade_slice: "LB-OS-034",
+    next_upgrade_summary: "Velocity trends, schedule slips, risk forecast, architecture hotspots (L4)",
   },
   {
     route: "/system",
@@ -39,6 +52,10 @@ export const SURFACE_REGISTRY: LiveSurfaceEntry[] = [
     api_endpoints: ["/api/system/health", "/api/epo/overview"],
     stub_sections: [],
     slice_id: "LB-OS-011",
+    maturity_level: 2,
+    target_maturity_level: 4,
+    next_upgrade_slice: "LB-OS-010.5",
+    next_upgrade_summary: "CoS confidence summaries and workspace priority roll-up (L3)",
   },
   {
     route: "/explorer",
@@ -50,6 +67,10 @@ export const SURFACE_REGISTRY: LiveSurfaceEntry[] = [
       { label: "Manual index run", reason: "POST /index/run not exposed in UI yet — LB-OS-007+" },
     ],
     slice_id: "LB-OS-005",
+    maturity_level: 2,
+    target_maturity_level: 4,
+    next_upgrade_slice: "LB-OS-007",
+    next_upgrade_summary: "Six-lens executive insights and on-demand re-index (L3)",
   },
   {
     route: "/studio/engineering",
@@ -62,6 +83,10 @@ export const SURFACE_REGISTRY: LiveSurfaceEntry[] = [
       { label: "Learn / OJT tab", reason: "Academy slice LB-OS-027–032" },
     ],
     slice_id: "LB-OS-012",
+    maturity_level: 2,
+    target_maturity_level: 5,
+    next_upgrade_slice: "LB-OS-027",
+    next_upgrade_summary: "Specialist routing UI and build-along teaching mode (L3)",
   },
   {
     route: "/studio/writing",
@@ -74,6 +99,10 @@ export const SURFACE_REGISTRY: LiveSurfaceEntry[] = [
       { label: "Learn tab", reason: "Academy slice LB-OS-027–032" },
     ],
     slice_id: "LB-OS-013",
+    maturity_level: 1,
+    target_maturity_level: 5,
+    next_upgrade_slice: "LB-OS-026",
+    next_upgrade_summary: "LLM draft pipeline and Actions save flow (L3)",
   },
   {
     route: "/studio/data",
@@ -86,6 +115,10 @@ export const SURFACE_REGISTRY: LiveSurfaceEntry[] = [
       { label: "Learn tab", reason: "Academy slice LB-OS-027–032" },
     ],
     slice_id: "LB-OS-014",
+    maturity_level: 1,
+    target_maturity_level: 5,
+    next_upgrade_slice: "LB-OS-098",
+    next_upgrade_summary: "Live external sources and lineage-backed answers (L3)",
   },
   {
     route: "/studio/relationships",
@@ -99,6 +132,10 @@ export const SURFACE_REGISTRY: LiveSurfaceEntry[] = [
       { label: "Learn tab", reason: "Academy slice LB-OS-027–032" },
     ],
     slice_id: "LB-OS-015",
+    maturity_level: 1,
+    target_maturity_level: 5,
+    next_upgrade_slice: "LB-OS-115",
+    next_upgrade_summary: "Live CRM import and actionable engagement (L3)",
   },
   {
     route: "/settings",
@@ -111,5 +148,9 @@ export const SURFACE_REGISTRY: LiveSurfaceEntry[] = [
       { label: "AI providers", reason: "Live at /system/providers (LB-OS-017)" },
     ],
     slice_id: "LB-OS-002",
+    maturity_level: 1,
+    target_maturity_level: 3,
+    next_upgrade_slice: "LB-OS-028",
+    next_upgrade_summary: "Persisted preferences and OJT dev-mode integration (L2)",
   },
 ];

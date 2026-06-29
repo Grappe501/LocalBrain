@@ -14,6 +14,10 @@ import { getRecentCommits } from "./gitReader.js";
 import { computeEngineeringScore } from "../engineering/engineeringScore.js";
 import { explainBlocker } from "./blockerExplainer.js";
 import { computeCoverage, extractBurtMission } from "./coverageHeuristics.js";
+import {
+  getExperienceMaturityMatrix,
+} from "../liveSurface/liveSurfaceService.js";
+import { EXPERIENCE_MATURITY_ENGINE_ID } from "../liveSurface/surfaceRegistry.js";
 import { parseSliceRegistry } from "../buildState/sliceRegistry.js";
 
 function sliceMap() {
@@ -85,6 +89,8 @@ export function getEpoOverview(): EpoOverview {
     build_velocity: state.build_velocity,
     commit_timeline: state.commit_timeline,
     build_state_engine_id: BUILD_STATE_ENGINE_ID,
+    experience_maturity: getExperienceMaturityMatrix(),
+    experience_maturity_engine_id: EXPERIENCE_MATURITY_ENGINE_ID,
     read_only: true,
     observed_at: new Date().toISOString(),
   };

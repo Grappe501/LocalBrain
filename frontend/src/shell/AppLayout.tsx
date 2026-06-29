@@ -7,7 +7,7 @@ import { SystemStatusDock } from "./SystemStatusDock";
 
 export function AppLayout() {
   return (
-    <div className="os-shell os-shell--tech">
+    <div className="os-shell">
       <CommandBar />
       <DepartmentNav />
       <div className="os-shell__body">

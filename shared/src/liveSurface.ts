@@ -1,5 +1,6 @@
 /** Live surface audit contracts — LB-OS-019.6 */
 
+import type { ExperienceMaturityLevel, ExperienceMaturityRow } from "./experienceMaturity.js";
 import type { LivingWorkspace, WorkspaceEvent } from "./workspace.js";
 
 export type LiveSurfaceMode = "live" | "partial" | "stub";
@@ -17,12 +18,18 @@ export interface LiveSurfaceEntry {
   api_endpoints: string[];
   stub_sections: LiveSurfaceStubSection[];
   slice_id: string;
+  maturity_level: ExperienceMaturityLevel;
+  target_maturity_level: ExperienceMaturityLevel;
+  next_upgrade_slice: string | null;
+  next_upgrade_summary: string;
 }
 
 export interface LiveSurfaceAudit {
   surfaces: LiveSurfaceEntry[];
   observed_at: string;
   engine_id: string;
+  experience_maturity_engine_id: string;
+  experience_maturity: ExperienceMaturityRow[];
 }
 
 export interface LiveSurfaceSmokeResult {

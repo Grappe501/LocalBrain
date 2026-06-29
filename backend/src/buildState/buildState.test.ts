@@ -53,6 +53,8 @@ test("getEpoOverview exposes build state engine fields", () => {
   assert.ok(overview.phases.length >= 4);
   assert.ok(overview.current_sprint.queued.includes("LB-OS-021"));
   assert.ok(overview.commit_timeline.length > 0);
+  assert.ok(overview.experience_maturity.length >= 10);
+  assert.equal(overview.experience_maturity_engine_id, "ENG-EXP-001");
 });
 
 test("blocker explanation for planned slice with deps", () => {

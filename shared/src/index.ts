@@ -147,6 +147,15 @@ export type {
   RelationshipTimelineEvent,
 } from "./relationshipNetwork.js";
 export type {
+  ExperienceMaturityLevel,
+  ExperienceMaturityRow,
+} from "./experienceMaturity.js";
+export {
+  EXPERIENCE_MATURITY_LABELS,
+  maturityCode,
+  maturityLabel,
+} from "./experienceMaturity.js";
+export type {
   LiveSurfaceAudit,
   LiveSurfaceEntry,
   LiveSurfaceMode,

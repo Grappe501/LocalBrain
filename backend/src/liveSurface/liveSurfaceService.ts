@@ -1,7 +1,9 @@
-import type {
-  LiveSurfaceAudit,
-  LiveSurfaceSmokeReport,
-  LiveSurfaceSmokeResult,
+import {
+  maturityLabel,
+  type ExperienceMaturityRow,
+  type LiveSurfaceAudit,
+  type LiveSurfaceSmokeReport,
+  type LiveSurfaceSmokeResult,
 } from "@localbrain/shared";
 import { listActionLog, listBackupRecords, listProposedActions } from "../actions/proposalStore.js";
 import { getDataIntelligenceOverview } from "../dataIntelligence/dataIntelligenceService.js";
@@ -20,13 +22,28 @@ import { getWorkspaceLinks } from "../workspaces/workspaceLinks.js";
 import { isDatabaseConnected } from "../db/database.js";
 import { getForbiddenRuleCount } from "../safety/permissionEngine.js";
 import { projectWorkspaceLive } from "./workspaceProjection.js";
-import { LIVE_SURFACE_ENGINE_ID, SURFACE_REGISTRY } from "./surfaceRegistry.js";
+import { LIVE_SURFACE_ENGINE_ID, SURFACE_REGISTRY, EXPERIENCE_MATURITY_ENGINE_ID } from "./surfaceRegistry.js";
+
+export function getExperienceMaturityMatrix(): ExperienceMaturityRow[] {
+  return SURFACE_REGISTRY.map((s) => ({
+    route: s.route,
+    label: s.label,
+    surface_mode: s.mode,
+    maturity_level: s.maturity_level,
+    maturity_label: maturityLabel(s.maturity_level),
+    target_level: s.target_maturity_level,
+    next_upgrade_slice: s.next_upgrade_slice,
+    next_upgrade_summary: s.next_upgrade_summary,
+  }));
+}
 
 export function getLiveSurfaceAudit(): LiveSurfaceAudit {
   return {
     surfaces: SURFACE_REGISTRY,
     observed_at: new Date().toISOString(),
     engine_id: LIVE_SURFACE_ENGINE_ID,
+    experience_maturity_engine_id: EXPERIENCE_MATURITY_ENGINE_ID,
+    experience_maturity: getExperienceMaturityMatrix(),
   };
 }
 
