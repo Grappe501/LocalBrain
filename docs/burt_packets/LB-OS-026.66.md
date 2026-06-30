@@ -38,7 +38,8 @@ Future / Planned · Not Live · Infrastructure Reserved
 | CAP-FUT-VOI-001 | Executive Voice Interface (LB-OS-03X-VOI) |
 | CAP-FUT-MED-001 | Executive Digital World Monitor (LB-OS-03X-DWM) |
 | CAP-FUT-PVO-001 | Personal Voice Interface (LB-OS-03X-PVI) |
-| CAP-FUT-PRV-001 | Digital Privacy & External Exposure Control (LB-OS-03X-DPEC) |
+| CAP-FUT-PRV-001 | Data Sovereignty & Exposure Control (LB-OS-03X-DPEC) |
+| CAP-FUT-ENC-001 | Encryption, Key Vault, and Sovereign Routing (LB-OS-03X-ENC) |
 
 ---
 
@@ -46,14 +47,22 @@ Future / Planned · Not Live · Infrastructure Reserved
 
 > **Doc:** [Executive Digital World Doctrine](./LOCALBRAIN_EXECUTIVE_DIGITAL_WORLD_DOCTRINE.md) · Post-Convention · No connectors
 
-### Digital Privacy & External Exposure Control (LB-OS-03X-DPEC)
+### Data Sovereignty & Exposure Control (LB-OS-03X-DPEC + LB-OS-03X-ENC)
 
-> LocalBrain protects Steve's privacy by minimizing disclosure, controlling identity exposure, and making every external data flow visible and governed.
+> **Doc:** [Sovereign Privacy & Encryption](./LOCALBRAIN_SOVEREIGN_PRIVACY_ENCRYPTION.md)
+
+Core rule:
 
 ```txt
-Minimize what leaves the machine · Mask unnecessary identity · Local models when possible
-Route sensitive work locally · Sanitized context to external AI only · Log every disclosure
+LocalBrain never sends whole-world context externally.
+External AI sees only the smallest approved packet needed for the task.
 ```
+
+Privacy Core (ENC): encryption at rest · encrypted fields · file vault · credential vault · per-workspace keys · encrypted backups
+
+Exposure control (DPEC): disclosure ledger · classifier · redaction · tier routing · local-first models · audit log
+
+Privacy tiers: 0 never leaves machine · 1 local model only · 2 redacted external · 3 public-safe
 
 ### Executive Digital World Monitor (LB-OS-03X-DWM)
 
@@ -131,7 +140,7 @@ Implemented as `EXECUTIVE_CONNECTOR_GOVERNANCE` in `shared/src/capabilityGoverna
 ## Acceptance
 
 ```txt
-[ ] 17+ planned capabilities in CAPABILITY_REGISTRY with infrastructure_reserved
+[ ] 18+ planned capabilities in CAPABILITY_REGISTRY with infrastructure_reserved
 [ ] Planned caps excluded from graph integrity orphan/readiness checks
 [ ] Atlas renders Future / Planned section before Live capabilities
 [ ] Dashboard gate (026.7) can project planned vs live from atlas JSON

@@ -152,9 +152,9 @@ Examples:
 | Public speech draft | Semi-private → Public | OpenAI allowed with redaction |
 | Published press release | Public | External OK |
 
-**Capability:** `CAP-FUT-PRV-001` · **Slice:** `LB-OS-03X-DPEC`
+**Capability:** `CAP-FUT-PRV-001` · **Slice:** `LB-OS-03X-DPEC` · **ENC:** `LB-OS-03X-ENC`
 
-> LocalBrain protects Steve's privacy by minimizing disclosure, controlling identity exposure, and making every external data flow visible and governed.
+> See [Sovereign Privacy & Encryption](./LOCALBRAIN_SOVEREIGN_PRIVACY_ENCRYPTION.md) for tiers, Privacy Core, and GPU server posture.
 
 CoS decides routing from classification — not the provider.
 

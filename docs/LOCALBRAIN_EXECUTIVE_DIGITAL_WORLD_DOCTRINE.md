@@ -22,7 +22,15 @@ Send only small, sanitized context to external AI.
 Log every external AI disclosure.
 ```
 
-**Capability:** `CAP-FUT-PRV-001` · **Slice:** `LB-OS-03X-DPEC` — Digital Privacy & External Exposure Control
+**Capability:** `CAP-FUT-PRV-001` · **Slice:** `LB-OS-03X-DPEC` — Data Sovereignty & Exposure Control  
+**Foundation:** `CAP-FUT-ENC-001` · **Slice:** `LB-OS-03X-ENC` — [Sovereign Privacy & Encryption](./LOCALBRAIN_SOVEREIGN_PRIVACY_ENCRYPTION.md)
+
+Core rule:
+
+```txt
+LocalBrain never sends whole-world context externally.
+External AI sees only the smallest approved packet needed for the task.
+```
 
 Includes (reserved):
 

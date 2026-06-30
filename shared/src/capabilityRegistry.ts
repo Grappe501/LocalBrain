@@ -8,9 +8,11 @@ import {
   EXECUTIVE_MEDIA_GOVERNANCE,
   PERSONAL_VOICE_GOVERNANCE,
   PRIVACY_EXPOSURE_GOVERNANCE,
+  SOVEREIGN_ENCRYPTION_POLICY,
   type CapabilityGovernancePolicy,
   type PersonalVoiceGovernancePolicy,
   type PrivacyExposureGovernancePolicy,
+  type SovereignEncryptionPolicy,
 } from "./capabilityGovernance.js";
 
 export type { CapabilityGovernancePolicy } from "./capabilityGovernance.js";
@@ -19,10 +21,16 @@ export {
   EXECUTIVE_MEDIA_GOVERNANCE,
   PERSONAL_VOICE_GOVERNANCE,
   PRIVACY_EXPOSURE_GOVERNANCE,
+  SOVEREIGN_ENCRYPTION_POLICY,
+  PRIVACY_TIER_DEFINITIONS,
+  SOVEREIGN_PRIVACY_CORE_RULE,
+  SOVEREIGN_PRIVACY_OPERATIONAL_RULE,
 } from "./capabilityGovernance.js";
 export type {
   PersonalVoiceGovernancePolicy,
   PrivacyExposureGovernancePolicy,
+  PrivacyTier,
+  SovereignEncryptionPolicy,
 } from "./capabilityGovernance.js";
 
 export type CapabilityRelationType =
@@ -119,6 +127,7 @@ export interface CapabilityEntry {
   governance_policy?: CapabilityGovernancePolicy;
   personal_voice_governance?: PersonalVoiceGovernancePolicy;
   privacy_exposure_governance?: PrivacyExposureGovernancePolicy;
+  sovereign_encryption_policy?: SovereignEncryptionPolicy;
 }
 
 export interface WorkflowDefinition {
@@ -200,10 +209,10 @@ export const WF_FUTURE_MEDIA: WorkflowDefinition = {
 
 export const WF_FUTURE_PRIVACY: WorkflowDefinition = {
   workflow_id: "WF-FUT-PRV-001",
-  title: "Digital Privacy & External Exposure Control (planned)",
+  title: "Sovereign Privacy & Exposure Control (planned)",
   description:
-    "Classify sensitivity → mask/redact → route local-first → log disclosure → external AI with sanitized context only",
-  capability_ids: ["CAP-FUT-PRV-001", "CAP-EO-001"],
+    "ENC vault → classify tier → local search → minimum packet → redact → route by tier → log disclosure",
+  capability_ids: ["CAP-FUT-ENC-001", "CAP-FUT-PRV-001", "CAP-EO-001"],
 };
 
 export const WF_FUTURE_EXECUTIVE_COMMUNICATIONS: WorkflowDefinition = {
@@ -693,37 +702,77 @@ const FUTURE_EXECUTIVE_CAPABILITIES: CapabilityEntry[] = [
     personal_voice_governance: PERSONAL_VOICE_GOVERNANCE,
   }),
   futureCap({
-    capability_id: "CAP-FUT-PRV-001",
-    title: "Digital Privacy & External Exposure Control",
+    capability_id: "CAP-FUT-ENC-001",
+    title: "Encryption, Key Vault, and Sovereign Routing",
     description:
-      "AI disclosure ledger, sensitive-context classifier, local-first routing, provider privacy modes, identity masking, redaction before API calls, external source risk rating",
+      "LocalBrain Privacy Core — encryption at rest, encrypted DB fields, file vault, credential vault, per-workspace keys, encrypted backups",
     executive_outcome:
-      "LocalBrain protects Steve's privacy by minimizing disclosure, controlling identity exposure, and making every external data flow visible and governed.",
+      "All executive data and keys are encrypted by default; sovereign storage gates every connector and provider integration.",
+    executive_question_ids: [],
+    primary_route: "/future/privacy-core",
+    secondary_routes: ["/future/vault"],
+    prerequisites: ["CAP-EO-001"],
+    next_recommended_steps: ["CAP-FUT-PRV-001"],
+    departments: ["Chief of Staff", "Migration"],
+    workflows: ["WF-FUT-PRV-001"],
+    keywords: [
+      "encryption",
+      "key vault",
+      "credential vault",
+      "encryption at rest",
+      "workspace keys",
+      "encrypted backup",
+    ],
+    search_terms: [
+      "sovereign encryption",
+      "privacy core",
+      "encrypted vault",
+      "per-workspace encryption",
+    ],
+    authority_level: "supporting",
+    slice_id: "LB-OS-03X-ENC",
+    nav_placement: "future",
+    sovereign_encryption_policy: SOVEREIGN_ENCRYPTION_POLICY,
+    related_capabilities: [
+      { target_capability_id: "CAP-FUT-PRV-001", relation_type: "enables" },
+    ],
+  }),
+  futureCap({
+    capability_id: "CAP-FUT-PRV-001",
+    title: "Data Sovereignty & Exposure Control",
+    description:
+      "AI disclosure ledger, sensitive-context classifier, redaction before provider calls, routing by privacy tier, local-first model routing, audit log of every external disclosure",
+    executive_outcome:
+      "LocalBrain never sends whole-world context externally — external AI sees only the smallest approved packet, fully logged.",
     executive_question_ids: [],
     primary_route: "/future/privacy",
     secondary_routes: [],
-    prerequisites: ["CAP-EO-001"],
-    next_recommended_steps: ["CAP-FUT-MED-001", "CAP-FUT-GAC-001"],
+    prerequisites: ["CAP-EO-001", "CAP-FUT-ENC-001"],
+    next_recommended_steps: ["CAP-FUT-MED-001", "CAP-FUT-GAC-001", "CAP-FUT-ECD-001"],
     departments: ["Chief of Staff", "Migration"],
     workflows: ["WF-FUT-PRV-001"],
     keywords: [
       "privacy",
+      "data sovereignty",
       "disclosure ledger",
       "redaction",
       "local-first",
       "identity masking",
-      "external ai",
+      "privacy tier",
     ],
     search_terms: [
       "digital privacy",
       "external exposure control",
       "ai disclosure",
-      "privacy posture",
+      "minimum packet",
     ],
     authority_level: "supporting",
     slice_id: "LB-OS-03X-DPEC",
     nav_placement: "future",
     privacy_exposure_governance: PRIVACY_EXPOSURE_GOVERNANCE,
+    related_capabilities: [
+      { target_capability_id: "CAP-FUT-ENC-001", relation_type: "feeds" },
+    ],
   }),
 ];
 
