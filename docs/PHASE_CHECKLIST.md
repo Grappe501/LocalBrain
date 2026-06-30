@@ -49,7 +49,7 @@
 | [Live Surface Audit](./burt_packets/LB-OS-019.6.md) — ENG-SRF-001 route wiring | ✅ LB-OS-019.6 |
 | [Experience Maturity](./burt_packets/LB-OS-019.7.md) — ENG-EXP-001 L0–L5 roadmap | ✅ LB-OS-019.7 |
 | [Three-Phase Roadmap](./LOCALBRAIN_THREE_PHASE_ROADMAP.md) — Build → Teach → Company (measurable gates) | ✅ Strategy 2026-06 |
-| [Constitution v1](./LOCALBRAIN_CONSTITUTION.md) — canonical index + Articles I–X | ✅ Strategy 2026-06 |
+| [Constitution v1](./LOCALBRAIN_CONSTITUTION.md) — canonical index + Articles I–XIII | ✅ Strategy 2026-06 |
 | [System Evolution](./LOCALBRAIN_SYSTEM_EVOLUTION.md) — intelligence scoreboard (ENG-EVO-001) | 📋 LB-OS-035 Phase 2 |
 | [Executive Leverage Score](./LOCALBRAIN_EXECUTIVE_LEVERAGE_SCORE.md) — ENG-ELS-001 impact metric | 📋 Phase 2 |
 | [Product Naming](./LOCALBRAIN_PRODUCT_NAMING.md) — EOS product vs LocalBrain engine | ✅ Planning |
@@ -61,7 +61,30 @@
 | [Platform Separation Strategy](./LOCALBRAIN_PLATFORM_SEPARATION_STRATEGY.md) — Platform vs Brain boundary | ✅ Planning — 2026-06-28 |
 | [Multi-Machine Network Plan](./LOCALBRAIN_MULTI_MACHINE_NETWORK_PLAN.md) | 📋 Future arc — LB-OS-107–114 |
 
-**Gate:** LB-OS-026.5 ✅ · Phase 1 certification complete · **Executive OS v1.0-rc frozen**.
+**Gate:** LB-OS-026.5 ✅ · Phase 1 certification complete · **Executive OS v1.0-rc frozen** · System 1 feature complete.
+
+---
+
+## Phase 2 — Executive Memory & Intelligence (LB-OS-027–035)
+
+> **Doctrine:** Teach LocalBrain to remember before it learns to reason.  
+> **Constitution:** [Article XIII — Executive Principle](./LOCALBRAIN_CONSTITUTION.md#article-xiii--executive-principle)  
+> **Gate:** [Memory Summit](./LOCALBRAIN_MEMORY_SUMMIT.md) before LB-OS-027 code — architecture only, no implementation.
+
+| Slice | Name | Status |
+|-------|------|--------|
+| — | Memory Summit | 📋 SCHEDULED — architecture gate |
+| LB-OS-027 | Executive Memory Bootstrap | ⬜ PLANNED |
+| LB-OS-028 | Memory Ingestion | ⬜ PLANNED |
+| LB-OS-029 | Memory Retrieval | ⬜ PLANNED |
+| LB-OS-030 | Executive Context Window | ⬜ PLANNED |
+| LB-OS-031 | Executive Mission Stack | ⬜ PLANNED |
+| LB-OS-032 | Attention Budget | ⬜ PLANNED |
+| LB-OS-033 | Executive Question Router | ⬜ PLANNED |
+| LB-OS-034 | Mission Completion Probability | ⬜ PLANNED |
+| LB-OS-035 | System Evolution | ⬜ PLANNED |
+
+**Note:** This strategic arc (027–035) is the immediate post–Phase 1 path. Legacy OJT slice IDs (027–032) in [Build Slice Queue v2](./LOCALBRAIN_BUILD_SLICE_QUEUE_V2.md) will be reconciled in a future queue update — do not conflate.
 
 **Phase 1 finish arc:**
 
@@ -348,7 +371,8 @@ Steve = owner · Actions = approval-gated · Audit = always on (when team ships)
 
 | Date | Change |
 |------|--------|
-| 2026-06-29 | LB-OS-016 Executive OS V1 milestone — spine acceptance, nav cleanup, V1 docs |
+| 2026-06-29 | Phase 1 complete — Article XIII Executive Principle · Memory Summit gate · Phase 2 arc 027–035 locked |
+| 2026-06-29 | LB-OS-026.5 certification — four platform metrics · Executive OS v1.0 architecture frozen |
 | 2026-06-29 | LB-OS-015 Relationship & Network Intelligence — social knowledge, graph, timeline, engagement |
 | 2026-06-29 | LB-OS-014 Data & Intelligence Department — sources, query plans, lineage, graph |
 | 2026-06-29 | LB-OS-013 Writing Department — modes, voices, draft preview, sources |

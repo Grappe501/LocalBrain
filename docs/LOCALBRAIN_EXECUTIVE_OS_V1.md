@@ -2,6 +2,7 @@
 
 > **Slice:** LB-OS-016 · **Hardening, not features**  
 > **Milestone:** First usable Executive OS loop for Steve Brain  
+> **Status (2026-06-29):** System 1 feature complete for v1 after LB-OS-026.5 — polish and bug fixes only; architecture frozen.  
 > **Verify:** `GET /api/v1/acceptance`
 
 ---

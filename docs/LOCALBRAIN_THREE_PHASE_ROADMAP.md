@@ -13,7 +13,7 @@ Each phase has a **success question**, **exit criteria**, and **tracked metrics*
 | Phase | Name | Success question | End state |
 | ----- | ---- | ---------------- | --------- |
 | **1** | Build the Brain | *Can LocalBrain accurately represent your world?* | LocalBrain **knows** your world |
-| **2** | Teach the Brain | *Can LocalBrain improve your decisions?* | LocalBrain **helps you think** |
+| **2** | Remember, then Reason | *Can LocalBrain improve your decisions?* | LocalBrain **helps you think** |
 | **3** | Build the Company | *Can LocalBrain coordinate multiple departments?* | LocalBrain **helps you run an organization** |
 
 **Do not skip Phase 2.** Feature count without intelligence produces a complicated app, not an Executive OS.
@@ -42,9 +42,10 @@ Each phase has a **success question**, **exit criteria**, and **tracked metrics*
 | Migration planning complete | LB-OS-018–019 | ✅ |
 | Executive consolidation briefing (first Executive Intelligence) | LB-OS-020 | ✅ |
 | Phase 1 integration pass (cohesion) | LB-OS-020.5 | ✅ |
-| Personal OS cutover ready | LB-OS-021–026 | 📋 Next |
+| Personal OS cutover ready | LB-OS-021–026 | ✅ |
+| Phase 1 certification | LB-OS-026.5 | ✅ |
 
-**Phase 1 gate:** LB-OS-026 Personal OS launch — plus **Executive Intelligence layer** (EIC + Simulation pipeline) and cohesive cross-links from 020.5.
+**Phase 1 gate:** LB-OS-026.5 certification passed — **Executive OS v1.0 architecture frozen**. System 1 (Executive OS) is feature complete for v1.
 
 ### Phase 1 metrics (representation)
 
@@ -55,7 +56,16 @@ Each phase has a **success question**, **exit criteria**, and **tracked metrics*
 
 ---
 
-## Phase 2 — Teach the Brain (next strategic focus)
+## Phase 2 — Remember, then Reason (next strategic focus)
+
+### Doctrine
+
+> **Teach LocalBrain to remember before it learns to reason.**
+
+Phase 1 built **where everything is**. Phase 2 builds **what everything means** — on the memory substrate every future reasoning system depends on.
+
+**Gate before code:** [Memory Summit](./LOCALBRAIN_MEMORY_SUMMIT.md) — architecture only.  
+**Constitution:** [Article XIII — Executive Principle](./LOCALBRAIN_CONSTITUTION.md#article-xiii--executive-principle)
 
 ### Success question
 
@@ -89,7 +99,33 @@ Each phase has a **success question**, **exit criteria**, and **tracked metrics*
 **Phase 2 build order:**
 
 ```txt
-Personal OS cutover (026)
+Memory Summit (architecture gate)
+  ↓
+027  Executive Memory Bootstrap
+  ↓
+028  Memory Ingestion
+  ↓
+029  Memory Retrieval
+  ↓
+030  Executive Context Window
+  ↓
+031  Executive Mission Stack
+  ↓
+032  Attention Budget
+  ↓
+033  Executive Question Router
+  ↓
+034  Mission Completion Probability
+  ↓
+035  System Evolution
+```
+
+Nothing in this arc requires changing System 1. Architecture Volatility at Phase 1 close (~6%) confirms the substrate is stable for additive intelligence work.
+
+**Earlier conceptual order (superseded labels):**
+
+```txt
+Personal OS cutover (026) — complete
   ↓
 Executive Intelligence (EIC + Simulation — Phase 1 foundation)
   ↓

@@ -158,9 +158,10 @@ export const EXECUTIVE_OS_V1_FREEZE_POLICY =
 
 export const RECOMMENDED_PHASE_2_SEQUENCE = [
   "LB-OS-026.5 Phase 1 Certification",
-  "LB-OS-027 Teach the Brain",
-  "LB-OS-028 Executive Memory OS",
-  "LB-OS-029 Memory Recall Engine",
+  "Memory Summit — architecture gate (no code)",
+  "LB-OS-027 Executive Memory Bootstrap",
+  "LB-OS-028 Memory Ingestion",
+  "LB-OS-029 Memory Retrieval",
   "LB-OS-030 Executive Context Window",
   "LB-OS-031 Executive Mission Stack",
   "LB-OS-032 Attention Budget",

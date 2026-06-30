@@ -9,8 +9,16 @@
 
 ## Principle
 
+[Article XIII — Executive Principle](./LOCALBRAIN_CONSTITUTION.md#article-xiii--executive-principle):
+
+```txt
+The platform shall remember before it reasons.
+```
+
 Phase 1 builds a trustworthy **Executive Operating System**.  
 The next leap is an **Executive Memory System** — memory as an operating layer, not a database feature or generic RAG.
+
+**Gate before LB-OS-027:** [Memory Summit](./LOCALBRAIN_MEMORY_SUMMIT.md) — architecture only.
 
 ```txt
 Today (Phase 1):

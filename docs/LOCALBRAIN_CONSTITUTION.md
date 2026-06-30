@@ -183,6 +183,25 @@ Experience Maturity L0–L5 on every route · Dev mode shows badges; production 
 
 ---
 
+## Article XIII — Executive Principle
+
+**Remember before you reason.**
+
+```txt
+The platform shall remember before it reasons.
+
+Every recommendation must be traceable to memory,
+provenance,
+or deterministic evidence.
+
+Reasoning augments memory.
+It never replaces it.
+```
+
+Binding for Phase 2+ intelligence work (LB-OS-027–035). See [Executive Memory OS](./LOCALBRAIN_EXECUTIVE_MEMORY_OS.md) · [Memory Summit](./LOCALBRAIN_MEMORY_SUMMIT.md).
+
+---
+
 ## Amendment process
 
 1. Propose change in Decision Ledger or Assumption Ledger + Phase Checklist change log  
@@ -210,6 +229,7 @@ LOCALBRAIN_CONSTITUTION.md          ← you are here
 ├── LOCALBRAIN_EXECUTIVE_QUESTION_REGISTRY.md (ENG-EQ-001 · LB-OS-020.5)
 ├── LOCALBRAIN_EXECUTIVE_INTENT.md (Executive Mission Stack · ENG-EMS-001 · MCP · Phase 2)
 ├── LOCALBRAIN_EXECUTIVE_MEMORY_OS.md (Memory OS · Memory Confidence · Phase 2–3)
+├── LOCALBRAIN_MEMORY_SUMMIT.md (architecture gate before LB-OS-027)
 ├── LOCALBRAIN_MEMORY_DOMAINS.md (Memory foundational object · six domains)
 ├── LOCALBRAIN_EXECUTIVE_COGNITIVE_LOAD.md (ENG-ECL-001 · System 3 · Phase 2)
 ├── LOCALBRAIN_EXECUTIVE_LEVERAGE_SCORE.md (ENG-ELS-001)
@@ -223,4 +243,4 @@ LOCALBRAIN_CONSTITUTION.md          ← you are here
 
 ---
 
-*Constitution v1.0 · strategic checkpoint · 2026-06-28*
+*Constitution v1.0 · Article XIII Executive Principle · Phase 1 complete · 2026-06-29*

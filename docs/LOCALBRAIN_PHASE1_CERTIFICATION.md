@@ -99,17 +99,23 @@ After LB-OS-026.5 passes, see [Executive OS v1.0 Freeze](./LOCALBRAIN_EXECUTIVE_
 
 ## Recommended Phase 2 sequence
 
+**Doctrine:** Teach LocalBrain to remember before it learns to reason.  
+**Gate:** [Memory Summit](./LOCALBRAIN_MEMORY_SUMMIT.md) before LB-OS-027 code.
+
 ```txt
-027  Teach the Brain
-028  Executive Memory OS
-029  Memory Recall Engine
-030  Executive Context Window
-031  Executive Mission Stack
-032  Attention Budget
-033  Executive Question Router
-034  Mission Completion Probability
-035  System Evolution
+Memory Summit   architecture only
+027             Executive Memory Bootstrap
+028             Memory Ingestion
+029             Memory Retrieval
+030             Executive Context Window
+031             Executive Mission Stack
+032             Attention Budget
+033             Executive Question Router
+034             Mission Completion Probability
+035             System Evolution
 ```
+
+Nothing in this arc requires changing System 1 (Executive OS v1.0 frozen).
 
 ---
 
