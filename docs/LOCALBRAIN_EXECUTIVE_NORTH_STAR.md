@@ -206,8 +206,9 @@ Not 300. Three.
 1. Convention + Theory v1.0 freeze (peer review gate)
 2. Goal 1 — Memory OS bootstrap (LB-OS-027+)
 3. Goal 2 — Executive Communications Department (first production department)
-4. Goal 3 — Data sovereignty layer (DPEC) gates all external connectors
-5. Digital World Monitor · Security · AI Intelligence (parallel capacity, not cognitive rush)
+4. Goal 3 — Data sovereignty not invisibility (DPEC + ENC) gates every connector
+5. Operational discipline surfaces ([doc](./LOCALBRAIN_EXECUTIVE_OPERATIONAL_DISCIPLINE.md)) — after Convention, before production departments
+6. Digital World Monitor · Security · AI Intelligence (parallel capacity, not cognitive rush)
 ```
 
 ---

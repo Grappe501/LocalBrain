@@ -203,6 +203,7 @@ LB-OS-03X-VOI — Executive Voice Interface (wake/push-to-talk · transcript →
 LB-OS-03X-PVI — Personal Voice Interface (consent-gated cloning · synthetic indicator · approval before outbound)
 LB-OS-03X-ENC — Encryption, Key Vault, and Sovereign Routing (Privacy Core — build from the start)
 LB-OS-03X-DPEC — Data Sovereignty & Exposure Control (tiers · minimum packet · disclosure ledger)
+LB-OS-03X-OPS — Operational discipline ([doc](./LOCALBRAIN_EXECUTIVE_OPERATIONAL_DISCIPLINE.md): sovereignty dashboard · trust · memory ledger · executive capital · dept maturity · institutional memory · decision evolution)
 ```
 
 ```txt

@@ -64,6 +64,12 @@ Exposure control (DPEC): disclosure ledger · classifier · redaction · tier ro
 
 Privacy tiers: 0 never leaves machine · 1 local model only · 2 redacted external · 3 public-safe
 
+### Operational discipline (LB-OS-03X-OPS — post-Convention)
+
+> **Doc:** [Executive Operational Discipline](./LOCALBRAIN_EXECUTIVE_OPERATIONAL_DISCIPLINE.md) · Visibility and trust — **not** new cognitive doctrine
+
+Sovereignty dashboard · department trust · memory ledger · executive capital · department maturity · institutional memory · decision evolution
+
 ### Executive Digital World Monitor (LB-OS-03X-DWM)
 
 ```txt
