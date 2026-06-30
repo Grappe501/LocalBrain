@@ -75,7 +75,8 @@ Links:           docs · commits · trace IDs
 | ------- | ---- | ------ | ------ |
 | 1 | Philosopher — logical consistency | ✅ Passed | [PR-S1 below](#peer-review-session-1-philosopher) |
 | 2 | Cognitive scientist | ✅ Passed (research obligations) | [PR-S2 below](#peer-review-session-2-cognitive-scientist) |
-| 3 | Systems engineer | 📋 Ready — frozen packet `7b6ab71` | [PR-S3 — Session 3 opens](#peer-review-session-3-systems-engineer) |
+| 3 | Systems engineer | ✅ Passed (engineering obligations) | [PR-S3 below](#peer-review-session-3-systems-engineer) |
+| 4 | Executive practitioner | 📋 Ready — frozen packet `7b6ab71` | [PR-S4 — Session 4 opens](#peer-review-session-4-executive-practitioner) |
 | 4 | Executive practitioner | ⬜ Pending | — |
 | 5 | Skeptic | ⬜ Pending | — |
 
@@ -193,17 +194,91 @@ Links:           docs · commits · trace IDs
 
 | Field | Value |
 | ----- | ----- |
-| Date | 📋 Ready to open |
+| Date | 2026-06-28 (Session 3 open) |
 | Reviewer | Independent (Systems Engineer) |
 | Submission | Frozen at `7b6ab71` |
 | Overarching question | Could this architecture work at millions of memories · thousands of workspaces · multiple organizations · decades of knowledge? |
 | Rules | [Session 3 rules](./LOCALBRAIN_EXECUTIVE_COGNITION_PEER_REVIEW.md#session-3--systems-engineer-rules-binding) |
-| Outcome | Pending |
+| Outcome | **Passed with engineering obligations** — 0 engineering contradictions · 1 clarification · 4 open questions · 0 Amendment Candidates |
 
 #### Findings log
 
 | ID | Finding | Engineering read | Outcome | Notes |
 | -- | ------- | ---------------- | ------- | ----- |
+| PR-S3-001 | Cognitive Trace scalability | Recoverable explainability · not full recursive reconstruction; Model C (DAG + checkpoints) | **Clarification** | Engineering: bounded-depth lineage · stable checkpoints · compressed ancestry |
+| PR-S3-002 | World Model incremental evolution | Federated submodels · locality · sync semantics · temporal versioning | **Open Question** | Engineering: incremental compose · versioned submodels · historical replay without full snapshots |
+| PR-S3-003 | Memory Recall latency | Sufficient memory before reasoning · not complete; streaming/tiered recall | **Open Question** | Engineering: tiered · streaming · interruptible recall · confidence thresholds · relevance ownership |
+| PR-S3-004 | Reasoning while reality changes | Versioned decision context · material change detection · recommendation freshness | **Open Question** | Engineering: event-aware cognition · dependency invalidation · concurrent decision coordination |
+| PR-S3-005 | Runtime self-observation | Epistemic vs infrastructure uncertainty · runtime health model | **Open Question** | Engineering: provider reliability · degradation detection · dual confidence (judgment vs runtime) |
+
+#### Session 3 summary
+
+| Category | Count |
+| -------- | ----: |
+| Clarification | 1 |
+| Open Question | 4 |
+| Amendment Candidate | 0 |
+| Engineering contradictions | **0** |
+
+**Systems engineer conclusion:** Failed to find engineering constraints requiring Theory v1.1. Theory constrains implementation without forcing reinterpretation. Emergent style: **local · incremental · versioned · event-aware · self-observing**.
+
+#### Engineering obligations (from Session 3)
+
+| ID | Obligation |
+| -- | ---------- |
+| RO-S3-001 | Bounded-depth default explainability · drill-down to full ancestry |
+| RO-S3-002 | Cognitive Trace checkpoints at decision + reflection close |
+| RO-S3-003 | Graph depth grows sublinearly vs graph size |
+| RO-S3-004 | Federated World Model — local update boundaries |
+| RO-S3-005 | Submodel synchronization semantics · staleness · conflict surfacing |
+| RO-S3-006 | Point-in-time World Model replay without full snapshots |
+| RO-S3-007 | Locality — unrelated updates do not invalidate distant understanding |
+| RO-S3-008 | Tiered/streaming recall with confidence-gated reasoning entry |
+| RO-S3-009 | Interruptible recall on question change |
+| RO-S3-010 | Recall latency — executive-time decisions (5-second test) |
+| RO-S3-011 | Relevance ranking owned by platform — not model context stuffing |
+| RO-S3-012 | Versioned Decision Context bound to Cognitive Trace |
+| RO-S3-013 | Material change detection · dependency-aware invalidation |
+| RO-S3-014 | Recommendation freshness driven by World Model delta |
+| RO-S3-015 | Concurrent decision coordination across workspaces |
+| RO-S3-016 | Trustworthy recommendations while reality continues changing |
+| RO-S3-017 | Distinguish information uncertainty vs infrastructure uncertainty |
+| RO-S3-018 | Runtime health model — provider reliability · degradation detection |
+| RO-S3-019 | Graceful self-limitation when Runtime Confidence falls |
+| RO-S3-020 | Detect silent degradation — slow recall · stale WM · partial indexing |
+
+#### Session 3 gate
+
+- [x] No unresolved **Amendment Candidate** without evidence plan
+- [x] All **Clarification** / **Open Question** items deferred (engineering — not Theory edit)
+- [x] Success criterion met: failed to find engineering contradiction requiring Theory v1.1
+
+#### Session 3 planned review areas (complete)
+
+| ID | Topic | Status |
+| -- | ----- | ------ |
+| PR-S3-001 | Cognitive Trace scalability | ✅ |
+| PR-S3-002 | World Model incremental evolution | ✅ |
+| PR-S3-003 | Memory Recall latency | ✅ |
+| PR-S3-004 | Reasoning while reality changes | ✅ |
+| PR-S3-005 | Runtime self-observation | ✅ |
+
+---
+
+### Peer Review Session 4 (Executive Practitioner)
+
+| Field | Value |
+| ----- | ----- |
+| Date | 📋 Ready to open |
+| Reviewer | Independent (Executive Practitioner) |
+| Submission | Frozen at `7b6ab71` |
+| Overarching question | Does this architecture help a real executive make better decisions under real constraints? |
+| Outcome | Pending |
+
+#### Findings log
+
+| ID | Finding | Practical read | Outcome | Notes |
+| -- | ------- | -------------- | ------- | ----- |
 | — | *(reviewer populates)* | | | |
 
 ---
@@ -226,7 +301,8 @@ Links:           docs · commits · trace IDs
 | ------ | ---- | ------- | ------ |
 | PR-S1 Philosopher | 2026-06-28 | **Passed** — 0 contradictions · 3 clarifications · 2 open questions | [PR-S1](#peer-review-session-1-philosopher) |
 | PR-S2 Cognitive Scientist | 2026-06-28 | **Passed (research obligations)** — 0 empirical contradictions · 2 clarifications · 3 open questions | [PR-S2](#peer-review-session-2-cognitive-scientist) |
-| Executive Cognition Peer Review (aggregate) | 📋 In progress | Sessions 3–5 pending · five gate questions open | [Peer Review doc](./LOCALBRAIN_EXECUTIVE_COGNITION_PEER_REVIEW.md) |
+| PR-S3 Systems Engineer | 2026-06-28 | **Passed (engineering obligations)** — 0 engineering contradictions · RO-S3-001–020 | [PR-S3](#peer-review-session-3-systems-engineer) |
+| Executive Cognition Peer Review (aggregate) | 📋 In progress | Sessions 4–5 pending · five gate questions open | [Peer Review doc](./LOCALBRAIN_EXECUTIVE_COGNITION_PEER_REVIEW.md) |
 
 ---
 
@@ -246,7 +322,8 @@ Amendments publish as v1.1, v1.2, … v1.0 text remains immutable. See [Falsific
 | ----------- | ---- | ---- | ------- | ------------- |
 | E-PR-S1-2026 | adversarial review | 2026-06-28 | Philosopher Session 1 — 5 attack surfaces · 0 contradictions · 3 clarifications · 2 open questions | None — internal coherence supported; Convention agenda deferred |
 | E-PR-S2-2026 | adversarial review | 2026-06-28 | Cognitive Scientist Session 2 — 5 attack surfaces · 0 empirical contradictions · research obligations RO-S2-001–007 | None — empirical plausibility supported; H-* validation agenda defined |
-| E-META-PR-2026 | meta-evidence | 2026-06-28 | Sessions 1–2 pattern: architectural vs scientific claim separation · no pillar additions · boundary/measurement pressure only | Review method taxonomy — not evidence theory is correct |
+| E-PR-S3-2026 | adversarial review | 2026-06-28 | Systems Engineer Session 3 — 5 attack surfaces · 0 engineering contradictions · obligations RO-S3-001–020 | None — engineering feasibility supported; implementation style emergent |
+| E-META-PR-2026 | meta-evidence | 2026-06-28 | Sessions 1–3 pattern: claim-type separation · emergent implementation style (local · incremental · versioned · event-aware · self-observing) | Review method taxonomy — not evidence theory is correct |
 
 ### Peer review progress (institutional memory)
 
@@ -254,11 +331,11 @@ Amendments publish as v1.1, v1.2, … v1.0 text remains immutable. See [Falsific
 | ------- | ----- | ------ |
 | 1 Philosopher | Internal logical consistency | Passed — 0 contradictions; boundary-definition questions |
 | 2 Cognitive Scientist | Empirical plausibility | Passed (research obligations) — 0 contradictions; measurement/validation obligations |
-| 3 Systems Engineer | Engineering feasibility | 📋 Ready |
-| 4 Executive Practitioner | Decision utility | ⬜ Pending |
+| 3 Systems Engineer | Engineering feasibility | Passed (engineering obligations) — 0 contradictions; RO-S3-001–020 |
+| 4 Executive Practitioner | Decision utility | 📋 Ready |
 | 5 Skeptic | Assume theory wrong | ⬜ Pending |
 
-**Confidence after S1–S2 (reviewer assessment, not certification):** Theory coherence strong · scientific plausibility sufficient to justify experimentation · engineering feasibility untested.
+**Confidence after S1–S3 (reviewer assessment, not certification):** Theory coherence strong · scientific plausibility sufficient to justify experimentation · engineering feasibility supported with obligations — not yet validated in implementation.
 
 ---
 

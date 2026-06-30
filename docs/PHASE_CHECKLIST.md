@@ -75,7 +75,7 @@
 | Slice | Name | Status |
 |-------|------|--------|
 | — | [Falsification Charter](./LOCALBRAIN_FALSIFICATION_CHARTER.md) | 📋 Acknowledge before peer review |
-| — | Executive Cognition Peer Review | 🔄 In progress — S1 ✅ · S2 ✅ · S3 ready (frozen `7b6ab71`) · [five gate questions](./LOCALBRAIN_EXECUTIVE_COGNITION_PEER_REVIEW.md#pre-h-027-gate-five-questions) |
+| — | Executive Cognition Peer Review | 🔄 In progress — S1 ✅ · S2 ✅ · S3 ✅ · S4 ready (frozen `7b6ab71`) · [five gate questions](./LOCALBRAIN_EXECUTIVE_COGNITION_PEER_REVIEW.md#pre-h-027-gate-five-questions) |
 | — | Executive Epistemology Convention (5 sessions) | 📋 After peer review — [specification](./LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md) |
 | LB-OS-027 | Executive Memory Bootstrap | ⬜ PLANNED |
 | LB-OS-028 | Memory Ingestion | ⬜ PLANNED |
