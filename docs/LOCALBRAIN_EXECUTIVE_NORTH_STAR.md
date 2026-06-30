@@ -215,6 +215,8 @@ Not 300. Three.
 4. Goal 3 — Data sovereignty not invisibility (DPEC + ENC) gates every connector
 5. Operational discipline surfaces ([doc](./LOCALBRAIN_EXECUTIVE_OPERATIONAL_DISCIPLINE.md)) — after Convention, before production departments
 6. Digital World Monitor · Security · AI Intelligence (parallel capacity, not cognitive rush)
+7. Technology / Software Engineering Office — code providers (Cursor, etc.) are plugins; primary product: engineering judgment
+8. Executive Engineering Memory (`CAP-FUT-EEM-001`) — engineering provenance; pre-slice institution gate before components
 ```
 
 ---

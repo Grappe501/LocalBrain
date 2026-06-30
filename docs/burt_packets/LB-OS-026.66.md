@@ -40,6 +40,7 @@ Future / Planned · Not Live · Infrastructure Reserved
 | CAP-FUT-PVO-001 | Personal Voice Interface (LB-OS-03X-PVI) |
 | CAP-FUT-PRV-001 | Data Sovereignty & Exposure Control (LB-OS-03X-DPEC) |
 | CAP-FUT-ENC-001 | Encryption, Key Vault, and Sovereign Routing (LB-OS-03X-ENC) |
+| CAP-FUT-EEM-001 | Executive Engineering Memory (LB-OS-TECH-EEM — post–Technology Office) |
 
 ---
 

@@ -932,6 +932,42 @@ const FUTURE_EXECUTIVE_CAPABILITIES: CapabilityEntry[] = [
       { target_capability_id: "CAP-ACT-001", relation_type: "related" },
     ],
   }),
+  futureCap({
+    capability_id: "CAP-FUT-EEM-001",
+    title: "Executive Engineering Memory",
+    description:
+      "Engineering judgment with provenance — architecture decisions, coding standards, rejected approaches, performance and security lessons, deployment history, technical debt, bug patterns, release outcomes. Pre-slice gate: executive outcome, owning office, affected departments, existing capabilities, relevant memories/decisions, workflows, governance, privacy tier, connectors, acceptance criteria — then engineering slices.",
+    executive_outcome:
+      "Primary product is engineering judgment, not code. Accumulate why approaches succeeded or failed so the Technology Office knows what held up over years.",
+    executive_question_ids: [],
+    primary_route: "/future/engineering-memory",
+    secondary_routes: [],
+    prerequisites: ["CAP-FUT-INSTMEM-001", "CAP-FUT-DECEVO-001", "CAP-ENG-001"],
+    next_recommended_steps: ["CAP-EO-001"],
+    departments: ["Chief of Staff", "Engineering"],
+    workflows: [],
+    keywords: [
+      "engineering memory",
+      "technical debt",
+      "architecture decisions",
+      "engineering judgment",
+      "release outcomes",
+    ],
+    search_terms: [
+      "executive engineering memory",
+      "why we tried this approach",
+      "engineering provenance",
+    ],
+    authority_level: "supporting",
+    slice_id: "LB-OS-TECH-EEM",
+    nav_placement: "future",
+    related_capabilities: [
+      { target_capability_id: "CAP-ENG-001", relation_type: "feeds" },
+      { target_capability_id: "CAP-FUT-INSTMEM-001", relation_type: "feeds" },
+      { target_capability_id: "CAP-FUT-DECEVO-001", relation_type: "feeds" },
+      { target_capability_id: "CAP-FUT-PRV-001", relation_type: "feeds", label: "Privacy tier gate" },
+    ],
+  }),
 ];
 
 /** Canonical capability graph — do not duplicate routes in nav without deriving from here */
