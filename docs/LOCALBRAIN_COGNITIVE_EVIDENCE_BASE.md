@@ -269,11 +269,11 @@ Links:           docs · commits · trace IDs
 
 | Field | Value |
 | ----- | ----- |
-| Date | 📋 Ready to open |
+| Date | ▶ Open 2026-06-30 — post Executive Office certification (`3bfd4da`) |
 | Reviewer | Independent (Executive Practitioner) |
 | Submission | Frozen at `7b6ab71` |
 | Overarching question | Does this architecture help a real executive make better decisions under real constraints? |
-| Outcome | Pending |
+| Outcome | **In progress** — [Burt packet](./burt_packets/MILESTONE-PR-S4.md) |
 
 #### Findings log
 
@@ -332,7 +332,7 @@ Amendments publish as v1.1, v1.2, … v1.0 text remains immutable. See [Falsific
 | 1 Philosopher | Internal logical consistency | Passed — 0 contradictions; boundary-definition questions |
 | 2 Cognitive Scientist | Empirical plausibility | Passed (research obligations) — 0 contradictions; measurement/validation obligations |
 | 3 Systems Engineer | Engineering feasibility | Passed (engineering obligations) — 0 contradictions; RO-S3-001–020 |
-| 4 Executive Practitioner | Decision utility | 📋 Ready |
+| 4 Executive Practitioner | Decision utility | ▶ In progress |
 | 5 Skeptic | Assume theory wrong | ⬜ Pending |
 
 **Confidence after S1–S3 (reviewer assessment, not certification):** Theory coherence strong · scientific plausibility sufficient to justify experimentation · engineering feasibility supported with obligations — not yet validated in implementation.

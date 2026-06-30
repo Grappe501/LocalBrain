@@ -126,7 +126,7 @@ Peer review in research avoids reviewers influencing one another. Same disciplin
 | **1** | **Philosopher** | Definitions · ontology · logical consistency | ✅ Passed 2026-06-28 |
 | **2** | **Cognitive scientist** | Cognitive assumptions · evidence requirements | ✅ Passed 2026-06-28 (research obligations) |
 | **3** | **Systems engineer** | Scalability · determinism · modularity | ✅ Passed 2026-06-28 (engineering obligations) |
-| **4** | **Executive practitioner** | Does this help someone make better decisions? | ⏸️ **Paused** — resume after [LB-OS-026.6](./burt_packets/LB-OS-026.6.md) + [026.7](./PHASE_CHECKLIST.md) and [Executive Experience Certification](./LOCALBRAIN_EXECUTIVE_EXPERIENCE_CERTIFICATION.md) **PASS** |
+| **4** | **Executive practitioner** | Does this help someone make better decisions? | ▶ **OPEN** — Executive Office certified `3bfd4da` · [Session 4 packet](./burt_packets/MILESTONE-PR-S4.md) |
 | **5** | **Skeptic** | Assume the theory is wrong · find weakest points | ⬜ Pending |
 
 Record findings in [Cognitive Evidence Base](./LOCALBRAIN_COGNITIVE_EVIDENCE_BASE.md). Every criticism receives **one of four outcomes** — no "change it now":
