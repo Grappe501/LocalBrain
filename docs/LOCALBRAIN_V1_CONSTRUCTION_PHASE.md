@@ -85,6 +85,33 @@ If it doesn't help launch V1 → recommend against it.
 If it belongs in V2 → [VERSION2_BACKLOG.md](./VERSION2_BACKLOG.md).  
 If it isn't on the critical path → ask why we're spending time on it.
 
+**V1 deferral rule:** If a proposed change does not shorten the critical path, improve certification quality, reduce launch risk, or fix a defect, it waits for V2.
+
+**Work buckets (no fifth category):**
+
+| Bucket | Allowed? |
+| ------ | -------- |
+| Advances the critical path | ✅ |
+| Required for module certification | ✅ |
+| Fixes a defect/regression | ✅ |
+| Everything else | ➜ `VERSION2_BACKLOG` |
+
+**PMO frozen until Commercial Beta** unless: certification gate can't be evaluated · forecast bug · missing launch decision info.
+
+**Burt session start** (every work session — not "What should I build?"):
+
+```txt
+Current Critical Path
+Current Module
+Certification Status
+Blocking Issues
+Smallest Next Executable Slice
+```
+
+If the smallest next executable slice is unclear → stop and ask.
+
+**Morning KPIs:** Days to Beta · Forecast Confidence · Critical Path Velocity · Finishability by phase.
+
 **Heartbeat:** Days to Beta — *Does this shorten the path to beta?*
 
 **Golden test:** Kelly Sandbox — *Does this work correctly against Kelly Sandbox?*

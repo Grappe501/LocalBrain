@@ -5179,6 +5179,50 @@ a {
 }
 
 /* CEO Mode — morning focus (Program Office) */
+.epo-burt-start {
+  margin-bottom: 1rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid #94a3b8;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.epo-burt-start__title {
+  margin: 0 0 0.35rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #334155;
+}
+
+.epo-burt-start__instruction {
+  margin: 0 0 0.65rem;
+  font-size: 0.8rem;
+  color: #64748b;
+  font-style: italic;
+}
+
+.epo-burt-start__brief {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.5rem 1rem;
+  margin: 0;
+}
+
+.epo-burt-start__brief dt {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #64748b;
+}
+
+.epo-burt-start__brief dd {
+  margin: 0.15rem 0 0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
 .epo-ceo {
   margin: 0 0 1.5rem;
   padding: 1.25rem 1.5rem;

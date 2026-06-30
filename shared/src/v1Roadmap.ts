@@ -31,6 +31,46 @@ export interface V1RoadmapItemRow {
 export const V2_SCOPE_RULE =
   "Everything not on the V1 roadmap → docs/VERSION2_BACKLOG.md. If it does not shorten the path to beta, defer it.";
 
+/** PMO operating principle — prevents feature creep by good ideas during V1 execution. */
+export const V1_PMO_DEFERRAL_RULE =
+  "If a proposed change does not shorten the critical path, improve certification quality, reduce launch risk, or fix a defect, it waits for V2.";
+
+/** From Commercial Beta: every piece of work falls into exactly one of four buckets — no fifth category. */
+export const V1_PMO_WORK_BUCKETS = [
+  { id: "critical_path", label: "Advances the critical path", allowed: true },
+  { id: "certification", label: "Required for module certification", allowed: true },
+  { id: "defect", label: "Fixes a defect/regression", allowed: true },
+  {
+    id: "everything_else",
+    label: "Everything else → docs/VERSION2_BACKLOG.md",
+    allowed: false,
+  },
+] as const;
+
+/** PMO is frozen until Commercial Beta unless one of these is true. */
+export const V1_PMO_FROZEN_UNLESS =
+  "Stop PMO enhancements unless: (1) a certification gate cannot be evaluated, (2) the forecast is inaccurate because of a bug, (3) Program Office is missing information needed for a launch decision.";
+
+export const BURT_SESSION_START_INSTRUCTION =
+  "Begin every work session with the session-start brief below. Do not ask what to build. If the smallest next executable slice is unclear, stop and ask.";
+
+export const BURT_SESSION_START_LABELS = [
+  "Current Critical Path",
+  "Current Module",
+  "Certification Status",
+  "Blocking Issues",
+  "Smallest Next Executable Slice",
+] as const;
+
+export interface BurtSessionStartBrief {
+  current_critical_path: string;
+  current_module: string | null;
+  certification_status: string;
+  blocking_issues: string | null;
+  smallest_next_executable_slice: string | null;
+  instruction: string;
+}
+
 export const KELLY_SANDBOX_GOLDEN_TEST =
   "Every completed module must pass: Does this work correctly against Kelly Sandbox? If yes, certify. If no, it is not complete.";
 
@@ -70,6 +110,7 @@ export interface CeoModeBrief {
   v1_roadmap: V1RoadmapItemRow[];
   current_module_certification: V1ModuleCertificationCard | null;
   phase_forecast: V1PhaseForecast;
+  burt_session_start: BurtSessionStartBrief;
   burt_mission: string;
   module_review_instruction: string;
 }

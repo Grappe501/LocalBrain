@@ -9,8 +9,13 @@ import {
   PROJECT_STATE_ENGINE_ID,
   BURT_V1_MISSION,
   V1_MODULE_REVIEW_REQUEST,
+  V1_PMO_DEFERRAL_RULE,
+  V1_PMO_FROZEN_UNLESS,
+  V1_PMO_WORK_BUCKETS,
+  BURT_SESSION_START_INSTRUCTION,
   V1_ROADMAP_ITEMS,
   V2_SCOPE_RULE,
+  type BurtSessionStartBrief,
   type CeoModeBrief,
   type V1RoadmapItemRow,
 } from "@localbrain/shared";
@@ -126,6 +131,37 @@ function roadmapRows(cc: V1CommandCenter): V1RoadmapItemRow[] {
   });
 }
 
+function buildBurtSessionStart(
+  cc: V1CommandCenter,
+  state: BuildStateSnapshot,
+  certStatus: string,
+): BurtSessionStartBrief {
+  const inProgress = cc.critical_path.filter((n) => n.status !== "complete");
+  const pathLabels = inProgress.map((n) => n.label).join(" → ") || "Complete";
+  const active = cc.critical_path.find((n) => n.status === "in_progress");
+  const slice =
+    state.current_slice_name ??
+    state.current_slice_id ??
+    active?.label ??
+    cc.building_today;
+
+  return {
+    current_critical_path: pathLabels,
+    current_module: active?.label ?? cc.building_today,
+    certification_status: certStatus,
+    blocking_issues: cc.blocked_summary ?? psBlocks(cc),
+    smallest_next_executable_slice: slice,
+    instruction: BURT_SESSION_START_INSTRUCTION,
+  };
+}
+
+function psBlocks(cc: V1CommandCenter): string | null {
+  const blocked = cc.critical_path.find(
+    (n) => n.status === "waiting" || n.status === "blocked",
+  );
+  return blocked?.label ?? null;
+}
+
 function buildCeoMode(
   cc: V1CommandCenter,
   days_to_beta: number | null,
@@ -150,6 +186,7 @@ function buildCeoMode(
 
   const heartbeat = recordV1Heartbeat(launch_score_percent, days_to_beta);
   const moduleId = resolveCurrentModuleId(cc);
+  const certStatus = certificationStatus(cc);
 
   return {
     module_finishing_today: module_finishing_today ?? null,
@@ -163,6 +200,7 @@ function buildCeoMode(
     v1_roadmap: roadmapRows(cc),
     current_module_certification: certifyCurrentModule(moduleId),
     phase_forecast: computePhaseForecast(state, cc, adaptive_forecast),
+    burt_session_start: buildBurtSessionStart(cc, state, certStatus),
     burt_mission: BURT_V1_MISSION,
     module_review_instruction: V1_MODULE_REVIEW_REQUEST.instruction,
   };

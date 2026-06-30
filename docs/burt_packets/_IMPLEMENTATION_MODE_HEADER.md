@@ -51,4 +51,20 @@ and continue implementation. Do not expand doctrine.
 
 **Burt mission:** Finish the current module. Review with [LOCALBRAIN_V1_MODULE_REVIEW.md](../LOCALBRAIN_V1_MODULE_REVIEW.md).
 
+**Burt session start** (every work session — live from Program Office CEO Mode):
+
+```txt
+Current Critical Path
+Current Module
+Certification Status
+Blocking Issues
+Smallest Next Executable Slice
+```
+
+Do not ask *What should I build?* If the smallest next executable slice is unclear → stop and ask.
+
+**V1 deferral rule:** If a proposed change does not shorten the critical path, improve certification quality, reduce launch risk, or fix a defect, it waits for V2.
+
+**Work buckets (no fifth category):** critical path · certification · defect fix · everything else → VERSION2_BACKLOG.
+
 **Reference:** [LOCALBRAIN_V1_CONSTRUCTION_PHASE.md](../LOCALBRAIN_V1_CONSTRUCTION_PHASE.md)

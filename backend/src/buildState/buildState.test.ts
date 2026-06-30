@@ -83,6 +83,8 @@ test("getEpoOverview exposes build state engine fields", () => {
   assert.equal(overview.project_state.ceo_mode.phase_forecast.engine_id, "ENG-BLD-001-PFCST");
   assert.ok(overview.project_state.ceo_mode.phase_forecast.phases.length === 9);
   assert.ok(overview.project_state.ceo_mode.phase_forecast.current_mega_phase.label.includes("Phase"));
+  assert.ok(overview.project_state.ceo_mode.burt_session_start);
+  assert.ok(overview.project_state.ceo_mode.burt_session_start.current_critical_path);
 });
 
 test("certifyCurrentModule produces dimension rows for Executive Office", () => {

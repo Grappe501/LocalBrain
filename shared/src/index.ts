@@ -50,14 +50,20 @@ export {
   V1_NO_REGRESSION_RULE,
 } from "./v1ModuleCertification.js";
 export type {
+  BurtSessionStartBrief,
   CeoModeBrief,
   V1RoadmapItemRow,
   V1RoadmapItemStatus,
 } from "./v1Roadmap.js";
 export {
   BURT_PACKET_V1_ROADMAP_BLOCK,
+  BURT_SESSION_START_INSTRUCTION,
+  BURT_SESSION_START_LABELS,
   DAYS_TO_BETA_RULE,
   KELLY_SANDBOX_GOLDEN_TEST,
+  V1_PMO_DEFERRAL_RULE,
+  V1_PMO_FROZEN_UNLESS,
+  V1_PMO_WORK_BUCKETS,
   V1_ROADMAP_ITEMS,
   V2_SCOPE_RULE,
 } from "./v1Roadmap.js";

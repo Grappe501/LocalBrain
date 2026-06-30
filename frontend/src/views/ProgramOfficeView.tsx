@@ -178,6 +178,33 @@ export function ProgramOfficeView() {
       <ExecutiveQuestionShell route="/program-office" observedAt={overview.observed_at} />
 
       <section className="epo-ceo" aria-label="Program Office CEO Mode">
+        <section className="epo-burt-start" aria-label="Burt session start">
+          <h2 className="epo-burt-start__title">Burt Session Start</h2>
+          <p className="epo-burt-start__instruction">{ps.ceo_mode.burt_session_start.instruction}</p>
+          <dl className="epo-burt-start__brief">
+            <div>
+              <dt>Current Critical Path</dt>
+              <dd>{ps.ceo_mode.burt_session_start.current_critical_path}</dd>
+            </div>
+            <div>
+              <dt>Current Module</dt>
+              <dd>{ps.ceo_mode.burt_session_start.current_module ?? "—"}</dd>
+            </div>
+            <div>
+              <dt>Certification Status</dt>
+              <dd>{ps.ceo_mode.burt_session_start.certification_status}</dd>
+            </div>
+            <div>
+              <dt>Blocking Issues</dt>
+              <dd>{ps.ceo_mode.burt_session_start.blocking_issues ?? "None"}</dd>
+            </div>
+            <div>
+              <dt>Smallest Next Executable Slice</dt>
+              <dd>{ps.ceo_mode.burt_session_start.smallest_next_executable_slice ?? "—"}</dd>
+            </div>
+          </dl>
+        </section>
+
         <header className="epo-ceo__header">
           <h2>CEO Mode</h2>
           <div className="epo-ceo__forecast-headline">

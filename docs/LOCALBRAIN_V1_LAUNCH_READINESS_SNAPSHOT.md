@@ -83,6 +83,21 @@ Progress tells you how much is done. Finishability tells you how well understood
 
 ## PMO operating rules (Session 4 gate)
 
+**V1 deferral rule:** If a proposed change does not shorten the critical path, improve certification quality, reduce launch risk, or fix a defect, it waits for V2.
+
+**Work buckets — no fifth category:**
+
+| Bucket | Allowed? |
+| ------ | -------- |
+| Advances the critical path | ✅ |
+| Required for module certification | ✅ |
+| Fixes a defect/regression | ✅ |
+| Everything else | ➜ `VERSION2_BACKLOG` |
+
+**PMO frozen** until Commercial Beta unless a certification gate, forecast bug, or missing launch info requires a change.
+
+**Burt session start:** Critical Path · Current Module · Certification Status · Blocking Issues · Smallest Next Executable Slice. If unclear → stop and ask.
+
 - **No implementation work** during Session 4.
 - **No architecture changes** unless a genuine contradiction is found.
 - **No reopening certified modules** except critical defects.
