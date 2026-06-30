@@ -451,6 +451,9 @@ export {
   getCapabilityById,
   getKernelNavItems,
   getMigrationNavItems,
+  getLiveCapabilities,
+  getPlannedCapabilities,
+  isPlannedCapability,
   matchCapabilityForRoute,
   normalizeRoutePath,
 } from "./capabilityRegistry.js";
@@ -491,6 +494,62 @@ export {
   EXECUTIVE_EXPERIENCE_COHESION_ENGINE_ID,
   EXECUTIVE_EXPERIENCE_ENGINE_ID,
 } from "./executiveExperience.js";
+export type {
+  ExecutiveIntent,
+  ExecutiveIntentChain,
+  ExecutiveIntentGraph,
+  ExecutiveIntentGraphEdge,
+  ExecutiveIntentGraphNode,
+  ExecutiveIntentId,
+} from "./executiveIntent.js";
+export {
+  EXECUTIVE_INTENT_ENGINE_ID,
+  EXECUTIVE_INTENTS,
+  buildExecutiveIntentGraph,
+  getExecutiveIntent,
+  getIntentsForCapability,
+  getIntentsForQuestion,
+  resolveCapabilityForQuestion,
+  resolveExecutiveIntentChain,
+  resolveIntentForCapability,
+} from "./executiveIntent.js";
+export type {
+  CapabilityHealthSignal,
+  CapabilityIdentity,
+  CapabilityOperationalState,
+  CapabilityReadiness,
+  CapabilityStateSnapshot,
+  DependencyHealthGraph,
+  DependencyHealthNode,
+  ExecutiveRecommendation,
+  ReadinessConfidence,
+  RecommendationGraph,
+} from "./capabilityOperations.js";
+export {
+  CAPABILITY_OPERATIONS_ENGINE_ID,
+  buildCapabilityStateSnapshots,
+  buildDependencyHealthGraph,
+  buildRecommendationGraph,
+  computeCapabilityReadiness,
+  getCapabilityIdentity,
+  getQuestionsForCapability,
+} from "./capabilityOperations.js";
+export type {
+  CapabilityAtlasEntry,
+  ExecutiveCapabilityAtlas,
+} from "./capabilityAtlas.js";
+export {
+  CAPABILITY_ATLAS_ENGINE_ID,
+  buildExecutiveCapabilityAtlas,
+  formatAtlasEntrySummary,
+  renderCapabilityAtlasMarkdown,
+} from "./capabilityAtlas.js";
+export type {
+  CapabilityGovernancePolicy,
+} from "./capabilityGovernance.js";
+export {
+  EXECUTIVE_CONNECTOR_GOVERNANCE,
+} from "./capabilityGovernance.js";
 export type {
   ModuleCapabilityDeclaration,
   ModuleManifest,

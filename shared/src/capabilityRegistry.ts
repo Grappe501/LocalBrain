@@ -3,7 +3,13 @@
  * Single metadata layer: navigation, workflows, EQ routing, and intent derive from here.
  */
 
-export const CAPABILITY_REGISTRY_ENGINE_ID = "ENG-CAP-001";
+import {
+  EXECUTIVE_CONNECTOR_GOVERNANCE,
+  type CapabilityGovernancePolicy,
+} from "./capabilityGovernance.js";
+
+export type { CapabilityGovernancePolicy } from "./capabilityGovernance.js";
+export { EXECUTIVE_CONNECTOR_GOVERNANCE };
 
 export type CapabilityRelationType =
   | "supports"
@@ -14,7 +20,7 @@ export type CapabilityRelationType =
   | "informs"
   | "related";
 
-export type CapabilityCompletionStatus = "production" | "partial" | "stub";
+export type CapabilityCompletionStatus = "production" | "partial" | "stub" | "planned";
 
 export type CapabilityAuthorityLevel = "authoritative" | "summary" | "supporting";
 
@@ -24,7 +30,8 @@ export type CapabilityNavPlacement =
   | "department"
   | "migration"
   | "settings"
-  | "hidden";
+  | "hidden"
+  | "future";
 
 export type CapabilityHealth = "healthy" | "degraded" | "stub";
 
@@ -46,6 +53,8 @@ export const DEFAULT_CAPABILITY_ENTRY_VECTORS: CapabilityEntryVector[] = [
   "search",
   "bookmark",
 ];
+
+export const CAPABILITY_REGISTRY_ENGINE_ID = "ENG-CAP-001";
 
 /** Future metric — null until utilization instrumentation ships */
 export interface CapabilityUtilization {
@@ -91,6 +100,9 @@ export interface CapabilityEntry {
   nav_order?: number;
   entry_vectors: CapabilityEntryVector[];
   utilization: CapabilityUtilization;
+  /** LB-OS-026.66 — reserved in atlas; not a live route */
+  infrastructure_reserved?: boolean;
+  governance_policy?: CapabilityGovernancePolicy;
 }
 
 export interface WorkflowDefinition {
@@ -123,9 +135,51 @@ export const WF_MIGRATION_EVIDENCE: WorkflowDefinition = {
   capability_ids: ["CAP-MIG-002", "CAP-CNS-001", "CAP-EWA-001"],
 };
 
+export const WF_FUTURE_COMMUNICATIONS: WorkflowDefinition = {
+  workflow_id: "WF-FUT-COM-001",
+  title: "Communications & Briefing Pipeline (planned)",
+  description:
+    "Google Accounts → Email + Calendar → Knowledge Sources → Briefing → CoS → Approval-gated actions",
+  capability_ids: [
+    "CAP-FUT-GAC-001",
+    "CAP-FUT-GML-001",
+    "CAP-FUT-CAL-001",
+    "CAP-FUT-KNO-001",
+    "CAP-FUT-INB-001",
+    "CAP-EO-001",
+    "CAP-ACT-001",
+  ],
+};
+
+export const WF_FUTURE_FINANCE: WorkflowDefinition = {
+  workflow_id: "WF-FUT-FIN-001",
+  title: "CFO / Finance Pipeline (planned)",
+  description: "Budgets → Finance knowledge → CFO → Briefing → Approval-gated recommendations",
+  capability_ids: [
+    "CAP-FUT-PBN-001",
+    "CAP-FUT-NPB-001",
+    "CAP-FUT-CFB-001",
+    "CAP-FUT-BBN-001",
+    "CAP-FUT-FKN-001",
+    "CAP-FUT-CFO-001",
+    "CAP-EO-001",
+    "CAP-ACT-001",
+  ],
+};
+
+export const WF_FUTURE_HOUSEHOLD: WorkflowDefinition = {
+  workflow_id: "WF-FUT-HHD-001",
+  title: "Household Operations (planned)",
+  description: "Family operations → briefing → approvals",
+  capability_ids: ["CAP-FUT-HHD-001", "CAP-EO-001", "CAP-ACT-001"],
+};
+
 export const WORKFLOW_REGISTRY: WorkflowDefinition[] = [
   WF_MIGRATION_EXECUTION,
   WF_MIGRATION_EVIDENCE,
+  WF_FUTURE_COMMUNICATIONS,
+  WF_FUTURE_FINANCE,
+  WF_FUTURE_HOUSEHOLD,
 ];
 
 /** Frozen capability IDs — LB-OS-026.6 checkpoint */
@@ -183,6 +237,8 @@ function cap(
     executive_outcome?: string;
     entry_vectors?: CapabilityEntryVector[];
     utilization?: CapabilityUtilization;
+    infrastructure_reserved?: boolean;
+    governance_policy?: CapabilityGovernancePolicy;
   },
 ): CapabilityEntry {
   const executive_outcome =
@@ -198,6 +254,273 @@ function cap(
     utilization: partial.utilization ?? { utilization_percent: null },
   };
 }
+
+function futureCap(
+  partial: Omit<
+    CapabilityEntry,
+    | "related_capabilities"
+    | "executive_outcome"
+    | "entry_vectors"
+    | "utilization"
+    | "completion_status"
+    | "infrastructure_reserved"
+    | "maturity"
+  > & {
+    related_capabilities?: CapabilityRelation[];
+    executive_outcome: string;
+    governance_policy?: CapabilityGovernancePolicy;
+    maturity?: CapabilityMaturity;
+  },
+): CapabilityEntry {
+  return cap({
+    ...partial,
+    completion_status: "planned",
+    infrastructure_reserved: true,
+    entry_vectors: [],
+    utilization: { utilization_percent: null },
+    maturity: partial.maturity ?? {
+      completion_percent: 0,
+      health: "stub",
+      last_verified_slice: "LB-OS-026.66",
+      dependency_capability_ids: partial.prerequisites,
+    },
+  });
+}
+
+const FUTURE_EXECUTIVE_CAPABILITIES: CapabilityEntry[] = [
+  futureCap({
+    capability_id: "CAP-FUT-GAC-001",
+    title: "Google Accounts & Calendar Intelligence",
+    description: "Connect multiple Google accounts for read-first executive intelligence",
+    executive_outcome: "Unify Google identities into governed, read-first knowledge sources.",
+    executive_question_ids: [],
+    primary_route: "/future/google-accounts",
+    secondary_routes: [],
+    prerequisites: [],
+    next_recommended_steps: ["CAP-FUT-GML-001", "CAP-FUT-CAL-001"],
+    departments: ["Chief of Staff", "Communications"],
+    workflows: ["WF-FUT-COM-001"],
+    keywords: ["google", "accounts"],
+    search_terms: ["google accounts", "multiple google accounts"],
+    authority_level: "supporting",
+    slice_id: "LB-OS-090+",
+    nav_placement: "future",
+    governance_policy: EXECUTIVE_CONNECTOR_GOVERNANCE,
+    related_capabilities: [
+      { target_capability_id: "CAP-FUT-GML-001", relation_type: "feeds" },
+      { target_capability_id: "CAP-FUT-CAL-001", relation_type: "feeds" },
+    ],
+  }),
+  futureCap({
+    capability_id: "CAP-FUT-GML-001",
+    title: "Gmail / Email Command Center",
+    description: "Read-first Gmail monitoring, triage, and draft recommendations",
+    executive_outcome: "Surface email intelligence without sending on the executive's behalf.",
+    executive_question_ids: [],
+    primary_route: "/future/gmail",
+    secondary_routes: [],
+    prerequisites: ["CAP-FUT-GAC-001"],
+    next_recommended_steps: ["CAP-FUT-KNO-001", "CAP-FUT-INB-001"],
+    departments: ["Communications"],
+    workflows: ["WF-FUT-COM-001"],
+    keywords: ["gmail", "email"],
+    search_terms: ["gmail monitoring", "email command center"],
+    authority_level: "supporting",
+    slice_id: "LB-OS-091+",
+    nav_placement: "future",
+    governance_policy: EXECUTIVE_CONNECTOR_GOVERNANCE,
+  }),
+  futureCap({
+    capability_id: "CAP-FUT-CAL-001",
+    title: "Calendar Intelligence",
+    description: "Read-first calendar analysis and scheduling recommendations",
+    executive_outcome: "Recommend calendar changes — never apply them automatically.",
+    executive_question_ids: [],
+    primary_route: "/future/calendar",
+    secondary_routes: [],
+    prerequisites: ["CAP-FUT-GAC-001"],
+    next_recommended_steps: ["CAP-FUT-KNO-001"],
+    departments: ["Chief of Staff"],
+    workflows: ["WF-FUT-COM-001"],
+    keywords: ["calendar"],
+    search_terms: ["calendar intelligence"],
+    authority_level: "supporting",
+    slice_id: "LB-OS-092+",
+    nav_placement: "future",
+    governance_policy: EXECUTIVE_CONNECTOR_GOVERNANCE,
+  }),
+  futureCap({
+    capability_id: "CAP-FUT-KNO-001",
+    title: "Communications Knowledge Sources",
+    description: "Knowledge layer from email and calendar connectors",
+    executive_outcome: "Feed governed communications evidence into executive briefing.",
+    executive_question_ids: ["EQ-004"],
+    primary_route: "/future/communications-knowledge",
+    secondary_routes: [],
+    prerequisites: ["CAP-FUT-GML-001", "CAP-FUT-CAL-001"],
+    next_recommended_steps: ["CAP-FUT-INB-001", "CAP-EO-001"],
+    departments: ["Knowledge Explorer"],
+    workflows: ["WF-FUT-COM-001"],
+    keywords: ["knowledge", "communications"],
+    search_terms: ["communications knowledge"],
+    authority_level: "supporting",
+    slice_id: "LB-OS-093+",
+    nav_placement: "future",
+    governance_policy: EXECUTIVE_CONNECTOR_GOVERNANCE,
+  }),
+  futureCap({
+    capability_id: "CAP-FUT-INB-001",
+    title: "Executive Assistant Briefing Inbox",
+    description: "Curated inbox of items deserving executive attention",
+    executive_outcome: "Deliver restraint-aware briefing inbox items only when they matter.",
+    executive_question_ids: ["EQ-001"],
+    primary_route: "/future/briefing-inbox",
+    secondary_routes: [],
+    prerequisites: ["CAP-FUT-KNO-001"],
+    next_recommended_steps: ["CAP-EO-001", "CAP-ACT-001"],
+    departments: ["Chief of Staff"],
+    workflows: ["WF-FUT-COM-001"],
+    keywords: ["briefing inbox"],
+    search_terms: ["executive briefing inbox"],
+    authority_level: "supporting",
+    slice_id: "LB-OS-094+",
+    nav_placement: "future",
+    governance_policy: EXECUTIVE_CONNECTOR_GOVERNANCE,
+  }),
+  futureCap({
+    capability_id: "CAP-FUT-CFO-001",
+    title: "CFO / Finance Department",
+    description: "CFO intelligence across personal, nonprofit, campaign, and business budgets",
+    executive_outcome: "Provide CFO-grade financial intelligence and approval-gated recommendations.",
+    executive_question_ids: [],
+    primary_route: "/future/cfo",
+    secondary_routes: [],
+    prerequisites: ["CAP-FUT-FKN-001"],
+    next_recommended_steps: ["CAP-EO-001", "CAP-ACT-001"],
+    departments: ["Accounting & CFO"],
+    workflows: ["WF-FUT-FIN-001"],
+    keywords: ["cfo", "finance"],
+    search_terms: ["cfo intelligence"],
+    authority_level: "supporting",
+    slice_id: "LB-OS-101+",
+    nav_placement: "future",
+    governance_policy: EXECUTIVE_CONNECTOR_GOVERNANCE,
+  }),
+  futureCap({
+    capability_id: "CAP-FUT-PBN-001",
+    title: "Personal Finance & Budget",
+    description: "Personal budget intelligence",
+    executive_outcome: "Make personal financial position legible for executive decisions.",
+    executive_question_ids: [],
+    primary_route: "/future/finance/personal",
+    secondary_routes: [],
+    prerequisites: [],
+    next_recommended_steps: ["CAP-FUT-FKN-001"],
+    departments: ["Accounting & CFO"],
+    workflows: ["WF-FUT-FIN-001"],
+    keywords: ["personal finance"],
+    search_terms: ["personal budget"],
+    authority_level: "supporting",
+    slice_id: "LB-OS-101+",
+    nav_placement: "future",
+    governance_policy: EXECUTIVE_CONNECTOR_GOVERNANCE,
+  }),
+  futureCap({
+    capability_id: "CAP-FUT-NPB-001",
+    title: "Nonprofit Finance & Budget",
+    description: "Nonprofit budget and grant-aware intelligence",
+    executive_outcome: "Surface nonprofit financial health and constraint-aware recommendations.",
+    executive_question_ids: [],
+    primary_route: "/future/finance/nonprofit",
+    secondary_routes: [],
+    prerequisites: [],
+    next_recommended_steps: ["CAP-FUT-FKN-001"],
+    departments: ["Accounting & CFO"],
+    workflows: ["WF-FUT-FIN-001"],
+    keywords: ["nonprofit finance"],
+    search_terms: ["nonprofit budget"],
+    authority_level: "supporting",
+    slice_id: "LB-OS-101+",
+    nav_placement: "future",
+    governance_policy: EXECUTIVE_CONNECTOR_GOVERNANCE,
+  }),
+  futureCap({
+    capability_id: "CAP-FUT-CFB-001",
+    title: "Campaign Finance & Budget",
+    description: "Campaign budget and compliance-aware monitoring",
+    executive_outcome: "Make campaign financial position legible for strategic decisions.",
+    executive_question_ids: [],
+    primary_route: "/future/finance/campaign",
+    secondary_routes: [],
+    prerequisites: [],
+    next_recommended_steps: ["CAP-FUT-FKN-001"],
+    departments: ["Accounting & CFO"],
+    workflows: ["WF-FUT-FIN-001"],
+    keywords: ["campaign finance"],
+    search_terms: ["campaign budget"],
+    authority_level: "supporting",
+    slice_id: "LB-OS-101+",
+    nav_placement: "future",
+    governance_policy: EXECUTIVE_CONNECTOR_GOVERNANCE,
+  }),
+  futureCap({
+    capability_id: "CAP-FUT-BBN-001",
+    title: "Business Budget",
+    description: "Business entity budget intelligence",
+    executive_outcome: "Provide business budget visibility for allocation decisions.",
+    executive_question_ids: [],
+    primary_route: "/future/finance/business",
+    secondary_routes: [],
+    prerequisites: [],
+    next_recommended_steps: ["CAP-FUT-FKN-001"],
+    departments: ["Accounting & CFO"],
+    workflows: ["WF-FUT-FIN-001"],
+    keywords: ["business budget"],
+    search_terms: ["business finance"],
+    authority_level: "supporting",
+    slice_id: "LB-OS-101+",
+    nav_placement: "future",
+    governance_policy: EXECUTIVE_CONNECTOR_GOVERNANCE,
+  }),
+  futureCap({
+    capability_id: "CAP-FUT-FKN-001",
+    title: "Finance Knowledge Sources",
+    description: "Finance knowledge layer feeding CFO intelligence",
+    executive_outcome: "Normalize budget signals into governed finance knowledge.",
+    executive_question_ids: [],
+    primary_route: "/future/finance/knowledge",
+    secondary_routes: [],
+    prerequisites: ["CAP-FUT-PBN-001", "CAP-FUT-NPB-001", "CAP-FUT-CFB-001", "CAP-FUT-BBN-001"],
+    next_recommended_steps: ["CAP-FUT-CFO-001"],
+    departments: ["Accounting & CFO"],
+    workflows: ["WF-FUT-FIN-001"],
+    keywords: ["finance knowledge"],
+    search_terms: ["finance knowledge sources"],
+    authority_level: "supporting",
+    slice_id: "LB-OS-101+",
+    nav_placement: "future",
+    governance_policy: EXECUTIVE_CONNECTOR_GOVERNANCE,
+  }),
+  futureCap({
+    capability_id: "CAP-FUT-HHD-001",
+    title: "Household / Family Operations",
+    description: "Family logistics and household executive coordination",
+    executive_outcome: "Coordinate household operations into briefing without autonomous action.",
+    executive_question_ids: [],
+    primary_route: "/future/household",
+    secondary_routes: [],
+    prerequisites: [],
+    next_recommended_steps: ["CAP-EO-001", "CAP-ACT-001"],
+    departments: ["Household"],
+    workflows: ["WF-FUT-HHD-001"],
+    keywords: ["household", "family"],
+    search_terms: ["household operations"],
+    authority_level: "supporting",
+    slice_id: "LB-OS-095+",
+    nav_placement: "future",
+    governance_policy: EXECUTIVE_CONNECTOR_GOVERNANCE,
+  }),
+];
 
 /** Canonical capability graph — do not duplicate routes in nav without deriving from here */
 export const CAPABILITY_REGISTRY: CapabilityEntry[] = [
@@ -828,7 +1151,20 @@ export const CAPABILITY_REGISTRY: CapabilityEntry[] = [
     nav_placement: "department",
     nav_order: 4,
   }),
+  ...FUTURE_EXECUTIVE_CAPABILITIES,
 ];
+
+export function isPlannedCapability(cap: CapabilityEntry): boolean {
+  return cap.completion_status === "planned" || cap.infrastructure_reserved === true;
+}
+
+export function getLiveCapabilities(): CapabilityEntry[] {
+  return CAPABILITY_REGISTRY.filter((c) => !isPlannedCapability(c));
+}
+
+export function getPlannedCapabilities(): CapabilityEntry[] {
+  return CAPABILITY_REGISTRY.filter((c) => isPlannedCapability(c));
+}
 
 export function getCapabilityById(id: string): CapabilityEntry | undefined {
   return CAPABILITY_REGISTRY.find((c) => c.capability_id === id);

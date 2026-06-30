@@ -148,6 +148,8 @@ export function runExecutiveExperienceAudit(): ExecutiveExperienceCertification 
   const orphanCapabilities = CAPABILITY_REGISTRY.filter(
     (c) =>
       c.completion_status !== "stub" &&
+      c.completion_status !== "planned" &&
+      !c.infrastructure_reserved &&
       c.nav_placement !== "hidden" &&
       !LIVE_PRODUCTION_ROUTES.some((r) => routePatternMatch(r, c.primary_route)),
   ).length;
@@ -156,9 +158,9 @@ export function runExecutiveExperienceAudit(): ExecutiveExperienceCertification 
   const reverse = runReverseJourneyTest();
   const deadEnds = journey.missing_steps.length + reverse.missing_steps.length;
 
-  const depths = CAPABILITY_REGISTRY.filter((c) => c.completion_status !== "stub").map((c) =>
-    computeClickDepthFromBriefing(c.primary_route),
-  );
+  const depths = CAPABILITY_REGISTRY.filter(
+    (c) => c.completion_status !== "stub" && c.completion_status !== "planned",
+  ).map((c) => computeClickDepthFromBriefing(c.primary_route));
   const averageClickDepth =
     depths.length > 0
       ? Math.round((depths.reduce((a, b) => a + b, 0) / depths.length) * 10) / 10
@@ -265,7 +267,7 @@ export function runGraphIntegrityCertification(): GraphIntegrityCertification {
   }
 
   for (const c of CAPABILITY_REGISTRY) {
-    if (c.completion_status === "stub") continue;
+    if (c.completion_status === "stub" || c.completion_status === "planned") continue;
     if (c.executive_question_ids.length === 0 && c.authority_level !== "supporting") {
       violations.push({
         check_id: "capability-has-question",
@@ -323,6 +325,8 @@ export function runGraphIntegrityCertification(): GraphIntegrityCertification {
   const orphanCapabilities = CAPABILITY_REGISTRY.filter(
     (c) =>
       c.completion_status !== "stub" &&
+      c.completion_status !== "planned" &&
+      !c.infrastructure_reserved &&
       c.nav_placement !== "hidden" &&
       !LIVE_PRODUCTION_ROUTES.some((r) => routePatternMatch(r, c.primary_route)),
   );

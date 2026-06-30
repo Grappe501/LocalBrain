@@ -12,13 +12,24 @@ import {
   CAPABILITY_REGISTRY,
   PHASE_1_EXECUTIVE_QUESTIONS,
   buildCapabilityDependencyGraph,
+  buildCapabilityStateSnapshots,
+  buildDependencyHealthGraph,
+  buildExecutiveIntentGraph,
   buildExecutiveQuestionGraph,
   buildNavigationGraph,
+  buildRecommendationGraph,
   buildRouteGraph,
   buildWorkflowGraph,
   getWorkflowNavigation,
   resolveExecutiveIntent,
+  resolveExecutiveIntentChain,
 } from "@localbrain/shared";
+import { collectCapabilityHealthSignals } from "../integration/capabilityHealthSignals.js";
+import {
+  generateExecutiveCapabilityAtlasFile,
+  getExecutiveCapabilityAtlas,
+} from "../integration/capabilityAtlasService.js";
+
 export const integrationRouter = Router();
 
 integrationRouter.get("/integration/audit", (_req, res) => {
@@ -33,11 +44,39 @@ integrationRouter.get("/integration/graph-integrity", (_req, res) => {
   res.json(runGraphIntegrityCertification());
 });
 
-integrationRouter.get("/integration/capabilities", (_req, res) => {  res.json({
+integrationRouter.get("/integration/capabilities", (_req, res) => {
+  res.json({
     engine_id: "ENG-CAP-001",
     read_only: true,
     capabilities: CAPABILITY_REGISTRY,
   });
+});
+
+integrationRouter.get("/integration/intent-graph", (_req, res) => {
+  res.json(buildExecutiveIntentGraph());
+});
+
+integrationRouter.get("/integration/capability-states", (_req, res) => {
+  const signals = collectCapabilityHealthSignals();
+  res.json({
+    engine_id: "ENG-COP-001",
+    signals,
+    snapshots: buildCapabilityStateSnapshots(signals),
+    dependency_health: buildDependencyHealthGraph(signals),
+    recommendations: buildRecommendationGraph(signals),
+    read_only: true,
+    observed_at: new Date().toISOString(),
+  });
+});
+
+integrationRouter.get("/integration/atlas", (_req, res) => {
+  const { atlas, markdown } = getExecutiveCapabilityAtlas();
+  res.json({ atlas, markdown, read_only: true });
+});
+
+integrationRouter.post("/integration/atlas/generate", (_req, res) => {
+  const result = generateExecutiveCapabilityAtlasFile();
+  res.json({ ok: true, ...result });
 });
 
 integrationRouter.get("/integration/capability-graph", (_req, res) => {
@@ -57,12 +96,17 @@ integrationRouter.get("/integration/intent", (req, res) => {
     res.status(400).json({ error: "Query parameter q is required" });
     return;
   }
+  const chain = resolveExecutiveIntentChain(q);
+  if (chain) {
+    res.json({ chain, legacy: resolveExecutiveIntent(q) });
+    return;
+  }
   const resolution = resolveExecutiveIntent(q);
   if (!resolution) {
     res.status(404).json({ error: "No capability match for intent", query: q });
     return;
   }
-  res.json(resolution);
+  res.json({ legacy: resolution });
 });
 
 integrationRouter.get("/integration/navigation", (req, res) => {

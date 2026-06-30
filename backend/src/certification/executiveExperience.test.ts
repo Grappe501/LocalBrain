@@ -28,6 +28,12 @@ describe("ENG-CAP-001 capability registry", () => {
     }
   });
 
+  it("registers planned future capabilities (LB-OS-026.66)", () => {
+    const planned = CAPABILITY_REGISTRY.filter((c) => c.completion_status === "planned");
+    assert.ok(planned.length >= 12);
+    assert.ok(planned.every((c) => c.infrastructure_reserved));
+  });
+
   it("resolves migration planning intent", () => {
     const res = resolveExecutiveIntent("I need to move my ContactList workspace");
     assert.ok(res);

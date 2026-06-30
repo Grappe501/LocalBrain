@@ -173,12 +173,15 @@
 |-------|------|--------|
 | — | [Platform Audit](./LOCALBRAIN_PLATFORM_AUDIT.md) | ✅ Complete 2026-06-28 |
 | LB-OS-026.6 | Executive Discoverability & Route Cohesion | ✅ Complete — [Burt](./burt_packets/LB-OS-026.6.md) · [ENG-CAP-001](./LOCALBRAIN_CAPABILITY_REGISTRY.md) · [Graph Integrity](./LOCALBRAIN_GRAPH_INTEGRITY_CERTIFICATION.md) |
-| LB-OS-026.7 | Executive Dashboard & Daily Briefing | ⬜ PLANNED — **gate:** graph integrity PASS |
+| LB-OS-026.65 | Executive Intent Graph & Capability Atlas | ✅ Complete — [Burt](./burt_packets/LB-OS-026.65.md) · [Intent Graph](./LOCALBRAIN_EXECUTIVE_INTENT_GRAPH.md) · [Atlas](./LOCALBRAIN_EXECUTIVE_CAPABILITY_ATLAS.md) |
+| LB-OS-026.66 | Future Executive Operations Capability Placeholders | ✅ Complete — [Burt](./burt_packets/LB-OS-026.66.md) |
+| LB-OS-026.7 | Executive Dashboard & Daily Briefing | ⬜ PLANNED — **gate:** atlas generated · graph integrity PASS · dashboard projects atlas |
 
 **Post-consolidation sequence:**
 
 ```txt
-026.6 Discoverability → 026.7 Dashboard → Experience Certification
+026.6 Discoverability → 026.65 Intent Graph + Atlas → 026.66 Future placeholders
+  → Graph Integrity PASS → 026.7 Dashboard (atlas projection) → Experience Certification
   → Peer Review S4 → S5 → Theory v1.0 freeze → Convention → LB-OS-027
 ```
 
