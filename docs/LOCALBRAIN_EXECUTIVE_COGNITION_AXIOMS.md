@@ -239,13 +239,17 @@ Executive Cognition              — agency · tension · time
 Executive Meta-Cognition           — trace · JQ · wisdom
   ↓
 Executive Cognitive Science        — hypotheses · falsification · WMA
+  ↕
+Theory of Executive Cognition      — why it should work · concept freeze
   ↓
-Engines (ENG-*)                    — experiments · axiom-compliant
+Engines (ENG-*)                    — four questions per implementation
   ↓
 UI                                 — projection only
 ```
 
-See [Executive Cognitive Science](./LOCALBRAIN_EXECUTIVE_COGNITIVE_SCIENCE.md) · [Research Agenda](./LOCALBRAIN_RESEARCH_AGENDA.md).
+Science: *Does this work?* Theory: *Why should this work?* See [Theory](./LOCALBRAIN_THEORY_OF_EXECUTIVE_COGNITION.md).
+
+After Theory: **no new doctrine concepts** — only Convention, hypotheses, and code.
 
 ---
 

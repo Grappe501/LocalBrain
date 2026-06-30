@@ -247,13 +247,17 @@ Existing metrics remain: [MCP](./LOCALBRAIN_EXECUTIVE_INTENT.md) · [ECL](./LOCA
 | **Meta-cognition** | [Executive Meta-Cognition](./LOCALBRAIN_EXECUTIVE_METACOGNITION.md) | Did we think well? |
 | **Axioms** | [Executive Cognition Axioms](./LOCALBRAIN_EXECUTIVE_COGNITION_AXIOMS.md) | Is this provably consistent with the laws? |
 | **Science** | [Executive Cognitive Science](./LOCALBRAIN_EXECUTIVE_COGNITIVE_SCIENCE.md) | Can we prove this improves the platform? |
+| **Theory** | [Theory of Executive Cognition](./LOCALBRAIN_THEORY_OF_EXECUTIVE_COGNITION.md) | Why should this work? |
+
+**Concept freeze:** No new doctrine layers after Theory. Implementations answer four questions — see Theory document.
 
 Epistemology: *"Is this true and traceable?"*  
 Cognition: *"Given what we know, should anything happen?"*  
 Governance: *"How is judgment structured?"*  
 Meta-cognition: *"Did we think well?"*  
 Axioms: *"Is this consistent with the laws?"*  
-Science: *"What hypothesis does this test — and did it survive falsification?"*
+Science: *"What hypothesis does this test?"*  
+Theory: *"Which prediction does this support or challenge?"*
 
 ---
 

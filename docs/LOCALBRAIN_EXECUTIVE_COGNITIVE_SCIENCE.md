@@ -211,10 +211,12 @@ Every slice Burt packet includes:
 ```txt
 1. Hypothesis ID (H-NNN)
 2. Falsifiable prediction (what will improve · by what signal)
-3. Measurement plan (before/after · Cognitive Trace · EPO/Evolution data)
-4. Axiom compliance matrix
-5. Falsification criteria (what would disprove the hypothesis)
-6. Review date (accept · refine · reject hypothesis)
+3. Theory prediction supported or challenged (see Theory of Executive Cognition)
+4. Measurement plan (before/after · Cognitive Trace · EPO/Evolution data)
+5. Axiom compliance matrix
+6. Falsification criteria (what would disprove the hypothesis)
+7. Four implementation questions (axiom · hypothesis · theory · judgment improvement)
+8. Review date (accept · refine · reject hypothesis)
 ```
 
 Rejected hypotheses are **published** — negative results strengthen the science.
@@ -235,7 +237,9 @@ Rejected hypotheses are **published** — negative results strengthen the scienc
 
 No Phase 2 engine enters spec lock without hypothesis H-* record. Convention Session outputs map to axioms; **slice implementation** maps to hypotheses.
 
-See [LocalBrain Research Agenda](./LOCALBRAIN_RESEARCH_AGENDA.md) for open research questions.
+See [LocalBrain Research Agenda](./LOCALBRAIN_RESEARCH_AGENDA.md) for open research questions · [Theory of Executive Cognition](./LOCALBRAIN_THEORY_OF_EXECUTIVE_COGNITION.md) for why predictions matter.
+
+**Concept freeze:** Doctrine complete. Next work is Convention + H-* implementation only.
 
 ---
 

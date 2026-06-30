@@ -1,8 +1,8 @@
 # LocalBrain Research Agenda
 
 > **Status:** Living document — research questions, not a product roadmap  
-> **Parent:** [Executive Cognitive Science](./LOCALBRAIN_EXECUTIVE_COGNITIVE_SCIENCE.md) · [Constitution](./LOCALBRAIN_CONSTITUTION.md)  
-> **Rule:** Answers come from **experiments** with falsifiable hypotheses — not intuition alone
+> **Parent:** [Executive Cognitive Science](./LOCALBRAIN_EXECUTIVE_COGNITIVE_SCIENCE.md) · [Theory of Executive Cognition](./LOCALBRAIN_THEORY_OF_EXECUTIVE_COGNITION.md) · [Constitution](./LOCALBRAIN_CONSTITUTION.md)  
+> **Rule:** Answers come from **experiments** with falsifiable hypotheses — theory predictions guide which experiments matter most
 
 ---
 
