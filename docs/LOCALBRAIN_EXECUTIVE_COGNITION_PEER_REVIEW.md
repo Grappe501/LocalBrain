@@ -95,15 +95,88 @@ Stop asking *what should we add?* Ask *review this.*
 
 Assign one reviewer per session. Each session attacks a different dimension — not a design meeting.
 
-| Session | Role | Challenge |
-| ------- | ---- | --------- |
-| **1** | **Philosopher** | Definitions · ontology · logical consistency |
-| **2** | **Cognitive scientist** | Cognitive assumptions · evidence requirements |
-| **3** | **Systems engineer** | Scalability · determinism · modularity |
-| **4** | **Executive practitioner** | Does this help someone make better decisions? |
-| **5** | **Skeptic** | Assume the theory is wrong · find weakest points |
+### Frozen submission packet (binding)
 
-Record findings in [Cognitive Evidence Base](./LOCALBRAIN_COGNITIVE_EVIDENCE_BASE.md) · resolve as: accept · amend (Theory v1.x) · defer to hypothesis · reject construct.
+All five reviewers evaluate **the same Theory v1.0 text**. No edits · no wording improvements · no Session 1 clarifications folded in until **all five sessions complete**.
+
+```txt
+Theory v1.0 submission (frozen)
+        │
+        ├── Session 1 — Philosopher Review
+        ├── Session 2 — Cognitive Scientist Review
+        ├── Session 3 — Systems Engineer Review
+        ├── Session 4 — Executive Practitioner Review
+        └── Session 5 — Skeptic Review
+        │
+        ↓ (only after all five complete)
+Convention Agenda
+```
+
+| Field | Value |
+| ----- | ----- |
+| **Frozen at commit** | `7b6ab71` — `docs: establish Theory v1.0 peer review and falsification governance` |
+| **Submission scope** | Doctrine stack at concept freeze — Axioms · Theory v1.0 · Epistemology Convention · Governance · Cognition · Meta-Cognition · Cognitive Science · Falsification Charter |
+| **Rule** | Review findings live in [Evidence Base](./LOCALBRAIN_COGNITIVE_EVIDENCE_BASE.md) only — not in submission docs until Convention |
+| **Contamination guard** | Session N must not read Session N−1 findings before completing its own review |
+
+Peer review in research avoids reviewers influencing one another. Same discipline here.
+
+| Session | Role | Challenge | Status |
+| ------- | ---- | --------- | ------ |
+| **1** | **Philosopher** | Definitions · ontology · logical consistency | ✅ Passed 2026-06-28 |
+| **2** | **Cognitive scientist** | Cognitive assumptions · evidence requirements | 📋 Ready |
+| **3** | **Systems engineer** | Scalability · determinism · modularity | ⬜ Pending |
+| **4** | **Executive practitioner** | Does this help someone make better decisions? | ⬜ Pending |
+| **5** | **Skeptic** | Assume the theory is wrong · find weakest points | ⬜ Pending |
+
+Record findings in [Cognitive Evidence Base](./LOCALBRAIN_COGNITIVE_EVIDENCE_BASE.md). Every criticism receives **one of four outcomes** — no "change it now":
+
+| Outcome | Meaning |
+| ------- | ------- |
+| **Resolved** | No issue after analysis |
+| **Clarification** | Theory stands; wording improved later (Convention or amendment note) |
+| **Open Question** | Needs evidence — not a logical flaw |
+| **Amendment Candidate** | May require Theory v1.1 **after** evidence |
+
+### Session 1 — Philosopher rules (binding)
+
+Reviewer obligation: **break** the theory, not embellish it. No co-design.
+
+| Rule | Requirement |
+| ---- | ----------- |
+| **1. No implementation** | APIs · databases · UI · code → stop. Concepts only. |
+| **2. Demonstrate before replacing** | (1) Show contradiction · (2) Show why it matters · (3) Only then discuss amendment |
+| **3. Charity before criticism** | Strongest reasonable interpretation before challenge — no straw men |
+| **4. Preserve if possible** | Clarification beats amendment; amendments are rare |
+| **5. Record everything** | Four outcomes above — no immediate edits to Theory v1.0 |
+
+**Philosopher objective:** *Is this internally coherent?* — not *Is this useful?*
+
+Checklist: undefined terms · circular definitions · category exclusivity · conclusions from axioms · hidden implementation dependency · scope/category errors.
+
+**Success criterion:** Not "the theory is brilliant." → **"We failed to find a logical contradiction after adversarial review."**
+
+**Reviewer commitment:** Before proposing anything missing, ask *"Can the existing theory already explain this?"* If yes, theory strengthens by **not** expanding. Amendment candidates are recorded for future evidence — not incorporated during review.
+
+**Session 1 meta-observation (not evidence of correctness):** None of five attack surfaces required a new architectural concept. Every issue was resolved by asking *"Where does this already belong?"* Immature architectures discover missing pillars; mature architectures discover boundary clarifications. Records conceptual stability under philosophical scrutiny — not empirical validation.
+
+### Session 2 — Cognitive scientist rules (binding)
+
+**Stop asking:** *Is this logically valid?*
+
+**Start asking:** *If we instrumented thousands of executives, would reality exhibit this behavior?*
+
+| Rule | Requirement |
+| ---- | ----------- |
+| **1. Same frozen packet** | Review commit `7b6ab71` submission only — no Session 1 findings until S2 complete |
+| **2. Empirical pressure** | Cite cognitive psychology · decision science · expertise · organizational behavior as **evidence to weigh**, not automatic override |
+| **3. No implementation** | Concepts only — same as Session 1 |
+| **4. Four outcomes** | Resolved · Clarification · Open Question · Amendment Candidate — record only |
+| **5. No co-design** | Challenge assumptions · do not add pillars |
+
+**Expected pressure areas:** sequential vs parallel cognition · Memory→Knowledge→Belief plausibility · belief vs mental model distinction · prediction vs understanding · missing recursive loops · attention as operational construct · adaptive forgetting vs archival.
+
+**Success criterion:** Failed to find empirically implausible claims that **cannot** be tested via H-* hypotheses — not "psychology confirms every construct."
 
 ### Future: external theory review
 
