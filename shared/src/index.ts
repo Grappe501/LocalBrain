@@ -607,6 +607,7 @@ export {
 } from "./executiveBriefing.js";
 export type {
   CapabilityGovernancePolicy,
+  PrivacyTier,
 } from "./capabilityGovernance.js";
 export {
   EXECUTIVE_CONNECTOR_GOVERNANCE,
@@ -623,3 +624,20 @@ export {
   validateModuleRegistry,
 } from "./moduleManifest.js";
 export type { V1AcceptanceReport, V1Guardrail, V1SpineCheck } from "./v1Spine.js";
+export type {
+  BrainInstanceExportBundle,
+  BrainInstanceOverview,
+  BrainInstanceProfile,
+  BrainOwnerType,
+  ConnectorReadinessEntry,
+  ConnectorReadinessReport,
+  ConnectorReadinessStatus,
+  ExecutiveOfficeType,
+  OnboardingState,
+  UpdateBrainInstanceProfileRequest,
+} from "./brainInstance.js";
+export {
+  BRAIN_INSTANCE_ENGINE_ID,
+  BRAIN_PRODUCT_RULE,
+  PRODUCTIZATION_SLICE_ID,
+} from "./brainInstance.js";

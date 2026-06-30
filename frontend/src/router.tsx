@@ -19,6 +19,9 @@ import { MigrationPlanningView } from "./views/MigrationPlanningView";
 import { MigrationApprovalView } from "./views/MigrationApprovalView";
 import { MigrationCutoverView } from "./views/MigrationCutoverView";
 import { SettingsPage } from "./views/SettingsPage";
+import { OnboardingWizardView } from "./views/OnboardingWizardView";
+import { InstanceSettingsView } from "./views/InstanceSettingsView";
+import { ProvidersSettingsView } from "./views/ProvidersSettingsView";
 import { LazyModuleRoute } from "./views/LazyModuleRoute";
 
 export function AppRouter() {
@@ -46,6 +49,9 @@ export function AppRouter() {
         <Route path="migration/approval" element={<MigrationApprovalView />} />
         <Route path="migration/cutover" element={<MigrationCutoverView />} />
         <Route path="settings" element={<SettingsPage />} />
+        <Route path="settings/onboarding" element={<OnboardingWizardView />} />
+        <Route path="settings/providers" element={<ProvidersSettingsView />} />
+        <Route path="settings/instance" element={<InstanceSettingsView />} />
         {!loading &&
           departmentModules.flatMap((m) =>
             m.routes.map((route) => (

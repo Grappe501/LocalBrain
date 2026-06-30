@@ -25,8 +25,22 @@ export function SettingsPage() {
         <em>(Local UI only — not persisted until LB-OS-028.)</em>
       </p>
       <p className="settings-page__hint">
-        <Link to="/system/providers">AI Provider settings →</Link> (live at LB-OS-017)
+        <strong>LB-OS-PROD-001 — Empty brain productization</strong>
       </p>
+      <ul className="settings-page__links">
+        <li>
+          <Link to="/settings/onboarding">Instance setup wizard →</Link>
+        </li>
+        <li>
+          <Link to="/settings/providers">Provider vault &amp; connectors →</Link>
+        </li>
+        <li>
+          <Link to="/settings/instance">Instance profile &amp; export →</Link>
+        </li>
+        <li>
+          <Link to="/system/providers">Legacy AI providers (system) →</Link>
+        </li>
+      </ul>
 
       <SafetyPanel />
     </article>

@@ -65,6 +65,15 @@ export function hasVaultCredential(providerId: AIProviderId): boolean {
   return getProviderCredential(providerId) !== null;
 }
 
+/** True when LOCALBRAIN_VAULT_SECRET is set (production posture). Dev uses embedded default. */
+export function isVaultConfigured(): boolean {
+  return Boolean(process.env.LOCALBRAIN_VAULT_SECRET?.trim());
+}
+
+export function isVaultUsingDevDefault(): boolean {
+  return !process.env.LOCALBRAIN_VAULT_SECRET?.trim();
+}
+
 /** Never log or return credential values outside this module. */
 export function redactSecret(value: string): string {
   if (value.length <= 8) return "••••••••";

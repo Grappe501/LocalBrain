@@ -184,8 +184,13 @@
 | LB-OS-026.66 | Future Executive Operations Capability Placeholders | ✅ Complete — [Burt](./burt_packets/LB-OS-026.66.md) |
 | LB-OS-026.67 | Executive Office Structure (Organization ≠ Intelligence) | ✅ Complete — [Burt](./burt_packets/LB-OS-026.67.md) · [Office Structure](./LOCALBRAIN_EXECUTIVE_OFFICE_STRUCTURE.md) |
 | LB-OS-026.7 | Executive Office (Executive Operating Environment) | ✅ Complete — [Burt](./burt_packets/LB-OS-026.7.md) · [Experience spec](./LOCALBRAIN_EXECUTIVE_OFFICE_EXPERIENCE.md) |
+| LB-OS-PROD-001 | Productization & Empty Brain Onboarding | ✅ Complete — [Burt](./burt_packets/LB-OS-PROD-001.md) · ENG-INST-001 |
+| LB-OS-026.8 | Productization / Instance Onboarding | 🔄 PROD-001 |
+| LB-OS-026.9 | Provider Vault & Connector Settings | 🔄 PROD-001 |
+| LB-OS-027.0 | Empty Brain Packaging | ⏳ Next |
+| LB-OS-027.1 | Multi-Brain Sharing (reserved) | 🔒 Reserved · CAP-FUT-MBS-001 |
 
-**Gate:** Consolidation arc complete · **Next:** Experience Certification → Peer Review S4
+**Gate:** Consolidation arc complete · **Next:** PROD-001 productization → Experience Certification → Peer Review S4
 
 **Architecture phase:** ✅ **Complete** (2026-06-30) — institution reserved · five-question admission gate · doctrine freeze until Convention + Memory OS
 
@@ -205,8 +210,13 @@
 ```txt
 026.6 Discoverability → 026.65 Intent Graph + Atlas → 026.66 Future placeholders
   → 026.67 Executive Office (departments ≠ domains) → Graph Integrity PASS
-  → 026.7 Executive Office home (not dashboard) → Experience Certification
-  → Peer Review S4 → S5 → Theory v1.0 freeze → Convention → LB-OS-027
+  → 026.7 Executive Office home (not dashboard)
+  → 026.8 Productization / Instance Onboarding (LB-OS-PROD-001)
+  → 026.9 Provider Vault & Connector Settings
+  → 027.0 Empty Brain Packaging
+  → 027.1 Multi-Brain Sharing (reserved)
+  → Peer Review S4 → S5 → Theory v1.0 freeze → Convention → LB-OS-027 Memory OS
+  → CAP-FUT-UDI-001 Universal Digital Ingestion (post-gate)
 ```
 
 **Reserved (post-Convention, not started):** [Executive North Star — Three Goals](./LOCALBRAIN_EXECUTIVE_NORTH_STAR.md) · [Institution Model](./LOCALBRAIN_EXECUTIVE_INSTITUTION_MODEL.md) · [Operational Discipline](./LOCALBRAIN_EXECUTIVE_OPERATIONAL_DISCIPLINE.md) · [Digital World Doctrine](./LOCALBRAIN_EXECUTIVE_DIGITAL_WORLD_DOCTRINE.md)

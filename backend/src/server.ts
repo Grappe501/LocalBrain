@@ -24,6 +24,7 @@ import { migrationRouter } from "./routes/migration.js";
 import { consolidationRouter } from "./routes/consolidation.js";
 import { integrationRouter } from "./routes/integration.js";
 import { liveSurfaceRouter } from "./routes/liveSurface.js";
+import { settingsRouter } from "./settings/settingsRoutes.js";
 import { getRegisteredModules } from "./core/moduleLoader.js";
 import { runBackgroundIndex } from "./knowledgeExplorer/indexer.js";
 
@@ -58,6 +59,7 @@ app.use("/api", migrationRouter);
 app.use("/api", consolidationRouter);
 app.use("/api", integrationRouter);
 app.use("/api", liveSurfaceRouter);
+app.use("/api", settingsRouter);
 
 app.listen(port, () => {
   const db = isDatabaseConnected();

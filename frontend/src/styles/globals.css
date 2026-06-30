@@ -4737,3 +4737,204 @@ a {
   font-size: 0.9rem;
   color: #64748b;
 }
+
+/* LB-OS-PROD-001 Productization / Instance Onboarding */
+.prod-settings {
+  padding: 1.25rem 1.5rem 2rem;
+  max-width: 960px;
+}
+
+.prod-settings__header h1 {
+  margin: 0.25rem 0;
+}
+
+.prod-settings__crumb a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.prod-settings__meta,
+.prod-settings__note {
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.prod-settings__rule {
+  font-family: ui-monospace, monospace;
+  background: #f8fafc;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  border: 1px solid #e2e8f0;
+  font-size: 0.85rem;
+}
+
+.prod-settings__section {
+  margin: 1.5rem 0;
+  padding-top: 0.5rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.prod-settings__section--muted {
+  opacity: 0.85;
+}
+
+.prod-settings__section h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.1rem;
+}
+
+.prod-settings__dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.35rem 1rem;
+  font-size: 0.9rem;
+}
+
+.prod-settings__dl dt {
+  color: #64748b;
+}
+
+.prod-settings__list {
+  margin: 0.5rem 0;
+  padding-left: 1.25rem;
+}
+
+.prod-settings__list--muted {
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.prod-settings__banner {
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
+  padding: 0.75rem 1rem;
+  border-radius: 0.375rem;
+  margin: 1rem 0;
+}
+
+.prod-settings__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.prod-settings__btn {
+  display: inline-block;
+  padding: 0.45rem 0.85rem;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.prod-settings__btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.prod-settings__btn--secondary {
+  background: #e2e8f0;
+  color: #1e293b;
+}
+
+.prod-settings__error {
+  color: #b91c1c;
+}
+
+.prod-settings__success {
+  color: #15803d;
+}
+
+.prod-form label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.prod-form input,
+.prod-form textarea,
+.prod-form select {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  margin-top: 0.25rem;
+  padding: 0.4rem 0.5rem;
+}
+
+.prod-onboarding__steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  font-size: 0.85rem;
+}
+
+.prod-onboarding__step {
+  color: #94a3b8;
+}
+
+.prod-onboarding__step--active {
+  color: #1e293b;
+  font-weight: 600;
+}
+
+.prod-onboarding__panel {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.prod-onboarding__choices {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.prod-onboarding__choice {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.375rem;
+  padding: 0.65rem 0.75rem;
+  cursor: pointer;
+}
+
+.prod-onboarding__check {
+  display: block;
+  margin: 0.35rem 0;
+}
+
+.prod-readiness__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.prod-readiness__table th,
+.prod-readiness__table td {
+  border: 1px solid #e2e8f0;
+  padding: 0.4rem 0.5rem;
+  text-align: left;
+}
+
+.prod-readiness__detail {
+  max-width: 320px;
+  word-break: break-word;
+}
+
+.settings-page__links {
+  margin: 0.5rem 0 1rem;
+  padding-left: 1.25rem;
+}
+
+.settings-page__links a {
+  color: #2563eb;
+  text-decoration: none;
+}
