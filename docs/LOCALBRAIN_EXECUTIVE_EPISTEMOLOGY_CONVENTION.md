@@ -354,8 +354,11 @@ Axiom compliance matrix (Article XIV — every deliverable mapped to axioms 1–
 Master epistemology diagram (Question-first pipeline + Agency · Prediction)
 Cognitive Governance layer (World Model · Council · judgment structure)
 Executive Meta-Cognition (Cognitive Trace · JQ · Wisdom · axiom compliance checks)
-Executive Cognition capability map (engines inside Four Systems)
+LB-OS-027 Burt packet — Executive Memory Bootstrap (includes H-027 hypothesis)
+Research Agenda updates from Convention findings
 ```
+
+Remaining Convention outputs (ontology · unknowns · lifecycle · ethics) unchanged — see Sessions 1–5 above.
 
 ---
 

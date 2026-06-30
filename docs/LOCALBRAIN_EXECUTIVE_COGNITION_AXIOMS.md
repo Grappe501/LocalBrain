@@ -228,20 +228,24 @@ LB-OS-027 Burt packet must declare axiom mapping for Executive Memory Bootstrap.
 ## Doctrine stack (complete)
 
 ```txt
-Axioms (this document)           — laws · invariant · conservation
+Axioms (this document)           — laws · invariants · conservation
   ↓
 Epistemology Convention          — ontology · Session 1–5
   ↓
-World Model · Governance         — Council · lenses · unknowns
+World Model · Governance           — Council · lenses · unknowns
   ↓
 Executive Cognition              — agency · tension · time
   ↓
-Executive Meta-Cognition         — trace · JQ · wisdom
+Executive Meta-Cognition           — trace · JQ · wisdom
   ↓
-Engines (ENG-*)                  — provably axiom-consistent implementation
+Executive Cognitive Science        — hypotheses · falsification · WMA
   ↓
-UI                               — projection only
+Engines (ENG-*)                    — experiments · axiom-compliant
+  ↓
+UI                                 — projection only
 ```
+
+See [Executive Cognitive Science](./LOCALBRAIN_EXECUTIVE_COGNITIVE_SCIENCE.md) · [Research Agenda](./LOCALBRAIN_RESEARCH_AGENDA.md).
 
 ---
 

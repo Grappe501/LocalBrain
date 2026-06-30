@@ -260,6 +260,8 @@ Non-negotiable **laws** for Phase 2+. Every engine, API, prompt, and workflow mu
 
 > Build a governed executive cognition platform whose reasoning remains traceable, whose judgment continuously improves through experience, whose understanding stays coherent as reality changes, and whose architecture remains independent of any particular AI model.
 
+Evolution is **experimental** — see [Executive Cognitive Science](./LOCALBRAIN_EXECUTIVE_COGNITIVE_SCIENCE.md) · [Research Agenda](./LOCALBRAIN_RESEARCH_AGENDA.md). Every capability is a falsifiable hypothesis; the platform proves it is getting better, not merely shipping features.
+
 ---
 
 ## Amendment process
@@ -290,6 +292,8 @@ LOCALBRAIN_CONSTITUTION.md          ← you are here
 ├── LOCALBRAIN_EXECUTIVE_INTENT.md (Executive Mission Stack · ENG-EMS-001 · MCP · Phase 2)
 ├── LOCALBRAIN_EXECUTIVE_MEMORY_OS.md (Memory OS · Memory Confidence · Phase 2–3)
 ├── LOCALBRAIN_EXECUTIVE_COGNITION_AXIOMS.md (Article XIV — seven laws · invariants · conservation)
+├── LOCALBRAIN_EXECUTIVE_COGNITIVE_SCIENCE.md (hypotheses · falsification · WMA — not a fifth system)
+├── LOCALBRAIN_RESEARCH_AGENDA.md (open research questions · H-* registry)
 ├── LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md (gate before LB-OS-027)
 ├── LOCALBRAIN_EXECUTIVE_COGNITION.md (agency · tension · trajectories · Phase 2+ capabilities)
 ├── LOCALBRAIN_COGNITIVE_GOVERNANCE.md (World Model · Council · judgment structure)

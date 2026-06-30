@@ -18,7 +18,7 @@ Executive Leverage Score →  "How much more effective am I?"
 
 The Program Office is a **projection of authoritative build sources** (checklist, git, tests, docs).  
 System Evolution is a **projection of learning and usefulness** (decisions, outcomes, CoS accuracy, maturity gains).  
-[Judgment Quality](./LOCALBRAIN_EXECUTIVE_METACOGNITION.md#ultimate-optimization-target-judgment-quality) is the **ultimate meta-metric** — process quality given knowable information, not lucky outcomes alone.
+[Judgment Quality](./LOCALBRAIN_EXECUTIVE_METACOGNITION.md#ultimate-optimization-target-judgment-quality) measures process quality. [World Model Accuracy](./LOCALBRAIN_EXECUTIVE_COGNITIVE_SCIENCE.md#world-model-accuracy) is the deeper foundation — how closely the model matches reality. See [Executive Cognitive Science](./LOCALBRAIN_EXECUTIVE_COGNITIVE_SCIENCE.md).
 
 ---
 
@@ -42,11 +42,11 @@ Phase 2 surfaces **learning cards** as Executive Intelligence Cards — same mod
 Per [Executive Epistemology Convention](./LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md) — Evolution measures organizational maturity through questions, not only recommendation acceptance:
 
 ```txt
-Questions answered
-Questions eliminated
-Questions discovered
-Questions deferred
-Recurring questions
+World Model Accuracy (WMA) — foundation metric
+Judgment Quality (JQ)
+Questions answered · eliminated · discovered · deferred · recurring
+Hypothesis outcomes (H-* accept · refine · reject)
+Knowledge ROI · Evidence debt trends
 ```
 
 ---

@@ -245,13 +245,15 @@ Existing metrics remain: [MCP](./LOCALBRAIN_EXECUTIVE_INTENT.md) · [ECL](./LOCA
 | **Cognition** | This document | What to notice · predict · imagine · initiate · when to stay quiet |
 | **Governance** | [Cognitive Governance](./LOCALBRAIN_COGNITIVE_GOVERNANCE.md) | World Model · Council · judgment structure |
 | **Meta-cognition** | [Executive Meta-Cognition](./LOCALBRAIN_EXECUTIVE_METACOGNITION.md) | Did we think well? |
-| **Axioms** | [Executive Cognition Axioms](./LOCALBRAIN_EXECUTIVE_COGNITION_AXIOMS.md) | Laws every engine must satisfy |
+| **Axioms** | [Executive Cognition Axioms](./LOCALBRAIN_EXECUTIVE_COGNITION_AXIOMS.md) | Is this provably consistent with the laws? |
+| **Science** | [Executive Cognitive Science](./LOCALBRAIN_EXECUTIVE_COGNITIVE_SCIENCE.md) | Can we prove this improves the platform? |
 
 Epistemology: *"Is this true and traceable?"*  
 Cognition: *"Given what we know, should anything happen?"*  
 Governance: *"How is judgment structured?"*  
-Meta-cognition: *"Did we think well — and how do we improve?"*  
-Axioms: *"Is this provably consistent with the laws?"*
+Meta-cognition: *"Did we think well?"*  
+Axioms: *"Is this consistent with the laws?"*  
+Science: *"What hypothesis does this test — and did it survive falsification?"*
 
 ---
 
