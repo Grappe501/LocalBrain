@@ -27,7 +27,32 @@ Teach LocalBrain to remember before it learns to reason.
 
 > **The purpose of the platform is not to accumulate answers. It is to continuously improve the quality of the questions it can ask and answer.**
 
-Executive Questions · Memory · Knowledge · Beliefs · Understanding · Mission Stack · Executive Intelligence · Executive Evolution all fit beneath this principle.
+Executive Questions · Memory · Knowledge · Beliefs · Understanding · [Executive Cognition](./LOCALBRAIN_EXECUTIVE_COGNITION.md) · Mission Stack · Executive Intelligence · Executive Evolution all fit beneath this principle.
+
+---
+
+## Executive Cognition (Phase 2+ doctrine)
+
+Epistemology defines **what can be known**. [Executive Cognition](./LOCALBRAIN_EXECUTIVE_COGNITION.md) defines **what should happen** — including when nothing should.
+
+Extended pipeline (capabilities inside Four Systems — not new pillars):
+
+```txt
+Question → Memory → Understanding → Prediction → Agency → Decision → Action
+```
+
+Key concepts for Convention Session 1 awareness · detailed spec in Executive Cognition doc:
+
+| Concept | Role |
+| ------- | ---- |
+| **Agency** | Should anything happen at all? (initiative · emergent observation) |
+| **Tension** | Unresolved domain pressure — brain reduces total tension |
+| **Trajectories** | Direction over time (not snapshots) |
+| **Momentum** | State + velocity + direction |
+| **Mental Models** | Tested patterns about how Steve works (not memories) |
+| **Counterfactuals** | Alternate futures before deciding |
+
+**Emergent question:** *What happens if Steve does nothing?* — not only *What should I do today?*
 
 ---
 
@@ -93,6 +118,10 @@ Beliefs
         │
 Understanding
         │
+Prediction
+        │
+Agency
+        │
 Mission
         │
 Reasoning
@@ -109,6 +138,8 @@ New Questions
         │
 Executive Evolution
 ```
+
+See [Executive Cognition](./LOCALBRAIN_EXECUTIVE_COGNITION.md) for Agency · Tension · Trajectories · Mental Models · full Observe→Evolve loop.
 
 | Stage | Responsibility |
 | ----- | -------------- |
@@ -304,7 +335,8 @@ Consent · decay · immutability · memory and belief conflict · belief revisio
 ## Convention deliverables
 
 ```txt
-Master epistemology diagram (Question-first pipeline)
+Master epistemology diagram (Question-first pipeline + Agency · Prediction)
+Executive Cognition capability map (engines inside Four Systems)
 Question taxonomy (Operational · Executive · Epistemic · Requested · Emergent)
 Memory ontology · Belief contract · Strength + Certainty model
 Transparent recommendation chain contract

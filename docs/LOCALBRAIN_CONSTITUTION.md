@@ -12,20 +12,26 @@ When documents conflict, **Constitution wins** → then Architecture lock → th
 
 **Product:** [Executive Operating System](./LOCALBRAIN_EXECUTIVE_OFFICE.md) — Steve's AI Executive Operating System.
 
-**Engine:** [LocalBrain](./LOCALBRAIN_PRODUCT_NAMING.md) — reasoning, memory, orchestration.
+**Engine:** [LocalBrain](./LOCALBRAIN_PRODUCT_NAMING.md) — [Executive Cognition](./LOCALBRAIN_EXECUTIVE_COGNITION.md), not a chat assistant. LLMs are one subsystem.
 
-**North star:**
+**North star (weekly):**
 
 ```txt
 Did Steve accomplish more meaningful work this week
 than he would have without LocalBrain?
 ```
 
+**North star (10–20 years):**
+
+> **How do we build an executive cognitive system that can outperform today's assistants over the next 10–20 years?**
+
 **Philosophy:**
 
 > LocalBrain is an executive operating platform that separates work, knowledge, decisions, and improvement into distinct systems. It organizes the user's digital world through deterministic structure, remembers with provenance, reasons only after memory is assembled, and continuously evolves through verified outcomes rather than opaque model behavior.
 
-**Measured by:** [Executive Leverage Score](./LOCALBRAIN_EXECUTIVE_LEVERAGE_SCORE.md) · [Effectiveness Metrics](./LOCALBRAIN_EFFECTIVENESS_METRICS.md)
+Most AI systems wait for prompts. Executive cognition continuously observes, detects tension, predicts futures, and proposes the smallest high-leverage intervention that increases [Mission Completion Probability](./LOCALBRAIN_EXECUTIVE_INTENT.md) while minimizing [Executive Cognitive Load](./LOCALBRAIN_EXECUTIVE_COGNITIVE_LOAD.md).
+
+**Measured by:** [Executive Leverage Score](./LOCALBRAIN_EXECUTIVE_LEVERAGE_SCORE.md) · [Effectiveness Metrics](./LOCALBRAIN_EFFECTIVENESS_METRICS.md) · MCP · ECL
 
 **Development phases:** [Three-Phase Roadmap](./LOCALBRAIN_THREE_PHASE_ROADMAP.md)
 
@@ -249,6 +255,7 @@ LOCALBRAIN_CONSTITUTION.md          ← you are here
 ├── LOCALBRAIN_EXECUTIVE_INTENT.md (Executive Mission Stack · ENG-EMS-001 · MCP · Phase 2)
 ├── LOCALBRAIN_EXECUTIVE_MEMORY_OS.md (Memory OS · Memory Confidence · Phase 2–3)
 ├── LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md (gate before LB-OS-027)
+├── LOCALBRAIN_EXECUTIVE_COGNITION.md (agency · tension · trajectories · Phase 2+ capabilities)
 ├── LOCALBRAIN_MEMORY_SUMMIT.md (redirect → Epistemology Convention)
 ├── LOCALBRAIN_MEMORY_DOMAINS.md (Memory foundational object · six domains)
 ├── LOCALBRAIN_EXECUTIVE_COGNITIVE_LOAD.md (ENG-ECL-001 · System 3 · Phase 2)

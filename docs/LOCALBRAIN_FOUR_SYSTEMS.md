@@ -170,20 +170,22 @@ Vendors are **implementation details** behind [AI Provider Management](./LOCALBR
 ## How systems cooperate (CoS path)
 
 ```txt
-Steve
+Steve (or emergent observation — no prompt)
   ↓
-Executive OS          — route · workspace · permissions
+Executive OS          — route · workspace · permissions · observe
   ↓
-Executive Intelligence — Mission Stack · Executive Question
+Executive Intelligence — Question · Tension · Mission Stack
   ↓
-Executive Memory OS   — recall plan · Memory Confidence · Context Window
+Executive Memory OS   — recall · Mental Models · Understanding
   ↓
-Executive Intelligence — reasoning · Mission Alignment · EIC · recommendation
+Executive Intelligence — Predict · Counterfactual · Agency · Reason · EIC
   ↓
 Executive OS          — Simulation · Proposal · Approval · Execution
   ↓
-Executive Evolution   — outcome · learning · Evolution scoreboard
+Executive Evolution   — Trajectory · Momentum · outcome · Learn · Evolve
 ```
+
+Full loop: [Executive Cognition](./LOCALBRAIN_EXECUTIVE_COGNITION.md).
 
 ---
 
@@ -220,6 +222,7 @@ Keeps the executive experience responsive; scales heavy AI independently. See [G
 | Context Efficiency | Executive Memory OS | Token / retrieval payoff |
 | Executive Leverage Score | Executive Intelligence | Real-world impact |
 | **Executive Cognitive Load** | Executive Intelligence | **Steve's attention load** |
+| **Tension** (planned) | Executive Intelligence | Unresolved domain pressure |
 | System Evolution index | Executive Evolution | Learning growth |
 | Architecture Debt | Executive OS (Engineering) | Platform structural integrity |
 
@@ -230,6 +233,14 @@ See [Executive Cognitive Load](./LOCALBRAIN_EXECUTIVE_COGNITIVE_LOAD.md) for ECL
 ## Adding new capabilities
 
 All admission through [Five Gates Rule](./LOCALBRAIN_FIVE_GATES_RULE.md) (Constitution Article XI). Supplemental platform health: [Architecture Debt Score](./LOCALBRAIN_ARCHITECTURE_DEBT.md).
+
+**Cognitive capabilities** (Tension · Agency · Trajectories · Mental Models · etc.) are **modules inside** the four systems — never new top-level pillars. See [Executive Cognition](./LOCALBRAIN_EXECUTIVE_COGNITION.md).
+
+| Capability | System |
+| ---------- | ------ |
+| Tension · Prediction · Agency · Counterfactual | Executive Intelligence |
+| Mental Models | Executive Memory OS |
+| Trajectory · Momentum | Executive Evolution |
 
 Additional constraints (not separate gates):
 
