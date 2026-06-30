@@ -4,9 +4,17 @@
 
 export type V1CertDimensionStatus = "pass" | "needs_work" | "pending" | "not_applicable";
 
-export type V1ModuleLaunchStatus = "certified" | "needs_work" | "in_progress" | "not_started";
+export type V1ModuleLaunchStatus =
+  | "certified"
+  | "needs_work"
+  | "in_progress"
+  | "not_started"
+  | "regression";
 
 export type V1ModuleReviewVerdict = "PASS" | "NEEDS WORK";
+
+export const V1_NO_REGRESSION_RULE =
+  "No module may regress after certification. Regression flags launch confidence and returns module to IN PROGRESS until fixed.";
 
 export const BURT_V1_MISSION =
   "Finish the current module. Not improve the architecture. Not find opportunities. Not expand the vision.";
@@ -40,6 +48,8 @@ export interface V1ModuleCertificationCard {
   dimensions: V1CertDimensionRow[];
   launch_status: V1ModuleLaunchStatus;
   review_verdict: V1ModuleReviewVerdict | null;
+  certification_locked: boolean;
+  regression_detected: boolean;
 }
 
 /** Standard Burt return — ask "Review this module," not "What should we build next?" */

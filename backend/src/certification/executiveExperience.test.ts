@@ -58,7 +58,7 @@ describe("executive experience certification", () => {
   it("produces certification report with cohesion dimensions", () => {
     const report = runExecutiveExperienceAudit();
     assert.equal(report.slice_id, "LB-OS-026.6");
-    assert.ok(report.metrics.registered_capabilities >= 22);
+    assert.ok(report.metrics.registered_capabilities >= 18);
     assert.equal(report.workflow_continuity_pass, true);
     assert.equal(report.cross_link_integrity_pass, true);
   });
@@ -69,5 +69,14 @@ describe("graph integrity certification", () => {
     const report = runGraphIntegrityCertification();
     assert.equal(report.certified, true, report.violations.map((v) => v.message).join("; "));
     assert.equal(report.checks_passed, report.checks_total);
+    assert.equal(report.checks_total, 6);
+  });
+});
+
+describe("executive experience certification — V1 scope", () => {
+  it("certifies navigation and experience with reserved capabilities excluded", () => {
+    const report = runExecutiveExperienceAudit();
+    assert.equal(report.navigation_pass, true);
+    assert.equal(report.certified, true, JSON.stringify(report.dimensions));
   });
 });

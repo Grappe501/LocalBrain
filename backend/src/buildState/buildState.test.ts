@@ -87,6 +87,9 @@ test("certifyCurrentModule produces dimension rows for Executive Office", () => 
   assert.equal(card!.module_id, "executive_office");
   assert.equal(card!.dimensions.length, 6);
   assert.ok(card!.dimensions.some((d) => d.dimension_id === "navigation"));
+  assert.equal(card!.launch_status, "certified", card!.dimensions.map((d) => `${d.dimension_id}:${d.status}`).join(", "));
+  assert.equal(card!.review_verdict, "PASS");
+  assert.equal(card!.certification_locked, true);
 });
 
 test("computeAdaptiveForecast produces predicted launch with confidence", () => {

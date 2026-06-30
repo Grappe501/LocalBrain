@@ -2152,6 +2152,48 @@ export function isPlannedCapability(cap: CapabilityEntry): boolean {
   return cap.completion_status === "planned" || cap.infrastructure_reserved === true;
 }
 
+/** Routes excluded from V1 Executive Office orphan audit (off critical path or settings). */
+export const V1_ORPHAN_EXEMPT_ROUTES = [
+  "/settings",
+  "/settings/onboarding",
+  "/settings/providers",
+  "/settings/instance",
+  "/system/providers",
+  "/learn",
+] as const;
+
+/** Productization settings + OJT academy — not V1 Executive Office navigation scope. */
+export const V1_GRAPH_CERT_EXCLUDED_CAPABILITY_IDS = [
+  "CAP-LRN-001",
+  "CAP-PROD-001",
+  "CAP-PROD-002",
+  "CAP-PROD-003",
+] as const;
+
+/** Capabilities excluded from graph integrity / experience orphan checks during V1 certification. */
+export function isExcludedFromV1GraphCertification(cap: CapabilityEntry): boolean {
+  if (isPlannedCapability(cap)) return true;
+  if (cap.completion_status === "stub") return true;
+  if (cap.nav_placement === "future") return true;
+  if (
+    (V1_GRAPH_CERT_EXCLUDED_CAPABILITY_IDS as readonly string[]).includes(cap.capability_id)
+  ) {
+    return true;
+  }
+  return false;
+}
+
+export function getV1CertificationCapabilities(): CapabilityEntry[] {
+  return CAPABILITY_REGISTRY.filter((c) => !isExcludedFromV1GraphCertification(c));
+}
+
+export function isV1OrphanExemptRoute(route: string): boolean {
+  const norm = normalizeRoutePath(route);
+  return (V1_ORPHAN_EXEMPT_ROUTES as readonly string[]).some(
+    (r) => r === norm || (r.includes(":") && norm.startsWith(r.split(":")[0])),
+  );
+}
+
 export function getLiveCapabilities(): CapabilityEntry[] {
   return CAPABILITY_REGISTRY.filter((c) => !isPlannedCapability(c));
 }

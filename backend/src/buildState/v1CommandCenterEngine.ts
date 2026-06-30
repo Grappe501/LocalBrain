@@ -23,6 +23,7 @@ import fs from "node:fs";
 import path from "node:path";
 import type { BuildStateSnapshot } from "./buildStateEngine.js";
 import { getCommitCount, getRecentCommits } from "./gitMetrics.js";
+import { certifyCurrentModule } from "./moduleCertificationEngine.js";
 import { getRepoRoot } from "../db/repoRoot.js";
 
 /** Map V1 weight areas to module rows. */
@@ -253,19 +254,27 @@ export function computeV1CommandCenter(state: BuildStateSnapshot): V1CommandCent
     const estDays = def.path_steps.reduce((s, step) => s + V1_BURNDOWN_ESTIMATES_DAYS[step], 0);
     const tests = countTestsInGlobs(def.test_globs);
     const testsLabel = tests.total > 0 ? `${tests.total}/${tests.total}` : tests.files > 0 ? `${tests.files} files` : "0/0";
+    const eoCert =
+      def.module_id === "executive_office" ? certifyCurrentModule("executive_office") : null;
+    const moduleCertified =
+      eoCert?.launch_status === "certified" && eoCert.certification_locked
+        ? true
+        : progress >= 100 && tests.total > 0;
 
     return {
       module_id: def.module_id,
       name: def.name,
       version: def.version,
       progress_percent: progress,
-      status,
+      status: eoCert?.regression_detected ? "in_progress" : status,
       eta_label: etaLabel(status, estDays),
       owner: def.owner,
-      blockers,
+      blockers: eoCert?.regression_detected
+        ? ["REGRESSION — module failed re-certification"]
+        : blockers,
       tests_label: testsLabel,
       weight_area: def.weight_area,
-      certified: progress >= 100 && tests.total > 0,
+      certified: moduleCertified,
     };
   });
 

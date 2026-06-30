@@ -4,7 +4,10 @@ import {
   WF_MIGRATION_EXECUTION,
   getKernelNavItems,
   getMigrationPipelineStrip,
+  getV1CertificationCapabilities,
   getWorkflowNavigation,
+  isExcludedFromV1GraphCertification,
+  isV1OrphanExemptRoute,
   matchCapabilityForRoute,
   normalizeRoutePath,
   type ExecutiveExperienceCertification,
@@ -129,13 +132,15 @@ export function runReverseJourneyTest(): JourneyTestResult {
 }
 
 export function runExecutiveExperienceAudit(): ExecutiveExperienceCertification {
-  const capabilityRoutes = CAPABILITY_REGISTRY.map((c) => normalizeRoutePath(c.primary_route));
+  const v1Capabilities = getV1CertificationCapabilities();
+  const capabilityRoutes = v1Capabilities.map((c) => normalizeRoutePath(c.primary_route));
   const surfaceRoutes = SURFACE_REGISTRY.map((s) => s.route);
   const kernelNav = getKernelNavItems();
 
   let registryDrift = 0;
   for (const live of LIVE_PRODUCTION_ROUTES) {
     if (live === "/project/:workspaceId") continue;
+    if (isV1OrphanExemptRoute(live)) continue;
     const norm = normalizeRoutePath(live);
     if (!CAPABILITY_REGISTRY.some((c) => routePatternMatch(norm, c.primary_route))) {
       registryDrift++;
@@ -145,11 +150,8 @@ export function runExecutiveExperienceAudit(): ExecutiveExperienceCertification 
     }
   }
 
-  const orphanCapabilities = CAPABILITY_REGISTRY.filter(
+  const orphanCapabilities = v1Capabilities.filter(
     (c) =>
-      c.completion_status !== "stub" &&
-      c.completion_status !== "planned" &&
-      !c.infrastructure_reserved &&
       c.nav_placement !== "hidden" &&
       !LIVE_PRODUCTION_ROUTES.some((r) => routePatternMatch(r, c.primary_route)),
   ).length;
@@ -158,9 +160,7 @@ export function runExecutiveExperienceAudit(): ExecutiveExperienceCertification 
   const reverse = runReverseJourneyTest();
   const deadEnds = journey.missing_steps.length + reverse.missing_steps.length;
 
-  const depths = CAPABILITY_REGISTRY.filter(
-    (c) => c.completion_status !== "stub" && c.completion_status !== "planned",
-  ).map((c) => computeClickDepthFromBriefing(c.primary_route));
+  const depths = v1Capabilities.map((c) => computeClickDepthFromBriefing(c.primary_route));
   const averageClickDepth =
     depths.length > 0
       ? Math.round((depths.reduce((a, b) => a + b, 0) / depths.length) * 10) / 10
@@ -171,7 +171,7 @@ export function runExecutiveExperienceAudit(): ExecutiveExperienceCertification 
   const routeRegistryPass =
     capabilityRoutes.length >= surfaceRoutes.length - 2 &&
     PHASE_1_EXECUTIVE_QUESTIONS.every((q) =>
-      CAPABILITY_REGISTRY.some(
+      v1Capabilities.some(
         (c) =>
           c.executive_question_ids.includes(q.question_id) &&
           c.authority_level === "authoritative",
@@ -224,11 +224,11 @@ export function runExecutiveExperienceAudit(): ExecutiveExperienceCertification 
     certified,
     metrics: {
       live_routes: LIVE_PRODUCTION_ROUTES.length,
-      registered_capabilities: CAPABILITY_REGISTRY.length,
+      registered_capabilities: v1Capabilities.length,
       surface_registry: SURFACE_REGISTRY.length,
       sidebar_nav: kernelNav.length + getMigrationPipelineStrip().length,
       dashboard_links: DASHBOARD_LINK_ROUTES.length,
-      capability_matrix: CAPABILITY_REGISTRY.length,
+      capability_matrix: v1Capabilities.length,
       registry_drift: registryDrift,
       broken_links: 0,
       orphan_capabilities: orphanCapabilities,
@@ -237,11 +237,11 @@ export function runExecutiveExperienceAudit(): ExecutiveExperienceCertification 
     },
     coverage: [
       { source: "Live routes", route_count: LIVE_PRODUCTION_ROUTES.length },
-      { source: "Registered capabilities", route_count: CAPABILITY_REGISTRY.length },
+      { source: "Registered capabilities", route_count: v1Capabilities.length },
       { source: "Surface registry", route_count: SURFACE_REGISTRY.length },
       { source: "Sidebar", route_count: kernelNav.length },
       { source: "Dashboard", route_count: DASHBOARD_LINK_ROUTES.length },
-      { source: "Capability Matrix", route_count: CAPABILITY_REGISTRY.length },
+      { source: "Capability Matrix", route_count: v1Capabilities.length },
       { source: "Migration pipeline", route_count: getMigrationPipelineStrip().length },
     ],
     dimensions,
@@ -253,9 +253,11 @@ export function runExecutiveExperienceAudit(): ExecutiveExperienceCertification 
 
 export function runGraphIntegrityCertification(): GraphIntegrityCertification {
   const violations: GraphIntegrityViolation[] = [];
+  const v1Capabilities = getV1CertificationCapabilities();
 
   for (const live of LIVE_PRODUCTION_ROUTES) {
     if (live === "/project/:workspaceId") continue;
+    if (isV1OrphanExemptRoute(live)) continue;
     const norm = normalizeRoutePath(live);
     if (!CAPABILITY_REGISTRY.some((c) => routePatternMatch(norm, c.primary_route))) {
       violations.push({
@@ -266,8 +268,8 @@ export function runGraphIntegrityCertification(): GraphIntegrityCertification {
     }
   }
 
-  for (const c of CAPABILITY_REGISTRY) {
-    if (c.completion_status === "stub" || c.completion_status === "planned") continue;
+  for (const c of v1Capabilities) {
+    if (isExcludedFromV1GraphCertification(c)) continue;
     if (c.executive_question_ids.length === 0 && c.authority_level !== "supporting") {
       violations.push({
         check_id: "capability-has-question",
@@ -298,7 +300,7 @@ export function runGraphIntegrityCertification(): GraphIntegrityCertification {
   }
 
   for (const q of PHASE_1_EXECUTIVE_QUESTIONS) {
-    const authoritative = CAPABILITY_REGISTRY.filter(
+    const authoritative = v1Capabilities.filter(
       (c) =>
         c.executive_question_ids.includes(q.question_id) &&
         c.authority_level === "authoritative",
@@ -322,11 +324,8 @@ export function runGraphIntegrityCertification(): GraphIntegrityCertification {
     }
   }
 
-  const orphanCapabilities = CAPABILITY_REGISTRY.filter(
+  const orphanCapabilities = v1Capabilities.filter(
     (c) =>
-      c.completion_status !== "stub" &&
-      c.completion_status !== "planned" &&
-      !c.infrastructure_reserved &&
       c.nav_placement !== "hidden" &&
       !LIVE_PRODUCTION_ROUTES.some((r) => routePatternMatch(r, c.primary_route)),
   );

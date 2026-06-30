@@ -47,6 +47,7 @@ export {
   V1_DEFINITION_OF_DONE,
   V1_MODULE_REVIEW_REQUEST,
   V1_MODULE_REVIEW_TEMPLATE,
+  V1_NO_REGRESSION_RULE,
 } from "./v1ModuleCertification.js";
 export type {
   CeoModeBrief,
@@ -535,9 +536,14 @@ export {
   getMigrationNavItems,
   getLiveCapabilities,
   getPlannedCapabilities,
+  getV1CertificationCapabilities,
+  isExcludedFromV1GraphCertification,
   isPlannedCapability,
+  isV1OrphanExemptRoute,
   matchCapabilityForRoute,
   normalizeRoutePath,
+  V1_GRAPH_CERT_EXCLUDED_CAPABILITY_IDS,
+  V1_ORPHAN_EXEMPT_ROUTES,
 } from "./capabilityRegistry.js";
 export type {
   BreadcrumbSegment,

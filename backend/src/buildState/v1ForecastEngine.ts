@@ -14,6 +14,7 @@ import type { BuildStateSnapshot } from "./buildStateEngine.js";
 import type { V1CommandCenter } from "@localbrain/shared";
 import { getCommitsSince, getCommitCount } from "./gitMetrics.js";
 import { getRepoRoot } from "../db/repoRoot.js";
+import { certifyCurrentModule } from "./moduleCertificationEngine.js";
 
 const HISTORY_PATH = path.join(getRepoRoot(), "local_data", "v1-forecast-history.json");
 
@@ -221,6 +222,10 @@ function buildReasons(
 
 function pmoReasoning(cc: V1CommandCenter): string[] {
   const lines: string[] = [];
+  const eoCert = certifyCurrentModule("executive_office");
+  if (eoCert?.regression_detected) {
+    lines.push("REGRESSION — Executive Office failed re-certification; launch confidence reduced");
+  }
   const eo = cc.modules.find((m) => m.module_id === "executive_office");
   if (eo && eo.status === "in_progress") {
     lines.push(
@@ -301,7 +306,11 @@ export function computeAdaptiveForecast(
       : null;
 
   const tier = modelTier(history.length, buildCount);
-  const confidence = confidencePercent(history, buildCount, tier);
+  let confidence = confidencePercent(history, buildCount, tier);
+  const eoCert = certifyCurrentModule("executive_office");
+  if (eoCert?.regression_detected) {
+    confidence = Math.max(22, confidence - 25);
+  }
 
   const prevPoint = history.find((p) => p.date === yesterdayIso()) ?? history.at(-2) ?? null;
   const scoreDelta = prevPoint ? launchScore - prevPoint.launch_score_percent : 0;

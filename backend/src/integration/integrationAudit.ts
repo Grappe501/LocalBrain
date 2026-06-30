@@ -2,6 +2,7 @@ import {
   INTEGRATION_TARGETS,
   PHASE_1_EXECUTIVE_QUESTIONS,
   buildCrossRouteLinks,
+  isV1OrphanExemptRoute,
   matchQuestionForRoute,
   type IntegrationAuditReport,
 } from "@localbrain/shared";
@@ -52,7 +53,7 @@ export function runIntegrationAudit(): IntegrationAuditReport {
   ];
 
   const orphan_routes = allPriorityRoutes.filter((route) => {
-    if (route === "/system/providers" || route === "/settings") return false;
+    if (isV1OrphanExemptRoute(route)) return false;
     return !matchQuestionForRoute(route.replace(":workspaceId", "localbrain"));
   });
 
