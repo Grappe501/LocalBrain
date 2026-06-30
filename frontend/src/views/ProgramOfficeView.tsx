@@ -425,8 +425,8 @@ export function ProgramOfficeView() {
       <section className="epo-maturity" aria-label="Experience maturity roadmap">
         <h2>Experience Maturity</h2>
         <p className="epo-maturity__intro">
-          {overview.experience_maturity_engine_id} — every route is live <em>and</em> maturing toward
-          executive-quality usefulness. Badges visible in development builds only.
+          {overview.experience_maturity_engine_id} — synced from ENG-CAP-001 capability maturity on
+          each request. Badges visible in development builds only.
         </p>
         <div className="epo-maturity__table-wrap">
           <table className="epo-maturity__table">
@@ -436,6 +436,7 @@ export function ProgramOfficeView() {
                 <th>Surface</th>
                 <th>Maturity</th>
                 <th>Target</th>
+                <th>Verified</th>
                 <th>Next upgrade</th>
                 <th>Upgrade path</th>
               </tr>
@@ -456,6 +457,9 @@ export function ProgramOfficeView() {
                     <span className="epo-maturity__label">{row.maturity_label}</span>
                   </td>
                   <td>L{row.target_level}</td>
+                  <td>
+                    <code>{row.last_verified_slice ?? "—"}</code>
+                  </td>
                   <td>{row.next_upgrade_slice ?? "—"}</td>
                   <td className="epo-maturity__summary">{row.next_upgrade_summary}</td>
                 </tr>

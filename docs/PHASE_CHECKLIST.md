@@ -176,14 +176,14 @@
 | LB-OS-026.65 | Executive Intent Graph & Capability Atlas | ✅ Complete — [Burt](./burt_packets/LB-OS-026.65.md) · [Intent Graph](./LOCALBRAIN_EXECUTIVE_INTENT_GRAPH.md) · [Atlas](./LOCALBRAIN_EXECUTIVE_CAPABILITY_ATLAS.md) |
 | LB-OS-026.66 | Future Executive Operations Capability Placeholders | ✅ Complete — [Burt](./burt_packets/LB-OS-026.66.md) |
 | LB-OS-026.67 | Executive Office Structure (Organization ≠ Intelligence) | ✅ Complete — [Burt](./burt_packets/LB-OS-026.67.md) · [Office Structure](./LOCALBRAIN_EXECUTIVE_OFFICE_STRUCTURE.md) |
-| LB-OS-026.7 | Executive Dashboard & Daily Briefing | ⬜ PLANNED — **gate:** office + atlas projection · graph integrity PASS |
+| LB-OS-026.7 | Executive Office (Executive Operating Environment) | ⬜ PLANNED — **gate:** office experience contract · graph integrity PASS · [Experience spec](./LOCALBRAIN_EXECUTIVE_OFFICE_EXPERIENCE.md) · [Burt](./burt_packets/LB-OS-026.7.md) |
 
 **Post-consolidation sequence:**
 
 ```txt
 026.6 Discoverability → 026.65 Intent Graph + Atlas → 026.66 Future placeholders
   → 026.67 Executive Office (departments ≠ domains) → Graph Integrity PASS
-  → 026.7 Dashboard (office + atlas projection) → Experience Certification
+  → 026.7 Executive Office home (not dashboard) → Experience Certification
   → Peer Review S4 → S5 → Theory v1.0 freeze → Convention → LB-OS-027
 ```
 

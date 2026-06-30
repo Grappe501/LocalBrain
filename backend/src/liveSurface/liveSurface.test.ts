@@ -36,5 +36,8 @@ test("getLiveSurfaceAudit returns engine id", () => {
   assert.equal(audit.experience_maturity_engine_id, "ENG-EXP-001");
   assert.ok(audit.surfaces.length >= 10);
   assert.ok(audit.experience_maturity.length >= 10);
-  assert.equal(audit.experience_maturity.find((r) => r.route.includes("workspace"))?.maturity_level, 1);
+  const ws = audit.experience_maturity.find((r) => r.route.includes("workspace"));
+  assert.ok(ws);
+  assert.equal(ws?.capability_id, "CAP-WS-001");
+  assert.ok(ws.maturity_level >= 1);
 });

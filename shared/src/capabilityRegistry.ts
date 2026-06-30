@@ -526,8 +526,8 @@ const FUTURE_EXECUTIVE_CAPABILITIES: CapabilityEntry[] = [
 export const CAPABILITY_REGISTRY: CapabilityEntry[] = [
   cap({
     capability_id: "CAP-EO-001",
-    title: "Executive Briefing",
-    description: "Daily executive orientation and priority surfacing",
+    title: "Executive Office",
+    description: "Chief of Staff briefing and executive operating environment home",
     executive_question_ids: ["EQ-001"],
     primary_route: "/",
     secondary_routes: [],
@@ -542,7 +542,7 @@ export const CAPABILITY_REGISTRY: CapabilityEntry[] = [
     maturity: {
       completion_percent: 55,
       health: "degraded",
-      last_verified_slice: "LB-OS-020.5",
+      last_verified_slice: "LB-OS-026.67",
       dependency_capability_ids: [],
     },
     slice_id: "LB-OS-002",
@@ -572,7 +572,7 @@ export const CAPABILITY_REGISTRY: CapabilityEntry[] = [
     maturity: {
       completion_percent: 92,
       health: "healthy",
-      last_verified_slice: "LB-OS-026.5",
+      last_verified_slice: "LB-OS-026.6",
       dependency_capability_ids: [],
     },
     slice_id: "LB-OS-012.5",

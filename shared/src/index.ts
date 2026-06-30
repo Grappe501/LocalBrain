@@ -155,6 +155,14 @@ export {
   maturityCode,
   maturityLabel,
 } from "./experienceMaturity.js";
+export {
+  PLATFORM_EXPERIENCE_NEXT_SLICE,
+  buildExperienceMaturityMatrix,
+  capabilityToExperienceMaturity,
+  capabilityToSurfaceMode,
+  mergeSurfaceWithCapability,
+  resolveCapabilityForSurfaceRoute,
+} from "./experienceMaturitySync.js";
 export type {
   LiveSurfaceAudit,
   LiveSurfaceEntry,
@@ -578,6 +586,24 @@ export {
   resolveDepartmentsForCapability,
   resolveDomainsForCapability,
 } from "./executiveOffice.js";
+export type {
+  BriefingArchiveEntry,
+  ChiefOfStaffBriefing,
+  CosEditorialAction,
+  DepartmentDailyReport,
+  DepartmentReportStatus,
+  ExecutiveOfficeExperience,
+  ExecutiveOfficeZone,
+  ExecutiveOfficeZoneId,
+} from "./executiveBriefing.js";
+export {
+  COS_EDITORIAL_ACTIONS,
+  EXECUTIVE_BRIEFING_ENGINE_ID,
+  EXECUTIVE_DAILY_QUESTIONS,
+  buildDepartmentDailyReports,
+  buildExecutiveOfficeExperience,
+  renderExecutiveOfficeExperienceMarkdown,
+} from "./executiveBriefing.js";
 export type {
   CapabilityGovernancePolicy,
 } from "./capabilityGovernance.js";

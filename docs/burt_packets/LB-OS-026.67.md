@@ -1,7 +1,7 @@
 # LB-OS-026.67 — Executive Office Structure (Organization ≠ Intelligence)
 
 > **Depends on:** LB-OS-026.66 (reserved capabilities)  
-> **Next:** LB-OS-026.7 Executive Dashboard & Daily Briefing  
+> **Next:** LB-OS-026.7 Executive Office (Executive Operating Environment)  
 > **Rule:** Metadata and doctrine only — no connectors, no agents, no dashboard UI
 
 ---

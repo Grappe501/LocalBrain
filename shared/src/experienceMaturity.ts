@@ -28,4 +28,7 @@ export interface ExperienceMaturityRow {
   target_level: ExperienceMaturityLevel;
   next_upgrade_slice: string | null;
   next_upgrade_summary: string;
+  /** ENG-CAP-001 sync — null when surface-only */
+  capability_id?: string | null;
+  last_verified_slice?: string | null;
 }

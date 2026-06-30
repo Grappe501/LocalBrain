@@ -30,6 +30,7 @@ import {
   getExecutiveCapabilityAtlas,
 } from "../integration/capabilityAtlasService.js";
 import { getExecutiveOfficeProjection } from "../integration/executiveOfficeService.js";
+import { getExecutiveOfficeExperience } from "../integration/executiveBriefingService.js";
 
 export const integrationRouter = Router();
 
@@ -83,6 +84,11 @@ integrationRouter.post("/integration/atlas/generate", (_req, res) => {
 integrationRouter.get("/integration/office", (_req, res) => {
   const { projection, markdown } = getExecutiveOfficeProjection();
   res.json({ office: projection, markdown, read_only: true });
+});
+
+integrationRouter.get("/integration/office/experience", (_req, res) => {
+  const { experience, markdown } = getExecutiveOfficeExperience();
+  res.json({ experience, markdown, read_only: true });
 });
 
 integrationRouter.get("/integration/capability-graph", (_req, res) => {

@@ -1,9 +1,5 @@
 import {
-  maturityLabel,
-  type ExperienceMaturityRow,
-  type LiveSurfaceAudit,
-  type LiveSurfaceSmokeReport,
-  type LiveSurfaceSmokeResult,
+  buildExperienceMaturityMatrix,
 } from "@localbrain/shared";
 import { listActionLog, listBackupRecords, listProposedActions } from "../actions/proposalStore.js";
 import { getDataIntelligenceOverview } from "../dataIntelligence/dataIntelligenceService.js";
@@ -23,18 +19,14 @@ import { isDatabaseConnected } from "../db/database.js";
 import { getForbiddenRuleCount } from "../safety/permissionEngine.js";
 import { projectWorkspaceLive } from "./workspaceProjection.js";
 import { LIVE_SURFACE_ENGINE_ID, SURFACE_REGISTRY, EXPERIENCE_MATURITY_ENGINE_ID } from "./surfaceRegistry.js";
+import type {
+  LiveSurfaceAudit,
+  LiveSurfaceSmokeReport,
+  LiveSurfaceSmokeResult,
+} from "@localbrain/shared";
 
-export function getExperienceMaturityMatrix(): ExperienceMaturityRow[] {
-  return SURFACE_REGISTRY.map((s) => ({
-    route: s.route,
-    label: s.label,
-    surface_mode: s.mode,
-    maturity_level: s.maturity_level,
-    maturity_label: maturityLabel(s.maturity_level),
-    target_level: s.target_maturity_level,
-    next_upgrade_slice: s.next_upgrade_slice,
-    next_upgrade_summary: s.next_upgrade_summary,
-  }));
+export function getExperienceMaturityMatrix() {
+  return buildExperienceMaturityMatrix(SURFACE_REGISTRY);
 }
 
 export function getLiveSurfaceAudit(): LiveSurfaceAudit {
