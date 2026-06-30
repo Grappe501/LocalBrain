@@ -545,6 +545,40 @@ export {
   renderCapabilityAtlasMarkdown,
 } from "./capabilityAtlas.js";
 export type {
+  DepartmentAttentionLevel,
+  DepartmentLifecycle,
+  DepartmentObjectives,
+  DepartmentProjection,
+  DepartmentReadiness,
+  DepartmentStandingOrders,
+  DepartmentEscalationPolicy,
+  ExecutiveCharter,
+  ExecutiveDepartment,
+  ExecutiveOfficeContainer,
+  ExecutiveOfficeProjection,
+  IntelligenceDomain,
+  IntelligenceDomainLifecycle,
+  OperatingPersonality,
+} from "./executiveOffice.js";
+export {
+  CAPABILITY_DEPARTMENT_MAP,
+  CAPABILITY_DOMAIN_MAP,
+  EXECUTIVE_DEPARTMENTS,
+  EXECUTIVE_OFFICE,
+  EXECUTIVE_OFFICE_ENGINE_ID,
+  INTELLIGENCE_DOMAINS,
+  buildExecutiveOfficeProjection,
+  getCapabilitiesForDepartment,
+  getCapabilitiesForDomain,
+  getDepartmentsForDomain,
+  getExecutiveDepartment,
+  getExecutiveOfficeSummary,
+  getIntelligenceDomain,
+  renderExecutiveOfficeMarkdown,
+  resolveDepartmentsForCapability,
+  resolveDomainsForCapability,
+} from "./executiveOffice.js";
+export type {
   CapabilityGovernancePolicy,
 } from "./capabilityGovernance.js";
 export {

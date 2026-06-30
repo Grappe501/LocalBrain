@@ -9,7 +9,8 @@
     "build": "tsc",
     "start": "node dist/server.js",
     "test": "node --import tsx --test src/**/*.test.ts",
-    "atlas:generate": "tsx src/scripts/generateCapabilityAtlas.ts"
+    "atlas:generate": "tsx src/scripts/generateCapabilityAtlas.ts",
+    "office:generate": "tsx src/scripts/generateExecutiveOffice.ts"
   },
   "dependencies": {
     "@localbrain/shared": "*",
