@@ -49,6 +49,8 @@ Recurring questions
 
 ---
 
+## Questions this page answers
+
 ```text
 What became smarter this month?
 What has the Chief of Staff learned?
