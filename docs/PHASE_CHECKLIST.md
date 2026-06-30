@@ -194,8 +194,9 @@
 | LB-OS-PROD-004 | Media Studio / Creative Workbench | 🔒 Reserved · CAP-FUT-MST-001 |
 | LB-OS-PROD-005 | Universal Device + Drive Ingestion Planner | 🔒 Reserved · CAP-FUT-ING-001 |
 | LB-OS-PROD-006 | Mobile / Tablet Access Shell (PWA) | 🔒 Reserved · CAP-FUT-MOB-001 |
+| LB-OS-PROD-007 | Instance Identity, Transfer, Single-Primary | 🔒 Reserved · [Burt](./burt_packets/LB-OS-PROD-007-reserved.md) · CAP-FUT-IDT-001 |
 
-**Gate:** PROD-001 complete · **Next:** 027.0 Empty Brain Packaging → PROD-002 license gate (when earned)
+**Gate:** PROD-001 complete · **Next:** 027.0 Empty Brain Packaging → PROD-002 license → PROD-007 identity lock (when earned)
 
 **Architecture phase:** ✅ **Complete** (2026-06-30) — institution reserved · five-question admission gate · doctrine freeze until Convention + Memory OS
 
@@ -220,8 +221,9 @@
   → 026.9 Provider Vault & Connector Settings ✅
   → 027.0 Empty Brain Packaging
   → 027.1 Multi-Brain Sharing (reserved)
-  → PROD-002 License gate (reserved) → PROD-003 Social → PROD-004 Media Studio
-  → PROD-005 Ingestion planner → PROD-006 Mobile PWA (reserved)
+  → PROD-002 License gate (reserved) → PROD-007 Instance identity + single-primary (reserved)
+  → PROD-003 Social → PROD-004 Media Studio
+  → PROD-005 Ingestion planner → PROD-006 Mobile PWA (reserved, clients to one primary)
   → Peer Review S4 → S5 → Theory v1.0 freeze → Convention → LB-OS-027 Memory OS
   → CAP-FUT-UDI-001 Universal Digital Ingestion (execution post-gate)
 ```

@@ -140,3 +140,5 @@ Later: remote via VPN
 | PROD-004 | CAP-FUT-MST-001 | `/future/media-studio` |
 | PROD-005 | CAP-FUT-ING-001 | `/future/ingestion-planner` |
 | PROD-006 | CAP-FUT-MOB-001 | `/future/mobile-access` |
+
+See also: [LB-OS-PROD-007 — Instance Identity & Single-Primary](./LB-OS-PROD-007-reserved.md)
