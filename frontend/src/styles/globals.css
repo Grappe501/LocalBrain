@@ -4938,3 +4938,128 @@ a {
   color: #2563eb;
   text-decoration: none;
 }
+
+/* V1 Live Build Command Center (Program Office) */
+.epo-command {
+  margin: 1.25rem 0 2rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  background: #f8fafc;
+}
+
+.epo-command__header h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.15rem;
+}
+
+.epo-command__meta {
+  color: #64748b;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.epo-command__answers {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.35rem 1rem;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.epo-command__answers dt {
+  color: #64748b;
+  font-weight: 600;
+}
+
+.epo-command__modules {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  margin: 1rem 0;
+}
+
+.epo-command__modules th,
+.epo-command__modules td {
+  border: 1px solid #e2e8f0;
+  padding: 0.35rem 0.5rem;
+  text-align: left;
+}
+
+.epo-command__status {
+  text-transform: capitalize;
+  font-size: 0.75rem;
+}
+
+.epo-command__status--in_progress {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.epo-command__status--waiting {
+  color: #b45309;
+}
+
+.epo-command__status--complete {
+  color: #15803d;
+}
+
+.epo-command__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.epo-command__grid h3 {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+}
+
+.epo-command__chain {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.85rem;
+}
+
+.epo-command__chain-item--in_progress {
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.epo-command__blocked-by {
+  display: block;
+  font-size: 0.75rem;
+  color: #b45309;
+}
+
+.epo-command__burndown {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.epo-command__burndown th,
+.epo-command__burndown td {
+  border: 1px solid #e2e8f0;
+  padding: 0.3rem 0.45rem;
+}
+
+.epo-command__weights {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.8rem;
+}
+
+.epo-command__rule {
+  font-size: 0.8rem;
+  margin: 0.75rem 0 0;
+  padding: 0.5rem 0.65rem;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.375rem;
+}
+
+.epo-command__rule--muted {
+  color: #64748b;
+}

@@ -55,6 +55,14 @@ Record those in [VERSION2_BACKLOG.md](./VERSION2_BACKLOG.md).
 
 ---
 
+## Module completeness (binding)
+
+> No module is complete until demonstrably testable in isolation — demo screen, test suite, readiness indicator, pass/fail certification.
+
+Tracked live in [Program Office Build Command Center](./LOCALBRAIN_V1_BUILD_COMMAND_CENTER.md).
+
+---
+
 ## Status
 
 | Criterion | Status | Evidence |

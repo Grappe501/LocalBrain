@@ -10,6 +10,7 @@ import { getSystemUsage } from "../system/systemService.js";
 import { listDocumentationLibrary } from "./docsLibrary.js";
 import { parsePhaseChecklistSlices } from "./checklistParser.js";
 import { computeBuildState, BUILD_STATE_ENGINE_ID, changelogDecisions } from "../buildState/buildStateEngine.js";
+import { computeV1CommandCenter } from "../buildState/v1CommandCenterEngine.js";
 import { getRecentCommits } from "./gitReader.js";
 import { computeEngineeringScore } from "../engineering/engineeringScore.js";
 import { explainBlocker } from "./blockerExplainer.js";
@@ -51,6 +52,7 @@ function buildDecisions(): EpoDecisionEvent[] {
 
 export function getEpoOverview(): EpoOverview {
   const state = computeBuildState();
+  const v1_command_center = computeV1CommandCenter(state);
   const usage = getSystemUsage();
   const modules = getRegisteredModules();
   const workspaces = listWorkspaces().filter((w) => !w.flags.hidden);
@@ -91,6 +93,7 @@ export function getEpoOverview(): EpoOverview {
     build_state_engine_id: BUILD_STATE_ENGINE_ID,
     experience_maturity: getExperienceMaturityMatrix(),
     experience_maturity_engine_id: EXPERIENCE_MATURITY_ENGINE_ID,
+    v1_command_center,
     read_only: true,
     observed_at: new Date().toISOString(),
   };

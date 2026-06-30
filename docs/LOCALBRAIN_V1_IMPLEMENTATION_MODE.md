@@ -116,4 +116,5 @@ LocalBrain Factory → Executive Institution → Executive Cognition
 * [PHASE_CHECKLIST.md](./PHASE_CHECKLIST.md)
 * [VERSION2_BACKLOG.md](./VERSION2_BACKLOG.md)
 * [LOCALBRAIN_V1_LAUNCH_CRITERIA.md](./LOCALBRAIN_V1_LAUNCH_CRITERIA.md)
+* [LOCALBRAIN_V1_BUILD_COMMAND_CENTER.md](./LOCALBRAIN_V1_BUILD_COMMAND_CENTER.md)
 * [PROD-010 Factory](./burt_packets/LB-OS-PROD-010-factory-reserved.md)

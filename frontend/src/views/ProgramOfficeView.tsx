@@ -173,6 +173,133 @@ export function ProgramOfficeView() {
 
       <ExecutiveQuestionShell route="/program-office" observedAt={overview.observed_at} />
 
+      {overview.v1_command_center ? (
+        <section className="epo-command" aria-label="Live Build Command Center">
+          <header className="epo-command__header">
+            <h2>Live Build Command Center</h2>
+            <p className="epo-command__meta">
+              {overview.v1_command_center.engine_id} · {overview.v1_command_center.product_version} ·
+              V1 launch score <strong>{overview.v1_command_center.v1_launch_score_percent}%</strong>
+              {overview.v1_command_center.days_to_v1_estimate != null && (
+                <> · ~{overview.v1_command_center.days_to_v1_estimate} days on critical path</>
+              )}
+            </p>
+          </header>
+
+          <dl className="epo-command__answers">
+            <dt>What version am I?</dt>
+            <dd>{overview.v1_command_center.product_version}</dd>
+            <dt>What is being built today?</dt>
+            <dd>{overview.v1_command_center.building_today ?? "—"}</dd>
+            <dt>What is blocked?</dt>
+            <dd>{overview.v1_command_center.blocked_summary ?? "Nothing on critical path"}</dd>
+            <dt>What finished recently?</dt>
+            <dd>
+              {overview.v1_command_center.finished_yesterday.length > 0
+                ? overview.v1_command_center.finished_yesterday.join(" · ")
+                : overview.current_sprint.completed.join(", ") || "—"}
+            </dd>
+            <dt>How long until V1?</dt>
+            <dd>
+              {overview.v1_command_center.days_to_v1_estimate != null
+                ? `~${overview.v1_command_center.days_to_v1_estimate} days (critical path estimate)`
+                : "—"}
+            </dd>
+          </dl>
+
+          <table className="epo-command__modules">
+            <thead>
+              <tr>
+                <th>Module</th>
+                <th>Ver</th>
+                <th>%</th>
+                <th>Status</th>
+                <th>ETA</th>
+                <th>Owner</th>
+                <th>Blockers</th>
+                <th>Tests</th>
+              </tr>
+            </thead>
+            <tbody>
+              {overview.v1_command_center.modules.map((mod) => (
+                <tr key={mod.module_id}>
+                  <td>{mod.name}</td>
+                  <td>{mod.version}</td>
+                  <td>{mod.progress_percent}%</td>
+                  <td>
+                    <span className={`epo-command__status epo-command__status--${mod.status}`}>
+                      {mod.status.replace("_", " ")}
+                    </span>
+                  </td>
+                  <td>{mod.eta_label}</td>
+                  <td>{mod.owner ?? "—"}</td>
+                  <td>{mod.blockers}</td>
+                  <td>{mod.tests_label}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          <div className="epo-command__grid">
+            <section>
+              <h3>Critical path</h3>
+              <ol className="epo-command__chain">
+                {overview.v1_command_center.critical_path.map((node) => (
+                  <li
+                    key={node.step_id}
+                    className={`epo-command__chain-item epo-command__chain-item--${node.status}`}
+                  >
+                    {node.label}
+                    {node.blocked_by && (
+                      <span className="epo-command__blocked-by">
+                        ↑ {overview.v1_command_center.critical_path.find((n) => n.step_id === node.blocked_by)?.label}
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ol>
+            </section>
+            <section>
+              <h3>Build burn-down</h3>
+              <table className="epo-command__burndown">
+                <thead>
+                  <tr>
+                    <th>Slice</th>
+                    <th>Est.</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {overview.v1_command_center.burndown.map((row) => (
+                    <tr key={row.step_id}>
+                      <td>{row.label}</td>
+                      <td>
+                        {row.estimated_days < 1
+                          ? "½ day"
+                          : `${row.estimated_days} day${row.estimated_days === 1 ? "" : "s"}`}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </section>
+            <section>
+              <h3>V1 launch score (weighted)</h3>
+              <ul className="epo-command__weights">
+                {overview.v1_command_center.launch_breakdown.map((row) => (
+                  <li key={row.area}>
+                    {row.label} ({row.weight_percent}%) — {row.module_progress_percent}% → +
+                    {row.weighted_contribution}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          </div>
+
+          <p className="epo-command__rule">{overview.v1_command_center.module_completeness_rule}</p>
+          <p className="epo-command__rule epo-command__rule--muted">{overview.v1_command_center.sandbox_rule}</p>
+        </section>
+      ) : null}
+
       {readiness ? (
         <section className="epo-readiness" aria-label="LocalBrain V1 Readiness Dashboard">
           <header className="epo-readiness__header">

@@ -257,7 +257,7 @@ function labelForMilestone(raw: string): { milestone_id: string; label: string; 
 /** Ordered milestones from Phase 1.9 post-consolidation sequence block. */
 export function parsePostConsolidationSequence(): PostConsolidationStep[] {
   const text = fs.readFileSync(path.join(getRepoRoot(), "docs", "PHASE_CHECKLIST.md"), "utf8");
-  const marker = "**Post-consolidation sequence:**";
+  const marker = "**Post-consolidation sequence";
   const start = text.indexOf(marker);
   if (start < 0) return [];
 

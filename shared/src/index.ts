@@ -33,6 +33,28 @@ export type {
   SliceStatus,
 } from "./epo.js";
 export type {
+  V1BurndownRow,
+  V1CommandCenter,
+  V1CriticalPathStep,
+  V1DependencyNode,
+  V1LaunchReadinessBreakdown,
+  V1LaunchWeightArea,
+  V1ModuleLifecycleStatus,
+  V1ModuleRow,
+  LocalBrainEnvironment,
+} from "./v1CommandCenter.js";
+export {
+  KELLY_BRAIN_ENVIRONMENTS,
+  LOCALBRAIN_ENVIRONMENTS,
+  SANDBOX_ISOLATION_RULE,
+  V1_BURNDOWN_ESTIMATES_DAYS,
+  V1_COMMAND_CENTER_ENGINE_ID,
+  V1_CRITICAL_PATH,
+  V1_CRITICAL_PATH_LABELS,
+  V1_LAUNCH_WEIGHTS,
+  V1_MODULE_COMPLETENESS_RULE,
+} from "./v1CommandCenter.js";
+export type {
   CosCapability,
   CosOrchestration,
   CosOutcome,

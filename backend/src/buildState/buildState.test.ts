@@ -6,6 +6,7 @@ import { parsePhaseChecklistSlices, parsePhaseSections } from "../epo/checklistP
 import { explainBlocker } from "../epo/blockerExplainer.js";
 import { getEpoOverview, getEpoSliceDetail, listDocumentationLibrary } from "../epo/epoService.js";
 import { BUILD_STATE_ENGINE_ID, computeBuildState } from "./buildStateEngine.js";
+import { computeV1CommandCenter } from "./v1CommandCenterEngine.js";
 import { parseSliceRegistry } from "./sliceRegistry.js";
 
 test("parsePhaseChecklistSlices reads all phase tables", () => {
@@ -45,6 +46,10 @@ test("computeBuildState projects current sprint and velocity", () => {
   assert.ok(state.build_velocity.commits_count >= 0);
   assert.ok(state.build_graph.some((n) => n.slice_id === "LB-OS-019" && n.status === "released"));
   assert.notEqual(state.current_slice_id, "LB-OS-027");
+  assert.ok(
+    state.current_slice_id === "MILESTONE-PR-S4" ||
+      state.current_slice_id === "MILESTONE-EXP-CERT",
+  );
 });
 
 test("getEpoOverview exposes build state engine fields", () => {
@@ -57,6 +62,19 @@ test("getEpoOverview exposes build state engine fields", () => {
   assert.ok(overview.commit_timeline.length > 0);
   assert.ok(overview.experience_maturity.length >= 10);
   assert.equal(overview.experience_maturity_engine_id, "ENG-EXP-001");
+  assert.ok(overview.v1_command_center);
+  assert.equal(overview.v1_command_center.engine_id, "ENG-BLD-001-V1CC");
+  assert.ok(overview.v1_command_center.modules.length >= 6);
+  assert.ok(overview.v1_command_center.v1_launch_score_percent >= 0);
+});
+
+test("computeV1CommandCenter projects critical path and weighted score", () => {
+  const state = computeBuildState();
+  const cc = computeV1CommandCenter(state);
+  assert.equal(cc.critical_path.length, 9);
+  assert.ok(cc.modules.some((m) => m.module_id === "executive_office"));
+  assert.ok(cc.launch_breakdown.reduce((s, r) => s + r.weight_percent, 0) === 100);
+  assert.ok(cc.product_version.includes("V1-implement"));
 });
 
 test("blocker explanation for planned slice with deps", () => {
