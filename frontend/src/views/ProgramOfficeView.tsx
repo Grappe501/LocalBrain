@@ -176,6 +176,66 @@ export function ProgramOfficeView() {
 
       <ExecutiveQuestionShell route="/program-office" observedAt={overview.observed_at} />
 
+      <section className="epo-ceo" aria-label="Program Office CEO Mode">
+        <header className="epo-ceo__header">
+          <h2>CEO Mode</h2>
+          <p className="epo-ceo__heartbeat">
+            Days to Beta{" "}
+            <strong>{ps.ceo_mode.days_to_beta != null ? ps.ceo_mode.days_to_beta : "—"}</strong>
+          </p>
+        </header>
+        <dl className="epo-ceo__questions">
+          <div>
+            <dt>What is the one module we are finishing today?</dt>
+            <dd>{ps.ceo_mode.module_finishing_today ?? "—"}</dd>
+          </div>
+          <div>
+            <dt>What blocks V1 the most?</dt>
+            <dd>{ps.ceo_mode.blocks_v1_most ?? "Nothing on critical path"}</dd>
+          </div>
+          <div>
+            <dt>What can wait until V2?</dt>
+            <dd>{ps.ceo_mode.wait_until_v2}</dd>
+          </div>
+          <div>
+            <dt>What was completed since yesterday?</dt>
+            <dd>
+              {ps.ceo_mode.completed_since_yesterday.length > 0
+                ? ps.ceo_mode.completed_since_yesterday.join(" · ")
+                : "—"}
+            </dd>
+          </div>
+          <div>
+            <dt>Is launch closer than yesterday?</dt>
+            <dd
+              className={
+                ps.ceo_mode.launch_closer_than_yesterday === true
+                  ? "epo-ceo__yes"
+                  : ps.ceo_mode.launch_closer_than_yesterday === false
+                    ? "epo-ceo__no"
+                    : undefined
+              }
+            >
+              {ps.ceo_mode.launch_momentum_label}
+            </dd>
+          </div>
+        </dl>
+        <ol className="epo-ceo__roadmap">
+          {ps.ceo_mode.v1_roadmap.map((item) => (
+            <li
+              key={item.id}
+              className={`epo-ceo__roadmap-item epo-ceo__roadmap-item--${item.status}`}
+            >
+              <span className="epo-ceo__check">{item.status === "complete" ? "☑" : "□"}</span>
+              {item.label}
+            </li>
+          ))}
+        </ol>
+        <p className="epo-ceo__footer">Everything else → VERSION2_BACKLOG.md</p>
+      </section>
+
+      <details className="epo-details">
+        <summary>Launch countdown &amp; build telemetry</summary>
       <section className="epo-launch" aria-label="V1 Launch Countdown">
         <header className="epo-launch__header">
           <h2>{lc.product_label}</h2>
@@ -189,6 +249,10 @@ export function ProgramOfficeView() {
           <div>
             <dt>Overall Progress</dt>
             <dd>{lc.overall_progress_percent}%</dd>
+          </div>
+          <div>
+            <dt>Days to Beta</dt>
+            <dd className="epo-launch__beta">{lc.critical_path_remaining_days != null ? `${lc.critical_path_remaining_days} days` : "—"}</dd>
           </div>
           <div>
             <dt>Critical Path Remaining</dt>
@@ -380,6 +444,7 @@ Production Brains
           ))}
         </ol>
       </section>
+      </details>
 
       {readiness ? (
         <section className="epo-readiness" aria-label="LocalBrain V1 Readiness Dashboard">

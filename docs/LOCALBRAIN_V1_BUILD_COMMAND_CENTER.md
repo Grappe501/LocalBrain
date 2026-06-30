@@ -142,3 +142,19 @@ Production Brains
 ```
 
 Sandboxes are disposable. Production brains are protected.
+
+---
+
+## CEO mode (default Program Office view)
+
+Stop measuring documents. Measure **modules shipped**.
+
+Morning view — five questions only:
+
+1. What is the one module we are finishing today?
+2. What blocks V1 the most?
+3. What can wait until V2?
+4. What was completed since yesterday?
+5. Is launch closer than yesterday?
+
+**Days to Beta** is the project heartbeat. **Kelly Sandbox** is the golden integration test for module certification.

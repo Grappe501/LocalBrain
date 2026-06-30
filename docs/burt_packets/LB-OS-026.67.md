@@ -1,5 +1,22 @@
 # LB-OS-026.67 — Executive Office Structure (Organization ≠ Intelligence)
 
+> **LOCALBRAIN V1 ROADMAP** · Architecture FROZEN · Implementation mode
+>
+> ```txt
+> □ Executive Office Certification
+> □ Session 4
+> □ Session 5
+> □ Theory Freeze
+> □ Convention
+> □ Empty Brain Factory
+> □ Memory OS
+> □ Communications Office
+> □ Commercial Beta
+>
+> Everything else → VERSION2_BACKLOG.md
+> ```
+
+
 > **Depends on:** LB-OS-026.66 (reserved capabilities)  
 > **Next:** LB-OS-026.7 Executive Office (Executive Operating Environment)  
 > **Rule:** Metadata and doctrine only — no connectors, no agents, no dashboard UI

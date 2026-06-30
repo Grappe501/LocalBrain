@@ -1,5 +1,22 @@
 # LB-OS-PROD-007 — Instance Identity, Transfer, and Single-Primary Enforcement
 
+> **LOCALBRAIN V1 ROADMAP** · Architecture FROZEN · Implementation mode
+>
+> ```txt
+> □ Executive Office Certification
+> □ Session 4
+> □ Session 5
+> □ Theory Freeze
+> □ Convention
+> □ Empty Brain Factory
+> □ Memory OS
+> □ Communications Office
+> □ Commercial Beta
+>
+> Everything else → VERSION2_BACKLOG.md
+> ```
+
+
 > **Depends on:** LB-OS-PROD-001 ✅ · LB-OS-PROD-002 (license — reserved)  
 > **Evolution:** [PROD-008](./LB-OS-PROD-008-009-reserved.md) elevates this to **one authority** — primary server = current authority holder  
 > **Blocks:** Multi-primary same identity · uncontrolled server duplication  

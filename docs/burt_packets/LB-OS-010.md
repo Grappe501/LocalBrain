@@ -1,5 +1,22 @@
 # BURT / CURSOR EXECUTION SCRIPT
 
+> **LOCALBRAIN V1 ROADMAP** · Architecture FROZEN · Implementation mode
+>
+> ```txt
+> □ Executive Office Certification
+> □ Session 4
+> □ Session 5
+> □ Theory Freeze
+> □ Convention
+> □ Empty Brain Factory
+> □ Memory OS
+> □ Communications Office
+> □ Commercial Beta
+>
+> Everything else → VERSION2_BACKLOG.md
+> ```
+
+
 **Project:** LocalBrain  
 **Slice:** LB-OS-010  
 **Generated:** 2026-06-28  

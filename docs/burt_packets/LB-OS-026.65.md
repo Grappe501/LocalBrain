@@ -1,5 +1,22 @@
 # LB-OS-026.65 — Executive Intent Graph & Capability Atlas
 
+> **LOCALBRAIN V1 ROADMAP** · Architecture FROZEN · Implementation mode
+>
+> ```txt
+> □ Executive Office Certification
+> □ Session 4
+> □ Session 5
+> □ Theory Freeze
+> □ Convention
+> □ Empty Brain Factory
+> □ Memory OS
+> □ Communications Office
+> □ Commercial Beta
+>
+> Everything else → VERSION2_BACKLOG.md
+> ```
+
+
 > **Depends on:** LB-OS-026.6 (ENG-CAP-001)  
 > **Next:** LB-OS-026.7 Executive Dashboard & Daily Briefing  
 > **Gate:** [Graph Integrity](./LOCALBRAIN_GRAPH_INTEGRITY_CERTIFICATION.md) PASS · [Capability Atlas](./LOCALBRAIN_EXECUTIVE_CAPABILITY_ATLAS.md) generated

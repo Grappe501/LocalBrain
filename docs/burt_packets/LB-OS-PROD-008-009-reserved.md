@@ -1,5 +1,22 @@
 # LB-OS-PROD-008–009 — Executive Authority & Passport
 
+> **LOCALBRAIN V1 ROADMAP** · Architecture FROZEN · Implementation mode
+>
+> ```txt
+> □ Executive Office Certification
+> □ Session 4
+> □ Session 5
+> □ Theory Freeze
+> □ Convention
+> □ Empty Brain Factory
+> □ Memory OS
+> □ Communications Office
+> □ Commercial Beta
+>
+> Everything else → VERSION2_BACKLOG.md
+> ```
+
+
 > **Depends on:** LB-OS-PROD-007 (single-primary / transfer — reserved)  
 > **Evolution:** One server → **one authority** — enterprise reliability without breaking single-primary  
 > **Rule:** Reserve only — no authority election, snapshot automation, or passport handshake in this pass

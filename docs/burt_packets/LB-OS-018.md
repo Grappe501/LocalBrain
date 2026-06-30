@@ -1,5 +1,22 @@
 # LB-OS-018 — Drive Architecture & Migration Planner
 
+> **LOCALBRAIN V1 ROADMAP** · Architecture FROZEN · Implementation mode
+>
+> ```txt
+> □ Executive Office Certification
+> □ Session 4
+> □ Session 5
+> □ Theory Freeze
+> □ Convention
+> □ Empty Brain Factory
+> □ Memory OS
+> □ Communications Office
+> □ Commercial Beta
+>
+> Everything else → VERSION2_BACKLOG.md
+> ```
+
+
 > **Type:** Migration phase entry — **read-only planning**  
 > **Depends on:** LB-OS-017  
 > **Doctrine:** [Migration & Drive Doctrine](../LOCALBRAIN_MIGRATION_AND_DRIVE_DOCTRINE.md)

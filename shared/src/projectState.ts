@@ -3,6 +3,7 @@
  */
 
 import type { V1CommandCenter, V1DependencyNode } from "./v1CommandCenter.js";
+import type { CeoModeBrief } from "./v1Roadmap.js";
 
 export const PROJECT_STATE_ENGINE_ID = "ENG-BLD-001-PSTATE";
 
@@ -43,10 +44,13 @@ export interface ProjectState {
   current_burt_packet: string | null;
   critical_path: V1DependencyNode[];
   overall_eta_days: number | null;
+  /** Project heartbeat — critical path days to Commercial Beta. */
+  days_to_beta: number | null;
   todays_objective: string | null;
   yesterdays_progress: string[];
   blockers: string | null;
   certification_status: string;
+  ceo_mode: CeoModeBrief;
   launch_countdown: LaunchCountdown;
   build_history: BuildHistoryDay[];
   factory_environments: FactoryEnvironmentModel;

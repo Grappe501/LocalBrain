@@ -74,6 +74,9 @@ test("getEpoOverview exposes build state engine fields", () => {
   );
   assert.ok(overview.project_state.build_history.length > 0);
   assert.ok(overview.project_state.launch_countdown);
+  assert.ok(overview.project_state.ceo_mode);
+  assert.ok(overview.project_state.ceo_mode.v1_roadmap.length === 9);
+  assert.ok(overview.project_state.days_to_beta != null || overview.project_state.days_to_beta === null);
 });
 
 test("getProjectState is single source of truth for launch metrics", () => {

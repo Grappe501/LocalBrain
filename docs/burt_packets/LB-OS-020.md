@@ -1,5 +1,22 @@
 # LB-OS-020 — Evidence-Based Consolidation Planner
 
+> **LOCALBRAIN V1 ROADMAP** · Architecture FROZEN · Implementation mode
+>
+> ```txt
+> □ Executive Office Certification
+> □ Session 4
+> □ Session 5
+> □ Theory Freeze
+> □ Convention
+> □ Empty Brain Factory
+> □ Memory OS
+> □ Communications Office
+> □ Commercial Beta
+>
+> Everything else → VERSION2_BACKLOG.md
+> ```
+
+
 > **Reframe:** First **Executive Intelligence** slice — introduces **Executive Intelligence Cards** (ENG-EIC-001)  
 > **Internal name:** Consolidation Planner (not Duplicate Planner)  
 > **Depends on:** LB-OS-019  

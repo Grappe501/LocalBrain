@@ -1,5 +1,22 @@
 # LB-OS-026.6 — Executive Discoverability & Route Cohesion
 
+> **LOCALBRAIN V1 ROADMAP** · Architecture FROZEN · Implementation mode
+>
+> ```txt
+> □ Executive Office Certification
+> □ Session 4
+> □ Session 5
+> □ Theory Freeze
+> □ Convention
+> □ Empty Brain Factory
+> □ Memory OS
+> □ Communications Office
+> □ Commercial Beta
+>
+> Everything else → VERSION2_BACKLOG.md
+> ```
+
+
 > **Depends on:** LB-OS-026.5 · [Platform Audit](../LOCALBRAIN_PLATFORM_AUDIT.md)  
 > **Next:** LB-OS-026.7 Executive Dashboard & Daily Briefing  
 > **Gate:** [Executive Experience Certification](../LOCALBRAIN_EXECUTIVE_EXPERIENCE_CERTIFICATION.md) must **PASS** before Peer Review Session 4  

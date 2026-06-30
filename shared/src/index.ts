@@ -33,6 +33,18 @@ export type {
   SliceStatus,
 } from "./epo.js";
 export type {
+  CeoModeBrief,
+  V1RoadmapItemRow,
+  V1RoadmapItemStatus,
+} from "./v1Roadmap.js";
+export {
+  BURT_PACKET_V1_ROADMAP_BLOCK,
+  DAYS_TO_BETA_RULE,
+  KELLY_SANDBOX_GOLDEN_TEST,
+  V1_ROADMAP_ITEMS,
+  V2_SCOPE_RULE,
+} from "./v1Roadmap.js";
+export type {
   BuildHistoryDay,
   FactoryEnvironmentModel,
   LaunchCountdown,

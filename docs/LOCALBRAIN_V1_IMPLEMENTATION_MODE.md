@@ -72,6 +72,46 @@ If it is not on the launch checklist, it belongs in **Version 2**.
 
 ---
 
+## Program Office — CEO mode
+
+Measure success by **modules shipped**, not documents produced.
+
+Every morning `/program-office` answers only:
+
+| Question | Purpose |
+| -------- | ------- |
+| What is the one module we are finishing today? | Focus |
+| What blocks V1 the most? | Critical path |
+| What can wait until V2? | Scope control |
+| What was completed since yesterday? | Momentum |
+| Is launch closer than yesterday? | Progress |
+
+**Heartbeat metric:** **Days to Beta** — every decision must answer: *Does this shorten the path to beta?*
+
+**Golden integration test:** Kelly Sandbox — every completed module must pass *Does this work correctly against Kelly Sandbox?*
+
+---
+
+## Frozen V1 roadmap (pin on every Burt packet)
+
+```txt
+LOCALBRAIN V1 ROADMAP
+□ Executive Office Certification
+□ Session 4
+□ Session 5
+□ Theory Freeze
+□ Convention
+□ Empty Brain Factory
+□ Memory OS
+□ Communications Office
+□ Commercial Beta
+Everything else → VERSION2_BACKLOG
+```
+
+Template: [burt_packets/_IMPLEMENTATION_MODE_HEADER.md](./burt_packets/_IMPLEMENTATION_MODE_HEADER.md)
+
+---
+
 ## Burt packet rule (implementation missions only)
 
 **Burt stops receiving design work.** Every new Burt packet **must** begin with:

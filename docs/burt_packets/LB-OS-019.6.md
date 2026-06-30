@@ -1,5 +1,22 @@
 # LB-OS-019.6 — Live Surface Audit & Wiring Fix
 
+> **LOCALBRAIN V1 ROADMAP** · Architecture FROZEN · Implementation mode
+>
+> ```txt
+> □ Executive Office Certification
+> □ Session 4
+> □ Session 5
+> □ Theory Freeze
+> □ Convention
+> □ Empty Brain Factory
+> □ Memory OS
+> □ Communications Office
+> □ Commercial Beta
+>
+> Everything else → VERSION2_BACKLOG.md
+> ```
+
+
 ## Mission
 
 Every visible route is either **live-wired** to authoritative data or **explicitly labeled** as future/planned/stub with reason.

@@ -5177,3 +5177,113 @@ a {
   font-size: 0.8rem;
   color: #475569;
 }
+
+/* CEO Mode — morning focus (Program Office) */
+.epo-ceo {
+  margin: 0 0 1.5rem;
+  padding: 1.25rem 1.5rem;
+  border: 2px solid #0f172a;
+  border-radius: 0.5rem;
+  background: #fff;
+}
+
+.epo-ceo__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.epo-ceo__header h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.epo-ceo__heartbeat {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #64748b;
+}
+
+.epo-ceo__heartbeat strong {
+  font-size: 2rem;
+  color: #1e40af;
+  margin-left: 0.35rem;
+}
+
+.epo-ceo__questions {
+  display: grid;
+  gap: 0.85rem;
+  margin: 0 0 1.25rem;
+}
+
+.epo-ceo__questions dt {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #64748b;
+}
+
+.epo-ceo__questions dd {
+  margin: 0.2rem 0 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.epo-ceo__yes {
+  color: #15803d;
+}
+
+.epo-ceo__no {
+  color: #b45309;
+}
+
+.epo-ceo__roadmap {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.35rem 1rem;
+  font-size: 0.85rem;
+}
+
+.epo-ceo__roadmap-item--complete {
+  color: #15803d;
+}
+
+.epo-ceo__roadmap-item--in_progress {
+  color: #1e40af;
+  font-weight: 700;
+}
+
+.epo-ceo__check {
+  margin-right: 0.35rem;
+}
+
+.epo-ceo__footer {
+  margin: 1rem 0 0;
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.epo-details {
+  margin-bottom: 1.5rem;
+}
+
+.epo-details > summary {
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-bottom: 0.75rem;
+}
+
+.epo-launch__beta {
+  color: #1e40af;
+  font-size: 1.25rem;
+}

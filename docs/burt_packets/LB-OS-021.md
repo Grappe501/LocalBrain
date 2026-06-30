@@ -1,5 +1,22 @@
 # LB-OS-021 — Executive Workspace Architecture Builder
 
+> **LOCALBRAIN V1 ROADMAP** · Architecture FROZEN · Implementation mode
+>
+> ```txt
+> □ Executive Office Certification
+> □ Session 4
+> □ Session 5
+> □ Theory Freeze
+> □ Convention
+> □ Empty Brain Factory
+> □ Memory OS
+> □ Communications Office
+> □ Commercial Beta
+>
+> Everything else → VERSION2_BACKLOG.md
+> ```
+
+
 > **Depends on:** LB-OS-020.5 ✅  
 > **Spec:** [Executive Workspace Architecture](../LOCALBRAIN_EXECUTIVE_WORKSPACE_ARCHITECTURE.md) · [Three Worlds & Projection](../LOCALBRAIN_THREE_WORLDS_AND_PROJECTION.md)  
 > **Next:** LB-OS-022 Digital Land Survey (Physical World)

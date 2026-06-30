@@ -1,5 +1,22 @@
 # LB-OS-017 — AI Provider Management
 
+> **LOCALBRAIN V1 ROADMAP** · Architecture FROZEN · Implementation mode
+>
+> ```txt
+> □ Executive Office Certification
+> □ Session 4
+> □ Session 5
+> □ Theory Freeze
+> □ Convention
+> □ Empty Brain Factory
+> □ Memory OS
+> □ Communications Office
+> □ Commercial Beta
+>
+> Everything else → VERSION2_BACKLOG.md
+> ```
+
+
 > **Type:** Infrastructure / operating environment (not a department feature slice)  
 > **Priority:** Immediately post-V1 — **before** migration, GPU, and multi-provider expansion  
 > **Spec:** [AI Provider Management](../LOCALBRAIN_AI_PROVIDER_MANAGEMENT.md)

@@ -1,5 +1,22 @@
 # LB-OS-PROD-010 — Executive LocalBrain Factory
 
+> **LOCALBRAIN V1 ROADMAP** · Architecture FROZEN · Implementation mode
+>
+> ```txt
+> □ Executive Office Certification
+> □ Session 4
+> □ Session 5
+> □ Theory Freeze
+> □ Convention
+> □ Empty Brain Factory
+> □ Memory OS
+> □ Communications Office
+> □ Commercial Beta
+>
+> Everything else → VERSION2_BACKLOG.md
+> ```
+
+
 > **Engine:** ENG-FAC-001  
 > **Depends on:** LB-OS-PROD-001 ✅ · PROD-008/009 authority stack (reserved)  
 > **Aligns with:** LB-OS-027.0 Empty Brain Packaging  

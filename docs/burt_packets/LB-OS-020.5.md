@@ -1,5 +1,22 @@
 # LB-OS-020.5 — Phase 1 Integration Pass
 
+> **LOCALBRAIN V1 ROADMAP** · Architecture FROZEN · Implementation mode
+>
+> ```txt
+> □ Executive Office Certification
+> □ Session 4
+> □ Session 5
+> □ Theory Freeze
+> □ Convention
+> □ Empty Brain Factory
+> □ Memory OS
+> □ Communications Office
+> □ Commercial Beta
+>
+> Everything else → VERSION2_BACKLOG.md
+> ```
+
+
 > **Depends on:** LB-OS-020  
 > **Spec:** [Phase 1 Integration Pass](../LOCALBRAIN_PHASE1_INTEGRATION_PASS.md) · [Executive Question Registry](../LOCALBRAIN_EXECUTIVE_QUESTION_REGISTRY.md)  
 > **Next:** LB-OS-021 (only after metric gate passes)

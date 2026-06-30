@@ -1,5 +1,22 @@
 # LB-OS-026.7 — Executive Office (Executive Operating Environment)
 
+> **LOCALBRAIN V1 ROADMAP** · Architecture FROZEN · Implementation mode
+>
+> ```txt
+> □ Executive Office Certification
+> □ Session 4
+> □ Session 5
+> □ Theory Freeze
+> □ Convention
+> □ Empty Brain Factory
+> □ Memory OS
+> □ Communications Office
+> □ Commercial Beta
+>
+> Everything else → VERSION2_BACKLOG.md
+> ```
+
+
 > **Depends on:** LB-OS-026.67 (ENG-EO-001 office structure)  
 > **Replaces naming:** ~~Executive Dashboard & Daily Briefing~~ → **Executive Office**  
 > **Rule:** Narrative briefing first · dashboard is one view inside the office · not a card grid

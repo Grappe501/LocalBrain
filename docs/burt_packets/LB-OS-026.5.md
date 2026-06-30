@@ -1,5 +1,22 @@
 # LB-OS-026.5 — Phase 1 Certification & Hardening
 
+> **LOCALBRAIN V1 ROADMAP** · Architecture FROZEN · Implementation mode
+>
+> ```txt
+> □ Executive Office Certification
+> □ Session 4
+> □ Session 5
+> □ Theory Freeze
+> □ Convention
+> □ Empty Brain Factory
+> □ Memory OS
+> □ Communications Office
+> □ Commercial Beta
+>
+> Everything else → VERSION2_BACKLOG.md
+> ```
+
+
 > **Depends on:** LB-OS-026  
 > **Next:** Executive Epistemology Convention → LB-OS-027 Executive Memory Bootstrap
 

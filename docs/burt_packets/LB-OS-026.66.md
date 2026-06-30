@@ -1,5 +1,22 @@
 # LB-OS-026.66 — Future Executive Operations Capability Placeholders
 
+> **LOCALBRAIN V1 ROADMAP** · Architecture FROZEN · Implementation mode
+>
+> ```txt
+> □ Executive Office Certification
+> □ Session 4
+> □ Session 5
+> □ Theory Freeze
+> □ Convention
+> □ Empty Brain Factory
+> □ Memory OS
+> □ Communications Office
+> □ Commercial Beta
+>
+> Everything else → VERSION2_BACKLOG.md
+> ```
+
+
 > **Depends on:** LB-OS-026.65 (ENG-ATL-001)  
 > **Next:** LB-OS-026.7 Executive Dashboard & Daily Briefing  
 > **Rule:** Placeholders only — no connectors, no live routes, no autonomous actions

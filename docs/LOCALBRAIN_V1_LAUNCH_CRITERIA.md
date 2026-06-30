@@ -61,6 +61,10 @@ Record those in [VERSION2_BACKLOG.md](./VERSION2_BACKLOG.md).
 
 Tracked live in [Program Office Build Command Center](./LOCALBRAIN_V1_BUILD_COMMAND_CENTER.md).
 
+**Kelly Sandbox golden test (binding from Factory phase):** Every completed module must answer *Does this work correctly against Kelly Sandbox?* If yes, certify. If no, it is not complete.
+
+**Days to Beta:** Project heartbeat — defer any work that does not shorten the path to Commercial Beta.
+
 ---
 
 ## Status

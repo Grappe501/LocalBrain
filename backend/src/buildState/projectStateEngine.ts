@@ -7,12 +7,17 @@ import type {
 import {
   FACTORY_ENVIRONMENT_MODEL,
   PROJECT_STATE_ENGINE_ID,
+  V1_ROADMAP_ITEMS,
+  V2_SCOPE_RULE,
+  type CeoModeBrief,
+  type V1RoadmapItemRow,
 } from "@localbrain/shared";
 import { changelogDecisions } from "../epo/checklistParser.js";
 import type { BuildStateSnapshot } from "./buildStateEngine.js";
 import { computeBuildState } from "./buildStateEngine.js";
 import { getCommitCount, getRecentCommits } from "./gitMetrics.js";
 import { computeV1CommandCenter } from "./v1CommandCenterEngine.js";
+import { recordV1Heartbeat } from "./v1Heartbeat.js";
 
 function formatHistoryDateLabel(iso: string, today: string, yesterday: string): string {
   if (iso === today) return "Today";
@@ -100,28 +105,76 @@ function buildLaunchCountdown(cc: V1CommandCenter): LaunchCountdown {
   };
 }
 
+function roadmapRows(cc: V1CommandCenter): V1RoadmapItemRow[] {
+  return V1_ROADMAP_ITEMS.map((item) => {
+    const node = cc.critical_path.find((n) => n.step_id === item.critical_path_step);
+    let status: V1RoadmapItemRow["status"] = "not_started";
+    if (node?.status === "complete") status = "complete";
+    else if (node?.status === "in_progress") status = "in_progress";
+    return { id: item.id, label: item.label, status };
+  });
+}
+
+function buildCeoMode(
+  cc: V1CommandCenter,
+  days_to_beta: number | null,
+  launch_score_percent: number,
+): CeoModeBrief {
+  const inProgress = cc.critical_path.find((n) => n.status === "in_progress");
+  const module_finishing_today =
+    inProgress?.label ??
+    cc.modules.find((m) => m.status === "in_progress")?.name ??
+    cc.building_today;
+
+  const blocked = cc.critical_path.find(
+    (n) => n.status === "waiting" || n.status === "blocked",
+  );
+  const blocks_v1_most = blocked
+    ? blocked.blocked_by
+      ? `${blocked.label} ← ${cc.critical_path.find((n) => n.step_id === blocked.blocked_by)?.label}`
+      : blocked.label
+    : cc.blocked_summary;
+
+  const heartbeat = recordV1Heartbeat(launch_score_percent, days_to_beta);
+
+  return {
+    module_finishing_today: module_finishing_today ?? null,
+    blocks_v1_most: blocks_v1_most ?? null,
+    wait_until_v2: V2_SCOPE_RULE,
+    completed_since_yesterday: cc.finished_yesterday,
+    launch_closer_than_yesterday: heartbeat.launch_closer_than_yesterday,
+    launch_momentum_label: heartbeat.momentum_label,
+    days_to_beta,
+    v1_roadmap: roadmapRows(cc),
+  };
+}
+
 export function computeProjectState(
   state: BuildStateSnapshot,
   command_center: V1CommandCenter,
 ): ProjectState {
   const head = getRecentCommits(1)[0];
   const build_number = getCommitCount();
+  const days_to_beta = command_center.days_to_v1_estimate;
+  const launch_score_percent = command_center.v1_launch_score_percent;
 
   return {
     engine_id: PROJECT_STATE_ENGINE_ID,
     current_version: command_center.product_version,
     build_number,
     git_commit: head?.hash ?? "dev",
-    launch_score_percent: command_center.v1_launch_score_percent,
+    launch_score_percent,
     current_phase: state.current_phase_label,
     current_module: resolveCurrentModule(command_center),
     current_burt_packet: resolveCurrentBurtPacket(state),
     critical_path: command_center.critical_path,
-    overall_eta_days: command_center.days_to_v1_estimate,
+    overall_eta_days: days_to_beta,
+    days_to_beta,
     todays_objective: command_center.building_today,
     yesterdays_progress: command_center.finished_yesterday,
     blockers: command_center.blocked_summary,
     certification_status: certificationStatus(command_center),
+    ceo_mode: buildCeoMode(command_center, days_to_beta, launch_score_percent),
     launch_countdown: buildLaunchCountdown(command_center),
     build_history: buildHistoryTimeline(),
     factory_environments: FACTORY_ENVIRONMENT_MODEL,

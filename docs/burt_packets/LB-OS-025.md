@@ -1,5 +1,22 @@
 # LB-OS-025 — Executive Approval
 
+> **LOCALBRAIN V1 ROADMAP** · Architecture FROZEN · Implementation mode
+>
+> ```txt
+> □ Executive Office Certification
+> □ Session 4
+> □ Session 5
+> □ Theory Freeze
+> □ Convention
+> □ Empty Brain Factory
+> □ Memory OS
+> □ Communications Office
+> □ Commercial Beta
+>
+> Everything else → VERSION2_BACKLOG.md
+> ```
+
+
 > **Depends on:** LB-OS-024  
 > **Spec:** [Migration Plan](../LOCALBRAIN_MIGRATION_PLAN.md)  
 > **Next:** LB-OS-026 Execution + Verification

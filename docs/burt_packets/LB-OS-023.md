@@ -1,5 +1,22 @@
 # LB-OS-023 — Migration Proof Engine
 
+> **LOCALBRAIN V1 ROADMAP** · Architecture FROZEN · Implementation mode
+>
+> ```txt
+> □ Executive Office Certification
+> □ Session 4
+> □ Session 5
+> □ Theory Freeze
+> □ Convention
+> □ Empty Brain Factory
+> □ Memory OS
+> □ Communications Office
+> □ Commercial Beta
+>
+> Everything else → VERSION2_BACKLOG.md
+> ```
+
+
 > **Depends on:** LB-OS-022 ✅  
 > **Spec:** [Proof & Certification](../LOCALBRAIN_PROOF_AND_CERTIFICATION.md) · [Executive Workspace Architecture](../LOCALBRAIN_EXECUTIVE_WORKSPACE_ARCHITECTURE.md)  
 > **Next:** LB-OS-024 Migration Proposal Builder
