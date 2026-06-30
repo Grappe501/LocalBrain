@@ -234,7 +234,31 @@ measurable outcomes,
 and deliberate reflection.
 ```
 
-Binding for Phase 2+ intelligence work (LB-OS-027–035). See [Executive Memory OS](./LOCALBRAIN_EXECUTIVE_MEMORY_OS.md) · [Executive Epistemology Convention](./LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md) · [Cognitive Governance](./LOCALBRAIN_COGNITIVE_GOVERNANCE.md) · [Executive Cognition](./LOCALBRAIN_EXECUTIVE_COGNITION.md) · [Executive Meta-Cognition](./LOCALBRAIN_EXECUTIVE_METACOGNITION.md).
+Binding for Phase 2+ intelligence work (LB-OS-027–035). See [Executive Cognition Axioms](./LOCALBRAIN_EXECUTIVE_COGNITION_AXIOMS.md) · [Executive Memory OS](./LOCALBRAIN_EXECUTIVE_MEMORY_OS.md) · [Executive Epistemology Convention](./LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md) · [Cognitive Governance](./LOCALBRAIN_COGNITIVE_GOVERNANCE.md) · [Executive Cognition](./LOCALBRAIN_EXECUTIVE_COGNITION.md) · [Executive Meta-Cognition](./LOCALBRAIN_EXECUTIVE_METACOGNITION.md).
+
+---
+
+## Article XIV — Executive Cognition Axioms
+
+Non-negotiable **laws** for Phase 2+. Every engine, API, prompt, and workflow must be provably consistent. Full text: [Executive Cognition Axioms](./LOCALBRAIN_EXECUTIVE_COGNITION_AXIOMS.md).
+
+```txt
+1. Reality is sovereign — the platform models reality; it never substitutes for it.
+2. Memory precedes reasoning — no reasoning until relevant memory is considered.
+3. Questions govern cognition — everything begins with a question, not data or prompts.
+4. Every conclusion has ancestry — question, memories, evidence, assumptions, lenses, unknowns.
+5. Uncertainty is information — unknowns are not failures; self-doubt is a feature.
+6. Time changes truth — knowledge has a temporal dimension the World Model must honor.
+7. Decisions change reality — action alters the world; downstream must recognize that.
+```
+
+**Cognitive Invariants** (vendor-independent): traceability · provenance · explainability · reversibility · separation of observation / interpretation / memory / belief / judgment.
+
+**Cognitive Conservation:** observation → memory → knowledge → understanding → wisdom — earlier forms are never overwritten.
+
+**Long-term ambition:**
+
+> Build a governed executive cognition platform whose reasoning remains traceable, whose judgment continuously improves through experience, whose understanding stays coherent as reality changes, and whose architecture remains independent of any particular AI model.
 
 ---
 
@@ -265,6 +289,7 @@ LOCALBRAIN_CONSTITUTION.md          ← you are here
 ├── LOCALBRAIN_EXECUTIVE_QUESTION_REGISTRY.md (ENG-EQ-001 · LB-OS-020.5)
 ├── LOCALBRAIN_EXECUTIVE_INTENT.md (Executive Mission Stack · ENG-EMS-001 · MCP · Phase 2)
 ├── LOCALBRAIN_EXECUTIVE_MEMORY_OS.md (Memory OS · Memory Confidence · Phase 2–3)
+├── LOCALBRAIN_EXECUTIVE_COGNITION_AXIOMS.md (Article XIV — seven laws · invariants · conservation)
 ├── LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md (gate before LB-OS-027)
 ├── LOCALBRAIN_EXECUTIVE_COGNITION.md (agency · tension · trajectories · Phase 2+ capabilities)
 ├── LOCALBRAIN_COGNITIVE_GOVERNANCE.md (World Model · Council · judgment structure)
@@ -283,4 +308,4 @@ LOCALBRAIN_CONSTITUTION.md          ← you are here
 
 ---
 
-*Constitution v1.0 · Article XIII Executive Principle · Phase 1 complete · 2026-06-29*
+*Constitution v1.0 · Articles XIII–XIV · Executive Cognition Axioms · Phase 1 complete · 2026-06-29*

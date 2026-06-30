@@ -3,8 +3,14 @@
 > **Status:** Required before LB-OS-027 implementation  
 > **Type:** Architecture only — no code  
 > **Scope:** Systems 2 (Memory) · 3 (Intelligence) · 4 (Evolution) — the rules by which the platform distinguishes observation, memory, knowledge, belief, understanding, and reasoning  
-> **Doctrine:** [Article XIII — Executive Principle](./LOCALBRAIN_CONSTITUTION.md#article-xiii--executive-principle)  
+> **Doctrine:** [Article XIII](./LOCALBRAIN_CONSTITUTION.md#article-xiii--executive-principle) · [Article XIV — Axioms](./LOCALBRAIN_EXECUTIVE_COGNITION_AXIOMS.md)  
 > **Parent:** [Executive Memory OS](./LOCALBRAIN_EXECUTIVE_MEMORY_OS.md) · [Executive Question Registry](./LOCALBRAIN_EXECUTIVE_QUESTION_REGISTRY.md) · [Memory Domains](./LOCALBRAIN_MEMORY_DOMAINS.md) · [Four Platform Systems](./LOCALBRAIN_FOUR_SYSTEMS.md) · [Phase 2 sequence](./LOCALBRAIN_PHASE1_CERTIFICATION.md#recommended-phase-2-sequence)
+
+---
+
+## Axiomatic foundation
+
+Phase 2 is built from [seven non-negotiable axioms](./LOCALBRAIN_EXECUTIVE_COGNITION_AXIOMS.md) — not features. Every Convention output and every engine must be provably axiom-consistent before implementation.
 
 ---
 
@@ -344,17 +350,11 @@ Consent · decay · immutability · memory and belief conflict · belief revisio
 ## Convention deliverables
 
 ```txt
+Axiom compliance matrix (Article XIV — every deliverable mapped to axioms 1–7)
 Master epistemology diagram (Question-first pipeline + Agency · Prediction)
-Cognitive Governance layer (World Model · Council · meta-cognition)
+Cognitive Governance layer (World Model · Council · judgment structure)
+Executive Meta-Cognition (Cognitive Trace · JQ · Wisdom · axiom compliance checks)
 Executive Cognition capability map (engines inside Four Systems)
-Question taxonomy (Operational · Executive · Epistemic · Requested · Emergent)
-Unknowns model (Known · Known Unknown · Unknown Unknown Indicator)
-Memory ontology · Belief contract · Strength + Certainty model
-Transparent recommendation chain + Council lens outputs
-Memory lifecycle · Recall · Provenance · Ethics policies
-Executive Evolution question-maturity + institutional memory + meta-cognition direction
-Cognitive Trace · Judgment Quality · Wisdom contract (System 4)
-LB-OS-027 Burt packet — Executive Memory Bootstrap
 ```
 
 ---

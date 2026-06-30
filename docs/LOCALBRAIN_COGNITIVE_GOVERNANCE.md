@@ -237,7 +237,14 @@ All modules **inside** Four Systems:
 | Institutional Memory | ENG-IM-001 | Executive Evolution |
 | Meta-cognition audit | ENG-MCG-001 | Executive Intelligence → Evolution |
 
-See [Executive Meta-Cognition](./LOCALBRAIN_EXECUTIVE_METACOGNITION.md) for full capability map (Cognitive Trace · JQ · Bias · Wisdom · Self-Doubt).
+| Capability | Engine (planned) | System |
+| ---------- | ---------------- | ------ |
+| Executive Coherence | ENG-COH-001 | Executive Intelligence |
+| Knowledge Gravity | ENG-KG-001 | Executive Memory OS |
+| Cognitive Resilience | ENG-CRL-001 | Executive Evolution |
+| Executive Identity | ENG-EID-001 | Executive Memory OS |
+
+All capabilities must satisfy [Executive Cognition Axioms](./LOCALBRAIN_EXECUTIVE_COGNITION_AXIOMS.md).
 
 Existing: [MCP](./LOCALBRAIN_EXECUTIVE_INTENT.md) · [ECL](./LOCALBRAIN_EXECUTIVE_COGNITIVE_LOAD.md) · [ELS](./LOCALBRAIN_EXECUTIVE_LEVERAGE_SCORE.md) · [Tension](./LOCALBRAIN_EXECUTIVE_COGNITION.md) · Agency · Proof · Five Gates.
 
