@@ -10,15 +10,33 @@
 
 Not code metrics. **Theory evidence** over years.
 
-| Hypothesis | Slice | Status | Summary | Evidence links |
-| ---------- | ----- | ------ | ------- | -------------- |
-| H-027 | LB-OS-027 | Untested | EQ-organized recall ↑ MCP, ↓ ECL | — |
-| H-028 | LB-OS-028 | — | — | — |
-| H-029 | LB-OS-029 | — | — | — |
+### Three independent statuses (never collapse)
 
-**Status values:** `Untested` · `In progress` · `Confirmed` · `Falsified` · `Inconclusive` · `Superseded`
+| Status | Question |
+| ------ | -------- |
+| **Implemented** | Has it been built? |
+| **Tested** | Has it been evaluated? |
+| **Supported** | Does the evidence currently support it? |
 
-Rejected hypotheses **remain published** — negative results strengthen the science.
+A feature is **not validated** because it exists. Built ≠ tested ≠ supported.
+
+| Hypothesis | Slice | Implemented | Tested | Supported | Summary |
+| ---------- | ----- | :---------: | :----: | :-------: | ------- |
+| H-027 | LB-OS-027 | ❌ | ❌ | Unknown | EQ-organized recall ↑ MCP, ↓ ECL |
+
+**Supported values:** `Unknown` · `Yes` · `No` · `Inconclusive` · `Falsified`
+
+### Outcome status (after testing)
+
+| Hypothesis | Outcome | Statistical | Practical | Theoretical | Replication |
+| ---------- | ------- | ----------- | --------- | ----------- | ----------- |
+| H-027 | Untested | — | — | — | — |
+
+**Outcome values:** `Untested` · `In progress` · `Provisional` · `Confirmed` · `Falsified` · `Inconclusive` · `Superseded`
+
+**Confirmed** requires replication record per [Falsification Charter](./LOCALBRAIN_FALSIFICATION_CHARTER.md#replication-culture). First pass alone → `Provisional`.
+
+**Falsification conditions:** [Charter table](./LOCALBRAIN_FALSIFICATION_CHARTER.md#what-would-prove-the-theory-wrong).
 
 ---
 
@@ -29,9 +47,22 @@ Evidence ID:     E-2026-001
 Hypothesis:      H-027
 Date:            YYYY-MM-DD
 Type:            experiment | observation | adversarial review | outcome trace
+Slice tag:       theory-bearing | product-only | both
+
+Statistical:     Did the metric improve?
+Practical:       Did it meaningfully help the executive?
+Theoretical:     Strengthened | Weakened | Neutral | Falsified claim
+
+Generalizability:
+  Individual executive:  High | Medium | Low | Unknown
+  Small team:            …
+  Large organization:    …
+  Domain (campaigns etc.): …
+
+Replication:     None | Attempted | Replicated | Failed to replicate
 Summary:         One paragraph
 Data:            Cognitive Trace ID · EPO metrics · decision outcomes
-Conclusion:      Supports | Challenges | Falsifies | Inconclusive
+Falsification:   Which charter row would this challenge, if any?
 Theory impact:   None | Minor note | Amendment candidate (Theory v1.x)
 Links:           docs · commits · trace IDs
 ```
@@ -46,13 +77,13 @@ Links:           docs · commits · trace IDs
 
 ---
 
-## Theory amendments (rare)
+## Theory amendments (rare — never edit v1.0 in place)
 
 | Version | Date | Change | Rationale | Evidence |
 | ------- | ---- | ------ | --------- | -------- |
-| v1.0 | 2026-06 | Initial freeze | Peer review passed | E-peer-review-001 |
+| v1.0 | 2026-06 | Initial freeze | Peer review + Falsification Charter | E-peer-review-001 |
 
-No amendments until peer review completes and implementation produces systematic counter-evidence.
+Amendments publish as v1.1, v1.2, … v1.0 text remains immutable. See [Falsification Charter](./LOCALBRAIN_FALSIFICATION_CHARTER.md#canon-preservation).
 
 ---
 

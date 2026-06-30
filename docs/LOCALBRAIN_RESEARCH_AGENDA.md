@@ -57,10 +57,18 @@ This agenda holds questions worth years of investigation. Each should eventually
 
 ## Active hypothesis registry (template)
 
-| ID | Hypothesis | Slice | Status | Result |
-| -- | ---------- | ----- | ------ | ------ |
-| H-027 | EQ-organized recall ↑ MCP, ↓ ECL | LB-OS-027 | 📋 Planned | — |
-| H-028 | — | LB-OS-028 | — | — |
+**Three independent statuses — never collapse:**
+
+| Status | Question |
+| ------ | -------- |
+| **Implemented** | Has it been built? |
+| **Tested** | Has it been evaluated? |
+| **Supported** | Does the evidence currently support it? |
+
+| ID | Hypothesis | Slice | Implemented | Tested | Supported | Outcome |
+| -- | ---------- | ----- | :---------: | :----: | :-------: | ------- |
+| H-027 | EQ-organized recall ↑ MCP, ↓ ECL | LB-OS-027 | ❌ | ❌ | Unknown | — |
+| H-028 | — | LB-OS-028 | ❌ | ❌ | Unknown | — |
 
 Populate as slices enter spec lock. Rejected hypotheses remain in registry with learnings.
 

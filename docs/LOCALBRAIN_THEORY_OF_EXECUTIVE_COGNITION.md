@@ -22,20 +22,13 @@ Explicit scope is a strength. Good theories state what they explain and what the
 ```txt
 Theory of Executive Cognition
   v1.0
-  Frozen (pending peer review sign-off)
+  Frozen permanently after peer review (never edited in place)
+  Amendments: v1.1 · v1.2 · … (evidenced · dated)
 ```
 
-Future changes are **amendments** — like the Constitution. Record in [Cognitive Evidence Base](./LOCALBRAIN_COGNITIVE_EVIDENCE_BASE.md).
+Future changes are **amendments only** — see [Falsification Charter](./LOCALBRAIN_FALSIFICATION_CHARTER.md) · [Cognitive Evidence Base](./LOCALBRAIN_COGNITIVE_EVIDENCE_BASE.md).
 
-| Change type | Frequency |
-| ----------- | --------- |
-| Theory | Rare (years) |
-| Science | Occasionally (months) |
-| Software | Frequently (days) |
-
-Software must not change theory every sprint.
-
----
+> **No implementation convenience redefines theory. Only evidence does.**
 
 ## Concept freeze (binding)
 

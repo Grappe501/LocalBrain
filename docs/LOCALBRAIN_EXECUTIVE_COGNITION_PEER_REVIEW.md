@@ -16,14 +16,18 @@ Hold a **peer review**, not a design meeting. Refine through attack, not additio
 **Gate sequence:**
 
 ```txt
+Falsification Charter acknowledged
+  ↓
 Executive Cognition Peer Review (this document)
   ↓
-Theory v1.0 frozen (if five gate questions pass)
+Theory v1.0 frozen permanently (if five gate questions pass)
   ↓
 Executive Epistemology Convention (Sessions 1–5)
   ↓
 H-027 Executive Memory Bootstrap (first code)
 ```
+
+Prerequisite: [LocalBrain Falsification Charter](./LOCALBRAIN_FALSIFICATION_CHARTER.md) — what would prove the theory **wrong**.
 
 ---
 
@@ -85,21 +89,25 @@ If none could ever fail → it is belief, not theory. Move to Convention ontolog
 
 ---
 
-## Adversarial review
+## Review sessions (not architecture design)
 
-Assign reviewers to **attack** the theory — not improve it by adding concepts.
+Stop asking *what should we add?* Ask *review this.*
 
-| Role | Attack vector |
-| ---- | ------------- |
-| **Philosopher** | Circular definitions · unfalsifiable claims · category errors |
-| **Cognitive scientist** | Misalignment with known human executive cognition |
-| **Systems engineer** | Unimplementable · unbounded complexity · failure modes |
-| **Security engineer** | Provenance gaps · manipulation · trust boundaries |
-| **Organizational psychologist** | Ignored social · political · emotional dynamics |
-| **Executive coach** | Impractical · overload · misjudges real executive behavior |
-| **Skeptical CTO** | Over-engineering · LLM dependency · ROI skepticism |
+Assign one reviewer per session. Each session attacks a different dimension — not a design meeting.
+
+| Session | Role | Challenge |
+| ------- | ---- | --------- |
+| **1** | **Philosopher** | Definitions · ontology · logical consistency |
+| **2** | **Cognitive scientist** | Cognitive assumptions · evidence requirements |
+| **3** | **Systems engineer** | Scalability · determinism · modularity |
+| **4** | **Executive practitioner** | Does this help someone make better decisions? |
+| **5** | **Skeptic** | Assume the theory is wrong · find weakest points |
 
 Record findings in [Cognitive Evidence Base](./LOCALBRAIN_COGNITIVE_EVIDENCE_BASE.md) · resolve as: accept · amend (Theory v1.x) · defer to hypothesis · reject construct.
+
+### Future: external theory review
+
+When the time comes — not before — invite outside reviewers to **critique the theory**, not approve the product. Domains: cognitive science · decision science · organizational psychology · knowledge management · systems engineering · HCI · executive leadership. Theory credibility increases if it survives informed criticism from people with no stake in LocalBrain.
 
 ---
 

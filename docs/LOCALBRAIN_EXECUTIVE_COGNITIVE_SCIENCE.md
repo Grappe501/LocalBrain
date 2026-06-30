@@ -239,7 +239,9 @@ No Phase 2 engine enters spec lock without hypothesis H-* record. Convention Ses
 
 See [LocalBrain Research Agenda](./LOCALBRAIN_RESEARCH_AGENDA.md) for open research questions · [Theory of Executive Cognition](./LOCALBRAIN_THEORY_OF_EXECUTIVE_COGNITION.md) for why predictions matter.
 
-**Concept freeze:** Doctrine complete. Next work is Convention + H-* implementation only.
+Rejected hypotheses **remain published**. Theory vs product may diverge — tag slices `theory-bearing` · `product-only` · `both`. See [Falsification Charter](./LOCALBRAIN_FALSIFICATION_CHARTER.md).
+
+**Concept freeze:** Doctrine complete. Next work is Charter → Peer Review → Convention → H-* only.
 
 ---
 
