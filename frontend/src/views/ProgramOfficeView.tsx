@@ -138,6 +138,9 @@ export function ProgramOfficeView() {
 
   if (!overview) return null;
 
+  const ps = overview.project_state;
+  const cc = ps.command_center;
+  const lc = ps.launch_countdown;
   const m = overview.metrics;
   const filteredSlices = phaseFilter
     ? overview.slices.filter((s) =>
@@ -173,38 +176,87 @@ export function ProgramOfficeView() {
 
       <ExecutiveQuestionShell route="/program-office" observedAt={overview.observed_at} />
 
-      {overview.v1_command_center ? (
+      <section className="epo-launch" aria-label="V1 Launch Countdown">
+        <header className="epo-launch__header">
+          <h2>{lc.product_label}</h2>
+          <p className="epo-launch__engine">{ps.engine_id} · build {ps.build_number ?? "—"} · {ps.git_commit}</p>
+        </header>
+        <dl className="epo-launch__grid">
+          <div>
+            <dt>Current Phase</dt>
+            <dd>{lc.current_phase}</dd>
+          </div>
+          <div>
+            <dt>Overall Progress</dt>
+            <dd>{lc.overall_progress_percent}%</dd>
+          </div>
+          <div>
+            <dt>Critical Path Remaining</dt>
+            <dd>{lc.critical_path_remaining_days != null ? `${lc.critical_path_remaining_days} days` : "—"}</dd>
+          </div>
+          <div>
+            <dt>Modules Remaining</dt>
+            <dd>{lc.modules_remaining}</dd>
+          </div>
+          <div>
+            <dt>Modules Certified</dt>
+            <dd>{lc.modules_certified}</dd>
+          </div>
+          <div>
+            <dt>Open Critical Bugs</dt>
+            <dd>{lc.open_critical_bugs}</dd>
+          </div>
+          <div>
+            <dt>Architecture Status</dt>
+            <dd className="epo-launch__frozen">{lc.architecture_status}</dd>
+          </div>
+          <div>
+            <dt>Target</dt>
+            <dd>{lc.target}</dd>
+          </div>
+        </dl>
+        <p className="epo-launch__objective">
+          <strong>Today:</strong> {ps.todays_objective ?? "—"}
+          {ps.current_burt_packet && (
+            <> · <strong>Burt:</strong> <code>{ps.current_burt_packet}</code></>
+          )}
+        </p>
+      </section>
+
+      {cc ? (
         <section className="epo-command" aria-label="Live Build Command Center">
           <header className="epo-command__header">
             <h2>Live Build Command Center</h2>
             <p className="epo-command__meta">
-              {overview.v1_command_center.engine_id} · {overview.v1_command_center.product_version} ·
-              V1 launch score <strong>{overview.v1_command_center.v1_launch_score_percent}%</strong>
-              {overview.v1_command_center.days_to_v1_estimate != null && (
-                <> · ~{overview.v1_command_center.days_to_v1_estimate} days on critical path</>
+              {cc.engine_id} · {cc.product_version} ·
+              V1 launch score <strong>{cc.v1_launch_score_percent}%</strong>
+              {cc.days_to_v1_estimate != null && (
+                <> · ~{cc.days_to_v1_estimate} days on critical path</>
               )}
             </p>
           </header>
 
           <dl className="epo-command__answers">
             <dt>What version am I?</dt>
-            <dd>{overview.v1_command_center.product_version}</dd>
+            <dd>{ps.current_version}</dd>
             <dt>What is being built today?</dt>
-            <dd>{overview.v1_command_center.building_today ?? "—"}</dd>
+            <dd>{ps.todays_objective ?? "—"}</dd>
             <dt>What is blocked?</dt>
-            <dd>{overview.v1_command_center.blocked_summary ?? "Nothing on critical path"}</dd>
+            <dd>{ps.blockers ?? "Nothing on critical path"}</dd>
             <dt>What finished recently?</dt>
             <dd>
-              {overview.v1_command_center.finished_yesterday.length > 0
-                ? overview.v1_command_center.finished_yesterday.join(" · ")
+              {ps.yesterdays_progress.length > 0
+                ? ps.yesterdays_progress.join(" · ")
                 : overview.current_sprint.completed.join(", ") || "—"}
             </dd>
             <dt>How long until V1?</dt>
             <dd>
-              {overview.v1_command_center.days_to_v1_estimate != null
-                ? `~${overview.v1_command_center.days_to_v1_estimate} days (critical path estimate)`
+              {ps.overall_eta_days != null
+                ? `~${ps.overall_eta_days} days (critical path estimate)`
                 : "—"}
             </dd>
+            <dt>Certification</dt>
+            <dd>{ps.certification_status}</dd>
           </dl>
 
           <table className="epo-command__modules">
@@ -221,7 +273,7 @@ export function ProgramOfficeView() {
               </tr>
             </thead>
             <tbody>
-              {overview.v1_command_center.modules.map((mod) => (
+              {cc.modules.map((mod) => (
                 <tr key={mod.module_id}>
                   <td>{mod.name}</td>
                   <td>{mod.version}</td>
@@ -244,7 +296,7 @@ export function ProgramOfficeView() {
             <section>
               <h3>Critical path</h3>
               <ol className="epo-command__chain">
-                {overview.v1_command_center.critical_path.map((node) => (
+                {cc.critical_path.map((node) => (
                   <li
                     key={node.step_id}
                     className={`epo-command__chain-item epo-command__chain-item--${node.status}`}
@@ -252,7 +304,7 @@ export function ProgramOfficeView() {
                     {node.label}
                     {node.blocked_by && (
                       <span className="epo-command__blocked-by">
-                        ↑ {overview.v1_command_center.critical_path.find((n) => n.step_id === node.blocked_by)?.label}
+                        ↑ {cc.critical_path.find((n) => n.step_id === node.blocked_by)?.label}
                       </span>
                     )}
                   </li>
@@ -269,7 +321,7 @@ export function ProgramOfficeView() {
                   </tr>
                 </thead>
                 <tbody>
-                  {overview.v1_command_center.burndown.map((row) => (
+                  {cc.burndown.map((row) => (
                     <tr key={row.step_id}>
                       <td>{row.label}</td>
                       <td>
@@ -285,7 +337,7 @@ export function ProgramOfficeView() {
             <section>
               <h3>V1 launch score (weighted)</h3>
               <ul className="epo-command__weights">
-                {overview.v1_command_center.launch_breakdown.map((row) => (
+                {cc.launch_breakdown.map((row) => (
                   <li key={row.area}>
                     {row.label} ({row.weight_percent}%) — {row.module_progress_percent}% → +
                     {row.weighted_contribution}
@@ -295,17 +347,47 @@ export function ProgramOfficeView() {
             </section>
           </div>
 
-          <p className="epo-command__rule">{overview.v1_command_center.module_completeness_rule}</p>
-          <p className="epo-command__rule epo-command__rule--muted">{overview.v1_command_center.sandbox_rule}</p>
+          <p className="epo-command__rule">{cc.module_completeness_rule}</p>
+          <p className="epo-command__rule epo-command__rule--muted">{cc.sandbox_rule}</p>
+
+          <section className="epo-command__env">
+            <h3>Factory environments (Factory phase)</h3>
+            <pre className="epo-command__env-diagram">{`${ps.factory_environments.factory_template}
+        │
+        ├── ${ps.factory_environments.sandbox_brains.slice(0, 3).join("\n        ├── ")}
+        ├── ${ps.factory_environments.sandbox_brains[3]}
+        │
+Production Brains
+        │
+        ├── ${ps.factory_environments.production_brains.join("\n        ├── ")}`}</pre>
+            <p className="epo-command__rule epo-command__rule--muted">{ps.factory_environments.rule}</p>
+          </section>
         </section>
       ) : null}
+
+      <section className="epo-history" aria-label="Build history">
+        <h2>Build history</h2>
+        <ol className="epo-history__timeline">
+          {ps.build_history.map((day) => (
+            <li key={day.iso_date} className="epo-history__day">
+              <strong className="epo-history__date">{day.date_label}</strong>
+              <ul>
+                {day.entries.map((entry) => (
+                  <li key={entry}>{entry}</li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ol>
+      </section>
 
       {readiness ? (
         <section className="epo-readiness" aria-label="LocalBrain V1 Readiness Dashboard">
           <header className="epo-readiness__header">
             <h2>LocalBrain V1 Readiness Dashboard</h2>
             <p className="epo-readiness__meta">
-              {readiness.slice_id} · {readiness.engine_id} · {readiness.executive_os_version} ·{" "}
+              {readiness.slice_id} · {readiness.engine_id} · {readiness.project_state_engine_id} ·{" "}
+              V1 launch {readiness.launch_score_percent}% · {readiness.executive_os_version} ·{" "}
               {readiness.certification_passed ? "Certification passed" : "Certification in progress"}
             </p>
             <p className="epo-readiness__rule">{readiness.core_rule}</p>
@@ -615,19 +697,23 @@ export function ProgramOfficeView() {
 
       <section className="epo-dashboard" aria-label="Program dashboard">
         <div className="epo-dashboard__progress">
-          <span className="epo-dashboard__label">Overall Progress</span>
+          <span className="epo-dashboard__label">V1 Launch Score</span>
           <div className="epo-dashboard__bar">
             <div
               className="epo-dashboard__fill"
-              style={{ width: `${m.overall_progress_percent}%` }}
+              style={{ width: `${ps.launch_score_percent}%` }}
             />
           </div>
-          <span className="epo-dashboard__pct">{m.overall_progress_percent}%</span>
+          <span className="epo-dashboard__pct">{ps.launch_score_percent}%</span>
         </div>
         <dl className="epo-dashboard__stats">
           <div>
             <dt>Current Phase</dt>
-            <dd>{overview.current_phase_label}</dd>
+            <dd>{ps.current_phase}</dd>
+          </div>
+          <div>
+            <dt>Current Module</dt>
+            <dd>{ps.current_module ?? "—"}</dd>
           </div>
           <div>
             <dt>Current Slice</dt>

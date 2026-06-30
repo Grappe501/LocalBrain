@@ -11,6 +11,7 @@ import { listDocumentationLibrary } from "./docsLibrary.js";
 import { parsePhaseChecklistSlices } from "./checklistParser.js";
 import { computeBuildState, BUILD_STATE_ENGINE_ID, changelogDecisions } from "../buildState/buildStateEngine.js";
 import { computeV1CommandCenter } from "../buildState/v1CommandCenterEngine.js";
+import { computeProjectState } from "../buildState/projectStateEngine.js";
 import { getRecentCommits } from "./gitReader.js";
 import { computeEngineeringScore } from "../engineering/engineeringScore.js";
 import { explainBlocker } from "./blockerExplainer.js";
@@ -53,6 +54,7 @@ function buildDecisions(): EpoDecisionEvent[] {
 export function getEpoOverview(): EpoOverview {
   const state = computeBuildState();
   const v1_command_center = computeV1CommandCenter(state);
+  const project_state = computeProjectState(state, v1_command_center);
   const usage = getSystemUsage();
   const modules = getRegisteredModules();
   const workspaces = listWorkspaces().filter((w) => !w.flags.hidden);
@@ -70,10 +72,7 @@ export function getEpoOverview(): EpoOverview {
       completed_slices: state.completed_count,
       remaining_slices: state.total_count - state.completed_count,
       total_v1_slices: state.total_count,
-      overall_progress_percent:
-        state.total_count > 0
-          ? Math.round((state.completed_count / state.total_count) * 100)
-          : 0,
+      overall_progress_percent: project_state.launch_score_percent,
       document_count: docs.length,
       module_count: modules.length,
       workspace_count: workspaces.length,
@@ -94,6 +93,7 @@ export function getEpoOverview(): EpoOverview {
     experience_maturity: getExperienceMaturityMatrix(),
     experience_maturity_engine_id: EXPERIENCE_MATURITY_ENGINE_ID,
     v1_command_center,
+    project_state,
     read_only: true,
     observed_at: new Date().toISOString(),
   };
@@ -130,3 +130,4 @@ export function getEpoSliceDetail(sliceId: string): EpoSliceDetail | null {
 }
 
 export { listDocumentationLibrary };
+export { getProjectState } from "../buildState/projectStateEngine.js";

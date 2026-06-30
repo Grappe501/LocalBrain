@@ -33,6 +33,17 @@ export type {
   SliceStatus,
 } from "./epo.js";
 export type {
+  BuildHistoryDay,
+  FactoryEnvironmentModel,
+  LaunchCountdown,
+  ProjectState,
+} from "./projectState.js";
+export {
+  FACTORY_ENVIRONMENT_MODEL,
+  PROJECT_STATE_ENGINE_ID,
+  SANDBOX_FLOW_RULE,
+} from "./projectState.js";
+export type {
   V1BurndownRow,
   V1CommandCenter,
   V1CriticalPathStep,

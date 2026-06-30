@@ -4,7 +4,7 @@ import { bootstrapApp } from "../bootstrap.js";
 import { closeDatabase } from "../db/database.js";
 import { parsePhaseChecklistSlices, parsePhaseSections } from "../epo/checklistParser.js";
 import { explainBlocker } from "../epo/blockerExplainer.js";
-import { getEpoOverview, getEpoSliceDetail, listDocumentationLibrary } from "../epo/epoService.js";
+import { getEpoOverview, getEpoSliceDetail, getProjectState, listDocumentationLibrary } from "../epo/epoService.js";
 import { BUILD_STATE_ENGINE_ID, computeBuildState } from "./buildStateEngine.js";
 import { computeV1CommandCenter } from "./v1CommandCenterEngine.js";
 import { parseSliceRegistry } from "./sliceRegistry.js";
@@ -66,6 +66,22 @@ test("getEpoOverview exposes build state engine fields", () => {
   assert.equal(overview.v1_command_center.engine_id, "ENG-BLD-001-V1CC");
   assert.ok(overview.v1_command_center.modules.length >= 6);
   assert.ok(overview.v1_command_center.v1_launch_score_percent >= 0);
+  assert.ok(overview.project_state);
+  assert.equal(overview.project_state.engine_id, "ENG-BLD-001-PSTATE");
+  assert.equal(
+    overview.metrics.overall_progress_percent,
+    overview.project_state.launch_score_percent,
+  );
+  assert.ok(overview.project_state.build_history.length > 0);
+  assert.ok(overview.project_state.launch_countdown);
+});
+
+test("getProjectState is single source of truth for launch metrics", () => {
+  const ps = getProjectState();
+  assert.equal(ps.engine_id, "ENG-BLD-001-PSTATE");
+  assert.ok(ps.launch_score_percent >= 0);
+  assert.ok(ps.launch_countdown.modules_remaining >= 0);
+  assert.equal(ps.command_center.v1_launch_score_percent, ps.launch_score_percent);
 });
 
 test("computeV1CommandCenter projects critical path and weighted score", () => {

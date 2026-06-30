@@ -137,6 +137,9 @@ export interface PlatformReadinessReport {
   executive_questions_authoritative: number;
   recommended_phase_2_sequence: string[];
   certification_passed: boolean;
+  project_state_engine_id: "ENG-BLD-001-PSTATE";
+  launch_score_percent: number;
+  critical_path_remaining_days: number | null;
   observed_at: string;
 }
 

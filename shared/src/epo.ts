@@ -1,4 +1,5 @@
 import type { ExperienceMaturityRow } from "./experienceMaturity.js";
+import type { ProjectState } from "./projectState.js";
 import type { V1CommandCenter } from "./v1CommandCenter.js";
 
 export type SliceStatus =
@@ -121,6 +122,7 @@ export interface EpoOverview {
   experience_maturity: ExperienceMaturityRow[];
   experience_maturity_engine_id: string;
   v1_command_center: V1CommandCenter;
+  project_state: ProjectState;
   read_only: true;
   observed_at: string;
 }

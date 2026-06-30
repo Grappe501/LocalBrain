@@ -100,4 +100,45 @@ New ideas → [VERSION2_BACKLOG.md](./VERSION2_BACKLOG.md). Do not interrupt V1 
 
 ## API
 
-`GET /api/epo/overview` → `v1_command_center` on `EpoOverview` (auto-refreshed with build state on each request / 15s live refresh in UI).
+`GET /api/epo/overview` → `project_state` + `v1_command_center` on `EpoOverview` (auto-refreshed with build state on each request / 15s live refresh in UI).
+
+`GET /api/epo/project-state` → canonical `ProjectState` object — **single source of truth** for all dashboards.
+
+Every launch metric (`launch_score_percent`, `overall_eta_days`, module progress) must come from `project_state`, not independent calculations.
+
+---
+
+## Launch Countdown
+
+Executive summary panel at top of Program Office:
+
+- LOCALBRAIN V1 · Implementation phase · weighted launch score
+- Critical path remaining · modules remaining/certified · architecture FROZEN
+- Target: Commercial Beta
+
+---
+
+## Build history
+
+Git commits + Phase Checklist changelog grouped by day (`Today`, `Yesterday`, dates). Becomes the historical record of product evolution.
+
+---
+
+## Factory environments (Factory phase)
+
+```txt
+Factory Template
+        │
+        ├── Steve Sandbox
+        ├── Kelly Sandbox
+        ├── Chris Sandbox
+        ├── Future Customer Sandboxes
+        │
+Production Brains
+        │
+        ├── Steve Production
+        ├── Kelly Production
+        └── Chris Production
+```
+
+Sandboxes are disposable. Production brains are protected.

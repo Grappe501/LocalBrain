@@ -1,8 +1,13 @@
 import { Router } from "express";
-import { getEpoOverview, getEpoSliceDetail, listDocumentationLibrary } from "../epo/epoService.js";
+import { getEpoOverview, getEpoSliceDetail, getProjectState, listDocumentationLibrary } from "../epo/epoService.js";
 import { getPlatformReadinessReport } from "../certification/platformReadinessService.js";
 
 export const epoRouter = Router();
+
+epoRouter.get("/epo/project-state", (_req, res) => {
+  res.set("Cache-Control", "no-store, no-cache, must-revalidate");
+  res.json(getProjectState());
+});
 
 epoRouter.get("/epo/readiness", (_req, res) => {
   res.set("Cache-Control", "no-store, no-cache, must-revalidate");

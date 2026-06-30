@@ -15,6 +15,7 @@ import {
 import { listDocumentationLibrary } from "../epo/docsLibrary.js";
 import { parsePhaseChecklistSlices } from "../epo/checklistParser.js";
 import { countTestFiles } from "../buildState/gitMetrics.js";
+import { getProjectState } from "../buildState/projectStateEngine.js";
 import { runIntegrationAudit, EXECUTIVE_SHELL_ROUTES } from "../integration/integrationAudit.js";
 import { getMigrationApprovalsOverview } from "../migration/approval/executiveApprovalService.js";
 import { getMigrationCutoverOverview } from "../migration/cutover/cutoverService.js";
@@ -522,6 +523,8 @@ export function getPlatformReadinessReport(): PlatformReadinessReport {
     architectureVolatility.volatility_percent,
   );
 
+  const projectState = getProjectState();
+
   return {
     slice_id: "LB-OS-026.5",
     engine_id: PLATFORM_READINESS_ENGINE_ID,
@@ -553,6 +556,9 @@ export function getPlatformReadinessReport(): PlatformReadinessReport {
     executive_questions_authoritative: integration.metrics.questions_with_authoritative_route,
     recommended_phase_2_sequence: RECOMMENDED_PHASE_2_SEQUENCE,
     certification_passed: certificationPassed,
+    project_state_engine_id: projectState.engine_id,
+    launch_score_percent: projectState.launch_score_percent,
+    critical_path_remaining_days: projectState.overall_eta_days,
     observed_at: new Date().toISOString(),
   };
 }

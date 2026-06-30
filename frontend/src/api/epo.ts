@@ -1,5 +1,9 @@
-import type { EpoOverview, EpoSliceDetail, EpoDocEntry, PlatformReadinessReport } from "@localbrain/shared";
+import type { EpoOverview, EpoSliceDetail, EpoDocEntry, PlatformReadinessReport, ProjectState } from "@localbrain/shared";
 import { fetchLiveJson } from "./fetchLive";
+
+export async function fetchProjectState(): Promise<ProjectState> {
+  return fetchLiveJson<ProjectState>("/api/epo/project-state");
+}
 
 export async function fetchEpoOverview(): Promise<EpoOverview> {
   return fetchLiveJson<EpoOverview>("/api/epo/overview");
