@@ -204,6 +204,8 @@ LB-OS-03X-PVI — Personal Voice Interface (consent-gated cloning · synthetic i
 LB-OS-03X-ENC — Encryption, Key Vault, and Sovereign Routing (Privacy Core — build from the start)
 LB-OS-03X-DPEC — Data Sovereignty & Exposure Control (tiers · minimum packet · disclosure ledger)
 LB-OS-03X-OPS — Operational discipline ([doc](./LOCALBRAIN_EXECUTIVE_OPERATIONAL_DISCIPLINE.md): sovereignty dashboard · trust · memory ledger · executive capital · dept maturity · institutional memory · decision evolution)
+LB-OS-INST-* — Multi-office institution model ([doc](./LOCALBRAIN_EXECUTIVE_INSTITUTION_MODEL.md): offices · teams · tenant isolation · Office Constitution)
+LB-OS-CON-002 — Doctrine hierarchy (Executive Constitution v2 → Office Constitution → charters → standing orders → playbooks → policies → procedures) — reserve only
 ```
 
 ```txt
