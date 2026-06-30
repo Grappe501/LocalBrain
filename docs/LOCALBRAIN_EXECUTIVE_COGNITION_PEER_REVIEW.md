@@ -124,8 +124,8 @@ Peer review in research avoids reviewers influencing one another. Same disciplin
 | Session | Role | Challenge | Status |
 | ------- | ---- | --------- | ------ |
 | **1** | **Philosopher** | Definitions · ontology · logical consistency | ✅ Passed 2026-06-28 |
-| **2** | **Cognitive scientist** | Cognitive assumptions · evidence requirements | 📋 Ready |
-| **3** | **Systems engineer** | Scalability · determinism · modularity | ⬜ Pending |
+| **2** | **Cognitive scientist** | Cognitive assumptions · evidence requirements | ✅ Passed 2026-06-28 (research obligations) |
+| **3** | **Systems engineer** | Scalability · determinism · modularity | 📋 Ready |
 | **4** | **Executive practitioner** | Does this help someone make better decisions? | ⬜ Pending |
 | **5** | **Skeptic** | Assume the theory is wrong · find weakest points | ⬜ Pending |
 
@@ -177,6 +177,40 @@ Checklist: undefined terms · circular definitions · category exclusivity · co
 **Expected pressure areas:** sequential vs parallel cognition · Memory→Knowledge→Belief plausibility · belief vs mental model distinction · prediction vs understanding · missing recursive loops · attention as operational construct · adaptive forgetting vs archival.
 
 **Success criterion:** Failed to find empirically implausible claims that **cannot** be tested via H-* hypotheses — not "psychology confirms every construct."
+
+**Session 2 meta-observation:** Theory is **normative engineering** — not cognitive mimicry. Vulnerability is measurement · validation · calibration.
+
+### Session 3 — Systems engineer rules (binding)
+
+**Stop asking:** *Is this logically valid?* · *Is this empirically plausible?*
+
+**Start asking:** *Could this architecture still work at scale — millions of memories · thousands of workspaces · multiple organizations · decades of accumulated knowledge?*
+
+| Rule | Requirement |
+| ---- | ----------- |
+| **1. Same frozen packet** | Review commit `7b6ab71` only — no Session 1–2 findings incorporated into submission |
+| **2. Engineering pressure** | Scalability · incremental update · provenance cost · bottlenecks · failure modes · observability |
+| **3. Theory fixed** | Challenge whether implementation can **preserve** distinctions under load — not whether distinctions should exist |
+| **4. Four outcomes** | Resolved · Clarification · Open Question · Amendment Candidate — record only |
+| **5. No co-design** | Identify operational risks · do not add pillars |
+
+**Expected pressure areas:** World Model incremental refresh · Cognitive Trace at volume · Memory Recall latency · provenance chain depth · multi-agent World Model coherence · incomplete data · production debuggability · conservation under growth.
+
+**Success criterion:** Failed to find engineering constraints that **cannot** be addressed without Theory v1.1 — implementation obligations may be recorded separately.
+
+### Peer review claim types (meta-evidence — not doctrine)
+
+Emerging pattern from Sessions 1–2 — record as institutional memory:
+
+| Claim type | Primary review method | Session |
+| ---------- | --------------------- | ------- |
+| **Architectural** | Logic · consistency | 1 Philosopher |
+| **Scientific** | Experiment · measurement | 2 Cognitive Scientist |
+| **Engineering** | Scalability · reliability · operability | 3 Systems Engineer |
+| **Practical** | Decision utility | 4 Executive Practitioner |
+| **Adversarial** | Assume theory wrong | 5 Skeptic |
+
+Remaining sessions ask whether the theory survives **different kinds of reality** — not whether it "sounds right."
 
 ### Future: external theory review
 

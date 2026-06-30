@@ -74,8 +74,8 @@ Links:           docs · commits · trace IDs
 | Session | Role | Status | Record |
 | ------- | ---- | ------ | ------ |
 | 1 | Philosopher — logical consistency | ✅ Passed | [PR-S1 below](#peer-review-session-1-philosopher) |
-| 2 | Cognitive scientist | 📋 Ready — frozen packet `7b6ab71` | — |
-| 3 | Systems engineer | ⬜ Pending | — |
+| 2 | Cognitive scientist | ✅ Passed (research obligations) | [PR-S2 below](#peer-review-session-2-cognitive-scientist) |
+| 3 | Systems engineer | 📋 Ready — frozen packet `7b6ab71` | [PR-S3 — Session 3 opens](#peer-review-session-3-systems-engineer) |
 | 4 | Executive practitioner | ⬜ Pending | — |
 | 5 | Skeptic | ⬜ Pending | — |
 
@@ -133,12 +133,100 @@ Links:           docs · commits · trace IDs
 
 ---
 
+### Peer Review Session 2 (Cognitive Scientist)
+
+| Field | Value |
+| ----- | ----- |
+| Date | 2026-06-28 (Session 2 open) |
+| Reviewer | Independent (Cognitive Scientist) |
+| Submission | Frozen at `7b6ab71` — Session 1 findings not incorporated |
+| Rules | [Session 2 rules](./LOCALBRAIN_EXECUTIVE_COGNITION_PEER_REVIEW.md#session-2--cognitive-scientist-rules-binding) |
+| Outcome | **Passed with research obligations** — 0 empirical contradictions · 2 clarifications · 3 open questions · 0 Amendment Candidates |
+
+#### Findings log
+
+| ID | Finding | Empirical read | Outcome | Notes |
+| -- | ------- | -------------- | ------- | ----- |
+| PR-S2-001 | Memory → Knowledge → Belief | Normative separation, not descriptive of unaided cognition; reconstructive memory diverges | **Clarification** | Test via H-*: explicit separation ↑ JQ vs blended recall |
+| PR-S2-002 | Executive Questions | Model B (activated information need) plausible; diagram may place Question too early vs emergent path | **Open Question** | Convention Session 1 — Question as primitive vs interface vs attentional manifestation |
+| PR-S2-003 | Mission Stack / MCP | Mission-oriented cognition plausible; MCP may be instrument not destination | **Open Question** | Convention — MCP as operational metric under equilibrium/principles |
+| PR-S2-004 | World Model | Empirically plausible; WMA must be measurable; preserve plural partial models | **Clarification** | Research: WMA predicts JQ · MCP · surprise · avoidable failures |
+| PR-S2-005 | Judgment Quality | Theoretically plausible; measurement · Goodhart · trace-vs-judgment risks | **Open Question** | Research — inter-rater reliability · predictive validity · outcome-independent stability · structured profile |
+
+#### Session 2 summary
+
+| Category | Count |
+| -------- | ----: |
+| Resolved | 0 |
+| Clarification | 2 |
+| Open Question | 3 |
+| Amendment Candidate | 0 |
+| Empirical contradictions | **0** |
+
+**Cognitive scientist conclusion:** Failed to discover empirical evidence falsifying Theory v1.0 at conceptual-architecture level. Theory is normative engineering — not cognitive mimicry. Vulnerability is measurement · operationalization · validation · calibration — where a scientific theory should be vulnerable.
+
+**Session 2 meta-observations:**
+- Theory makes **descriptive** and **normative** claims — H-* should tag which is under test.
+- Pressure points reduce to *"Will reality support this normative design?"* not internal inconsistency.
+
+#### Research obligations (from Session 2 — high priority)
+
+| ID | Obligation | Validation criterion |
+| -- | ---------- | -------------------- |
+| RO-S2-001 | JQ measurement | Inter-rater reliability on identical Cognitive Traces |
+| RO-S2-002 | JQ predictive validity | Historical JQ predicts future decisions better than outcome history alone |
+| RO-S2-003 | JQ stability | JQ stable when outcomes fluctuate from luck |
+| RO-S2-004 | JQ vs documentation | Score reasoning quality, not trace completeness alone |
+| RO-S2-005 | Goodhart resistance | JQ resists gaming when used as target |
+| RO-S2-006 | WMA accountability | WMA predicts JQ · surprise · avoidable failures — not decorative |
+| RO-S2-007 | Descriptive/normative tags | Every H-* declares claim type under test |
+
+#### Session 2 gate
+
+- [x] No unresolved **Amendment Candidate** without evidence plan
+- [x] All **Clarification** / **Open Question** items deferred (Convention or research — not Theory edit)
+- [x] Success criterion met: failed to find empirical contradiction falsifying conceptual architecture
+
+---
+
+### Peer Review Session 3 (Systems Engineer)
+
+| Field | Value |
+| ----- | ----- |
+| Date | 📋 Ready to open |
+| Reviewer | Independent (Systems Engineer) |
+| Submission | Frozen at `7b6ab71` |
+| Overarching question | Could this architecture work at millions of memories · thousands of workspaces · multiple organizations · decades of knowledge? |
+| Rules | [Session 3 rules](./LOCALBRAIN_EXECUTIVE_COGNITION_PEER_REVIEW.md#session-3--systems-engineer-rules-binding) |
+| Outcome | Pending |
+
+#### Findings log
+
+| ID | Finding | Engineering read | Outcome | Notes |
+| -- | ------- | ---------------- | ------- | ----- |
+| — | *(reviewer populates)* | | | |
+
+---
+
+#### Session 2 planned review areas (complete)
+
+| ID | Topic | Status |
+| -- | ----- | ------ |
+| PR-S2-001 | Memory → Knowledge → Belief | ✅ |
+| PR-S2-002 | Executive Questions | ✅ |
+| PR-S2-003 | Mission Stack / MCP | ✅ |
+| PR-S2-004 | World Model | ✅ |
+| PR-S2-005 | Judgment Quality | ✅ |
+
+---
+
 ## Peer review record (aggregate)
 
 | Review | Date | Outcome | Record |
 | ------ | ---- | ------- | ------ |
 | PR-S1 Philosopher | 2026-06-28 | **Passed** — 0 contradictions · 3 clarifications · 2 open questions | [PR-S1](#peer-review-session-1-philosopher) |
-| Executive Cognition Peer Review (aggregate) | 📋 In progress | Sessions 2–5 pending · five gate questions open | [Peer Review doc](./LOCALBRAIN_EXECUTIVE_COGNITION_PEER_REVIEW.md) |
+| PR-S2 Cognitive Scientist | 2026-06-28 | **Passed (research obligations)** — 0 empirical contradictions · 2 clarifications · 3 open questions | [PR-S2](#peer-review-session-2-cognitive-scientist) |
+| Executive Cognition Peer Review (aggregate) | 📋 In progress | Sessions 3–5 pending · five gate questions open | [Peer Review doc](./LOCALBRAIN_EXECUTIVE_COGNITION_PEER_REVIEW.md) |
 
 ---
 
@@ -157,6 +245,20 @@ Amendments publish as v1.1, v1.2, … v1.0 text remains immutable. See [Falsific
 | Evidence ID | Type | Date | Summary | Theory impact |
 | ----------- | ---- | ---- | ------- | ------------- |
 | E-PR-S1-2026 | adversarial review | 2026-06-28 | Philosopher Session 1 — 5 attack surfaces · 0 contradictions · 3 clarifications · 2 open questions | None — internal coherence supported; Convention agenda deferred |
+| E-PR-S2-2026 | adversarial review | 2026-06-28 | Cognitive Scientist Session 2 — 5 attack surfaces · 0 empirical contradictions · research obligations RO-S2-001–007 | None — empirical plausibility supported; H-* validation agenda defined |
+| E-META-PR-2026 | meta-evidence | 2026-06-28 | Sessions 1–2 pattern: architectural vs scientific claim separation · no pillar additions · boundary/measurement pressure only | Review method taxonomy — not evidence theory is correct |
+
+### Peer review progress (institutional memory)
+
+| Session | Focus | Result |
+| ------- | ----- | ------ |
+| 1 Philosopher | Internal logical consistency | Passed — 0 contradictions; boundary-definition questions |
+| 2 Cognitive Scientist | Empirical plausibility | Passed (research obligations) — 0 contradictions; measurement/validation obligations |
+| 3 Systems Engineer | Engineering feasibility | 📋 Ready |
+| 4 Executive Practitioner | Decision utility | ⬜ Pending |
+| 5 Skeptic | Assume theory wrong | ⬜ Pending |
+
+**Confidence after S1–S2 (reviewer assessment, not certification):** Theory coherence strong · scientific plausibility sufficient to justify experimentation · engineering feasibility untested.
 
 ---
 
