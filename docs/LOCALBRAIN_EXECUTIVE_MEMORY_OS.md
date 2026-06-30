@@ -25,25 +25,32 @@ Today (Phase 1):
   Steve → Question → Chief of Staff → Answer
 
 Phase 2+:
-  Steve → Mission → Question → Chief of Staff → Memory → Understanding → Reasoning → Recommendation → Outcome → Learning
+  Steve → Mission → Memory → Knowledge → Beliefs → Understanding → Reasoning → Decision → Outcome → Learning
 ```
 
-**Memory sits before reasoning.** Understanding is the stable mental model reasoning operates on — not a substitute for memory.
+**Memory sits before reasoning.** **Belief is revisable; verified memory is not.** Understanding is the coherent internal model beliefs help construct — not a substitute for memory.
 
-### Cognition ladder
+### Six cognitive layers
 
 ```txt
-Data → Information → Memory → Knowledge → Understanding → Reasoning
+Data → Information → Memory → Knowledge → Belief → Understanding → Reasoning
 ```
 
-| Level | Example |
+| Stage | Example |
 | ----- | ------- |
-| Data | Kelly called Chris. |
-| Information | Kelly called Chris on Tuesday. |
-| Memory | Kelly frequently coordinates strategy with Chris. |
-| Knowledge | Chris is a trusted strategic collaborator. |
+| Observed | Kelly met Chris. |
+| Memory | Kelly and Chris met repeatedly during campaign planning. |
+| Knowledge | Chris is involved in strategic planning. |
+| Belief | Chris is likely to be a reliable strategic partner. |
+| Decision | Recommend involving Chris in the next planning session. |
 
-These levels are not interchangeable. Retrieval, confidence, and recall explainability depend on getting the distinction right. See [Memory Summit Session 1](./LOCALBRAIN_MEMORY_SUMMIT.md#session-1--what-is-memory).
+### Three truth kinds
+
+**Objective** (temperature, date, file path) · **Relational** (Kelly works with Chris; workspace dependencies) · **Interpretive** (best person to ask; project appears stalled) — interpretive claims must never masquerade as objective fact.
+
+Beliefs require: confidence · supporting evidence · contradicting evidence · last evaluated · why the belief exists.
+
+Full specification: [Memory Summit](./LOCALBRAIN_MEMORY_SUMMIT.md).
 
 **Do not build Memory OS in Phase 1.** Foundation exists (registry, workspaces, Decision Ledger spec, Memory Domains v1). Full Memory OS layer ships in Phase 2–3.
 

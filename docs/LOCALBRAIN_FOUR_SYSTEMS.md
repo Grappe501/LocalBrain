@@ -77,7 +77,8 @@ Vendors are **implementation details** behind [AI Provider Management](./LOCALBR
 
 **Owns:**
 
-- Memory domains · recall · provenance
+- Memory domains · recall · provenance · knowledge assembly
+- Belief layer (revisable · evidence-backed — distinct from verified memory)
 - Knowledge Sources · indexing · registry
 - Decision Ledger (binding decisions)
 - Executive Context Window · Memory Confidence · Context Efficiency
@@ -111,6 +112,8 @@ Vendors are **implementation details** behind [AI Provider Management](./LOCALBR
 **Does not own:** Raw storage · permission enforcement · model fine-tuning · team RBAC.
 
 **Key engines:** ENG-EMS-001 · ENG-EI-001 · ENG-MCP-001 · ENG-EQ-001 · ENG-EIC-001 · ENG-CNS-001 · ENG-CS-003 · ENG-ELS-001 · ENG-AB-001 · ENG-ECL-001.
+
+**Binding rule:** Reasons over Memory → Knowledge → Beliefs → Mission — never raw retrieval or hidden assumptions alone.
 
 **Docs:** [Executive Mission Stack](./LOCALBRAIN_EXECUTIVE_INTENT.md) · [Executive Question Registry](./LOCALBRAIN_EXECUTIVE_QUESTION_REGISTRY.md) · [EIC](./LOCALBRAIN_EXECUTIVE_INTELLIGENCE_CARDS.md) · [Action Pipeline](./LOCALBRAIN_ACTION_PIPELINE.md) · [CoS](./LOCALBRAIN_AI_CHIEF_OF_STAFF.md).
 

@@ -200,6 +200,9 @@ or deterministic evidence.
 
 Reasoning augments memory.
 It never replaces it.
+
+Memory and belief are distinct.
+Verified memory is not conflated with revisable belief.
 ```
 
 Binding for Phase 2+ intelligence work (LB-OS-027–035). See [Executive Memory OS](./LOCALBRAIN_EXECUTIVE_MEMORY_OS.md) · [Memory Summit](./LOCALBRAIN_MEMORY_SUMMIT.md).

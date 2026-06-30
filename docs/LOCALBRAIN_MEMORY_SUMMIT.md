@@ -13,11 +13,13 @@
 Phase 1 taught LocalBrain **where everything is**.  
 Phase 2 must teach it **what everything means**.
 
-Before writing a line of Phase 2 code, define the memory architecture that Systems 2–4 will depend on for years. This summit will determine long-term quality more than any model choice.
+Before writing a line of Phase 2 code, define the **cognitive architecture specification** that Systems 2–4 will depend on for years. This is not a design meeting — it is the specification for executive cognition in software.
 
 ```txt
 Teach LocalBrain to remember before it learns to reason.
 ```
+
+**Discipline:** Lock ontology before implementation. If the ontology is right, much of Phase 2 becomes straightforward; if wrong, elegant code accumulates conceptual debt.
 
 ---
 
@@ -25,13 +27,13 @@ Teach LocalBrain to remember before it learns to reason.
 
 > **LocalBrain is an executive operating platform that separates work, knowledge, decisions, and improvement into distinct systems. It organizes the user's digital world through deterministic structure, remembers with provenance, reasons only after memory is assembled, and continuously evolves through verified outcomes rather than opaque model behavior.**
 
-Preserve this philosophy as Phase 2 unfolds.
+Preserve this philosophy as Phase 2 unfolds. LocalBrain is no longer an ambitious desktop application — it is an attempt to **model executive cognition in software**. Resist rushing into implementation because the architecture is exciting.
 
 ---
 
-## Cognition stack (target architecture)
+## Six cognitive layers (target architecture)
 
-Memory OS should eventually produce **Understanding** — not reasoning. Understanding is the stable mental model reasoning operates on.
+Memory OS should eventually produce **Understanding** — a coherent internal model, not merely accumulated knowledge. **Beliefs** help construct that model. **Reasoning** operates on Understanding — and tends to be brittle without it.
 
 ```txt
 Data
@@ -42,23 +44,155 @@ Memory
   ↓
 Knowledge
   ↓
+Belief
+  ↓
 Understanding
   ↓
 Reasoning
 ```
 
-Reasoning without understanding tends to be brittle.
+### Memory is not Belief
 
-### Four levels (not interchangeable)
+Almost every AI memory system conflates them. LocalBrain must not.
+
+```txt
+Observed Fact
+  ↓
+Memory
+  ↓
+Knowledge
+  ↓
+Belief
+  ↓
+Reasoning
+  ↓
+Decision
+```
+
+| Stage | Example |
+| ----- | ------- |
+| **Observed** | Kelly met Chris. |
+| **Memory** | Kelly and Chris met repeatedly during campaign planning. |
+| **Knowledge** | Chris is involved in strategic planning. |
+| **Belief** | Chris is likely to be a reliable strategic partner. |
+| **Decision** | Recommend involving Chris in the next planning session. |
+
+Everything after **Knowledge** contains increasing interpretation. **Belief is revisable. Memory should not be** (once verified — see Session 2 lifecycle).
+
+### Earlier ladder levels (Session 1)
 
 | Level | Example |
 | ----- | ------- |
 | **Data** | Kelly called Chris. |
 | **Information** | Kelly called Chris on Tuesday. |
 | **Memory** | Kelly frequently coordinates strategy with Chris. |
-| **Knowledge** | Chris is a trusted strategic collaborator. |
+| **Knowledge** | Chris is involved in strategic planning. |
 
-**Data** is raw. **Information** is situated. **Memory** is retained pattern. **Knowledge** is durable judgment. This distinction will govern retrieval, confidence, and recall explainability.
+**Data** is raw. **Information** is situated. **Memory** is retained, verifiable fact. **Knowledge** is durable, relational judgment. **Belief** is interpretive and must never masquerade as objective fact.
+
+---
+
+## Three kinds of truth
+
+Every memory (and derived belief) should eventually classify as one of:
+
+### Objective
+
+Independent of interpretation.
+
+```txt
+Temperature · Date · File path · Commit hash
+```
+
+### Relational
+
+True because of relationships.
+
+```txt
+Kelly works closely with Chris.
+This workspace depends on that workspace.
+These documents belong together.
+```
+
+### Interpretive
+
+Useful — but must never masquerade as objective fact. **Beliefs live here.**
+
+```txt
+Chris is probably the best person to ask.
+This project appears stalled.
+Steve is focusing on Campaign work this week.
+```
+
+---
+
+## Beliefs (healthy cognitive structures)
+
+Session 1 must answer:
+
+> **Can the platform believe something that later proves false?**
+
+**Yes.** But beliefs must carry:
+
+```txt
+confidence
+supporting evidence
+contradicting evidence
+last evaluated
+why the belief exists
+```
+
+Then beliefs are revisable structures — not hidden assumptions baked into prompts.
+
+---
+
+## Executive Intelligence pipeline (Phase 2+)
+
+Reasoning does not run on raw memory. It runs on assembled cognition:
+
+```txt
+Memory
+  ↓
+Knowledge
+  ↓
+Beliefs
+  ↓
+Mission
+  ↓
+Reasoning
+  ↓
+Decision
+```
+
+This keeps System 3 (organizes decisions) clean and traceable per [Article XIII](./LOCALBRAIN_CONSTITUTION.md#article-xiii--executive-principle).
+
+---
+
+## Cognitive architecture diagram (summit deliverable)
+
+Not code. A single diagram every future slice can be checked against:
+
+```txt
+Physical World
+        │
+Executive OS                 (organizes work)
+        │
+Executive Memory             (organizes knowledge)
+        │
+Knowledge
+        │
+Belief Layer
+        │
+Understanding
+        │
+Executive Intelligence       (organizes decisions)
+        │
+Executive Decisions
+        │
+Executive Evolution          (organizes improvement)
+```
+
+If this diagram is correct, slice placement and system boundaries stay coherent.
 
 ---
 
@@ -73,11 +207,14 @@ Reasoning without understanding tends to be brittle.
 | What qualifies as a memory? |
 | What is merely data? |
 | What becomes knowledge? |
+| **What is a belief — and how is it distinct from memory?** |
+| **Can the platform believe something that later proves false?** (Yes — with evidence structure) |
 | What becomes wisdom? |
 | Can memories have confidence? |
 | Can memories expire? |
+| **Which truth kind applies — Objective · Relational · Interpretive?** |
 
-**Output:** Memory ontology contract — boundaries between Data · Information · Memory · Knowledge · Understanding.
+**Output:** Memory ontology contract — six cognitive layers · Memory vs Belief boundary · three truth kinds.
 
 ---
 
@@ -190,16 +327,20 @@ Most systems skip this. These decisions become foundational.
 | What should always be editable? |
 | What should be immutable? |
 | What happens when memories conflict? |
+| What happens when **beliefs** conflict? |
 | Who wins? |
+| **Can beliefs be revised without corrupting verified memory?** |
 
-**Output:** Ethics policy · conflict resolution · consent and decay rules · immutability boundaries.
+**Output:** Ethics policy · conflict resolution · consent and decay rules · immutability boundaries · belief revision rules.
 
 ---
 
 ## Summit deliverables (all sessions)
 
 ```txt
-Memory ontology (Data → Understanding ladder)
+Cognitive architecture diagram (systems + cognition layers)
+Memory ontology (six layers · Memory vs Belief · three truth kinds)
+Belief contract (confidence · evidence · revision)
 Memory lifecycle state machine
 Recall explainability contract
 Provenance schema + confidence model direction
@@ -220,4 +361,4 @@ System 1 (Executive OS) remains frozen per [Executive OS v1.0 Freeze](./LOCALBRA
 
 ---
 
-*Memory Summit · constitutional convention for Systems 2–4 · 2026*
+*Memory Summit · cognitive architecture specification · Systems 2–4 · 2026*
