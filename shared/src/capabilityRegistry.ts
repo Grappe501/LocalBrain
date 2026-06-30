@@ -6,15 +6,28 @@
  * 1. Which Office owns it?  2. Which Department executes it?
  * 3. Which Intelligence Domain supplies it?  4. Which Capability implements it?
  * 5. Which Executive Outcome improves?  — if any is unanswered, do not build.
+ *
+ * Commercial gate (LB-OS-PROD-010) — production readiness; complements admission gate:
+ * 1. Executive judgment?  2. Sovereignty?  3. Institutional memory?
+ * 4. Manufacturing of future LocalBrains?  5. Provider-independent?
  */
 
-/** Permanent five-question admission gate for new capabilities */
+/** Permanent five-question admission gate for new capabilities (architecture) */
 export const CAPABILITY_ADMISSION_QUESTIONS = [
   "Which Office owns it?",
   "Which Department executes it?",
   "Which Intelligence Domain supplies it?",
   "Which Capability implements it?",
   "Which Executive Outcome improves?",
+] as const;
+
+/** Commercial capability gate — production readiness (LB-OS-PROD-010). Complements admission gate. */
+export const COMMERCIAL_CAPABILITY_GATE_QUESTIONS = [
+  "Does it improve executive judgment?",
+  "Does it preserve sovereignty?",
+  "Does it strengthen institutional memory?",
+  "Does it improve manufacturing of future LocalBrains?",
+  "Does it remain provider-independent?",
 ] as const;
 
 import {
@@ -1284,6 +1297,132 @@ const FUTURE_EXECUTIVE_CAPABILITIES: CapabilityEntry[] = [
       { target_capability_id: "CAP-FUT-PRV-001", relation_type: "feeds", label: "DPEC" },
     ],
   }),
+  futureCap({
+    capability_id: "CAP-FUT-FAC-001",
+    title: "Executive LocalBrain Factory",
+    description:
+      "Manufacturing pipeline — source platform · package · provision · activate · personalize · operate · upgrade · transfer · retire · every brain born empty with structure only",
+    executive_outcome:
+      "Ship LocalBrains repeatedly — same empty sovereign platform for every customer, assembly line not one-off builds.",
+    executive_question_ids: [],
+    primary_route: "/future/localbrain-factory",
+    secondary_routes: [],
+    prerequisites: ["CAP-PROD-001", "CAP-PROD-003", "CAP-FUT-EIA-001", "CAP-FUT-PSP-001", "CAP-FUT-LIC-001"],
+    next_recommended_steps: ["CAP-FUT-EDG-001", "CAP-FUT-CON-VER-001"],
+    departments: ["Kernel", "Chief of Staff"],
+    workflows: [],
+    keywords: ["factory", "manufacturing", "empty brain", "package", "provision", "assembly line"],
+    search_terms: ["localbrain factory", "empty brain installer", "manufacturing localbrains"],
+    authority_level: "supporting",
+    slice_id: "LB-OS-PROD-010",
+    nav_placement: "future",
+    related_capabilities: [
+      { target_capability_id: "CAP-PROD-001", relation_type: "feeds" },
+      { target_capability_id: "CAP-FUT-EDG-001", relation_type: "enables" },
+      { target_capability_id: "CAP-FUT-EIA-001", relation_type: "feeds" },
+    ],
+  }),
+  futureCap({
+    capability_id: "CAP-FUT-EDG-001",
+    title: "Executive Discovery",
+    description:
+      "Onboarding as institutional learning — who you are · organizations · roles · calendars · channels · financial entities · workspaces · which offices wake first — each answer activates departments",
+    executive_outcome:
+      "The brain learns who its executive is before any personal data enters — departments activate from discovery, not from seeded samples.",
+    executive_question_ids: [],
+    primary_route: "/settings/onboarding",
+    secondary_routes: [],
+    prerequisites: ["CAP-PROD-001", "CAP-FUT-FAC-001"],
+    next_recommended_steps: ["CAP-FUT-OCON-001", "CAP-FUT-ING-001"],
+    departments: ["Chief of Staff", "Kernel"],
+    workflows: [],
+    keywords: ["executive discovery", "onboarding", "department activation", "institutional learning"],
+    search_terms: ["executive discovery", "who are you onboarding", "activate departments"],
+    authority_level: "supporting",
+    slice_id: "LB-OS-PROD-010",
+    nav_placement: "future",
+    related_capabilities: [
+      { target_capability_id: "CAP-PROD-001", relation_type: "related", label: "Wizard shell today" },
+      { target_capability_id: "CAP-FUT-FAC-001", relation_type: "feeds" },
+    ],
+  }),
+  futureCap({
+    capability_id: "CAP-FUT-OCON-001",
+    title: "Office-Driven Connectors",
+    description:
+      "Connect Communications (not Gmail) — Office decides Gmail · Outlook · Exchange · SendGrid · Twilio · user never picks raw providers · same abstraction as AI routing",
+    executive_outcome:
+      "Executives connect Offices; departments choose governed connectors under ENC → DPEC — providers remain replaceable infrastructure.",
+    executive_question_ids: [],
+    primary_route: "/future/office-connectors",
+    secondary_routes: ["/settings/providers"],
+    prerequisites: ["CAP-FUT-ECD-001", "CAP-FUT-ENC-001", "CAP-FUT-PRV-001", "CAP-PROD-002"],
+    next_recommended_steps: ["CAP-FUT-SMC-001"],
+    departments: ["Communications", "Chief of Staff"],
+    workflows: [],
+    keywords: ["office connectors", "connect communications", "provider abstraction", "department connectors"],
+    search_terms: ["connect communications office", "office driven connectors"],
+    authority_level: "supporting",
+    slice_id: "LB-OS-091+",
+    nav_placement: "future",
+    related_capabilities: [
+      { target_capability_id: "CAP-FUT-ECD-001", relation_type: "feeds" },
+      { target_capability_id: "CAP-PROD-002", relation_type: "related", label: "Provider vault" },
+    ],
+  }),
+  futureCap({
+    capability_id: "CAP-FUT-CON-VER-001",
+    title: "Versioned Constitution Migration",
+    description:
+      "Constitution 2.1 → all brain instances → Constitution 2.2 via safe migration engine — Steve · Kelly · Chris · Campaign · Business brains upgrade without memory divergence",
+    executive_outcome:
+      "Commercially valuable safe upgrades — every installed LocalBrain migrates constitution versions without losing institutional judgment or sovereignty.",
+    executive_question_ids: [],
+    primary_route: "/future/constitution-migration",
+    secondary_routes: [],
+    prerequisites: ["CAP-FUT-FAC-001", "CAP-FUT-EIA-001"],
+    next_recommended_steps: ["CAP-FUT-FAC-001"],
+    departments: ["Chief of Staff", "Kernel"],
+    workflows: [],
+    keywords: ["constitution version", "migration engine", "doctrine upgrade", "LB-OS-CON-003"],
+    search_terms: ["constitution migration", "upgrade localbrain constitution"],
+    authority_level: "supporting",
+    slice_id: "LB-OS-CON-003",
+    nav_placement: "future",
+    related_capabilities: [
+      { target_capability_id: "CAP-FUT-FAC-001", relation_type: "feeds" },
+    ],
+  }),
+  futureCap({
+    capability_id: "CAP-FUT-CCO-001",
+    title: "Chief Compliance Officer",
+    description:
+      "Campaign finance · nonprofit reporting · business filings · document retention · privacy · licensing · records policies — compliance packs per LocalBrain instance",
+    executive_outcome:
+      "Each executive institution governs its compliance domain — campaign, nonprofit, or business packs — without one-size-fits-all legal tooling.",
+    executive_question_ids: [],
+    primary_route: "/future/chief-compliance-officer",
+    secondary_routes: [],
+    prerequisites: ["CAP-FUT-LIC-001", "CAP-FUT-FAC-001", "CAP-FUT-PRV-001"],
+    next_recommended_steps: [],
+    departments: ["Legal", "Chief of Staff"],
+    workflows: [],
+    keywords: [
+      "chief compliance officer",
+      "campaign finance",
+      "nonprofit reporting",
+      "document retention",
+      "compliance pack",
+    ],
+    search_terms: ["chief compliance officer localbrain", "campaign finance compliance", "compliance pack"],
+    authority_level: "supporting",
+    slice_id: "LB-OS-PROD-011",
+    nav_placement: "future",
+    related_capabilities: [
+      { target_capability_id: "CAP-FUT-LIC-001", relation_type: "feeds", label: "Licensing" },
+      { target_capability_id: "CAP-FUT-PRV-001", relation_type: "feeds", label: "Privacy" },
+    ],
+  }),
 ];
 
 /** Canonical capability graph — do not duplicate routes in nav without deriving from here */
@@ -1542,7 +1681,7 @@ export const CAPABILITY_REGISTRY: CapabilityEntry[] = [
   cap({
     capability_id: "CAP-PROD-001",
     title: "Instance Setup Wizard",
-    description: "Empty brain onboarding — owner, keys awareness, connector readiness, office profile",
+    description: "Empty brain onboarding shell — evolves to Executive Discovery (CAP-FUT-EDG-001) after Factory ships",
     executive_question_ids: [],
     primary_route: "/settings/onboarding",
     secondary_routes: [],
@@ -1567,6 +1706,8 @@ export const CAPABILITY_REGISTRY: CapabilityEntry[] = [
     related_capabilities: [
       { target_capability_id: "CAP-PROD-002", relation_type: "enables" },
       { target_capability_id: "CAP-PROD-003", relation_type: "enables" },
+      { target_capability_id: "CAP-FUT-EDG-001", relation_type: "related", label: "Executive Discovery" },
+      { target_capability_id: "CAP-FUT-FAC-001", relation_type: "related", label: "Factory" },
     ],
   }),
   cap({

@@ -187,7 +187,7 @@
 | LB-OS-PROD-001 | Productization & Empty Brain Onboarding | ✅ Complete — [Burt](./burt_packets/LB-OS-PROD-001.md) · ENG-INST-001 |
 | LB-OS-026.8 | Productization / Instance Onboarding | ✅ PROD-001 |
 | LB-OS-026.9 | Provider Vault & Connector Settings | ✅ PROD-001 |
-| LB-OS-027.0 | Empty Brain Packaging | ⏳ Next |
+| LB-OS-027.0 | Empty Brain Factory / Packaging | ⏳ Next · [PROD-010](./burt_packets/LB-OS-PROD-010-factory-reserved.md) · CAP-FUT-FAC-001 |
 | LB-OS-027.1 | Multi-Brain Sharing (reserved) | 🔒 Reserved · CAP-FUT-MBS-001 |
 | LB-OS-PROD-002 | License & Subscription Gate | 🔒 Reserved · [Burt](./burt_packets/LB-OS-PROD-002-006-reserved.md) · CAP-FUT-LIC-001 |
 | LB-OS-PROD-003 | Social Media Connector Registry | 🔒 Reserved · CAP-FUT-SMC-001 |
@@ -197,8 +197,11 @@
 | LB-OS-PROD-007 | Instance Identity, Transfer, Single-Primary | 🔒 Reserved · [Burt](./burt_packets/LB-OS-PROD-007-reserved.md) · CAP-FUT-IDT-001 |
 | LB-OS-PROD-008 | Executive Identity Authority | 🔒 Reserved · [Burt](./burt_packets/LB-OS-PROD-008-009-reserved.md) · CAP-FUT-EIA-001 |
 | LB-OS-PROD-009 | Executive Passport | 🔒 Reserved · CAP-FUT-PSP-001 |
+| LB-OS-PROD-010 | Executive LocalBrain Factory | 🔒 Reserved · [Burt](./burt_packets/LB-OS-PROD-010-factory-reserved.md) · ENG-FAC-001 |
+| LB-OS-PROD-011 | Chief Compliance Officer | 🔒 Reserved · CAP-FUT-CCO-001 |
+| LB-OS-CON-003 | Versioned Constitution Migration | 🔒 Reserved · CAP-FUT-CON-VER-001 |
 
-**Gate:** PROD-001 complete · **Next:** 027.0 Empty Brain Packaging → PROD-002 license → PROD-007/008 authority stack (when earned)
+**Gate:** PROD-001 complete · **Next:** Executive Office UX certification → Peer Review S4/S5 → Theory freeze → Convention → **Empty Brain Factory** → Memory OS → ingestion
 
 **Architecture phase:** ✅ **Complete** (2026-06-30) — institution reserved · five-question admission gate · doctrine freeze until Convention + Memory OS
 
@@ -213,24 +216,46 @@
 
 **Success metrics (post-architecture):** institutional memory accumulated · executive judgment improved · CoS time saved · decisions better than otherwise · office runs predictably and transparently — not "how much built."
 
-**Post-consolidation sequence:**
+**Post-consolidation sequence (through Convention + Factory):**
 
 ```txt
-026.6 Discoverability → 026.65 Intent Graph + Atlas → 026.66 Future placeholders
-  → 026.67 Executive Office (departments ≠ domains) → Graph Integrity PASS
-  → 026.7 Executive Office home (not dashboard)
-  → 026.8 Productization / Instance Onboarding (LB-OS-PROD-001) ✅
-  → 026.9 Provider Vault & Connector Settings ✅
-  → 027.0 Empty Brain Packaging
-  → 027.1 Multi-Brain Sharing (reserved)
-  → PROD-002 License gate (reserved, identity-bound) → PROD-007 Single-primary (reserved)
-  → PROD-008 Executive Identity Authority (reserved) → PROD-009 Executive Passport (reserved)
-  → PROD-003 Social → PROD-004 Media Studio
-  → PROD-005 Ingestion planner → PROD-006 Mobile PWA (reserved, clients to authority)
-  → 027.1 Multi-brain workspace + passport handshake (reserved)
-  → Peer Review S4 → S5 → Theory v1.0 freeze → Convention → LB-OS-027 Memory OS
-  → CAP-FUT-UDI-001 Universal Digital Ingestion (execution post-gate)
+026.7 Executive Office UX → Experience Certification
+  → Peer Review S4 → S5 → Theory v1.0 freeze → Executive Epistemology Convention
+  → 027.0 / PROD-010 Empty Brain Factory (manufacturing pipeline)
+  → PROD-002–009 authority · license · passport stack (reserved)
+  → LB-OS-027 Memory OS
+  → CAP-FUT-UDI-001 personal ingestion (last)
 ```
+
+**Pre-ingestion build order (binding):**
+
+```txt
+1. Executive Office UX + experience certification
+2. Peer Review Sessions 4 and 5
+3. Theory v1.0 freeze
+4. Executive Epistemology Convention
+5. Empty Brain Factory (PROD-010 / 027.0)
+6. Memory OS
+7. Personal information ingestion — only after the above
+```
+
+**Commercial first release:** every customer receives the same empty sovereign platform; each brain grows from owner data, never builder assumptions.
+
+**Production tracks (keep separate):** A Theory · B Manufacturing · C Memory OS · D Executive Offices · E Commercial Release
+
+**Commercial capability gate** (complements architecture admission gate — `COMMERCIAL_CAPABILITY_GATE_QUESTIONS` in ENG-CAP-001):
+
+```txt
+1. Does it improve executive judgment?
+2. Does it preserve sovereignty?
+3. Does it strengthen institutional memory?
+4. Does it improve manufacturing of future LocalBrains?
+5. Does it remain provider-independent?
+```
+
+**Moat:** Executive Constitution + manufacturing pipeline + institutional memory + identity/passport + provider independence — integrated, not any single piece alone.
+
+**Discipline:** Execute the pre-ingestion roadmap — resist expanding doctrine further before Factory ships.
 
 **Reserved (post-Convention, not started):** [Executive North Star — Three Goals](./LOCALBRAIN_EXECUTIVE_NORTH_STAR.md) · [Institution Model](./LOCALBRAIN_EXECUTIVE_INSTITUTION_MODEL.md) · [Operational Discipline](./LOCALBRAIN_EXECUTIVE_OPERATIONAL_DISCIPLINE.md) · [Digital World Doctrine](./LOCALBRAIN_EXECUTIVE_DIGITAL_WORLD_DOCTRINE.md)
 
@@ -249,6 +274,7 @@ LB-OS-03X-DPEC — Data Sovereignty & Exposure Control (tiers · minimum packet 
 LB-OS-03X-OPS — Operational discipline ([doc](./LOCALBRAIN_EXECUTIVE_OPERATIONAL_DISCIPLINE.md): sovereignty dashboard · trust · memory ledger · executive capital · dept maturity · institutional memory · decision evolution)
 LB-OS-INST-* — Multi-office institution model ([doc](./LOCALBRAIN_EXECUTIVE_INSTITUTION_MODEL.md): offices · teams · tenant isolation · Office Constitution)
 LB-OS-CON-002 — Doctrine hierarchy (Executive Constitution v2 → Office Constitution → charters → standing orders → playbooks → policies → procedures) — reserve only
+LB-OS-CON-003 — Versioned Constitution migration engine (CAP-FUT-CON-VER-001 · PROD-010 Factory)
 LB-OS-TECH-EEM — Executive Engineering Memory (post–Technology Office · engineering judgment with provenance · reserve only)
 ```
 
