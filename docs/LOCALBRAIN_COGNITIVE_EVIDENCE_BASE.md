@@ -279,7 +279,11 @@ Links:           docs · commits · trace IDs
 
 | ID | Finding | Practical read | Outcome | Notes |
 | -- | ------- | -------------- | ------- | ----- |
-| — | *(reviewer populates)* | | | |
+| PR-S4-001a | Cognitive Leverage primitive | Theory explicitly optimizes judgment **per unit of attention spent**; ECL sits in the denominator of the leverage law · Cognitive Equilibrium forbids maximizing MCP at the cost of doubling load | **Resolved** | Attention scarcity is constitutional, not incidental |
+| PR-S4-001b | Agency quiet discipline | Executive Cognition + Constitution: value from knowing when **not** to interrupt · Tension gating surfaces only when high tension + MCP opportunity + acceptable ECL | **Resolved** | Strong practitioner fit — "protect attention" is a first-class optimization target |
+| PR-S4-001c | Attention Budget + ECL engines | Adaptive Attention Budget (ENG-AB-001) and ECL (ENG-ECL-001) are **Phase 2** · Mission Stack filter: items advancing no mission should almost never interrupt | **Open Question** | Theory protects attention by design · operational enforcement waits on Mission Stack + AB + ECL — not a Theory v1.1 issue |
+| PR-S4-001d | Emergent observation risk | Unprompted surfacing could increase noise if tension scoring is miscalibrated | **Open Question** | Already falsifiable (Falsification Charter: Agency ↑ ECL without MCP/JQ) · Kelly Sandbox must prove net leverage |
+| PR-S4-001e | Phase 1 projection vs Phase 2 intent | V1 Executive Office routes many Executive Questions before Mission Stack ships — practitioner risk of **ceremony** (many surfaces) vs **protection** (few synthesized items) | **Clarification** | Implementation posture: CoS narrative synthesis + deferral lists are the attention-protection UX · not a doctrine gap |
 
 ---
 
