@@ -189,7 +189,14 @@
   → Peer Review S4 → S5 → Theory v1.0 freeze → Convention → LB-OS-027
 ```
 
-**Reserved (post-Convention, not started):** `LB-OS-03X` — Executive Voice Interface (voice-to-text · text-to-voice · wake/push-to-talk · transcript → intent → EQ → capability → CoS → optional spoken answer → approval-gated action)
+**Reserved (post-Convention, not started):** [Executive Digital World Doctrine](./LOCALBRAIN_EXECUTIVE_DIGITAL_WORLD_DOCTRINE.md)
+
+```txt
+LB-OS-03X-DWM — Executive Digital World Monitor (media · news · RSS · AI watch · reputation · competitive · digital risk)
+LB-OS-03X-VOI — Executive Voice Interface (wake/push-to-talk · transcript → intent → EQ → CoS)
+LB-OS-03X-PVI — Personal Voice Interface (consent-gated cloning · synthetic indicator · approval before outbound)
+LB-OS-03X-DPEC — Digital Privacy & External Exposure Control (disclosure ledger · local-first · identity masking)
+```
 
 ```txt
 C:/ = programs only · H:/ = Steve's work world

@@ -5,11 +5,25 @@
 
 import {
   EXECUTIVE_CONNECTOR_GOVERNANCE,
+  EXECUTIVE_MEDIA_GOVERNANCE,
+  PERSONAL_VOICE_GOVERNANCE,
+  PRIVACY_EXPOSURE_GOVERNANCE,
   type CapabilityGovernancePolicy,
+  type PersonalVoiceGovernancePolicy,
+  type PrivacyExposureGovernancePolicy,
 } from "./capabilityGovernance.js";
 
 export type { CapabilityGovernancePolicy } from "./capabilityGovernance.js";
-export { EXECUTIVE_CONNECTOR_GOVERNANCE };
+export {
+  EXECUTIVE_CONNECTOR_GOVERNANCE,
+  EXECUTIVE_MEDIA_GOVERNANCE,
+  PERSONAL_VOICE_GOVERNANCE,
+  PRIVACY_EXPOSURE_GOVERNANCE,
+} from "./capabilityGovernance.js";
+export type {
+  PersonalVoiceGovernancePolicy,
+  PrivacyExposureGovernancePolicy,
+} from "./capabilityGovernance.js";
 
 export type CapabilityRelationType =
   | "supports"
@@ -103,6 +117,8 @@ export interface CapabilityEntry {
   /** LB-OS-026.66 — reserved in atlas; not a live route */
   infrastructure_reserved?: boolean;
   governance_policy?: CapabilityGovernancePolicy;
+  personal_voice_governance?: PersonalVoiceGovernancePolicy;
+  privacy_exposure_governance?: PrivacyExposureGovernancePolicy;
 }
 
 export interface WorkflowDefinition {
@@ -174,12 +190,30 @@ export const WF_FUTURE_HOUSEHOLD: WorkflowDefinition = {
   capability_ids: ["CAP-FUT-HHD-001", "CAP-EO-001", "CAP-ACT-001"],
 };
 
+export const WF_FUTURE_MEDIA: WorkflowDefinition = {
+  workflow_id: "WF-FUT-MED-001",
+  title: "Executive Digital World Monitor (planned)",
+  description:
+    "Sources → scan → Steve relevance filter → threat/opportunity score → briefing → Media tab → CoS recommendation",
+  capability_ids: ["CAP-FUT-MED-001", "CAP-EO-001", "CAP-ACT-001"],
+};
+
+export const WF_FUTURE_PRIVACY: WorkflowDefinition = {
+  workflow_id: "WF-FUT-PRV-001",
+  title: "Digital Privacy & External Exposure Control (planned)",
+  description:
+    "Classify sensitivity → mask/redact → route local-first → log disclosure → external AI with sanitized context only",
+  capability_ids: ["CAP-FUT-PRV-001", "CAP-EO-001"],
+};
+
 export const WORKFLOW_REGISTRY: WorkflowDefinition[] = [
   WF_MIGRATION_EXECUTION,
   WF_MIGRATION_EVIDENCE,
   WF_FUTURE_COMMUNICATIONS,
   WF_FUTURE_FINANCE,
   WF_FUTURE_HOUSEHOLD,
+  WF_FUTURE_MEDIA,
+  WF_FUTURE_PRIVACY,
 ];
 
 /** Frozen capability IDs — LB-OS-026.6 checkpoint */
@@ -537,9 +571,103 @@ const FUTURE_EXECUTIVE_CAPABILITIES: CapabilityEntry[] = [
     keywords: ["voice", "speech", "push-to-talk", "wake word"],
     search_terms: ["executive voice interface", "voice input", "spoken briefing"],
     authority_level: "supporting",
-    slice_id: "LB-OS-03X",
+    slice_id: "LB-OS-03X-VOI",
     nav_placement: "future",
     governance_policy: EXECUTIVE_CONNECTOR_GOVERNANCE,
+  }),
+  futureCap({
+    capability_id: "CAP-FUT-MED-001",
+    title: "Executive Digital World Monitor",
+    description:
+      "Media intelligence: local/national/global news, RSS and trusted feeds, AI development watch, reputation and competitive monitoring, digital risk alerts",
+    executive_outcome:
+      "Governed interface to the digital world — scan sources, filter by Steve relevance, score threats and opportunities, surface in Media tab with CoS recommendations.",
+    executive_question_ids: [],
+    primary_route: "/future/media",
+    secondary_routes: ["/future/media-monitor"],
+    prerequisites: ["CAP-EO-001", "CAP-FUT-PRV-001"],
+    next_recommended_steps: ["CAP-EO-001", "CAP-ACT-001"],
+    departments: ["Chief of Staff", "Communications"],
+    workflows: ["WF-FUT-MED-001"],
+    keywords: [
+      "media",
+      "news",
+      "rss",
+      "reputation",
+      "competitive",
+      "ai watch",
+      "digital risk",
+      "headlines",
+    ],
+    search_terms: [
+      "media intelligence",
+      "news monitor",
+      "reputation monitoring",
+      "competitive threat",
+      "ai developments",
+    ],
+    authority_level: "supporting",
+    slice_id: "LB-OS-03X-DWM",
+    nav_placement: "future",
+    governance_policy: EXECUTIVE_MEDIA_GOVERNANCE,
+    related_capabilities: [
+      { target_capability_id: "CAP-FUT-PRV-001", relation_type: "feeds", label: "Privacy posture" },
+      { target_capability_id: "CAP-EO-001", relation_type: "feeds" },
+    ],
+  }),
+  futureCap({
+    capability_id: "CAP-FUT-PVO-001",
+    title: "Personal Voice Interface",
+    description:
+      "Steve-approved voice cloning — local-first storage, synthetic indicator, approval before outbound audio",
+    executive_outcome:
+      "Personal synthetic voice only with explicit consent; never impersonate without indicator; outbound voice requires approval.",
+    executive_question_ids: [],
+    primary_route: "/future/personal-voice",
+    secondary_routes: [],
+    prerequisites: ["CAP-FUT-VOI-001", "CAP-EO-001"],
+    next_recommended_steps: ["CAP-EO-001", "CAP-ACT-001"],
+    departments: ["Chief of Staff"],
+    workflows: [],
+    keywords: ["voice clone", "personal voice", "synthetic voice", "tts"],
+    search_terms: ["personal voice interface", "voice cloning", "synthetic speech"],
+    authority_level: "supporting",
+    slice_id: "LB-OS-03X-PVI",
+    nav_placement: "future",
+    personal_voice_governance: PERSONAL_VOICE_GOVERNANCE,
+  }),
+  futureCap({
+    capability_id: "CAP-FUT-PRV-001",
+    title: "Digital Privacy & External Exposure Control",
+    description:
+      "AI disclosure ledger, sensitive-context classifier, local-first routing, provider privacy modes, identity masking, redaction before API calls, external source risk rating",
+    executive_outcome:
+      "LocalBrain protects Steve's privacy by minimizing disclosure, controlling identity exposure, and making every external data flow visible and governed.",
+    executive_question_ids: [],
+    primary_route: "/future/privacy",
+    secondary_routes: [],
+    prerequisites: ["CAP-EO-001"],
+    next_recommended_steps: ["CAP-FUT-MED-001", "CAP-FUT-GAC-001"],
+    departments: ["Chief of Staff", "Migration"],
+    workflows: ["WF-FUT-PRV-001"],
+    keywords: [
+      "privacy",
+      "disclosure ledger",
+      "redaction",
+      "local-first",
+      "identity masking",
+      "external ai",
+    ],
+    search_terms: [
+      "digital privacy",
+      "external exposure control",
+      "ai disclosure",
+      "privacy posture",
+    ],
+    authority_level: "supporting",
+    slice_id: "LB-OS-03X-DPEC",
+    nav_placement: "future",
+    privacy_exposure_governance: PRIVACY_EXPOSURE_GOVERNANCE,
   }),
 ];
 

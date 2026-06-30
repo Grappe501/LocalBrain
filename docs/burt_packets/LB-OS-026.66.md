@@ -34,23 +34,47 @@ Future / Planned · Not Live · Infrastructure Reserved
 | CAP-FUT-BBN-001 | Business Budget |
 | CAP-FUT-FKN-001 | Finance Knowledge Sources |
 | CAP-FUT-HHD-001 | Household / Family Operations |
-| CAP-FUT-VOI-001 | Executive Voice Interface (LB-OS-03X — reserved) |
+| CAP-FUT-VOI-001 | Executive Voice Interface (LB-OS-03X-VOI) |
+| CAP-FUT-MED-001 | Executive Digital World Monitor (LB-OS-03X-DWM) |
+| CAP-FUT-PVO-001 | Personal Voice Interface (LB-OS-03X-PVI) |
+| CAP-FUT-PRV-001 | Digital Privacy & External Exposure Control (LB-OS-03X-DPEC) |
 
 ---
 
-## Executive voice interface (LB-OS-03X — reserved, post-Convention)
+## Executive digital world doctrine (LB-OS-03X — reserved)
 
-> **Not started.** Staged after Theory v1.0 and Convention. No connectors in this slice.
+> **Doc:** [Executive Digital World Doctrine](./LOCALBRAIN_EXECUTIVE_DIGITAL_WORLD_DOCTRINE.md) · Post-Convention · No connectors
+
+### Digital Privacy & External Exposure Control (LB-OS-03X-DPEC)
+
+> LocalBrain protects Steve's privacy by minimizing disclosure, controlling identity exposure, and making every external data flow visible and governed.
+
+```txt
+Minimize what leaves the machine · Mask unnecessary identity · Local models when possible
+Route sensitive work locally · Sanitized context to external AI only · Log every disclosure
+```
+
+### Executive Digital World Monitor (LB-OS-03X-DWM)
+
+```txt
+Sources → scan → filter by Steve relevance → threat/opportunity score
+  → briefing → Media tab → CoS recommendation
+```
+
+Media tab (future): Headlines · Threats · Opportunities · AI developments · Reputation watch · Competitive watch · Update now
+
+### Executive Voice Interface (LB-OS-03X-VOI)
 
 ```txt
 Voice input → transcript → intent → Executive Question → capability
   → Chief of Staff response → optional spoken answer → approval-gated action
 ```
 
-Core pieces (reserved):
+### Personal Voice Interface (LB-OS-03X-PVI)
 
 ```txt
-Voice-to-text · Text-to-voice · Wake / push-to-talk mode
+Voice cloning only with Steve's explicit consent · Local-first voice storage if possible
+No unauthorized impersonation · Clear synthetic-voice indicator · Approval before outbound audio
 ```
 
 ---
@@ -106,7 +130,7 @@ Implemented as `EXECUTIVE_CONNECTOR_GOVERNANCE` in `shared/src/capabilityGoverna
 ## Acceptance
 
 ```txt
-[ ] 12+ planned capabilities in CAPABILITY_REGISTRY with infrastructure_reserved
+[ ] 16+ planned capabilities in CAPABILITY_REGISTRY with infrastructure_reserved
 [ ] Planned caps excluded from graph integrity orphan/readiness checks
 [ ] Atlas renders Future / Planned section before Live capabilities
 [ ] Dashboard gate (026.7) can project planned vs live from atlas JSON
