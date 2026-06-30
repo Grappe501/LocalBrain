@@ -189,7 +189,7 @@
   → Peer Review S4 → S5 → Theory v1.0 freeze → Convention → LB-OS-027
 ```
 
-**Reserved (post-Convention, not started):** [Executive North Star — Three Goals](./LOCALBRAIN_EXECUTIVE_NORTH_STAR.md) · [Digital World Doctrine](./LOCALBRAIN_EXECUTIVE_DIGITAL_WORLD_DOCTRINE.md)
+**Reserved (post-Convention, not started):** [Executive North Star — Three Goals](./LOCALBRAIN_EXECUTIVE_NORTH_STAR.md) · [Institution Model](./LOCALBRAIN_EXECUTIVE_INSTITUTION_MODEL.md) · [Operational Discipline](./LOCALBRAIN_EXECUTIVE_OPERATIONAL_DISCIPLINE.md) · [Digital World Doctrine](./LOCALBRAIN_EXECUTIVE_DIGITAL_WORLD_DOCTRINE.md)
 
 ```txt
 Goal 1 — Own the brain (LLM as plugin · Memory OS LB-OS-027+)

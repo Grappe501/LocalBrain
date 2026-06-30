@@ -3,7 +3,8 @@
  *
  * Organization (departments) ≠ Intelligence (cognitive domains) ≠ Execution (capabilities).
  *
- * Executive → Executive Office → Departments → Intelligence Domains → Capabilities
+ * Today:  Executive → Executive Office → Departments → Intelligence Domains → Capabilities → Providers
+ * Reserved (post-Convention): Institution layer → Offices (with Teams) — see LOCALBRAIN_EXECUTIVE_INSTITUTION_MODEL.md
  */
 
 import {

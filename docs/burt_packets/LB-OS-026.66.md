@@ -70,7 +70,11 @@ Privacy tiers: 0 never leaves machine · 1 local model only · 2 redacted extern
 
 Sovereignty dashboard · department trust · memory ledger · executive capital · department maturity · institutional memory · decision evolution
 
-### Executive Digital World Monitor (LB-OS-03X-DWM)
+### Institution layer (LB-OS-INST-* — post-Convention)
+
+> **Doc:** [Executive Institution Model](./LOCALBRAIN_EXECUTIVE_INSTITUTION_MODEL.md) · Mind → organization · Offices with teams · Multi-instance executive offices · Doctrine hierarchy (LB-OS-CON-002 reserved)
+
+---
 
 ```txt
 Sources → scan → filter by Steve relevance → threat/opportunity score

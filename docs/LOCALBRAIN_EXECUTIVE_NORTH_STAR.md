@@ -2,7 +2,13 @@
 
 > **Status:** Architecture doctrine · Capacity planning · **Not implementation until post-Convention**  
 > **Binding rule:** Separate these goals — they have different technical and legal realities.  
-> **Related:** [Executive Office Structure](./LOCALBRAIN_EXECUTIVE_OFFICE_STRUCTURE.md) · [Digital World Doctrine](./LOCALBRAIN_EXECUTIVE_DIGITAL_WORLD_DOCTRINE.md) · [AI Provider Management](./LOCALBRAIN_AI_PROVIDER_MANAGEMENT.md) · ENG-CAP-001 · ENG-EO-001
+> **Related:** [Executive Office Structure](./LOCALBRAIN_EXECUTIVE_OFFICE_STRUCTURE.md) · [Institution Model](./LOCALBRAIN_EXECUTIVE_INSTITUTION_MODEL.md) · [Operational Discipline](./LOCALBRAIN_EXECUTIVE_OPERATIONAL_DISCIPLINE.md) · [Digital World Doctrine](./LOCALBRAIN_EXECUTIVE_DIGITAL_WORLD_DOCTRINE.md) · [AI Provider Management](./LOCALBRAIN_AI_PROVIDER_MANAGEMENT.md) · ENG-CAP-001 · ENG-EO-001
+
+---
+
+## Mind → organization
+
+Phase 1.9 built the **mind** (discoverability, office, sovereignty gates). Post-Convention builds the **organization** — offices with teams, institutional memory, multi-level doctrine. See [Institution Model](./LOCALBRAIN_EXECUTIVE_INSTITUTION_MODEL.md).
 
 ---
 
