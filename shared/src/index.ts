@@ -278,10 +278,18 @@ export {
 export type {
   ArchitectureDebtBand,
   PlatformStabilityReport,
+  PlatformStabilityScoreComponents,
+} from "./platformStability.js";
+export {
+  PLATFORM_STABILITY_CORE_RULE,
 } from "./platformStability.js";
 export type {
+  ArchitectureVolatilityReport,
+  ExecutiveMaturityDomain,
+  ExecutiveMaturityReport,
   MigrationPipelineStage,
   PlaceholderRouteEntry,
+  PlatformMetricHeadline,
   PlatformReadinessLabel,
   PlatformReadinessReport,
   PlatformReadinessScore,
@@ -292,6 +300,10 @@ export type {
   ReadinessDashboardRow,
 } from "./platformReadiness.js";
 export {
+  ARCHITECTURE_VOLATILITY_CORE_RULE,
+  ARCHITECTURE_VOLATILITY_ENGINE_ID,
+  EXECUTIVE_MATURITY_CORE_RULE,
+  EXECUTIVE_MATURITY_ENGINE_ID,
   EXECUTIVE_OS_V1_FREEZE_POLICY,
   PLATFORM_READINESS_CORE_RULE,
   PLATFORM_READINESS_ENGINE_ID,

@@ -4,6 +4,7 @@
  */
 
 import type { LiveSurfaceSmokeReport } from "./liveSurface.js";
+import type { PlatformStabilityReport } from "./platformStability.js";
 
 export type ReadinessAreaStatus = "complete" | "partial" | "planned" | "blocked";
 
@@ -37,13 +38,13 @@ export interface MigrationPipelineStage {
 }
 
 export interface PlatformReadinessScoreComponents {
-  architecture_stability: number;
+  live_surface_completion: number;
+  placeholder_removal: number;
+  documentation_coverage: number;
   test_health: number;
-  documentation_completeness: number;
-  live_surface_coverage: number;
-  integration_cohesion: number;
-  technical_debt: number;
-  open_blockers: number;
+  ux_cohesion: number;
+  integration_quality: number;
+  open_critical_bugs_inverse: number;
 }
 
 export type PlatformReadinessLabel =
@@ -65,17 +66,62 @@ export interface PlaceholderRouteEntry {
   clearly_marked: boolean;
 }
 
+export interface PlatformMetricHeadline {
+  metric_id:
+    | "platform_stability"
+    | "platform_readiness"
+    | "executive_maturity"
+    | "architecture_volatility";
+  label: string;
+  percent: number;
+  meaning: string;
+}
+
+export interface ExecutiveMaturityDomain {
+  domain_id: PlatformSystemId;
+  label: string;
+  percent: number;
+  status: ReadinessAreaStatus;
+}
+
+export interface ExecutiveMaturityReport {
+  engine_id: "ENG-EMT-001";
+  core_rule: string;
+  overall_percent: number;
+  domains: ExecutiveMaturityDomain[];
+  observed_at: string;
+  summary: string;
+}
+
+export interface ArchitectureVolatilityReport {
+  engine_id: "ENG-AV-001";
+  core_rule: string;
+  /** 0–100 — lower is better (less redesign risk) */
+  volatility_percent: number;
+  open_redesign_slices: number;
+  stub_surface_count: number;
+  in_progress_slices: number;
+  foundational_objects_locked: boolean;
+  observed_at: string;
+  summary: string;
+}
+
 export interface PlatformReadinessReport {
   slice_id: "LB-OS-026.5";
   engine_id: "ENG-PRS-001";
   stability_engine_id: "ENG-PST-001";
+  maturity_engine_id: "ENG-EMT-001";
+  volatility_engine_id: "ENG-AV-001";
   read_only: true;
   core_rule: string;
   executive_os_version: "v1.0-rc";
   freeze_policy: string;
-  readiness_dashboard: ReadinessDashboardRow[];
+  platform_metric_headlines: PlatformMetricHeadline[];
+  platform_stability: PlatformStabilityReport;
   platform_readiness_score: PlatformReadinessScore;
-  platform_stability_percent: number;
+  executive_maturity: ExecutiveMaturityReport;
+  architecture_volatility: ArchitectureVolatilityReport;
+  readiness_dashboard: ReadinessDashboardRow[];
   route_smoke: LiveSurfaceSmokeReport;
   integration_targets_met: boolean;
   orphan_routes: string[];
@@ -95,9 +141,17 @@ export interface PlatformReadinessReport {
 }
 
 export const PLATFORM_READINESS_ENGINE_ID = "ENG-PRS-001";
+export const EXECUTIVE_MATURITY_ENGINE_ID = "ENG-EMT-001";
+export const ARCHITECTURE_VOLATILITY_ENGINE_ID = "ENG-AV-001";
 
 export const PLATFORM_READINESS_CORE_RULE =
-  "Is LocalBrain ready for daily use? — Platform Readiness Score, not build progress alone.";
+  "Can I comfortably use this every day? — Platform Readiness, not architecture stability.";
+
+export const EXECUTIVE_MATURITY_CORE_RULE =
+  "How intelligent has the system become? — Memory, Mission Stack, and Evolution are Phase 2+.";
+
+export const ARCHITECTURE_VOLATILITY_CORE_RULE =
+  "If we stopped development today, how much of this platform would likely be redesigned?";
 
 export const EXECUTIVE_OS_V1_FREEZE_POLICY =
   "Executive OS v1.0 — Architecture Frozen after LB-OS-026.5. Only bug fixes and polish. No foundational changes.";

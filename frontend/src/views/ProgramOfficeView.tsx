@@ -163,39 +163,144 @@ export function ProgramOfficeView() {
             <p className="epo-readiness__rule">{readiness.core_rule}</p>
           </header>
 
-          <div className="epo-readiness__prs">
-            <div className="epo-readiness__prs-score">
-              <span className="epo-readiness__prs-label">Platform Readiness Score</span>
-              <strong>{readiness.platform_readiness_score.percent}</strong>
-              <span className="epo-readiness__prs-band">
-                {readiness.platform_readiness_score.label.replace(/_/g, " ")}
-              </span>
-            </div>
-            <p className="epo-readiness__prs-summary">
-              {readiness.platform_readiness_score.summary}
-            </p>
-            <div className="epo-readiness__prs-components">
-              <ProgressBar
-                label="Architecture stability"
-                value={readiness.platform_readiness_score.components.architecture_stability}
-              />
-              <ProgressBar
-                label="Test health"
-                value={readiness.platform_readiness_score.components.test_health}
-              />
-              <ProgressBar
-                label="Documentation"
-                value={readiness.platform_readiness_score.components.documentation_completeness}
-              />
-              <ProgressBar
-                label="Live surface"
-                value={readiness.platform_readiness_score.components.live_surface_coverage}
-              />
-              <ProgressBar
-                label="Integration cohesion"
-                value={readiness.platform_readiness_score.components.integration_cohesion}
-              />
-            </div>
+          <div className="epo-readiness__headlines">
+            {readiness.platform_metric_headlines.map((metric) => (
+              <div
+                key={metric.metric_id}
+                className={`epo-readiness__headline epo-readiness__headline--${metric.metric_id}`}
+              >
+                <span className="epo-readiness__headline-label">{metric.label}</span>
+                <strong>{metric.percent}%</strong>
+                <span className="epo-readiness__headline-meaning">{metric.meaning}</span>
+              </div>
+            ))}
+          </div>
+
+          <table className="epo-readiness__metrics-table">
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th>Meaning</th>
+              </tr>
+            </thead>
+            <tbody>
+              {readiness.platform_metric_headlines.map((metric) => (
+                <tr key={metric.metric_id}>
+                  <td>
+                    <strong>{metric.label}</strong> — {metric.percent}%
+                  </td>
+                  <td>{metric.meaning}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          <div className="epo-readiness__metric-panels">
+            <section className="epo-readiness__panel">
+              <h3>Platform Stability</h3>
+              <p className="epo-readiness__panel-rule">{readiness.platform_stability.core_rule}</p>
+              <p className="epo-readiness__panel-summary">{readiness.platform_stability.summary}</p>
+              <div className="epo-readiness__prs-components">
+                <ProgressBar
+                  label="Four Systems compliance"
+                  value={readiness.platform_stability.components.four_systems_compliance}
+                />
+                <ProgressBar
+                  label="Foundational object integrity"
+                  value={readiness.platform_stability.components.foundational_object_integrity}
+                />
+                <ProgressBar
+                  label="Five Gates compliance"
+                  value={readiness.platform_stability.components.five_gates_compliance}
+                />
+                <ProgressBar
+                  label="Migration lifecycle complete"
+                  value={readiness.platform_stability.components.migration_lifecycle_complete}
+                />
+                <ProgressBar
+                  label="Safety / guardrail compliance"
+                  value={readiness.platform_stability.components.safety_guardrail_compliance}
+                />
+                <ProgressBar
+                  label="Architecture debt (inverse)"
+                  value={readiness.platform_stability.components.architecture_debt_inverse}
+                />
+                <ProgressBar
+                  label="Breaking redesigns (inverse)"
+                  value={readiness.platform_stability.components.breaking_redesigns_inverse}
+                />
+              </div>
+            </section>
+
+            <section className="epo-readiness__panel">
+              <h3>Platform Readiness</h3>
+              <p className="epo-readiness__panel-rule">{readiness.core_rule}</p>
+              <div className="epo-readiness__prs-score">
+                <span className="epo-readiness__prs-label">Score</span>
+                <strong>{readiness.platform_readiness_score.percent}</strong>
+                <span className="epo-readiness__prs-band">
+                  {readiness.platform_readiness_score.label.replace(/_/g, " ")}
+                </span>
+              </div>
+              <p className="epo-readiness__prs-summary">
+                {readiness.platform_readiness_score.summary}
+              </p>
+              <div className="epo-readiness__prs-components">
+                <ProgressBar
+                  label="Live surface completion"
+                  value={readiness.platform_readiness_score.components.live_surface_completion}
+                />
+                <ProgressBar
+                  label="Placeholder removal"
+                  value={readiness.platform_readiness_score.components.placeholder_removal}
+                />
+                <ProgressBar
+                  label="Documentation coverage"
+                  value={readiness.platform_readiness_score.components.documentation_coverage}
+                />
+                <ProgressBar
+                  label="Test health"
+                  value={readiness.platform_readiness_score.components.test_health}
+                />
+                <ProgressBar
+                  label="UX cohesion"
+                  value={readiness.platform_readiness_score.components.ux_cohesion}
+                />
+                <ProgressBar
+                  label="Integration quality"
+                  value={readiness.platform_readiness_score.components.integration_quality}
+                />
+                <ProgressBar
+                  label="Open critical bugs (inverse)"
+                  value={readiness.platform_readiness_score.components.open_critical_bugs_inverse}
+                />
+              </div>
+            </section>
+
+            <section className="epo-readiness__panel">
+              <h3>Executive Maturity</h3>
+              <p className="epo-readiness__panel-rule">{readiness.executive_maturity.core_rule}</p>
+              <p className="epo-readiness__panel-summary">{readiness.executive_maturity.summary}</p>
+              <div className="epo-readiness__prs-components">
+                {readiness.executive_maturity.domains.map((domain) => (
+                  <ProgressBar key={domain.domain_id} label={domain.label} value={domain.percent} />
+                ))}
+              </div>
+            </section>
+
+            <section className="epo-readiness__panel">
+              <h3>Architecture Volatility</h3>
+              <p className="epo-readiness__panel-rule">
+                {readiness.architecture_volatility.core_rule}
+              </p>
+              <p className="epo-readiness__panel-summary">
+                {readiness.architecture_volatility.summary}
+              </p>
+              <p className="epo-readiness__volatility-note">
+                Lower is better — {readiness.architecture_volatility.volatility_percent}% redesign
+                risk if development stopped today.
+              </p>
+            </section>
           </div>
 
           <p className="epo-readiness__freeze">{readiness.freeze_policy}</p>

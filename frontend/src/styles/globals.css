@@ -4141,6 +4141,115 @@ a {
   color: #334155;
 }
 
+.epo-readiness__headlines {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.epo-readiness__headline {
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.epo-readiness__headline strong {
+  display: block;
+  font-size: 1.75rem;
+  line-height: 1.2;
+  color: #1e293b;
+}
+
+.epo-readiness__headline-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #64748b;
+}
+
+.epo-readiness__headline-meaning {
+  display: block;
+  font-size: 0.78rem;
+  color: #64748b;
+  margin-top: 0.35rem;
+}
+
+.epo-readiness__headline--platform_stability strong {
+  color: #1d4ed8;
+}
+
+.epo-readiness__headline--platform_readiness strong {
+  color: #0f766e;
+}
+
+.epo-readiness__headline--executive_maturity strong {
+  color: #7c3aed;
+}
+
+.epo-readiness__headline--architecture_volatility strong {
+  color: #b45309;
+}
+
+.epo-readiness__metrics-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  margin-bottom: 1rem;
+}
+
+.epo-readiness__metrics-table th,
+.epo-readiness__metrics-table td {
+  border: 1px solid #e2e8f0;
+  padding: 0.45rem 0.6rem;
+  text-align: left;
+}
+
+.epo-readiness__metrics-table th {
+  background: #f1f5f9;
+  font-weight: 600;
+}
+
+.epo-readiness__metric-panels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.epo-readiness__panel {
+  padding: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.epo-readiness__panel h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+}
+
+.epo-readiness__panel-rule {
+  font-size: 0.82rem;
+  color: #64748b;
+  margin: 0 0 0.5rem;
+  font-style: italic;
+}
+
+.epo-readiness__panel-summary {
+  font-size: 0.85rem;
+  margin: 0 0 0.75rem;
+  color: #334155;
+}
+
+.epo-readiness__volatility-note {
+  font-size: 0.85rem;
+  color: #92400e;
+  margin: 0;
+}
+
 .epo-readiness__prs {
   margin: 1rem 0;
   padding: 1rem;

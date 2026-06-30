@@ -1,5 +1,6 @@
 import type {
   LiveSurfaceSmokeResult,
+  PlatformMetricHeadline,
   PlatformReadinessReport,
   PlatformReadinessScore,
   PlatformSystemOwnershipRow,
@@ -26,6 +27,13 @@ import { runFilesystemMappingAudit } from "../migration/fsAudit/auditService.js"
 import { getConsolidationBriefing } from "../consolidation/consolidationService.js";
 import { runLiveSurfaceSmoke } from "../liveSurface/liveSurfaceService.js";
 import { SURFACE_REGISTRY } from "../liveSurface/surfaceRegistry.js";
+import { computeArchitectureVolatility } from "./architectureVolatilityEngine.js";
+import {
+  computeFiveGatesCompliance,
+  computeLiveSurfaceCompletionPercent,
+  countPlaceholderRoutes,
+} from "./certificationMetrics.js";
+import { computeExecutiveMaturity } from "./executiveMaturityEngine.js";
 import { computePlatformStability } from "./platformStabilityEngine.js";
 
 const MIGRATION_PIPELINE_SLICES = [
@@ -146,13 +154,6 @@ function computeTestCoveragePercent(): number {
   return Math.min(100, Math.round((testCount / targetTests) * 100));
 }
 
-function computeFiveGatesCompliance(): number {
-  const gated = SURFACE_REGISTRY.filter((s) => s.route !== "/settings");
-  if (gated.length === 0) return 100;
-  const compliant = gated.filter((s) => s.slice_id && s.question_id).length;
-  return Math.round((compliant / gated.length) * 100);
-}
-
 function buildMigrationPipeline(): {
   complete: boolean;
   stages: PlatformReadinessReport["migration_pipeline_stages"];
@@ -238,6 +239,9 @@ function buildReadinessDashboard(
   testCoverage: number,
   placeholderCount: number,
   stabilityPercent: number,
+  readinessPercent: number,
+  maturityPercent: number,
+  volatilityPercent: number,
   fiveGates: number,
   migrationComplete: boolean,
 ): ReadinessDashboardRow[] {
@@ -327,11 +331,32 @@ function buildReadinessDashboard(
       detail: "Stub sections clearly marked in surface registry",
     },
     {
-      area_id: "architecture_stability",
-      label: "Architecture Stability",
+      area_id: "platform_stability",
+      label: "Platform Stability",
       status: stabilityPercent >= 90 ? "complete" : "partial",
       display: `${stabilityPercent}%`,
-      detail: "ENG-PST-001 — foundational objects locked",
+      detail: "ENG-PST-001 — is the architecture fundamentally sound?",
+    },
+    {
+      area_id: "platform_readiness",
+      label: "Platform Readiness",
+      status: readinessPercent >= 80 ? "complete" : "partial",
+      display: `${readinessPercent}%`,
+      detail: "ENG-PRS-001 — ready for daily operational use?",
+    },
+    {
+      area_id: "executive_maturity",
+      label: "Executive Maturity",
+      status: maturityPercent >= 50 ? "partial" : "planned",
+      display: `${maturityPercent}%`,
+      detail: "ENG-EMT-001 — intelligence systems Phase 2+",
+    },
+    {
+      area_id: "architecture_volatility",
+      label: "Architecture Volatility",
+      status: volatilityPercent <= 10 ? "complete" : "partial",
+      display: `${volatilityPercent}%`,
+      detail: "ENG-AV-001 — redesign risk if development stopped today",
     },
     {
       area_id: "five_gates",
@@ -344,38 +369,40 @@ function buildReadinessDashboard(
 }
 
 function computePrs(
-  stabilityPercent: number,
   docCoverage: number,
   testCoverage: number,
   liveSurfacePercent: number,
   integrationPercent: number,
-  stubCount: number,
+  placeholderRouteCount: number,
   orphanCount: number,
   smokeFailed: number,
   migrationComplete: boolean,
   integrationTargetsMet: boolean,
 ): PlatformReadinessScore {
-  const technicalDebt = Math.max(0, 100 - stubCount * 4);
-  const openBlockers = Math.max(0, 100 - orphanCount * 15 - smokeFailed * 8);
+  const placeholderRemoval = Math.max(0, 100 - placeholderRouteCount * 8);
+  const openCriticalBugsInverse = Math.max(0, 100 - orphanCount * 15 - smokeFailed * 8);
+  const integrationQuality = integrationTargetsMet
+    ? Math.min(100, integrationPercent + 5)
+    : Math.max(0, integrationPercent - 10);
 
   const components = {
-    architecture_stability: stabilityPercent,
+    live_surface_completion: liveSurfacePercent,
+    placeholder_removal: placeholderRemoval,
+    documentation_coverage: docCoverage,
     test_health: testCoverage,
-    documentation_completeness: docCoverage,
-    live_surface_coverage: liveSurfacePercent,
-    integration_cohesion: integrationPercent,
-    technical_debt: technicalDebt,
-    open_blockers: openBlockers,
+    ux_cohesion: integrationPercent,
+    integration_quality: integrationQuality,
+    open_critical_bugs_inverse: openCriticalBugsInverse,
   };
 
   const percent = Math.round(
-    components.architecture_stability * 0.2 +
+    components.live_surface_completion * 0.2 +
+      components.placeholder_removal * 0.15 +
+      components.documentation_coverage * 0.1 +
       components.test_health * 0.15 +
-      components.documentation_completeness * 0.15 +
-      components.live_surface_coverage * 0.15 +
-      components.integration_cohesion * 0.15 +
-      components.technical_debt * 0.1 +
-      components.open_blockers * 0.1,
+      components.ux_cohesion * 0.15 +
+      components.integration_quality * 0.15 +
+      components.open_critical_bugs_inverse * 0.1,
   );
 
   let label: PlatformReadinessScore["label"] = "not_ready";
@@ -400,28 +427,68 @@ function computePrs(
   return { percent, label, components, summary };
 }
 
+function buildPlatformMetricHeadlines(
+  stabilityPercent: number,
+  readinessPercent: number,
+  maturityPercent: number,
+  volatilityPercent: number,
+): PlatformMetricHeadline[] {
+  return [
+    {
+      metric_id: "platform_stability",
+      label: "Platform Stability",
+      percent: stabilityPercent,
+      meaning: "Is the architecture fundamentally sound?",
+    },
+    {
+      metric_id: "platform_readiness",
+      label: "Platform Readiness",
+      percent: readinessPercent,
+      meaning: "Is it ready for daily operational use?",
+    },
+    {
+      metric_id: "executive_maturity",
+      label: "Executive Maturity",
+      percent: maturityPercent,
+      meaning: "How much executive intelligence exists?",
+    },
+    {
+      metric_id: "architecture_volatility",
+      label: "Architecture Volatility",
+      percent: volatilityPercent,
+      meaning: "How much redesign risk remains?",
+    },
+  ];
+}
+
 export function getPlatformReadinessReport(): PlatformReadinessReport {
   const integration = runIntegrationAudit();
   const routeSmoke = runExtendedRouteSmoke();
-  const stability = computePlatformStability();
+  const smokePassRate =
+    routeSmoke.results.length > 0
+      ? Math.round((routeSmoke.passed / routeSmoke.results.length) * 100)
+      : 100;
+  const stability = computePlatformStability({
+    smokePassRate,
+    integrationTargetsMet: integration.targets_met,
+  });
+  const executiveMaturity = computeExecutiveMaturity();
+  const architectureVolatility = computeArchitectureVolatility();
   const docCoverage = computeDocumentationCoverage();
   const testCoverage = computeTestCoveragePercent();
   const fiveGates = computeFiveGatesCompliance();
   const migration = buildMigrationPipeline();
   const placeholders = buildPlaceholderRoutes();
 
-  const liveSurfaces = SURFACE_REGISTRY.filter((s) => s.route !== "/settings");
-  const liveCount = liveSurfaces.filter((s) => s.mode === "live").length;
-  const liveSurfacePercent =
-    liveSurfaces.length > 0 ? Math.round((liveCount / liveSurfaces.length) * 100) : 0;
+  const liveSurfacePercent = computeLiveSurfaceCompletionPercent();
+  const placeholderRouteCount = countPlaceholderRoutes();
 
   const prs = computePrs(
-    stability.stability_percent,
     docCoverage,
     testCoverage,
     liveSurfacePercent,
     integration.metrics.shell_consistency_percent,
-    placeholders.length,
+    placeholderRouteCount,
     integration.metrics.orphan_pages,
     routeSmoke.failed,
     migration.complete,
@@ -433,28 +500,44 @@ export function getPlatformReadinessReport(): PlatformReadinessReport {
     testCoverage,
     placeholders.length,
     stability.stability_percent,
+    prs.percent,
+    executiveMaturity.overall_percent,
+    architectureVolatility.volatility_percent,
     fiveGates,
     migration.complete,
   );
 
   const certificationPassed =
     prs.label !== "not_ready" &&
+    stability.stability_percent >= 90 &&
     routeSmoke.failed === 0 &&
     integration.targets_met &&
     migration.complete &&
     integration.metrics.orphan_pages === 0;
 
+  const platformMetricHeadlines = buildPlatformMetricHeadlines(
+    stability.stability_percent,
+    prs.percent,
+    executiveMaturity.overall_percent,
+    architectureVolatility.volatility_percent,
+  );
+
   return {
     slice_id: "LB-OS-026.5",
     engine_id: PLATFORM_READINESS_ENGINE_ID,
     stability_engine_id: "ENG-PST-001",
+    maturity_engine_id: "ENG-EMT-001",
+    volatility_engine_id: "ENG-AV-001",
     read_only: true,
     core_rule: PLATFORM_READINESS_CORE_RULE,
     executive_os_version: "v1.0-rc",
     freeze_policy: EXECUTIVE_OS_V1_FREEZE_POLICY,
-    readiness_dashboard: dashboard,
+    platform_metric_headlines: platformMetricHeadlines,
+    platform_stability: stability,
     platform_readiness_score: prs,
-    platform_stability_percent: stability.stability_percent,
+    executive_maturity: executiveMaturity,
+    architecture_volatility: architectureVolatility,
+    readiness_dashboard: dashboard,
     route_smoke: routeSmoke,
     integration_targets_met: integration.targets_met,
     orphan_routes: integration.orphan_routes,
