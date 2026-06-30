@@ -206,6 +206,22 @@ export const WF_FUTURE_PRIVACY: WorkflowDefinition = {
   capability_ids: ["CAP-FUT-PRV-001", "CAP-EO-001"],
 };
 
+export const WF_FUTURE_EXECUTIVE_COMMUNICATIONS: WorkflowDefinition = {
+  workflow_id: "WF-FUT-ECD-001",
+  title: "Executive Communications Department (planned)",
+  description:
+    "Contact → conversation → memory → relationship → CoS; provider-abstracted Google/Microsoft/IMAP/SMTP; approval-gated outbound via SendGrid/Twilio",
+  capability_ids: [
+    "CAP-FUT-ECD-001",
+    "CAP-FUT-GAC-001",
+    "CAP-FUT-GML-001",
+    "CAP-FUT-CAL-001",
+    "CAP-FUT-KNO-001",
+    "CAP-EO-001",
+    "CAP-ACT-001",
+  ],
+};
+
 export const WORKFLOW_REGISTRY: WorkflowDefinition[] = [
   WF_MIGRATION_EXECUTION,
   WF_MIGRATION_EVIDENCE,
@@ -214,6 +230,7 @@ export const WORKFLOW_REGISTRY: WorkflowDefinition[] = [
   WF_FUTURE_HOUSEHOLD,
   WF_FUTURE_MEDIA,
   WF_FUTURE_PRIVACY,
+  WF_FUTURE_EXECUTIVE_COMMUNICATIONS,
 ];
 
 /** Frozen capability IDs — LB-OS-026.6 checkpoint */
@@ -553,6 +570,45 @@ const FUTURE_EXECUTIVE_CAPABILITIES: CapabilityEntry[] = [
     slice_id: "LB-OS-095+",
     nav_placement: "future",
     governance_policy: EXECUTIVE_CONNECTOR_GOVERNANCE,
+  }),
+  futureCap({
+    capability_id: "CAP-FUT-ECD-001",
+    title: "Executive Communications Department",
+    description:
+      "First production department post–Memory OS — contacts, organizations, relationships, email, SMS, voice, meetings, notes, follow-ups, network graph; not a contact manager module",
+    executive_outcome:
+      "CoS reasons across relationship cadence and mission impact — e.g. unusual silence from a key contact, not unread email counts.",
+    executive_question_ids: [],
+    primary_route: "/future/communications",
+    secondary_routes: [],
+    prerequisites: ["CAP-EO-001", "CAP-FUT-PRV-001"],
+    next_recommended_steps: ["CAP-FUT-GAC-001", "CAP-FUT-GML-001", "CAP-EO-001"],
+    departments: ["Chief of Staff", "Communications"],
+    workflows: ["WF-FUT-ECD-001"],
+    keywords: [
+      "communications department",
+      "contacts",
+      "relationships",
+      "email",
+      "sms",
+      "voice",
+      "meetings",
+      "network graph",
+    ],
+    search_terms: [
+      "executive communications",
+      "relationship cadence",
+      "contact manager",
+      "communications stack",
+    ],
+    authority_level: "supporting",
+    slice_id: "LB-OS-091+",
+    nav_placement: "future",
+    governance_policy: EXECUTIVE_CONNECTOR_GOVERNANCE,
+    related_capabilities: [
+      { target_capability_id: "CAP-FUT-GAC-001", relation_type: "enables" },
+      { target_capability_id: "CAP-FUT-PRV-001", relation_type: "feeds", label: "Data sovereignty" },
+    ],
   }),
   futureCap({
     capability_id: "CAP-FUT-VOI-001",

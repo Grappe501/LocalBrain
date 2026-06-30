@@ -189,7 +189,13 @@
   → Peer Review S4 → S5 → Theory v1.0 freeze → Convention → LB-OS-027
 ```
 
-**Reserved (post-Convention, not started):** [Executive Digital World Doctrine](./LOCALBRAIN_EXECUTIVE_DIGITAL_WORLD_DOCTRINE.md)
+**Reserved (post-Convention, not started):** [Executive North Star — Three Goals](./LOCALBRAIN_EXECUTIVE_NORTH_STAR.md) · [Digital World Doctrine](./LOCALBRAIN_EXECUTIVE_DIGITAL_WORLD_DOCTRINE.md)
+
+```txt
+Goal 1 — Own the brain (LLM as plugin · Memory OS LB-OS-027+)
+Goal 2 — Executive Communications Department first production dept (LB-OS-091+ · CAP-FUT-ECD-001)
+Goal 3 — Data sovereignty not invisibility (LB-OS-03X-DPEC)
+```
 
 ```txt
 LB-OS-03X-DWM — Executive Digital World Monitor (media · news · RSS · AI watch · reputation · competitive · digital risk)

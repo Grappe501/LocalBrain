@@ -34,6 +34,7 @@ Future / Planned · Not Live · Infrastructure Reserved
 | CAP-FUT-BBN-001 | Business Budget |
 | CAP-FUT-FKN-001 | Finance Knowledge Sources |
 | CAP-FUT-HHD-001 | Household / Family Operations |
+| CAP-FUT-ECD-001 | Executive Communications Department (LB-OS-091+ — first production dept post–Memory OS) |
 | CAP-FUT-VOI-001 | Executive Voice Interface (LB-OS-03X-VOI) |
 | CAP-FUT-MED-001 | Executive Digital World Monitor (LB-OS-03X-DWM) |
 | CAP-FUT-PVO-001 | Personal Voice Interface (LB-OS-03X-PVI) |
@@ -130,7 +131,7 @@ Implemented as `EXECUTIVE_CONNECTOR_GOVERNANCE` in `shared/src/capabilityGoverna
 ## Acceptance
 
 ```txt
-[ ] 16+ planned capabilities in CAPABILITY_REGISTRY with infrastructure_reserved
+[ ] 17+ planned capabilities in CAPABILITY_REGISTRY with infrastructure_reserved
 [ ] Planned caps excluded from graph integrity orphan/readiness checks
 [ ] Atlas renders Future / Planned section before Live capabilities
 [ ] Dashboard gate (026.7) can project planned vs live from atlas JSON

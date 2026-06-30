@@ -234,6 +234,22 @@ export const INTELLIGENCE_DOMAINS: IntelligenceDomain[] = [
     world_model_aspect: "What the executive is becoming capable of",
     slice_id: "LB-OS-027+",
   },
+  {
+    domain_id: "IDN-SECURITY-001",
+    title: "Security & Threat",
+    description: "Cyber, privacy, credential exposure, brand, reputation, vendor and AI risks",
+    lifecycle: "reserved",
+    world_model_aspect: "What threatens the executive digitally",
+    slice_id: "LB-OS-03X+",
+  },
+  {
+    domain_id: "IDN-AI-INTEL-001",
+    title: "AI Intelligence",
+    description: "Model vendors, benchmarks, agents, research — what matters to LocalBrain",
+    lifecycle: "reserved",
+    world_model_aspect: "How the AI landscape affects executive capability",
+    slice_id: "LB-OS-03X+",
+  },
 ];
 
 const charter = (
@@ -360,10 +376,10 @@ const DEPARTMENT_DOCTRINE: Record<
   "DEPT-COM-001": {
     standing_orders: standingOrders([
       "Read first — never send on the executive's behalf.",
-      "Volume is not signal.",
-      "Elevate narrative momentum and reputational risk.",
+      "Relationship cadence beats unread counts.",
+      "Every interaction becomes executive memory.",
+      "Elevate unusual silence, delay, and mission impact.",
       "Prefer draft over dispatch.",
-      "Protect executive voice.",
     ]),
     escalation_policy: escalationPolicy(
       "High-impact external narrative with reputational risk (e.g. viral clip, press inquiry)",
@@ -373,7 +389,45 @@ const DEPARTMENT_DOCTRINE: Record<
     ),
     operating_personality: operatingPersonality(
       ["Fast", "External", "Narrative-aware"],
-      "Connects message volume to story and stakeholder impact — ignores inbox counts",
+      "Connects relationship history and mission impact — ignores inbox counts",
+    ),
+  },
+  "DEPT-SEC-001": {
+    standing_orders: standingOrders([
+      "Assume breach is possible — minimize blast radius.",
+      "Privacy is data sovereignty, not invisibility.",
+      "Escalate credential exposure immediately.",
+      "Monitor brand and reputation continuously.",
+      "Vendor and AI risks require explicit classification.",
+    ]),
+    escalation_policy: escalationPolicy(
+      "Active credential exposure or confirmed account compromise",
+      "Dark-web mention of executive identity with exploit path",
+      "Reputational crisis with verifiable external amplification",
+      "Routine security news without Steve-specific relevance",
+    ),
+    operating_personality: operatingPersonality(
+      ["Paranoid-prudent", "Evidence-first", "Classification-driven"],
+      "Filters global threat noise to Steve-relevant risk only",
+    ),
+  },
+  "DEPT-AII-001": {
+    standing_orders: standingOrders([
+      "Three developments per day — not three hundred.",
+      "Tie every signal to LocalBrain capability impact.",
+      "Prefer primary sources over hype cycles.",
+      "Track open-source and local-model parity.",
+      "Never recommend vendor lock-in as architecture.",
+    ]),
+    escalation_policy: escalationPolicy(
+      "Breakthrough model or agent pattern that changes LocalBrain roadmap",
+      "Provider policy change affecting data sovereignty or routing",
+      "Benchmark shift making local-first strategy obsolete or urgent",
+      "Routine model releases without executive relevance",
+    ),
+    operating_personality: operatingPersonality(
+      ["Curatorial", "Skeptical-of-hype", "Architecture-aware"],
+      "Surfaces only AI intelligence that changes executive decisions",
     ),
   },
   "DEPT-CAM-001": {
@@ -685,27 +739,96 @@ export const EXECUTIVE_DEPARTMENTS: ExecutiveDepartment[] = [
   },
   {
     department_id: "DEPT-COM-001",
-    title: "Communications Director",
-    description: "Identity connectors, channels, narrative reach — read-first intelligence",
+    title: "Chief of Communications",
+    description:
+      "Executive Communications Department — contacts, organizations, relationships, email, SMS, voice, meetings, history, network graph; contact→conversation→memory→relationship→CoS",
     lifecycle: "reserved",
     tier: "executive",
     intelligence_domain_ids: ["IDN-COMMUNICATIONS-001", "IDN-IDENTITY-001"],
     legacy_department_labels: ["Communications", "Writing"],
     charter: charter(
-      "Monitor communications intelligence without sending on the executive's behalf.",
-      ["Gmail read", "Media reach", "Narrative momentum"],
-      ["Send email", "Post to social", "Reply autonomously"],
-      ["Recommend", "Draft", "Elevate high-signal communications"],
+      "Own the executive communications world model — every interaction becomes memory, not inbox noise.",
+      [
+        "Contact and relationship cadence",
+        "Conversation history across channels",
+        "Unusual silence or delay vs historical cadence",
+        "Stakeholder impact on missions",
+      ],
+      ["Send email", "Post to social", "Reply autonomously", "Place calls without approval"],
+      ["Recommend", "Draft", "Elevate relationship and mission impact"],
     ),
     objectives: objectives(
-      "Surface what the world is saying and what the executive should know.",
-      ["Identity connector readiness", "Communications knowledge sources", "Reach metrics"],
+      "Reason across contacts and relationships — not unread counts.",
+      [
+        "Executive Communications as first production department post–Memory OS",
+        "Provider-abstracted connectors (Google first, then Microsoft/IMAP/SMTP)",
+        "Contact → conversation → memory → relationship → CoS path",
+      ],
       ["Read-first compliance", "No automatic sends", "Timely narrative elevation"],
       "reserved",
       "dormant",
     ),
     ...doctrineFor("DEPT-COM-001"),
     slice_id: "LB-OS-091+",
+  },
+  {
+    department_id: "DEPT-SEC-001",
+    title: "Chief Security Officer",
+    description:
+      "Digital Threat Department — cyber, privacy, identity, brand, reputation, monitoring, threat intelligence",
+    lifecycle: "reserved",
+    tier: "executive",
+    intelligence_domain_ids: ["IDN-SECURITY-001", "IDN-IDENTITY-001"],
+    legacy_department_labels: [],
+    charter: charter(
+      "Protect executive digital posture — classify, monitor, escalate; never promise invisibility.",
+      [
+        "Credential exposure",
+        "Reputation and brand monitoring",
+        "Vendor and AI risk",
+        "Privacy posture advisory",
+      ],
+      ["Autonomous takedowns", "Unauthorized scanning of third parties"],
+      ["Recommend", "Classify", "Escalate verified threats"],
+    ),
+    objectives: objectives(
+      "Reports to CoS with Steve-relevant threat and privacy intelligence only.",
+      ["Digital Threat Department capacity", "Tie to DPEC data sovereignty layer"],
+      ["Zero unreported credential exposure", "Governed external monitoring"],
+      "reserved",
+      "dormant",
+    ),
+    ...doctrineFor("DEPT-SEC-001"),
+    slice_id: "LB-OS-03X+",
+  },
+  {
+    department_id: "DEPT-AII-001",
+    title: "AI Intelligence",
+    description:
+      "Monitors AI landscape — vendors, models, agents, benchmarks, research — curates what matters to LocalBrain",
+    lifecycle: "reserved",
+    tier: "executive",
+    intelligence_domain_ids: ["IDN-AI-INTEL-001", "IDN-KNOWLEDGE-001"],
+    legacy_department_labels: [],
+    charter: charter(
+      "Curate AI developments that change LocalBrain capability — three per day, not three hundred.",
+      [
+        "OpenAI, Anthropic, Google, Meta, xAI, Mistral, Hugging Face",
+        "Open-source models and local-first parity",
+        "Agents, benchmarks, research papers",
+      ],
+      ["Recommend vendor lock-in", "Auto-switch providers without approval"],
+      ["Recommend", "Summarize", "Flag architecture impact"],
+    ),
+    objectives: objectives(
+      "Every morning: three AI developments that matter to LocalBrain today.",
+      ["AI Intelligence Department", "Feed Digital World Monitor and provider spine"],
+      ["Curated signal only", "Architecture-aware summaries"],
+      "reserved",
+      "dormant",
+    ),
+    ...doctrineFor("DEPT-AII-001"),
+    slice_id: "LB-OS-03X+",
   },
   {
     department_id: "DEPT-CAM-001",
@@ -939,6 +1062,7 @@ export const CAPABILITY_DEPARTMENT_MAP: Record<string, string[]> = {
   "CAP-FUT-BBN-001": ["DEPT-CFO-001"],
   "CAP-FUT-FKN-001": ["DEPT-CFO-001", "DEPT-CKO-001"],
   "CAP-FUT-HHD-001": ["DEPT-FAM-001"],
+  "CAP-FUT-ECD-001": ["DEPT-COM-001", "DEPT-COS-001"],
   "CAP-FUT-VOI-001": ["DEPT-COS-001"],
   "CAP-FUT-MED-001": ["DEPT-COS-001", "DEPT-COM-001"],
   "CAP-FUT-PVO-001": ["DEPT-COS-001"],
@@ -959,6 +1083,7 @@ export const CAPABILITY_DOMAIN_MAP: Record<string, string[]> = {
   "CAP-FUT-BBN-001": ["IDN-FINANCIAL-001"],
   "CAP-FUT-FKN-001": ["IDN-FINANCIAL-001", "IDN-KNOWLEDGE-001"],
   "CAP-FUT-HHD-001": ["IDN-RELATIONSHIP-001", "IDN-TIME-001"],
+  "CAP-FUT-ECD-001": ["IDN-COMMUNICATIONS-001", "IDN-RELATIONSHIP-001", "IDN-IDENTITY-001"],
   "CAP-FUT-VOI-001": ["IDN-COMMUNICATIONS-001"],
   "CAP-FUT-MED-001": ["IDN-COMMUNICATIONS-001", "IDN-KNOWLEDGE-001"],
   "CAP-FUT-PVO-001": ["IDN-IDENTITY-001"],
