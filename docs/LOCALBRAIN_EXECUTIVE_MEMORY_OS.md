@@ -18,17 +18,32 @@ The platform shall remember before it reasons.
 Phase 1 builds a trustworthy **Executive Operating System**.  
 The next leap is an **Executive Memory System** — memory as an operating layer, not a database feature or generic RAG.
 
-**Gate before LB-OS-027:** [Memory Summit](./LOCALBRAIN_MEMORY_SUMMIT.md) — architecture only.
+**Gate before LB-OS-027:** [Memory Summit](./LOCALBRAIN_MEMORY_SUMMIT.md) — five-session constitutional convention for Systems 2–4.
 
 ```txt
 Today (Phase 1):
   Steve → Question → Chief of Staff → Answer
 
 Phase 2+:
-  Steve → Mission → Question → Chief of Staff → Memory → Reasoning → Recommendation → Outcome → Learning
+  Steve → Mission → Question → Chief of Staff → Memory → Understanding → Reasoning → Recommendation → Outcome → Learning
 ```
 
-**Memory sits before reasoning.** That ordering is binding architecture — CoS consults scoped memory domains before generating recommendations, not after.
+**Memory sits before reasoning.** Understanding is the stable mental model reasoning operates on — not a substitute for memory.
+
+### Cognition ladder
+
+```txt
+Data → Information → Memory → Knowledge → Understanding → Reasoning
+```
+
+| Level | Example |
+| ----- | ------- |
+| Data | Kelly called Chris. |
+| Information | Kelly called Chris on Tuesday. |
+| Memory | Kelly frequently coordinates strategy with Chris. |
+| Knowledge | Chris is a trusted strategic collaborator. |
+
+These levels are not interchangeable. Retrieval, confidence, and recall explainability depend on getting the distinction right. See [Memory Summit Session 1](./LOCALBRAIN_MEMORY_SUMMIT.md#session-1--what-is-memory).
 
 **Do not build Memory OS in Phase 1.** Foundation exists (registry, workspaces, Decision Ledger spec, Memory Domains v1). Full Memory OS layer ships in Phase 2–3.
 

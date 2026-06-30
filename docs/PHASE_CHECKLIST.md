@@ -73,7 +73,7 @@
 
 | Slice | Name | Status |
 |-------|------|--------|
-| — | Memory Summit | 📋 SCHEDULED — architecture gate |
+| — | Memory Summit (5 sessions) | 📋 SCHEDULED — [constitutional convention](./LOCALBRAIN_MEMORY_SUMMIT.md) |
 | LB-OS-027 | Executive Memory Bootstrap | ⬜ PLANNED |
 | LB-OS-028 | Memory Ingestion | ⬜ PLANNED |
 | LB-OS-029 | Memory Retrieval | ⬜ PLANNED |

@@ -21,6 +21,10 @@ Did Steve accomplish more meaningful work this week
 than he would have without LocalBrain?
 ```
 
+**Philosophy:**
+
+> LocalBrain is an executive operating platform that separates work, knowledge, decisions, and improvement into distinct systems. It organizes the user's digital world through deterministic structure, remembers with provenance, reasons only after memory is assembled, and continuously evolves through verified outcomes rather than opaque model behavior.
+
 **Measured by:** [Executive Leverage Score](./LOCALBRAIN_EXECUTIVE_LEVERAGE_SCORE.md) · [Effectiveness Metrics](./LOCALBRAIN_EFFECTIVENESS_METRICS.md)
 
 **Development phases:** [Three-Phase Roadmap](./LOCALBRAIN_THREE_PHASE_ROADMAP.md)

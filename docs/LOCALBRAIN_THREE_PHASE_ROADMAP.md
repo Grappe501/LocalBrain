@@ -64,7 +64,7 @@ Each phase has a **success question**, **exit criteria**, and **tracked metrics*
 
 Phase 1 built **where everything is**. Phase 2 builds **what everything means** — on the memory substrate every future reasoning system depends on.
 
-**Gate before code:** [Memory Summit](./LOCALBRAIN_MEMORY_SUMMIT.md) — architecture only.  
+**Gate before code:** [Memory Summit](./LOCALBRAIN_MEMORY_SUMMIT.md) — five-session constitutional convention for Systems 2–4.  
 **Constitution:** [Article XIII — Executive Principle](./LOCALBRAIN_CONSTITUTION.md#article-xiii--executive-principle)
 
 ### Success question

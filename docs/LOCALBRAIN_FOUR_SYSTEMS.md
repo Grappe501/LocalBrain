@@ -11,11 +11,20 @@
 LocalBrain is not one monolith. It is **four cooperating platform systems** (plus a fifth, much later) that remain **independent** even though they work together.
 
 ```txt
-SYSTEM 1 — Executive OS              (Run the work)
-SYSTEM 2 — Executive Memory OS       (Remember everything)
-SYSTEM 3 — Executive Intelligence    (Think)
-SYSTEM 4 — Executive Evolution       (Get smarter)
-SYSTEM 5 — Executive Organization OS (Run an organization)  ← Phase 4+, not yet
+SYSTEM 1 — Executive OS              Organizes work
+SYSTEM 2 — Executive Memory OS       Organizes knowledge
+SYSTEM 3 — Executive Intelligence  Organizes decisions
+SYSTEM 4 — Executive Evolution       Organizes improvement
+SYSTEM 5 — Executive Organization OS Organizes the organization  ← Phase 4+, not yet
+```
+
+Each system answers a different **organizational question**. That separation is binding.
+
+```txt
+System 1   Where am I working?        → organizes work
+System 2   What do we know?             → organizes knowledge
+System 3   What should I do?            → organizes decisions
+System 4   How do we improve?            → organizes improvement
 ```
 
 **Architecture is feature-complete through Phase 4.** Expansion via modules inside systems — not new pillars.
@@ -39,6 +48,8 @@ Vendors are **implementation details** behind [AI Provider Management](./LOCALBR
 
 ## System 1 — Executive OS
 
+**Organizes work.**
+
 **Question:** *Where am I working?*
 
 **Owns:**
@@ -59,6 +70,8 @@ Vendors are **implementation details** behind [AI Provider Management](./LOCALBR
 ---
 
 ## System 2 — Executive Memory OS
+
+**Organizes knowledge.**
 
 **Question:** *What do we know?*
 
@@ -82,6 +95,8 @@ Vendors are **implementation details** behind [AI Provider Management](./LOCALBR
 
 ## System 3 — Executive Intelligence
 
+**Organizes decisions.**
+
 **Question:** *What should I do?*
 
 **Owns:**
@@ -102,6 +117,8 @@ Vendors are **implementation details** behind [AI Provider Management](./LOCALBR
 ---
 
 ## System 4 — Executive Evolution
+
+**Organizes improvement.**
 
 **Question:** *How do we improve?*
 
