@@ -6,6 +6,7 @@ import { parsePhaseChecklistSlices, parsePhaseSections } from "../epo/checklistP
 import { explainBlocker } from "../epo/blockerExplainer.js";
 import { getEpoOverview, getEpoSliceDetail, getProjectState, listDocumentationLibrary } from "../epo/epoService.js";
 import { BUILD_STATE_ENGINE_ID, computeBuildState } from "./buildStateEngine.js";
+import { certifyCurrentModule } from "./moduleCertificationEngine.js";
 import { computeV1CommandCenter } from "./v1CommandCenterEngine.js";
 import { parseSliceRegistry } from "./sliceRegistry.js";
 
@@ -76,7 +77,15 @@ test("getEpoOverview exposes build state engine fields", () => {
   assert.ok(overview.project_state.launch_countdown);
   assert.ok(overview.project_state.ceo_mode);
   assert.ok(overview.project_state.ceo_mode.v1_roadmap.length === 9);
-  assert.ok(overview.project_state.days_to_beta != null || overview.project_state.days_to_beta === null);
+  assert.ok(overview.project_state.ceo_mode.current_module_certification);
+});
+
+test("certifyCurrentModule produces dimension rows for Executive Office", () => {
+  const card = certifyCurrentModule("executive_office");
+  assert.ok(card);
+  assert.equal(card!.module_id, "executive_office");
+  assert.equal(card!.dimensions.length, 6);
+  assert.ok(card!.dimensions.some((d) => d.dimension_id === "navigation"));
 });
 
 test("getProjectState is single source of truth for launch metrics", () => {

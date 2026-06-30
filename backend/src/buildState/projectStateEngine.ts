@@ -7,6 +7,8 @@ import type {
 import {
   FACTORY_ENVIRONMENT_MODEL,
   PROJECT_STATE_ENGINE_ID,
+  BURT_V1_MISSION,
+  V1_MODULE_REVIEW_REQUEST,
   V1_ROADMAP_ITEMS,
   V2_SCOPE_RULE,
   type CeoModeBrief,
@@ -15,6 +17,7 @@ import {
 import { changelogDecisions } from "../epo/checklistParser.js";
 import type { BuildStateSnapshot } from "./buildStateEngine.js";
 import { computeBuildState } from "./buildStateEngine.js";
+import { certifyCurrentModule } from "./moduleCertificationEngine.js";
 import { getCommitCount, getRecentCommits } from "./gitMetrics.js";
 import { computeV1CommandCenter } from "./v1CommandCenterEngine.js";
 import { recordV1Heartbeat } from "./v1Heartbeat.js";
@@ -61,11 +64,17 @@ function buildHistoryTimeline(): BuildHistoryDay[] {
     }));
 }
 
-function resolveCurrentModule(cc: V1CommandCenter): string | null {
+function resolveCurrentModuleId(cc: V1CommandCenter): string | null {
   const active = cc.modules.find(
     (m) => m.status === "in_progress" || m.status === "blocked",
   );
-  return active?.name ?? cc.modules.find((m) => m.status === "waiting")?.name ?? null;
+  return active?.module_id ?? cc.modules.find((m) => m.status === "waiting")?.module_id ?? null;
+}
+
+function resolveCurrentModule(cc: V1CommandCenter): string | null {
+  const id = resolveCurrentModuleId(cc);
+  if (id) return cc.modules.find((m) => m.module_id === id)?.name ?? null;
+  return null;
 }
 
 function resolveCurrentBurtPacket(
@@ -136,9 +145,11 @@ function buildCeoMode(
     : cc.blocked_summary;
 
   const heartbeat = recordV1Heartbeat(launch_score_percent, days_to_beta);
+  const moduleId = resolveCurrentModuleId(cc);
 
   return {
     module_finishing_today: module_finishing_today ?? null,
+    current_module_id: moduleId,
     blocks_v1_most: blocks_v1_most ?? null,
     wait_until_v2: V2_SCOPE_RULE,
     completed_since_yesterday: cc.finished_yesterday,
@@ -146,6 +157,9 @@ function buildCeoMode(
     launch_momentum_label: heartbeat.momentum_label,
     days_to_beta,
     v1_roadmap: roadmapRows(cc),
+    current_module_certification: certifyCurrentModule(moduleId),
+    burt_mission: BURT_V1_MISSION,
+    module_review_instruction: V1_MODULE_REVIEW_REQUEST.instruction,
   };
 }
 

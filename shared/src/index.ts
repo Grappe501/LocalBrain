@@ -33,6 +33,22 @@ export type {
   SliceStatus,
 } from "./epo.js";
 export type {
+  V1CertDimensionId,
+  V1CertDimensionRow,
+  V1CertDimensionStatus,
+  V1ModuleCertificationCard,
+  V1ModuleLaunchStatus,
+  V1ModuleReviewRequest,
+  V1ModuleReviewVerdict,
+} from "./v1ModuleCertification.js";
+export {
+  BURT_V1_MISSION,
+  V1_CERT_DIMENSION_LABELS,
+  V1_DEFINITION_OF_DONE,
+  V1_MODULE_REVIEW_REQUEST,
+  V1_MODULE_REVIEW_TEMPLATE,
+} from "./v1ModuleCertification.js";
+export type {
   CeoModeBrief,
   V1RoadmapItemRow,
   V1RoadmapItemStatus,

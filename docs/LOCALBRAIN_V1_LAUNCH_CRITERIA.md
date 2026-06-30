@@ -59,11 +59,11 @@ Record those in [VERSION2_BACKLOG.md](./VERSION2_BACKLOG.md).
 
 > No module is complete until demonstrably testable in isolation — demo screen, test suite, readiness indicator, pass/fail certification.
 
-Tracked live in [Program Office Build Command Center](./LOCALBRAIN_V1_BUILD_COMMAND_CENTER.md).
+> **V1 Definition of Done:** Every module in V1 has been independently certified before becoming part of the product.
 
-**Kelly Sandbox golden test (binding from Factory phase):** Every completed module must answer *Does this work correctly against Kelly Sandbox?* If yes, certify. If no, it is not complete.
+Certification dimensions: Navigation · Experience · Tests · Security · Kelly Sandbox · Launch (**CERTIFIED**).
 
-**Days to Beta:** Project heartbeat — defer any work that does not shorten the path to Commercial Beta.
+Tracked live in Program Office CEO mode · [module review template](./LOCALBRAIN_V1_MODULE_REVIEW.md).
 
 ---
 

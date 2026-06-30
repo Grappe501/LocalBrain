@@ -55,8 +55,11 @@ export const BURT_PACKET_V1_ROADMAP_BLOCK = `> **LOCALBRAIN V1 ROADMAP** · Arch
 > \`\`\`
 `;
 
+import type { V1ModuleCertificationCard } from "./v1ModuleCertification.js";
+
 export interface CeoModeBrief {
   module_finishing_today: string | null;
+  current_module_id: string | null;
   blocks_v1_most: string | null;
   wait_until_v2: string;
   completed_since_yesterday: string[];
@@ -64,4 +67,7 @@ export interface CeoModeBrief {
   launch_momentum_label: string;
   days_to_beta: number | null;
   v1_roadmap: V1RoadmapItemRow[];
+  current_module_certification: V1ModuleCertificationCard | null;
+  burt_mission: string;
+  module_review_instruction: string;
 }

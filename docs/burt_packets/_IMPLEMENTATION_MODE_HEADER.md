@@ -49,4 +49,6 @@ and continue implementation. Do not expand doctrine.
 
 **Module complete when:** Does this work correctly against Kelly Sandbox? If yes, certify. If no, not complete.
 
-**Reference:** [LOCALBRAIN_V1_IMPLEMENTATION_MODE.md](../LOCALBRAIN_V1_IMPLEMENTATION_MODE.md)
+**Burt mission:** Finish the current module. Review with [LOCALBRAIN_V1_MODULE_REVIEW.md](../LOCALBRAIN_V1_MODULE_REVIEW.md).
+
+**Reference:** [LOCALBRAIN_V1_CONSTRUCTION_PHASE.md](../LOCALBRAIN_V1_CONSTRUCTION_PHASE.md)

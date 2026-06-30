@@ -232,6 +232,50 @@ export function ProgramOfficeView() {
           ))}
         </ol>
         <p className="epo-ceo__footer">Everything else → VERSION2_BACKLOG.md</p>
+        <p className="epo-ceo__burt">{ps.ceo_mode.burt_mission}</p>
+
+        {ps.ceo_mode.current_module_certification ? (
+          <section className="epo-cert" aria-label="Current module certification">
+            <h3>{ps.ceo_mode.current_module_certification.module_name}</h3>
+            <p className="epo-cert__purpose">{ps.ceo_mode.current_module_certification.purpose}</p>
+            <table className="epo-cert__table">
+              <thead>
+                <tr>
+                  <th>Dimension</th>
+                  <th>Status</th>
+                  <th>Evidence</th>
+                </tr>
+              </thead>
+              <tbody>
+                {ps.ceo_mode.current_module_certification.dimensions.map((row) => (
+                  <tr key={row.dimension_id}>
+                    <td>{row.label}</td>
+                    <td>
+                      <span className={`epo-cert__status epo-cert__status--${row.status}`}>
+                        {row.status === "pass"
+                          ? "PASS"
+                          : row.status === "needs_work"
+                            ? "NEEDS WORK"
+                            : row.status === "pending"
+                              ? "PENDING"
+                              : "N/A"}
+                      </span>
+                    </td>
+                    <td className="epo-cert__evidence">{row.evidence ?? "—"}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <p className="epo-cert__launch">
+              Launch:{" "}
+              <strong className={`epo-cert__launch--${ps.ceo_mode.current_module_certification.launch_status}`}>
+                {ps.ceo_mode.current_module_certification.launch_status === "certified"
+                  ? "CERTIFIED"
+                  : ps.ceo_mode.current_module_certification.review_verdict ?? "IN PROGRESS"}
+              </strong>
+            </p>
+          </section>
+        ) : null}
       </section>
 
       <details className="epo-details">

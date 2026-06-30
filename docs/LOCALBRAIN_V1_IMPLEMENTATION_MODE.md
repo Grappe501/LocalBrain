@@ -1,5 +1,6 @@
 # LocalBrain V1 — Implementation Mode
 
+> **Phase 2:** [Construction](./LOCALBRAIN_V1_CONSTRUCTION_PHASE.md) — certified modules, not documents  
 > **Effective:** Architecture feature freeze — launch path only  
 > **V1 wins by launching.** V2 wins by evolving.
 
@@ -114,6 +115,10 @@ Template: [burt_packets/_IMPLEMENTATION_MODE_HEADER.md](./burt_packets/_IMPLEMEN
 
 ## Burt packet rule (implementation missions only)
 
+**Burt mission:** Finish the current module. Not improve architecture. Not expand vision.
+
+Every Burt return: **Review this module** — [review template](./LOCALBRAIN_V1_MODULE_REVIEW.md).
+
 **Burt stops receiving design work.** Every new Burt packet **must** begin with:
 
 ```txt
@@ -153,6 +158,8 @@ LocalBrain Factory → Executive Institution → Executive Cognition
 
 ## Related
 
+* [LOCALBRAIN_V1_CONSTRUCTION_PHASE.md](./LOCALBRAIN_V1_CONSTRUCTION_PHASE.md)
+* [LOCALBRAIN_V1_MODULE_REVIEW.md](./LOCALBRAIN_V1_MODULE_REVIEW.md)
 * [PHASE_CHECKLIST.md](./PHASE_CHECKLIST.md)
 * [VERSION2_BACKLOG.md](./VERSION2_BACKLOG.md)
 * [LOCALBRAIN_V1_LAUNCH_CRITERIA.md](./LOCALBRAIN_V1_LAUNCH_CRITERIA.md)

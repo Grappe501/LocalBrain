@@ -5272,6 +5272,75 @@ a {
   color: #64748b;
 }
 
+.epo-ceo__burt {
+  margin: 0.75rem 0 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-style: italic;
+  color: #334155;
+}
+
+.epo-cert {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.epo-cert h3 {
+  margin: 0 0 0.35rem;
+}
+
+.epo-cert__purpose {
+  margin: 0 0 0.75rem;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.epo-cert__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.epo-cert__table th,
+.epo-cert__table td {
+  border: 1px solid #e2e8f0;
+  padding: 0.35rem 0.5rem;
+  text-align: left;
+}
+
+.epo-cert__status--pass {
+  color: #15803d;
+  font-weight: 700;
+}
+
+.epo-cert__status--needs_work {
+  color: #b45309;
+  font-weight: 700;
+}
+
+.epo-cert__status--pending {
+  color: #64748b;
+}
+
+.epo-cert__evidence {
+  color: #475569;
+  font-size: 0.75rem;
+}
+
+.epo-cert__launch {
+  margin: 0.75rem 0 0;
+  font-size: 0.9rem;
+}
+
+.epo-cert__launch--certified {
+  color: #15803d;
+}
+
+.epo-cert__launch--needs_work {
+  color: #b45309;
+}
+
 .epo-details {
   margin-bottom: 1.5rem;
 }
