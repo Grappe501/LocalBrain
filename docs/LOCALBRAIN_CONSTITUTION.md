@@ -262,7 +262,7 @@ Non-negotiable **laws** for Phase 2+. Every engine, API, prompt, and workflow mu
 
 Evolution is **experimental** — see [Executive Cognitive Science](./LOCALBRAIN_EXECUTIVE_COGNITIVE_SCIENCE.md) · [Research Agenda](./LOCALBRAIN_RESEARCH_AGENDA.md). **Why** it should work: [Theory of Executive Cognition](./LOCALBRAIN_THEORY_OF_EXECUTIVE_COGNITION.md).
 
-**Concept freeze:** No new architectural doctrine after Theory document. Implementations answer: axiom · hypothesis · theory prediction · measurable judgment improvement.
+**Concept freeze:** No new doctrine after Theory v1.0. **[Peer Review](./LOCALBRAIN_EXECUTIVE_COGNITION_PEER_REVIEW.md)** required before H-027. Evidence → [Cognitive Evidence Base](./LOCALBRAIN_COGNITIVE_EVIDENCE_BASE.md).
 
 ---
 
@@ -295,7 +295,9 @@ LOCALBRAIN_CONSTITUTION.md          ← you are here
 ├── LOCALBRAIN_EXECUTIVE_MEMORY_OS.md (Memory OS · Memory Confidence · Phase 2–3)
 ├── LOCALBRAIN_EXECUTIVE_COGNITION_AXIOMS.md (Article XIV — seven laws · invariants · conservation)
 ├── LOCALBRAIN_EXECUTIVE_COGNITIVE_SCIENCE.md (hypotheses · falsification · WMA)
-├── LOCALBRAIN_THEORY_OF_EXECUTIVE_COGNITION.md (why the architecture should work · concept freeze)
+├── LOCALBRAIN_THEORY_OF_EXECUTIVE_COGNITION.md (v1.0 · scope · concept freeze)
+├── LOCALBRAIN_EXECUTIVE_COGNITION_PEER_REVIEW.md (gate before H-027 · not a design meeting)
+├── LOCALBRAIN_COGNITIVE_EVIDENCE_BASE.md (living · hypotheses · bibliography)
 ├── LOCALBRAIN_RESEARCH_AGENDA.md (open research questions · H-* registry)
 ├── LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md (gate before LB-OS-027)
 ├── LOCALBRAIN_EXECUTIVE_COGNITION.md (agency · tension · trajectories · Phase 2+ capabilities)

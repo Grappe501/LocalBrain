@@ -1,9 +1,39 @@
 # A Theory of Executive Cognition
 
-> **Status:** Intellectual foundation — field-level · not LocalBrain-specific alone  
+> **Status:** **Theory v1.0** — frozen after [Peer Review](./LOCALBRAIN_EXECUTIVE_COGNITION_PEER_REVIEW.md) passes five gate questions · amendments only via documented process  
 > **Layer:** Beside [Executive Cognitive Science](./LOCALBRAIN_EXECUTIVE_COGNITIVE_SCIENCE.md) — not above it · not a sixth platform system  
 > **Science asks:** *Does this work?* **Theory asks:** *Why should this work?*  
-> **Parent:** [Executive Cognition Axioms](./LOCALBRAIN_EXECUTIVE_COGNITION_AXIOMS.md) · [Constitution](./LOCALBRAIN_CONSTITUTION.md)
+> **Parent:** [Executive Cognition Axioms](./LOCALBRAIN_EXECUTIVE_COGNITION_AXIOMS.md) · [Constitution](./LOCALBRAIN_CONSTITUTION.md) · [Evidence Base](./LOCALBRAIN_COGNITIVE_EVIDENCE_BASE.md)
+
+---
+
+## Scope (explicit boundary)
+
+> **This theory models executive cognition:** the processes involved in directing work, allocating attention, making decisions under uncertainty, preserving institutional knowledge, and improving judgment over time.
+
+> **It does not claim to model** the full breadth of human cognition, consciousness, emotion, or creativity.
+
+Explicit scope is a strength. Good theories state what they explain and what they do not.
+
+---
+
+## Theory v1.0
+
+```txt
+Theory of Executive Cognition
+  v1.0
+  Frozen (pending peer review sign-off)
+```
+
+Future changes are **amendments** — like the Constitution. Record in [Cognitive Evidence Base](./LOCALBRAIN_COGNITIVE_EVIDENCE_BASE.md).
+
+| Change type | Frequency |
+| ----------- | --------- |
+| Theory | Rare (years) |
+| Science | Occasionally (months) |
+| Software | Frequently (days) |
+
+Software must not change theory every sprint.
 
 ---
 

@@ -365,9 +365,12 @@ Remaining Convention outputs (ontology · unknowns · lifecycle · ethics) uncha
 ## Gate
 
 ```txt
-All five sessions complete → LB-OS-027 may enter spec lock
+Peer Review passed (five gate questions) → Theory v1.0 frozen
+All five Convention sessions complete → LB-OS-027 may enter spec lock
 No Convention → no Phase 2 memory substrate code
 ```
+
+See [Executive Cognition Peer Review](./LOCALBRAIN_EXECUTIVE_COGNITION_PEER_REVIEW.md) · [Cognitive Evidence Base](./LOCALBRAIN_COGNITIVE_EVIDENCE_BASE.md).
 
 System 1 remains frozen per [Executive OS v1.0 Freeze](./LOCALBRAIN_EXECUTIVE_OS_V1_FREEZE.md).
 
