@@ -1,5 +1,5 @@
 /**
- * LB-OS-PROD-002–007 — Reserved product arc (no implementation in these slices)
+ * LB-OS-PROD-002–009 — Reserved product arc (no implementation in these slices)
  * Package-first sequence before Memory OS ingestion.
  */
 
@@ -9,10 +9,19 @@ export const PRODUCT_SLICE_MEDIA_STUDIO = "LB-OS-PROD-004";
 export const PRODUCT_SLICE_INGESTION_PLANNER = "LB-OS-PROD-005";
 export const PRODUCT_SLICE_MOBILE = "LB-OS-PROD-006";
 export const PRODUCT_SLICE_INSTANCE_IDENTITY = "LB-OS-PROD-007";
+export const PRODUCT_SLICE_EXECUTIVE_AUTHORITY = "LB-OS-PROD-008";
+export const PRODUCT_SLICE_EXECUTIVE_PASSPORT = "LB-OS-PROD-009";
 
 /** Signed license records only — no plain-text codes in source, commits, or settings exports. */
 export const LICENSE_STORAGE_RULE =
   "License entitlements are stored as signed license records verified locally — never as hardcoded plain-text codes in the repository.";
+
+/**
+ * License binds to Executive Identity — not hardware.
+ * Steve Lifetime License → Steve Identity → current authority holder (primary server).
+ */
+export const LICENSE_IDENTITY_BINDING_RULE =
+  "License entitlements attach to Executive Identity, not to a physical machine. Hardware replacement re-binds the same identity to a new authority — no re-purchase.";
 
 /**
  * Forever entitlements (e.g. STEVE-LIFETIME, KELLY-LIFETIME) are issued at activation as
@@ -109,11 +118,16 @@ export const MOBILE_ACCESS_DOCTRINE =
 export const CONNECTOR_GOVERNANCE_CHAIN = "ENC → DPEC → connector" as const;
 
 /**
- * LB-OS-PROD-007 — One person/organization = one active primary LocalBrain.
- * Multiple devices may access it; multiple independent primary servers may not.
+ * LB-OS-PROD-007 — One authoritative identity; one ACTIVE_PRIMARY authority at a time.
+ * Evolved framing: One LocalBrain = One Authoritative Identity (not "one server forever").
+ * The primary server is the current authority holder — it may move via controlled transfer or recovery.
  */
 export const SINGLE_PRIMARY_RULE =
-  "One person or organization = one active primary LocalBrain. Multiple devices may access it. Multiple primary servers may not run independently for the same identity.";
+  "One Executive Identity = one authoritative brain at a time. Multiple client devices may access it. Multiple independent authorities for the same identity may not run concurrently.";
+
+/** Alias doctrine — authority over hardware. */
+export const ONE_AUTHORITY_RULE =
+  "One LocalBrain = one authoritative identity. The primary server is simply the current authority for that identity — it need not stay on the same hardware forever.";
 
 export const SINGLE_PRIMARY_ALLOWED = [
   "one_primary_server_per_identity",
@@ -186,3 +200,117 @@ export const INSTANCE_IDENTITY_BUILDS = [
 ] as const;
 
 export type InstanceIdentityBuild = (typeof INSTANCE_IDENTITY_BUILDS)[number];
+
+/**
+ * LB-OS-PROD-008 — Executive Identity Authority.
+ * Foundational layer: identity certificates, authority election, transfer/recovery, backups, signing root.
+ */
+export const EXECUTIVE_AUTHORITY_BUILDS = [
+  "identity_certificates",
+  "authority_election",
+  "transfer_authority",
+  "disaster_recovery",
+  "encrypted_automatic_snapshots",
+  "cryptographic_signing_root",
+  "authority_audit_log",
+] as const;
+
+export type ExecutiveAuthorityBuild = (typeof EXECUTIVE_AUTHORITY_BUILDS)[number];
+
+/**
+ * Encrypted snapshot chain — snapshots are insurance, never active authorities.
+ * An inactive snapshot cannot answer questions, generate AI, or communicate.
+ */
+export const ENCRYPTED_SNAPSHOT_CHAIN = [
+  "active_brain",
+  "encrypted_snapshot",
+  "encrypted_backup",
+  "optional_offline_copy",
+] as const;
+
+export type EncryptedSnapshotStage = (typeof ENCRYPTED_SNAPSHOT_CHAIN)[number];
+
+export const SNAPSHOT_INACTIVE_RULE =
+  "Encrypted snapshots and backups are never active authorities — they cannot answer questions, invoke AI, or communicate. Insurance only.";
+
+/** Disaster recovery without divergence — new authority from encrypted snapshot. */
+export const DISASTER_RECOVERY_STEPS = [
+  "restore_encrypted_snapshot",
+  "verify_integrity_and_signatures",
+  "activate_authority",
+  "resume_working",
+] as const;
+
+export type DisasterRecoveryStep = (typeof DISASTER_RECOVERY_STEPS)[number];
+
+/**
+ * LB-OS-PROD-009 — Executive Passport for inter-brain trust.
+ * Scalable handshake between distinct LocalBrain identities.
+ */
+export const EXECUTIVE_PASSPORT_FIELDS = [
+  "identity",
+  "public_certificate",
+  "capabilities",
+  "version",
+  "trust_level",
+  "office_structure",
+  "permissions",
+] as const;
+
+export type ExecutivePassportField = (typeof EXECUTIVE_PASSPORT_FIELDS)[number];
+
+export const PASSPORT_HANDSHAKE_STEPS = [
+  "brain_a_initiates",
+  "handshake",
+  "passport_exchange",
+  "trust_verification",
+  "workspace_permissions",
+  "encrypted_session",
+] as const;
+
+export type PassportHandshakeStep = (typeof PASSPORT_HANDSHAKE_STEPS)[number];
+
+/**
+ * Multi-brain collaboration model — each brain owns private memory;
+ * shared workspace owns project objects; only approved workspace objects sync.
+ */
+export const MULTI_BRAIN_WORKSPACE_RULE =
+  "Each brain owns its own memories. A shared workspace owns the project. No private memory leaks — only approved workspace objects synchronize.";
+
+/** Long-term LocalBrain architecture stack (personal OS for executive institutions). */
+export const EXECUTIVE_ARCHITECTURE_STACK = [
+  "executive_identity",
+  "executive_passport",
+  "authority_certificate",
+  "authoritative_brain",
+  "executive_office",
+  "institution",
+  "memory_os",
+  "world_model",
+  "chief_of_staff",
+  "departments",
+  "providers",
+] as const;
+
+export type ExecutiveArchitectureLayer = (typeof EXECUTIVE_ARCHITECTURE_STACK)[number];
+
+/**
+ * Implementation doctrine — every LocalBrain object cryptographically signed at rest and on sync.
+ * Enables end-to-end integrity, strong audits, and trusted inter-brain sync without blind trust.
+ */
+export const SIGNED_OBJECT_DOCTRINE =
+  "Every LocalBrain object — memories, decisions, messages, workspace updates, transfers — is cryptographically signed for integrity verification and trusted synchronization.";
+
+/** Object classes subject to SIGNED_OBJECT_DOCTRINE when implemented. */
+export const SIGNED_OBJECT_CLASSES = [
+  "memories",
+  "decisions",
+  "messages",
+  "workspace_updates",
+  "transfers",
+  "snapshots",
+  "passport_packets",
+  "license_records",
+] as const;
+
+export type SignedObjectClass = (typeof SIGNED_OBJECT_CLASSES)[number];

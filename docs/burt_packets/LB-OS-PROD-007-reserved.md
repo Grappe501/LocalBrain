@@ -1,6 +1,7 @@
 # LB-OS-PROD-007 — Instance Identity, Transfer, and Single-Primary Enforcement
 
 > **Depends on:** LB-OS-PROD-001 ✅ · LB-OS-PROD-002 (license — reserved)  
+> **Evolution:** [PROD-008](./LB-OS-PROD-008-009-reserved.md) elevates this to **one authority** — primary server = current authority holder  
 > **Blocks:** Multi-primary same identity · uncontrolled server duplication  
 > **Rule:** Reserve only — no identity certificate, transfer bundle, or session registry in this pass
 
@@ -8,9 +9,9 @@
 
 ## Mission
 
-Enforce **one active primary instance per LocalBrain identity** until multi-instance behavior is intentionally designed. Protects licensing, memory integrity, and data sovereignty.
+Enforce **one authoritative identity** with **one ACTIVE_PRIMARY authority** at a time until multi-instance behavior is intentionally designed. The primary server is the current authority holder — not permanent hardware lock-in. Protects licensing, memory integrity, and data sovereignty.
 
-Kelly and Chris each get their own LocalBrain identity — **one primary server, many client devices**.
+Kelly and Chris each get their own LocalBrain identity — **one authority, many client devices**.
 
 **Capability:** `CAP-FUT-IDT-001`  
 **Route (future):** `/future/instance-identity`
@@ -121,7 +122,9 @@ Transfer audit log
 ```txt
 PROD-001 Empty brain onboarding ✅
 PROD-002 License gate (reserved)
-PROD-007 Instance identity + single-primary (reserved)  ← before multi-device scale-out
+PROD-007 Instance identity + single-primary (reserved)  ← operational enforcement
+PROD-008 Executive Identity Authority (reserved)        ← certificates, recovery, snapshots, signing root
+PROD-009 Executive Passport (reserved)                    ← inter-brain trust handshake
 PROD-006 Mobile PWA clients (reserved)                  ← consumes PROD-007 sessions
 PROD-005 Ingestion planner (reserved)
 ```

@@ -50,7 +50,13 @@ STEVE-LIFETIME
 KELLY-LIFETIME
 ```
 
-Stored as **signed license records** bound to `instance_id` — **not** hardcoded plain text in source, commits, or config exports. Redemption labels are activation-time only.
+Stored as **signed license records bound to Executive Identity** — not hardware, not plain text in repo. Flow:
+
+```txt
+Steve Lifetime License → Steve Identity → current authority holder (primary server)
+```
+
+Hardware replacement re-binds the same identity — no re-purchase.
 
 ---
 
@@ -141,4 +147,4 @@ Later: remote via VPN
 | PROD-005 | CAP-FUT-ING-001 | `/future/ingestion-planner` |
 | PROD-006 | CAP-FUT-MOB-001 | `/future/mobile-access` |
 
-See also: [LB-OS-PROD-007 — Instance Identity & Single-Primary](./LB-OS-PROD-007-reserved.md)
+See also: [LB-OS-PROD-007 — Instance Identity & Single-Primary](./LB-OS-PROD-007-reserved.md) · [LB-OS-PROD-008–009 — Authority & Passport](./LB-OS-PROD-008-009-reserved.md)
