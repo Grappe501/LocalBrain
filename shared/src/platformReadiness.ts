@@ -158,7 +158,7 @@ export const EXECUTIVE_OS_V1_FREEZE_POLICY =
 
 export const RECOMMENDED_PHASE_2_SEQUENCE = [
   "LB-OS-026.5 Phase 1 Certification",
-  "Memory Summit — architecture gate (no code)",
+  "Executive Epistemology Convention — architecture gate (no code)",
   "LB-OS-027 Executive Memory Bootstrap",
   "LB-OS-028 Memory Ingestion",
   "LB-OS-029 Memory Retrieval",

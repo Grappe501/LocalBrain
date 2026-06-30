@@ -9,6 +9,8 @@
 
 Shift from organizing by **features** to organizing by **Executive Questions**.
 
+The platform does not ask *"What do I know?"* It asks **"What question am I trying to answer?"** — see [Executive Epistemology Convention](./LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md).
+
 Every major page answers **one canonical question**. The Chief of Staff routes to the **authoritative owner** of that question — not to three dashboards that partially overlap.
 
 ```txt
@@ -19,6 +21,35 @@ Right:  "What should I consolidate?" → /migration/consolidation
 **LB-OS-020.5 binding objective:**
 
 > **Every Executive Question has exactly one authoritative answer.**
+
+---
+
+## Three classes of questions
+
+| Class | Scope | Examples |
+| ----- | ----- | -------- |
+| **Operational** | Where things are · system state | Where is this file? · How much disk space? · Which workspace owns this? |
+| **Executive** | What to do · priorities · approvals | What should I work on today? · Why is this blocked? · Should I approve this migration? |
+| **Epistemic** | What we know · assumptions · gaps | What do we actually know? · What assumptions are we making? · What contradicts this? · What are we missing? |
+
+Phase 1 registry (below) is primarily **Operational** and **Executive**. **Epistemic** questions become the foundation of Executive Intelligence in Phase 2.
+
+### Requested vs Emergent
+
+| Kind | Source |
+| ---- | ------ |
+| **Requested** | Steve asks — e.g. "Where are my RedDirt documents?" |
+| **Emergent** | System asks — e.g. "Why are three workspaces referencing the same archive?" |
+
+Emergent questions are where Executive Intelligence creates leverage.
+
+### Transparent recommendation chain
+
+Every recommendation carries its originating question:
+
+```txt
+Question → Evidence → Memory → Knowledge → Beliefs considered → Understanding applied → Recommendation
+```
 
 ---
 

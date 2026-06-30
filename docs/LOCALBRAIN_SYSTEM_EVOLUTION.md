@@ -35,7 +35,19 @@ Phase 2 surfaces **learning cards** as Executive Intelligence Cards — same mod
 
 ---
 
-## Questions this page answers
+## Question maturity metrics (Phase 2+)
+
+Per [Executive Epistemology Convention](./LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md) — Evolution measures organizational maturity through questions, not only recommendation acceptance:
+
+```txt
+Questions answered
+Questions eliminated
+Questions discovered
+Questions deferred
+Recurring questions
+```
+
+---
 
 ```text
 What became smarter this month?

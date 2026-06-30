@@ -14,19 +14,22 @@
 ```txt
 The platform shall remember before it reasons.
 The platform shall distinguish what it remembers from what it concludes.
+The purpose of the platform is not to accumulate answers —
+  it is to continuously improve the quality of the questions it can ask and answer.
 ```
 
 Phase 1 builds a trustworthy **Executive Operating System**.  
-Phase 2+ specifies **executive epistemology** — memory as an operating layer, not a database feature or generic RAG.
+Phase 2+ specifies **executive epistemology** — question-first cognition, not answer-oriented retrieval.
 
-**Gate before LB-OS-027:** [Memory Summit](./LOCALBRAIN_MEMORY_SUMMIT.md) — five-session constitutional convention for Systems 2–4.
+**Gate before LB-OS-027:** [Executive Epistemology Convention](./LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md) — five sessions; architecture only, no code.
 
 ```txt
 Today (Phase 1):
   Steve → Question → Chief of Staff → Answer
 
 Phase 2+:
-  Steve → Mission → Memory → Knowledge → Beliefs → Understanding → Reasoning → Decision → Outcome → Learning
+  Question → Observation → Memory → Knowledge → Beliefs → Understanding
+    → Mission → Reasoning → Decision → Outcome → Learning → New Questions
 ```
 
 **Memory sits before reasoning.** **Belief is revisable; verified memory is not.** **Understanding** is a stable network of validated conclusions supported by knowledge and memory — it evolves more slowly than beliefs.
@@ -64,7 +67,7 @@ Data → Information → Memory → Knowledge → Belief → Understanding → R
 
 Beliefs require: knowledge strength · certainty · supporting evidence · contradicting evidence · last evaluated · why the belief exists.
 
-Full specification: [Memory Summit](./LOCALBRAIN_MEMORY_SUMMIT.md) · master epistemology diagram.
+Full specification: [Executive Epistemology Convention](./LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md) · master epistemology diagram.
 
 **Do not build Memory OS in Phase 1.** Foundation exists (registry, workspaces, Decision Ledger spec, Memory Domains v1). Full Memory OS layer ships in Phase 2–3.
 

@@ -1,7 +1,7 @@
 # LB-OS-026.5 — Phase 1 Certification & Hardening
 
 > **Depends on:** LB-OS-026  
-> **Next:** Memory Summit → LB-OS-027 Executive Memory Bootstrap
+> **Next:** Executive Epistemology Convention → LB-OS-027 Executive Memory Bootstrap
 
 ---
 

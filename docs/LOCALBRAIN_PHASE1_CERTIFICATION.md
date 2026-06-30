@@ -100,10 +100,10 @@ After LB-OS-026.5 passes, see [Executive OS v1.0 Freeze](./LOCALBRAIN_EXECUTIVE_
 ## Recommended Phase 2 sequence
 
 **Doctrine:** Teach LocalBrain to remember before it learns to reason.  
-**Gate:** [Memory Summit](./LOCALBRAIN_MEMORY_SUMMIT.md) before LB-OS-027 code — five-session constitutional convention for Systems 2–4.
+**Gate:** [Executive Epistemology Convention](./LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md) before LB-OS-027 code.
 
 ```txt
-Memory Summit   architecture only
+Executive Epistemology Convention   architecture only — questions first
 027             Executive Memory Bootstrap
 028             Memory Ingestion
 029             Memory Retrieval

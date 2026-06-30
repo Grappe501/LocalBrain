@@ -69,11 +69,11 @@
 
 > **Doctrine:** Teach LocalBrain to remember before it learns to reason.  
 > **Constitution:** [Article XIII — Executive Principle](./LOCALBRAIN_CONSTITUTION.md#article-xiii--executive-principle)  
-> **Gate:** [Memory Summit](./LOCALBRAIN_MEMORY_SUMMIT.md) before LB-OS-027 code — architecture only, no implementation.
+> **Gate:** [Executive Epistemology Convention](./LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md) before LB-OS-027 code — five sessions; architecture only, no implementation.
 
 | Slice | Name | Status |
 |-------|------|--------|
-| — | Memory Summit (5 sessions) | 📋 SCHEDULED — [constitutional convention](./LOCALBRAIN_MEMORY_SUMMIT.md) |
+| — | Executive Epistemology Convention (5 sessions) | 📋 SCHEDULED — [specification](./LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md) |
 | LB-OS-027 | Executive Memory Bootstrap | ⬜ PLANNED |
 | LB-OS-028 | Memory Ingestion | ⬜ PLANNED |
 | LB-OS-029 | Memory Retrieval | ⬜ PLANNED |
@@ -371,7 +371,8 @@ Steve = owner · Actions = approval-gated · Audit = always on (when team ships)
 
 | Date | Change |
 |------|--------|
-| 2026-06-29 | Phase 1 complete — Article XIII Executive Principle · Memory Summit gate · Phase 2 arc 027–035 locked |
+| 2026-06-29 | Executive Epistemology Convention — question-first epistemology gate before LB-OS-027 |
+| 2026-06-29 | Phase 1 complete — Article XIII Executive Principle · Phase 2 arc 027–035 locked |
 | 2026-06-29 | LB-OS-026.5 certification — four platform metrics · Executive OS v1.0 architecture frozen |
 | 2026-06-29 | LB-OS-015 Relationship & Network Intelligence — social knowledge, graph, timeline, engagement |
 | 2026-06-29 | LB-OS-014 Data & Intelligence Department — sources, query plans, lineage, graph |

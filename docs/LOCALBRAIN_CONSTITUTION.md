@@ -189,14 +189,18 @@ Experience Maturity L0–L5 on every route · Dev mode shows badges; production 
 
 ## Article XIII — Executive Principle
 
-**Remember before you reason.**
+**Remember before you reason. Distinguish what you remember from what you conclude. Improve the questions.**
 
 ```txt
 The platform shall remember before it reasons.
 
 The platform shall distinguish what it remembers from what it concludes.
 
-Every recommendation must be traceable to memory,
+The purpose of the platform is not to accumulate answers.
+It is to continuously improve the quality of the questions it can ask and answer.
+
+Every recommendation must be traceable to the question that prompted it,
+memory,
 provenance,
 or deterministic evidence.
 
@@ -213,7 +217,7 @@ Understanding is accumulated.
 Reasoning operates on all of them — but never silently rewrites them.
 ```
 
-Binding for Phase 2+ intelligence work (LB-OS-027–035). See [Executive Memory OS](./LOCALBRAIN_EXECUTIVE_MEMORY_OS.md) · [Memory Summit](./LOCALBRAIN_MEMORY_SUMMIT.md).
+Binding for Phase 2+ intelligence work (LB-OS-027–035). See [Executive Memory OS](./LOCALBRAIN_EXECUTIVE_MEMORY_OS.md) · [Executive Epistemology Convention](./LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md).
 
 ---
 
@@ -244,7 +248,8 @@ LOCALBRAIN_CONSTITUTION.md          ← you are here
 ├── LOCALBRAIN_EXECUTIVE_QUESTION_REGISTRY.md (ENG-EQ-001 · LB-OS-020.5)
 ├── LOCALBRAIN_EXECUTIVE_INTENT.md (Executive Mission Stack · ENG-EMS-001 · MCP · Phase 2)
 ├── LOCALBRAIN_EXECUTIVE_MEMORY_OS.md (Memory OS · Memory Confidence · Phase 2–3)
-├── LOCALBRAIN_MEMORY_SUMMIT.md (architecture gate before LB-OS-027)
+├── LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md (gate before LB-OS-027)
+├── LOCALBRAIN_MEMORY_SUMMIT.md (redirect → Epistemology Convention)
 ├── LOCALBRAIN_MEMORY_DOMAINS.md (Memory foundational object · six domains)
 ├── LOCALBRAIN_EXECUTIVE_COGNITIVE_LOAD.md (ENG-ECL-001 · System 3 · Phase 2)
 ├── LOCALBRAIN_EXECUTIVE_LEVERAGE_SCORE.md (ENG-ELS-001)
