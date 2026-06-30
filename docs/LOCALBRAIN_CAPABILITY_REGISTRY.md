@@ -27,6 +27,26 @@ This is platform GPS — part of the world model, not UI polish.
 
 ---
 
+## Five-Question Admission Gate (permanent engineering rule)
+
+Every new capability must answer **five questions**. Not ten. Five.
+
+If any one cannot be answered, **it should not be built.**
+
+```txt
+1. Which Office owns it?
+2. Which Department executes it?
+3. Which Intelligence Domain supplies it?
+4. Which Capability implements it?
+5. Which Executive Outcome improves?
+```
+
+Maps to ENG-EO-001 (office · department · domain) and ENG-CAP-001 (`executive_outcome`). Prevents architecture drift.
+
+**Doctrine freeze:** No new architectural documents until after 026.7 polish → Session 4 → Session 5 → Theory freeze → Convention → Memory OS. Architecture evolves through evidence and implementation after that.
+
+---
+
 ## Capability record schema
 
 | Field | Purpose |

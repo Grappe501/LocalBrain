@@ -1,7 +1,21 @@
 /**
  * ENG-CAP-001 — Canonical Capability Registry (LB-OS-026.6)
  * Single metadata layer: navigation, workflows, EQ routing, and intent derive from here.
+ *
+ * Admission gate — every new capability must answer:
+ * 1. Which Office owns it?  2. Which Department executes it?
+ * 3. Which Intelligence Domain supplies it?  4. Which Capability implements it?
+ * 5. Which Executive Outcome improves?  — if any is unanswered, do not build.
  */
+
+/** Permanent five-question admission gate for new capabilities */
+export const CAPABILITY_ADMISSION_QUESTIONS = [
+  "Which Office owns it?",
+  "Which Department executes it?",
+  "Which Intelligence Domain supplies it?",
+  "Which Capability implements it?",
+  "Which Executive Outcome improves?",
+] as const;
 
 import {
   EXECUTIVE_CONNECTOR_GOVERNANCE,

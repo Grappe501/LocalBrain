@@ -167,7 +167,14 @@
 ## Phase 1.9 — Platform Consolidation (pre–Session 4)
 
 > **Rule:** No new architectural concepts · no Phase 2 cognitive code · make existing platform cohesive and discoverable  
-> **Prerequisite for:** Peer Review Session 4 (Executive Practitioner)
+> **Prerequisite for:** Peer Review Session 4 (Executive Practitioner)  
+> **Doctrine freeze:** No new architecture docs until Convention + Memory OS — evolve through evidence after that
+
+| Era | What was created | Status |
+| --- | --- | --- |
+| **Phase 1** | Executive Operating System | ✅ Built |
+| **Phase 1.9** | Executive Institution (reserved & defined) | ✅ Complete |
+| **Phase 2** | Executive Cognition | ⏳ Convention, then implementation |
 
 | Slice | Name | Status |
 |-------|------|--------|
@@ -179,6 +186,19 @@
 | LB-OS-026.7 | Executive Office (Executive Operating Environment) | ✅ Complete — [Burt](./burt_packets/LB-OS-026.7.md) · [Experience spec](./LOCALBRAIN_EXECUTIVE_OFFICE_EXPERIENCE.md) |
 
 **Gate:** Consolidation arc complete · **Next:** Experience Certification → Peer Review S4
+
+**Architecture phase:** ✅ **Complete** (2026-06-30) — institution reserved · five-question admission gate · doctrine freeze until Convention + Memory OS
+
+**Project habit:** Every future discussion starts by asking whether it belongs to **architecture**, **implementation**, or **evidence**.
+
+| Idea | Category | Action |
+| --- | --- | --- |
+| Support multiple Gmail accounts | Implementation | Build later (post-gate) |
+| Add voice cloning | Reserved capability | Reserve, don't build |
+| Improve JQ metric from evidence | Evidence | Research and test |
+| Create a sixth cognitive layer | Architecture | Reject unless Constitution reopened |
+
+**Success metrics (post-architecture):** institutional memory accumulated · executive judgment improved · CoS time saved · decisions better than otherwise · office runs predictably and transparently — not "how much built."
 
 **Post-consolidation sequence:**
 
