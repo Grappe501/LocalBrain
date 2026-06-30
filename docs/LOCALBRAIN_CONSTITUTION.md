@@ -194,6 +194,8 @@ Experience Maturity L0–L5 on every route · Dev mode shows badges; production 
 ```txt
 The platform shall remember before it reasons.
 
+The platform shall distinguish what it remembers from what it concludes.
+
 Every recommendation must be traceable to memory,
 provenance,
 or deterministic evidence.
@@ -203,6 +205,12 @@ It never replaces it.
 
 Memory and belief are distinct.
 Verified memory is not conflated with revisable belief.
+
+Memories are recalled.
+Conclusions are derived.
+Beliefs are revisable.
+Understanding is accumulated.
+Reasoning operates on all of them — but never silently rewrites them.
 ```
 
 Binding for Phase 2+ intelligence work (LB-OS-027–035). See [Executive Memory OS](./LOCALBRAIN_EXECUTIVE_MEMORY_OS.md) · [Memory Summit](./LOCALBRAIN_MEMORY_SUMMIT.md).

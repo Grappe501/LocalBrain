@@ -13,13 +13,13 @@
 Phase 1 taught LocalBrain **where everything is**.  
 Phase 2 must teach it **what everything means**.
 
-Before writing a line of Phase 2 code, define the **cognitive architecture specification** that Systems 2–4 will depend on for years. This is not a design meeting — it is the specification for executive cognition in software.
+Before writing a line of Phase 2 code, define the **executive epistemology** — a cognitive architecture specification for how knowledge is acquired, validated, organized, interpreted, and used in decision-making. This is not a design meeting and not merely software architecture.
 
 ```txt
 Teach LocalBrain to remember before it learns to reason.
 ```
 
-**Discipline:** Lock ontology before implementation. If the ontology is right, much of Phase 2 becomes straightforward; if wrong, elegant code accumulates conceptual debt.
+**Discipline:** Lock ontology before implementation. Phase 2 quality depends less on model APIs or retrieval algorithms than on getting these conceptual boundaries right. Once stable, implementation becomes engineering — not continual reinterpretation of what the system is supposed to know.
 
 ---
 
@@ -27,13 +27,17 @@ Teach LocalBrain to remember before it learns to reason.
 
 > **LocalBrain is an executive operating platform that separates work, knowledge, decisions, and improvement into distinct systems. It organizes the user's digital world through deterministic structure, remembers with provenance, reasons only after memory is assembled, and continuously evolves through verified outcomes rather than opaque model behavior.**
 
-Preserve this philosophy as Phase 2 unfolds. LocalBrain is no longer an ambitious desktop application — it is an attempt to **model executive cognition in software**. Resist rushing into implementation because the architecture is exciting.
+Preserve this philosophy as Phase 2 unfolds. LocalBrain is no longer an ambitious desktop application — it specifies **executive epistemology in software**: how knowledge is acquired, validated, organized, interpreted, and used. Resist rushing into implementation because the architecture is exciting.
 
 ---
 
 ## Six cognitive layers (target architecture)
 
-Memory OS should eventually produce **Understanding** — a coherent internal model, not merely accumulated knowledge. **Beliefs** help construct that model. **Reasoning** operates on Understanding — and tends to be brittle without it.
+**Understanding** is not merely accumulated knowledge. It is:
+
+> **A stable network of validated conclusions supported by knowledge and memory.**
+
+Understanding evolves more slowly than beliefs. **Beliefs** help construct understanding. **Reasoning** operates on understanding — and tends to be brittle without it.
 
 ```txt
 Data
@@ -78,6 +82,47 @@ Decision
 | **Decision** | Recommend involving Chris in the next planning session. |
 
 Everything after **Knowledge** contains increasing interpretation. **Belief is revisable. Memory should not be** (once verified — see Session 2 lifecycle).
+
+### Remembered vs Concluded
+
+**Knowing** what happened is not the same as **concluding** what it means.
+
+```txt
+Remembered
+Kelly spoke with Chris on Monday.
+  ↓
+Concluded
+Campaign planning is accelerating.
+```
+
+Conclusions always point back to the memories that support them — a transparent chain. Memories are **recalled**. Conclusions are **derived**. Reasoning operates on all layers but must never silently rewrite them.
+
+### Knowing vs Being Certain
+
+Do not collapse these into a single confidence score. Model them independently:
+
+| Dimension | Question |
+| --------- | -------- |
+| **Knowledge Strength** | How much evidence supports this? |
+| **Certainty** | How confident are we that our current understanding is correct? |
+
+**Historical observation:**
+
+```txt
+Knowledge:   Kelly and Chris have collaborated on 17 projects.
+Strength:    Very High
+Certainty:   Very High
+```
+
+**Forecast:**
+
+```txt
+Knowledge:   Chris is likely to become campaign manager.
+Strength:    Moderate
+Certainty:   Low
+```
+
+Built on history vs forecast — they must not live on the same axis.
 
 ### Earlier ladder levels (Session 1)
 
@@ -132,10 +177,11 @@ Session 1 must answer:
 
 > **Can the platform believe something that later proves false?**
 
-**Yes.** But beliefs must carry:
+**Yes.** But beliefs must carry — separately from knowledge strength and certainty:
 
 ```txt
-confidence
+knowledge strength
+certainty
 supporting evidence
 contradicting evidence
 last evaluated
@@ -168,31 +214,51 @@ This keeps System 3 (organizes decisions) clean and traceable per [Article XIII]
 
 ---
 
-## Cognitive architecture diagram (summit deliverable)
+## Master epistemology diagram (summit deliverable)
 
-Not code. A single diagram every future slice can be checked against:
+The summit ends with one diagram. Not code. Every future slice can be checked against it — each stage has a distinct responsibility; nothing overlaps.
 
 ```txt
 Physical World
         │
-Executive OS                 (organizes work)
+Observed Data
         │
-Executive Memory             (organizes knowledge)
+Information
+        │
+Memory
         │
 Knowledge
         │
-Belief Layer
+Beliefs
         │
 Understanding
         │
-Executive Intelligence       (organizes decisions)
+Mission
         │
-Executive Decisions
+Reasoning
         │
-Executive Evolution          (organizes improvement)
+Decision
+        │
+Action
+        │
+Outcome
+        │
+Learning
+        │
+Executive Evolution
 ```
 
-If this diagram is correct, slice placement and system boundaries stay coherent.
+| Stage | Responsibility |
+| ----- | -------------- |
+| Observed Data → Information | Situate raw facts |
+| Memory | Recall verified retention |
+| Knowledge | Organize durable judgment |
+| Beliefs | Hold revisable interpretation |
+| Understanding | Stable network of validated conclusions |
+| Mission → Reasoning → Decision | Executive Intelligence (System 3) |
+| Action → Outcome → Learning | Closed loop into Evolution (System 4) |
+
+Executive OS (System 1) organizes work across this stack without collapsing epistemic layers.
 
 ---
 
@@ -213,8 +279,10 @@ If this diagram is correct, slice placement and system boundaries stay coherent.
 | Can memories have confidence? |
 | Can memories expire? |
 | **Which truth kind applies — Objective · Relational · Interpretive?** |
+| **How do Knowledge Strength and Certainty differ?** |
+| **What is remembered vs what is concluded?** |
 
-**Output:** Memory ontology contract — six cognitive layers · Memory vs Belief boundary · three truth kinds.
+**Output:** Memory ontology contract — six cognitive layers · Memory vs Belief · Remembered vs Concluded · Knowledge Strength vs Certainty · three truth kinds.
 
 ---
 
@@ -297,8 +365,10 @@ Generated
 
 ```txt
 Last verified
-Confidence
+Knowledge strength
+Certainty
 Supporting evidence
+Contradicting evidence
 Referenced by
 Workspaces
 Decisions
@@ -308,10 +378,10 @@ Missions
 | Question |
 | -------- |
 | How does provenance chain to Decision Ledger and Action Pipeline? |
-| What is inferred vs observed? |
-| How is confidence updated on re-verification? |
+| What is inferred vs observed vs concluded? |
+| How are knowledge strength and certainty updated independently on re-verification? |
 
-**Output:** Provenance schema · confidence model direction (ENG-MC-001) · citation requirements for recommendations.
+**Output:** Provenance schema · knowledge strength + certainty model (ENG-MC-001) · citation requirements for recommendations.
 
 ---
 
@@ -338,12 +408,13 @@ Most systems skip this. These decisions become foundational.
 ## Summit deliverables (all sessions)
 
 ```txt
-Cognitive architecture diagram (systems + cognition layers)
-Memory ontology (six layers · Memory vs Belief · three truth kinds)
-Belief contract (confidence · evidence · revision)
+Master epistemology diagram (full pipeline — summit closing deliverable)
+Memory ontology (six layers · Memory vs Belief · Remembered vs Concluded)
+Knowledge Strength + Certainty model (independent dimensions)
+Belief contract (evidence · revision)
 Memory lifecycle state machine
 Recall explainability contract
-Provenance schema + confidence model direction
+Provenance schema
 Memory ethics policy
 LB-OS-027 Burt packet — Executive Memory Bootstrap
 ```
@@ -361,4 +432,4 @@ System 1 (Executive OS) remains frozen per [Executive OS v1.0 Freeze](./LOCALBRA
 
 ---
 
-*Memory Summit · cognitive architecture specification · Systems 2–4 · 2026*
+*Memory Summit · executive epistemology specification · Systems 2–4 · 2026*

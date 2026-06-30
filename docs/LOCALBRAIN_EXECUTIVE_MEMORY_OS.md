@@ -13,10 +13,11 @@
 
 ```txt
 The platform shall remember before it reasons.
+The platform shall distinguish what it remembers from what it concludes.
 ```
 
 Phase 1 builds a trustworthy **Executive Operating System**.  
-The next leap is an **Executive Memory System** — memory as an operating layer, not a database feature or generic RAG.
+Phase 2+ specifies **executive epistemology** — memory as an operating layer, not a database feature or generic RAG.
 
 **Gate before LB-OS-027:** [Memory Summit](./LOCALBRAIN_MEMORY_SUMMIT.md) — five-session constitutional convention for Systems 2–4.
 
@@ -28,7 +29,20 @@ Phase 2+:
   Steve → Mission → Memory → Knowledge → Beliefs → Understanding → Reasoning → Decision → Outcome → Learning
 ```
 
-**Memory sits before reasoning.** **Belief is revisable; verified memory is not.** Understanding is the coherent internal model beliefs help construct — not a substitute for memory.
+**Memory sits before reasoning.** **Belief is revisable; verified memory is not.** **Understanding** is a stable network of validated conclusions supported by knowledge and memory — it evolves more slowly than beliefs.
+
+### Remembered vs Concluded
+
+```txt
+Remembered:  Kelly spoke with Chris on Monday.
+Concluded:   Campaign planning is accelerating.
+```
+
+Conclusions point back to supporting memories. Memories are recalled; conclusions are derived.
+
+### Knowledge Strength vs Certainty
+
+Independent dimensions — not a single confidence score. Historical collaboration (high strength, high certainty) vs forecast (moderate strength, low certainty) must not share one axis.
 
 ### Six cognitive layers
 
@@ -48,9 +62,9 @@ Data → Information → Memory → Knowledge → Belief → Understanding → R
 
 **Objective** (temperature, date, file path) · **Relational** (Kelly works with Chris; workspace dependencies) · **Interpretive** (best person to ask; project appears stalled) — interpretive claims must never masquerade as objective fact.
 
-Beliefs require: confidence · supporting evidence · contradicting evidence · last evaluated · why the belief exists.
+Beliefs require: knowledge strength · certainty · supporting evidence · contradicting evidence · last evaluated · why the belief exists.
 
-Full specification: [Memory Summit](./LOCALBRAIN_MEMORY_SUMMIT.md).
+Full specification: [Memory Summit](./LOCALBRAIN_MEMORY_SUMMIT.md) · master epistemology diagram.
 
 **Do not build Memory OS in Phase 1.** Foundation exists (registry, workspaces, Decision Ledger spec, Memory Domains v1). Full Memory OS layer ships in Phase 2–3.
 
