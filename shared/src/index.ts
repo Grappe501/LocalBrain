@@ -592,6 +592,7 @@ export type {
   CosEditorialAction,
   DepartmentDailyReport,
   DepartmentReportStatus,
+  ExecutiveBriefingSignals,
   ExecutiveOfficeExperience,
   ExecutiveOfficeZone,
   ExecutiveOfficeZoneId,

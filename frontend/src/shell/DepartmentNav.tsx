@@ -20,7 +20,7 @@ export function DepartmentNav() {
   const kernelNav = getKernelNavItems().filter((item) => item.path !== "/");
 
   const navItems = [
-    { label: "Briefing", path: "/", capability_id: "CAP-EO-001" },
+    { label: "Office", path: "/", capability_id: "CAP-EO-001" },
     ...v1Departments.map((m) => ({
       label: m.name,
       path: m.routes[0]?.path ?? `/studio/${m.domain}`,

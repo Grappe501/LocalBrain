@@ -98,6 +98,18 @@ export const COS_EDITORIAL_ACTIONS: CosEditorialAction[] = [
   "delay",
 ];
 
+/** Real system signals — no fabricated department intelligence */
+export interface ExecutiveBriefingSignals {
+  v1_overall_pass?: boolean | null;
+  v1_failed_checks?: string[];
+  consolidation_score?: number | null;
+  consolidation_band?: string | null;
+  graph_integrity_pass?: boolean | null;
+  workspace_id?: string | null;
+  workspace_focus?: string | null;
+  current_build_slice?: string | null;
+}
+
 function departmentStatus(dept: DepartmentProjection): DepartmentReportStatus {
   if (dept.lifecycle === "reserved") return "reserved";
   if (dept.lifecycle === "emerging") return "monitoring";
@@ -141,9 +153,9 @@ function buildZones(): ExecutiveOfficeZone[] {
       description: "Today's work — after briefing",
       order: 2,
       items: [
-        { label: "Today's Work", route: "/" },
-        { label: "Projects", route: "/epo" },
-        { label: "Questions", route: "/" },
+        { label: "Living Workspace", route: "/workspace/localbrain" },
+        { label: "Program Office", route: "/program-office" },
+        { label: "Executive Questions", route: "/#executive-questions" },
       ],
     },
     {
@@ -152,9 +164,9 @@ function buildZones(): ExecutiveOfficeZone[] {
       description: "Departments, capabilities, directory",
       order: 3,
       items: [
-        { label: "Departments", route: "/api/integration/office" },
-        { label: "Capabilities", route: "/api/integration/atlas" },
-        { label: "Office Directory", route: "/api/integration/capabilities" },
+        { label: "Department reports", route: "/#department-reports" },
+        { label: "Program Office", route: "/program-office" },
+        { label: "Experience maturity", route: "/program-office" },
       ],
     },
     {
@@ -163,10 +175,9 @@ function buildZones(): ExecutiveOfficeZone[] {
       description: "Platform background — migration, build, system health",
       order: 4,
       items: [
-        { label: "Migration", route: "/migration/planning" },
-        { label: "Platform", route: "/epo" },
-        { label: "Build", route: "/epo" },
-        { label: "System Health", route: "/system/health" },
+        { label: "Migration", route: "/migration" },
+        { label: "Program Office", route: "/program-office" },
+        { label: "System Health", route: "/system" },
       ],
     },
   ];
@@ -175,28 +186,79 @@ function buildZones(): ExecutiveOfficeZone[] {
 function buildChiefOfStaffBriefing(
   executiveDepts: DepartmentProjection[],
   synthesisDept: DepartmentProjection | undefined,
+  signals?: ExecutiveBriefingSignals,
 ): ChiefOfStaffBriefing {
+  const liveCount = executiveDepts.filter(
+    (d) => d.lifecycle === "live" || d.lifecycle === "emerging",
+  ).length;
+  const reservedCount = executiveDepts.filter((d) => d.lifecycle === "reserved").length;
+
+  const narrativeParts: string[] = [
+    "Good morning. I reviewed available system signals and the Executive Office roster.",
+  ];
+
+  if (signals?.graph_integrity_pass === true) {
+    narrativeParts.push("Capability graph integrity is certified PASS.");
+  } else if (signals?.graph_integrity_pass === false) {
+    narrativeParts.push("Capability graph integrity needs attention before new work ships.");
+  }
+
+  if (signals?.v1_overall_pass === true) {
+    narrativeParts.push("V1 spine acceptance is passing.");
+  } else if (signals?.v1_overall_pass === false) {
+    const n = signals.v1_failed_checks?.length ?? 0;
+    narrativeParts.push(
+      n > 0
+        ? `V1 spine has ${n} open check${n === 1 ? "" : "s"} requiring executive awareness.`
+        : "V1 spine acceptance is not fully passing.",
+    );
+  }
+
+  if (signals?.consolidation_score != null) {
+    const band = signals.consolidation_band ? ` (${signals.consolidation_band})` : "";
+    narrativeParts.push(
+      `Consolidation opportunity score is ${signals.consolidation_score}/100${band} — from live registry evidence, not inbox volume.`,
+    );
+  }
+
+  if (signals?.workspace_focus) {
+    narrativeParts.push(`Active workspace focus: ${signals.workspace_focus}.`);
+  }
+
+  narrativeParts.push(
+    `The office has ${liveCount} departments live or emerging and ${reservedCount} reserved with infrastructure in place. Reserved departments report readiness only — no connector intelligence is claimed.`,
+  );
+
+  const top_priorities: string[] = [];
+  if (signals?.v1_failed_checks?.length) {
+    for (const label of signals.v1_failed_checks.slice(0, 3)) {
+      top_priorities.push(`V1 spine: ${label}`);
+    }
+  }
+  if (signals?.consolidation_score != null && signals.consolidation_score >= 50) {
+    top_priorities.push("Review consolidation opportunity from live asset registry");
+  }
+  if (signals?.current_build_slice) {
+    top_priorities.push(`Current build slice: ${signals.current_build_slice}`);
+  }
+  if (top_priorities.length === 0) {
+    top_priorities.push("Review department readiness reports below");
+    top_priorities.push("Open Program Office for build state and experience maturity");
+  }
+
   const elevated = executiveDepts.filter(
     (d) =>
       d.objectives.attention_level === "elevated" ||
       d.objectives.attention_level === "normal",
   );
-  const liveCount = executiveDepts.filter((d) => d.lifecycle === "live" || d.lifecycle === "emerging").length;
-  const reservedCount = executiveDepts.filter((d) => d.lifecycle === "reserved").length;
 
   return {
     title: "Chief of Staff Briefing",
     greeting: "Good morning, Steve.",
-    narrative: synthesisDept
-      ? `Good morning. After reviewing all departments, I believe ${Math.min(5, Math.max(1, liveCount))} areas deserve your attention today. The Executive Office is ${liveCount} departments live or emerging and ${reservedCount} reserved with infrastructure in place. The most important focus right now is platform consolidation — completing the Executive Office experience so every department reports narratively, not as widgets.`
-      : "Good morning. Executive Office briefing synthesis is initializing.",
+    narrative: narrativeParts.join(" "),
     estimated_reading_minutes: 6,
     executive_attention_score: null,
-    top_priorities: [
-      "Complete LB-OS-026.7 Executive Office home experience",
-      "Replace mock briefing with Chief of Staff narrative projection",
-      "Resume Peer Review Session 4 after experience certification",
-    ],
+    top_priorities,
     items_elevated_count: elevated.length,
   };
 }
@@ -238,7 +300,9 @@ export function buildDepartmentDailyReports(
     }));
 }
 
-export function buildExecutiveOfficeExperience(): ExecutiveOfficeExperience {
+export function buildExecutiveOfficeExperience(
+  signals?: ExecutiveBriefingSignals,
+): ExecutiveOfficeExperience {
   const office = buildExecutiveOfficeProjection();
   const synthesisDept = office.executive_departments.find((d) => d.synthesis_role);
   const department_reports = buildDepartmentDailyReports(office.departments, "executive");
@@ -250,7 +314,7 @@ export function buildExecutiveOfficeExperience(): ExecutiveOfficeExperience {
     projection_mode: "scaffold",
     experience_title: "Executive Office",
     daily_questions: [...EXECUTIVE_DAILY_QUESTIONS],
-    briefing: buildChiefOfStaffBriefing(office.executive_departments, synthesisDept),
+    briefing: buildChiefOfStaffBriefing(office.executive_departments, synthesisDept, signals),
     department_reports,
     cos_editorial_actions: [...COS_EDITORIAL_ACTIONS],
     zones: buildZones(),

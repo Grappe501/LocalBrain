@@ -465,6 +465,251 @@ a {
   color: #6b7280;
 }
 
+/* —— Executive Office (LB-OS-026.7) —— */
+
+.executive-office {
+  background: #fff;
+  border-radius: 0.75rem;
+  padding: 1.5rem 1.75rem;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 8%);
+  max-width: 56rem;
+}
+
+.executive-office__eyebrow {
+  margin: 0 0 0.25rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6b7280;
+}
+
+.executive-office__header h1 {
+  margin: 0 0 0.5rem;
+  font-size: 1.75rem;
+}
+
+.executive-office__workspace {
+  margin: 0 0 0.25rem;
+  font-size: 0.9rem;
+}
+
+.executive-office__meta {
+  margin: 0 0 1.25rem;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.executive-office__scaffold {
+  margin-bottom: 1.25rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #fcd34d;
+  background: #fffbeb;
+  font-size: 0.85rem;
+  color: #92400e;
+}
+
+.executive-office__error {
+  color: #b91c1c;
+  font-size: 0.9rem;
+}
+
+.executive-office__cos {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.executive-office__cos h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.15rem;
+}
+
+.executive-office__reading {
+  margin: 0 0 1rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.executive-office__narrative {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+.executive-office__priorities h3 {
+  margin: 0 0 0.5rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #4b5563;
+}
+
+.executive-office__priorities ol {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.95rem;
+}
+
+.executive-office__departments {
+  margin-bottom: 2rem;
+}
+
+.executive-office__departments h2 {
+  margin: 0 0 0.35rem;
+}
+
+.executive-office__departments-intro {
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.executive-office__dept-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.executive-office__dept-card {
+  padding: 1rem 1.1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  background: #fafafa;
+}
+
+.executive-office__dept-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.executive-office__dept-header h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.executive-office__dept-meta {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.executive-office__status,
+.executive-office__attention {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.15rem 0.45rem;
+  border-radius: 0.25rem;
+}
+
+.executive-office__status--healthy {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.executive-office__status--reserved {
+  background: #e5e7eb;
+  color: #4b5563;
+}
+
+.executive-office__status--monitoring {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.executive-office__attention--elevated {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.executive-office__attention--normal {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.executive-office__attention--monitoring,
+.executive-office__attention--dormant {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.executive-office__dept-summary {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.executive-office__read-more {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.85rem;
+  color: var(--accent, #2563eb);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.executive-office__dept-delta {
+  margin: 0.5rem 0 0;
+  padding-left: 1.25rem;
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+
+.executive-office__dept-link {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+}
+
+.executive-office__zone {
+  margin-bottom: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #f3f4f6;
+}
+
+.executive-office__zone h2 {
+  margin: 0 0 0.25rem;
+  font-size: 1rem;
+}
+
+.executive-office__zone-desc {
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.executive-office__zone-links {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.9rem;
+}
+
+.executive-office__questions {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.executive-office__questions h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+}
+
+.executive-office__footer {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
 /* —— Living workspace —— */
 
 .living-workspace {

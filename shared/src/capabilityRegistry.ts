@@ -547,7 +547,7 @@ export const CAPABILITY_REGISTRY: CapabilityEntry[] = [
     },
     slice_id: "LB-OS-002",
     nav_placement: "briefing",
-    nav_label: "Briefing",
+    nav_label: "Office",
     nav_order: 0,
     related_capabilities: [
       { target_capability_id: "CAP-EPO-001", relation_type: "related" },
