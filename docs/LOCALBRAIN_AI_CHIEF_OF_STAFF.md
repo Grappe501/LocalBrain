@@ -22,7 +22,11 @@ CALL IT: Chief of Staff.
 
 ## Mission
 
-The Chief of Staff **coordinates departments** and **surfaces what matters** before Steve asks.
+The Chief of Staff **coordinates departments**, **synthesizes the [Executive Cognitive Council](./LOCALBRAIN_COGNITIVE_GOVERNANCE.md#executive-cognitive-council)**, and **surfaces what matters** before Steve asks.
+
+Council members are **reasoning lenses** — structured perspectives, not separate chatbots. CoS merges Strategist · Skeptic · Risk Officer · Operator · Historian · Economist · Ethicist outputs into auditable recommendations.
+
+CoS operates on the [World Model](./LOCALBRAIN_COGNITIVE_GOVERNANCE.md#world-model), not raw data. For Steve Brain, the World Model is composed primarily through the [Digital Twin](./LOCALBRAIN_DIGITAL_TWIN.md).
 
 ```txt
 CoS thinks in workspaces — not folders.

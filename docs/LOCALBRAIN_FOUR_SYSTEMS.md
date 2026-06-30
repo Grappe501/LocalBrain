@@ -29,6 +29,8 @@ System 4   How do we improve?            → organizes improvement
 
 **Architecture is feature-complete through Phase 4.** Expansion via modules inside systems — not new pillars.
 
+**Cognitive Governance Layer** sits inside the four systems, above individual engines: [World Model](./LOCALBRAIN_COGNITIVE_GOVERNANCE.md#world-model) · [Executive Cognitive Council](./LOCALBRAIN_COGNITIVE_GOVERNANCE.md#executive-cognitive-council) · meta-cognition. See [Cognitive Governance](./LOCALBRAIN_COGNITIVE_GOVERNANCE.md).
+
 **Three Worlds:** [Executive · Logical · Physical](./LOCALBRAIN_THREE_WORLDS_AND_PROJECTION.md) with **Projection Layer** between Logical and Physical. Storage backends change; executive and logical models do not.
 
 ---

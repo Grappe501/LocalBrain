@@ -243,9 +243,11 @@ Existing metrics remain: [MCP](./LOCALBRAIN_EXECUTIVE_INTENT.md) · [ECL](./LOCA
 | ----- | --- | ----- |
 | **Epistemology** | [Executive Epistemology Convention](./LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md) | What can be known · remembered · concluded · believed |
 | **Cognition** | This document | What to notice · predict · imagine · initiate · when to stay quiet |
+| **Governance** | [Cognitive Governance](./LOCALBRAIN_COGNITIVE_GOVERNANCE.md) | World Model · Council · judgment quality · meta-cognition |
 
-Epistemology answers *"Is this true and traceable?"*  
-Cognition answers *"Given what we know, should anything happen?"*
+Epistemology: *"Is this true and traceable?"*  
+Cognition: *"Given what we know, should anything happen?"*  
+Governance: *"How good is our judgment — and what would improve it?"*
 
 ---
 

@@ -7,11 +7,12 @@
 
 ## What it is
 
-Your **Digital Twin** is the AI's continuously updated understanding of Steve's world — composed from foundational objects and engines, refreshed incrementally.
+Your **Digital Twin** is the AI's continuously updated understanding of Steve's world — the primary **World Model** cognition operates on (see [Cognitive Governance](./LOCALBRAIN_COGNITIVE_GOVERNANCE.md#world-model)). Composed from foundational objects and engines, refreshed incrementally — not reconstructed from scratch each session.
 
 ```txt
 LivingWorkspace + Memory + Knowledge Sources + System health + Decision Ledger
-= Digital Twin (composed view)
++ Unknowns + Commitments + (Phase 3+) Organizational structure
+= World Model / Digital Twin (composed view)
 ```
 
 It may become the most valuable artifact in the entire system.

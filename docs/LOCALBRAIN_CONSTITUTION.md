@@ -221,9 +221,12 @@ Conclusions are derived.
 Beliefs are revisable.
 Understanding is accumulated.
 Reasoning operates on all of them — but never silently rewrites them.
+
+The platform shall continuously improve the quality of executive judgment,
+not merely increase the quantity of executive activity.
 ```
 
-Binding for Phase 2+ intelligence work (LB-OS-027–035). See [Executive Memory OS](./LOCALBRAIN_EXECUTIVE_MEMORY_OS.md) · [Executive Epistemology Convention](./LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md).
+Binding for Phase 2+ intelligence work (LB-OS-027–035). See [Executive Memory OS](./LOCALBRAIN_EXECUTIVE_MEMORY_OS.md) · [Executive Epistemology Convention](./LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md) · [Cognitive Governance](./LOCALBRAIN_COGNITIVE_GOVERNANCE.md) · [Executive Cognition](./LOCALBRAIN_EXECUTIVE_COGNITION.md).
 
 ---
 
@@ -256,6 +259,7 @@ LOCALBRAIN_CONSTITUTION.md          ← you are here
 ├── LOCALBRAIN_EXECUTIVE_MEMORY_OS.md (Memory OS · Memory Confidence · Phase 2–3)
 ├── LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md (gate before LB-OS-027)
 ├── LOCALBRAIN_EXECUTIVE_COGNITION.md (agency · tension · trajectories · Phase 2+ capabilities)
+├── LOCALBRAIN_COGNITIVE_GOVERNANCE.md (World Model · Council · meta-cognition layer)
 ├── LOCALBRAIN_MEMORY_SUMMIT.md (redirect → Epistemology Convention)
 ├── LOCALBRAIN_MEMORY_DOMAINS.md (Memory foundational object · six domains)
 ├── LOCALBRAIN_EXECUTIVE_COGNITIVE_LOAD.md (ENG-ECL-001 · System 3 · Phase 2)

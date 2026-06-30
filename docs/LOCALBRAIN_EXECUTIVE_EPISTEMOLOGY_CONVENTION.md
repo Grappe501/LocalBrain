@@ -82,7 +82,16 @@ Broadens [Executive Question Registry](./LOCALBRAIN_EXECUTIVE_QUESTION_REGISTRY.
 | **Executive** | What should I work on today? · Why is this project blocked? · Should I approve this migration? |
 | **Epistemic** | What do we actually know? · What assumptions are we making? · What evidence contradicts this? · What are we missing? |
 
-Epistemic questions are the foundation of Executive Intelligence.
+Epistemic questions are the foundation of Executive Intelligence. [Curiosity Engine](./LOCALBRAIN_COGNITIVE_GOVERNANCE.md#curiosity-engine) surfaces questions whose answers materially improve decisions.
+
+### Goals vs Commitments
+
+| Type | Example |
+| ---- | ------- |
+| **Goal** (intent) | Launch ContactListSOS. |
+| **Commitment** (obligation) | Deliver beta to campaign by September 1. |
+
+CoS reasons differently about each. See [Cognitive Governance](./LOCALBRAIN_COGNITIVE_GOVERNANCE.md#goals-vs-commitments).
 
 ### Requested vs Emergent
 
@@ -336,12 +345,14 @@ Consent · decay · immutability · memory and belief conflict · belief revisio
 
 ```txt
 Master epistemology diagram (Question-first pipeline + Agency · Prediction)
+Cognitive Governance layer (World Model · Council · meta-cognition)
 Executive Cognition capability map (engines inside Four Systems)
 Question taxonomy (Operational · Executive · Epistemic · Requested · Emergent)
+Unknowns model (Known · Known Unknown · Unknown Unknown Indicator)
 Memory ontology · Belief contract · Strength + Certainty model
-Transparent recommendation chain contract
+Transparent recommendation chain + Council lens outputs
 Memory lifecycle · Recall · Provenance · Ethics policies
-Executive Evolution question-maturity metrics direction
+Executive Evolution question-maturity + institutional memory direction
 LB-OS-027 Burt packet — Executive Memory Bootstrap
 ```
 
