@@ -185,12 +185,17 @@
 | LB-OS-026.67 | Executive Office Structure (Organization ≠ Intelligence) | ✅ Complete — [Burt](./burt_packets/LB-OS-026.67.md) · [Office Structure](./LOCALBRAIN_EXECUTIVE_OFFICE_STRUCTURE.md) |
 | LB-OS-026.7 | Executive Office (Executive Operating Environment) | ✅ Complete — [Burt](./burt_packets/LB-OS-026.7.md) · [Experience spec](./LOCALBRAIN_EXECUTIVE_OFFICE_EXPERIENCE.md) |
 | LB-OS-PROD-001 | Productization & Empty Brain Onboarding | ✅ Complete — [Burt](./burt_packets/LB-OS-PROD-001.md) · ENG-INST-001 |
-| LB-OS-026.8 | Productization / Instance Onboarding | 🔄 PROD-001 |
-| LB-OS-026.9 | Provider Vault & Connector Settings | 🔄 PROD-001 |
+| LB-OS-026.8 | Productization / Instance Onboarding | ✅ PROD-001 |
+| LB-OS-026.9 | Provider Vault & Connector Settings | ✅ PROD-001 |
 | LB-OS-027.0 | Empty Brain Packaging | ⏳ Next |
 | LB-OS-027.1 | Multi-Brain Sharing (reserved) | 🔒 Reserved · CAP-FUT-MBS-001 |
+| LB-OS-PROD-002 | License & Subscription Gate | 🔒 Reserved · [Burt](./burt_packets/LB-OS-PROD-002-006-reserved.md) · CAP-FUT-LIC-001 |
+| LB-OS-PROD-003 | Social Media Connector Registry | 🔒 Reserved · CAP-FUT-SMC-001 |
+| LB-OS-PROD-004 | Media Studio / Creative Workbench | 🔒 Reserved · CAP-FUT-MST-001 |
+| LB-OS-PROD-005 | Universal Device + Drive Ingestion Planner | 🔒 Reserved · CAP-FUT-ING-001 |
+| LB-OS-PROD-006 | Mobile / Tablet Access Shell (PWA) | 🔒 Reserved · CAP-FUT-MOB-001 |
 
-**Gate:** Consolidation arc complete · **Next:** PROD-001 productization → Experience Certification → Peer Review S4
+**Gate:** PROD-001 complete · **Next:** 027.0 Empty Brain Packaging → PROD-002 license gate (when earned)
 
 **Architecture phase:** ✅ **Complete** (2026-06-30) — institution reserved · five-question admission gate · doctrine freeze until Convention + Memory OS
 
@@ -211,12 +216,14 @@
 026.6 Discoverability → 026.65 Intent Graph + Atlas → 026.66 Future placeholders
   → 026.67 Executive Office (departments ≠ domains) → Graph Integrity PASS
   → 026.7 Executive Office home (not dashboard)
-  → 026.8 Productization / Instance Onboarding (LB-OS-PROD-001)
-  → 026.9 Provider Vault & Connector Settings
+  → 026.8 Productization / Instance Onboarding (LB-OS-PROD-001) ✅
+  → 026.9 Provider Vault & Connector Settings ✅
   → 027.0 Empty Brain Packaging
   → 027.1 Multi-Brain Sharing (reserved)
+  → PROD-002 License gate (reserved) → PROD-003 Social → PROD-004 Media Studio
+  → PROD-005 Ingestion planner → PROD-006 Mobile PWA (reserved)
   → Peer Review S4 → S5 → Theory v1.0 freeze → Convention → LB-OS-027 Memory OS
-  → CAP-FUT-UDI-001 Universal Digital Ingestion (post-gate)
+  → CAP-FUT-UDI-001 Universal Digital Ingestion (execution post-gate)
 ```
 
 **Reserved (post-Convention, not started):** [Executive North Star — Three Goals](./LOCALBRAIN_EXECUTIVE_NORTH_STAR.md) · [Institution Model](./LOCALBRAIN_EXECUTIVE_INSTITUTION_MODEL.md) · [Operational Discipline](./LOCALBRAIN_EXECUTIVE_OPERATIONAL_DISCIPLINE.md) · [Digital World Doctrine](./LOCALBRAIN_EXECUTIVE_DIGITAL_WORLD_DOCTRINE.md)
