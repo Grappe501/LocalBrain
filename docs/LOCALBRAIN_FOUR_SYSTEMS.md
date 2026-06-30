@@ -130,6 +130,7 @@ Vendors are **implementation details** behind [AI Provider Management](./LOCALBR
 **Owns:**
 
 - Learning loops · outcome tracking (`cos_outcomes`)
+- **[Executive Meta-Cognition](./LOCALBRAIN_EXECUTIVE_METACOGNITION.md)** — highest layer: Cognitive Trace · Judgment Quality · wisdom · calibration
 - OJT · Academy · skill mastery
 - Style adaptation · prompt optimization
 - Provider optimization · model benchmarking
@@ -138,7 +139,7 @@ Vendors are **implementation details** behind [AI Provider Management](./LOCALBR
 
 **Does not own:** Day-to-day workspace UI · primary briefing layout · permission gates.
 
-**Key engines:** ENG-EVO-001 · ENG-OJ-001 · ENG-LP-002 · training/runtime slices (LB-OS-066+).
+**Key engines:** ENG-EVO-001 · ENG-JQ-001 · ENG-CTR-001 · ENG-WIS-001 · ENG-OJ-001 · ENG-LP-002 · training/runtime slices (LB-OS-066+).
 
 **Docs:** [System Evolution](./LOCALBRAIN_SYSTEM_EVOLUTION.md) · OJT slices · GPU / Neural Lab arc.
 
@@ -225,6 +226,7 @@ Keeps the executive experience responsive; scales heavy AI independently. See [G
 | Executive Leverage Score | Executive Intelligence | Real-world impact |
 | **Executive Cognitive Load** | Executive Intelligence | **Steve's attention load** |
 | **Tension** (planned) | Executive Intelligence | Unresolved domain pressure |
+| **Judgment Quality** (planned) | Executive Evolution | Did we think well given what was knowable? |
 | System Evolution index | Executive Evolution | Learning growth |
 | Architecture Debt | Executive OS (Engineering) | Platform structural integrity |
 

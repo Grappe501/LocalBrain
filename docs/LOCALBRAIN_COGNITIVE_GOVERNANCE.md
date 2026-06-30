@@ -10,7 +10,7 @@
 
 > **The platform should continuously improve the quality of executive judgment, not merely increase the quantity of executive activity.**
 
-Everything in Phase 1 — Four Systems, Executive Questions, Memory, Proof, Planning, Program Office — already points here. The remaining opportunity is **self-awareness about the quality of its own thinking**.
+Everything in Phase 1 — Four Systems, Executive Questions, Memory, Proof, Planning, Program Office — already points here. [Executive Meta-Cognition](./LOCALBRAIN_EXECUTIVE_METACOGNITION.md) (System 4) implements **how the brain changes itself** — critique · trace · calibration · wisdom.
 
 Meta-cognitive questions the platform must eventually ask itself:
 
@@ -54,10 +54,8 @@ For Steve Brain (single-user), [Digital Twin](./LOCALBRAIN_DIGITAL_TWIN.md) is t
 
 ```txt
 Four Platform Systems
-  └── Cognitive Governance Layer
-        ├── World Model (shared reality representation)
-        ├── Executive Cognitive Council (reasoning lenses)
-        ├── Meta-cognition (judgment quality)
+  └── Cognitive Governance Layer     (World Model · Council · lenses)
+        └── Executive Meta-Cognition (System 4 — trace · JQ · wisdom)
         └── Individual engines (ENG-*)
 ```
 
@@ -237,7 +235,9 @@ All modules **inside** Four Systems:
 | Decision Economics | ENG-DEC-001 | Executive Intelligence |
 | Strategic Clock | ENG-SCL-001 | Executive Intelligence |
 | Institutional Memory | ENG-IM-001 | Executive Evolution |
-| Meta-cognition audit | ENG-MCG-001 | Executive Intelligence |
+| Meta-cognition audit | ENG-MCG-001 | Executive Intelligence → Evolution |
+
+See [Executive Meta-Cognition](./LOCALBRAIN_EXECUTIVE_METACOGNITION.md) for full capability map (Cognitive Trace · JQ · Bias · Wisdom · Self-Doubt).
 
 Existing: [MCP](./LOCALBRAIN_EXECUTIVE_INTENT.md) · [ECL](./LOCALBRAIN_EXECUTIVE_COGNITIVE_LOAD.md) · [ELS](./LOCALBRAIN_EXECUTIVE_LEVERAGE_SCORE.md) · [Tension](./LOCALBRAIN_EXECUTIVE_COGNITION.md) · Agency · Proof · Five Gates.
 

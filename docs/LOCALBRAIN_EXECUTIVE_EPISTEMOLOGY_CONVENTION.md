@@ -352,7 +352,8 @@ Unknowns model (Known · Known Unknown · Unknown Unknown Indicator)
 Memory ontology · Belief contract · Strength + Certainty model
 Transparent recommendation chain + Council lens outputs
 Memory lifecycle · Recall · Provenance · Ethics policies
-Executive Evolution question-maturity + institutional memory direction
+Executive Evolution question-maturity + institutional memory + meta-cognition direction
+Cognitive Trace · Judgment Quality · Wisdom contract (System 4)
 LB-OS-027 Burt packet — Executive Memory Bootstrap
 ```
 

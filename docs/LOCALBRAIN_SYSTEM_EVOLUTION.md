@@ -12,11 +12,13 @@
 ```txt
 Program Office  →  "What did we build?"
 System Evolution →  "What did the system learn?"
+Judgment Quality →  "Did we think well?"
 Executive Leverage Score →  "How much more effective am I?"
 ```
 
 The Program Office is a **projection of authoritative build sources** (checklist, git, tests, docs).  
-System Evolution is a **projection of learning and usefulness** (decisions, outcomes, CoS accuracy, maturity gains).
+System Evolution is a **projection of learning and usefulness** (decisions, outcomes, CoS accuracy, maturity gains).  
+[Judgment Quality](./LOCALBRAIN_EXECUTIVE_METACOGNITION.md#ultimate-optimization-target-judgment-quality) is the **ultimate meta-metric** — process quality given knowable information, not lucky outcomes alone.
 
 ---
 
