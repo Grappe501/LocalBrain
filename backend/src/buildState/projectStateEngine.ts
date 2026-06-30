@@ -20,6 +20,7 @@ import { computeBuildState } from "./buildStateEngine.js";
 import { certifyCurrentModule } from "./moduleCertificationEngine.js";
 import { getCommitCount, getRecentCommits } from "./gitMetrics.js";
 import { computeV1CommandCenter } from "./v1CommandCenterEngine.js";
+import { computeAdaptiveForecast } from "./v1ForecastEngine.js";
 import { recordV1Heartbeat } from "./v1Heartbeat.js";
 
 function formatHistoryDateLabel(iso: string, today: string, yesterday: string): string {
@@ -171,6 +172,7 @@ export function computeProjectState(
   const build_number = getCommitCount();
   const days_to_beta = command_center.days_to_v1_estimate;
   const launch_score_percent = command_center.v1_launch_score_percent;
+  const adaptive_forecast = computeAdaptiveForecast(state, command_center, launch_score_percent);
 
   return {
     engine_id: PROJECT_STATE_ENGINE_ID,
@@ -193,6 +195,7 @@ export function computeProjectState(
     build_history: buildHistoryTimeline(),
     factory_environments: FACTORY_ENVIRONMENT_MODEL,
     command_center,
+    adaptive_forecast,
     observed_at: new Date().toISOString(),
   };
 }

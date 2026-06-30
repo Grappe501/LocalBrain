@@ -61,6 +61,17 @@ export {
   V2_SCOPE_RULE,
 } from "./v1Roadmap.js";
 export type {
+  V1AdaptiveForecast,
+  V1CriticalPathVelocity,
+  V1DepartmentVelocityRow,
+  V1EstimatedVsPredicted,
+  V1ForecastDayComparison,
+  V1ForecastModelTier,
+  V1ModuleVelocityRow,
+  V1ScheduleDriftPoint,
+} from "./v1Forecast.js";
+export { V1_FORECAST_ENGINE_ID } from "./v1Forecast.js";
+export type {
   BuildHistoryDay,
   FactoryEnvironmentModel,
   LaunchCountdown,

@@ -141,6 +141,7 @@ export function ProgramOfficeView() {
   const ps = overview.project_state;
   const cc = ps.command_center;
   const lc = ps.launch_countdown;
+  const fc = ps.adaptive_forecast;
   const m = overview.metrics;
   const filteredSlices = phaseFilter
     ? overview.slices.filter((s) =>
@@ -179,11 +180,126 @@ export function ProgramOfficeView() {
       <section className="epo-ceo" aria-label="Program Office CEO Mode">
         <header className="epo-ceo__header">
           <h2>CEO Mode</h2>
-          <p className="epo-ceo__heartbeat">
-            Days to Beta{" "}
-            <strong>{ps.ceo_mode.days_to_beta != null ? ps.ceo_mode.days_to_beta : "—"}</strong>
-          </p>
+          <div className="epo-ceo__forecast-headline">
+            <p className="epo-ceo__heartbeat">
+              Predicted launch{" "}
+              <strong>{fc.today.predicted_launch_date ?? "—"}</strong>
+              <span className="epo-ceo__confidence">{fc.prediction_confidence_percent}% confidence</span>
+            </p>
+            <p className="epo-ceo__estimate-muted">
+              Expert estimate: {fc.today.estimated_launch_date ?? "—"} ·{" "}
+              {fc.estimated_days_to_beta ?? "—"} days · Model: {fc.model_tier.replace(/_/g, " ")}
+            </p>
+          </div>
         </header>
+
+        <section className="epo-forecast" aria-label="Adaptive completion forecast">
+          <div className="epo-forecast__compare">
+            {fc.yesterday ? (
+              <div className="epo-forecast__day">
+                <h3>Yesterday</h3>
+                <p>
+                  Predicted: <strong>{fc.yesterday.predicted_launch_date ?? "—"}</strong>
+                </p>
+                <p>Confidence: {fc.yesterday.confidence_percent}%</p>
+              </div>
+            ) : null}
+            <div className="epo-forecast__day epo-forecast__day--today">
+              <h3>Today</h3>
+              <p>
+                Predicted: <strong>{fc.today.predicted_launch_date ?? "—"}</strong>
+              </p>
+              <p>Confidence: {fc.today.confidence_percent}%</p>
+              {fc.today.reasons.length > 0 && (
+                <ul className="epo-forecast__reasons">
+                  {fc.today.reasons.map((r) => (
+                    <li key={r}>{r}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+
+          {fc.estimated_vs_predicted.difference_days != null &&
+            Math.abs(fc.estimated_vs_predicted.difference_days) >= 1 && (
+              <p className="epo-forecast__divergence">
+                Estimated {fc.estimated_vs_predicted.estimated_launch_date} · Predicted{" "}
+                {fc.estimated_vs_predicted.predicted_launch_date} · Difference{" "}
+                {fc.estimated_vs_predicted.difference_days > 0 ? "+" : ""}
+                {fc.estimated_vs_predicted.difference_days} days
+                {fc.estimated_vs_predicted.divergence_reason && (
+                  <> — {fc.estimated_vs_predicted.divergence_reason}</>
+                )}
+              </p>
+            )}
+
+          <div className="epo-forecast__metrics">
+            <div>
+              <h4>Critical path velocity</h4>
+              <p>
+                <strong>{fc.critical_path_velocity.label}</strong> — {fc.critical_path_velocity.detail}
+              </p>
+            </div>
+            <div>
+              <h4>PMO reasoning</h4>
+              <ul>
+                {fc.pmo_reasoning.map((line) => (
+                  <li key={line}>{line}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="epo-forecast__drift">
+            <h4>Schedule drift (days to beta)</h4>
+            <div className="epo-forecast__sparkline" role="img" aria-label="Launch forecast trend">
+              {fc.schedule_drift.map((pt) => (
+                <span
+                  key={pt.iso_date}
+                  className="epo-forecast__spark-bar"
+                  title={`${pt.date_label}: est ${pt.estimated_days}d / pred ${pt.predicted_days}d`}
+                  style={{
+                    height: `${Math.max(8, Math.min(48, pt.predicted_days * 0.7))}px`,
+                  }}
+                />
+              ))}
+            </div>
+            <div className="epo-forecast__spark-labels">
+              {fc.schedule_drift.length > 0 && (
+                <>
+                  <span>{fc.schedule_drift[0].date_label}</span>
+                  <span>{fc.schedule_drift[fc.schedule_drift.length - 1].date_label}</span>
+                </>
+              )}
+            </div>
+          </div>
+
+          <table className="epo-forecast__offices">
+            <thead>
+              <tr>
+                <th>Office</th>
+                <th>Progress</th>
+              </tr>
+            </thead>
+            <tbody>
+              {fc.department_velocity.map((row) => (
+                <tr key={row.office_id}>
+                  <td>{row.office_name}</td>
+                  <td>
+                    <div className="epo-forecast__bar-track">
+                      <div
+                        className={`epo-forecast__bar-fill epo-forecast__bar-fill--${row.status}`}
+                        style={{ width: `${row.progress_percent}%` }}
+                      />
+                    </div>
+                    <span>{row.status === "not_started" ? "Not started" : `${row.progress_percent}%`}</span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
+
         <dl className="epo-ceo__questions">
           <div>
             <dt>What is the one module we are finishing today?</dt>

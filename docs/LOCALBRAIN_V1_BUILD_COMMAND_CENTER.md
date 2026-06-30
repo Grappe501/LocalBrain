@@ -158,3 +158,13 @@ Morning view — five questions only:
 5. Is launch closer than yesterday?
 
 **Days to Beta** is the project heartbeat. **Kelly Sandbox** is the golden integration test for module certification.
+
+---
+
+## Adaptive Completion Forecast (ENG-BLD-001-FCST)
+
+**Estimated** = expert burn-down (human). **Predicted** = LocalBrain from git velocity + forecast history.
+
+Each Program Office pass updates predicted launch date, confidence %, yesterday vs today comparison, critical path velocity, schedule drift sparkline, PMO reasoning, and department velocity bars.
+
+Model tiers: `engineering_estimate` → `historical_average` → `predictive_model` as build history accumulates.

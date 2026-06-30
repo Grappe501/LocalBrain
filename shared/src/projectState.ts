@@ -4,6 +4,7 @@
 
 import type { V1CommandCenter, V1DependencyNode } from "./v1CommandCenter.js";
 import type { CeoModeBrief } from "./v1Roadmap.js";
+import type { V1AdaptiveForecast } from "./v1Forecast.js";
 
 export const PROJECT_STATE_ENGINE_ID = "ENG-BLD-001-PSTATE";
 
@@ -55,6 +56,7 @@ export interface ProjectState {
   build_history: BuildHistoryDay[];
   factory_environments: FactoryEnvironmentModel;
   command_center: V1CommandCenter;
+  adaptive_forecast: V1AdaptiveForecast;
   observed_at: string;
 }
 

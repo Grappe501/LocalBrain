@@ -7,6 +7,7 @@ import { explainBlocker } from "../epo/blockerExplainer.js";
 import { getEpoOverview, getEpoSliceDetail, getProjectState, listDocumentationLibrary } from "../epo/epoService.js";
 import { BUILD_STATE_ENGINE_ID, computeBuildState } from "./buildStateEngine.js";
 import { certifyCurrentModule } from "./moduleCertificationEngine.js";
+import { computeAdaptiveForecast } from "./v1ForecastEngine.js";
 import { computeV1CommandCenter } from "./v1CommandCenterEngine.js";
 import { parseSliceRegistry } from "./sliceRegistry.js";
 
@@ -86,6 +87,23 @@ test("certifyCurrentModule produces dimension rows for Executive Office", () => 
   assert.equal(card!.module_id, "executive_office");
   assert.equal(card!.dimensions.length, 6);
   assert.ok(card!.dimensions.some((d) => d.dimension_id === "navigation"));
+});
+
+test("computeAdaptiveForecast produces predicted launch with confidence", () => {
+  const state = computeBuildState();
+  const cc = computeV1CommandCenter(state);
+  const fc = computeAdaptiveForecast(state, cc, cc.v1_launch_score_percent);
+  assert.equal(fc.engine_id, "ENG-BLD-001-FCST");
+  assert.ok(fc.prediction_confidence_percent >= 22);
+  assert.ok(fc.today.predicted_launch_date);
+  assert.ok(fc.schedule_drift.length >= 1);
+  assert.ok(fc.pmo_reasoning.length >= 1);
+});
+
+test("getProjectState includes adaptive forecast", () => {
+  const ps = getProjectState();
+  assert.ok(ps.adaptive_forecast);
+  assert.equal(ps.adaptive_forecast.engine_id, "ENG-BLD-001-FCST");
 });
 
 test("getProjectState is single source of truth for launch metrics", () => {

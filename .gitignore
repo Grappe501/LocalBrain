@@ -16,6 +16,7 @@ id_ed25519
 credentials.json
 token.json
 
+local_data/v1-forecast-history.json
 local_data/v1-heartbeat.json
 local_data/*.db
 local_data/*.db-shm
