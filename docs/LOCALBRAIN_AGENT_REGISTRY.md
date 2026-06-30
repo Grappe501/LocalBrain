@@ -157,13 +157,17 @@ Find a file, summarize it, and explain what it means.
 
 ## 2. Burt Script Writer
 
+> **V1 rule:** [Implementation Mode](../LOCALBRAIN_V1_IMPLEMENTATION_MODE.md) — **execution packets only**, not design. Every packet starts with [_IMPLEMENTATION_MODE_HEADER.md](./burt_packets/_IMPLEMENTATION_MODE_HEADER.md).
+
 ```txt
 id: burt_script_writer
-purpose: Generate complete Cursor/Burt execution packets.
+purpose: Generate Cursor/Burt EXECUTION packets for existing roadmap slices (not new architecture).
 default_project: Selected project
 risk_limit: LOW
-output_style: Mission, context, files, steps, validation, exit criteria, commit message.
+output_style: PROJECT STATUS block, mission, steps, validation, exit criteria, commit message.
 ```
+
+**Disallowed during V1:** new doctrine, reserved capabilities, new offices, design-only packets → use VERSION2_BACKLOG.md instead.
 
 **Allowed tools:**
 

@@ -1,4 +1,13 @@
+**Discipline:** Execute the V1 roadmap — [implementation mode](./LOCALBRAIN_V1_IMPLEMENTATION_MODE.md). Do not expand doctrine.
+
 # LocalBrain
+
+```txt
+==========================================
+LOCALBRAIN V1 — IMPLEMENTATION MODE
+Architecture complete · Doctrine frozen · Ship the Factory
+==========================================
+```
 
 **Steve's AI Executive Operating System** — second brain and operating company. Chief of Staff coordinates executive domains; CFO runs books from the start.
 
@@ -8,6 +17,7 @@ Project folders ARE the filesystem folders.
 ```
 
 **North star:** [Operating System Doctrine v2.0](docs/LOCALBRAIN_OPERATING_SYSTEM_DOCTRINE.md)  
+**V1 mode:** [Implementation Mode](docs/LOCALBRAIN_V1_IMPLEMENTATION_MODE.md) · [Launch Criteria](docs/LOCALBRAIN_V1_LAUNCH_CRITERIA.md) · [V2 Backlog](docs/VERSION2_BACKLOG.md)  
 **Planning apex:** [Enterprise Capability Matrix](docs/LOCALBRAIN_ENTERPRISE_CAPABILITY_MATRIX.md) · [Modular Architecture](docs/LOCALBRAIN_MODULAR_ARCHITECTURE.md) — thin core, lazy modules  
 **Architecture:** [Master System Architecture](docs/LOCALBRAIN_MASTER_SYSTEM_ARCHITECTURE.md) · [Engine Registry](docs/LOCALBRAIN_ENGINE_REGISTRY.md)  
 **Dual-track:** [Dual-Track Roadmap](docs/LOCALBRAIN_DUAL_TRACK_ROADMAP.md) — Track A now (90–95%) · Track B GPU stubs  

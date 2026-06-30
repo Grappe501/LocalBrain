@@ -1,5 +1,15 @@
 # Phase Checklist — LocalBrain
 
+```txt
+==========================================
+LOCALBRAIN V1
+ARCHITECTURE COMPLETE
+IMPLEMENTATION MODE
+NO NEW DOCTRINE
+==========================================
+```
+
+> **Implementation mode:** [LOCALBRAIN_V1_IMPLEMENTATION_MODE.md](./LOCALBRAIN_V1_IMPLEMENTATION_MODE.md) · **V2 ideas:** [VERSION2_BACKLOG.md](./VERSION2_BACKLOG.md) · **Launch:** [LOCALBRAIN_V1_LAUNCH_CRITERIA.md](./LOCALBRAIN_V1_LAUNCH_CRITERIA.md)  
 > **Execution map:** [Build Slice Queue v2.0](./LOCALBRAIN_BUILD_SLICE_QUEUE_V2.md)  
 > **Migration:** [Migration & Drive Doctrine](./LOCALBRAIN_MIGRATION_AND_DRIVE_DOCTRINE.md)
 
@@ -201,18 +211,31 @@
 | LB-OS-PROD-011 | Chief Compliance Officer | 🔒 Reserved · CAP-FUT-CCO-001 |
 | LB-OS-CON-003 | Versioned Constitution Migration | 🔒 Reserved · CAP-FUT-CON-VER-001 |
 
-**Gate:** PROD-001 complete · **Next:** Executive Office UX certification → Peer Review S4/S5 → Theory freeze → Convention → **Empty Brain Factory** → Memory OS → ingestion
+**Gate:** V1 implementation mode · **Next:** Phase 1 — Executive Office polish + certification
 
-**Architecture phase:** ✅ **Complete** (2026-06-30) — institution reserved · five-question admission gate · doctrine freeze until Convention + Memory OS
+**Architecture phase:** ✅ **COMPLETE** · **Doctrine:** 🔒 **FROZEN** (feature freeze until launch — no new doctrine, reserved capabilities, offices, or cognitive layers)
 
-**Project habit:** Every future discussion starts by asking whether it belongs to **architecture**, **implementation**, or **evidence**.
+**V1 success:** Empty LocalBrain Factory manufactures sovereign executive institutions — [launch criteria](./LOCALBRAIN_V1_LAUNCH_CRITERIA.md)
 
-| Idea | Category | Action |
-| --- | --- | --- |
-| Support multiple Gmail accounts | Implementation | Build later (post-gate) |
-| Add voice cloning | Reserved capability | Reserve, don't build |
-| Improve JQ metric from evidence | Evidence | Research and test |
-| Create a sixth cognitive layer | Architecture | Reject unless Constitution reopened |
+**V1 execution phases:**
+
+| Phase | Work |
+| ----- | ---- |
+| 1 | Executive Office — polish, navigation, certification, usability |
+| 2 | Peer Review S4 → S5 → Theory v1.0 freeze |
+| 3 | Executive Epistemology Convention |
+| 4 | Empty Brain Factory (package, installer, birth cert, passport, authority, license, vault) |
+| 5 | Memory OS |
+| 6 | Communications Office |
+| 7 | Commercial beta (Kelly, Chris, trusted customers) |
+
+**Project habit:** New ideas → [VERSION2_BACKLOG.md](./VERSION2_BACKLOG.md). Allowed: finish, fix, polish, certify, test, document, ship.
+
+| Idea | Action |
+| --- | --- |
+| New feature / office / doctrine | **VERSION2_BACKLOG** — do not build |
+| Bug, polish, cert, test for V1 scope | **Implement** |
+| Evidence / metrics | **Research** |
 
 **Success metrics (post-architecture):** institutional memory accumulated · executive judgment improved · CoS time saved · decisions better than otherwise · office runs predictably and transparently — not "how much built."
 
