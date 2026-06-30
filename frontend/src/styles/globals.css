@@ -5417,6 +5417,201 @@ a {
   color: #334155;
 }
 
+.epo-phase-forecast {
+  margin: 1rem 0 1.25rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #f8fafc 0%, #fff 100%);
+}
+
+.epo-phase-forecast__banner {
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.epo-phase-forecast__product {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #475569;
+}
+
+.epo-phase-forecast__hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.epo-phase-forecast__hero h3 {
+  margin: 0 0 0.25rem;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #64748b;
+}
+
+.epo-phase-forecast__phase-name {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.epo-phase-forecast__progress-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.epo-phase-forecast__bar-track {
+  flex: 1;
+  height: 10px;
+  background: #e2e8f0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.epo-phase-forecast__bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #2563eb, #0ea5e9);
+  border-radius: 999px;
+}
+
+.epo-phase-forecast__kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.65rem 1rem;
+  margin: 0 0 1rem;
+}
+
+.epo-phase-forecast__kpis dt {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #64748b;
+}
+
+.epo-phase-forecast__kpis dd {
+  margin: 0.15rem 0 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.epo-phase-forecast__reasons {
+  margin-bottom: 1rem;
+  padding: 0.65rem 0.75rem;
+  background: #f1f5f9;
+  border-radius: 6px;
+}
+
+.epo-phase-forecast__reasons h4 {
+  margin: 0 0 0.35rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.epo-phase-forecast__reasons ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.82rem;
+}
+
+.epo-phase-forecast__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  margin-bottom: 0.75rem;
+}
+
+.epo-phase-forecast__table th,
+.epo-phase-forecast__table td {
+  border: 1px solid #e2e8f0;
+  padding: 0.35rem 0.5rem;
+  text-align: left;
+}
+
+.epo-phase-forecast__row--in_progress td:first-child {
+  font-weight: 600;
+}
+
+.epo-phase-forecast__expandables {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.epo-phase-forecast__detail {
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 0.35rem 0.5rem;
+  background: #fff;
+}
+
+.epo-phase-forecast__detail summary {
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.epo-phase-forecast__units {
+  width: 100%;
+  margin-top: 0.5rem;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+}
+
+.epo-phase-forecast__units th,
+.epo-phase-forecast__units td {
+  border: 1px solid #e2e8f0;
+  padding: 0.25rem 0.4rem;
+}
+
+.epo-phase-forecast__changes {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed #cbd5e1;
+}
+
+.epo-phase-forecast__changes h4 {
+  margin: 0 0 0.5rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.epo-phase-forecast__change-block {
+  margin-bottom: 0.65rem;
+  padding: 0.5rem 0.65rem;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 6px;
+}
+
+.epo-phase-forecast__change-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.epo-phase-forecast__change-label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  color: #92400e;
+}
+
+.epo-phase-forecast__change-reason {
+  margin: 0.35rem 0 0;
+  font-size: 0.8rem;
+  color: #78350f;
+}
+
 .epo-cert {
   margin-top: 1.25rem;
   padding-top: 1rem;

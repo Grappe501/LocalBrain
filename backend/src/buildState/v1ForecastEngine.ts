@@ -85,6 +85,38 @@ function confidencePercent(
   return Math.min(94, Math.max(22, c));
 }
 
+/** Shared velocity factor for launch and phase forecasts. */
+export function computeVelocityFactor(
+  state: BuildStateSnapshot,
+  cc: V1CommandCenter,
+  history?: ForecastHistoryPoint[],
+): number {
+  const hist = history ?? readHistory();
+  const commits7 = getCommitsSince(7).length;
+  const expectedWeeklyCommits = 5;
+  const commitBoost = commits7 / expectedWeeklyCommits;
+
+  const avgSliceDays = state.build_velocity.average_slice_duration_days;
+  let velocityFactor = 1.0;
+  if (avgSliceDays != null && avgSliceDays > 0) {
+    const remainingSteps = cc.burndown.filter((b) => b.status !== "complete").length;
+    const impliedDaily = avgSliceDays / Math.max(1, remainingSteps);
+    velocityFactor = Math.max(0.6, Math.min(1.4, commitBoost * (2 / impliedDaily)));
+  } else {
+    velocityFactor = Math.max(0.7, Math.min(1.3, commitBoost));
+  }
+
+  if (hist.length >= 14) {
+    const recent = hist.slice(-14);
+    const avgPredicted =
+      recent.reduce((s, p) => s + p.predicted_days, 0) / recent.length;
+    const trend = recent[0].predicted_days - recent[recent.length - 1].predicted_days;
+    if (trend > 0) velocityFactor *= 1 + trend / (avgPredicted * 4);
+  }
+
+  return velocityFactor;
+}
+
 function criticalPathVelocity(
   history: ForecastHistoryPoint[],
   launchScore: number,
@@ -282,23 +314,7 @@ export function computeAdaptiveForecast(
   const expectedWeeklyCommits = 5;
   const commitBoost = commits7 / expectedWeeklyCommits;
 
-  const avgSliceDays = state.build_velocity.average_slice_duration_days;
-  let velocityFactor = 1.0;
-  if (avgSliceDays != null && avgSliceDays > 0) {
-    const remainingSteps = cc.burndown.filter((b) => b.status !== "complete").length;
-    const impliedDaily = avgSliceDays / Math.max(1, remainingSteps);
-    velocityFactor = Math.max(0.6, Math.min(1.4, commitBoost * (2 / impliedDaily)));
-  } else {
-    velocityFactor = Math.max(0.7, Math.min(1.3, commitBoost));
-  }
-
-  if (history.length >= 14) {
-    const recent = history.slice(-14);
-    const avgPredicted =
-      recent.reduce((s, p) => s + p.predicted_days, 0) / recent.length;
-    const trend = recent[0].predicted_days - recent[recent.length - 1].predicted_days;
-    if (trend > 0) velocityFactor *= 1 + trend / (avgPredicted * 4);
-  }
+  const velocityFactor = computeVelocityFactor(state, cc, history);
 
   const predictedDays =
     estimatedDays > 0

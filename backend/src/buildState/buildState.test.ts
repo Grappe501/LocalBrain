@@ -79,6 +79,10 @@ test("getEpoOverview exposes build state engine fields", () => {
   assert.ok(overview.project_state.ceo_mode);
   assert.ok(overview.project_state.ceo_mode.v1_roadmap.length === 9);
   assert.ok(overview.project_state.ceo_mode.current_module_certification);
+  assert.ok(overview.project_state.ceo_mode.phase_forecast);
+  assert.equal(overview.project_state.ceo_mode.phase_forecast.engine_id, "ENG-BLD-001-PFCST");
+  assert.ok(overview.project_state.ceo_mode.phase_forecast.phases.length === 9);
+  assert.ok(overview.project_state.ceo_mode.phase_forecast.current_mega_phase.label.includes("Phase"));
 });
 
 test("certifyCurrentModule produces dimension rows for Executive Office", () => {
@@ -101,6 +105,18 @@ test("computeAdaptiveForecast produces predicted launch with confidence", () => 
   assert.ok(fc.today.predicted_launch_date);
   assert.ok(fc.schedule_drift.length >= 1);
   assert.ok(fc.pmo_reasoning.length >= 1);
+});
+
+test("phase forecast produces module ETAs and finishability", () => {
+  const ps = getProjectState();
+  const pf = ps.ceo_mode.phase_forecast;
+  assert.ok(pf.days_to_commercial_beta != null);
+  assert.ok(pf.phases.some((p) => p.phase_id === "executive_office_cert"));
+  assert.ok(pf.phases.some((p) => p.phase_id === "session_4"));
+  const s4 = pf.phases.find((p) => p.phase_id === "session_4");
+  assert.ok(s4);
+  assert.ok(s4!.finishability_percent >= 80);
+  assert.ok(pf.reasons.length >= 1);
 });
 
 test("getProjectState includes adaptive forecast", () => {

@@ -237,6 +237,8 @@ export function computeV1CommandCenter(state: BuildStateSnapshot): V1CommandCent
     let progress = sliceProgress(state, def.slice_ids);
     if (def.module_id === "executive_office") {
       progress = Math.max(progress, 55);
+      const eoCert = certifyCurrentModule("executive_office");
+      if (eoCert?.launch_status === "certified") progress = 100;
     }
     if (def.module_id === "factory") {
       progress = Math.max(progress, sliceProgress(state, ["LB-OS-PROD-001"]));

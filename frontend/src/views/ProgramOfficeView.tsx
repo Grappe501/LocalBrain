@@ -182,16 +182,196 @@ export function ProgramOfficeView() {
           <h2>CEO Mode</h2>
           <div className="epo-ceo__forecast-headline">
             <p className="epo-ceo__heartbeat">
-              Predicted launch{" "}
-              <strong>{fc.today.predicted_launch_date ?? "—"}</strong>
-              <span className="epo-ceo__confidence">{fc.prediction_confidence_percent}% confidence</span>
+              Days to Commercial Beta{" "}
+              <strong>{ps.ceo_mode.phase_forecast.days_to_commercial_beta ?? "—"}</strong>
+              <span className="epo-ceo__confidence">
+                {ps.ceo_mode.phase_forecast.confidence_percent}% confidence
+              </span>
             </p>
             <p className="epo-ceo__estimate-muted">
-              Expert estimate: {fc.today.estimated_launch_date ?? "—"} ·{" "}
-              {fc.estimated_days_to_beta ?? "—"} days · Model: {fc.model_tier.replace(/_/g, " ")}
+              Predicted V1 Beta: {ps.ceo_mode.phase_forecast.predicted_v1_beta_date ?? "—"} · Expert:{" "}
+              {fc.today.estimated_launch_date ?? "—"} · Model: {fc.model_tier.replace(/_/g, " ")}
             </p>
           </div>
         </header>
+
+        <section className="epo-phase-forecast" aria-label="Phase forecast">
+          <header className="epo-phase-forecast__banner">
+            <p className="epo-phase-forecast__product">LOCALBRAIN V1 · CEO MODE</p>
+          </header>
+
+          <div className="epo-phase-forecast__hero">
+            <div>
+              <h3>Current Phase</h3>
+              <p className="epo-phase-forecast__phase-name">
+                {ps.ceo_mode.phase_forecast.current_mega_phase.label}
+              </p>
+            </div>
+            <div>
+              <h3>Progress</h3>
+              <div className="epo-phase-forecast__progress-row">
+                <div className="epo-phase-forecast__bar-track">
+                  <div
+                    className="epo-phase-forecast__bar-fill"
+                    style={{
+                      width: `${ps.ceo_mode.phase_forecast.current_mega_phase.progress_percent}%`,
+                    }}
+                  />
+                </div>
+                <span>{ps.ceo_mode.phase_forecast.current_mega_phase.progress_percent}%</span>
+              </div>
+            </div>
+          </div>
+
+          <dl className="epo-phase-forecast__kpis">
+            <div>
+              <dt>Current Module</dt>
+              <dd>{ps.ceo_mode.phase_forecast.current_module_label ?? "—"}</dd>
+            </div>
+            <div>
+              <dt>Estimated Module Completion</dt>
+              <dd>
+                {ps.ceo_mode.phase_forecast.current_module_eta_days != null
+                  ? `${ps.ceo_mode.phase_forecast.current_module_eta_days} days`
+                  : "Complete"}
+              </dd>
+            </div>
+            <div>
+              <dt>Estimated Phase Completion</dt>
+              <dd>
+                {ps.ceo_mode.phase_forecast.current_mega_phase.estimated_days_remaining} days
+              </dd>
+            </div>
+            <div>
+              <dt>Predicted Phase Completion</dt>
+              <dd>
+                {ps.ceo_mode.phase_forecast.current_mega_phase.predicted_completion_date ?? "—"}
+              </dd>
+            </div>
+            <div>
+              <dt>Confidence</dt>
+              <dd>{ps.ceo_mode.phase_forecast.confidence_percent}%</dd>
+            </div>
+            {ps.ceo_mode.phase_forecast.next_mega_phase ? (
+              <div>
+                <dt>Next Phase ETA</dt>
+                <dd>
+                  {ps.ceo_mode.phase_forecast.next_mega_phase.label} ·{" "}
+                  {ps.ceo_mode.phase_forecast.next_mega_phase.predicted_days_remaining} days
+                </dd>
+              </div>
+            ) : null}
+          </dl>
+
+          {ps.ceo_mode.phase_forecast.reasons.length > 0 && (
+            <div className="epo-phase-forecast__reasons">
+              <h4>Reason</h4>
+              <ul>
+                {ps.ceo_mode.phase_forecast.reasons.map((r) => (
+                  <li key={r}>{r}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <table className="epo-phase-forecast__table">
+            <thead>
+              <tr>
+                <th>Phase</th>
+                <th>Status</th>
+                <th>Finishability</th>
+                <th>ETA</th>
+              </tr>
+            </thead>
+            <tbody>
+              {ps.ceo_mode.phase_forecast.phases.map((row) => (
+                <tr key={row.phase_id} className={`epo-phase-forecast__row--${row.status}`}>
+                  <td>
+                    {row.status === "complete" ? "✅" : row.status === "in_progress" ? "🟡" : "⬜"}{" "}
+                    {row.label}
+                  </td>
+                  <td>
+                    {row.status === "complete"
+                      ? "Certified"
+                      : row.status === "in_progress"
+                        ? "In Progress"
+                        : "—"}
+                  </td>
+                  <td>{row.finishability_percent}%</td>
+                  <td>
+                    {row.status === "complete"
+                      ? "Complete"
+                      : row.predicted_days != null
+                        ? `${row.predicted_days} days`
+                        : "—"}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          <div className="epo-phase-forecast__expandables">
+            {ps.ceo_mode.phase_forecast.phases
+              .filter((p) => p.work_units.length > 0 && p.status !== "complete")
+              .map((phase) => (
+                <details key={phase.phase_id} className="epo-phase-forecast__detail">
+                  <summary>
+                    {phase.label} · {phase.predicted_days ?? "—"} days · Finishability{" "}
+                    {phase.finishability_percent}%
+                  </summary>
+                  <table className="epo-phase-forecast__units">
+                    <thead>
+                      <tr>
+                        <th>Module</th>
+                        <th>ETA</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {phase.work_units.map((u) => (
+                        <tr key={u.unit_id}>
+                          <td>{u.label}</td>
+                          <td>{u.predicted_days > 0 ? `${u.predicted_days} days` : "—"}</td>
+                          <td>{u.status.replace("_", " ")}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </details>
+              ))}
+          </div>
+
+          {ps.ceo_mode.phase_forecast.todays_changes.length > 0 && (
+            <section className="epo-phase-forecast__changes" aria-label="Today's forecast changes">
+              <h4>Today&apos;s Change</h4>
+              {ps.ceo_mode.phase_forecast.todays_changes.map((ch) => (
+                <div key={ch.phase_id} className="epo-phase-forecast__change-block">
+                  <div className="epo-phase-forecast__change-compare">
+                    <div>
+                      <span className="epo-phase-forecast__change-label">Yesterday</span>
+                      <p>
+                        {ch.label}
+                        <br />
+                        <strong>{ch.yesterday_predicted_days} days</strong>
+                      </p>
+                    </div>
+                    <div>
+                      <span className="epo-phase-forecast__change-label">Today</span>
+                      <p>
+                        {ch.label}
+                        <br />
+                        <strong>{ch.today_predicted_days} days</strong>
+                      </p>
+                    </div>
+                  </div>
+                  <p className="epo-phase-forecast__change-reason">
+                    Reason: {ch.reason}
+                  </p>
+                </div>
+              ))}
+            </section>
+          )}
+        </section>
 
         <section className="epo-forecast" aria-label="Adaptive completion forecast">
           <div className="epo-forecast__compare">

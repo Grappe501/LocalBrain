@@ -21,6 +21,7 @@ import { certifyCurrentModule } from "./moduleCertificationEngine.js";
 import { getCommitCount, getRecentCommits } from "./gitMetrics.js";
 import { computeV1CommandCenter } from "./v1CommandCenterEngine.js";
 import { computeAdaptiveForecast } from "./v1ForecastEngine.js";
+import { computePhaseForecast } from "./v1PhaseForecastEngine.js";
 import { recordV1Heartbeat } from "./v1Heartbeat.js";
 
 function formatHistoryDateLabel(iso: string, today: string, yesterday: string): string {
@@ -129,6 +130,8 @@ function buildCeoMode(
   cc: V1CommandCenter,
   days_to_beta: number | null,
   launch_score_percent: number,
+  state: BuildStateSnapshot,
+  adaptive_forecast: ReturnType<typeof computeAdaptiveForecast>,
 ): CeoModeBrief {
   const inProgress = cc.critical_path.find((n) => n.status === "in_progress");
   const module_finishing_today =
@@ -159,6 +162,7 @@ function buildCeoMode(
     days_to_beta,
     v1_roadmap: roadmapRows(cc),
     current_module_certification: certifyCurrentModule(moduleId),
+    phase_forecast: computePhaseForecast(state, cc, adaptive_forecast),
     burt_mission: BURT_V1_MISSION,
     module_review_instruction: V1_MODULE_REVIEW_REQUEST.instruction,
   };
@@ -190,7 +194,7 @@ export function computeProjectState(
     yesterdays_progress: command_center.finished_yesterday,
     blockers: command_center.blocked_summary,
     certification_status: certificationStatus(command_center),
-    ceo_mode: buildCeoMode(command_center, days_to_beta, launch_score_percent),
+    ceo_mode: buildCeoMode(command_center, days_to_beta, launch_score_percent, state, adaptive_forecast),
     launch_countdown: buildLaunchCountdown(command_center),
     build_history: buildHistoryTimeline(),
     factory_environments: FACTORY_ENVIRONMENT_MODEL,
