@@ -520,6 +520,27 @@ const FUTURE_EXECUTIVE_CAPABILITIES: CapabilityEntry[] = [
     nav_placement: "future",
     governance_policy: EXECUTIVE_CONNECTOR_GOVERNANCE,
   }),
+  futureCap({
+    capability_id: "CAP-FUT-VOI-001",
+    title: "Executive Voice Interface",
+    description:
+      "Voice-to-text and text-to-voice for the Executive Office — wake or push-to-talk",
+    executive_outcome:
+      "Structured voice path: transcript → intent → Executive Question → capability → Chief of Staff response → optional spoken answer → approval-gated action.",
+    executive_question_ids: [],
+    primary_route: "/future/voice",
+    secondary_routes: [],
+    prerequisites: ["CAP-EO-001"],
+    next_recommended_steps: ["CAP-EO-001", "CAP-ACT-001"],
+    departments: ["Chief of Staff"],
+    workflows: [],
+    keywords: ["voice", "speech", "push-to-talk", "wake word"],
+    search_terms: ["executive voice interface", "voice input", "spoken briefing"],
+    authority_level: "supporting",
+    slice_id: "LB-OS-03X",
+    nav_placement: "future",
+    governance_policy: EXECUTIVE_CONNECTOR_GOVERNANCE,
+  }),
 ];
 
 /** Canonical capability graph — do not duplicate routes in nav without deriving from here */

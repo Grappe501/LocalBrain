@@ -1,15 +1,14 @@
 import type { EpoOverview, EpoSliceDetail, EpoDocEntry, PlatformReadinessReport } from "@localbrain/shared";
+import { fetchLiveJson } from "./fetchLive";
 
 export async function fetchEpoOverview(): Promise<EpoOverview> {
-  const res = await fetch("/api/epo/overview");
-  if (!res.ok) throw new Error("EPO overview fetch failed");
-  return (await res.json()) as EpoOverview;
+  return fetchLiveJson<EpoOverview>("/api/epo/overview");
 }
 
 export async function fetchEpoSlice(sliceId: string): Promise<EpoSliceDetail> {
-  const res = await fetch(`/api/epo/slices/${encodeURIComponent(sliceId)}`);
-  if (!res.ok) throw new Error("EPO slice fetch failed");
-  const data = (await res.json()) as { slice: EpoSliceDetail };
+  const data = await fetchLiveJson<{ slice: EpoSliceDetail }>(
+    `/api/epo/slices/${encodeURIComponent(sliceId)}`,
+  );
   return data.slice;
 }
 
@@ -17,9 +16,7 @@ export async function fetchEpoDocs(query?: string): Promise<EpoDocEntry[]> {
   const url = query
     ? `/api/epo/docs?q=${encodeURIComponent(query)}`
     : "/api/epo/docs";
-  const res = await fetch(url);
-  if (!res.ok) throw new Error("EPO docs fetch failed");
-  const data = (await res.json()) as { docs: EpoDocEntry[] };
+  const data = await fetchLiveJson<{ docs: EpoDocEntry[] }>(url);
   return data.docs;
 }
 
@@ -28,13 +25,9 @@ export async function fetchEpoWhy(sliceId: string): Promise<{
   explanation: string;
   confidence: string;
 }> {
-  const res = await fetch(`/api/epo/why/${encodeURIComponent(sliceId)}`);
-  if (!res.ok) throw new Error("EPO why fetch failed");
-  return (await res.json()) as { slice_id: string; explanation: string; confidence: string };
+  return fetchLiveJson(`/api/epo/why/${encodeURIComponent(sliceId)}`);
 }
 
 export async function fetchPlatformReadiness(): Promise<PlatformReadinessReport> {
-  const res = await fetch("/api/epo/readiness");
-  if (!res.ok) throw new Error("Platform readiness fetch failed");
-  return (await res.json()) as PlatformReadinessReport;
+  return fetchLiveJson<PlatformReadinessReport>("/api/epo/readiness");
 }

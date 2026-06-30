@@ -5,10 +5,12 @@ import { getPlatformReadinessReport } from "../certification/platformReadinessSe
 export const epoRouter = Router();
 
 epoRouter.get("/epo/readiness", (_req, res) => {
+  res.set("Cache-Control", "no-store, no-cache, must-revalidate");
   res.json(getPlatformReadinessReport());
 });
 
 epoRouter.get("/epo/overview", (_req, res) => {
+  res.set("Cache-Control", "no-store, no-cache, must-revalidate");
   res.json(getEpoOverview());
 });
 

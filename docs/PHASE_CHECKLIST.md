@@ -178,6 +178,8 @@
 | LB-OS-026.67 | Executive Office Structure (Organization ≠ Intelligence) | ✅ Complete — [Burt](./burt_packets/LB-OS-026.67.md) · [Office Structure](./LOCALBRAIN_EXECUTIVE_OFFICE_STRUCTURE.md) |
 | LB-OS-026.7 | Executive Office (Executive Operating Environment) | ✅ Complete — [Burt](./burt_packets/LB-OS-026.7.md) · [Experience spec](./LOCALBRAIN_EXECUTIVE_OFFICE_EXPERIENCE.md) |
 
+**Gate:** Consolidation arc complete · **Next:** Experience Certification → Peer Review S4
+
 **Post-consolidation sequence:**
 
 ```txt
@@ -186,6 +188,8 @@
   → 026.7 Executive Office home (not dashboard) → Experience Certification
   → Peer Review S4 → S5 → Theory v1.0 freeze → Convention → LB-OS-027
 ```
+
+**Reserved (post-Convention, not started):** `LB-OS-03X` — Executive Voice Interface (voice-to-text · text-to-voice · wake/push-to-talk · transcript → intent → EQ → capability → CoS → optional spoken answer → approval-gated action)
 
 ```txt
 C:/ = programs only · H:/ = Steve's work world

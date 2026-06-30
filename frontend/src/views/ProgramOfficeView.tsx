@@ -9,6 +9,7 @@ import type {
   PlatformReadinessReport,
 } from "@localbrain/shared";
 import { ExecutiveQuestionShell } from "../components/ExecutiveQuestionShell";
+import { useLiveRefresh } from "../hooks/useLiveRefresh";
 import {
   fetchEpoDocs,
   fetchEpoOverview,
@@ -59,8 +60,11 @@ export function ProgramOfficeView() {
   const [readiness, setReadiness] = useState<PlatformReadinessReport | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
 
-  const load = useCallback(async () => {
+  const load = useCallback(async (opts?: { background?: boolean }) => {
+    const background = opts?.background ?? false;
+    if (!background) setRefreshing(true);
     try {
       setError(null);
       const [ov, docList, integ, exp, ready] = await Promise.all([
@@ -79,14 +83,11 @@ export function ProgramOfficeView() {
       setError(e instanceof Error ? e.message : "Failed to load Program Office");
     } finally {
       setLoading(false);
+      setRefreshing(false);
     }
   }, []);
 
-  useEffect(() => {
-    void load();
-    const id = window.setInterval(() => void load(), 60_000);
-    return () => window.clearInterval(id);
-  }, [load]);
+  useLiveRefresh(() => load({ background: true }), { intervalMs: 15_000 });
 
   useEffect(() => {
     if (!docQuery.trim()) {
@@ -147,10 +148,26 @@ export function ProgramOfficeView() {
   return (
     <div className="epo">
       <header className="epo__header">
-        <h1>Executive Program Office</h1>
+        <div className="epo__header-row">
+          <h1>Executive Program Office</h1>
+          <button
+            type="button"
+            className="epo__refresh-btn"
+            onClick={() => void load()}
+            disabled={refreshing}
+            aria-label="Refresh Program Office data"
+          >
+            {refreshing ? "Refreshing…" : "Refresh"}
+          </button>
+        </div>
         <p className="epo__meta">
-          Read-only mission control · {overview.build_state_engine_id} · Updated{" "}
-          {new Date(overview.observed_at).toLocaleTimeString()}
+          <span
+            className={`epo__live ${refreshing ? "epo__live--pulse" : ""}`}
+            title="Auto-refreshes every 15s and when you return to this tab"
+            aria-hidden
+          />
+          Read-only mission control · {overview.build_state_engine_id} · Live · Updated{" "}
+          {new Date(overview.observed_at).toLocaleTimeString()} · auto-refresh 15s
         </p>
       </header>
 

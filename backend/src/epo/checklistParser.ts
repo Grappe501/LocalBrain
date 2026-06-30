@@ -194,6 +194,134 @@ export function parseGateLine(): string | null {
   return m ? m[1].trim() : null;
 }
 
+export type PostConsolidationStep = {
+  milestone_id: string;
+  label: string;
+  slice_id: string | null;
+};
+
+const SLICE_IN_STEP = /LB-OS-[\d.]+/;
+const BARE_SLICE_PREFIX = /^(\d{3}(?:\.\d+)?)\b/;
+
+function extractSliceId(part: string): string | null {
+  const explicit = part.match(SLICE_IN_STEP)?.[0];
+  if (explicit) return explicit;
+  const bare = part.match(BARE_SLICE_PREFIX)?.[1];
+  return bare ? `LB-OS-${bare}` : null;
+}
+
+function labelForMilestone(raw: string): { milestone_id: string; label: string; slice_id: string | null } {
+  const normalized = raw.trim();
+  const slice_id = extractSliceId(normalized);
+  if (slice_id) {
+    const label =
+      normalized.replace(slice_id.replace("LB-OS-", ""), "").replace(/^[\s—–-]+/, "").trim() ||
+      normalized.replace(BARE_SLICE_PREFIX, "").trim() ||
+      slice_id;
+    return { milestone_id: slice_id, label, slice_id };
+  }
+  if (/experience certification/i.test(normalized)) {
+    return { milestone_id: "MILESTONE-EXP-CERT", label: "Experience Certification", slice_id: null };
+  }
+  if (/peer review s4|session 4/i.test(normalized)) {
+    return { milestone_id: "MILESTONE-PR-S4", label: "Peer Review Session 4", slice_id: null };
+  }
+  if (/peer review s5|session 5|\bs5\b/i.test(normalized)) {
+    return { milestone_id: "MILESTONE-PR-S5", label: "Peer Review Session 5", slice_id: null };
+  }
+  if (/theory v1\.0|theory freeze/i.test(normalized)) {
+    return { milestone_id: "MILESTONE-THEORY-FREEZE", label: "Theory v1.0 freeze", slice_id: null };
+  }
+  if (/convention/i.test(normalized)) {
+    return {
+      milestone_id: "MILESTONE-CONVENTION",
+      label: "Executive Epistemology Convention",
+      slice_id: null,
+    };
+  }
+  if (/graph integrity/i.test(normalized)) {
+    return {
+      milestone_id: "MILESTONE-GRAPH-INTEGRITY",
+      label: "Graph Integrity certification",
+      slice_id: null,
+    };
+  }
+  const slug = normalized
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "")
+    .slice(0, 48);
+  return { milestone_id: `MILESTONE-${slug.toUpperCase()}`, label: normalized, slice_id: null };
+}
+
+/** Ordered milestones from Phase 1.9 post-consolidation sequence block. */
+export function parsePostConsolidationSequence(): PostConsolidationStep[] {
+  const text = fs.readFileSync(path.join(getRepoRoot(), "docs", "PHASE_CHECKLIST.md"), "utf8");
+  const marker = "**Post-consolidation sequence:**";
+  const start = text.indexOf(marker);
+  if (start < 0) return [];
+
+  const blockStart = text.indexOf("```txt", start);
+  if (blockStart < 0) return [];
+  const blockEnd = text.indexOf("```", blockStart + 6);
+  if (blockEnd < 0) return [];
+
+  const body = text.slice(blockStart + 6, blockEnd).replace(/\r/g, "");
+  const parts = body
+    .split(/→/g)
+    .map((p) => p.replace(/\s+/g, " ").trim())
+    .filter(Boolean);
+
+  const steps: PostConsolidationStep[] = [];
+  const seen = new Set<string>();
+
+  for (const part of parts) {
+    const { milestone_id, label, slice_id } = labelForMilestone(part);
+    if (seen.has(milestone_id)) continue;
+    seen.add(milestone_id);
+    steps.push({ milestone_id, label, slice_id });
+  }
+
+  return steps;
+}
+
+export type PeerReviewProgress = {
+  s4: SliceStatus;
+  s5: SliceStatus;
+  theory_frozen: boolean;
+  convention: SliceStatus;
+};
+
+/** Parse Executive Cognition Peer Review row for session progress. */
+export function parsePeerReviewProgress(): PeerReviewProgress {
+  const text = fs.readFileSync(path.join(getRepoRoot(), "docs", "PHASE_CHECKLIST.md"), "utf8");
+  const row = text
+    .split("\n")
+    .find((line) => /Executive Cognition Peer Review/i.test(line) && line.includes("|"));
+
+  const cell = row?.split("|")[3]?.trim() ?? "";
+  const s4Complete = /S4\s*✅/i.test(cell);
+  const s4Active = /S4\s*(paused|in progress|pending)/i.test(cell);
+  const s5Complete = /S5\s*✅/i.test(cell);
+  const theoryFrozen = /theory v1\.0 frozen|theory frozen/i.test(cell);
+  const conventionComplete = /convention\s*✅/i.test(cell);
+  const conventionActive = /convention/i.test(cell) && !conventionComplete;
+
+  let s4: SliceStatus = "planned";
+  if (s4Complete) s4 = "complete";
+  else if (s4Active || /in progress/i.test(cell)) s4 = "in_progress";
+
+  let s5: SliceStatus = "planned";
+  if (s5Complete) s5 = "complete";
+  else if (/S5\s*(in progress|pending)/i.test(cell) && s4Complete) s5 = "in_progress";
+
+  let convention: SliceStatus = "planned";
+  if (conventionComplete) convention = "complete";
+  else if (conventionActive || (theoryFrozen && !conventionComplete)) convention = "spec_locked";
+
+  return { s4, s5, theory_frozen: theoryFrozen, convention };
+}
+
 export function changelogDecisions(): { date: string; title: string }[] {
   const text = fs.readFileSync(path.join(getRepoRoot(), "docs", "PHASE_CHECKLIST.md"), "utf8");
   const events: { date: string; title: string }[] = [];

@@ -1,17 +1,14 @@
 import type { ExecutiveExperienceCertification, IntegrationAuditReport } from "@localbrain/shared";
+import { fetchLiveJson } from "./fetchLive";
 
 const API = "/api";
 
 export async function fetchIntegrationAudit(): Promise<IntegrationAuditReport> {
-  const res = await fetch(`${API}/integration/audit`);
-  if (!res.ok) throw new Error("Failed to load integration audit");
-  return res.json() as Promise<IntegrationAuditReport>;
+  return fetchLiveJson<IntegrationAuditReport>(`${API}/integration/audit`);
 }
 
 export async function fetchExecutiveExperienceAudit(): Promise<ExecutiveExperienceCertification> {
-  const res = await fetch(`${API}/integration/experience-audit`);
-  if (!res.ok) throw new Error("Failed to load executive experience audit");
-  return res.json() as Promise<ExecutiveExperienceCertification>;
+  return fetchLiveJson<ExecutiveExperienceCertification>(`${API}/integration/experience-audit`);
 }
 
 export async function fetchQuestionLinks(route: string) {

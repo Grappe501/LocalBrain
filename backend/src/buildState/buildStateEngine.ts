@@ -24,6 +24,7 @@ import {
   getRecentCommits,
   getSliceIdsFromCommits,
 } from "./gitMetrics.js";
+import { resolveConsolidationCursor } from "./consolidationCursor.js";
 
 export const BUILD_STATE_ENGINE_ID = "ENG-BLD-001";
 
@@ -79,14 +80,34 @@ function findCurrentAndNext(
         !isBlocked(s.slice_id, parsedMap, dependencies),
     );
 
+  const consolidation = resolveConsolidationCursor(parsedMap);
+
   const current =
     inProgress ??
     (gateSlice && gateSlice.status !== "complete" ? gateSlice : null) ??
+    (consolidation
+      ? ({
+          slice_id: consolidation.current.milestone_id,
+          name: consolidation.current.label,
+          status: consolidation.current.status,
+          burt_packet_path: null,
+          spec_doc_path: null,
+          dependencies: [],
+          coverage: {
+            implementation: 0,
+            tests: 0,
+            documentation: 0,
+            user_guide: 0,
+            ojt_lesson: 0,
+          },
+          blocker_explanation: null,
+        } satisfies EpoSliceSummary)
+      : null) ??
     firstActionable ??
     null;
 
   const currentIdx = current ? order.indexOf(current.slice_id) : -1;
-  const next =
+  const nextFromOrder =
     order
       .slice(currentIdx + 1)
       .map((id) => byId.get(id))
@@ -99,11 +120,37 @@ function findCurrentAndNext(
     ) ??
     null;
 
+  const next =
+    consolidation && current?.slice_id === consolidation.current.milestone_id
+      ? consolidation.next
+        ? ({
+            slice_id: consolidation.next.milestone_id,
+            name: consolidation.next.label,
+            status: consolidation.next.status,
+            burt_packet_path: null,
+            spec_doc_path: null,
+            dependencies: [],
+            coverage: {
+              implementation: 0,
+              tests: 0,
+              documentation: 0,
+              user_guide: 0,
+              ojt_lesson: 0,
+            },
+            blocker_explanation: null,
+          } satisfies EpoSliceSummary)
+        : null
+      : nextFromOrder;
+
   let phaseLabel = "LocalBrain Build";
-  const anchor = current ?? gateSlice;
-  if (anchor) {
-    const parsed = parsedMap.get(anchor.slice_id);
-    if (parsed) phaseLabel = parsed.phase_label;
+  if (consolidation && current?.slice_id.startsWith("MILESTONE-")) {
+    phaseLabel = "Platform Consolidation (pre–Session 4)";
+  } else {
+    const anchor = current ?? gateSlice;
+    if (anchor) {
+      const parsed = parsedMap.get(anchor.slice_id);
+      if (parsed) phaseLabel = parsed.phase_label;
+    }
   }
 
   return { current, next, phaseLabel };

@@ -34,10 +34,26 @@ Future / Planned · Not Live · Infrastructure Reserved
 | CAP-FUT-BBN-001 | Business Budget |
 | CAP-FUT-FKN-001 | Finance Knowledge Sources |
 | CAP-FUT-HHD-001 | Household / Family Operations |
+| CAP-FUT-VOI-001 | Executive Voice Interface (LB-OS-03X — reserved) |
 
 ---
 
-## Executive operations flow (reserved)
+## Executive voice interface (LB-OS-03X — reserved, post-Convention)
+
+> **Not started.** Staged after Theory v1.0 and Convention. No connectors in this slice.
+
+```txt
+Voice input → transcript → intent → Executive Question → capability
+  → Chief of Staff response → optional spoken answer → approval-gated action
+```
+
+Core pieces (reserved):
+
+```txt
+Voice-to-text · Text-to-voice · Wake / push-to-talk mode
+```
+
+---
 
 ```txt
 Multiple Google Accounts

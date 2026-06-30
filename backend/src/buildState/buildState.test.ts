@@ -34,7 +34,8 @@ test("parsePhaseSections derives phases from checklist", () => {
 
 test("computeBuildState projects current sprint and velocity", () => {
   const state = computeBuildState();
-  assert.equal(state.current_slice_id, "LB-OS-021");
+  assert.equal(state.current_slice_id, "MILESTONE-PR-S4");
+  assert.equal(state.current_phase_label, "Platform Consolidation (pre–Session 4)");
   assert.ok(
     state.build_graph.some((n) => n.slice_id === "LB-OS-020" && n.status === "released"),
   );
@@ -43,23 +44,16 @@ test("computeBuildState projects current sprint and velocity", () => {
   );
   assert.ok(state.build_velocity.commits_count >= 0);
   assert.ok(state.build_graph.some((n) => n.slice_id === "LB-OS-019" && n.status === "released"));
-  assert.ok(
-    state.build_graph.some(
-      (n) => n.slice_id === "LB-OS-021" && (n.status === "in_progress" || n.status === "ready" || n.status === "planned"),
-    ),
-  );
+  assert.notEqual(state.current_slice_id, "LB-OS-027");
 });
 
 test("getEpoOverview exposes build state engine fields", () => {
   const overview = getEpoOverview();
   assert.equal(overview.read_only, true);
   assert.equal(overview.build_state_engine_id, BUILD_STATE_ENGINE_ID);
-  assert.equal(overview.current_slice_id, "LB-OS-021");
+  assert.equal(overview.current_slice_id, "MILESTONE-PR-S4");
+  assert.equal(overview.current_phase_label, "Platform Consolidation (pre–Session 4)");
   assert.ok(overview.phases.length >= 4);
-  assert.ok(
-    overview.current_sprint.queued.includes("LB-OS-022") ||
-      overview.current_sprint.in_progress.includes("LB-OS-021"),
-  );
   assert.ok(overview.commit_timeline.length > 0);
   assert.ok(overview.experience_maturity.length >= 10);
   assert.equal(overview.experience_maturity_engine_id, "ENG-EXP-001");
@@ -69,9 +63,10 @@ test("blocker explanation for planned slice with deps", () => {
   const slices = parsePhaseChecklistSlices();
   const map = new Map(slices.map((s) => [s.slice_id, s]));
   const { dependencies } = parseSliceRegistry();
-  const s26 = map.get("LB-OS-026");
-  assert.ok(s26);
-  const exp = explainBlocker(s26!, map, dependencies);
+  const planned = map.get("LB-OS-028");
+  assert.ok(planned);
+  assert.equal(planned!.status, "planned");
+  const exp = explainBlocker(planned!, map, dependencies);
   assert.ok(exp);
 });
 
