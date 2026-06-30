@@ -426,6 +426,72 @@ export {
   matchQuestionForRoute,
 } from "./executiveQuestion.js";
 export type {
+  CapabilityAuthorityLevel,
+  CapabilityCompletionStatus,
+  CapabilityEntry,
+  CapabilityEntryVector,
+  CapabilityHealth,
+  CapabilityMaturity,
+  CapabilityNavPlacement,
+  CapabilityRelation,
+  CapabilityRelationType,
+  CapabilityUtilization,
+  KernelNavItem,
+  WorkflowDefinition,
+} from "./capabilityRegistry.js";
+export {
+  CAPABILITY_ID_FREEZE_SLICE,
+  CAPABILITY_REGISTRY,
+  CAPABILITY_REGISTRY_ENGINE_ID,
+  DEFAULT_CAPABILITY_ENTRY_VECTORS,
+  WF_MIGRATION_EVIDENCE,
+  WF_MIGRATION_EXECUTION,
+  WORKFLOW_REGISTRY,
+  getAuthoritativeCapabilityForQuestion,
+  getCapabilityById,
+  getKernelNavItems,
+  getMigrationNavItems,
+  matchCapabilityForRoute,
+  normalizeRoutePath,
+} from "./capabilityRegistry.js";
+export type {
+  BreadcrumbSegment,
+  GraphEdge,
+  GraphNode,
+  IntentResolution,
+  NavigationGraph,
+  WorkflowNavigationLink,
+  WorkflowNavigationProjection,
+} from "./navigationIntelligence.js";
+export {
+  NAVIGATION_INTELLIGENCE_ENGINE_ID,
+  buildCapabilityDependencyGraph,
+  buildExecutiveQuestionGraph,
+  buildNavigationGraph,
+  buildRouteGraph,
+  buildWorkflowGraph,
+  getCapabilityNavigationLinks,
+  getMigrationPipelineStrip,
+  getWorkflowNavigation,
+  resolveExecutiveIntent,
+  resolveRouteForQuestion,
+} from "./navigationIntelligence.js";
+export type {
+  ExecutiveExperienceAuditMetrics,
+  ExecutiveExperienceCertification,
+  ExecutiveExperienceDimension,
+  ExecutiveExperienceScore,
+  GraphIntegrityCertification,
+  GraphIntegrityViolation,
+  JourneyStep,
+  JourneyTestResult,
+  RegistryCoverageRow,
+} from "./executiveExperience.js";
+export {
+  EXECUTIVE_EXPERIENCE_COHESION_ENGINE_ID,
+  EXECUTIVE_EXPERIENCE_ENGINE_ID,
+} from "./executiveExperience.js";
+export type {
   ModuleCapabilityDeclaration,
   ModuleManifest,
   ModuleNavPlacement,

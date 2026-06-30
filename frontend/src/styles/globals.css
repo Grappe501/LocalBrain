@@ -3127,6 +3127,65 @@ a {
   text-decoration: none;
 }
 
+/* LB-OS-026.6 — graph-derived workflow navigation */
+.workflow-nav {
+  margin: 0.5rem 0 0.75rem;
+  font-size: 0.88rem;
+}
+
+.workflow-nav__breadcrumbs a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.workflow-nav__workflow {
+  margin: 0.35rem 0;
+  color: #64748b;
+  font-size: 0.82rem;
+}
+
+.workflow-nav__back {
+  margin: 0.25rem 0 0;
+  font-size: 0.85rem;
+}
+
+.migration-pipeline {
+  margin: 0.5rem 0 0.75rem;
+  padding: 0.5rem 0.75rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+.migration-pipeline__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.78rem;
+}
+
+.migration-pipeline__step {
+  color: #475569;
+  text-decoration: none;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.migration-pipeline__step--active {
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-weight: 600;
+}
+
+.migration-pipeline__step:hover {
+  background: #f1f5f9;
+}
+
 /* LB-OS-021 — Executive Workspace Architecture */
 .ewa-tree {
   list-style: none;

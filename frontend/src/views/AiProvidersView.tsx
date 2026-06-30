@@ -9,7 +9,7 @@ import {
   verifyProvider,
 } from "../api/providers";
 import { ProviderCard } from "../components/ProviderCard";
-import { LiveSurfaceBanner } from "../components/LiveSurfaceBanner";
+import { ExecutiveQuestionShell } from "../components/ExecutiveQuestionShell";
 
 export function AiProvidersView() {
   const [overview, setOverview] = useState<AIProvidersOverview | null>(null);
@@ -53,7 +53,7 @@ export function AiProvidersView() {
 
   return (
     <div className="ai-providers">
-      <LiveSurfaceBanner route="/system/providers" />
+      <ExecutiveQuestionShell route="/system/providers" showCrossLinks={false} />
 
       <header className="ai-providers__header">
         <p className="ai-providers__crumb">

@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { getKernelNavItems } from "@localbrain/shared";
 import { useModuleRegistry } from "../context/ModuleRegistryContext";
 
 /** V1 shipped departments — active modules only in nav (LB-OS-016). */
@@ -9,17 +10,6 @@ const V1_DEPARTMENT_ORDER = [
   "relationship-studio",
 ] as const;
 
-const KERNEL_NAV = [
-  { label: "Program Office", path: "/program-office" },
-  { label: "Workspace", path: "/workspace/localbrain" },
-  { label: "Explorer", path: "/explorer" },
-  { label: "Actions", path: "/actions" },
-  { label: "System", path: "/system" },
-  { label: "Learn", path: "/learn" },
-  { label: "Migration", path: "/migration" },
-  { label: "Settings", path: "/settings" },
-] as const;
-
 export function DepartmentNav() {
   const { departmentModules, loading } = useModuleRegistry();
 
@@ -27,13 +17,16 @@ export function DepartmentNav() {
     departmentModules.find((m) => m.module_id === id && m.status === "active"),
   ).filter((m): m is NonNullable<typeof m> => Boolean(m));
 
+  const kernelNav = getKernelNavItems().filter((item) => item.path !== "/");
+
   const navItems = [
-    { label: "Briefing", path: "/" },
+    { label: "Briefing", path: "/", capability_id: "CAP-EO-001" },
     ...v1Departments.map((m) => ({
       label: m.name,
       path: m.routes[0]?.path ?? `/studio/${m.domain}`,
+      capability_id: m.module_id,
     })),
-    ...KERNEL_NAV,
+    ...kernelNav,
   ];
 
   return (
@@ -41,7 +34,7 @@ export function DepartmentNav() {
       <p className="department-nav__note">
         {loading
           ? "Loading module manifests…"
-          : `Executive OS V1 · ${v1Departments.length} departments · kernel + CoS`}
+          : `Executive OS V1 · ${v1Departments.length} departments · ENG-CAP-001 nav`}
       </p>
       <ul className="department-nav__list">
         {navItems.map((dept) => (

@@ -75,7 +75,8 @@
 | Slice | Name | Status |
 |-------|------|--------|
 | — | [Falsification Charter](./LOCALBRAIN_FALSIFICATION_CHARTER.md) | 📋 Acknowledge before peer review |
-| — | Executive Cognition Peer Review | 🔄 In progress — S1 ✅ · S2 ✅ · S3 ✅ · S4 ready (frozen `7b6ab71`) · [five gate questions](./LOCALBRAIN_EXECUTIVE_COGNITION_PEER_REVIEW.md#pre-h-027-gate-five-questions) |
+| — | Executive Cognition Peer Review | 🔄 In progress — S1 ✅ · S2 ✅ · S3 ✅ · **S4 paused** (platform audit) · S5 pending · frozen `7b6ab71` · [five gate questions](./LOCALBRAIN_EXECUTIVE_COGNITION_PEER_REVIEW.md#pre-h-027-gate-five-questions) |
+| — | [Platform Audit](./LOCALBRAIN_PLATFORM_AUDIT.md) — build plan + navigation | ✅ Complete 2026-06-28 — gap report · route registry · EQ matrix · top 10 slices |
 | — | Executive Epistemology Convention (5 sessions) | 📋 After peer review — [specification](./LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md) |
 | LB-OS-027 | Executive Memory Bootstrap | ⬜ PLANNED |
 | LB-OS-028 | Memory Ingestion | ⬜ PLANNED |
@@ -160,6 +161,26 @@
 | LB-OS-026.5 | Phase 1 certification & hardening | ✅ Complete — [Spec](./LOCALBRAIN_PHASE1_CERTIFICATION.md) · [Burt](./burt_packets/LB-OS-026.5.md) |
 
 **Gates:** Migration = 018–025 · Personal OS = 026
+
+---
+
+## Phase 1.9 — Platform Consolidation (pre–Session 4)
+
+> **Rule:** No new architectural concepts · no Phase 2 cognitive code · make existing platform cohesive and discoverable  
+> **Prerequisite for:** Peer Review Session 4 (Executive Practitioner)
+
+| Slice | Name | Status |
+|-------|------|--------|
+| — | [Platform Audit](./LOCALBRAIN_PLATFORM_AUDIT.md) | ✅ Complete 2026-06-28 |
+| LB-OS-026.6 | Executive Discoverability & Route Cohesion | ✅ Complete — [Burt](./burt_packets/LB-OS-026.6.md) · [ENG-CAP-001](./LOCALBRAIN_CAPABILITY_REGISTRY.md) · [Graph Integrity](./LOCALBRAIN_GRAPH_INTEGRITY_CERTIFICATION.md) |
+| LB-OS-026.7 | Executive Dashboard & Daily Briefing | ⬜ PLANNED — **gate:** graph integrity PASS |
+
+**Post-consolidation sequence:**
+
+```txt
+026.6 Discoverability → 026.7 Dashboard → Experience Certification
+  → Peer Review S4 → S5 → Theory v1.0 freeze → Convention → LB-OS-027
+```
 
 ```txt
 C:/ = programs only · H:/ = Steve's work world

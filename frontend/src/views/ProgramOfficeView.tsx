@@ -4,6 +4,7 @@ import type {
   EpoOverview,
   EpoSliceDetail,
   EpoDocEntry,
+  ExecutiveExperienceCertification,
   IntegrationAuditReport,
   PlatformReadinessReport,
 } from "@localbrain/shared";
@@ -15,7 +16,7 @@ import {
   fetchEpoWhy,
   fetchPlatformReadiness,
 } from "../api/epo";
-import { fetchIntegrationAudit } from "../api/integration";
+import { fetchIntegrationAudit, fetchExecutiveExperienceAudit } from "../api/integration";
 
 function ProgressBar({ label, value }: { label: string; value: number }) {
   return (
@@ -54,6 +55,7 @@ export function ProgramOfficeView() {
   const [docQuery, setDocQuery] = useState("");
   const [phaseFilter, setPhaseFilter] = useState<string | null>(null);
   const [integration, setIntegration] = useState<IntegrationAuditReport | null>(null);
+  const [experience, setExperience] = useState<ExecutiveExperienceCertification | null>(null);
   const [readiness, setReadiness] = useState<PlatformReadinessReport | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -61,15 +63,17 @@ export function ProgramOfficeView() {
   const load = useCallback(async () => {
     try {
       setError(null);
-      const [ov, docList, integ, ready] = await Promise.all([
+      const [ov, docList, integ, exp, ready] = await Promise.all([
         fetchEpoOverview(),
         fetchEpoDocs(),
         fetchIntegrationAudit().catch(() => null),
+        fetchExecutiveExperienceAudit().catch(() => null),
         fetchPlatformReadiness().catch(() => null),
       ]);
       setOverview(ov);
       setDocs(docList);
       setIntegration(integ);
+      setExperience(exp);
       setReadiness(ready);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Failed to load Program Office");
@@ -382,6 +386,39 @@ export function ProgramOfficeView() {
               {integration.metrics.total_questions}
             </dd>
           </dl>
+        </section>
+      ) : null}
+
+      {experience ? (
+        <section className="epo-integration" aria-label="Executive Experience Certification">
+          <h2>Executive Experience</h2>
+          <p className="epo-integration__meta">
+            {experience.engine_id} · {experience.slice_id} ·{" "}
+            {experience.certified ? "Certified" : experience.executive_experience_label.replace(/_/g, " ")}
+            {" · "}
+            Score {experience.executive_experience_score}%
+          </p>
+          <dl className="epo-integration__metrics">
+            <dt>Navigation</dt>
+            <dd>{experience.navigation_pass ? "PASS" : "FAIL"}</dd>
+            <dt>Cross-link integrity</dt>
+            <dd>{experience.cross_link_integrity_pass ? "PASS" : "FAIL"}</dd>
+            <dt>Route registry</dt>
+            <dd>{experience.route_registry_pass ? "PASS" : "FAIL"}</dd>
+            <dt>Capability discovery</dt>
+            <dd>{experience.capability_discovery_pass ? "PASS" : "FAIL"}</dd>
+            <dt>Workflow continuity</dt>
+            <dd>{experience.workflow_continuity_pass ? "PASS" : "FAIL"}</dd>
+            <dt>Dead ends</dt>
+            <dd>{experience.dead_ends}</dd>
+            <dt>Average click depth</dt>
+            <dd>{experience.average_click_depth}</dd>
+          </dl>
+          <div className="epo-coverage">
+            {experience.dimensions.map((d) => (
+              <ProgressBar key={d.dimension_id} label={d.label} value={d.score_percent} />
+            ))}
+          </div>
         </section>
       ) : null}
 
