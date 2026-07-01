@@ -566,13 +566,65 @@ Convention may clarify · constrain · define — may NOT invent.
 
 ---
 
+### Convention Session 3 (Recall)
+
+| Field | Value |
+| ----- | ----- |
+| Date | 2026-06-28 — post Session 2 (`e685868`) |
+| Type | Engineering contract |
+| Depends on | [Session 1 Ontology](./convention/CONVENTION-S1-ONTOLOGY_CONTRACT.md) · [Session 2 Lifecycle](./convention/CONVENTION-S2-MEMORY_LIFECYCLE_CONTRACT.md) |
+| Deliverable | [Recall Contract](./convention/CONVENTION-S3-RECALL_CONTRACT.md) |
+| Outcome | **Passed** — [Burt packet](./burt_packets/MILESTONE-CON-S3.md) |
+
+#### Findings log
+
+| ID | Finding | Contract read | Outcome | Notes |
+| -- | ------- | ------------- | ------- | ----- |
+| CON-S3-001 | Recall entry point | Single `recall(request) → RecallResult` · question-scoped · no ad-hoc bypass | **Resolved** | Axiom 2 — memory precedes reasoning |
+| CON-S3-002 | Required inputs / outputs | `RecallRequest` + `RecallResult` schema · reasoning_gate enum | **Resolved** | Three-engine interoperability test |
+| CON-S3-003 | Ranking invariants | R1–R8 lifecycle-aware · algorithm free | **Resolved** | RO-S3-011 closed at contract layer |
+| CON-S3-004 | Memory Confidence | System-derived 0–100 · thresholds · separate from Reasoning Confidence | **Resolved** | ENG-MC-001 aligned |
+| CON-S3-005 | Progressive recall | Tier 0 plan · Tier 1 fast · Tier 2 deep · streaming finalize | **Resolved** | RO-S3-008 closed at contract layer |
+| CON-S3-006 | Interruptibility | `interrupt_token` · recall.interrupted audit · no mid-reasoning mutation | **Resolved** | RO-S3-009 closed |
+| CON-S3-007 | Domain routing | Infer + allowlist · cross-domain explicit · independence preserved | **Resolved** | Six domains from S1 |
+| CON-S3-008 | Failure behavior | defer · withhold · proceed_with_caveats — never silent empty context | **Resolved** | RO-S3-019 · RO-S3-020 partial |
+| CON-S3-009 | Recall audit events | recall.complete · interrupted · deferred · contract_version | **Resolved** | Builds on S2 memory.reference |
+| CON-S3-010 | Provenance (recall layer) | memory_id · domain · lifecycle_state · source_ref on selected[] | **Clarification** | Session 4 deepens schema |
+| CON-S3-011 | Explainability bundle | why retrieved · ignored · near-misses on every recall | **Resolved** | RO-CON-S2-001 closed |
+
+#### Session 3 gate
+
+- [x] Recall pipeline contract frozen (Question → Reasoning gate)
+- [x] Ranking invariants · Memory Confidence · progressive · interruptible defined
+- [x] Domain routing · failure behavior · audit events specified
+- [x] RO-CON-S2-001 · RO-S3-008–011 addressed at contract layer
+- [x] No invented objects
+- [x] Success test: three-engine interoperability — **pass**
+
+| Outcome type | Count |
+| ------------ | ----- |
+| Resolved | 10 |
+| Clarification | 1 |
+| Open Question | 0 |
+| Invention | **0** |
+
+#### Convention obligations (from Session 3)
+
+| ID | Obligation |
+| -- | ---------- |
+| RO-CON-S3-001 | Session 4: full provenance schema · recall-layer fields deepened |
+| RO-CON-S3-002 | Memory OS manifest declares `convention_contract: CON-S3-2026-07` |
+| RO-CON-S3-003 | H-027 harness: swap recall engines without CoS code change |
+
+---
+
 #### Convention planned sessions
 
 | Session | Topic | Status |
 | ------- | ----- | ------ |
 | CON-S1 | Ontology | ✅ |
 | CON-S2 | Memory Lifecycle | ✅ |
-| CON-S3 | Recall | ⬜ |
+| CON-S3 | Recall | ✅ |
 | CON-S4 | Provenance | ⬜ |
 | CON-S5 | Ethics | ⬜ |
 
@@ -625,6 +677,7 @@ Amendments publish as v1.1, v1.2, … v1.0 text remains immutable. See [Falsific
 | E-PR-FREEZE-2026 | gate | 2026-06-30 | Five-session peer review complete · Pre-H-027 gate Q1–Q5 all yes · Theory v1.0 frozen | Canon locked — amendments v1.1+ only |
 | E-CON-S1-2026 | convention | 2026-07-01 | Session 1 Ontology — 12 terms frozen · 8 resolved · interoperable vocabulary | [Ontology Contract](./convention/CONVENTION-S1-ONTOLOGY_CONTRACT.md) |
 | E-CON-S2-2026 | convention | 2026-07-01 | Session 2 Memory Lifecycle — state machine · 6 resolved · audit hooks | [Lifecycle Contract](./convention/CONVENTION-S2-MEMORY_LIFECYCLE_CONTRACT.md) |
+| E-CON-S3-2026 | convention | 2026-06-28 | Session 3 Recall — pipeline contract · ranking invariants · Memory Confidence · 10 resolved | [Recall Contract](./convention/CONVENTION-S3-RECALL_CONTRACT.md) |
 | E-META-PR-2026 | meta-evidence | 2026-06-28 | Sessions 1–3 pattern: claim-type separation · emergent implementation style (local · incremental · versioned · event-aware · self-observing) | Review method taxonomy — not evidence theory is correct |
 
 ### Peer review progress (institutional memory)

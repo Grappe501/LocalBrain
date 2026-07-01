@@ -87,7 +87,7 @@ NO NEW DOCTRINE
 | — | [Falsification Charter](./LOCALBRAIN_FALSIFICATION_CHARTER.md) | 📋 Acknowledge before peer review |
 | — | Executive Cognition Peer Review | ✅ Complete — S1–S5 passed · Theory v1.0 frozen 2026-06-30 · [Evidence Base](./LOCALBRAIN_COGNITIVE_EVIDENCE_BASE.md#theory-v10-freeze-peer-review-complete) · auto-synced from Evidence Base |
 | — | [Platform Audit](./LOCALBRAIN_PLATFORM_AUDIT.md) — build plan + navigation | ✅ Complete 2026-06-28 — gap report · route registry · EQ matrix · top 10 slices |
-| — | Executive Epistemology Convention (5 sessions) | ▶ S1 Ontology ✅ · S2 Lifecycle ✅ · S3 Recall next · [contracts](./convention/) |
+| — | Executive Epistemology Convention (5 sessions) | ▶ S1 Ontology ✅ · S2 Lifecycle ✅ · S3 Recall ✅ · S4 Provenance next · [contracts](./convention/) |
 | LB-OS-027 | Executive Memory Bootstrap | ⬜ PLANNED |
 | LB-OS-028 | Memory Ingestion | ⬜ PLANNED |
 | LB-OS-029 | Memory Retrieval | ⬜ PLANNED |
