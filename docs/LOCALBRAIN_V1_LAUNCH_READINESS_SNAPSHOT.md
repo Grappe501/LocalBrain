@@ -113,9 +113,9 @@ Critical path only:
 
 ## Next module
 
-**Executive Epistemology Convention** ([Convention doc](./LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md))
+**Executive Epistemology Convention — Session 2 (Memory Lifecycle)** ([MILESTONE-CON-S2](./burt_packets/MILESTONE-CON-S2.md) — open next)
 
-Theory frozen at commit `7b6ab71` · peer review closed 2026-06-30. Findings in [Cognitive Evidence Base](./LOCALBRAIN_COGNITIVE_EVIDENCE_BASE.md).
+Ontology contract: [CONVENTION-S1-ONTOLOGY_CONTRACT.md](./convention/CONVENTION-S1-ONTOLOGY_CONTRACT.md)
 
 ---
 

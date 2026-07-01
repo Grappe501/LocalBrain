@@ -463,6 +463,72 @@ Amendments only as v1.1+ with evidence — [Canon preservation](./LOCALBRAIN_FAL
 
 ---
 
+### Convention Session 1 (Ontology)
+
+| Field | Value |
+| ----- | ----- |
+| Date | ▶ Open 2026-07-01 — post Theory Freeze (`98966a8`) |
+| Type | Engineering contract — not theory review |
+| Question | Can ten engineers build independently and interoperate? |
+| Deliverable | [Ontology Contract](./convention/CONVENTION-S1-ONTOLOGY_CONTRACT.md) |
+| Outcome | **Passed** — [Burt packet](./burt_packets/MILESTONE-CON-S1.md) |
+
+#### Charter (binding)
+
+```txt
+Convention may clarify · constrain · define — may NOT invent.
+```
+
+#### Findings log
+
+| ID | Finding | Contract read | Outcome | Notes |
+| -- | ------- | ------------- | ------- | ----- |
+| CON-S1-001 | Executive Question primitive | Question frames cognition — routes manifest, do not define · three classes + requested/emergent tags | **Resolved** | PR-S2-002 closed at ontology layer |
+| CON-S1-002 | Observation boundary | Pre-memory signal · not foundational · capture or dismiss before belief | **Resolved** | PR-S1-002 · salience thresholds → Session 2 |
+| CON-S1-003 | Memory | Durable provenance capture · six domains · verified memory immutable | **Resolved** | Lifecycle state machine → Session 2 |
+| CON-S1-004 | Knowledge vs Belief | Knowledge = evidenced conclusion · Belief = actionable stance with conflict fields | **Resolved** | Three truth kinds required |
+| CON-S1-005 | Knowledge vs Understanding | Compression additive · sources preserved · discriminant frozen | **Resolved** | PR-S1-003 closed |
+| CON-S1-006 | World Model | Composed versioned submodels · not monolithic context | **Resolved** | Aligns RO-S3-004–006 |
+| CON-S1-007 | Decision + Cognitive Trace | Foundational Decision · append-only trace genome | **Resolved** | Interoperability via stable IDs |
+| CON-S1-008 | Capability · Office · Department · Intelligence Domain | Institutional hierarchy · ID stability · no parallel executive | **Resolved** | Domain ≠ Department |
+| CON-S1-009 | Wisdom scope | Post-action meta-cognitive product — not ontological layer in S1 diagram | **Clarification** | PR-S1-004 · remains in Meta-Cognition |
+| CON-S1-010 | Memory lifecycle detail | Session 1 freezes required fields only | **Open Question** | Session 2 deliverable — not blocker for S1 gate |
+
+#### Session 1 gate
+
+- [x] Canonical vocabulary for 12 contract terms
+- [x] No invented foundational objects
+- [x] Peer-review ontology deferrals resolved (PR-S1-002 · PR-S1-003 · PR-S2-002)
+- [x] Success test: interoperable Memory OS vocabulary — **pass**
+
+| Outcome type | Count |
+| ------------ | ----- |
+| Resolved | 8 |
+| Clarification | 1 |
+| Open Question | 1 |
+| Invention | **0** |
+
+**Convention Session 1 conclusion:** Engineering vocabulary frozen. Two teams can implement Memory OS against this contract without reinterpretation.
+
+#### Convention obligations (from Session 1)
+
+| ID | Obligation |
+| -- | ---------- |
+| RO-CON-S1-001 | Session 2: full Memory lifecycle state machine + transition rules |
+| RO-CON-S1-002 | All Phase 2 engines declare ontology contract version in manifest |
+
+#### Convention planned sessions
+
+| Session | Topic | Status |
+| ------- | ----- | ------ |
+| CON-S1 | Ontology | ✅ |
+| CON-S2 | Memory Lifecycle | ⬜ |
+| CON-S3 | Recall | ⬜ |
+| CON-S4 | Provenance | ⬜ |
+| CON-S5 | Ethics | ⬜ |
+
+---
+
 #### Session 2 planned review areas (complete)
 
 | ID | Topic | Status |
