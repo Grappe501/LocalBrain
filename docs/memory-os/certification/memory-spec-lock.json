@@ -1,0 +1,11 @@
+{
+  "module_id": "memory_os",
+  "module_name": "Executive Memory OS",
+  "spec_locked": true,
+  "spec_frozen": true,
+  "frozen_at": "2026-07-01T15:26:20.000Z",
+  "release_tag": "memory-spec-v1.0",
+  "spec_version": "1.0",
+  "engine_id": "ENG-MEM-001",
+  "governance_rule": "Memory OS implements Convention constitutional law — specification frozen before ENG-MEM-001 implementation."
+}

@@ -858,6 +858,9 @@ Amendments publish as v1.1, v1.2, … v1.0 text remains immutable. See [Falsific
 | E-FAC-S2-2026 | factory | 2026-06-28 | Factory slice 2 — sealed package · install · certification engine | [Factory Contract](./factory/FACTORY_CONTRACT.md) |
 | E-FAC-S3-2026 | factory | 2026-07-01 | Factory slice 3 — native installer · ten-gate PMO certification · birth certificate persistence | [Factory Contract](./factory/FACTORY_CONTRACT.md) |
 | E-FAC-CERT-2026 | gate | 2026-07-01 | PMO Factory certification · `v1.0.0-factory-certified` · Factory locked | [Factory certification](./factory/certification/) |
+| E-FAC-CONST-2026 | factory | 2026-07-01 | Factory Constitution v1.0 frozen — manufacturing layer governance | [Factory Constitution](./factory/FACTORY_CONSTITUTION_v1.0.md) |
+| E-MEM-SPEC-2026 | memory_os | 2026-07-01 | Memory OS design package — seven volumes · MEM-001–007 drafts | [MILESTONE-MEMORY-OS](./burt_packets/MILESTONE-MEMORY-OS.md) |
+| E-MEM-FREEZE-2026 | gate | 2026-07-01 | MEM-008 specification freeze · `memory-spec-v1.0` · 107/107 PASS · MEM-009 authorized | [Memory OS certification](./memory-os/certification/) |
 | E-META-PR-2026 | meta-evidence | 2026-06-28 | Sessions 1–3 pattern: claim-type separation · emergent implementation style (local · incremental · versioned · event-aware · self-observing) | Review method taxonomy — not evidence theory is correct |
 
 ### Peer review progress (institutional memory)

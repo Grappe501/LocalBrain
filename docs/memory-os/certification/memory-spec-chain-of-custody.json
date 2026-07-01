@@ -1,0 +1,49 @@
+{
+  "ceremony_id": "PMO-MEM-2026-07-01",
+  "evidence_id": "E-MEM-FREEZE-2026",
+  "observed_at": "2026-07-01T15:26:20.000Z",
+  "release_tag": "memory-spec-v1.0",
+  "spec_version": "1.0",
+  "release_commit_note": "Resolve certified commit via git rev-parse memory-spec-v1.0",
+  "factory_dependency": {
+    "release_tag": "v1.0.0-factory-certified",
+    "factory_engine_id": "ENG-FAC-001",
+    "structural_hash": "4bf7e7ecff330166b55087d72b5c79ef6cee89354f8981175e466aec9ab4abf8"
+  },
+  "convention_contracts": {
+    "ontology": "CON-S1-2026-07",
+    "lifecycle": "CON-S2-2026-07",
+    "recall": "CON-S3-2026-07",
+    "provenance": "CON-S4-2026-07",
+    "ethics": "CON-S5-2026-07",
+    "convention_close": "E-CON-CLOSE-2026"
+  },
+  "mem_008_matrix": {
+    "path": "docs/memory-os/MEM-008-SUCCESS_TEST_MATRIX.md",
+    "test_count": 107,
+    "passed": 107,
+    "failed": 0,
+    "pending": 0
+  },
+  "approval": {
+    "role": "PMO",
+    "action": "MEM-008 Specification Freeze",
+    "authorized_milestone": "MEM-009 Implementation Pass 1",
+    "declared_at": "2026-07-01T15:26:20.000Z"
+  },
+  "integrity": {
+    "manifest_sha256": "536cc098d7dc2935ebac2b24e60a9b02e6d9b7127cfc8b587ad097886769f84b",
+    "spec_package_sha256": "7b9b1c85c9fb3aaf73305ce03606597259f4bec63a1f04b46b14378a2e51bb0c"
+  },
+  "artifacts": {
+    "memory_spec_release": "memory-spec-release.json",
+    "memory_spec_lock": "memory-spec-lock.json",
+    "memory_spec_chain_of_custody": "memory-spec-chain-of-custody.json",
+    "convention_manifest": "../MEMORY_OS_CONVENTION_MANIFEST.json",
+    "mem_008_exit_criteria": "../MEM-008-EXIT_CRITERIA.md",
+    "mem_008_success_test_matrix": "../MEM-008-SUCCESS_TEST_MATRIX.md"
+  },
+  "spec_frozen": true,
+  "implementation_authorized": true,
+  "next_authorized_milestone": "MEM-009"
+}

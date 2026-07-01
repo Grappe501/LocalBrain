@@ -1,0 +1,380 @@
+{
+  "manifest_version": "1.0",
+  "manifest_kind": "memory_os_specification_contract",
+  "generated_at": "2026-07-01T15:26:20.000Z",
+  "specification": {
+    "module_id": "memory_os",
+    "module_name": "Executive Memory OS",
+    "engine_id": "ENG-MEM-001",
+    "packet_id": "LB-OS-027",
+    "spec_version": "1.0",
+    "spec_tag": "memory-spec-v1.0",
+    "previous_spec_version": null,
+    "supersedes": null,
+    "status": "frozen",
+    "effective_at": "2026-07-01T15:26:20.000Z",
+    "frozen_at": "2026-07-01T15:26:20.000Z",
+    "guiding_principle": "Memory records what happened. Intelligence interprets what happened. Policy decides what should happen."
+  },
+  "factory_dependency": {
+    "required": true,
+    "release_tag": "v1.0.0-factory-certified",
+    "factory_constitution": "FACTORY_CONSTITUTION_v1.0",
+    "factory_contract_version": "FAC-2026-07",
+    "factory_engine_id": "ENG-FAC-001",
+    "structural_hash": "4bf7e7ecff330166b55087d72b5c79ef6cee89354f8981175e466aec9ab4abf8",
+    "factory_must_remain_locked": true,
+    "memory_os_must_not_modify_factory": true,
+    "artifacts": {
+      "factory_release": "docs/factory/certification/factory-release.json",
+      "factory_lock": "docs/factory/certification/factory-lock.json",
+      "factory_constitution": "docs/factory/FACTORY_CONSTITUTION_v1.0.md"
+    }
+  },
+  "convention_contracts": {
+    "ontology": "CON-S1-2026-07",
+    "lifecycle": "CON-S2-2026-07",
+    "recall": "CON-S3-2026-07",
+    "provenance": "CON-S4-2026-07",
+    "ethics": "CON-S5-2026-07",
+    "convention_close": "E-CON-CLOSE-2026",
+    "implements_not_amends": true,
+    "source_documents": {
+      "ontology": "docs/convention/CONVENTION-S1-ONTOLOGY_CONTRACT.md",
+      "lifecycle": "docs/convention/CONVENTION-S2-MEMORY_LIFECYCLE_CONTRACT.md",
+      "recall": "docs/convention/CONVENTION-S3-RECALL_CONTRACT.md",
+      "provenance": "docs/convention/CONVENTION-S4-PROVENANCE_CONTRACT.md",
+      "ethics": "docs/convention/CONVENTION-S5-ETHICS_CONTRACT.md",
+      "convention_close": "docs/convention/CONVENTION-CLOSE.md"
+    }
+  },
+  "design_volumes": [
+    {
+      "volume": 1,
+      "milestone": "MEM-001",
+      "title": "Memory Constitution",
+      "path": "docs/memory-os/VOLUME-1-MEMORY_CONSTITUTION.md"
+    },
+    {
+      "volume": 2,
+      "milestone": "MEM-002",
+      "title": "Memory Data Model",
+      "path": "docs/memory-os/VOLUME-2-MEMORY_DATA_MODEL.md"
+    },
+    {
+      "volume": 3,
+      "milestone": "MEM-003",
+      "title": "Memory Engine",
+      "path": "docs/memory-os/VOLUME-3-MEMORY_ENGINE.md"
+    },
+    {
+      "volume": 4,
+      "milestone": "MEM-005",
+      "title": "Identity Layer",
+      "path": "docs/memory-os/VOLUME-4-IDENTITY_LAYER.md"
+    },
+    {
+      "volume": 5,
+      "milestone": "MEM-004",
+      "title": "Knowledge Graph",
+      "path": "docs/memory-os/VOLUME-5-KNOWLEDGE_GRAPH.md"
+    },
+    {
+      "volume": 6,
+      "milestone": "MEM-006",
+      "title": "Executive Intelligence",
+      "path": "docs/memory-os/VOLUME-6-EXECUTIVE_INTELLIGENCE.md"
+    },
+    {
+      "volume": 7,
+      "milestone": "MEM-007",
+      "title": "Governance and Safety",
+      "path": "docs/memory-os/VOLUME-7-GOVERNANCE_AND_SAFETY.md"
+    }
+  ],
+  "canonical_registries": {
+    "glossary": {
+      "id": "CANONICAL_GLOSSARY",
+      "path": "docs/memory-os/CANONICAL_GLOSSARY.md",
+      "binding": true
+    },
+    "object_registry": {
+      "id": "CANONICAL_OBJECT_REGISTRY",
+      "path": "docs/memory-os/CANONICAL_OBJECT_REGISTRY.md",
+      "binding": true
+    },
+    "time_model": {
+      "id": "TIME_MODEL",
+      "path": "docs/memory-os/TIME_MODEL.md",
+      "binding": true
+    },
+    "trust_provenance_model": {
+      "id": "TRUST_PROVENANCE_MODEL",
+      "path": "docs/memory-os/TRUST_PROVENANCE_MODEL.md",
+      "trust_levels": [
+        "system",
+        "verified",
+        "user_confirmed",
+        "observed",
+        "imported",
+        "derived",
+        "hypothesis"
+      ],
+      "binding": true
+    },
+    "delegation_model": {
+      "id": "DELEGATION_MODEL",
+      "path": "docs/memory-os/DELEGATION_MODEL.md",
+      "max_chain_depth": 3,
+      "binding": true
+    },
+    "graph_vocabulary": {
+      "id": "GRAPH_RELATIONSHIP_VOCABULARY",
+      "path": "docs/memory-os/GRAPH_RELATIONSHIP_VOCABULARY.md",
+      "edge_types": [
+        "contains",
+        "references",
+        "supports",
+        "contradicts",
+        "derived_from",
+        "implemented_by",
+        "owned_by",
+        "depends_on",
+        "replaces",
+        "supersedes",
+        "observed_in",
+        "explains",
+        "related_to",
+        "attributed_to"
+      ],
+      "edge_type_count": 14,
+      "binding": true
+    },
+    "lifecycle_map": {
+      "id": "MEMORY_LIFECYCLE_MAP",
+      "path": "docs/memory-os/MEMORY_LIFECYCLE_MAP.md",
+      "normative_authority": "CON-S2-2026-07",
+      "binding": true
+    }
+  },
+  "architecture_review": {
+    "id": "MAR-1",
+    "title": "Memory Architecture Review",
+    "path": "docs/memory-os/MAR-1-ARCHITECTURE_REVIEW.md",
+    "status": "pmo_signed_off",
+    "sections": [
+      "MAR-1.1_conceptual_integrity",
+      "MAR-1.2_canonical_objects",
+      "MAR-1.3_time_model",
+      "MAR-1.4_trust_provenance",
+      "MAR-1.5_delegation",
+      "MAR-1.6_graph_vocabulary",
+      "MAR-1.7_lifecycle"
+    ]
+  },
+  "freeze_gate": {
+    "milestone": "MEM-008",
+    "status": "declared",
+    "exit_criteria": {
+      "path": "docs/memory-os/MEM-008-EXIT_CRITERIA.md",
+      "criteria_count": 14,
+      "all_must_pass": true
+    },
+    "success_test_matrix": {
+      "path": "docs/memory-os/MEM-008-SUCCESS_TEST_MATRIX.md",
+      "test_count": 107,
+      "pass_rule": "107_of_107_pass",
+      "categories": [
+        "T1",
+        "T2",
+        "T3",
+        "T4",
+        "T5",
+        "T6",
+        "T7",
+        "T8",
+        "T9",
+        "T10",
+        "T11",
+        "T12",
+        "T13",
+        "T14"
+      ]
+    },
+    "pmo_review_rules": {
+      "no_implementation_changes_during_walkthrough": true,
+      "no_pass_with_comments": true,
+      "no_provisional_approvals": true,
+      "binary_pass_fail_only": true,
+      "single_fail_blocks_freeze": true,
+      "no_deferred_unresolved_items": true,
+      "review_requirements_not_documents": true
+    }
+  },
+  "implementation_gate": {
+    "milestone": "MEM-009",
+    "engine_id": "ENG-MEM-001",
+    "authorized": true,
+    "authorized_at": "2026-07-01T15:26:20.000Z",
+    "authorized_for": "MEM-009 Implementation Pass 1",
+    "blocked_until": null,
+    "prohibited_before_freeze": [
+      "ENG-MEM-001_implementation_code",
+      "memory_database_migrations",
+      "memory_api_endpoints",
+      "ingestion_pipelines",
+      "factory_modifications"
+    ]
+  },
+  "required_review_stages": [
+    {
+      "stage_id": "MAR-1",
+      "name": "Memory Architecture Review",
+      "status": "complete",
+      "blocks": "MEM-008"
+    },
+    {
+      "stage_id": "MEM-008-WALKTHROUGH",
+      "name": "PMO Success Test Matrix Walkthrough",
+      "status": "complete",
+      "test_count": 107,
+      "blocks": "MEM-008"
+    },
+    {
+      "stage_id": "MEM-008-FREEZE",
+      "name": "Specification Freeze Declaration",
+      "status": "declared",
+      "blocks": "MEM-009"
+    }
+  ],
+  "required_approval_roles": [
+    {
+      "role": "PMO",
+      "responsibility": "MEM-008 walkthrough and freeze declaration",
+      "required_for_freeze": true
+    },
+    {
+      "role": "spec_author",
+      "responsibility": "Artifact completeness and traceability",
+      "required_for_freeze": true
+    }
+  ],
+  "compatibility_policy": {
+    "factory": {
+      "rule": "Memory OS plugs into Factory output; never modifies Factory behavior or structural_hash",
+      "factory_unlock_for_memory_os": false
+    },
+    "convention": {
+      "rule": "Implements frozen S1-S5; does not amend Convention contracts",
+      "manifest_must_declare_all_five_versions": true
+    },
+    "spec_amendment": {
+      "rule": "Post-freeze changes require Memory OS spec v1.1+ cycle with MAR review",
+      "same_discipline_as": "Factory Constitution amendment"
+    },
+    "backward_compatibility": {
+      "spec_v1_additive_fields_only": true,
+      "trust_enum_changes_require_major_version": true,
+      "graph_edge_additions_minor_version": true,
+      "graph_edge_removals_forbidden_in_v1": true
+    }
+  },
+  "compatibility_requirements": {
+    "memory_domains": {
+      "source": "docs/LOCALBRAIN_MEMORY_DOMAINS.md",
+      "domains": [
+        "personal",
+        "workspace",
+        "system",
+        "relationship",
+        "learning",
+        "executive"
+      ],
+      "domains_must_not_merge_storage": true
+    },
+    "decision_authority": {
+      "binding_decision_owner": "Decision Ledger",
+      "memory_artifact": "DecisionCitation",
+      "memory_must_not_duplicate_binding_authority": true
+    },
+    "epistemic_boundary": {
+      "intelligence_layer_objects": [
+        "Knowledge",
+        "Belief",
+        "Understanding"
+      ],
+      "memory_os_stores": "derivation_link_edges_only"
+    },
+    "observation_boundary": {
+      "observation_is_pre_memory": true,
+      "observation_not_persisted_as_canonical_object": true
+    }
+  },
+  "required_artifacts": {
+    "package_index": "docs/memory-os/README.md",
+    "milestone": "docs/burt_packets/MILESTONE-MEMORY-OS.md",
+    "mar_1": "docs/memory-os/MAR-1-ARCHITECTURE_REVIEW.md",
+    "mem_008_exit_criteria": "docs/memory-os/MEM-008-EXIT_CRITERIA.md",
+    "mem_008_success_test_matrix": "docs/memory-os/MEM-008-SUCCESS_TEST_MATRIX.md",
+    "convention_manifest": "docs/memory-os/MEMORY_OS_CONVENTION_MANIFEST.json",
+    "volume_1": "docs/memory-os/VOLUME-1-MEMORY_CONSTITUTION.md",
+    "volume_2": "docs/memory-os/VOLUME-2-MEMORY_DATA_MODEL.md",
+    "volume_3": "docs/memory-os/VOLUME-3-MEMORY_ENGINE.md",
+    "volume_4": "docs/memory-os/VOLUME-4-IDENTITY_LAYER.md",
+    "volume_5": "docs/memory-os/VOLUME-5-KNOWLEDGE_GRAPH.md",
+    "volume_6": "docs/memory-os/VOLUME-6-EXECUTIVE_INTELLIGENCE.md",
+    "volume_7": "docs/memory-os/VOLUME-7-GOVERNANCE_AND_SAFETY.md",
+    "canonical_glossary": "docs/memory-os/CANONICAL_GLOSSARY.md",
+    "canonical_object_registry": "docs/memory-os/CANONICAL_OBJECT_REGISTRY.md",
+    "time_model": "docs/memory-os/TIME_MODEL.md",
+    "trust_provenance_model": "docs/memory-os/TRUST_PROVENANCE_MODEL.md",
+    "delegation_model": "docs/memory-os/DELEGATION_MODEL.md",
+    "graph_vocabulary": "docs/memory-os/GRAPH_RELATIONSHIP_VOCABULARY.md",
+    "lifecycle_map": "docs/memory-os/MEMORY_LIFECYCLE_MAP.md"
+  },
+  "integrity": {
+    "populated_at_freeze": true,
+    "populated_at": "2026-07-01T15:26:20.000Z",
+    "manifest_sha256": "536cc098d7dc2935ebac2b24e60a9b02e6d9b7127cfc8b587ad097886769f84b",
+    "spec_package_sha256": "7b9b1c85c9fb3aaf73305ce03606597259f4bec63a1f04b46b14378a2e51bb0c",
+    "git_commit": null,
+    "git_tag": "memory-spec-v1.0",
+    "artifact_hashes": {
+      "docs/memory-os/CANONICAL_GLOSSARY.md": "1666901ac54a2d47a613056e60d6ae89656d204364f5431e6929389287281330",
+      "docs/memory-os/CANONICAL_OBJECT_REGISTRY.md": "88d5e38429d9cfa9947593a014b3e7d50a849f23588799d646f61839effe3296",
+      "docs/memory-os/certification/memory-spec-chain-of-custody.json": "814a208734ea66a26e5b30f04ae2679af28d0cdc78d9c122331137a78f97afc4",
+      "docs/memory-os/certification/memory-spec-lock.json": "15901a0ce4ebb4c074bdf853dfea04f1348dcfad06b4c36f9994352c8eb747fc",
+      "docs/memory-os/certification/memory-spec-release.json": "d42742bd039185f1bfdc5ed71528644cbbc3acb0ba6ee64fd87d12ab5ff8e0f7",
+      "docs/memory-os/certification/README.md": "ee75d07a66fef80073d79613654ef799015bfdfbcf5f46cdc200051f8a4bd6a0",
+      "docs/memory-os/DELEGATION_MODEL.md": "bbd0fac3614161e0947ce4eb3348b585730530511116138bce193da45395965c",
+      "docs/memory-os/GRAPH_RELATIONSHIP_VOCABULARY.md": "5389893b0d733354eddaedae786fa077e1214f22444eb6c92f273bf5f3907652",
+      "docs/memory-os/MAR-1-ARCHITECTURE_REVIEW.md": "6380d59ceb8df055c1f322ed4ec5a17484d8e0520ecae0819d9131290c403d8d",
+      "docs/memory-os/MEM-008-EXIT_CRITERIA.md": "df31ba211a13d69b5fc794bbf8e20e688f0819db9fef342d912ad6868b560814",
+      "docs/memory-os/MEM-008-SUCCESS_TEST_MATRIX.md": "03b48255d930f507ebbb2ccab6a6fc5cae64141523803a4660b9fa1bc528bfd9",
+      "docs/memory-os/MEMORY_LIFECYCLE_MAP.md": "fb2daafd44d2bcb8dd1abedb4f7ef9d2057c041fe53d3f9398a7b76471a234c8",
+      "docs/memory-os/README.md": "859a04a0adad7b2225786bfd5538e1f3b343b16903c0e5fa416b4443b348d2ca",
+      "docs/memory-os/TIME_MODEL.md": "67794339d41c4129d6f06df4cd4a46d4e5341ab61a2022d3e3debcac3a0a8cca",
+      "docs/memory-os/TRUST_PROVENANCE_MODEL.md": "edcfdcd9c2047f01dbe4e8fc5afc768641b4f4cf7908273863c02784c422f455",
+      "docs/memory-os/VOLUME-1-MEMORY_CONSTITUTION.md": "aebcb70893b1bb6cbf3c1b5405f61ff0a905c0dbba3add382ca0da059c79a22b",
+      "docs/memory-os/VOLUME-2-MEMORY_DATA_MODEL.md": "e314102a5ac8edcec275d813f6778d8550013b609f66003ba9e6205492038f60",
+      "docs/memory-os/VOLUME-3-MEMORY_ENGINE.md": "18e6b428be6a959b7d22f9f9b82d960693b115de352d325933cbaac0f16de367",
+      "docs/memory-os/VOLUME-4-IDENTITY_LAYER.md": "39701ed6de16f03ccd0609579444c8e2d6229b58301f17897bc7c40bbb6a2c17",
+      "docs/memory-os/VOLUME-5-KNOWLEDGE_GRAPH.md": "851248cbd23fba1886557f91a20a14ad4150a10ab4bcae3a9266ae839879684c",
+      "docs/memory-os/VOLUME-6-EXECUTIVE_INTELLIGENCE.md": "72b38dcb4e2c4e59760e8ae4d82b0f50c1785e2b3e2cd168d7a8653c04e49a83",
+      "docs/memory-os/VOLUME-7-GOVERNANCE_AND_SAFETY.md": "afacc2416d90d6abfaf8459c348319914ed7c0dde0f475b235c0609c6b3ebb5d"
+    }
+  },
+  "freeze_declaration": {
+    "declared": true,
+    "declared_at": "2026-07-01T15:26:20.000Z",
+    "declared_by_role": "PMO",
+    "evidence_base_entry": "E-MEM-FREEZE-2026",
+    "expected_evidence_id": "E-MEM-FREEZE-2026",
+    "expected_git_tag": "memory-spec-v1.0",
+    "on_pass": {
+      "commit_design_package": true,
+      "tag_repository": "memory-spec-v1.0",
+      "authorize": "MEM-009"
+    }
+  }
+}
