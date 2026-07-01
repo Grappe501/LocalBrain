@@ -574,6 +574,7 @@ Amendments publish as v1.1, v1.2, … v1.0 text remains immutable. See [Falsific
 | E-PR-S4-2026 | adversarial review | 2026-06-30 | Executive Practitioner Session 4 — 5 attack surfaces · 0 contradictions · RO-S4-001–011 | None — executive utility supported; practitioner obligations recorded |
 | E-PR-S5-2026 | adversarial review | 2026-06-30 | Skeptic Session 5 — 7 attack surfaces · 0 contradictions · RO-S5-001–007 | None — theory survived destruction attempts; commercial risks flagged |
 | E-PR-FREEZE-2026 | gate | 2026-06-30 | Five-session peer review complete · Pre-H-027 gate Q1–Q5 all yes · Theory v1.0 frozen | Canon locked — amendments v1.1+ only |
+| E-CON-S1-2026 | convention | 2026-07-01 | Session 1 Ontology — 12 terms frozen · 8 resolved · interoperable vocabulary | [Ontology Contract](./convention/CONVENTION-S1-ONTOLOGY_CONTRACT.md) |
 | E-META-PR-2026 | meta-evidence | 2026-06-28 | Sessions 1–3 pattern: claim-type separation · emergent implementation style (local · incremental · versioned · event-aware · self-observing) | Review method taxonomy — not evidence theory is correct |
 
 ### Peer review progress (institutional memory)

@@ -130,7 +130,7 @@ Design → Build → Test → PMO Review → Certification → Regression Lock �
 ## Burt mission
 
 > Finish the current module.  
-> **Now:** Executive Epistemology Convention — Session 1 (Ontology)
+> **Now:** Convention Session 2 — Memory Lifecycle
 
 Everything else → [VERSION2_BACKLOG.md](./VERSION2_BACKLOG.md)
 
