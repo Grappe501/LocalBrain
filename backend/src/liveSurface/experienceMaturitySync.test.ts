@@ -27,12 +27,28 @@ test("experience maturity syncs from ENG-CAP-001", () => {
   assert.equal(cutover?.maturity_level, 4);
 });
 
-test("migration surfaces point forward to Executive Office not stale slices", () => {
+test("migration surfaces use curated surface-registry upgrade paths", () => {
   const matrix = buildExperienceMaturityMatrix(SURFACE_REGISTRY);
   const consolidation = matrix.find((r) => r.route === "/migration/consolidation");
   assert.ok(consolidation);
-  assert.equal(consolidation?.next_upgrade_slice, "LB-OS-026.7");
-  assert.notEqual(consolidation?.next_upgrade_slice, "LB-OS-021");
+  assert.equal(consolidation?.next_upgrade_slice, "LB-OS-021");
+  assert.ok(consolidation?.next_upgrade_summary.includes("architecture"));
+
+  const audit = matrix.find((r) => r.route === "/migration/audit");
+  assert.ok(audit);
+  assert.equal(audit?.next_upgrade_slice, "LB-OS-022");
+
+  const cutover = matrix.find((r) => r.route === "/migration/cutover");
+  assert.ok(cutover);
+  assert.equal(cutover?.next_upgrade_slice, "LB-OS-089");
+});
+
+test("studio surfaces point to department slices not Executive Office home", () => {
+  const matrix = buildExperienceMaturityMatrix(SURFACE_REGISTRY);
+  const engineering = matrix.find((r) => r.route === "/studio/engineering");
+  assert.ok(engineering);
+  assert.equal(engineering?.next_upgrade_slice, "LB-OS-027");
+  assert.equal(engineering?.maturity_level, 2);
 });
 
 test("capability completion maps to L0-L4 bands", () => {

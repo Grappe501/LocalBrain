@@ -1473,7 +1473,7 @@ export const CAPABILITY_REGISTRY: CapabilityEntry[] = [
     authority_level: "authoritative",
     completion_status: "production",
     maturity: {
-      completion_percent: 92,
+      completion_percent: 94,
       health: "healthy",
       last_verified_slice: "LB-OS-026.6",
       dependency_capability_ids: [],
@@ -2061,7 +2061,7 @@ export const CAPABILITY_REGISTRY: CapabilityEntry[] = [
     authority_level: "authoritative",
     completion_status: "partial",
     maturity: {
-      completion_percent: 75,
+      completion_percent: 80,
       health: "healthy",
       last_verified_slice: "LB-OS-012",
       dependency_capability_ids: [],

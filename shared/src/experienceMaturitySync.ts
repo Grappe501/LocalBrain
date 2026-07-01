@@ -15,7 +15,7 @@ export const PLATFORM_EXPERIENCE_NEXT_SLICE = "LB-OS-026.7";
 export const PLATFORM_EXPERIENCE_NEXT_SUMMARY =
   "Executive Office home — Chief of Staff narrative replaces mock briefing sections";
 
-/** Manual next-upgrade hints when capability graph points backward or to unrelated caps */
+/** Manual overrides when capability graph misroutes — prefer SURFACE_REGISTRY paths first */
 export const EXPERIENCE_MATURITY_UPGRADE_HINTS: Record<
   string,
   { next_upgrade_slice: string; next_upgrade_summary: string }
@@ -28,42 +28,6 @@ export const EXPERIENCE_MATURITY_UPGRADE_HINTS: Record<
     next_upgrade_slice: PLATFORM_EXPERIENCE_NEXT_SLICE,
     next_upgrade_summary:
       "Surface Executive Office experience certification alongside build state (L3→L4)",
-  },
-  "/migration": {
-    next_upgrade_slice: PLATFORM_EXPERIENCE_NEXT_SLICE,
-    next_upgrade_summary: "Migration arc complete — elevate outcomes in Chief of Staff briefing",
-  },
-  "/migration/audit": {
-    next_upgrade_slice: PLATFORM_EXPERIENCE_NEXT_SLICE,
-    next_upgrade_summary: "Audit feeds Executive Office; land survey in briefing narrative",
-  },
-  "/migration/consolidation": {
-    next_upgrade_slice: PLATFORM_EXPERIENCE_NEXT_SLICE,
-    next_upgrade_summary: "Consolidation insights feed Chief of Staff briefing (L4)",
-  },
-  "/migration/workspace-architecture": {
-    next_upgrade_slice: PLATFORM_EXPERIENCE_NEXT_SLICE,
-    next_upgrade_summary: "Architecture posture in Executive Office department reports",
-  },
-  "/migration/digital-land-survey": {
-    next_upgrade_slice: PLATFORM_EXPERIENCE_NEXT_SLICE,
-    next_upgrade_summary: "Survey complexity in CoS briefing — planning already live",
-  },
-  "/migration/proof": {
-    next_upgrade_slice: PLATFORM_EXPERIENCE_NEXT_SLICE,
-    next_upgrade_summary: "Certified proof status in Executive Office operations zone",
-  },
-  "/migration/planning": {
-    next_upgrade_slice: PLATFORM_EXPERIENCE_NEXT_SLICE,
-    next_upgrade_summary: "Active plans surface in Chief of Staff daily narrative",
-  },
-  "/migration/approval": {
-    next_upgrade_slice: PLATFORM_EXPERIENCE_NEXT_SLICE,
-    next_upgrade_summary: "Approval queue in Executive Office — cutover already live",
-  },
-  "/migration/cutover": {
-    next_upgrade_slice: "LB-OS-089",
-    next_upgrade_summary: "Phase 1 Personal OS launch intelligence composer (L5)",
   },
 };
 
@@ -167,8 +131,10 @@ export function mergeSurfaceWithCapability(
     maturity_level,
     maturity_label: maturityLabel(maturity_level),
     target_level: surface.target_maturity_level,
-    next_upgrade_slice: hint?.next_upgrade_slice ?? upgrade.next_upgrade_slice,
-    next_upgrade_summary: hint?.next_upgrade_summary ?? upgrade.next_upgrade_summary,
+    next_upgrade_slice:
+      hint?.next_upgrade_slice ?? surface.next_upgrade_slice ?? upgrade.next_upgrade_slice,
+    next_upgrade_summary:
+      hint?.next_upgrade_summary ?? surface.next_upgrade_summary ?? upgrade.next_upgrade_summary,
     capability_id: cap.capability_id,
     last_verified_slice: cap.maturity.last_verified_slice,
   };

@@ -95,8 +95,8 @@ export const SURFACE_REGISTRY: LiveSurfaceEntry[] = [
     question_id: "EQ-003",
     maturity_level: 2,
     target_maturity_level: 4,
-    next_upgrade_slice: "LB-OS-010.5",
-    next_upgrade_summary: "CoS confidence summaries and workspace priority roll-up (L3)",
+    next_upgrade_slice: "LB-OS-017",
+    next_upgrade_summary: "AI Provider Management — routing, credentials, and flight-recorder observability (L4)",
   },
   {
     route: "/explorer",
