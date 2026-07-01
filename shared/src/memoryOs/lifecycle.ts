@@ -69,3 +69,6 @@ export const EPISODE_INITIAL_LIFECYCLE: LifecycleState = "Captured";
 
 /** Initial state for persisted Fact writes (S2 Captured). */
 export const FACT_INITIAL_LIFECYCLE: LifecycleState = "Captured";
+
+/** Initial state for persisted Artifact writes (S2 Captured). */
+export const ARTIFACT_INITIAL_LIFECYCLE: LifecycleState = "Captured";

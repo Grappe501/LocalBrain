@@ -5,3 +5,5 @@ export const CON_S4_VERSION = "CON-S4-2026-07" as const;
 export const EPISODE_KIND = "Episode" as const;
 export const FACT_SCHEMA_VERSION = "1.0.0" as const;
 export const FACT_KIND = "Fact" as const;
+export const ARTIFACT_SCHEMA_VERSION = "1.0.0" as const;
+export const ARTIFACT_KIND = "Artifact" as const;
