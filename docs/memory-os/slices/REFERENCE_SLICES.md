@@ -152,6 +152,18 @@ Verify: authority explicit · delegation traceable · ledger citation immutable 
 
 Implemented: `verifyDecisionCitationAuthorityIntegrity()` — ENG-MEM-001.5.2.
 
+### Recording Principle (binding — MAR-2)
+
+> **Authority is recorded. It is never reconstructed.**
+
+Enforced at capture: reject reconstruction-shaped fields · reject inference `capture_method` · `verifyDecisionCitationGovernanceGuarantees()` — ENG-MEM-001.5.3.
+
+### Ledger Boundary (binding — MAR-2)
+
+> **Decision Ledger owns binding authority. Memory stores DecisionCitation only.**
+
+Enforced: `decision_id` cites `decision:` · `ledger_ref` cites `ledger:` · no binding authority duplication fields · supporting refs outward only.
+
 ---
 
 *Reference Slices · LocalBrain V1 · ENG-MEM-001*

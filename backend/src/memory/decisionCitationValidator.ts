@@ -9,6 +9,12 @@ import {
   isTrustLevel,
   type LifecycleState,
 } from "@localbrain/shared";
+import {
+  assertDecisionCitationLedgerBoundary,
+  assertDecisionCitationRecordingPrinciple,
+  assertDecisionCitationSupportingRefsOutwardOnly,
+  DECISION_CITATION_FORBIDDEN_FIELDS,
+} from "./decisionCitationGovernanceGuarantees.js";
 
 export class DecisionCitationValidationError extends Error {
   readonly field: string;
@@ -20,25 +26,7 @@ export class DecisionCitationValidationError extends Error {
   }
 }
 
-const FORBIDDEN_FIELDS = [
-  "inferred_authority",
-  "inferred_decider",
-  "reconstructed_from",
-  "reconstructed_decision",
-  "approval_status",
-  "workflow_id",
-  "workflow_state",
-  "policy_enforcement",
-  "binding_decision_body",
-  "ledger_payload",
-  "authority_inference",
-  "probably_approved",
-  "consensus_decision",
-  "domain",
-  "statement",
-  "confidence",
-] as const;
-
+const FORBIDDEN_FIELDS = DECISION_CITATION_FORBIDDEN_FIELDS;
 function assertObject(value: unknown, field: string): Record<string, unknown> {
   if (value === null || typeof value !== "object" || Array.isArray(value)) {
     throw new DecisionCitationValidationError(field, "must be an object");
@@ -167,7 +155,12 @@ export function validateDecisionCitationRecord(value: unknown): DecisionCitation
   }
   validateProvenance(obj.provenance);
 
-  return obj as DecisionCitation;
+  const citation = obj as DecisionCitation;
+  assertDecisionCitationLedgerBoundary(citation);
+  assertDecisionCitationRecordingPrinciple(citation);
+  assertDecisionCitationSupportingRefsOutwardOnly(citation);
+
+  return citation;
 }
 
 export function assertDecisionCitationSchemaVersion(citation: DecisionCitation): void {

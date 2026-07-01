@@ -20,20 +20,30 @@ import {
   getDecisionCitationById,
 } from "./decisionCitationStore.js";
 import {
-  transitionDecisionCitationLifecycle,
-  verifyDecisionCitation,
-} from "./decisionCitationService.js";
-import { writeDecisionCitation } from "./writePipeline.js";
-import { writeArtifact } from "./writePipeline.js";
-import { getArtifactById } from "./artifactStore.js";
-import {
   readDecisionCitationAuthorityIntegrity,
+  readDecisionCitationGovernanceGuarantees,
+  writeDecisionCitation,
+  writeArtifact,
+  writeFact,
 } from "./writePipeline.js";
 import {
   AUTHORITY_EXERCISED_INVARIANT,
   DECISION_CITATION_AUTHORITY_QUESTION,
   isCompleteAuthorityIntegrity,
 } from "./decisionCitationAuthorityIntegrity.js";
+import {
+  DECISION_LEDGER_BOUNDARY_INVARIANT,
+  DecisionCitationGovernanceError,
+  GOVERNANCE_PRINCIPLE,
+  isCompleteGovernanceGuarantees,
+  RECORDING_PRINCIPLE,
+} from "./decisionCitationGovernanceGuarantees.js";
+import { getFactById } from "./factStore.js";
+import { getArtifactById } from "./artifactStore.js";
+import {
+  transitionDecisionCitationLifecycle,
+  verifyDecisionCitation,
+} from "./decisionCitationService.js";
 
 const EXEC = { identity_id: "ID-executive-001", identity_kind: "executive" };
 
@@ -264,6 +274,145 @@ test("ENG-MEM-001.5.2 ledger citation immutable after lifecycle transition", () 
     assert.ok(authority.checks.decision_body_immutable);
     assert.equal(verified.decision_id, atCapture.decision_id);
     assert.equal(verified.ledger_ref, atCapture.ledger_ref);
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-MEM-001.5.3 governance guarantees — constitutional doctrines enforced", () => {
+  bootstrapApp();
+  try {
+    const { citation } = writeDecisionCitation(sampleCitationInput());
+    const { governance, engine_id } = readDecisionCitationGovernanceGuarantees(citation.citation_id);
+
+    assert.equal(engine_id, "ENG-MEM-001");
+    assert.equal(governance.principles.authority_exercised, AUTHORITY_EXERCISED_INVARIANT);
+    assert.equal(governance.principles.authority_recorded, RECORDING_PRINCIPLE);
+    assert.equal(governance.principles.authority_creates_responsibility, GOVERNANCE_PRINCIPLE);
+    assert.equal(governance.principles.ledger_boundary, DECISION_LEDGER_BOUNDARY_INVARIANT);
+    assert.ok(isCompleteGovernanceGuarantees(governance));
+    assert.ok(governance.checks.no_binding_authority_duplication);
+    assert.ok(governance.checks.no_inference_at_capture);
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-MEM-001.5.3 Recording Principle — rejects reconstruction fields", () => {
+  bootstrapApp();
+  try {
+    const { citation } = writeDecisionCitation(sampleCitationInput());
+    assert.throws(
+      () => validateDecisionCitationRecord({ ...citation, synthesized_decision: "Approved" }),
+      (err: unknown) =>
+        err instanceof DecisionCitationValidationError && err.field === "synthesized_decision",
+    );
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-MEM-001.5.3 Recording Principle — rejects inference capture_method", () => {
+  bootstrapApp();
+  try {
+    assert.throws(
+      () =>
+        writeDecisionCitation({
+          ...sampleCitationInput(),
+          capture_method: "inference",
+        }),
+      DecisionCitationGovernanceError,
+    );
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-MEM-001.5.3 Governance Principle — rejects truth conflation fields", () => {
+  bootstrapApp();
+  try {
+    const { citation } = writeDecisionCitation(sampleCitationInput());
+    assert.throws(
+      () => validateDecisionCitationRecord({ ...citation, establishes_truth: true }),
+      (err: unknown) =>
+        err instanceof DecisionCitationValidationError && err.field === "establishes_truth",
+    );
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-MEM-001.5.3 Ledger Boundary — ledger_ref must cite ledger entry only", () => {
+  bootstrapApp();
+  try {
+    assert.throws(
+      () =>
+        writeDecisionCitation({
+          ...sampleCitationInput(),
+          ledger_ref: "decision:DEC-2026-001",
+        }),
+      DecisionCitationGovernanceError,
+    );
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-MEM-001.5.3 Ledger Boundary — rejects binding authority duplication fields", () => {
+  bootstrapApp();
+  try {
+    const { citation } = writeDecisionCitation(sampleCitationInput());
+    assert.throws(
+      () => validateDecisionCitationRecord({ ...citation, binding_decision_body: "Full text" }),
+      (err: unknown) =>
+        err instanceof DecisionCitationValidationError && err.field === "binding_decision_body",
+    );
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-MEM-001.5.3 supporting refs — outward substrates only, no authority refs", () => {
+  bootstrapApp();
+  try {
+    assert.throws(
+      () =>
+        writeDecisionCitation({
+          ...sampleCitationInput(),
+          supporting_memory_refs: ["citation:other-citation-001"],
+        }),
+      (err: unknown) =>
+        err instanceof DecisionCitationValidationError &&
+        err.field === "supporting_memory_refs[0]",
+    );
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-MEM-001.5.3 write does not mutate referenced Fact substrate", () => {
+  bootstrapApp();
+  try {
+    const { fact } = writeFact({
+      domain: "executive",
+      statement: "Audit remediation is complete.",
+      subject_ref: EXEC,
+      predicate: "audit_status",
+      event_at: "2026-07-01T12:00:00.000Z",
+      captured_by: EXEC,
+      capture_method: "direct",
+      source_ref: "source:audit/status",
+    });
+    const factRef = `fact:${fact.fact_id}`;
+    const before = getFactById(fact.fact_id)!;
+
+    writeDecisionCitation({
+      ...sampleCitationInput(),
+      supporting_memory_refs: [factRef],
+    });
+
+    const after = getFactById(fact.fact_id)!;
+    assert.equal(JSON.stringify(before), JSON.stringify(after));
   } finally {
     shutdownApp();
   }

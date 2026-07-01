@@ -241,8 +241,8 @@ Acceptance verifies:
 | Commit | Scope |
 | ------ | ----- |
 | **001.5.1** | Canonical DecisionCitation storage — schema · validation · persistence · S4 · lifecycle · ledger citation · decider · supporting refs — **COMPLETE** (`33d9173`) |
-| **001.5.2** | Authority integrity — A17 · `verifyDecisionCitationAuthorityIntegrity()` · exercised authority only — **COMPLETE** |
-| **001.5.3** | Governance guarantees — Recording Principle · ledger boundary invariants · reject reconstruction fields |
+| **001.5.2** | Authority integrity — A17 · `verifyDecisionCitationAuthorityIntegrity()` · exercised authority only — **COMPLETE** (`4d23dec`) |
+| **001.5.3** | Governance guarantees — Recording Principle · ledger boundary invariants · reject reconstruction fields — **COMPLETE** |
 
 Keep each commit substrate-only — same discipline as Conversation 001.4.1–001.4.3 and Artifact 001.3.1–001.3.2.
 

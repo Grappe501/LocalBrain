@@ -12,6 +12,10 @@ import type { DecisionCitationAuthorityIntegrity } from "./decisionCitationAutho
 import {
   verifyDecisionCitationAuthorityIntegrity,
 } from "./decisionCitationAuthorityIntegrity.js";
+import type { DecisionCitationGovernanceGuarantees } from "./decisionCitationGovernanceGuarantees.js";
+import {
+  verifyDecisionCitationGovernanceGuarantees,
+} from "./decisionCitationGovernanceGuarantees.js";
 import { getDecisionCitationById } from "./decisionCitationStore.js";
 import {
   getArtifactCustodyChain,
@@ -92,6 +96,11 @@ export type DecisionCitationWriteResult = {
 
 export type DecisionCitationAuthorityResult = {
   authority: DecisionCitationAuthorityIntegrity;
+  engine_id: "ENG-MEM-001";
+};
+
+export type DecisionCitationGovernanceResult = {
+  governance: DecisionCitationGovernanceGuarantees;
   engine_id: "ENG-MEM-001";
 };
 
@@ -187,6 +196,19 @@ export function readDecisionCitationAuthorityIntegrity(
   }
   return {
     authority: verifyDecisionCitationAuthorityIntegrity(citation, captureBaseline),
+    engine_id: "ENG-MEM-001",
+  };
+}
+
+export function readDecisionCitationGovernanceGuarantees(
+  citationId: string,
+): DecisionCitationGovernanceResult {
+  const citation = getDecisionCitationById(citationId);
+  if (!citation) {
+    throw new Error(`DecisionCitation not found: ${citationId}`);
+  }
+  return {
+    governance: verifyDecisionCitationGovernanceGuarantees(citation),
     engine_id: "ENG-MEM-001",
   };
 }

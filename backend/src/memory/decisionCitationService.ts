@@ -22,6 +22,7 @@ import {
   buildMemoryProvenanceEnvelope,
   MEMORY_AUDIT_OBJECT_DECISION_CITATION,
 } from "./provenanceEnvelope.js";
+import { verifyDecisionCitationGovernanceGuarantees } from "./decisionCitationGovernanceGuarantees.js";
 
 export type CreateDecisionCitationInput = {
   decision_id: string;
@@ -67,6 +68,7 @@ export function createDecisionCitation(input: CreateDecisionCitationInput): Deci
 
   const citation = validateDecisionCitationRecord(draft);
   assertDecisionCitationSchemaVersion(citation);
+  verifyDecisionCitationGovernanceGuarantees(citation);
   insertDecisionCitation(citation);
 
   appendMemoryAuditEvent({
@@ -99,6 +101,7 @@ export function transitionDecisionCitationLifecycle(
 
   const updated = updateDecisionCitationLifecycleState(citationId, nextState, new Date().toISOString());
   validateDecisionCitationRecord(updated);
+  verifyDecisionCitationGovernanceGuarantees(updated);
 
   appendMemoryAuditEvent({
     event_type: eventType,
