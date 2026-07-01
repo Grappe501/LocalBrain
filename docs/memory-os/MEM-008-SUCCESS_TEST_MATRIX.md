@@ -360,7 +360,7 @@ MEM-009 IMPLEMENTATION: AUTHORIZED
 
 | Item | Location | Action |
 | ---- | -------- | ------ |
-| Stale test expects `LB-OS-027.0` as current slice | `backend/src/buildState/buildState.test.ts` | Update assertion to MEM-008 / Factory-era critical path when convenient — **does not affect freeze artifacts** |
+| Stale test expected `LB-OS-027.0` as current slice | `backend/src/buildState/buildState.test.ts` | ✅ Updated — LB-OS-027 · ENG-MEM-001.3 Artifact era |
 
 ---
 

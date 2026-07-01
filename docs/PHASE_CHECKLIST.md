@@ -79,7 +79,7 @@ NO NEW DOCTRINE
 
 > **Doctrine:** Teach LocalBrain to remember before it learns to reason.  
 > **Constitution:** [Article XIII — Executive Principle](./LOCALBRAIN_CONSTITUTION.md#article-xiii--executive-principle)  
-> **Gate:** [Executive Epistemology Convention](./LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md) **complete** — LB-OS-027 spec lock unlocked · Factory next.  
+> **Gate:** [Executive Epistemology Convention](./LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md) **complete** — MEM-008 frozen `memory-spec-v1.0` · **ENG-MEM-001.3 Artifact** active (001.3.2 chain of custody).  
 > **Prerequisite:** [Executive Cognition Peer Review](./LOCALBRAIN_EXECUTIVE_COGNITION_PEER_REVIEW.md) → Theory v1.0 frozen.
 
 | Slice | Name | Status |
@@ -88,7 +88,7 @@ NO NEW DOCTRINE
 | — | Executive Cognition Peer Review | ✅ Complete — S1–S5 passed · Theory v1.0 frozen 2026-06-30 · [Evidence Base](./LOCALBRAIN_COGNITIVE_EVIDENCE_BASE.md#theory-v10-freeze-peer-review-complete) · auto-synced from Evidence Base |
 | — | [Platform Audit](./LOCALBRAIN_PLATFORM_AUDIT.md) — build plan + navigation | ✅ Complete 2026-06-28 — gap report · route registry · EQ matrix · top 10 slices |
 | — | Executive Epistemology Convention (5 sessions) | ✅ Complete 2026-06-28 — [Convention Close](./convention/CONVENTION-CLOSE.md) · [contracts](./convention/) |
-| LB-OS-027 | Executive Memory Bootstrap | ⬜ PLANNED |
+| LB-OS-027 | Executive Memory Bootstrap | ▶ Implementation · `memory-spec-v1.0` · [ENG-MEM-001.3 Artifact](./memory-os/slices/ENG-MEM-001.3-ARTIFACT.md) · [MILESTONE-MEMORY-OS](./burt_packets/MILESTONE-MEMORY-OS.md) |
 | LB-OS-028 | Memory Ingestion | ⬜ PLANNED |
 | LB-OS-029 | Memory Retrieval | ⬜ PLANNED |
 | LB-OS-030 | Executive Context Window | ⬜ PLANNED |
@@ -197,7 +197,8 @@ NO NEW DOCTRINE
 | LB-OS-PROD-001 | Productization & Empty Brain Onboarding | ✅ Complete — [Burt](./burt_packets/LB-OS-PROD-001.md) · ENG-INST-001 |
 | LB-OS-026.8 | Productization / Instance Onboarding | ✅ PROD-001 |
 | LB-OS-026.9 | Provider Vault & Connector Settings | ✅ PROD-001 |
-| LB-OS-027.0 | Empty Brain Factory / Packaging | ▶ In progress · [MILESTONE-FACTORY](./burt_packets/MILESTONE-FACTORY.md) · [FACTORY_CONTRACT](./factory/FACTORY_CONTRACT.md) · CAP-FUT-FAC-001 |
+| LB-OS-027.0 | Empty Brain Factory / Packaging | ✅ Certified · `v1.0.0-factory-certified` · [MILESTONE-FACTORY](./burt_packets/MILESTONE-FACTORY.md) · [FACTORY_CONSTITUTION](./factory/FACTORY_CONSTITUTION_v1.0.md) |
+| LB-OS-027 | Executive Memory Bootstrap | ▶ Implementation · `memory-spec-v1.0` · [ENG-MEM-001.3 Artifact](./memory-os/slices/ENG-MEM-001.3-ARTIFACT.md) · [MILESTONE-MEMORY-OS](./burt_packets/MILESTONE-MEMORY-OS.md) · [design package](./memory-os/README.md) |
 | LB-OS-027.1 | Multi-Brain Sharing (reserved) | 🔒 Reserved · CAP-FUT-MBS-001 |
 | LB-OS-PROD-002 | License & Subscription Gate | 🔒 Reserved · [Burt](./burt_packets/LB-OS-PROD-002-006-reserved.md) · CAP-FUT-LIC-001 |
 | LB-OS-PROD-003 | Social Media Connector Registry | 🔒 Reserved · CAP-FUT-SMC-001 |
@@ -207,11 +208,11 @@ NO NEW DOCTRINE
 | LB-OS-PROD-007 | Instance Identity, Transfer, Single-Primary | 🔒 Reserved · [Burt](./burt_packets/LB-OS-PROD-007-reserved.md) · CAP-FUT-IDT-001 |
 | LB-OS-PROD-008 | Executive Identity Authority | 🔒 Reserved · [Burt](./burt_packets/LB-OS-PROD-008-009-reserved.md) · CAP-FUT-EIA-001 |
 | LB-OS-PROD-009 | Executive Passport | 🔒 Reserved · CAP-FUT-PSP-001 |
-| LB-OS-PROD-010 | Executive LocalBrain Factory | ▶ In progress · [MILESTONE-FACTORY](./burt_packets/MILESTONE-FACTORY.md) · ENG-FAC-001 slice 1 |
+| LB-OS-PROD-010 | Executive LocalBrain Factory | ✅ Certified · `v1.0.0-factory-certified` · [MILESTONE-FACTORY](./burt_packets/MILESTONE-FACTORY.md) · ENG-FAC-001 complete |
 | LB-OS-PROD-011 | Chief Compliance Officer | 🔒 Reserved · CAP-FUT-CCO-001 |
 | LB-OS-CON-003 | Versioned Constitution Migration | 🔒 Reserved · CAP-FUT-CON-VER-001 |
 
-**Gate:** V1 implementation mode · **Next:** Phase 1 — Executive Office polish + certification
+**Gate:** V1 implementation mode · **Next:** ENG-MEM-001.3.2 Artifact chain of custody — Memory OS Wave 1 · LB-OS-027
 
 **Architecture phase:** ✅ **COMPLETE** · **Doctrine:** 🔒 **FROZEN** (feature freeze until launch — no new doctrine, reserved capabilities, offices, or cognitive layers)
 

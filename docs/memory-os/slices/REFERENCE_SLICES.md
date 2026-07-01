@@ -1,36 +1,71 @@
 # Reference Slices — Exemplar Implementations
 
-> **Purpose:** Reusable library of engineering philosophy per canonical object class — not just specification, but how to implement it with fidelity.
+> **Purpose:** Engineering library — exemplar implementations and constitutional responsibilities for institutional cognition. Not just specification; the engineering philosophy behind each class of canonical object.
 
-| Reference | Object / class | Engineering philosophy | Charter |
-| --------- | -------------- | ---------------------- | ------- |
-| **001** | [ENG-MEM-001.1 Episode](./ENG-MEM-001.1-EPISODE.md) | **Engineering discipline** — slice structure · validation · persistence · tests · closeout | COMPLETE |
-| **002** | [ENG-MEM-001.2 Fact](./ENG-MEM-001.2-FACT.md) | **Knowledge engineering** — lineage · provenance · A12 explainability · append-only corrections | COMPLETE |
-| **003** | [ENG-MEM-001.3 Artifact](./ENG-MEM-001.3-ARTIFACT.md) | **Evidence engineering** — authenticity · chain of custody · immutable preservation · evidence independence · A13 | COMPLETE |
+## Constitutional responsibilities
 
-## Reserved (future Wave 1+)
+| Reference | Object | Constitutional responsibility | Engineering philosophy | Status |
+| --------- | ------ | ----------------------------- | ---------------------- | ------ |
+| **001** | [Episode](./ENG-MEM-001.1-EPISODE.md) | **Preserve history** | Engineering discipline | COMPLETE |
+| **002** | [Fact](./ENG-MEM-001.2-FACT.md) | **Preserve institutional knowledge** | Knowledge engineering | COMPLETE |
+| **003** | [Artifact](./ENG-MEM-001.3-ARTIFACT.md) | **Preserve evidence** | Evidence engineering | COMPLETE |
+| **004** | ENG-MEM-001.4 Conversation | **Preserve interpretation** | Interpretation engineering | Reserved |
+| **005** | ENG-MEM-001.5 DecisionCitation | **Preserve exercised authority** | Governance engineering | Reserved |
 
-| Reference | Object | Philosophy (planned) |
-| --------- | ------ | -------------------- |
-| **004** | ENG-MEM-001.4 Conversation | **Interpretation engineering** — how people interpreted knowledge at a point in time · must not rewrite Episode · Artifact · Fact |
-| **005** | ENG-MEM-001.5 DecisionCitation | **Governance engineering** — authority exercised · justification without duplicating ledger |
+Later intelligence layers consume these responsibilities — they do not redefine them.
 
-## Integrity protected (binding)
+## Executive ontology (five questions)
+
+```text
+What happened?           → Episode
+What evidence exists?    → Artifact
+What do we know?         → Fact
+What did people think?   → Conversation
+Why did we decide?       → DecisionCitation
+```
+
+Future Executive Office briefing naturally separates along these lines — one substrate per question.
+
+## Integrity protected
 
 | Object | Integrity protected |
 | ------ | ------------------- |
-| Episode | **Historical integrity** — what happened, when |
-| Artifact | **Evidentiary integrity** — authentic evidence + stewardship |
-| Fact | **Knowledge integrity** — institutional acceptance grounded in evidence |
+| Episode | **Historical integrity** |
+| Artifact | **Evidentiary integrity** (authenticity + stewardship) |
+| Fact | **Knowledge integrity** |
+| Conversation | **Interpretive integrity** (reserved) |
 
 ## Artifact dual guarantees (permanent)
 
-| Concern | Question | Criterion |
-| ------- | -------- | --------- |
-| **Authenticity** | Can we still show exactly what we preserved? | **A13** |
-| **Stewardship** | Who has been responsible for preserving it? | **Chain of custody** |
+| Concern | Question |
+| ------- | -------- |
+| **A13 Authenticity** | Can we still show exactly what we preserved? |
+| **Stewardship** | Who has been responsible for preserving it? |
 
-These questions remain **separate forever**.
+Separate forever.
+
+## Interpretation Principle (binding — Conversation, reserved)
+
+```text
+Conversations preserve interpretation.
+They do not rewrite history.
+```
+
+Conversations must never modify Episodes, Facts, or Artifacts. They preserve how humans interpreted those things at that moment.
+
+**Executive question:** What did people think? — not what happened, what is true, or what evidence exists.
+
+### Interpretation never becomes knowledge (binding)
+
+```text
+Interpretation never becomes knowledge without institutional acceptance.
+```
+
+```text
+Conversation  →  may inform  →  Fact
+```
+
+Conversation is never a Fact — analogous to Artifact → may support → Fact. Evidence does not become knowledge automatically; discussion does not become knowledge automatically.
 
 ---
 

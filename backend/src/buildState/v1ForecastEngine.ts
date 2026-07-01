@@ -15,6 +15,9 @@ import type { V1CommandCenter } from "@localbrain/shared";
 import { getCommitsSince, getCommitCount } from "./gitMetrics.js";
 import { getRepoRoot } from "../db/repoRoot.js";
 import { certifyCurrentModule } from "./moduleCertificationEngine.js";
+import {
+  getMemoryOsProgressSnapshot,
+} from "./memoryOsSpecMetrics.js";
 
 const HISTORY_PATH = path.join(getRepoRoot(), "local_data", "v1-forecast-history.json");
 
@@ -267,11 +270,20 @@ function pmoReasoning(cc: V1CommandCenter): string[] {
     );
   }
   const factory = cc.modules.find((m) => m.module_id === "factory");
-  if (factory && factory.progress_percent < 20) {
+  if (factory?.certified) {
+    lines.push("Empty Brain Factory certified and locked — v1.0.0-factory-certified baseline");
+  } else if (factory && factory.progress_percent < 20) {
     lines.push("Factory implementation largely unknown — largest schedule uncertainty after Convention");
   }
   const memory = cc.modules.find((m) => m.module_id === "memory_os");
-  if (memory?.status === "waiting" || memory?.status === "not_started") {
+  if (memory?.status === "in_progress") {
+    const snap = getMemoryOsProgressSnapshot();
+    if (snap.spec_frozen) {
+      lines.push(`Memory OS — ${snap.summary}`);
+    } else {
+      lines.push(`Memory OS specification walkthrough — ${snap.mem008.summary}`);
+    }
+  } else if (memory?.status === "waiting" || memory?.status === "not_started") {
     lines.push("Memory OS still largest remaining module (30% launch weight)");
   }
   const comms = cc.modules.find((m) => m.module_id === "communications");

@@ -27,7 +27,7 @@ function parseStatus(raw: string): SliceStatus {
   const s = raw.trim();
   if (/✅|COMPLETE|Complete/i.test(s)) return "complete";
   if (/📋|Next|Spec locked/i.test(s)) return "spec_locked";
-  if (/in progress|IN PROGRESS/i.test(s)) return "in_progress";
+  if (/in progress|IN PROGRESS|▶|Implementation/i.test(s)) return "in_progress";
   if (/⬜|PLANNED/i.test(s)) return "planned";
   return "not_started";
 }
@@ -120,7 +120,30 @@ export function parsePhaseChecklistSlices(): ParsedSlice[] {
     });
   }
 
-  return slices;
+  return dedupeChecklistSlices(slices);
+}
+
+const SLICE_STATUS_PRIORITY: Record<SliceStatus, number> = {
+  in_progress: 5,
+  spec_locked: 4,
+  complete: 3,
+  not_started: 2,
+  planned: 1,
+};
+
+/** Same slice id can appear in multiple phase tables — keep the most actionable row. */
+function dedupeChecklistSlices(slices: ParsedSlice[]): ParsedSlice[] {
+  const byId = new Map<string, ParsedSlice>();
+  for (const slice of slices) {
+    const existing = byId.get(slice.slice_id);
+    if (
+      !existing ||
+      SLICE_STATUS_PRIORITY[slice.status] > SLICE_STATUS_PRIORITY[existing.status]
+    ) {
+      byId.set(slice.slice_id, slice);
+    }
+  }
+  return Array.from(byId.values());
 }
 
 /** Dynamic phase groupings from checklist headers + slice tables. */

@@ -401,9 +401,26 @@ a {
   font-weight: 600;
 }
 
+.context-panel__card-detail {
+  margin: 0 0 0.35rem;
+  font-size: 0.68rem;
+  color: #4b5563;
+  line-height: 1.35;
+}
+
 .context-panel__status {
   font-size: 0.7rem;
   color: #2563eb;
+}
+
+.context-panel__status--active {
+  color: #059669;
+  font-weight: 600;
+}
+
+.context-panel__status--complete {
+  color: #1d4ed8;
+  font-weight: 600;
 }
 
 .context-panel__status--muted {

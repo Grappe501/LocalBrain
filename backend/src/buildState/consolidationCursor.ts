@@ -61,6 +61,7 @@ function statusForSequenceStep(
       }
       return "planned";
     default:
+      if (/reserved/i.test(step.label)) return "complete";
       return "planned";
   }
 }

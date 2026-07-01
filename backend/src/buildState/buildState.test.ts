@@ -9,6 +9,7 @@ import { BUILD_STATE_ENGINE_ID, computeBuildState } from "./buildStateEngine.js"
 import { certifyCurrentModule } from "./moduleCertificationEngine.js";
 import { computeAdaptiveForecast } from "./v1ForecastEngine.js";
 import { computeV1CommandCenter } from "./v1CommandCenterEngine.js";
+import { getMemoryOsProgressSnapshot } from "./memoryOsSpecMetrics.js";
 import { parseSliceRegistry } from "./sliceRegistry.js";
 
 test("parsePhaseChecklistSlices reads all phase tables", () => {
@@ -18,6 +19,35 @@ test("parsePhaseChecklistSlices reads all phase tables", () => {
   assert.ok(slices.some((s) => s.slice_id === "LB-OS-019" && s.status === "complete"));
   assert.ok(slices.some((s) => s.slice_id === "LB-OS-020" && s.status === "complete"));
   assert.ok(slices.some((s) => s.slice_id === "LB-OS-020.5" && s.status === "complete"));
+});
+
+test("memory OS progress reflects spec freeze and Wave 1 impl — not 100% at MEM-008", () => {
+  const snap = getMemoryOsProgressSnapshot();
+  assert.equal(snap.spec_frozen, true);
+  assert.equal(snap.mem008.passed, 107);
+  assert.equal(snap.wave1_complete_count, 3);
+  assert.ok(snap.module_progress_percent >= 78 && snap.module_progress_percent <= 82);
+  assert.ok(snap.module_progress_percent < 100);
+  assert.ok(
+    snap.building_today.includes("3/5") ||
+      snap.building_today.includes("ENG-MEM-001.4") ||
+      snap.building_today.includes("Wave 1"),
+  );
+
+  const state = computeBuildState();
+  const cc = computeV1CommandCenter(state);
+  const memory = cc.modules.find((m) => m.module_id === "memory_os");
+  assert.ok(memory);
+  assert.equal(memory!.progress_percent, snap.module_progress_percent);
+  assert.ok(memory!.progress_percent < 100);
+  assert.equal(cc.critical_path.find((n) => n.step_id === "memory_os")?.status, "in_progress");
+
+  const memCert = certifyCurrentModule("memory_os");
+  assert.ok(memCert);
+  assert.equal(memCert!.launch_status, "in_progress");
+  const testsDim = memCert!.dimensions.find((d) => d.dimension_id === "tests");
+  assert.ok(testsDim?.evidence?.includes("artifact"));
+  assert.ok(memCert!.dimensions.find((d) => d.dimension_id === "experience")?.evidence?.includes("3/5"));
 });
 
 test("parseSliceRegistry loads dependencies from queue", () => {
@@ -37,8 +67,11 @@ test("parsePhaseSections derives phases from checklist", () => {
 
 test("computeBuildState projects current sprint and velocity", () => {
   const state = computeBuildState();
-  assert.equal(state.current_slice_id, "LB-OS-027.0");
-  assert.ok(state.current_phase_label.includes("Platform Consolidation"));
+  assert.equal(state.current_slice_id, "LB-OS-027");
+  assert.ok(
+    state.current_phase_label.toLowerCase().includes("memory") ||
+      state.current_phase_label.includes("Executive Memory"),
+  );
   assert.ok(
     state.build_graph.some((n) => n.slice_id === "LB-OS-020" && n.status === "released"),
   );
@@ -47,15 +80,18 @@ test("computeBuildState projects current sprint and velocity", () => {
   );
   assert.ok(state.build_velocity.commits_count >= 0);
   assert.ok(state.build_graph.some((n) => n.slice_id === "LB-OS-019" && n.status === "released"));
-  assert.notEqual(state.current_slice_id, "LB-OS-027");
+  assert.notEqual(state.current_slice_id, "LB-OS-027.0");
 });
 
 test("getEpoOverview exposes build state engine fields", () => {
   const overview = getEpoOverview();
   assert.equal(overview.read_only, true);
   assert.equal(overview.build_state_engine_id, BUILD_STATE_ENGINE_ID);
-  assert.equal(overview.current_slice_id, "LB-OS-027.0");
-  assert.ok(overview.current_phase_label.includes("Platform Consolidation"));
+  assert.equal(overview.current_slice_id, "LB-OS-027");
+  assert.ok(
+    overview.current_phase_label.toLowerCase().includes("memory") ||
+      overview.current_phase_label.includes("Executive Memory"),
+  );
   assert.ok(overview.phases.length >= 4);
   assert.ok(overview.commit_timeline.length > 0);
   assert.ok(overview.experience_maturity.length >= 10);

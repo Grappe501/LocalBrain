@@ -24,7 +24,12 @@ import path from "node:path";
 import type { BuildStateSnapshot } from "./buildStateEngine.js";
 import { getCommitCount, getRecentCommits } from "./gitMetrics.js";
 import { certifyCurrentModule } from "./moduleCertificationEngine.js";
+import {
+  getMemoryOsModuleProgress,
+  getMemoryOsProgressSnapshot,
+} from "./memoryOsSpecMetrics.js";
 import { parsePeerReviewProgress } from "../epo/checklistParser.js";
+import { isModuleCertificationLocked } from "./v1CertificationRegistry.js";
 import { getRepoRoot } from "../db/repoRoot.js";
 
 /** Map V1 weight areas to module rows. */
@@ -89,7 +94,11 @@ const MODULE_DEFS: {
     owner: null,
     path_steps: ["memory_os"],
     slice_ids: ["LB-OS-027"],
-    test_globs: [],
+    test_globs: [
+      "backend/src/memory/episode.test.ts",
+      "backend/src/memory/fact.test.ts",
+      "backend/src/memory/artifact.test.ts",
+    ],
   },
   {
     module_id: "communications",
@@ -226,6 +235,9 @@ function moduleBlockers(
   state: BuildStateSnapshot,
   moduleProgress: Map<string, number>,
 ): string {
+  if (moduleId === "memory_os" && isModuleCertificationLocked("factory")) {
+    return "None";
+  }
   const def = MODULE_DEFS.find((m) => m.module_id === moduleId);
   if (!def) return "None";
   const firstStep = def.path_steps[0];
@@ -286,7 +298,15 @@ export function computeV1CommandCenter(state: BuildStateSnapshot): V1CommandCent
       if (eoCert?.launch_status === "certified") progress = 100;
     }
     if (def.module_id === "factory") {
-      progress = Math.max(progress, sliceProgress(state, ["LB-OS-PROD-001"]));
+      const factoryCert = certifyCurrentModule("factory");
+      if (factoryCert?.certification_locked) {
+        progress = 100;
+      } else {
+        progress = Math.max(progress, sliceProgress(state, ["LB-OS-PROD-001"]));
+      }
+    }
+    if (def.module_id === "memory_os" && isModuleCertificationLocked("factory")) {
+      progress = Math.max(progress, getMemoryOsModuleProgress());
     }
     if (def.module_id === "theory_convention") {
       progress = Math.max(progress, theoryConventionProgress(peerReview));
@@ -303,15 +323,28 @@ export function computeV1CommandCenter(state: BuildStateSnapshot): V1CommandCent
     const testsLabel = tests.total > 0 ? `${tests.total}/${tests.total}` : tests.files > 0 ? `${tests.files} files` : "0/0";
     const eoCert =
       def.module_id === "executive_office" ? certifyCurrentModule("executive_office") : null;
+    const factoryCert =
+      def.module_id === "factory" ? certifyCurrentModule("factory") : null;
     const moduleCertified =
       eoCert?.launch_status === "certified" && eoCert.certification_locked
         ? true
-        : progress >= 100 && tests.total > 0;
+        : factoryCert?.launch_status === "certified" && factoryCert.certification_locked
+          ? true
+          : progress >= 100 && tests.total > 0;
+
+    const version =
+      def.module_id === "factory" && factoryCert?.certification_locked
+        ? "1.0"
+        : def.module_id === "memory_os" && isModuleCertificationLocked("factory")
+          ? getMemoryOsProgressSnapshot().spec_frozen
+            ? "0.2-impl"
+            : "0.2-spec"
+          : def.version;
 
     return {
       module_id: def.module_id,
       name: def.name,
-      version: def.version,
+      version,
       progress_percent: progress,
       status: eoCert?.regression_detected ? "in_progress" : status,
       eta_label: etaLabel(status, estDays),
@@ -377,10 +410,23 @@ export function computeV1CommandCenter(state: BuildStateSnapshot): V1CommandCent
     .filter((b) => b.status !== "complete")
     .reduce((s, b) => s + b.estimated_days, 0);
 
-  const buildingToday =
-    state.current_slice_name ??
-    critical_path.find((c) => c.status === "in_progress")?.label ??
-    null;
+  const factoryModule = modules.find((m) => m.module_id === "factory");
+  const memoryModule = modules.find((m) => m.module_id === "memory_os");
+  const memoryProgress = getMemoryOsProgressSnapshot();
+  let buildingToday: string | null;
+  if (
+    factoryModule?.certified &&
+    memoryModule &&
+    memoryModule.progress_percent > 0 &&
+    memoryModule.progress_percent < 100
+  ) {
+    buildingToday = memoryProgress.building_today;
+  } else {
+    buildingToday =
+      state.current_slice_name ??
+      critical_path.find((c) => c.status === "in_progress")?.label ??
+      null;
+  }
 
   const blockedNode = critical_path.find((c) => c.status === "waiting" || c.status === "blocked");
   const blocked_summary = blockedNode

@@ -20,9 +20,19 @@
 
 ---
 
-## MAR-1 Architecture Review (current phase)
+## MEM-009 Implementation (current phase)
 
-Structured design review before MEM-008 freeze — same discipline as Factory pre-certification.
+ENG-MEM-001 Wave 1 — canonical storage slices. Reference implementation: [ENG-MEM-001.1 Episode](./slices/ENG-MEM-001.1-EPISODE.md).
+
+| Document | Purpose |
+| -------- | ------- |
+| [Wave 1 Charter](./ENG-MEM-001-WAVE1-CHARTER.md) | MEM-009 Pass 1 scope |
+| [Engineering Discipline](./ENG-MEM-001-ENGINEERING_DISCIPLINE.md) | Spec-traceable commits · slice order |
+| [Wave 1 Slices](./slices/README.md) | Episode · Fact · Artifact · Conversation · DecisionCitation |
+
+---
+
+## MAR-1 Architecture Review (complete — spec frozen)
 
 | Document | Purpose |
 | -------- | ------- |
@@ -67,7 +77,10 @@ Structured design review before MEM-008 freeze — same discipline as Factory pr
 ✓ MEMORY_OS_CONVENTION_MANIFEST.json (frozen)
 ✓ PMO walkthrough — 107/107 PASS
 ✓ MEM-008 Specification Freeze · memory-spec-v1.0
-▶ MEM-009 Implementation Pass 1
+✓ ENG-MEM-001.1 Episode — Reference Slice 001 · 6/6 PASS
+✓ ENG-MEM-001.2 Fact — Reference Slice 002 · 22/22 PASS
+✓ ENG-MEM-001.3 Artifact — Reference Slice 003 · 17/17 PASS
+▶ ENG-MEM-001.4 Conversation — Wave 1 slice 4/5 (awaiting PMO authorization)
 ```
 
 ---

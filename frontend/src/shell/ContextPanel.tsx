@@ -1,27 +1,38 @@
-import { CONTEXT_CARDS } from "../data/contextCards";
+import { CONTEXT_CARDS, type ContextCardStatus } from "../data/contextCards";
 
-function statusLabel(status: "not_connected" | "planned"): string {
-  return status === "not_connected" ? "Not connected" : "Planned";
+function statusLabel(status: ContextCardStatus): string {
+  switch (status) {
+    case "complete":
+      return "Complete";
+    case "active":
+      return "Active";
+    case "planned":
+      return "Planned";
+    case "not_connected":
+      return "Not connected";
+    default:
+      return status;
+  }
+}
+
+function statusClass(status: ContextCardStatus): string {
+  if (status === "not_connected") return "context-panel__status context-panel__status--muted";
+  if (status === "complete") return "context-panel__status context-panel__status--complete";
+  if (status === "active") return "context-panel__status context-panel__status--active";
+  return "context-panel__status";
 }
 
 export function ContextPanel() {
   return (
     <aside className="context-panel" aria-label="System context">
       <h2 className="context-panel__title">Context</h2>
-      <p className="context-panel__count">{CONTEXT_CARDS.length} cards</p>
+      <p className="context-panel__count">{CONTEXT_CARDS.length} cards · Institutional Evidence System</p>
       <ul className="context-panel__cards">
         {CONTEXT_CARDS.map((card) => (
           <li key={card.id} className="context-panel__card">
             <h3 className="context-panel__card-title">{card.title}</h3>
-            <span
-              className={
-                card.status === "not_connected"
-                  ? "context-panel__status context-panel__status--muted"
-                  : "context-panel__status"
-              }
-            >
-              {statusLabel(card.status)}
-            </span>
+            <p className="context-panel__card-detail">{card.detail}</p>
+            <span className={statusClass(card.status)}>{statusLabel(card.status)}</span>
           </li>
         ))}
       </ul>

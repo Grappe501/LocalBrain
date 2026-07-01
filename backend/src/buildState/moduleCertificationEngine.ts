@@ -18,6 +18,10 @@ import { isVaultConfigured, isVaultUsingDevDefault } from "../providers/vault.js
 import { getRepoRoot } from "../db/repoRoot.js";
 import { certifyFactory } from "../factory/factoryCertificationEngine.js";
 import {
+  getMemoryOsProgressSnapshot,
+  parseEngMemWave1Slices,
+} from "./memoryOsSpecMetrics.js";
+import {
   hasRegression,
   isModuleCertificationLocked,
   lockModuleCertification,
@@ -212,7 +216,7 @@ function certifyFactoryModule(): V1ModuleCertificationCard {
       "launch",
       report.certified ? "pass" : "needs_work",
       report.certified
-        ? "All nine Factory gates PASS"
+        ? "All ten Factory PMO gates PASS — manufacturing layer locked"
         : report.dimensions.filter((d) => d.status !== "pass").map((d) => d.dimension_id).join(", "),
     ),
   ];
@@ -227,6 +231,86 @@ function certifyFactoryModule(): V1ModuleCertificationCard {
     dimensions,
     launch_status,
     review_verdict: report.review_verdict,
+    certification_locked: false,
+    regression_detected: false,
+  });
+}
+
+function certifyMemoryOsModule(): V1ModuleCertificationCard {
+  const snap = getMemoryOsProgressSnapshot();
+  const wave1 = parseEngMemWave1Slices();
+  const episodeTests = countTests(["backend/src/memory/episode.test.ts"]);
+  const factTests = countTests(["backend/src/memory/fact.test.ts"]);
+  const artifactTests = countTests(["backend/src/memory/artifact.test.ts"]);
+  const memoryTests = {
+    files: episodeTests.files + factTests.files + artifactTests.files,
+    cases: episodeTests.cases + factTests.cases + artifactTests.cases,
+  };
+
+  const specPass = snap.spec_frozen;
+  const refSliceNote =
+    snap.wave1_complete_count >= 2
+      ? "Reference Slice 002 (Fact) complete · Episode Reference Slice 001"
+      : snap.wave1_complete_count >= 1
+        ? "Reference Slice 001 (Episode)"
+        : null;
+
+  const dimensions: V1CertDimensionRow[] = [
+    dim(
+      "navigation",
+      specPass ? "pass" : "pending",
+      specPass
+        ? `MEM-008 frozen · ${snap.mem008.passed}/${snap.mem008.total} PASS · ${snap.spec_tag ?? "memory-spec-v1.0"}`
+        : `${snap.mem008.summary} — specification in progress`,
+    ),
+    dim(
+      "experience",
+      snap.wave1_complete_count > 0 ? "pass" : specPass ? "pending" : "pending",
+      snap.wave1_complete_count > 0
+        ? `Institutional Evidence System — Wave 1 ${snap.wave1_complete_count}/${wave1.length || 5} · ${refSliceNote ?? "in progress"} · active ${snap.wave1_active_slice?.slice_code ?? "—"} ${snap.wave1_active_slice?.object ?? ""}`
+        : "MEM-009 Wave 1 storage slices not yet started",
+    ),
+    dim(
+      "tests",
+      memoryTests.cases >= 6 ? "pass" : "pending",
+      memoryTests.cases >= 6
+        ? `${memoryTests.cases} memory storage tests (${episodeTests.cases} episode · ${factTests.cases} fact · ${artifactTests.cases} artifact)`
+        : "Episode · Fact · Artifact acceptance tests pending",
+    ),
+    dim(
+      "security",
+      specPass ? "pass" : "pending",
+      specPass
+        ? "Provenance envelope · audit log · lifecycle gates per Vol 1–7"
+        : "Security model defined in spec — implementation pending",
+    ),
+    dim("kelly_sandbox", "not_applicable", "Kelly Sandbox golden test is post–Wave 1 certification"),
+    dim(
+      "launch",
+      "pending",
+      snap.wave1_complete_count >= 5
+        ? "Wave 1 complete — module certification gate pending"
+        : snap.wave1_active_slice
+          ? `Active: ${snap.wave1_active_slice.slice_code} ${snap.wave1_active_slice.object}`
+          : "MEM-009 implementation in progress",
+    ),
+  ];
+
+  const launch_status = specPass
+    ? snap.wave1_complete_count >= 5
+      ? launchStatusFromDimensions(dimensions)
+      : "in_progress"
+    : "not_started";
+
+  return finalizeCertificationCard({
+    module_id: "memory_os",
+    module_name: "Memory OS",
+    purpose: "Executive memory substrate — first living cognitive component.",
+    acceptance_criteria:
+      "MEM-008 spec frozen · ENG-MEM-001 Wave 1 all slices PASS · Kelly Sandbox golden test.",
+    dimensions,
+    launch_status,
+    review_verdict: verdictFromLaunch(launch_status),
     certification_locked: false,
     regression_detected: false,
   });
@@ -259,6 +343,7 @@ function placeholderCertification(
 const MODULE_CERTIFIERS: Record<string, () => V1ModuleCertificationCard> = {
   executive_office: certifyExecutiveOffice,
   factory: certifyFactoryModule,
+  memory_os: certifyMemoryOsModule,
 };
 
 const MODULE_META: Record<string, { name: string; purpose: string }> = {

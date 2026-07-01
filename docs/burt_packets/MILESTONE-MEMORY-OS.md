@@ -129,8 +129,22 @@ Memory OS manifest must declare:
 ✓ MAR-1 Architecture Review · PMO signoff
 ✓ MEM-008 Specification Freeze → memory-spec-v1.0
 ✓ Architecture Book v1.0
-▶ MEM-009 Wave 1 — Canonical Storage
+✓ ENG-MEM-001.1 Episode · Reference Slice 001
+✓ ENG-MEM-001.2 Fact · Reference Slice 002
+✓ ENG-MEM-001.3.1 Artifact canonical storage (PMO complete)
+▶ ENG-MEM-001.3.2 Artifact chain of custody
+□ ENG-MEM-001.4 Conversation · 001.5 DecisionCitation
 ```
+
+### Wave 1 substrates (institutional evidence system)
+
+| Object | Verb | Status |
+| ------ | ---- | ------ |
+| Episode | records | COMPLETE |
+| Fact | accepts | COMPLETE |
+| Artifact | preserves | Active · 001.3.2 custody |
+| Conversation | captures | Blocked |
+| DecisionCitation | justifies | Blocked |
 
 ---
 

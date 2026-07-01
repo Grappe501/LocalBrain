@@ -45,7 +45,7 @@ Chief of Staff   → I can help you decide what to do next.   (later wave)
 | 1 | [ENG-MEM-001.1](./ENG-MEM-001.1-EPISODE.md) | Episode | **COMPLETE** — Reference Slice 001 |
 | 2 | [ENG-MEM-001.2](./ENG-MEM-001.2-FACT.md) | Fact | **COMPLETE** — Reference Slice 002 |
 | 3 | [ENG-MEM-001.3](./ENG-MEM-001.3-ARTIFACT.md) | Artifact | **COMPLETE** — Reference Slice 003 |
-| 4 | ENG-MEM-001.4 | Conversation + ConversationTurn | Authorized when PMO opens |
+| 4 | ENG-MEM-001.4 | Conversation + ConversationTurn | Blocked — awaiting PMO authorization |
 | 5 | ENG-MEM-001.5 | DecisionCitation | Blocked on 001.4 |
 
 Slice documents are added as each slice opens. Acceptance and **Specification Fidelity: 100%** required before the next slice begins.

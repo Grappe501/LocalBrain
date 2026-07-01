@@ -214,6 +214,33 @@ See [Executive questions](#executive-questions-one-substrate-per-question) above
 
 ---
 
+## The Interpretation Principle (binding — Conversation, reserved)
+
+```text
+Conversations preserve interpretation.
+They do not rewrite history.
+```
+
+Conversations must never modify Episodes, Facts, or Artifacts. They preserve how humans interpreted those things at that moment.
+
+**Executive question:** What did people think? — not what happened, what is true, or what evidence exists.
+
+### Interpretation never becomes knowledge (binding)
+
+```text
+Interpretation never becomes knowledge without institutional acceptance.
+```
+
+```text
+Conversation  →  may inform  →  Fact
+```
+
+Conversation is never a Fact — analogous to Artifact → may support → Fact. Discussion does not become knowledge automatically.
+
+See [Reference Slices](./slices/REFERENCE_SLICES.md) for constitutional responsibilities.
+
+---
+
 ## Historical boundary
 
 ```text

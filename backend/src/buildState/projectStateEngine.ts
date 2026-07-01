@@ -141,6 +141,7 @@ function buildBurtSessionStart(
   const pathLabels = inProgress.map((n) => n.label).join(" → ") || "Complete";
   const active = cc.critical_path.find((n) => n.status === "in_progress");
   const slice =
+    cc.building_today ??
     state.current_slice_name ??
     state.current_slice_id ??
     active?.label ??
