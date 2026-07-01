@@ -175,10 +175,19 @@ timestamp:        ISO-8601
 - [x] Success test defined — customer parity
 - [x] Birth certificate schema bound
 - [x] ENG-FAC-001 manufacture API implemented
-- [ ] Installer artifact (future slice)
-- [ ] Factory certification (future)
 
-**Next slices:** packaging · installer · birth cert persistence export · authority stack (PROD-008/009)
+## Factory gate (slice 2 — sealed appliance)
+
+- [x] Package build with structural + integrity hash
+- [x] Install from package (`POST /api/factory/package/install`)
+- [x] Download endpoint (`GET /api/factory/package/download`)
+- [x] Nine-gate Factory certification (`GET /api/factory/certification`)
+- [x] Acceptance test: build → install → certify — no personal data
+- [x] Installer repeatability — deterministic structural hash
+- [ ] Native installer artifact (future)
+- [ ] Factory module certification lock (after PMO review)
+
+**Next slices:** native installer · authority stack export (PROD-008/009) · Factory certification lock
 
 ---
 

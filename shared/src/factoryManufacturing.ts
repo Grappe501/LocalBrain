@@ -108,3 +108,76 @@ export function institutionStructureMatches(
 }
 
 export const FACTORY_STRUCTURE_INCLUDED = EMPTY_BRAIN_BIRTH_CONTENT;
+
+export const FACTORY_PACKAGE_VERSION = 1;
+
+export interface FactoryPackageProfileTemplate {
+  owner_type: BrainInstanceProfile["owner_type"];
+  display_name: string;
+  role: string;
+  primary_mission: string;
+  executive_office_type: BrainInstanceProfile["executive_office_type"];
+  departments_enabled: string[];
+  default_privacy_tier: BrainInstanceProfile["default_privacy_tier"];
+}
+
+export interface FactoryPackage {
+  package_version: typeof FACTORY_PACKAGE_VERSION;
+  package_id: string;
+  built_at: string;
+  factory_contract_version: typeof FACTORY_CONTRACT_VERSION;
+  slice_id: typeof PRODUCT_SLICE_FACTORY;
+  engine_id: typeof FACTORY_ENGINE_ID;
+  manifest: EmptyInstitutionManifest;
+  profile_template: FactoryPackageProfileTemplate;
+  convention_contracts: ConventionContractBundle;
+  constitution_version: string;
+  executive_office: {
+    engine_id: string;
+    slice_id: string;
+    department_count: number;
+    domain_count: number;
+    synthesis_department_id: string;
+  };
+  capability_graph: {
+    capability_count: number;
+    graph_certified: boolean;
+  };
+  structural_hash: string;
+  integrity_hash: string;
+}
+
+export const FACTORY_CERT_DIMENSION_LABELS = {
+  constitution: "Constitution",
+  convention: "Convention",
+  executive_office: "Executive Office",
+  capability_graph: "Capability Graph",
+  birth_certificate: "Birth Certificate",
+  empty_profile: "Empty Profile",
+  personal_data: "Personal Data",
+  installer_repeatability: "Installer Repeatability",
+  package_integrity: "Package Integrity",
+} as const;
+
+export type FactoryCertDimensionId = keyof typeof FACTORY_CERT_DIMENSION_LABELS;
+export type FactoryCertDimensionStatus = "pass" | "needs_work" | "pending";
+
+export interface FactoryCertDimensionRow {
+  dimension_id: FactoryCertDimensionId;
+  label: string;
+  status: FactoryCertDimensionStatus;
+  evidence: string | null;
+}
+
+export interface FactoryCertificationReport {
+  module_id: "factory";
+  module_name: string;
+  slice_id: typeof PRODUCT_SLICE_FACTORY;
+  engine_id: typeof FACTORY_ENGINE_ID;
+  acceptance_criteria: string;
+  dimensions: FactoryCertDimensionRow[];
+  certified: boolean;
+  launch_status: "certified" | "needs_work";
+  review_verdict: "PASS" | "NEEDS WORK";
+  observed_at: string;
+}

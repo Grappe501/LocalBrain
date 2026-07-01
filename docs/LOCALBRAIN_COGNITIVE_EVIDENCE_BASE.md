@@ -767,9 +767,9 @@ Convention may clarify · constrain · define — may NOT invent.
 | Field | Value |
 | ----- | ----- |
 | Date | 2026-06-28 — post Design Era Close |
-| Type | Manufacturing contract + ENG-FAC-001 slice 1 |
+| Type | Manufacturing contract + ENG-FAC-001 slices 1–2 |
 | Deliverable | [Factory Contract](./factory/FACTORY_CONTRACT.md) · [MILESTONE-FACTORY](./burt_packets/MILESTONE-FACTORY.md) |
-| Outcome | **In progress** — manufacture API + birth certificate · installer future slice |
+| Outcome | **In progress** — sealed appliance package + nine-gate certification · native installer next |
 
 #### Findings log (slice 1)
 
@@ -781,15 +781,24 @@ Convention may clarify · constrain · define — may NOT invent.
 | FAC-004 | Structure manifest | Included/excluded lists frozen | **Resolved** | No ingestion · no Gmail |
 | FAC-005 | Manufacture API | `POST /api/factory/manufacture` | **Resolved** | Verification gate |
 | FAC-006 | Parity tests | Two manufactures → identical structure | **Resolved** | factoryService.test.ts |
-| FAC-007 | Installer artifact | Package · provision · activate pipeline | **Open Question** | Future Factory slice |
 
-#### Factory gate (slice 1)
+#### Findings log (slice 2 — sealed appliance)
 
-- [x] Manufacturing contract frozen
-- [x] ENG-FAC-001 manufacture + birth certificate implemented
-- [x] Parity tests pass
-- [ ] Installer artifact
-- [ ] Factory certification
+| ID | Finding | Contract read | Outcome | Notes |
+| -- | ------- | ------------- | ------- | ----- |
+| FAC-008 | Package build | structural_hash + integrity_hash · Convention embedded | **Resolved** | Deterministic repeatability |
+| FAC-009 | Install flow | `POST /api/factory/package/install` | **Resolved** | Download → Install → Launch |
+| FAC-010 | Nine-gate certification | Constitution through Package Integrity | **Resolved** | `certifyFactory()` |
+| FAC-011 | Personal data gate | No steve/kelly/chris in export after install | **Resolved** | PMO acceptance test |
+| FAC-012 | Acceptance test | build → install → certify all PASS | **Resolved** | `POST /api/factory/acceptance-test` |
+| FAC-013 | Native installer | OS-level installer artifact | **Open Question** | Slice 3 |
+
+#### Factory gates
+
+- [x] Slice 1 — manufacture API + birth certificate
+- [x] Slice 2 — sealed package + install + nine-gate certification
+- [ ] Slice 3 — native installer artifact
+- [ ] Factory module certification lock (PMO review)
 
 ---
 
@@ -846,6 +855,7 @@ Amendments publish as v1.1, v1.2, … v1.0 text remains immutable. See [Falsific
 | E-CON-CLOSE-2026 | gate | 2026-06-28 | Convention complete — 5/5 sessions · LB-OS-027 spec lock unlocked | [Convention Close](./convention/CONVENTION-CLOSE.md) |
 | E-DESIGN-ERA-2026 | gate | 2026-06-28 | Design Era complete — Factory phase begins | [Design Era Close](./LOCALBRAIN_DESIGN_ERA_CLOSE.md) |
 | E-FAC-S1-2026 | factory | 2026-06-28 | Factory slice 1 — manufacture API · birth certificate · parity tests | [Factory Contract](./factory/FACTORY_CONTRACT.md) |
+| E-FAC-S2-2026 | factory | 2026-06-28 | Factory slice 2 — sealed package · install · nine-gate certification | [Factory Contract](./factory/FACTORY_CONTRACT.md) |
 | E-META-PR-2026 | meta-evidence | 2026-06-28 | Sessions 1–3 pattern: claim-type separation · emergent implementation style (local · incremental · versioned · event-aware · self-observing) | Review method taxonomy — not evidence theory is correct |
 
 ### Peer review progress (institutional memory)

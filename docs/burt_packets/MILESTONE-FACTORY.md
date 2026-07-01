@@ -7,7 +7,7 @@
 > ✓ Theory Freeze
 > ✓ Convention (Sessions 1–5 + Close)
 > ✓ Design Era Close
-> ▶ Empty Brain Factory
+> ▶ Empty Brain Factory (slices 1–2 complete)
 > □ Memory OS
 > □ Communications Office
 > □ Commercial Beta
@@ -17,7 +17,7 @@
 
 > **Depends on:** [Convention Close](../convention/CONVENTION-CLOSE.md) · [Design Era Close](../LOCALBRAIN_DESIGN_ERA_CLOSE.md)  
 > **Engine:** ENG-FAC-001 · **Slices:** LB-OS-PROD-010 · LB-OS-027.0  
-> **Next:** Memory OS (LB-OS-027) after Factory packaging gate
+> **Next:** Factory slice 3 (native installer) → Memory OS (LB-OS-027)
 
 ---
 
@@ -25,7 +25,7 @@
 
 > **Manufacture identical empty executive institutions.**
 
-**Success test:** Could a customer with no knowledge of Steve install LocalBrain and receive exactly the same institution?
+**Success test:** Download → Install → Launch → receive Executive Office, departments, capability graph, Convention contracts, birth certificate — **nothing personal**.
 
 **Deliverable:** [Factory Contract](../factory/FACTORY_CONTRACT.md)
 
@@ -41,32 +41,37 @@ Communications activates institutions.
 
 ---
 
-## Scope (slice 1)
+## Slices
 
-| In | Out |
-| -- | --- |
-| Manufacture API + birth certificate | Installer artifact |
-| Empty institution manifest | Memory ingestion |
-| Convention contract bundle on birth cert | Google · Gmail · connectors |
-| Parity tests | Executive Discovery (downstream) |
+| Slice | Status | Deliverable |
+| ----- | ------ | ----------- |
+| 1 | ✅ | Manufacture API · birth certificate · parity tests |
+| 2 | ✅ | Sealed package · install · nine-gate certification |
+| 3 | ⬜ | Native installer artifact · Factory certification lock |
 
 ---
 
-## Deliverables
+## API (slice 2)
 
-| Deliverable | Location |
-| ----------- | -------- |
-| Manufacturing contract | [FACTORY_CONTRACT.md](../factory/FACTORY_CONTRACT.md) |
-| ENG-FAC-001 service | `backend/src/factory/factoryService.ts` |
-| API | `POST /api/factory/manufacture` · `GET /api/factory/birth-certificate` |
-| Findings | [Evidence Base — Factory](../LOCALBRAIN_COGNITIVE_EVIDENCE_BASE.md#empty-brain-factory) |
+| Endpoint | Purpose |
+| -------- | ------- |
+| `GET /api/factory/package/download` | Download sealed appliance |
+| `POST /api/factory/package/install` | Install → Launch |
+| `GET /api/factory/certification` | Nine PMO gates |
+| `POST /api/factory/acceptance-test` | Full acceptance test |
+
+---
+
+## Certification gates (nine)
+
+Constitution · Convention · Executive Office · Capability Graph · Birth Certificate · Empty Profile · Personal Data · Installer Repeatability · Package Integrity
 
 ---
 
 ## Charter
 
 ```txt
-Freeze behavior · never freeze implementation.
+Can we manufacture 10,000 identical brains?
 Did we build what the Constitution specifies?
 ```
 

@@ -16,6 +16,7 @@ import { runExecutiveExperienceAudit, runGraphIntegrityCertification } from "../
 import { runIntegrationAudit } from "../integration/integrationAudit.js";
 import { isVaultConfigured, isVaultUsingDevDefault } from "../providers/vault.js";
 import { getRepoRoot } from "../db/repoRoot.js";
+import { certifyFactory } from "../factory/factoryCertificationEngine.js";
 import {
   hasRegression,
   isModuleCertificationLocked,
@@ -170,6 +171,66 @@ function certifyExecutiveOffice(): V1ModuleCertificationCard {
   });
 }
 
+const FACTORY_TESTS = [
+  "backend/src/factory/factoryService.test.ts",
+  "backend/src/factory/factoryPackage.test.ts",
+];
+
+function certifyFactoryModule(): V1ModuleCertificationCard {
+  const report = certifyFactory();
+  const tests = countTests(FACTORY_TESTS);
+
+  const mapStatus = (s: "pass" | "needs_work" | "pending"): V1CertDimensionStatus =>
+    s === "pass" ? "pass" : s === "pending" ? "pending" : "needs_work";
+
+  const get = (id: string) => report.dimensions.find((d) => d.dimension_id === id);
+
+  const dimensions: V1CertDimensionRow[] = [
+    dim(
+      "navigation",
+      mapStatus(get("executive_office")?.status ?? "needs_work"),
+      get("executive_office")?.evidence ?? null,
+    ),
+    dim(
+      "experience",
+      mapStatus(get("empty_profile")?.status ?? "needs_work"),
+      get("empty_profile")?.evidence ?? null,
+    ),
+    dim(
+      "tests",
+      tests.files >= 2 && tests.cases >= 6 ? "pass" : "needs_work",
+      `${tests.cases} factory cases in ${tests.files} files`,
+    ),
+    dim(
+      "security",
+      mapStatus(get("personal_data")?.status ?? "needs_work"),
+      get("personal_data")?.evidence ?? null,
+    ),
+    dim("kelly_sandbox", "not_applicable", "Factory — manufacturing gate; Kelly Sandbox is post-Memory OS"),
+    dim(
+      "launch",
+      report.certified ? "pass" : "needs_work",
+      report.certified
+        ? "All nine Factory gates PASS"
+        : report.dimensions.filter((d) => d.status !== "pass").map((d) => d.dimension_id).join(", "),
+    ),
+  ];
+
+  const launch_status = report.certified ? "certified" : launchStatusFromDimensions(dimensions);
+
+  return finalizeCertificationCard({
+    module_id: "factory",
+    module_name: "Empty Brain Factory",
+    purpose: "Manufacture certified empty executive institutions — sealed appliance, nothing personal.",
+    acceptance_criteria: report.acceptance_criteria,
+    dimensions,
+    launch_status,
+    review_verdict: report.review_verdict,
+    certification_locked: false,
+    regression_detected: false,
+  });
+}
+
 function placeholderCertification(
   module_id: string,
   module_name: string,
@@ -196,6 +257,7 @@ function placeholderCertification(
 
 const MODULE_CERTIFIERS: Record<string, () => V1ModuleCertificationCard> = {
   executive_office: certifyExecutiveOffice,
+  factory: certifyFactoryModule,
 };
 
 const MODULE_META: Record<string, { name: string; purpose: string }> = {

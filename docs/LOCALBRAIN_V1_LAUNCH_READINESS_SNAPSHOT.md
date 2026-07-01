@@ -69,7 +69,7 @@ Confidence:             60%
 | Executive Office | 100% |
 | Theory Freeze | 100% |
 | Convention | 100% |
-| Empty Brain Factory | 15% |
+| Empty Brain Factory | 45% |
 | Memory OS | 18% |
 | Communications Office | 25% |
 | Commercial Beta | 70% |
@@ -112,7 +112,9 @@ Critical path only:
 
 ## Next module
 
-**Empty Brain Factory** ([MILESTONE-FACTORY](./burt_packets/MILESTONE-FACTORY.md) · [Factory Contract](./factory/FACTORY_CONTRACT.md) · ENG-FAC-001 slice 1 ✅)
+**Empty Brain Factory** ([MILESTONE-FACTORY](./burt_packets/MILESTONE-FACTORY.md) · slice 2 ✅ sealed appliance + certification)
+
+API: `GET /api/factory/package/download` · `POST /api/factory/package/install` · `GET /api/factory/certification`
 
 Design Era: [CLOSED](./LOCALBRAIN_DESIGN_ERA_CLOSE.md) · Convention: [CLOSED](./convention/CONVENTION-CLOSE.md)
 

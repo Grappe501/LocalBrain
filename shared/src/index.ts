@@ -847,10 +847,17 @@ export {
   FACTORY_STRUCTURE_INCLUDED,
   MANUFACTURING_PRINCIPLE,
   institutionStructureMatches,
+  FACTORY_PACKAGE_VERSION,
+  FACTORY_CERT_DIMENSION_LABELS,
 } from "./factoryManufacturing.js";
 export type {
   BrainBirthCertificate,
   ConventionContractBundle,
   EmptyInstitutionManifest,
   ManufactureResult,
+  FactoryPackage,
+  FactoryPackageProfileTemplate,
+  FactoryCertificationReport,
+  FactoryCertDimensionRow,
+  FactoryCertDimensionId,
 } from "./factoryManufacturing.js";
