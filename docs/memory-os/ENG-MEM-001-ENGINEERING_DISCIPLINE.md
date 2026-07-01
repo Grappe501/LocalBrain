@@ -39,7 +39,7 @@
 | **ENG-MEM-001.1 Episode** | **Time** — explicit temporal bounds on what happened |
 | **ENG-MEM-001.2 Fact** | **Knowledge must never become detached from evidence** · **institutional acceptance, not objective truth** · **Reference Slice 002** |
 | **ENG-MEM-001.3 Artifact** | **Evidence only — never conclusions** · **Authenticity — never correction** · **A13 binding** · **Reference Slice 003** |
-| **ENG-MEM-001.4 Conversation** | **Context only — never revision** · **Original wording canonical** · **A14 binding** · **Reference Slice 004** |
+| **ENG-MEM-001.4 Conversation** | **Context only — never revision** · **Sequence — meaning depends on order** · **Original wording canonical** · **A14 + A15 binding** · **Reference Slice 004** |
 
 ---
 
@@ -356,7 +356,7 @@ Slice
 ├── Charter                    slices/ENG-MEM-001.N-*.md
 ├── Specification References   anchors in charter
 ├── Engineering Decision Record  slices/ENG-MEM-001.N-EDR.md (when needed)
-├── Acceptance Checklist       A1–A11 universal · A12 knowledge · A13 evidence · A14 Conversation
+├── Acceptance Checklist       A1–A11 universal · A12 knowledge · A13 evidence · A14–A15 Conversation
 ├── Implementation             backend/src/memory/ …
 ├── Tests                      *.test.ts colocated
 ├── Close-out Report           slices/ENG-MEM-001.N-SLICE_CLOSEOUT.md
@@ -389,12 +389,15 @@ Mirror PMO discipline: **binary pass/fail**. A slice does not start until the pr
 | A12 | **Explainability** | Substrate reconstruction — **not interpretation**. **Permanent acceptance philosophy** for institutional-knowledge objects: answer *Why do you exist?* from stored state · provenance · lineage · authority · lifecycle — **no AI**. Fact implemented A12 in Wave 1; future knowledge objects follow Reference Slice 002. See [Fact A12](./slices/ENG-MEM-001.2-FACT.md#a12--explainability-binding). |
 | A13 | **Authenticity** | **Required for Artifact.** Every Artifact must answer *Can this still be shown exactly as it was originally preserved?* without requiring transformation. Verify: original identity retained · provenance retained · timestamps retained · content hash retained (where applicable) · chain of custody retained. **No AI · no reconstruction · no interpretation** — simply preservation. See [Artifact A13](./slices/ENG-MEM-001.3-ARTIFACT.md#a13--authenticity-binding). |
 | A14 | **Context Preservation** | **Required for Conversation.** Every Conversation must answer *What context produced this interpretation?* using only stored conversation data — participants · turn order · attribution · timestamps · references. **No AI · no correctness judgment · no normalization** — simply context reconstruction. See [Conversation A14](./slices/ENG-MEM-001.4-CONVERSATION.md#a14--context-preservation-binding). |
+| A15 | **Sequence Integrity** | **Required for Conversation.** Every Conversation must answer *Can we reconstruct the conversation exactly as it occurred?* Verify: original order · timestamps · wording · attribution · no inserted turns · no deleted turns. See [Conversation A15](./slices/ENG-MEM-001.4-CONVERSATION.md#a15--sequence-integrity-binding). |
 
 A12 is **binding platform philosophy** for knowledge — reconstruction, not interpretation. Fact implemented it in Wave 1 (`explainFactFromSubstrate`).
 
 A13 is **binding platform philosophy** for evidence — preservation, not correction. Artifact implements it in Wave 1.
 
 A14 is **binding platform philosophy** for interpretation — context reconstruction, not revision. Conversation implements it in Wave 1.
+
+A15 is **binding platform philosophy** for interpretation — chronology within context. Conversation implements it in Wave 1 (`verifyConversationSequenceIntegrity`).
 
 ### Custody vs authenticity (Artifact — binding)
 

@@ -31,6 +31,7 @@ import {
   buildMemoryProvenanceEnvelope,
   MEMORY_AUDIT_OBJECT_CONVERSATION,
 } from "./provenanceEnvelope.js";
+import { assertContiguousTurnSequence } from "./conversationSequenceIntegrity.js";
 
 export type CreateConversationTurnInput = {
   sequence: number;
@@ -63,6 +64,15 @@ export function createConversation(input: CreateConversationInput): {
     throw new Error("Conversation requires at least one turn");
   }
 
+  assertContiguousTurnSequence(
+    input.turns.map((turn) => ({ sequence: turn.sequence })),
+  );
+
+  const orderedInputs = [...input.turns].sort((a, b) => {
+    if (a.sequence !== b.sequence) return a.sequence - b.sequence;
+    return a.event_at.localeCompare(b.event_at);
+  });
+
   const createdAt = new Date().toISOString();
   const conversationId = crypto.randomUUID();
   const provenance = buildMemoryProvenanceEnvelope({
@@ -74,7 +84,7 @@ export function createConversation(input: CreateConversationInput): {
     recorded_at: createdAt,
   });
 
-  const turns: ConversationTurn[] = input.turns.map((turnInput) => {
+  const turns: ConversationTurn[] = orderedInputs.map((turnInput) => {
     const turn: ConversationTurn = {
       turn_id: crypto.randomUUID(),
       schema_version: CONVERSATION_TURN_SCHEMA_VERSION,

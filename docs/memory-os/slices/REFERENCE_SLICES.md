@@ -73,6 +73,14 @@ Interpretation preserves context.
 
 Context is subtly different from preserving words alone.
 
+### Sequence invariant (binding)
+
+```text
+Meaning depends on order.
+```
+
+A conversation is not a collection of turns — it is an **ordered interaction**. Turn `sequence` and `turn_refs` are canonical substrate.
+
 ### Original wording is canonical (binding)
 
 Turn content must never be cleaned, summarized, corrected, or rewritten. Intelligence summaries are separate Artifacts or derived objects — not Conversation mutations.
@@ -87,6 +95,10 @@ Conversation  →  never owns     →  Episode · Artifact · Fact
 ### A14 — Context Preservation (binding)
 
 Every Conversation must answer *What context produced this interpretation?* using only stored conversation data — reconstructable without Intelligence.
+
+### A15 — Sequence Integrity (binding)
+
+Every Conversation must answer *Can we reconstruct the conversation exactly as it occurred?* — original order · timestamps · wording · attribution · no inserted or deleted turns.
 
 ### Interpretation never becomes knowledge (binding)
 

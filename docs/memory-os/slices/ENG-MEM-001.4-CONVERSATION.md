@@ -245,7 +245,44 @@ That must be reconstructable **without Intelligence** — participants, turn ord
 | Episode | Historical integrity |
 | Artifact | Evidentiary integrity |
 | Fact | Knowledge integrity |
-| Conversation | **Interpretive integrity** |
+| Conversation | **Interpretive integrity** (context + sequence) |
+
+---
+
+## Sequence invariant (binding)
+
+```text
+Meaning depends on order.
+```
+
+A conversation is not just a collection of turns. It is an **ordered interaction**. Turn `sequence` and `turn_refs` ordering are part of the canonical substrate — not derived at read time.
+
+---
+
+## A15 — Sequence Integrity (binding)
+
+Complements A14: context preserved · chronology preserved within context.
+
+Every Conversation must answer:
+
+> **Can we reconstruct the conversation exactly as it occurred?**
+
+**Not:** Can we summarize it? Can we infer intent?
+
+Acceptance verifies:
+
+- original order
+- original timestamps
+- original wording
+- original attribution
+- no inserted turns
+- no deleted turns
+
+### A15 test evidence (required in `conversation.test.ts`)
+
+- `verifyConversationSequenceIntegrity()` from stored Conversation + ConversationTurn
+- Reject non-contiguous `sequence` at capture (gaps in 1..n)
+- `turn_refs` order matches sequence order
 
 ---
 
@@ -253,9 +290,25 @@ That must be reconstructable **without Intelligence** — participants, turn ord
 
 | Commit | Scope |
 | ------ | ----- |
-| **001.4.1** | Canonical Conversation + ConversationTurn storage — schema · validation · persistence · S4 · lifecycle · attribution · chronology · original wording invariant |
+| **001.4.1** | Canonical Conversation + ConversationTurn storage — **COMPLETE** (`7ceed38`) |
+| **001.4.2** | Sequence integrity — invariant · A15 · contiguous order · `turn_refs` alignment |
 
 Keep each commit substrate-only — same discipline as Artifact 001.3.1–001.3.2.
+
+> **Reference Slice 004** designation follows full slice completion + PMO acceptance — not per sub-commit.
+
+### 001.4.2 scope (binding)
+
+**Deliver only:**
+
+- Sequence invariant — `Meaning depends on order.`
+- Contiguous `sequence` 1..n at capture
+- `turn_refs` ordered by sequence
+- A15 `verifyConversationSequenceIntegrity()` — no inserted/deleted turns
+
+**Explicitly exclude:** summarization · inference · participant inference · search · recall
+
+---
 
 ### 001.4.1 scope (binding)
 
@@ -308,6 +361,7 @@ Keep each commit substrate-only — same discipline as Artifact 001.3.1–001.3.
 | A12 | Explainability | N/A — knowledge objects |
 | A13 | Authenticity | N/A — evidence objects |
 | A14 | **Context Preservation** | Pending |
+| A15 | **Sequence Integrity** | Pending |
 
 ---
 

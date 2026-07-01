@@ -31,7 +31,13 @@ import {
   getConversationTurnById,
 } from "./conversationTurnStore.js";
 import { transitionConversationLifecycle, verifyConversation } from "./conversationService.js";
-import { readConversationContext, writeConversation } from "./writePipeline.js";
+import { readConversationContext, readConversationSequenceIntegrity, writeConversation } from "./writePipeline.js";
+import {
+  CONVERSATION_SEQUENCE_INVARIANT,
+  CONVERSATION_SEQUENCE_QUESTION,
+  isCompleteSequenceIntegrity,
+} from "./conversationSequenceIntegrity.js";
+import { ConversationTurnValidationError } from "./conversationTurnValidator.js";
 import { writeArtifact } from "./writePipeline.js";
 import { getArtifactById } from "./artifactStore.js";
 
@@ -249,6 +255,46 @@ test("ENG-MEM-001.4.1 S2 lifecycle — Captured to Verified", () => {
     assert.equal(
       conversationContentFingerprint(conversation),
       conversationContentFingerprint({ ...verified, lifecycle_state: "Captured" }),
+    );
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-MEM-001.4.1 A15 sequence integrity — reconstruct conversation as it occurred", () => {
+  bootstrapApp();
+  try {
+    const { conversation } = writeConversation(sampleConversationInput());
+    const { sequence, engine_id } = readConversationSequenceIntegrity(conversation.conversation_id);
+
+    assert.equal(engine_id, "ENG-MEM-001");
+    assert.equal(sequence.question, CONVERSATION_SEQUENCE_QUESTION);
+    assert.equal(CONVERSATION_SEQUENCE_INVARIANT, "Meaning depends on order.");
+    assert.equal(sequence.turns.length, 2);
+    assert.equal(sequence.turns[0]!.sequence, 1);
+    assert.equal(sequence.turns[1]!.sequence, 2);
+    assert.equal(sequence.turns[0]!.content, sampleConversationInput().turns[0]!.content);
+    assert.ok(isCompleteSequenceIntegrity(sequence));
+    assert.ok(sequence.checks.no_inserted_turns);
+    assert.ok(sequence.checks.no_deleted_turns);
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-MEM-001.4.1 sequence — rejects non-contiguous turn order at capture", () => {
+  bootstrapApp();
+  try {
+    assert.throws(
+      () =>
+        writeConversation({
+          ...sampleConversationInput(),
+          turns: [
+            { sequence: 1, speaker_ref: EXEC, content: "First", event_at: "2026-07-01T14:00:10.000Z" },
+            { sequence: 3, speaker_ref: STAFF, content: "Skipped two", event_at: "2026-07-01T14:00:45.000Z" },
+          ],
+        }),
+      (err: unknown) => err instanceof ConversationTurnValidationError && err.field === "sequence",
     );
   } finally {
     shutdownApp();

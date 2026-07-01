@@ -14,6 +14,12 @@ import type { Episode, Fact, Artifact, ArtifactCustodyEvent, Conversation, Conve
 import type { FactExplanation } from "./factExplainability.js";
 import type { ConversationContext } from "./conversationContext.js";
 import { explainConversationContext } from "./conversationContext.js";
+import type { ConversationSequenceIntegrity } from "./conversationSequenceIntegrity.js";
+import {
+  verifyConversationSequenceIntegrity,
+} from "./conversationSequenceIntegrity.js";
+import { getConversationById } from "./conversationStore.js";
+import { getConversationTurnsByConversationId } from "./conversationTurnStore.js";
 
 /** Vol 3 write path — Wave 1: validate → provenance → persist → audit (no index/recall). */
 export type EpisodeWriteResult = {
@@ -55,6 +61,11 @@ export type ConversationWriteResult = {
 
 export type ConversationContextResult = {
   context: ConversationContext;
+  engine_id: "ENG-MEM-001";
+};
+
+export type ConversationSequenceResult = {
+  sequence: ConversationSequenceIntegrity;
   engine_id: "ENG-MEM-001";
 };
 
@@ -105,4 +116,18 @@ export function writeConversation(input: CreateConversationInput): ConversationW
 
 export function readConversationContext(conversationId: string): ConversationContextResult {
   return { context: explainConversationContext(conversationId), engine_id: "ENG-MEM-001" };
+}
+
+export function readConversationSequenceIntegrity(
+  conversationId: string,
+): ConversationSequenceResult {
+  const conversation = getConversationById(conversationId);
+  if (!conversation) {
+    throw new Error(`Conversation not found: ${conversationId}`);
+  }
+  const turns = getConversationTurnsByConversationId(conversationId);
+  return {
+    sequence: verifyConversationSequenceIntegrity(conversation, turns),
+    engine_id: "ENG-MEM-001",
+  };
 }
