@@ -136,6 +136,8 @@ Mirror PMO discipline: **binary pass/fail**. A slice does not start until the pr
 
 Record results in the slice document before opening the next slice.
 
+**Close-out required:** Every slice must publish an [implementation summary](./slices/SLICE_CLOSEOUT_TEMPLATE.md#implementation-summary-required) in its `SLICE_CLOSEOUT` before the next slice begins.
+
 ---
 
 ## Rule 4 — Substrate before experience

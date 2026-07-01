@@ -93,6 +93,7 @@ Wave 1 passes when:
 | [Architecture Book v1.0](../LOCALBRAIN_ARCHITECTURE_BOOK_v1.0.md) | Why it is built this way |
 | [Engineering discipline](./ENG-MEM-001-ENGINEERING_DISCIPLINE.md) | How to commit · slice order · acceptance |
 | [Wave 1 slices](./slices/README.md) | Per-object implementation charters |
+| [Platform engineering debt](../engineering/ENGINEERING_DEBT.md) | Unrelated defects — not Memory OS |
 
 ---
 

@@ -94,7 +94,7 @@ Implement **Episode** canonical persistence completely — schema, validation, s
 | A10 | No retrieval logic | **PASS** | no recall module |
 | A11 | No intelligence logic | **PASS** | no LLM |
 
-**Slice result:** **PASS** — ENG-MEM-001.2 may begin after close-out retrospective.
+**Slice result:** **PASS** — closeout recorded · [ENG-MEM-001.2](./ENG-MEM-001.2-FACT.md) may begin.
 
 ---
 
