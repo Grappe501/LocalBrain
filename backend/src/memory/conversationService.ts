@@ -8,6 +8,7 @@ import {
   type ConversationChannel,
   type ConversationTurn,
   type IdentityRef,
+  identityRefMatches,
   type LifecycleState,
   type MemoryDomain,
   type TrustLevel,
@@ -85,6 +86,15 @@ export function createConversation(input: CreateConversationInput): {
   });
 
   const turns: ConversationTurn[] = orderedInputs.map((turnInput) => {
+    const speakerKnown = input.participants.some((participant) =>
+      identityRefMatches(participant, turnInput.speaker_ref),
+    );
+    if (!speakerKnown) {
+      throw new Error(
+        `Turn sequence ${turnInput.sequence}: speaker must be a declared participant — attribution must be explicit, not inferred`,
+      );
+    }
+
     const turn: ConversationTurn = {
       turn_id: crypto.randomUUID(),
       schema_version: CONVERSATION_TURN_SCHEMA_VERSION,

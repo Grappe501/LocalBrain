@@ -39,7 +39,7 @@
 | **ENG-MEM-001.1 Episode** | **Time** — explicit temporal bounds on what happened |
 | **ENG-MEM-001.2 Fact** | **Knowledge must never become detached from evidence** · **institutional acceptance, not objective truth** · **Reference Slice 002** |
 | **ENG-MEM-001.3 Artifact** | **Evidence only — never conclusions** · **Authenticity — never correction** · **A13 binding** · **Reference Slice 003** |
-| **ENG-MEM-001.4 Conversation** | **Context only — never revision** · **Sequence — meaning depends on order** · **Original wording canonical** · **A14 + A15 binding** · **Reference Slice 004** |
+| **ENG-MEM-001.4 Conversation** | **Context only — never revision** · **Sequence — meaning depends on order** · **Interpretation survives disagreement** · **Original wording canonical** · **A14–A16 binding** · **Reference Slice 004 AUTHORIZED** |
 
 ---
 
@@ -356,7 +356,7 @@ Slice
 ├── Charter                    slices/ENG-MEM-001.N-*.md
 ├── Specification References   anchors in charter
 ├── Engineering Decision Record  slices/ENG-MEM-001.N-EDR.md (when needed)
-├── Acceptance Checklist       A1–A11 universal · A12 knowledge · A13 evidence · A14–A15 Conversation
+├── Acceptance Checklist       A1–A11 universal · A12 knowledge · A13 evidence · A14–A16 Conversation
 ├── Implementation             backend/src/memory/ …
 ├── Tests                      *.test.ts colocated
 ├── Close-out Report           slices/ENG-MEM-001.N-SLICE_CLOSEOUT.md
@@ -390,6 +390,7 @@ Mirror PMO discipline: **binary pass/fail**. A slice does not start until the pr
 | A13 | **Authenticity** | **Required for Artifact.** Every Artifact must answer *Can this still be shown exactly as it was originally preserved?* without requiring transformation. Verify: original identity retained · provenance retained · timestamps retained · content hash retained (where applicable) · chain of custody retained. **No AI · no reconstruction · no interpretation** — simply preservation. See [Artifact A13](./slices/ENG-MEM-001.3-ARTIFACT.md#a13--authenticity-binding). |
 | A14 | **Context Preservation** | **Required for Conversation.** Every Conversation must answer *What context produced this interpretation?* using only stored conversation data — participants · turn order · attribution · timestamps · references. **No AI · no correctness judgment · no normalization** — simply context reconstruction. See [Conversation A14](./slices/ENG-MEM-001.4-CONVERSATION.md#a14--context-preservation-binding). |
 | A15 | **Sequence Integrity** | **Required for Conversation.** Every Conversation must answer *Can we reconstruct the conversation exactly as it occurred?* Verify: original order · timestamps · wording · attribution · no inserted turns · no deleted turns. See [Conversation A15](./slices/ENG-MEM-001.4-CONVERSATION.md#a15--sequence-integrity-binding). |
+| A16 | **Attribution Integrity** | **Required for Conversation.** Every Conversation must answer *Who expressed this interpretation?* Verify: attribution preserved · speaker identity preserved · turn ownership immutable · attribution not inferred by AI. **Interpretation Independence:** contradictory interpretations coexist — Conversation never reconciles. See [Conversation A16](./slices/ENG-MEM-001.4-CONVERSATION.md#a16--attribution-integrity-binding). |
 
 A12 is **binding platform philosophy** for knowledge — reconstruction, not interpretation. Fact implemented it in Wave 1 (`explainFactFromSubstrate`).
 
@@ -397,7 +398,9 @@ A13 is **binding platform philosophy** for evidence — preservation, not correc
 
 A14 is **binding platform philosophy** for interpretation — context reconstruction, not revision. Conversation implements it in Wave 1.
 
-A15 is **binding platform philosophy** for interpretation — chronology within context. Conversation implements it in Wave 1 (`verifyConversationSequenceIntegrity`).
+A15 is **binding platform philosophy** for interpretation — chronology within context. Conversation implements it in Wave 1.
+
+A16 is **binding platform philosophy** for interpretation — explicit attribution without reconciliation. Conversation implements it in Wave 1.
 
 ### Custody vs authenticity (Artifact — binding)
 

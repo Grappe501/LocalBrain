@@ -31,7 +31,12 @@ import {
   getConversationTurnById,
 } from "./conversationTurnStore.js";
 import { transitionConversationLifecycle, verifyConversation } from "./conversationService.js";
-import { readConversationContext, readConversationSequenceIntegrity, writeConversation } from "./writePipeline.js";
+import { readConversationContext, readConversationAttributionIntegrity, readConversationSequenceIntegrity, writeConversation } from "./writePipeline.js";
+import {
+  CONVERSATION_ATTRIBUTION_QUESTION,
+  INTERPRETATION_INDEPENDENCE_INVARIANT,
+  isCompleteAttributionIntegrity,
+} from "./conversationAttributionIntegrity.js";
 import {
   CONVERSATION_SEQUENCE_INVARIANT,
   CONVERSATION_SEQUENCE_QUESTION,
@@ -295,6 +300,66 @@ test("ENG-MEM-001.4.1 sequence — rejects non-contiguous turn order at capture"
           ],
         }),
       (err: unknown) => err instanceof ConversationTurnValidationError && err.field === "sequence",
+    );
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-MEM-001.4.3 A16 attribution integrity — who expressed this interpretation", () => {
+  bootstrapApp();
+  try {
+    const { conversation } = writeConversation(sampleConversationInput());
+    const { attribution, engine_id } = readConversationAttributionIntegrity(conversation.conversation_id);
+
+    assert.equal(engine_id, "ENG-MEM-001");
+    assert.equal(attribution.question, CONVERSATION_ATTRIBUTION_QUESTION);
+    assert.equal(INTERPRETATION_INDEPENDENCE_INVARIANT, "Interpretation survives disagreement.");
+    assert.equal(attribution.turns.length, 2);
+    assert.equal(attribution.turns[0]!.speaker_ref.identity_id, EXEC.identity_id);
+    assert.equal(attribution.turns[1]!.speaker_ref.identity_id, STAFF.identity_id);
+    assert.ok(isCompleteAttributionIntegrity(attribution));
+    assert.ok(attribution.checks.attribution_not_inferred);
+    assert.ok(attribution.checks.turn_ownership_immutable);
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-MEM-001.4.3 interpretation independence — rejects reconciliation fields", () => {
+  bootstrapApp();
+  try {
+    const { conversation, turns } = writeConversation(sampleConversationInput());
+    assert.throws(
+      () => validateConversationRecord({ ...conversation, reconciled_interpretation: "agreed" }),
+      (err: unknown) => err instanceof ConversationValidationError && err.field === "reconciled_interpretation",
+    );
+    assert.throws(
+      () => validateConversationTurnRecord({ ...turns[0]!, inferred_speaker: EXEC }),
+      (err: unknown) => err instanceof ConversationTurnValidationError && err.field === "inferred_speaker",
+    );
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-MEM-001.4.3 attribution — speaker must be declared participant", () => {
+  bootstrapApp();
+  try {
+    assert.throws(
+      () =>
+        writeConversation({
+          ...sampleConversationInput(),
+          turns: [
+            {
+              sequence: 1,
+              speaker_ref: { identity_id: "ID-unknown", identity_kind: "external" },
+              content: "Not a participant.",
+              event_at: "2026-07-01T14:00:10.000Z",
+            },
+          ],
+        }),
+      /speaker must be a declared participant/,
     );
   } finally {
     shutdownApp();

@@ -286,16 +286,65 @@ Acceptance verifies:
 
 ---
 
+## Interpretation Independence (binding)
+
+```text
+Interpretation survives disagreement.
+```
+
+Conversation preserves human meaning over time — sequence, attribution, context, wording, timing. A transcript is one representation; the conversation is the ordered, attributed substrate.
+
+Multiple participants may hold contradictory interpretations. Conversation preserves all of them. It does **not** reconcile. Reconciliation belongs to Facts, Decisions, and Executive Intelligence — never Conversation.
+
+---
+
+## A16 — Attribution Integrity (binding)
+
+Executive question:
+
+> **Who expressed this interpretation?**
+
+Acceptance verifies:
+
+- attribution preserved
+- speaker identity preserved
+- turn ownership immutable
+- attribution not inferred by AI
+
+No Intelligence · no reconciliation · no normalization.
+
+### A16 test evidence (required in `conversation.test.ts`)
+
+- `verifyConversationAttributionIntegrity()` from stored Conversation + ConversationTurn
+- Reject reconciliation / inference fields at validation
+- Reject turns whose `speaker_ref` is not a declared participant
+
+---
+
 ## Recommended commit sequence
 
 | Commit | Scope |
 | ------ | ----- |
 | **001.4.1** | Canonical Conversation + ConversationTurn storage — **COMPLETE** (`7ceed38`) |
-| **001.4.2** | Sequence integrity — invariant · A15 · contiguous order · `turn_refs` alignment |
+| **001.4.2** | Sequence integrity — invariant · A15 · contiguous order · `turn_refs` alignment — **COMPLETE** (`af8dc13`) |
+| **001.4.3** | Attribution integrity — Interpretation Independence · A16 · explicit speaker attribution |
 
 Keep each commit substrate-only — same discipline as Artifact 001.3.1–001.3.2.
 
-> **Reference Slice 004** designation follows full slice completion + PMO acceptance — not per sub-commit.
+> **Reference Slice 004** designation follows **ENG-PMO-003** acceptance — not per sub-commit.
+
+### 001.4.3 scope (binding)
+
+**Deliver only:**
+
+- Interpretation Independence invariant
+- A16 `verifyConversationAttributionIntegrity()`
+- Explicit `speaker_ref` must match declared participant
+- Reject reconciliation / inference fields
+
+**Explicitly exclude:** reconciliation · consensus · inferred attribution · Intelligence
+
+---
 
 ### 001.4.2 scope (binding)
 
@@ -360,8 +409,9 @@ Keep each commit substrate-only — same discipline as Artifact 001.3.1–001.3.
 | A11 | No intelligence logic | Pending |
 | A12 | Explainability | N/A — knowledge objects |
 | A13 | Authenticity | N/A — evidence objects |
-| A14 | **Context Preservation** | Pending |
-| A15 | **Sequence Integrity** | Pending |
+| A14 | **Context Preservation** | PASS — 001.4.1 |
+| A15 | **Sequence Integrity** | PASS — 001.4.2 |
+| A16 | **Attribution Integrity** | PASS — 001.4.3 |
 
 ---
 

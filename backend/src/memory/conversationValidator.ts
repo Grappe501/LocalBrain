@@ -35,6 +35,13 @@ const FORBIDDEN_FIELDS = [
   "object_ref",
   "supersedes",
   "superseded_by",
+  "reconciled_interpretation",
+  "consensus_summary",
+  "inferred_speaker",
+  "speaker_inference",
+  "normalized_attribution",
+  "reconciliation",
+  "agreed_interpretation",
 ] as const;
 
 function assertObject(value: unknown, field: string): Record<string, unknown> {

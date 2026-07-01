@@ -18,6 +18,10 @@ import type { ConversationSequenceIntegrity } from "./conversationSequenceIntegr
 import {
   verifyConversationSequenceIntegrity,
 } from "./conversationSequenceIntegrity.js";
+import type { ConversationAttributionIntegrity } from "./conversationAttributionIntegrity.js";
+import {
+  verifyConversationAttributionIntegrity,
+} from "./conversationAttributionIntegrity.js";
 import { getConversationById } from "./conversationStore.js";
 import { getConversationTurnsByConversationId } from "./conversationTurnStore.js";
 
@@ -66,6 +70,11 @@ export type ConversationContextResult = {
 
 export type ConversationSequenceResult = {
   sequence: ConversationSequenceIntegrity;
+  engine_id: "ENG-MEM-001";
+};
+
+export type ConversationAttributionResult = {
+  attribution: ConversationAttributionIntegrity;
   engine_id: "ENG-MEM-001";
 };
 
@@ -128,6 +137,20 @@ export function readConversationSequenceIntegrity(
   const turns = getConversationTurnsByConversationId(conversationId);
   return {
     sequence: verifyConversationSequenceIntegrity(conversation, turns),
+    engine_id: "ENG-MEM-001",
+  };
+}
+
+export function readConversationAttributionIntegrity(
+  conversationId: string,
+): ConversationAttributionResult {
+  const conversation = getConversationById(conversationId);
+  if (!conversation) {
+    throw new Error(`Conversation not found: ${conversationId}`);
+  }
+  const turns = getConversationTurnsByConversationId(conversationId);
+  return {
+    attribution: verifyConversationAttributionIntegrity(conversation, turns),
     engine_id: "ENG-MEM-001",
   };
 }

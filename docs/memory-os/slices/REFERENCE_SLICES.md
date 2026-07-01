@@ -9,7 +9,7 @@
 | **001** | [Episode](./ENG-MEM-001.1-EPISODE.md) | **Preserve history** | Engineering discipline | COMPLETE |
 | **002** | [Fact](./ENG-MEM-001.2-FACT.md) | **Preserve institutional knowledge** | Knowledge engineering | COMPLETE |
 | **003** | [Artifact](./ENG-MEM-001.3-ARTIFACT.md) | **Preserve evidence** | Evidence engineering | COMPLETE |
-| **004** | [Conversation](./ENG-MEM-001.4-CONVERSATION.md) | **Preserve interpretation** | Interpretation engineering | **AUTHORIZED** |
+| **004** | [Conversation](./ENG-MEM-001.4-CONVERSATION.md) | **Preserve interpretation** | Interpretation engineering | **AUTHORIZED** — complete at PMO acceptance |
 | **005** | ENG-MEM-001.5 DecisionCitation | **Preserve exercised authority** | Governance engineering | Reserved |
 
 Later intelligence layers consume these responsibilities — they do not redefine them.
@@ -96,9 +96,23 @@ Conversation  →  never owns     →  Episode · Artifact · Fact
 
 Every Conversation must answer *What context produced this interpretation?* using only stored conversation data — reconstructable without Intelligence.
 
+### Interpretation Independence (binding)
+
+```text
+Interpretation survives disagreement.
+```
+
+Multiple participants may hold contradictory interpretations. Conversation preserves all of them — it does **not** reconcile. Reconciliation belongs to Facts, Decisions, and Executive Intelligence — never Conversation.
+
 ### A15 — Sequence Integrity (binding)
 
 Every Conversation must answer *Can we reconstruct the conversation exactly as it occurred?* — original order · timestamps · wording · attribution · no inserted or deleted turns.
+
+### A16 — Attribution Integrity (binding)
+
+Executive question: *Who expressed this interpretation?*
+
+Verify: attribution preserved · speaker identity preserved · turn ownership immutable · attribution not inferred by AI.
 
 ### Interpretation never becomes knowledge (binding)
 
