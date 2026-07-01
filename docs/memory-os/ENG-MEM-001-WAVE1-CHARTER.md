@@ -1,8 +1,10 @@
-# ENG-MEM-001 — Wave 1: Canonical Storage
+# ENG-MEM-001 — Wave 1: Institutional Cognition Foundation
 
-> **Status:** Engineering charter — authorized at MEM-008 freeze  
+> **Milestone name:** **Institutional Cognition Foundation** (canonical storage implementation)  
+> **Status:** Engineering charter — authorized at MEM-008 freeze · **3/5 slices PMO complete** (Reference Slices 001–003)  
 > **Engine:** ENG-MEM-001 · **Milestone:** MEM-009 Implementation Pass 1 · Wave 1  
 > **Specification:** `memory-spec-v1.0` · tag `memory-spec-v1.0`  
+> **Governance:** [ENG / OPS / ENG-PMO commit histories](./ENG-PMO-GOVERNANCE.md)  
 > **Blocks:** Wave 2 (Retrieval) · Wave 3 (Intelligence) · Wave 4 (Organizational Intelligence)
 
 ---
@@ -20,12 +22,20 @@ Every line of Wave 1 code must conform to the frozen specification. Ambiguity is
 ## Institutional cognition (Wave 1)
 
 ```text
-Episode          → I remember.     (time)
-Fact             → I know.         (knowledge)
+Episode          → I remember.     (time · something happened)
+Fact             → I know.         (institutional knowledge — not objective truth)
 Artifact         → I can prove it. (evidence)
 Conversation     → I can explain it.
 DecisionCitation → I can justify why we acted.
+Chief of Staff   → I can help you decide what to do next.   (Executive Intelligence — Wave 3+)
 ```
+
+The progression is deliberate. Each layer adds capability without blurring the layer below. Executive Intelligence culminates the stack — it does not replace memory, knowledge, evidence, explanation, or governance.
+
+**Foundational substrates (complete):** Episode · Artifact · Fact — history · evidence · knowledge.  
+**Next class of capability:** Conversation (interpretation) · DecisionCitation (authority).
+
+**Fact Principle:** [Engineering Discipline § The Fact Principle](./ENG-MEM-001-ENGINEERING_DISCIPLINE.md#the-fact-principle-binding)
 
 ---
 

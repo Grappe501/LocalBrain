@@ -3,7 +3,7 @@
 > **Status:** **COMPLETE** — PMO accepted · Reference Slice 001  
 > **Wave:** 1 · Canonical Storage  
 > **Designation:** **Reference Slice 001** — when asked how to implement a slice, follow Episode  
-> **Blocks:** ENG-MEM-001.2 (Fact) — authorized
+> **Unblocks:** ENG-MEM-001.2 (Fact) — COMPLETE · Reference Slice 002
 
 ---
 
@@ -14,6 +14,8 @@ Implement **Episode** canonical persistence completely — schema, validation, s
 **Excluded from this slice:** graph edges · retrieval · intelligence · summarization · merge-into-summary behavior (Vol 3 consolidation is later wave).
 
 > Episode is the atom of institutional memory — meetings, calls, decisions, and future **Institution Timeline** entries are Episodes before Intelligence interprets them.
+
+> **Gold standard:** Episode **records reality** — the atomic unit of memory. Fact (slice 2) **records institutional knowledge** — a different thing. See [Fact Principle](../ENG-MEM-001-ENGINEERING_DISCIPLINE.md#the-fact-principle-binding).
 
 ---
 

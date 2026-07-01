@@ -2,7 +2,7 @@
 
 > **Phase:** 2–3 — Memory before reasoning (not Phase 1)  
 > **System:** [Four Platform Systems](./LOCALBRAIN_FOUR_SYSTEMS.md) — **System 2: Executive Memory OS**  
-> **Engine:** ENG-MEM-001 (planned) · **Metrics:** Memory Confidence (ENG-MC-001) · Context Efficiency (ENG-CE-001)  
+> **Engine:** ENG-MEM-001 (active — Wave 1) · **Metrics:** Memory Confidence (ENG-MC-001) · Context Efficiency (ENG-CE-001)  
 > **Parent:** [Constitution](./LOCALBRAIN_CONSTITUTION.md) · [Memory Domains](./LOCALBRAIN_MEMORY_DOMAINS.md) · [Executive Mission Stack](./LOCALBRAIN_EXECUTIVE_INTENT.md) · [Three-Phase Roadmap](./LOCALBRAIN_THREE_PHASE_ROADMAP.md)
 
 ---
@@ -22,6 +22,8 @@ Phase 1 builds a trustworthy **Executive Operating System**.
 Phase 2+ specifies **executive epistemology** — question-first cognition, not answer-oriented retrieval.
 
 **Gate before LB-OS-027:** [Executive Epistemology Convention](./LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md) — five sessions; architecture only, no code.
+
+**Specification package (2026):** [Memory OS Design Package](./memory-os/README.md) — MEM-001–MEM-008 before implementation.
 
 ```txt
 Today (Phase 1):
