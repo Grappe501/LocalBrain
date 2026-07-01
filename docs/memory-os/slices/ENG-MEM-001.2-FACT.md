@@ -1,9 +1,17 @@
 # ENG-MEM-001.2 — Fact (Slice 2)
 
-> **Status:** **Authorized** — follow [Reference Slice 001](./ENG-MEM-001.1-EPISODE.md)  
+> **Status:** **Authorized** — PMO accepted 2026-07-01  
 > **Wave:** 1 · Canonical Storage  
 > **Object:** Fact — atomic attestable statement  
 > **Blocks:** ENG-MEM-001.3 (Artifact)
+
+```text
+Reference Implementation
+ENG-MEM-001.1 Episode
+
+Specification Fidelity
+Required (100% or Not Accepted)
+```
 
 ---
 
@@ -16,6 +24,8 @@
 
 Episode taught the platform how to **remember events**.  
 Fact teaches the platform how to **preserve knowledge**.
+
+**Invariant:** Every canonical Fact must remain explainable from its provenance and lineage — knowledge never detached from evidence.
 
 Keep validity (authority window) separate from lifecycle (institutional relationship to the record).
 

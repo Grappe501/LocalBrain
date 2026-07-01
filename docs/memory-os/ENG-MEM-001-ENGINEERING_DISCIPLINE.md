@@ -10,6 +10,46 @@
 
 > **Production line:** Charter → Specification → Implementation → Acceptance → Closeout → Engineering Debt Review → Authorization
 
+> **Every engineering kickoff must state:**
+> ```text
+> Reference Implementation
+> ENG-MEM-001.1 Episode
+> ```
+> That is the quality bar — discipline · traceability · acceptance · closeout · Specification Fidelity.
+
+---
+
+## Engineering invariants (per object)
+
+| Slice | Establishes |
+| ----- | ----------- |
+| **ENG-MEM-001.1 Episode** | **Time** — explicit temporal bounds on what happened |
+| **ENG-MEM-001.2 Fact** | **Knowledge must never become detached from evidence** |
+
+### Fact invariant (binding)
+
+> **Every canonical Fact must remain explainable from its provenance and lineage.**
+
+A future Chief of Staff must answer — without LLM invention:
+
+- Why do we know this?
+- Where did it come from?
+- When did it become authoritative?
+- What replaced the previous understanding?
+
+---
+
+## Executive substrates (directional)
+
+Four executive questions · four substrates — not one prompt:
+
+| Question | Substrate |
+| -------- | --------- |
+| What happened? | Episodes |
+| What do we know? | Facts |
+| How do we know? | Artifacts + Provenance |
+| Why did we decide that? | DecisionCitation + Decision Ledger |
+
 ---
 
 ## Historical boundary
@@ -142,7 +182,15 @@ Record results in the slice document before opening the next slice.
 
 ### Specification Fidelity (headline metric)
 
-Binary — not subjective. Every closeout must state:
+Binary — not subjective. Not 97%. Not 92%. Only:
+
+```text
+Specification Fidelity: 100%
+or
+Not Accepted
+```
+
+Every closeout must state:
 
 ```text
 Specification Fidelity: 100%
@@ -151,7 +199,7 @@ No architectural deviations.
 No specification amendments.
 ```
 
-If fidelity is not 100%, the slice does **not** close — resolve via spec amendment cycle or corrective implementation.
+If fidelity is not **100%**, the slice does **not** close — resolve via spec amendment cycle or corrective implementation.
 
 ---
 

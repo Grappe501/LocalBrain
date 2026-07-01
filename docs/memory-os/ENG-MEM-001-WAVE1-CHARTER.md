@@ -17,6 +17,30 @@ Every line of Wave 1 code must conform to the frozen specification. Ambiguity is
 
 ---
 
+## Institutional cognition (Wave 1)
+
+```text
+Episode          → I remember.     (time)
+Fact             → I know.         (knowledge)
+Artifact         → I can prove it. (evidence)
+Conversation     → I can explain it.
+DecisionCitation → I can justify why we acted.
+```
+
+---
+
+## Engineering kickoff (every slice)
+
+```text
+Reference Implementation
+ENG-MEM-001.1 Episode
+
+Specification Fidelity
+Required (100% or Not Accepted)
+```
+
+---
+
 ## Mission
 
 > Implement the Memory Specification exactly as frozen in `memory-spec-v1.0`.
