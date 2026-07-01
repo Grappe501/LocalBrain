@@ -69,7 +69,7 @@ Confidence:             60%
 | Executive Office | 100% |
 | Theory Freeze | 100% |
 | Convention | 100% |
-| Empty Brain Factory | 34% |
+| Empty Brain Factory | 15% |
 | Memory OS | 18% |
 | Communications Office | 25% |
 | Commercial Beta | 70% |
@@ -112,9 +112,9 @@ Critical path only:
 
 ## Next module
 
-**Empty Brain Factory** ([LB-OS-PROD-010](./burt_packets/LB-OS-PROD-010-factory-reserved.md) · LB-OS-027.0)
+**Empty Brain Factory** ([MILESTONE-FACTORY](./burt_packets/MILESTONE-FACTORY.md) · [Factory Contract](./factory/FACTORY_CONTRACT.md) · ENG-FAC-001 slice 1 ✅)
 
-Convention contracts: [Close](./convention/CONVENTION-CLOSE.md) · [S1](./convention/CONVENTION-S1-ONTOLOGY_CONTRACT.md) · [S2](./convention/CONVENTION-S2-MEMORY_LIFECYCLE_CONTRACT.md) · [S3](./convention/CONVENTION-S3-RECALL_CONTRACT.md) · [S4](./convention/CONVENTION-S4-PROVENANCE_CONTRACT.md) · [S5](./convention/CONVENTION-S5-ETHICS_CONTRACT.md)
+Design Era: [CLOSED](./LOCALBRAIN_DESIGN_ERA_CLOSE.md) · Convention: [CLOSED](./convention/CONVENTION-CLOSE.md)
 
 ---
 

@@ -838,3 +838,19 @@ export type {
   PreIngestionBuildStage,
   ProductionReadinessTrack,
 } from "./productFactory.js";
+export {
+  CANONICAL_EMPTY_DEPARTMENTS,
+  CANONICAL_EMPTY_DISPLAY_NAME,
+  CONVENTION_CONTRACT_BUNDLE,
+  FACTORY_CONTRACT_VERSION,
+  FACTORY_MANUFACTURING_EXCLUSIONS,
+  FACTORY_STRUCTURE_INCLUDED,
+  MANUFACTURING_PRINCIPLE,
+  institutionStructureMatches,
+} from "./factoryManufacturing.js";
+export type {
+  BrainBirthCertificate,
+  ConventionContractBundle,
+  EmptyInstitutionManifest,
+  ManufactureResult,
+} from "./factoryManufacturing.js";

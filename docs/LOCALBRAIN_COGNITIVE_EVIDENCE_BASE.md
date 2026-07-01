@@ -731,7 +731,7 @@ Convention may clarify · constrain · define — may NOT invent.
 | ----- | ----- |
 | Date | 2026-06-28 — post Session 5 |
 | Deliverable | [Convention Close](./convention/CONVENTION-CLOSE.md) · [Burt packet](./burt_packets/MILESTONE-CONVENTION-CLOSE.md) |
-| Outcome | **Complete** — 5/5 sessions · 0 inventions · 0 Theory amendments |
+| Outcome | **Complete** — 5/5 sessions · Sessions 1–5 complete · 0 inventions · 0 Theory amendments |
 | Next | Empty Brain Factory → Memory OS |
 
 > **Design era complete for Memory OS substrate.** Engineering execution against frozen contracts.
@@ -747,6 +747,49 @@ Convention may clarify · constrain · define — may NOT invent.
 | CON-S3 | Recall | ✅ |
 | CON-S4 | Provenance | ✅ |
 | CON-S5 | Ethics | ✅ |
+
+---
+
+### Design Era Close
+
+| Field | Value |
+| ----- | ----- |
+| Date | 2026-06-28 — post Convention Close |
+| Deliverable | [Design Era Close](./LOCALBRAIN_DESIGN_ERA_CLOSE.md) |
+| Outcome | **Complete** — design era finished · Construction (Factory) begins |
+
+> Memory OS is implementation, not research. Protect quality, not ideas.
+
+---
+
+### Empty Brain Factory
+
+| Field | Value |
+| ----- | ----- |
+| Date | 2026-06-28 — post Design Era Close |
+| Type | Manufacturing contract + ENG-FAC-001 slice 1 |
+| Deliverable | [Factory Contract](./factory/FACTORY_CONTRACT.md) · [MILESTONE-FACTORY](./burt_packets/MILESTONE-FACTORY.md) |
+| Outcome | **In progress** — manufacture API + birth certificate · installer future slice |
+
+#### Findings log (slice 1)
+
+| ID | Finding | Contract read | Outcome | Notes |
+| -- | ------- | ------------- | ------- | ----- |
+| FAC-001 | Manufacturing principle | Factory · Memory OS · Communications — one job each | **Resolved** | PMO binding |
+| FAC-002 | Success test | Customer parity — same institution structure | **Resolved** | `institutionStructureMatches()` |
+| FAC-003 | Birth certificate | All BRAIN_BIRTH_CERTIFICATE_FIELDS + convention bundle | **Resolved** | ENG-FAC-001 |
+| FAC-004 | Structure manifest | Included/excluded lists frozen | **Resolved** | No ingestion · no Gmail |
+| FAC-005 | Manufacture API | `POST /api/factory/manufacture` | **Resolved** | Verification gate |
+| FAC-006 | Parity tests | Two manufactures → identical structure | **Resolved** | factoryService.test.ts |
+| FAC-007 | Installer artifact | Package · provision · activate pipeline | **Open Question** | Future Factory slice |
+
+#### Factory gate (slice 1)
+
+- [x] Manufacturing contract frozen
+- [x] ENG-FAC-001 manufacture + birth certificate implemented
+- [x] Parity tests pass
+- [ ] Installer artifact
+- [ ] Factory certification
 
 ---
 
@@ -801,6 +844,8 @@ Amendments publish as v1.1, v1.2, … v1.0 text remains immutable. See [Falsific
 | E-CON-S4-2026 | convention | 2026-06-28 | Session 4 Provenance — universal envelope · Why? chain · 14 resolved | [Provenance Contract](./convention/CONVENTION-S4-PROVENANCE_CONTRACT.md) |
 | E-CON-S5-2026 | convention | 2026-06-28 | Session 5 Ethics — operational governance · edge case matrix · 13 resolved | [Ethics Contract](./convention/CONVENTION-S5-ETHICS_CONTRACT.md) |
 | E-CON-CLOSE-2026 | gate | 2026-06-28 | Convention complete — 5/5 sessions · LB-OS-027 spec lock unlocked | [Convention Close](./convention/CONVENTION-CLOSE.md) |
+| E-DESIGN-ERA-2026 | gate | 2026-06-28 | Design Era complete — Factory phase begins | [Design Era Close](./LOCALBRAIN_DESIGN_ERA_CLOSE.md) |
+| E-FAC-S1-2026 | factory | 2026-06-28 | Factory slice 1 — manufacture API · birth certificate · parity tests | [Factory Contract](./factory/FACTORY_CONTRACT.md) |
 | E-META-PR-2026 | meta-evidence | 2026-06-28 | Sessions 1–3 pattern: claim-type separation · emergent implementation style (local · incremental · versioned · event-aware · self-observing) | Review method taxonomy — not evidence theory is correct |
 
 ### Peer review progress (institutional memory)

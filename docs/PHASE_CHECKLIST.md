@@ -197,7 +197,7 @@ NO NEW DOCTRINE
 | LB-OS-PROD-001 | Productization & Empty Brain Onboarding | ✅ Complete — [Burt](./burt_packets/LB-OS-PROD-001.md) · ENG-INST-001 |
 | LB-OS-026.8 | Productization / Instance Onboarding | ✅ PROD-001 |
 | LB-OS-026.9 | Provider Vault & Connector Settings | ✅ PROD-001 |
-| LB-OS-027.0 | Empty Brain Factory / Packaging | ⏳ Next · [PROD-010](./burt_packets/LB-OS-PROD-010-factory-reserved.md) · CAP-FUT-FAC-001 |
+| LB-OS-027.0 | Empty Brain Factory / Packaging | ▶ In progress · [MILESTONE-FACTORY](./burt_packets/MILESTONE-FACTORY.md) · [FACTORY_CONTRACT](./factory/FACTORY_CONTRACT.md) · CAP-FUT-FAC-001 |
 | LB-OS-027.1 | Multi-Brain Sharing (reserved) | 🔒 Reserved · CAP-FUT-MBS-001 |
 | LB-OS-PROD-002 | License & Subscription Gate | 🔒 Reserved · [Burt](./burt_packets/LB-OS-PROD-002-006-reserved.md) · CAP-FUT-LIC-001 |
 | LB-OS-PROD-003 | Social Media Connector Registry | 🔒 Reserved · CAP-FUT-SMC-001 |
@@ -207,7 +207,7 @@ NO NEW DOCTRINE
 | LB-OS-PROD-007 | Instance Identity, Transfer, Single-Primary | 🔒 Reserved · [Burt](./burt_packets/LB-OS-PROD-007-reserved.md) · CAP-FUT-IDT-001 |
 | LB-OS-PROD-008 | Executive Identity Authority | 🔒 Reserved · [Burt](./burt_packets/LB-OS-PROD-008-009-reserved.md) · CAP-FUT-EIA-001 |
 | LB-OS-PROD-009 | Executive Passport | 🔒 Reserved · CAP-FUT-PSP-001 |
-| LB-OS-PROD-010 | Executive LocalBrain Factory | 🔒 Reserved · [Burt](./burt_packets/LB-OS-PROD-010-factory-reserved.md) · ENG-FAC-001 |
+| LB-OS-PROD-010 | Executive LocalBrain Factory | ▶ In progress · [MILESTONE-FACTORY](./burt_packets/MILESTONE-FACTORY.md) · ENG-FAC-001 slice 1 |
 | LB-OS-PROD-011 | Chief Compliance Officer | 🔒 Reserved · CAP-FUT-CCO-001 |
 | LB-OS-CON-003 | Versioned Constitution Migration | 🔒 Reserved · CAP-FUT-CON-VER-001 |
 

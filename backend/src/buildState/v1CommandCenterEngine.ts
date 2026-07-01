@@ -75,7 +75,7 @@ const MODULE_DEFS: {
     owner: null,
     path_steps: ["empty_brain_factory"],
     slice_ids: ["LB-OS-PROD-001", "LB-OS-PROD-010"],
-    test_globs: ["backend/src/settings/brainInstance.test.ts"],
+    test_globs: ["backend/src/settings/brainInstance.test.ts", "backend/src/factory/factoryService.test.ts"],
   },
   {
     module_id: "memory_os",

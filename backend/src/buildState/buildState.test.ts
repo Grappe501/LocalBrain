@@ -37,8 +37,8 @@ test("parsePhaseSections derives phases from checklist", () => {
 
 test("computeBuildState projects current sprint and velocity", () => {
   const state = computeBuildState();
-  assert.equal(state.current_slice_id, "MILESTONE-CONVENTION");
-  assert.equal(state.current_phase_label, "Theory Validation — Convention");
+  assert.equal(state.current_slice_id, "LB-OS-027.0");
+  assert.ok(state.current_phase_label.includes("Platform Consolidation"));
   assert.ok(
     state.build_graph.some((n) => n.slice_id === "LB-OS-020" && n.status === "released"),
   );
@@ -54,8 +54,8 @@ test("getEpoOverview exposes build state engine fields", () => {
   const overview = getEpoOverview();
   assert.equal(overview.read_only, true);
   assert.equal(overview.build_state_engine_id, BUILD_STATE_ENGINE_ID);
-  assert.equal(overview.current_slice_id, "MILESTONE-CONVENTION");
-  assert.equal(overview.current_phase_label, "Theory Validation — Convention");
+  assert.equal(overview.current_slice_id, "LB-OS-027.0");
+  assert.ok(overview.current_phase_label.includes("Platform Consolidation"));
   assert.ok(overview.phases.length >= 4);
   assert.ok(overview.commit_timeline.length > 0);
   assert.ok(overview.experience_maturity.length >= 10);
@@ -85,7 +85,7 @@ test("getEpoOverview exposes build state engine fields", () => {
   assert.equal(roadmap.find((r) => r.id === "session_4")?.status, "complete");
   assert.equal(roadmap.find((r) => r.id === "session_5")?.status, "complete");
   assert.equal(roadmap.find((r) => r.id === "theory_freeze")?.status, "complete");
-  assert.equal(roadmap.find((r) => r.id === "convention")?.status, "in_progress");
+  assert.equal(roadmap.find((r) => r.id === "convention")?.status, "complete");
   assert.ok(overview.project_state.ceo_mode.theory_status.frozen);
   assert.equal(overview.project_state.ceo_mode.theory_status.remaining_risk, "IMPLEMENTATION");
   assert.equal(overview.project_state.launch_countdown.current_phase, "Construction");
@@ -97,7 +97,7 @@ test("parsePeerReviewProgress reads Evidence Base automatically", () => {
   assert.equal(pr.s4, "complete");
   assert.equal(pr.s5, "complete");
   assert.equal(pr.theory_frozen, true);
-  assert.equal(pr.convention, "in_progress");
+  assert.equal(pr.convention, "complete");
 });
 
 test("certifyCurrentModule produces dimension rows for Executive Office", () => {

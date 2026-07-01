@@ -312,7 +312,9 @@ function parsePeerReviewFromEvidenceBase(text: string): PeerReviewProgress {
 
   const conventionComplete =
     /Executive Epistemology Convention[\s\S]*?Sessions 1–5 complete/i.test(text) ||
-    /Convention Session 5[\s\S]*?complete/i.test(text);
+    /Convention Session 5[\s\S]*?complete/i.test(text) ||
+    /Convention Close[\s\S]*?\*\*Complete\*\*/i.test(text) ||
+    /CON-S5[\s\S]*?Ethics[\s\S]*?✅/i.test(text);
 
   let s4: SliceStatus = "planned";
   if (s4Complete) s4 = "complete";
