@@ -132,7 +132,17 @@ Conversation is never a Fact — discussion does not become knowledge automatica
 
 > **Authority is exercised. It is never inferred.**
 
+## The Recording Principle (binding — MAR-2)
+
+> **Authority is recorded. It is never reconstructed.**
+
+## The Governance Principle (binding — MAR-2)
+
+> **Authority creates responsibility. It does not create truth.**
+
 DecisionCitation cites the Decision Ledger — binding authority remains in the ledger (MAR-1).
+
+Design review: [MAR-2 Authority Architecture Review](./MAR-2-AUTHORITY-ARCHITECTURE_REVIEW.md) · Completion: [ENG-PMO-005](./ENG-PMO-005-CONSTITUTIONAL-COMPLETION.md) (reserved)
 
 ### A17 — Authority Integrity (binding — reserved at authorization)
 

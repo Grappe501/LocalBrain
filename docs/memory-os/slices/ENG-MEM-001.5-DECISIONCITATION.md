@@ -5,6 +5,8 @@
 > **Designation:** **Reference Slice 005** — follow DecisionCitation for all future **governance engineering**  
 > **Object:** DecisionCitation — cites Decision Ledger; does not duplicate binding authority  
 > **Ceremony:** [ENG-PMO-004](../ENG-PMO-004-DECISIONCITATION-AUTHORIZATION.md)  
+> **Design review:** [MAR-2 Authority Architecture Review](../MAR-2-AUTHORITY-ARCHITECTURE_REVIEW.md) — **COMPLETE** · gates 001.5.1  
+> **Completion ceremony:** [ENG-PMO-005](../ENG-PMO-005-CONSTITUTIONAL-COMPLETION.md) — RESERVED  
 > **Completes:** Institutional Cognition Foundation (Wave 1 substrate set)
 
 ```text
@@ -51,6 +53,35 @@ Architecture shift at this slice: Wave 1 completes the transition from preservin
 If a model thinks *"They probably approved this"* — that is **not** a DecisionCitation.
 
 Authority exists only because someone exercised it — never because Intelligence believes they did.
+
+---
+
+## The Recording Principle (binding — MAR-2)
+
+**Constitutional statement:**
+
+> **Authority is recorded. It is never reconstructed.**
+
+Even if every surrounding Episode, Fact, Artifact, and Conversation strongly suggests a decision occurred, there is **no** DecisionCitation unless one was actually recorded at capture.
+
+Intelligence must not synthesize governance from context. That protects the platform from hallucinating authority.
+
+---
+
+## The Governance Principle (binding — MAR-2)
+
+**Constitutional statement:**
+
+> **Authority creates responsibility. It does not create truth.**
+
+A governing body can approve something. That approval does not make it factually correct.
+
+```text
+Facts do not automatically create authority.
+Authority does not automatically create facts.
+```
+
+They remain independent substrates — one of the strongest architectural separations in LocalBrain.
 
 ---
 
@@ -131,6 +162,7 @@ Implement **DecisionCitation** canonical persistence — schema, validation, ser
 | `Vol2-DecisionCitation` | [Volume 2 § DecisionCitation](../VOLUME-2-MEMORY_DATA_MODEL.md) |
 | `Registry-DecisionCitation` | [Object Registry — DecisionCitation](../CANONICAL_OBJECT_REGISTRY.md) |
 | `MAR-V01` | [MAR-1 DecisionCitation split](../MAR-1-ARCHITECTURE_REVIEW.md) |
+| `MAR-2` | [MAR-2 Authority Architecture Review](../MAR-2-AUTHORITY-ARCHITECTURE_REVIEW.md) |
 | `S2-Lifecycle` | [Convention S2](../convention/CONVENTION-S2-MEMORY_LIFECYCLE_CONTRACT.md) |
 | `S4-Provenance` | [Convention S4](../convention/CONVENTION-S4-PROVENANCE_CONTRACT.md) |
 | `TIME_MODEL` | [Time Model](../TIME_MODEL.md) |
@@ -193,6 +225,8 @@ Acceptance verifies:
 | Invariant | Rule |
 | --------- | ---- |
 | Authority exercised | Never inferred — explicit decider and ledger citation only |
+| Authority recorded | Never reconstructed from substrate patterns |
+| Governance independence | Authority creates responsibility — not truth |
 | Ledger boundary | Cites ledger — never duplicates binding decision |
 | Reference only | May reference Episode · Artifact · Fact · Conversation — never own |
 | Small object | Authority record stays minimal — power from references |
@@ -207,10 +241,16 @@ Acceptance verifies:
 | Commit | Scope |
 | ------ | ----- |
 | **001.5.1** | Canonical DecisionCitation storage — schema · validation · persistence · S4 · lifecycle · ledger citation · decider · supporting refs |
+| **001.5.2** | Authority integrity — A17 · `verifyDecisionCitationAuthorityIntegrity()` · exercised authority only |
+| **001.5.3** | Governance guarantees — Recording Principle · ledger boundary invariants · reject reconstruction fields |
 
-> **Reference Slice 005** follows **ENG-PMO-005** acceptance after full 001.5 completion.
+Keep each commit substrate-only — same discipline as Conversation 001.4.1–001.4.3 and Artifact 001.3.1–001.3.2.
+
+> **Reference Slice 005** designation follows **ENG-PMO-005** acceptance — Constitutional Completion Milestone — not per sub-commit.
 
 ### 001.5.1 scope (binding)
+
+**Prerequisite:** [MAR-2](../MAR-2-AUTHORITY-ARCHITECTURE_REVIEW.md) **COMPLETE**
 
 **Deliver only:**
 
@@ -219,14 +259,35 @@ Acceptance verifies:
 - Storage + append-only body preservation
 - Provenance envelope
 - `decider_ref` · `decided_at` · `supporting_memory_refs`
-- A17 authority reconstruction walk
+- Basic create + read + lifecycle Captured
 
 **Explicitly exclude:**
 
 - Binding decision creation in Memory OS (ledger owns authority)
 - Inferred authority · LLM decision detection
 - Cross-substrate mutation
-- Policy enforcement · approval workflows (cite refs only)
+- A17 walk (001.5.2) · reconstruction guards (001.5.3)
+
+### 001.5.2 scope (binding)
+
+**Deliver only:**
+
+- A17 `verifyDecisionCitationAuthorityIntegrity()` — *Who exercised institutional authority?*
+- Authority chain reconstructable from stored fields alone
+- `decider_ref` explicit · delegation traceable via provenance / refs
+- Ledger citation immutable after create
+
+**Explicitly exclude:** reconstruction from substrates · inference · policy enforcement UI
+
+### 001.5.3 scope (binding)
+
+**Deliver only:**
+
+- Recording Principle enforcement — reject fields that imply reconstructed authority
+- Ledger boundary tests — Memory OS cannot mutate or duplicate ledger authority
+- Supporting refs integrity — outward refs only · no substrate mutation on write
+
+**Explicitly exclude:** Intelligence · decision recommendation · approval workflows
 
 ---
 

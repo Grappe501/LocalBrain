@@ -6,11 +6,13 @@ import type { CreateArtifactInput } from "./artifactService.js";
 import { createArtifact } from "./artifactService.js";
 import type { CreateConversationInput } from "./conversationService.js";
 import { createConversation } from "./conversationService.js";
+import type { CreateDecisionCitationInput } from "./decisionCitationService.js";
+import { createDecisionCitation } from "./decisionCitationService.js";
 import {
   getArtifactCustodyChain,
   transferArtifactCustody,
 } from "./artifactCustodyService.js";
-import type { Episode, Fact, Artifact, ArtifactCustodyEvent, Conversation, ConversationTurn, IdentityRef } from "@localbrain/shared";
+import type { Episode, Fact, Artifact, ArtifactCustodyEvent, Conversation, ConversationTurn, DecisionCitation, IdentityRef } from "@localbrain/shared";
 import type { FactExplanation } from "./factExplainability.js";
 import type { ConversationContext } from "./conversationContext.js";
 import { explainConversationContext } from "./conversationContext.js";
@@ -75,6 +77,11 @@ export type ConversationSequenceResult = {
 
 export type ConversationAttributionResult = {
   attribution: ConversationAttributionIntegrity;
+  engine_id: "ENG-MEM-001";
+};
+
+export type DecisionCitationWriteResult = {
+  citation: DecisionCitation;
   engine_id: "ENG-MEM-001";
 };
 
@@ -153,4 +160,9 @@ export function readConversationAttributionIntegrity(
     attribution: verifyConversationAttributionIntegrity(conversation, turns),
     engine_id: "ENG-MEM-001",
   };
+}
+
+export function writeDecisionCitation(input: CreateDecisionCitationInput): DecisionCitationWriteResult {
+  const citation = createDecisionCitation(input);
+  return { citation, engine_id: "ENG-MEM-001" };
 }

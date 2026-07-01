@@ -11,3 +11,5 @@ export const CONVERSATION_SCHEMA_VERSION = "1.0.0" as const;
 export const CONVERSATION_KIND = "Conversation" as const;
 export const CONVERSATION_TURN_SCHEMA_VERSION = "1.0.0" as const;
 export const CONVERSATION_TURN_KIND = "ConversationTurn" as const;
+export const DECISION_CITATION_SCHEMA_VERSION = "1.0.0" as const;
+export const DECISION_CITATION_KIND = "DecisionCitation" as const;

@@ -66,6 +66,21 @@ export function migrateMemoryTables(): void {
     CREATE INDEX IF NOT EXISTS idx_memory_conversation_turns_conversation
       ON memory_conversation_turns(conversation_id, sequence);
 
+    CREATE TABLE IF NOT EXISTS memory_decision_citations (
+      citation_id TEXT PRIMARY KEY,
+      decision_id TEXT NOT NULL,
+      lifecycle_state TEXT NOT NULL,
+      schema_version TEXT NOT NULL,
+      payload_json TEXT NOT NULL,
+      created_at TEXT NOT NULL,
+      lifecycle_updated_at TEXT NOT NULL
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_memory_decision_citations_decision
+      ON memory_decision_citations(decision_id);
+    CREATE INDEX IF NOT EXISTS idx_memory_decision_citations_lifecycle
+      ON memory_decision_citations(lifecycle_state);
+
     CREATE TABLE IF NOT EXISTS memory_artifact_custody_events (
       custody_event_id TEXT PRIMARY KEY,
       artifact_id TEXT NOT NULL,
