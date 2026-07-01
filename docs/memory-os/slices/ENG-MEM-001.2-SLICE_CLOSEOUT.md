@@ -1,17 +1,16 @@
-# Slice Closeout — `<ENG-MEM-001.N>`
+# Slice Closeout — ENG-MEM-001.2 Fact
 
-> **Type:** Retrospective — not engineering spec · not PMO gate  
-> **Parent slice:** [charter](./ENG-MEM-001.1-EPISODE.md)  
-> **Platform debt:** [ENGINEERING_DEBT.md](../../engineering/ENGINEERING_DEBT.md) — track unrelated defects separately
+> **Status:** Open  
+> **Reference:** [Reference Slice 001](./ENG-MEM-001.1-EPISODE.md)
 
 ---
 
 ## Implementation summary (required)
 
 ```text
-ENG-MEM-001.N Closeout
+ENG-MEM-001.2 Closeout
 
-Specification Fidelity: 100%
+Specification Fidelity: ___%
 Implemented exactly as specified.
 No architectural deviations.
 No specification amendments.
@@ -21,13 +20,12 @@ Acceptance:        N/N PASS
 Tests:             N/N PASS
 
 Environmental issues:
-  (list or None)
 
 Architectural deviations:  None | describe
 Specification changes:     None | describe
 
-Ready for:           ENG-MEM-001.N+1
-Platform debt:         ED-xxx if relevant
+Ready for:           ENG-MEM-001.3 Artifact
+Platform debt:       ED-001 if relevant
 ```
 
 ---
@@ -52,4 +50,4 @@ Platform debt:         ED-xxx if relevant
 
 ---
 
-*Slice closeout · LocalBrain V1*
+*ENG-MEM-001.2 Fact closeout · LocalBrain V1*

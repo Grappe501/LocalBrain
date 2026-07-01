@@ -1,9 +1,9 @@
 # ENG-MEM-001.1 — Episode (Slice 1)
 
-> **Status:** **Implementation complete** — acceptance PASS  
+> **Status:** **COMPLETE** — PMO accepted · Reference Slice 001  
 > **Wave:** 1 · Canonical Storage  
-> **Gold standard:** Reference slice — every future object copies this pattern  
-> **Blocks:** ENG-MEM-001.2 (Fact)
+> **Designation:** **Reference Slice 001** — when asked how to implement a slice, follow Episode  
+> **Blocks:** ENG-MEM-001.2 (Fact) — authorized
 
 ---
 

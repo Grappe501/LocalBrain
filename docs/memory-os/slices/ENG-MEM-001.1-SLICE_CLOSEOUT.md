@@ -1,7 +1,23 @@
 # Slice Closeout — ENG-MEM-001.1 Episode
 
-> **Status:** **Closed** — 2026-07-01  
-> **Gold standard:** First reference slice for the platform
+> **Status:** **Closed** — PMO accepted 2026-07-01  
+> **Designation:** **Reference Slice 001** — follow Episode for all future slices  
+> **Gold standard:** First reference implementation for the platform
+
+---
+
+## PMO acceptance
+
+```text
+ENG-MEM-001.1 Episode
+────────────────────────
+Specification        PASS
+Acceptance           11 / 11 PASS
+Engineering Tests     6 / 6 PASS
+Architectural Drift   NONE
+Spec Amendments       NONE
+STATUS:               COMPLETE
+```
 
 ---
 
@@ -9,6 +25,11 @@
 
 ```text
 ENG-MEM-001.1 Closeout
+
+Specification Fidelity: 100%
+Implemented exactly as specified.
+No architectural deviations.
+No specification amendments.
 
 Specification:     PASS
 Acceptance:        11/11 PASS

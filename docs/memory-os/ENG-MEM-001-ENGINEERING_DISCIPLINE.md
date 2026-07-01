@@ -6,7 +6,9 @@
 
 > **Principle:** Every object must be valuable before intelligence touches it — valid, traceable, explainable, auditable, and reconstructable even if the Intelligence layer were completely disabled.
 
-> **Gold standard:** [ENG-MEM-001.1 Episode](./slices/ENG-MEM-001.1-EPISODE.md) — optimize for being the example every future slice copies, not for speed.
+> **Gold standard:** [ENG-MEM-001.1 Episode](./slices/ENG-MEM-001.1-EPISODE.md) — **Reference Slice 001**. Optimize for being the example every future slice copies, not for speed.
+
+> **Production line:** Charter → Specification → Implementation → Acceptance → Closeout → Engineering Debt Review → Authorization
 
 ---
 
@@ -83,8 +85,8 @@ Do not implement all object types simultaneously. Complete **one slice** — sch
 
 | Slice | ID | Object | Charter |
 | ----- | -- | ------ | ------- |
-| 1 | ENG-MEM-001.1 | **Episode** | [Slice 1](./slices/ENG-MEM-001.1-EPISODE.md) |
-| 2 | ENG-MEM-001.2 | **Fact** | validity · supersession · append-only corrections |
+| 1 | ENG-MEM-001.1 | **Episode** | [Slice 1](./slices/ENG-MEM-001.1-EPISODE.md) | **Reference Slice 001** · COMPLETE |
+| 2 | ENG-MEM-001.2 | **Fact** | [Slice 2](./slices/ENG-MEM-001.2-FACT.md) | **Authorized** |
 | 3 | ENG-MEM-001.3 | **Artifact** | external refs · provenance preserved |
 | 4 | ENG-MEM-001.4 | **Conversation** + **ConversationTurn** | attribution · chronology |
 | 5 | ENG-MEM-001.5 | **DecisionCitation** | Decision Ledger boundary · no duplicated authority |
@@ -136,7 +138,20 @@ Mirror PMO discipline: **binary pass/fail**. A slice does not start until the pr
 
 Record results in the slice document before opening the next slice.
 
-**Close-out required:** Every slice must publish an [implementation summary](./slices/SLICE_CLOSEOUT_TEMPLATE.md#implementation-summary-required) in its `SLICE_CLOSEOUT` before the next slice begins.
+**Close-out required:** Every slice must publish an [implementation summary](./slices/SLICE_CLOSEOUT_TEMPLATE.md#implementation-summary-required) and **Specification Fidelity** statement before the next slice begins.
+
+### Specification Fidelity (headline metric)
+
+Binary — not subjective. Every closeout must state:
+
+```text
+Specification Fidelity: 100%
+Implemented exactly as specified.
+No architectural deviations.
+No specification amendments.
+```
+
+If fidelity is not 100%, the slice does **not** close — resolve via spec amendment cycle or corrective implementation.
 
 ---
 
