@@ -76,8 +76,7 @@ Links:           docs · commits · trace IDs
 | 1 | Philosopher — logical consistency | ✅ Passed | [PR-S1 below](#peer-review-session-1-philosopher) |
 | 2 | Cognitive scientist | ✅ Passed (research obligations) | [PR-S2 below](#peer-review-session-2-cognitive-scientist) |
 | 3 | Systems engineer | ✅ Passed (engineering obligations) | [PR-S3 below](#peer-review-session-3-systems-engineer) |
-| 4 | Executive practitioner | 📋 Ready — frozen packet `7b6ab71` | [PR-S4 — Session 4 opens](#peer-review-session-4-executive-practitioner) |
-| 4 | Executive practitioner | ⬜ Pending | — |
+| 4 | Executive practitioner | ✅ Passed (practitioner obligations) | [PR-S4 below](#peer-review-session-4-executive-practitioner) |
 | 5 | Skeptic | ⬜ Pending | — |
 
 **Submission packet:** Frozen at `7b6ab71`. Findings only in this document until Sessions 1–5 complete → then Convention Agenda.
@@ -273,7 +272,7 @@ Links:           docs · commits · trace IDs
 | Reviewer | Independent (Executive Practitioner) |
 | Submission | Frozen at `7b6ab71` |
 | Overarching question | Does this architecture help a real executive make better decisions under real constraints? |
-| Outcome | **In progress** — [Burt packet](./burt_packets/MILESTONE-PR-S4.md) |
+| Outcome | **Passed (practitioner obligations)** — 2026-06-30 · 0 contradictions · RO-S4-001–011 · [Burt packet](./burt_packets/MILESTONE-PR-S4.md) |
 
 #### Findings log
 
@@ -307,10 +306,56 @@ Links:           docs · commits · trace IDs
 | PR-S4-004f | Slow strategic decisions | **Decision Half-Life** (hours → decades) · Strategic/Transformational clock · **Prefer reversible experiments** · preserve optionality | **Resolved** | Calendar pressure and strategic patience coexist via horizon + half-life taxonomy |
 | PR-S4-004g | Self-Doubt → paralysis | Self-Doubt withhold is **signal not veto** — Agency respects it · Steve retains decision authority · high-stakes requires falsification, not universal withhold | **Open Question** | Practitioner risk if thresholds miscalibrated · [Research Agenda](./LOCALBRAIN_RESEARCH_AGENDA.md) obligation: calibrate SDW without missing deadlines — Kelly validation, not Theory v1.1 |
 | PR-S4-004h | Graceful degradation | Recommendations should degrade to **stated uncertainty + next step** rather than silence or false precision · RO-S3-019 graceful self-limitation when Runtime Confidence falls | **Open Question** | Theory intent clear · operational degradation paths are Session 3 engineering obligations — prove under load in Kelly Sandbox |
+| PR-S4-005a | Who owns the recommendation | **Department recommends** · **CoS synthesizes** (council lenses auditable) · **Steve decides** (`decided_by`) · **System executes** only post-approval · lenses have no independent authority | **Resolved** | Clear ownership chain — accountability cannot collapse to "the AI" |
+| PR-S4-005b | Six-month decision reconstruction | **Cognitive Trace** genome: evidence · unknowns · counterfactuals · council lenses · decision · outcome · reflection · **Decision Ledger** + **Assumption Ledger** · supersede chain · RO-S3-012 versioned Decision Context | **Clarification** | Theory requires recoverable explainability · PR-S3-001: bounded-depth checkpoints, not infinite recursion · ENG-CTR-001 Phase 2 delivery obligation |
+| PR-S4-005c | "AI said so" institutional dodge | Constitution + North Star: **Steve decides** · approval-gated Action Pipeline · recommendations are **inputs** · binding status requires executive acceptance | **Resolved** | Theory structurally prevents outsourcing accountability to model output |
+| PR-S4-005d | Wrong-advice learning layer | **JQ** (process given knowables) · **WMA** (model-reality gap) · **Calibration** (confidence vs outcome) · **Memory** (verified facts) vs **belief revision** (conclusions) · **Runtime** health (RO-S3-018–020) · executive retains final judgment | **Resolved** | Learning routes to correct layer — not one undifferentiated "retrain" |
+| PR-S4-005e | Provenance through delegation | Axiom 4 (ancestry never lost) · Cognitive Trace preserves department + council contributions before CoS merge · Cognitive Conservation — synthesis is additive, not destructive | **Clarification** | Theory holds · V1 implementation must preserve Dept → CoS → Executive attribution in traces and cards |
+| PR-S4-005f | Institutional memory without rewriting history | **Cognitive Conservation** — wisdom never overwrites memory · Decision Ledger `superseded` chain (not delete) · belief revision without corrupting verified memory · Institutional Memory records alternatives rejected | **Resolved** | History is append-only evolution, not silent rewrite |
+| PR-S4-005g | Defending a recommendation (board/spouse) | Artifacts exist in theory (trace + ledger + confidence + alternatives) · practitioner need is **narrative defense** — CoS briefing must surface "why we chose this" not raw genome | **Open Question** | Presentation/calibration at Convention + Kelly — not Theory v1.1 · ties to LB-OS-089 briefing composer |
 
----
+#### Session 4 gate
 
-#### Session 2 planned review areas (complete)
+- [x] No unresolved **Amendment Candidate** without evidence plan
+- [x] All **Clarification** / **Open Question** items deferred (practitioner — not Theory edit)
+- [x] Success criterion met: failed to find decision-utility failures requiring Theory v1.1 before experimentation
+
+**Executive practitioner conclusion:** Theory helps a real executive make better decisions under real constraints. Accountability is structurally traceable. Obligations are presentation and operational calibration — not doctrine.
+
+| Outcome type | Count |
+| ------------ | ----- |
+| Resolved | 17 |
+| Clarification | 8 |
+| Open Question | 9 |
+| Amendment Candidate | 0 |
+| Practitioner contradictions | **0** |
+
+#### Practitioner obligations (from Session 4) {#practitioner-obligations-from-session-4}
+
+| ID | Obligation |
+| -- | ---------- |
+| RO-S4-001 | Prove net attention leverage in Kelly Sandbox (emergent observation · ECL/MCP) |
+| RO-S4-002 | Mission Stack + Adaptive Attention Budget + ECL operational enforcement (Phase 2) |
+| RO-S4-003 | CoS synthesize inventory EQs into decision items at briefing — avoid ceremony |
+| RO-S4-004 | Kelly validate studio EQs (EQ-010–012) as real weekly decisions or defer |
+| RO-S4-005 | Trust-gradient weighting via Mission Memory / source reliability surfaces |
+| RO-S4-006 | Multi-stakeholder politics — empirical test at Kelly/Chris beta until Org Digital Twin |
+| RO-S4-007 | Self-Doubt threshold calibration — withhold without missing deadlines |
+| RO-S4-008 | Graceful recommendation degradation under runtime stress (align RO-S3-019) |
+| RO-S4-009 | Executive Briefing composer (LB-OS-089) — 30s scan + defendable narrative |
+| RO-S4-010 | Cognitive Trace ENG-CTR-001 — checkpoints + Dept→CoS attribution in V1 traces |
+| RO-S4-011 | Versioned Decision Context bound to traces (RO-S3-012) |
+
+#### Session 4 planned review areas (complete)
+
+| ID | Topic | Status |
+| -- | ----- | ------ |
+| PR-S4-001 | Attention | ✅ |
+| PR-S4-002 | Decision utility | ✅ |
+| PR-S4-003 | Organizational realism | ✅ |
+| PR-S4-004 | Time pressure | ✅ |
+| PR-S4-005 | Accountability | ✅ |
+
 
 | ID | Topic | Status |
 | -- | ----- | ------ |
@@ -329,7 +374,8 @@ Links:           docs · commits · trace IDs
 | PR-S1 Philosopher | 2026-06-28 | **Passed** — 0 contradictions · 3 clarifications · 2 open questions | [PR-S1](#peer-review-session-1-philosopher) |
 | PR-S2 Cognitive Scientist | 2026-06-28 | **Passed (research obligations)** — 0 empirical contradictions · 2 clarifications · 3 open questions | [PR-S2](#peer-review-session-2-cognitive-scientist) |
 | PR-S3 Systems Engineer | 2026-06-28 | **Passed (engineering obligations)** — 0 engineering contradictions · RO-S3-001–020 | [PR-S3](#peer-review-session-3-systems-engineer) |
-| Executive Cognition Peer Review (aggregate) | 📋 In progress | Sessions 4–5 pending · five gate questions open | [Peer Review doc](./LOCALBRAIN_EXECUTIVE_COGNITION_PEER_REVIEW.md) |
+| PR-S4 Executive Practitioner | 2026-06-30 | **Passed (practitioner obligations)** — 0 contradictions · 17 resolved · 8 clarifications · 9 open questions · RO-S4-001–011 | [PR-S4](#peer-review-session-4-executive-practitioner) |
+| Executive Cognition Peer Review (aggregate) | 📋 In progress | Session 5 (Skeptic) pending · five gate questions open | [Peer Review doc](./LOCALBRAIN_EXECUTIVE_COGNITION_PEER_REVIEW.md) |
 
 ---
 

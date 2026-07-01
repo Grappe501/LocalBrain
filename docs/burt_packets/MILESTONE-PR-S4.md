@@ -4,8 +4,8 @@
 >
 > ```txt
 > ✓ Executive Office Certification
-> ▶ Session 4 — Executive Practitioner
-> □ Session 5 — Skeptic
+> ✓ Session 4 — Executive Practitioner
+> ▶ Session 5 — Skeptic
 > □ Theory Freeze
 > □ Convention
 > □ Empty Brain Factory
@@ -115,6 +115,15 @@ Failed to find practical claims that **cannot** be tested in executive use — n
 ---
 
 ## After Session 4
+
+**Status: PASSED (practitioner obligations)** — 2026-06-30 · commit after PR-S4-005 close.
+
+| Field | Value |
+| ----- | ----- |
+| Theory amendments | 0 |
+| Implementation blockers | 0 |
+| Practitioner obligations | RO-S4-001–011 in [Evidence Base](../LOCALBRAIN_COGNITIVE_EVIDENCE_BASE.md#practitioner-obligations-from-session-4) |
+| Recommendation | Advance to **MILESTONE-PR-S5** (Skeptic Review) |
 
 If passed → open **MILESTONE-PR-S5** (Skeptic Review).  
 If failed → record amendment candidates in Evidence Base; re-review after clarification — **do not** edit Theory v1.0 in place.
