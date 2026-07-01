@@ -80,7 +80,8 @@ ENG-MEM-001 Wave 1 — canonical storage slices. Reference implementation: [ENG-
 ✓ ENG-MEM-001.1 Episode — Reference Slice 001 · 6/6 PASS
 ✓ ENG-MEM-001.2 Fact — Reference Slice 002 · 22/22 PASS
 ✓ ENG-MEM-001.3 Artifact — Reference Slice 003 · 17/17 PASS
-▶ ENG-MEM-001.4 Conversation — Wave 1 slice 4/5 (**AUTHORIZED** · Reference Slice 004)
+✓ ENG-MEM-001.4 Conversation — Reference Slice 004 · 16/16 PASS
+▶ ENG-MEM-001.5 DecisionCitation — Wave 1 slice 5/5 (awaiting PMO authorization)
 ```
 
 ---

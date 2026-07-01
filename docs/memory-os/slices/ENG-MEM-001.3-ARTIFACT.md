@@ -5,7 +5,7 @@
 > **Designation:** **Reference Slice 003** — follow Artifact for all future **evidence engineering**  
 > **Object:** Artifact — canonical evidence record  
 > **Index:** [Reference Slices](./REFERENCE_SLICES.md)  
-> **Unblocks:** [ENG-MEM-001.4 Conversation](./ENG-MEM-001.4-CONVERSATION.md) — **AUTHORIZED**
+> **Unblocks:** ENG-MEM-001.5 DecisionCitation — awaiting PMO authorization
 
 ```text
 Reference Implementation (engineering discipline)

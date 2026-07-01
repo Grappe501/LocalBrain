@@ -9,7 +9,7 @@
 | **001** | [Episode](./ENG-MEM-001.1-EPISODE.md) | **Preserve history** | Engineering discipline | COMPLETE |
 | **002** | [Fact](./ENG-MEM-001.2-FACT.md) | **Preserve institutional knowledge** | Knowledge engineering | COMPLETE |
 | **003** | [Artifact](./ENG-MEM-001.3-ARTIFACT.md) | **Preserve evidence** | Evidence engineering | COMPLETE |
-| **004** | [Conversation](./ENG-MEM-001.4-CONVERSATION.md) | **Preserve interpretation** | Interpretation engineering | **AUTHORIZED** — complete at PMO acceptance |
+| **004** | [Conversation](./ENG-MEM-001.4-CONVERSATION.md) | **Preserve interpretation** | Interpretation engineering | **COMPLETE** |
 | **005** | ENG-MEM-001.5 DecisionCitation | **Preserve exercised authority** | Governance engineering | Reserved |
 
 Later intelligence layers consume these responsibilities — they do not redefine them.

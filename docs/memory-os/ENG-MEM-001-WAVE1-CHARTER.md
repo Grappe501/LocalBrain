@@ -1,7 +1,7 @@
 # ENG-MEM-001 — Wave 1: Institutional Cognition Foundation
 
 > **Milestone name:** **Institutional Cognition Foundation** (canonical storage implementation)  
-> **Status:** Engineering charter — authorized at MEM-008 freeze · **3/5 slices PMO complete** (Reference Slices 001–003)  
+> **Status:** Engineering charter — authorized at MEM-008 freeze · **4/5 slices PMO complete** (Reference Slices 001–004)  
 > **Engine:** ENG-MEM-001 · **Milestone:** MEM-009 Implementation Pass 1 · Wave 1  
 > **Specification:** `memory-spec-v1.0` · tag `memory-spec-v1.0`  
 > **Governance:** [ENG / OPS / ENG-PMO commit histories](./ENG-PMO-GOVERNANCE.md)  
@@ -32,9 +32,8 @@ Chief of Staff   → I can help you decide what to do next.   (Executive Intelli
 
 The progression is deliberate. Each layer adds capability without blurring the layer below. Executive Intelligence culminates the stack — it does not replace memory, knowledge, evidence, explanation, or governance.
 
-**Foundational substrates (complete):** Episode · Artifact · Fact — history · evidence · knowledge.  
-**Authorized — interpretation class:** [ENG-MEM-001.4 Conversation](./slices/ENG-MEM-001.4-CONVERSATION.md) — context · Reference Slice 004.  
-**Remaining:** DecisionCitation (authority) — blocked on 001.4 completion.
+**Information-preserving substrates (complete):** Episode · Artifact · Fact · Conversation — history · evidence · knowledge · interpretation.  
+**Remaining:** DecisionCitation (authority) — awaiting PMO authorization for ENG-MEM-001.5.
 
 **Fact Principle:** [Engineering Discipline § The Fact Principle](./ENG-MEM-001-ENGINEERING_DISCIPLINE.md#the-fact-principle-binding)
 

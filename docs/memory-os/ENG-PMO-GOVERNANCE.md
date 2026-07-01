@@ -33,11 +33,11 @@ Artifact  → Evidence
 Fact      → Knowledge
 ```
 
-Conversation (Reference Slice 004 — **AUTHORIZED**) adds **context**. DecisionCitation adds **authority**.
+Conversation (Reference Slice 004 — **COMPLETE**) established **interpretation**. DecisionCitation adds **authority**.
 
 ```text
-Conversation     → Context
-DecisionCitation → Authority
+Conversation     → Interpretation   (complete · Ref 004)
+DecisionCitation → Authority        (awaiting PMO authorization)
 ```
 
 ---

@@ -1,11 +1,12 @@
 # ENG-MEM-001.4 — Conversation (Slice 4)
 
-> **Status:** **AUTHORIZED** — PMO 2026-07-01 · **Reference Slice 004** (interpretation engineering)  
+> **Status:** **COMPLETE** — PMO accepted 2026-07-01 · **Reference Slice 004** (interpretation engineering)  
 > **Wave:** 1 · Canonical Storage  
 > **Designation:** **Reference Slice 004** — follow Conversation for all future **interpretation engineering**  
 > **Objects:** Conversation · ConversationTurn (child)  
-> **Index:** [Reference Slices](./REFERENCE_SLICES.md)  
-> **Unblocks:** ENG-MEM-001.5 DecisionCitation (when complete)
+> **Closeout:** [ENG-MEM-001.4-SLICE_CLOSEOUT.md](./ENG-MEM-001.4-SLICE_CLOSEOUT.md)  
+> **Ceremony:** [ENG-PMO-003](../ENG-PMO-003-CONVERSATION-CEREMONY.md)  
+> **Unblocks:** ENG-MEM-001.5 DecisionCitation (awaiting PMO authorization)
 
 ```text
 Reference Implementation (engineering discipline)
@@ -33,6 +34,22 @@ ENG-MEM-001.4
 Conversation
 STATUS:
 AUTHORIZED
+```
+
+## PMO Acceptance
+
+```text
+ENG-MEM-001.4
+Conversation
+STATUS:
+COMPLETE
+Reference Slice 004
+Interpretation Engineering
+STATUS:
+COMPLETE
+Tests:                  16/16 PASS
+Specification Fidelity: 100%
+Architectural Drift:    NONE
 ```
 
 Architecture shift at this slice: Wave 1 moves from preserving **information** to preserving **meaning** — context at a point in time, not institutional history, evidence, or knowledge.
@@ -327,7 +344,7 @@ No Intelligence · no reconciliation · no normalization.
 | ------ | ----- |
 | **001.4.1** | Canonical Conversation + ConversationTurn storage — **COMPLETE** (`7ceed38`) |
 | **001.4.2** | Sequence integrity — invariant · A15 · contiguous order · `turn_refs` alignment — **COMPLETE** (`af8dc13`) |
-| **001.4.3** | Attribution integrity — Interpretation Independence · A16 · explicit speaker attribution |
+| **001.4.3** | Attribution integrity — Interpretation Independence · A16 · explicit speaker attribution — **COMPLETE** (`de6c04b`) |
 
 Keep each commit substrate-only — same discipline as Artifact 001.3.1–001.3.2.
 
@@ -382,13 +399,13 @@ Keep each commit substrate-only — same discipline as Artifact 001.3.1–001.3.
 
 ## Deliverables
 
-- [ ] Conversation schema (`shared/src/memoryOs/conversation.ts`)
-- [ ] ConversationTurn schema (`shared/src/memoryOs/conversationTurn.ts`)
-- [ ] Validator — reject unknown fields · context-only · original wording
-- [ ] S2 lifecycle + S4 provenance (Episode/Fact/Artifact patterns)
-- [ ] Persistence + append-only + reference-not-ownership invariants
-- [ ] Tests including A14 context reconstruction walk
-- [ ] Slice closeout — **Specification Fidelity: 100%** · Reference Slice 004
+- [x] Conversation schema (`shared/src/memoryOs/conversation.ts`)
+- [x] ConversationTurn schema (`shared/src/memoryOs/conversationTurn.ts`)
+- [x] Validator — reject unknown fields · context-only · original wording
+- [x] S2 lifecycle + S4 provenance (Episode/Fact/Artifact patterns)
+- [x] Persistence + append-only + reference-not-ownership invariants
+- [x] Tests — 16/16 PASS (`conversation.test.ts` — A14 · A15 · A16)
+- [x] Slice closeout — **Specification Fidelity: 100%** · Reference Slice 004
 
 ---
 
@@ -396,22 +413,24 @@ Keep each commit substrate-only — same discipline as Artifact 001.3.1–001.3.
 
 | # | Check | Status |
 | - | ----- | ------ |
-| A1 | Schema matches Volume 2 | Pending |
-| A2 | Registry fields complete | Pending |
-| A3 | S2 lifecycle implemented | Pending |
-| A4 | S4 provenance envelope | Pending |
-| A5 | Time model implemented | Pending |
-| A6 | Trust metadata implemented | Pending |
-| A7 | Serialization round-trip | Pending |
-| A8 | Append-only invariant | Pending |
-| A9 | Factory boundary respected | Pending |
-| A10 | No retrieval logic | Pending |
-| A11 | No intelligence logic | Pending |
+| A1 | Schema matches Volume 2 | PASS |
+| A2 | Registry fields complete | PASS |
+| A3 | S2 lifecycle implemented | PASS |
+| A4 | S4 provenance envelope | PASS |
+| A5 | Time model implemented | PASS |
+| A6 | Trust metadata implemented | PASS |
+| A7 | Serialization round-trip | PASS |
+| A8 | Append-only invariant | PASS |
+| A9 | Factory boundary respected | PASS |
+| A10 | No retrieval logic | PASS |
+| A11 | No intelligence logic | PASS |
 | A12 | Explainability | N/A — knowledge objects |
 | A13 | Authenticity | N/A — evidence objects |
 | A14 | **Context Preservation** | PASS — 001.4.1 |
 | A15 | **Sequence Integrity** | PASS — 001.4.2 |
 | A16 | **Attribution Integrity** | PASS — 001.4.3 |
+
+**Slice result:** **COMPLETE** — Reference Slice 004 · 16/16 tests · PMO accepted 2026-07-01
 
 ---
 
