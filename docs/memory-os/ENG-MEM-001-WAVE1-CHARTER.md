@@ -13,6 +13,8 @@
 
 Every line of Wave 1 code must conform to the frozen specification. Ambiguity is resolved by reading the spec and Convention — not by improvising in pull requests.
 
+**Binding discipline:** [ENG-MEM-001 Engineering Discipline](./ENG-MEM-001-ENGINEERING_DISCIPLINE.md) — spec-traceable commits · slice acceptance · one type at a time.
+
 ---
 
 ## Mission
@@ -89,6 +91,8 @@ Wave 1 passes when:
 | [Convention](../convention/CONVENTION-CLOSE.md) | Constitutional law |
 | [Memory OS specification](./README.md) | What to build |
 | [Architecture Book v1.0](../LOCALBRAIN_ARCHITECTURE_BOOK_v1.0.md) | Why it is built this way |
+| [Engineering discipline](./ENG-MEM-001-ENGINEERING_DISCIPLINE.md) | How to commit · slice order · acceptance |
+| [Wave 1 slices](./slices/README.md) | Per-object implementation charters |
 
 ---
 
