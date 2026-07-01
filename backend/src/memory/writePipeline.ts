@@ -1,8 +1,9 @@
 import type { CreateEpisodeInput } from "./episodeService.js";
 import { createEpisode } from "./episodeService.js";
 import type { CreateFactInput, SupersedeFactInput } from "./factService.js";
-import { createFact, supersedeFact } from "./factService.js";
+import { createFact, explainFact, supersedeFact } from "./factService.js";
 import type { Episode, Fact } from "@localbrain/shared";
+import type { FactExplanation } from "./factExplainability.js";
 
 /** Vol 3 write path — Wave 1: validate → provenance → persist → audit (no index/recall). */
 export type EpisodeWriteResult = {
@@ -34,4 +35,8 @@ export function writeFact(input: CreateFactInput): FactWriteResult {
 export function writeFactSupersession(input: SupersedeFactInput): FactSupersessionWriteResult {
   const result = supersedeFact(input);
   return { ...result, engine_id: "ENG-MEM-001" };
+}
+
+export function writeExplainFact(factId: string): { explanation: FactExplanation; engine_id: "ENG-MEM-001" } {
+  return { explanation: explainFact(factId), engine_id: "ENG-MEM-001" };
 }

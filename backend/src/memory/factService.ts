@@ -25,6 +25,7 @@ import {
 } from "./factStore.js";
 import { assertFactSchemaVersion, FactValidationError, validateFactRecord } from "./factValidator.js";
 import { assertFactVerificationAuthority } from "./factProvenance.js";
+import { explainStoredFactById, type FactExplanation } from "./factExplainability.js";
 import { buildMemoryProvenanceEnvelope, MEMORY_AUDIT_OBJECT_FACT } from "./provenanceEnvelope.js";
 
 export type CreateFactInput = {
@@ -232,4 +233,9 @@ export function supersedeFact(input: SupersedeFactInput): { prior: Fact; success
   });
 
   return { prior: priorSuperseded, successor };
+}
+
+/** A12 — deterministic "Why does this Fact exist?" from stored substrate. */
+export function explainFact(factId: string): FactExplanation {
+  return explainStoredFactById(factId, getFactById);
 }

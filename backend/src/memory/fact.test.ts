@@ -21,7 +21,13 @@ import {
   verifyFact,
 } from "./factService.js";
 import { assertFactBodyUnchanged, FactContentMutationError } from "./factLineage.js";
-import { writeFact, writeFactSupersession } from "./writePipeline.js";
+import { writeFact, writeFactSupersession, writeExplainFact } from "./writePipeline.js";
+import {
+  explainFactFromSubstrate,
+  FACT_EXPLAIN_QUESTION,
+  isCompleteFactExplanation,
+  FactNotExplainableError,
+} from "./factExplainability.js";
 
 function sampleCreateInput() {
   return {
@@ -430,6 +436,109 @@ test("ENG-MEM-001.2.3 supersession preserves provenance attachment on successor"
     assert.ok(successor.source_refs.includes("source:training/sign-off"));
     assert.ok(successor.source_refs.includes(episodeRef));
     assert.ok(successor.authority_refs.some((ref) => ref.identity_id === actor.identity_id));
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-MEM-001.2.4 A12 — explainFactFromSubstrate cites stored fields only", () => {
+  bootstrapApp();
+  try {
+    const actor = { identity_id: "ID-executive-001", identity_kind: "executive" };
+    const episodeRef = "episode:00000000-0000-4000-8000-000000000010";
+    const { fact } = writeFact({
+      ...sampleCreateInput(),
+      source_refs: [episodeRef, "source:training/volunteer-program"],
+    });
+    verifyFact(fact.fact_id, actor);
+
+    const explanation = explainFactFromSubstrate(fact);
+    assert.equal(explanation.question, FACT_EXPLAIN_QUESTION);
+    assert.equal(explanation.method, "substrate_reconstruction");
+    assert.equal(explanation.fact_id, fact.fact_id);
+    assert.ok(isCompleteFactExplanation(explanation));
+
+    const provenanceHop = explanation.chain.find((h) => h.hop === "provenance");
+    assert.ok(provenanceHop);
+    assert.equal(provenanceHop!.fields.source_ref, fact.provenance.source_ref);
+    assert.equal(provenanceHop!.fields.captured_by, fact.provenance.captured_by);
+
+    const sourceHop = explanation.chain.find((h) => h.hop === "source_refs");
+    assert.deepEqual(sourceHop!.fields.source_refs, fact.source_refs);
+    assert.ok(fact.source_refs.includes(episodeRef));
+
+    assert.ok(explanation.cited_field_paths.includes("provenance.source_ref"));
+    assert.ok(explanation.cited_field_paths.includes("lifecycle.lifecycle_state"));
+    assert.ok(explanation.cited_field_paths.includes("timestamps.event_at"));
+    assert.ok(!explanation.cited_field_paths.some((p) => p.includes("interpretation")));
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-MEM-001.2.4 A12 — supersession successor explanation includes lineage", () => {
+  bootstrapApp();
+  try {
+    const actor = { identity_id: "ID-executive-001", identity_kind: "executive" };
+    const episodeRef = "episode:00000000-0000-4000-8000-000000000011";
+    const { fact } = writeFact({
+      ...sampleCreateInput(),
+      source_refs: [episodeRef, "source:training/volunteer-program"],
+    });
+    verifyFact(fact.fact_id, actor);
+    const { successor } = writeFactSupersession({
+      prior_fact_id: fact.fact_id,
+      reason: "Completion attested on sign-off form.",
+      actor,
+      correction: {
+        ...sampleCreateInput(),
+        statement: "Volunteer training is complete.",
+        source_refs: [episodeRef, "source:training/sign-off"],
+        source_ref: "source:training/sign-off",
+      },
+    });
+
+    const explanation = writeExplainFact(successor.fact_id).explanation;
+    const lineageHop = explanation.chain.find((h) => h.hop === "supersession_lineage");
+    assert.ok(lineageHop);
+    assert.equal(lineageHop!.fields.supersedes, fact.fact_id);
+    assert.equal(lineageHop!.fields.supersession_reason, "Completion attested on sign-off form.");
+    assert.ok(explanation.cited_field_paths.includes("lineage.supersedes"));
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-MEM-001.2.4 A12 — executive walk order in chain (Fact → provenance → sources → authority)", () => {
+  bootstrapApp();
+  try {
+    const { fact } = writeFact(sampleCreateInput());
+    const explanation = explainFactFromSubstrate(fact);
+    const hopOrder = explanation.chain.map((h) => h.hop);
+    const factIdx = hopOrder.indexOf("fact");
+    const provIdx = hopOrder.indexOf("provenance");
+    const sourceIdx = hopOrder.indexOf("source_refs");
+    const authIdx = hopOrder.indexOf("authority_refs");
+    const lifeIdx = hopOrder.indexOf("lifecycle");
+    assert.ok(factIdx < provIdx && provIdx < sourceIdx && sourceIdx < authIdx);
+    assert.ok(authIdx < lifeIdx);
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-MEM-001.2.4 A12 — not explainable when detached from evidence", () => {
+  bootstrapApp();
+  try {
+    const { fact } = writeFact(sampleCreateInput());
+    const broken = {
+      ...fact,
+      source_refs: ["episode:00000000-0000-4000-8000-000000000099"],
+    };
+    assert.throws(
+      () => explainFactFromSubstrate(broken),
+      FactNotExplainableError,
+    );
   } finally {
     shutdownApp();
   }
