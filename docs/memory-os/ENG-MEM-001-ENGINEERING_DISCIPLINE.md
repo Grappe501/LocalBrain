@@ -431,7 +431,7 @@ A15 is **binding platform philosophy** for interpretation — chronology within 
 
 A16 is **binding platform philosophy** for interpretation — explicit attribution without reconciliation. Conversation implements it in Wave 1.
 
-A17 is **binding platform philosophy** for governance — exercised authority, never inferred; recorded authority, never reconstructed. DecisionCitation implements it in Wave 1 (authorized — see [Slice 5](./slices/ENG-MEM-001.5-DECISIONCITATION.md) · [MAR-2](./MAR-2-AUTHORITY-ARCHITECTURE_REVIEW.md)).
+A17 is **binding platform philosophy** for governance — exercised authority, never inferred; recorded authority, never reconstructed. DecisionCitation implements it in Wave 1 (`verifyDecisionCitationAuthorityIntegrity` — see [Slice 5](./slices/ENG-MEM-001.5-DECISIONCITATION.md) · [MAR-2](./MAR-2-AUTHORITY-ARCHITECTURE_REVIEW.md)).
 
 ### Custody vs authenticity (Artifact — binding)
 

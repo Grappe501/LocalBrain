@@ -144,11 +144,13 @@ DecisionCitation cites the Decision Ledger — binding authority remains in the 
 
 Design review: [MAR-2 Authority Architecture Review](./MAR-2-AUTHORITY-ARCHITECTURE_REVIEW.md) · Completion: [ENG-PMO-005](./ENG-PMO-005-CONSTITUTIONAL-COMPLETION.md) (reserved)
 
-### A17 — Authority Integrity (binding — reserved at authorization)
+### A17 — Authority Integrity (binding)
 
 Executive question: *Who exercised institutional authority?*
 
-Verify: authority explicit · delegation traceable · ledger citation immutable · supporting refs intact · no inferred authority.
+Verify: authority explicit · delegation traceable · ledger citation immutable · decision body immutable · supporting refs intact · authority not inferred.
+
+Implemented: `verifyDecisionCitationAuthorityIntegrity()` — ENG-MEM-001.5.2.
 
 ---
 

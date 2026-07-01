@@ -8,6 +8,11 @@ import type { CreateConversationInput } from "./conversationService.js";
 import { createConversation } from "./conversationService.js";
 import type { CreateDecisionCitationInput } from "./decisionCitationService.js";
 import { createDecisionCitation } from "./decisionCitationService.js";
+import type { DecisionCitationAuthorityIntegrity } from "./decisionCitationAuthorityIntegrity.js";
+import {
+  verifyDecisionCitationAuthorityIntegrity,
+} from "./decisionCitationAuthorityIntegrity.js";
+import { getDecisionCitationById } from "./decisionCitationStore.js";
 import {
   getArtifactCustodyChain,
   transferArtifactCustody,
@@ -82,6 +87,11 @@ export type ConversationAttributionResult = {
 
 export type DecisionCitationWriteResult = {
   citation: DecisionCitation;
+  engine_id: "ENG-MEM-001";
+};
+
+export type DecisionCitationAuthorityResult = {
+  authority: DecisionCitationAuthorityIntegrity;
   engine_id: "ENG-MEM-001";
 };
 
@@ -165,4 +175,18 @@ export function readConversationAttributionIntegrity(
 export function writeDecisionCitation(input: CreateDecisionCitationInput): DecisionCitationWriteResult {
   const citation = createDecisionCitation(input);
   return { citation, engine_id: "ENG-MEM-001" };
+}
+
+export function readDecisionCitationAuthorityIntegrity(
+  citationId: string,
+  captureBaseline?: DecisionCitation,
+): DecisionCitationAuthorityResult {
+  const citation = getDecisionCitationById(citationId);
+  if (!citation) {
+    throw new Error(`DecisionCitation not found: ${citationId}`);
+  }
+  return {
+    authority: verifyDecisionCitationAuthorityIntegrity(citation, captureBaseline),
+    engine_id: "ENG-MEM-001",
+  };
 }
