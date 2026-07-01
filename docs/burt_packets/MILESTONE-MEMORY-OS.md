@@ -9,7 +9,8 @@
 > ✓ Design Era Close
 > ✓ Empty Brain Factory (v1.0.0-factory-certified)
 > ✓ Memory OS Specification (memory-spec-v1.0)
-> ▶ Memory OS Implementation (MEM-009)
+> ✓ Architecture Book v1.0
+> ▶ Memory OS Implementation (MEM-009 Wave 1)
 > □ Communications Office
 > □ Commercial Beta
 >
@@ -63,7 +64,17 @@ Memory OS **never** modifies Factory behavior, birth certificate, or `structural
 | **MEM-008** | Specification Freeze | [Exit criteria](../memory-os/MEM-008-EXIT_CRITERIA.md) · [Success test matrix](../memory-os/MEM-008-SUCCESS_TEST_MATRIX.md) | ✅ `memory-spec-v1.0` |
 | **MEM-009** | Implementation Pass 1 | ENG-MEM-001 first code | ▶ **Authorized** |
 
-**Rule:** No MEM-009 code until MEM-008 freeze — same discipline as Factory.
+**Rule:** MEM-008 freeze required before MEM-009 — same discipline as Factory.
+
+---
+
+## Implementation guides (MEM-009)
+
+| Guide | Role |
+| ----- | ---- |
+| [Convention](../convention/CONVENTION-CLOSE.md) | Constitutional law |
+| [Memory OS specification](../memory-os/README.md) | What to build |
+| [Architecture Book v1.0](../LOCALBRAIN_ARCHITECTURE_BOOK_v1.0.md) | Why it is built this way |
 
 ---
 
@@ -117,9 +128,8 @@ Memory OS manifest must declare:
 ✓ Factory certified & locked
 ✓ MAR-1 Architecture Review · PMO signoff
 ✓ MEM-008 Specification Freeze → memory-spec-v1.0
-▶ MEM-009 Implementation
-□ Communications Office
-□ Commercial Beta
+✓ Architecture Book v1.0
+▶ MEM-009 Wave 1 — Canonical Storage
 ```
 
 ---

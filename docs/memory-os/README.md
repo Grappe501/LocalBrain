@@ -55,6 +55,8 @@ Structured design review before MEM-008 freeze — same discipline as Factory pr
 **Freeze:** [MEM-008](./MEM-008-EXIT_CRITERIA.md) — **declared 2026-07-01**  
 **Implementation:** [MEM-009](../burt_packets/MILESTONE-MEMORY-OS.md) — **authorized**
 
+**Interpretive canon:** [Architecture Book v1.0](../LOCALBRAIN_ARCHITECTURE_BOOK_v1.0.md) — why the system is shaped this way (non-normative)
+
 ---
 
 ## Critical path
