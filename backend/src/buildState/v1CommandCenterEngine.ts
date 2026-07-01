@@ -24,6 +24,7 @@ import path from "node:path";
 import type { BuildStateSnapshot } from "./buildStateEngine.js";
 import { getCommitCount, getRecentCommits } from "./gitMetrics.js";
 import { certifyCurrentModule } from "./moduleCertificationEngine.js";
+import { parsePeerReviewProgress } from "../epo/checklistParser.js";
 import { getRepoRoot } from "../db/repoRoot.js";
 
 /** Map V1 weight areas to module rows. */
@@ -141,11 +142,51 @@ function sliceProgress(state: BuildStateSnapshot, sliceIds: string[]): number {
   return n > 0 ? Math.round(sum / n) : 0;
 }
 
+function theoryStepStatus(
+  step: V1CriticalPathStep,
+  pr: ReturnType<typeof parsePeerReviewProgress>,
+): V1ModuleLifecycleStatus | null {
+  switch (step) {
+    case "peer_review_session_4":
+      if (pr.s4 === "complete") return "complete";
+      if (pr.s4 === "in_progress") return "in_progress";
+      return null;
+    case "peer_review_session_5":
+      if (pr.s5 === "complete") return "complete";
+      if (pr.s5 === "in_progress") return "in_progress";
+      return null;
+    case "theory_v1_freeze":
+      if (pr.theory_frozen) return "complete";
+      if (pr.s5 === "complete") return "in_progress";
+      return null;
+    case "executive_epistemology_convention":
+      if (pr.convention === "complete") return "complete";
+      if (pr.convention === "in_progress" || pr.convention === "spec_locked") return "in_progress";
+      return null;
+    default:
+      return null;
+  }
+}
+
+function theoryConventionProgress(pr: ReturnType<typeof parsePeerReviewProgress>): number {
+  let p = 0;
+  if (pr.s4 === "complete") p += 20;
+  if (pr.s5 === "complete") p += 20;
+  if (pr.theory_frozen) p += 20;
+  if (pr.convention === "complete") p += 40;
+  else if (pr.convention === "in_progress" || pr.convention === "spec_locked") p += 10;
+  return p;
+}
+
 function stepStatus(
   step: V1CriticalPathStep,
   state: BuildStateSnapshot,
   moduleProgress: Map<string, number>,
 ): V1ModuleLifecycleStatus {
+  const pr = parsePeerReviewProgress();
+  const theoryStatus = theoryStepStatus(step, pr);
+  if (theoryStatus) return theoryStatus;
+
   const def = MODULE_DEFS.find((m) => m.path_steps.includes(step));
   if (!def) return "not_started";
 
@@ -163,7 +204,6 @@ function stepStatus(
   const prog = moduleProgress.get(def.module_id) ?? 0;
   if (prog >= 100) return "complete";
   if (state.current_slice_id?.includes("026.7") && step === "executive_office_polish") return "in_progress";
-  if (state.current_phase_label.includes("Consolidation") && step.startsWith("peer_review")) return "in_progress";
   if (step === "executive_office_polish" && prog > 0) return "in_progress";
   if (prog > 0) return "in_progress";
   if (idx > 0) return "waiting";
@@ -232,6 +272,7 @@ function productVersion(): string {
 }
 
 export function computeV1CommandCenter(state: BuildStateSnapshot): V1CommandCenter {
+  const peerReview = parsePeerReviewProgress();
   const moduleProgress = new Map<string, number>();
   for (const def of MODULE_DEFS) {
     let progress = sliceProgress(state, def.slice_ids);
@@ -243,8 +284,8 @@ export function computeV1CommandCenter(state: BuildStateSnapshot): V1CommandCent
     if (def.module_id === "factory") {
       progress = Math.max(progress, sliceProgress(state, ["LB-OS-PROD-001"]));
     }
-    if (def.module_id === "theory_convention" && state.current_phase_label.includes("Consolidation")) {
-      progress = Math.max(progress, 15);
+    if (def.module_id === "theory_convention") {
+      progress = Math.max(progress, theoryConventionProgress(peerReview));
     }
     moduleProgress.set(def.module_id, Math.min(progress, 100));
   }

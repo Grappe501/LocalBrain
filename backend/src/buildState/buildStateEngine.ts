@@ -24,6 +24,7 @@ import {
   getRecentCommits,
   getSliceIdsFromCommits,
 } from "./gitMetrics.js";
+import { parsePeerReviewProgress, buildTheoryFrozenStatus, theoryValidationPhaseLabel } from "../epo/checklistParser.js";
 import { resolveConsolidationCursor } from "./consolidationCursor.js";
 
 export const BUILD_STATE_ENGINE_ID = "ENG-BLD-001";
@@ -144,7 +145,10 @@ function findCurrentAndNext(
 
   let phaseLabel = "LocalBrain Build";
   if (consolidation && current?.slice_id.startsWith("MILESTONE-")) {
-    phaseLabel = "Platform Consolidation (pre–Session 4)";
+    phaseLabel = theoryValidationPhaseLabel(
+      parsePeerReviewProgress(),
+      consolidation.current.milestone_id,
+    );
   } else {
     const anchor = current ?? gateSlice;
     if (anchor) {

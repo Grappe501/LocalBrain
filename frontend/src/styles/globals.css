@@ -5287,6 +5287,40 @@ a {
   color: #b45309;
 }
 
+.epo-ceo__theory {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.35rem 1rem;
+  margin: 0.75rem 0 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #f8fafc;
+  font-size: 0.85rem;
+}
+
+.epo-ceo__theory-title {
+  grid-column: 1 / -1;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #334155;
+  margin-bottom: 0.25rem;
+}
+
+.epo-ceo__theory dt {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #64748b;
+}
+
+.epo-ceo__theory dd {
+  margin: 0 0 0.35rem;
+  font-weight: 600;
+}
+
 .epo-ceo__roadmap {
   margin: 0;
   padding: 0;

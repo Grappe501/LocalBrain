@@ -47,9 +47,19 @@ function statusForSequenceStep(
     case "MILESTONE-PR-S5":
       return peerReview.s5;
     case "MILESTONE-THEORY-FREEZE":
-      return peerReview.theory_frozen ? "complete" : "planned";
+      if (peerReview.theory_frozen) return "complete";
+      if (peerReview.s5 === "complete") return "in_progress";
+      return "planned";
     case "MILESTONE-CONVENTION":
-      return peerReview.convention;
+      if (peerReview.convention === "complete") return "complete";
+      if (
+        peerReview.theory_frozen ||
+        peerReview.convention === "in_progress" ||
+        peerReview.convention === "spec_locked"
+      ) {
+        return peerReview.convention === "spec_locked" ? "spec_locked" : "in_progress";
+      }
+      return "planned";
     default:
       return "planned";
   }

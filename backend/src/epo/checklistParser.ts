@@ -290,11 +290,46 @@ export type PeerReviewProgress = {
   s5: SliceStatus;
   theory_frozen: boolean;
   convention: SliceStatus;
+  /** Where progress was read — for observability in Program Office. */
+  source: "evidence_base" | "phase_checklist";
 };
 
-/** Parse Executive Cognition Peer Review row for session progress. */
-export function parsePeerReviewProgress(): PeerReviewProgress {
-  const text = fs.readFileSync(path.join(getRepoRoot(), "docs", "PHASE_CHECKLIST.md"), "utf8");
+const EVIDENCE_BASE_REL = "docs/LOCALBRAIN_COGNITIVE_EVIDENCE_BASE.md";
+
+function parsePeerReviewFromEvidenceBase(text: string): PeerReviewProgress {
+  const s4Complete =
+    /\|\s*4\s*\|\s*Executive practitioner\s*\|\s*✅\s*Passed/i.test(text) ||
+    /\|\s*PR-S4 Executive Practitioner[\s\S]*?\|\s*\*\*Passed/i.test(text);
+
+  const s5Complete =
+    /\|\s*5\s*\|\s*Skeptic\s*\|\s*✅\s*Passed/i.test(text) ||
+    /\|\s*PR-S5 Skeptic[\s\S]*?\|\s*\*\*Passed/i.test(text);
+
+  const theoryFrozen =
+    /Complete — Theory v1\.0 frozen/i.test(text) ||
+    (/## Theory v1\.0 freeze/i.test(text) &&
+      /Contradictions requiring redesign\s*\|\s*\*\*0\*\*/i.test(text));
+
+  const conventionComplete =
+    /Executive Epistemology Convention[\s\S]*?Sessions 1–5 complete/i.test(text) ||
+    /Convention Session 5[\s\S]*?complete/i.test(text);
+
+  let s4: SliceStatus = "planned";
+  if (s4Complete) s4 = "complete";
+  else if (/Peer Review Session 4[\s\S]*?\*\*In progress\*\*/i.test(text)) s4 = "in_progress";
+
+  let s5: SliceStatus = "planned";
+  if (s5Complete) s5 = "complete";
+  else if (s4Complete && /Peer Review Session 5/i.test(text) && !s5Complete) s5 = "in_progress";
+
+  let convention: SliceStatus = "planned";
+  if (conventionComplete) convention = "complete";
+  else if (theoryFrozen) convention = "in_progress";
+
+  return { s4, s5, theory_frozen: theoryFrozen, convention, source: "evidence_base" };
+}
+
+function parsePeerReviewFromPhaseChecklist(text: string): PeerReviewProgress {
   const row = text
     .split("\n")
     .find((line) => /Executive Cognition Peer Review/i.test(line) && line.includes("|"));
@@ -319,7 +354,73 @@ export function parsePeerReviewProgress(): PeerReviewProgress {
   if (conventionComplete) convention = "complete";
   else if (conventionActive || (theoryFrozen && !conventionComplete)) convention = "spec_locked";
 
-  return { s4, s5, theory_frozen: theoryFrozen, convention };
+  return { s4, s5, theory_frozen: theoryFrozen, convention, source: "phase_checklist" };
+}
+
+/** Parse peer-review / theory-freeze progress from Evidence Base (primary) or PHASE_CHECKLIST (fallback). */
+export function parsePeerReviewProgress(): PeerReviewProgress {
+  const root = getRepoRoot();
+  const evidencePath = path.join(root, EVIDENCE_BASE_REL);
+  if (fs.existsSync(evidencePath)) {
+    return parsePeerReviewFromEvidenceBase(fs.readFileSync(evidencePath, "utf8"));
+  }
+
+  const checklistPath = path.join(root, "docs", "PHASE_CHECKLIST.md");
+  return parsePeerReviewFromPhaseChecklist(fs.readFileSync(checklistPath, "utf8"));
+}
+
+/** Build theory freeze panel from Evidence Base (or checklist fallback). */
+export function buildTheoryFrozenStatus(pr: PeerReviewProgress): import("./v1Roadmap.js").TheoryFrozenStatus {
+  const evidencePath = path.join(getRepoRoot(), EVIDENCE_BASE_REL);
+  let amendments = 0;
+  let contradictions = 0;
+  let sessionsComplete = 0;
+
+  if (fs.existsSync(evidencePath)) {
+    const text = fs.readFileSync(evidencePath, "utf8");
+    const amendmentMatch = text.match(
+      /\|\s*Theory amendments\s*\|\s*\*\*(\d+)\*\*/i,
+    );
+    if (amendmentMatch) amendments = Number(amendmentMatch[1]);
+    const contradictionMatch = text.match(
+      /Contradictions requiring redesign\s*\|\s*\*\*(\d+)\*\*/i,
+    );
+    if (contradictionMatch) contradictions = Number(contradictionMatch[1]);
+    sessionsComplete = (text.match(/\|\s*[1-5]\s*\|[^|]+\|\s*✅\s*Passed/gi) ?? []).length;
+  }
+
+  const frozen = pr.theory_frozen;
+  const allSessionsDone = sessionsComplete >= 5 || (pr.s4 === "complete" && pr.s5 === "complete" && frozen);
+
+  return {
+    version: "1.0",
+    frozen,
+    amendments,
+    peer_review_sessions_complete: allSessionsDone ? 5 : sessionsComplete,
+    peer_review_sessions_total: 5,
+    contradictions_found: contradictions,
+    theory_risk: frozen && contradictions === 0 ? "LOW" : frozen ? "MEDIUM" : "HIGH",
+    remaining_risk: frozen ? "IMPLEMENTATION" : "THEORY",
+    progress_source: pr.source,
+    project_era: frozen ? "construction" : "theory_validation",
+  };
+}
+
+/** Human-readable phase label while on post-consolidation theory milestones. */
+export function theoryValidationPhaseLabel(
+  pr: PeerReviewProgress,
+  milestoneId?: string,
+): string {
+  if (
+    milestoneId === "MILESTONE-CONVENTION" ||
+    (pr.theory_frozen && pr.convention !== "complete")
+  ) {
+    return "Theory Validation — Convention";
+  }
+  if (pr.theory_frozen) return "Theory Validation — Theory Frozen";
+  if (pr.s5 === "complete") return "Theory Validation — Session 5 complete";
+  if (pr.s4 === "complete") return "Theory Validation — Session 5 (Skeptic)";
+  return "Theory Validation — Session 4 (Executive Practitioner)";
 }
 
 export function changelogDecisions(): { date: string; title: string }[] {

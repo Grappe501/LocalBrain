@@ -108,9 +108,25 @@ export interface CeoModeBrief {
   launch_momentum_label: string;
   days_to_beta: number | null;
   v1_roadmap: V1RoadmapItemRow[];
+  /** Theory v1.0 freeze status — read from Evidence Base (authoritative). */
+  theory_status: TheoryFrozenStatus;
   current_module_certification: V1ModuleCertificationCard | null;
   phase_forecast: V1PhaseForecast;
   burt_session_start: BurtSessionStartBrief;
   burt_mission: string;
   module_review_instruction: string;
+}
+
+/** Permanent Program Office theory gate — post peer review. */
+export interface TheoryFrozenStatus {
+  version: string;
+  frozen: boolean;
+  amendments: number;
+  peer_review_sessions_complete: number;
+  peer_review_sessions_total: number;
+  contradictions_found: number;
+  theory_risk: "LOW" | "MEDIUM" | "HIGH";
+  remaining_risk: "IMPLEMENTATION" | "THEORY" | "BOTH";
+  progress_source: "evidence_base" | "phase_checklist";
+  project_era: "construction" | "theory_validation";
 }

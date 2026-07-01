@@ -52,6 +52,7 @@ export {
 export type {
   BurtSessionStartBrief,
   CeoModeBrief,
+  TheoryFrozenStatus,
   V1RoadmapItemRow,
   V1RoadmapItemStatus,
 } from "./v1Roadmap.js";

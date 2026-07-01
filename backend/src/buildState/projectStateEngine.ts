@@ -19,7 +19,7 @@ import {
   type CeoModeBrief,
   type V1RoadmapItemRow,
 } from "@localbrain/shared";
-import { changelogDecisions } from "../epo/checklistParser.js";
+import { changelogDecisions, parsePeerReviewProgress, buildTheoryFrozenStatus } from "../epo/checklistParser.js";
 import type { BuildStateSnapshot } from "./buildStateEngine.js";
 import { computeBuildState } from "./buildStateEngine.js";
 import { certifyCurrentModule } from "./moduleCertificationEngine.js";
@@ -107,10 +107,11 @@ function certificationStatus(cc: V1CommandCenter): string {
 function buildLaunchCountdown(cc: V1CommandCenter): LaunchCountdown {
   const modulesRemaining = cc.modules.filter((m) => m.progress_percent < 100).length;
   const modulesCertified = cc.modules.filter((m) => m.certified).length;
+  const theory = buildTheoryFrozenStatus(parsePeerReviewProgress());
 
   return {
     product_label: "LOCALBRAIN V1",
-    current_phase: "Implementation",
+    current_phase: theory.project_era === "construction" ? "Construction" : "Theory Validation",
     overall_progress_percent: cc.v1_launch_score_percent,
     critical_path_remaining_days: cc.days_to_v1_estimate,
     modules_remaining: modulesRemaining,
@@ -187,6 +188,7 @@ function buildCeoMode(
   const heartbeat = recordV1Heartbeat(launch_score_percent, days_to_beta);
   const moduleId = resolveCurrentModuleId(cc);
   const certStatus = certificationStatus(cc);
+  const peerReview = parsePeerReviewProgress();
 
   return {
     module_finishing_today: module_finishing_today ?? null,
@@ -198,6 +200,7 @@ function buildCeoMode(
     launch_momentum_label: heartbeat.momentum_label,
     days_to_beta,
     v1_roadmap: roadmapRows(cc),
+    theory_status: buildTheoryFrozenStatus(peerReview),
     current_module_certification: certifyCurrentModule(moduleId),
     phase_forecast: computePhaseForecast(state, cc, adaptive_forecast),
     burt_session_start: buildBurtSessionStart(cc, state, certStatus),

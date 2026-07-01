@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { bootstrapApp } from "../bootstrap.js";
 import { closeDatabase } from "../db/database.js";
-import { parsePhaseChecklistSlices, parsePhaseSections } from "../epo/checklistParser.js";
+import { parsePhaseChecklistSlices, parsePhaseSections, parsePeerReviewProgress } from "../epo/checklistParser.js";
 import { explainBlocker } from "../epo/blockerExplainer.js";
 import { getEpoOverview, getEpoSliceDetail, getProjectState, listDocumentationLibrary } from "../epo/epoService.js";
 import { BUILD_STATE_ENGINE_ID, computeBuildState } from "./buildStateEngine.js";
@@ -37,8 +37,8 @@ test("parsePhaseSections derives phases from checklist", () => {
 
 test("computeBuildState projects current sprint and velocity", () => {
   const state = computeBuildState();
-  assert.equal(state.current_slice_id, "MILESTONE-PR-S4");
-  assert.equal(state.current_phase_label, "Platform Consolidation (pre–Session 4)");
+  assert.equal(state.current_slice_id, "MILESTONE-CONVENTION");
+  assert.equal(state.current_phase_label, "Theory Validation — Convention");
   assert.ok(
     state.build_graph.some((n) => n.slice_id === "LB-OS-020" && n.status === "released"),
   );
@@ -48,18 +48,14 @@ test("computeBuildState projects current sprint and velocity", () => {
   assert.ok(state.build_velocity.commits_count >= 0);
   assert.ok(state.build_graph.some((n) => n.slice_id === "LB-OS-019" && n.status === "released"));
   assert.notEqual(state.current_slice_id, "LB-OS-027");
-  assert.ok(
-    state.current_slice_id === "MILESTONE-PR-S4" ||
-      state.current_slice_id === "MILESTONE-EXP-CERT",
-  );
 });
 
 test("getEpoOverview exposes build state engine fields", () => {
   const overview = getEpoOverview();
   assert.equal(overview.read_only, true);
   assert.equal(overview.build_state_engine_id, BUILD_STATE_ENGINE_ID);
-  assert.equal(overview.current_slice_id, "MILESTONE-PR-S4");
-  assert.equal(overview.current_phase_label, "Platform Consolidation (pre–Session 4)");
+  assert.equal(overview.current_slice_id, "MILESTONE-CONVENTION");
+  assert.equal(overview.current_phase_label, "Theory Validation — Convention");
   assert.ok(overview.phases.length >= 4);
   assert.ok(overview.commit_timeline.length > 0);
   assert.ok(overview.experience_maturity.length >= 10);
@@ -85,6 +81,23 @@ test("getEpoOverview exposes build state engine fields", () => {
   assert.ok(overview.project_state.ceo_mode.phase_forecast.current_mega_phase.label.includes("Phase"));
   assert.ok(overview.project_state.ceo_mode.burt_session_start);
   assert.ok(overview.project_state.ceo_mode.burt_session_start.current_critical_path);
+  const roadmap = overview.project_state.ceo_mode.v1_roadmap;
+  assert.equal(roadmap.find((r) => r.id === "session_4")?.status, "complete");
+  assert.equal(roadmap.find((r) => r.id === "session_5")?.status, "complete");
+  assert.equal(roadmap.find((r) => r.id === "theory_freeze")?.status, "complete");
+  assert.equal(roadmap.find((r) => r.id === "convention")?.status, "in_progress");
+  assert.ok(overview.project_state.ceo_mode.theory_status.frozen);
+  assert.equal(overview.project_state.ceo_mode.theory_status.remaining_risk, "IMPLEMENTATION");
+  assert.equal(overview.project_state.launch_countdown.current_phase, "Construction");
+});
+
+test("parsePeerReviewProgress reads Evidence Base automatically", () => {
+  const pr = parsePeerReviewProgress();
+  assert.equal(pr.source, "evidence_base");
+  assert.equal(pr.s4, "complete");
+  assert.equal(pr.s5, "complete");
+  assert.equal(pr.theory_frozen, true);
+  assert.equal(pr.convention, "in_progress");
 });
 
 test("certifyCurrentModule produces dimension rows for Executive Office", () => {

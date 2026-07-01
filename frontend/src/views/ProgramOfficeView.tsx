@@ -543,6 +543,42 @@ export function ProgramOfficeView() {
             </dd>
           </div>
         </dl>
+        {ps.ceo_mode.theory_status ? (
+          <dl className="epo-ceo__theory" aria-label="Theory status">
+            <div className="epo-ceo__theory-title">Theory Status</div>
+            <div>
+              <dt>Version</dt>
+              <dd>{ps.ceo_mode.theory_status.version}</dd>
+            </div>
+            <div>
+              <dt>Frozen</dt>
+              <dd>{ps.ceo_mode.theory_status.frozen ? "YES" : "NO"}</dd>
+            </div>
+            <div>
+              <dt>Amendments</dt>
+              <dd>{ps.ceo_mode.theory_status.amendments}</dd>
+            </div>
+            <div>
+              <dt>Peer Review Sessions</dt>
+              <dd>
+                {ps.ceo_mode.theory_status.peer_review_sessions_complete} /{" "}
+                {ps.ceo_mode.theory_status.peer_review_sessions_total} Complete
+              </dd>
+            </div>
+            <div>
+              <dt>Contradictions Found</dt>
+              <dd>{ps.ceo_mode.theory_status.contradictions_found}</dd>
+            </div>
+            <div>
+              <dt>Theory Risk</dt>
+              <dd>{ps.ceo_mode.theory_status.theory_risk}</dd>
+            </div>
+            <div>
+              <dt>Remaining Risk</dt>
+              <dd>{ps.ceo_mode.theory_status.remaining_risk}</dd>
+            </div>
+          </dl>
+        ) : null}
         <ol className="epo-ceo__roadmap">
           {ps.ceo_mode.v1_roadmap.map((item) => (
             <li

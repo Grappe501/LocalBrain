@@ -85,7 +85,7 @@ NO NEW DOCTRINE
 | Slice | Name | Status |
 |-------|------|--------|
 | — | [Falsification Charter](./LOCALBRAIN_FALSIFICATION_CHARTER.md) | 📋 Acknowledge before peer review |
-| — | Executive Cognition Peer Review | 🔄 In progress — S1 ✅ · S2 ✅ · S3 ✅ · **S4 paused** (platform audit) · S5 pending · frozen `7b6ab71` · [five gate questions](./LOCALBRAIN_EXECUTIVE_COGNITION_PEER_REVIEW.md#pre-h-027-gate-five-questions) |
+| — | Executive Cognition Peer Review | ✅ Complete — S1–S5 passed · Theory v1.0 frozen 2026-06-30 · [Evidence Base](./LOCALBRAIN_COGNITIVE_EVIDENCE_BASE.md#theory-v10-freeze-peer-review-complete) · auto-synced from Evidence Base |
 | — | [Platform Audit](./LOCALBRAIN_PLATFORM_AUDIT.md) — build plan + navigation | ✅ Complete 2026-06-28 — gap report · route registry · EQ matrix · top 10 slices |
 | — | Executive Epistemology Convention (5 sessions) | 📋 After peer review — [specification](./LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md) |
 | LB-OS-027 | Executive Memory Bootstrap | ⬜ PLANNED |
