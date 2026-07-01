@@ -176,6 +176,35 @@ export type {
   Module,
 } from "./foundation.js";
 export type {
+  CaptureMethod,
+  Episode,
+  EpisodeFieldKey,
+  IdentityRef,
+  LifecycleState,
+  MemoryProvenanceEnvelope,
+  TrustEnvelope,
+  TrustLevel,
+} from "./memoryOs/index.js";
+export {
+  CON_S2_VERSION,
+  CON_S4_VERSION,
+  ENG_MEM_ENGINE_ID,
+  EPISODE_FIELD_KEYS,
+  EPISODE_INITIAL_LIFECYCLE,
+  EPISODE_KIND,
+  EPISODE_SCHEMA_VERSION,
+  LifecycleTransitionError,
+  MEMORY_DOMAINS,
+  assertLifecycleTransitionAllowed,
+  deserializeEpisode,
+  episodesEquivalent,
+  isIso8601,
+  isLifecycleTransitionAllowed,
+  isMemoryDomain,
+  isTrustLevel,
+  serializeEpisode,
+} from "./memoryOs/index.js";
+export type {
   AssetCollection,
   AssetHealthSignals,
   AssetLifecycleStage,

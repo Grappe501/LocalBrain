@@ -4,8 +4,8 @@
 
 | Slice | ID | Object | Status |
 | ----- | -- | ------ | ------ |
-| 1 | [ENG-MEM-001.1](./ENG-MEM-001.1-EPISODE.md) | Episode | Ready |
-| 2 | ENG-MEM-001.2 | Fact | Blocked on 001.1 |
+| 1 | [ENG-MEM-001.1](./ENG-MEM-001.1-EPISODE.md) | Episode | **PASS** — gold standard |
+| 2 | ENG-MEM-001.2 | Fact | Ready after 001.1 close-out |
 | 3 | ENG-MEM-001.3 | Artifact | Blocked on 001.2 |
 | 4 | ENG-MEM-001.4 | Conversation + ConversationTurn | Blocked on 001.3 |
 | 5 | ENG-MEM-001.5 | DecisionCitation | Blocked on 001.4 |

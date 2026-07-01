@@ -11,6 +11,7 @@ import { migrateKnowledgeExplorerTables } from "./knowledgeExplorer/migrate.js";
 import { migrateActionTables } from "./actions/migrate.js";
 import { ensureActionStorageDirs } from "./actions/actionPaths.js";
 import { migrateCosTables } from "./cos/migrate.js";
+import { migrateMemoryTables } from "./memory/migrate.js";
 import { migrateFileReadLogTable } from "./files/fileReadLog.js";
 import { migrateCommandLogTable } from "./openai/safeLog.js";
 import { migrateFilesystemAuditTables } from "./migration/fsAudit/migrate.js";
@@ -48,6 +49,7 @@ export function bootstrapApp(): void {
   migrateFileReadLogTable();
   migrateActionTables();
   migrateCosTables();
+  migrateMemoryTables();
   ensureActionStorageDirs();
   refreshIntelligence();
   seedWorkspaces();

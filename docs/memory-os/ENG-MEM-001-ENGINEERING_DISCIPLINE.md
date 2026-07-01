@@ -4,6 +4,10 @@
 > **Parent:** [Wave 1 Charter](./ENG-MEM-001-WAVE1-CHARTER.md) · `memory-spec-v1.0`  
 > **Philosophy:** Implementation is an exercise in **fidelity, not invention**.
 
+> **Principle:** Every object must be valuable before intelligence touches it — valid, traceable, explainable, auditable, and reconstructable even if the Intelligence layer were completely disabled.
+
+> **Gold standard:** [ENG-MEM-001.1 Episode](./slices/ENG-MEM-001.1-EPISODE.md) — optimize for being the example every future slice copies, not for speed.
+
 ---
 
 ## Historical boundary
@@ -88,6 +92,25 @@ Do not implement all object types simultaneously. Complete **one slice** — sch
 Remaining registry types (Skill, Relationship, Preference, Project, Organization, Task, Goal, Identity, DelegationGrant) follow in subsequent slices or Wave 1 extensions — **only after** slices 1–5 pass acceptance.
 
 Each slice document lives under [slices/](./slices/).
+
+### Gold standard slice structure
+
+Every slice follows the same structure. Episode (001.1) is the template:
+
+```text
+Slice
+│
+├── Charter                    slices/ENG-MEM-001.N-*.md
+├── Specification References   anchors in charter
+├── Engineering Decision Record  slices/ENG-MEM-001.N-EDR.md (when needed)
+├── Acceptance Checklist       A1–A11 in charter
+├── Implementation             backend/src/memory/ …
+├── Tests                      *.test.ts colocated
+├── Close-out Report           slices/ENG-MEM-001.N-SLICE_CLOSEOUT.md
+└── Lessons Learned            close-out § what next slice inherits
+```
+
+Close-out template: [SLICE_CLOSEOUT_TEMPLATE.md](./slices/SLICE_CLOSEOUT_TEMPLATE.md)
 
 ---
 

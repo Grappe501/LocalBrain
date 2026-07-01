@@ -1,8 +1,8 @@
 # ENG-MEM-001.1 — Episode (Slice 1)
 
-> **Status:** Ready — not started  
+> **Status:** **Implementation complete** — acceptance PASS  
 > **Wave:** 1 · Canonical Storage  
-> **Object:** Episode — core temporal memory unit  
+> **Gold standard:** Reference slice — every future object copies this pattern  
 > **Blocks:** ENG-MEM-001.2 (Fact)
 
 ---
@@ -12,6 +12,22 @@
 Implement **Episode** canonical persistence completely — schema, validation, serialization, lifecycle, provenance, trust envelope, and audit hooks.
 
 **Excluded from this slice:** graph edges · retrieval · intelligence · summarization · merge-into-summary behavior (Vol 3 consolidation is later wave).
+
+> Episode is the atom of institutional memory — meetings, calls, decisions, and future **Institution Timeline** entries are Episodes before Intelligence interprets them.
+
+---
+
+## Slice structure (gold standard template)
+
+| Artifact | Location |
+| -------- | -------- |
+| Charter | This document |
+| Specification references | § below |
+| Engineering Decision Record | [ENG-MEM-001.1-EDR.md](./ENG-MEM-001.1-EDR.md) |
+| Acceptance checklist | § Engineering acceptance |
+| Implementation | `backend/src/memory/` · `shared/src/memoryOs/` |
+| Tests | `backend/src/memory/episode.test.ts` |
+| Close-out report | [ENG-MEM-001.1-SLICE_CLOSEOUT.md](./ENG-MEM-001.1-SLICE_CLOSEOUT.md) |
 
 ---
 
@@ -25,6 +41,7 @@ Implement **Episode** canonical persistence completely — schema, validation, s
 | `S4-Provenance` | [Convention S4](../convention/CONVENTION-S4-PROVENANCE_CONTRACT.md) |
 | `TIME_MODEL` | [Time Model § Episode](../TIME_MODEL.md) |
 | `TRUST` | [Trust & Provenance Model](../TRUST_PROVENANCE_MODEL.md) |
+| `Vol3-WritePipeline` | [Volume 3](../VOLUME-3-MEMORY_ENGINE.md) — write path (persistence only) |
 
 ---
 
@@ -49,15 +66,15 @@ Implement **Episode** canonical persistence completely — schema, validation, s
 
 ## Deliverables
 
-- [ ] Episode JSON/schema definition aligned to Vol 2  
-- [ ] Validator — reject unknown fields · enforce required set  
-- [ ] Domain enum validation (six domains)  
-- [ ] Lifecycle transition enforcement (S2)  
-- [ ] S4 provenance envelope on create  
-- [ ] Trust metadata per TRUST model where applicable  
-- [ ] Persistence adapter (append-oriented writes)  
-- [ ] Serialization round-trip tests  
-- [ ] Audit hook on create and lifecycle transition  
+- [x] Episode schema definition aligned to Vol 2 (`shared/src/memoryOs/episode.ts`)  
+- [x] Validator — reject unknown fields · enforce required set  
+- [x] Domain enum validation (six domains)  
+- [x] Lifecycle transition enforcement (S2)  
+- [x] S4 provenance envelope on create  
+- [x] Trust metadata per TRUST model  
+- [x] Persistence adapter (append-oriented writes)  
+- [x] Serialization round-trip tests  
+- [x] Audit hook on create and lifecycle transition  
 
 ---
 
@@ -65,19 +82,19 @@ Implement **Episode** canonical persistence completely — schema, validation, s
 
 | # | Check | Result | Notes |
 | - | ----- | ------ | ----- |
-| A1 | Schema matches Volume 2 | Pending | |
-| A2 | Registry fields complete | Pending | |
-| A3 | S2 lifecycle implemented | Pending | |
-| A4 | S4 provenance envelope | Pending | |
-| A5 | Time model (`started_at`/`ended_at`/`event_at`/`created_at`) | Pending | |
-| A6 | Trust metadata implemented | Pending | |
-| A7 | Serialization round-trip passes | Pending | |
-| A8 | Append-only invariant holds | Pending | |
-| A9 | Factory boundary respected | Pending | |
-| A10 | No retrieval logic | Pending | |
-| A11 | No intelligence logic | Pending | |
+| A1 | Schema matches Volume 2 | **PASS** | `shared/src/memoryOs/episode.ts` |
+| A2 | Registry fields complete | **PASS** | All required Vol 2 fields |
+| A3 | S2 lifecycle implemented | **PASS** | `lifecycle.ts` + store transition guard |
+| A4 | S4 provenance envelope | **PASS** | `provenanceEnvelope.ts` · CON-S4-2026-07 |
+| A5 | Time model | **PASS** | started/ended/event/created |
+| A6 | Trust metadata implemented | **PASS** | trust envelope in provenance |
+| A7 | Serialization round-trip passes | **PASS** | `episode.test.ts` |
+| A8 | Append-only invariant holds | **PASS** | single row · content fingerprint |
+| A9 | Factory boundary respected | **PASS** | no factory/ imports |
+| A10 | No retrieval logic | **PASS** | no recall module |
+| A11 | No intelligence logic | **PASS** | no LLM |
 
-**Slice result:** `Pending` — all eleven must be **PASS** before ENG-MEM-001.2.
+**Slice result:** **PASS** — ENG-MEM-001.2 may begin after close-out retrospective.
 
 ---
 
@@ -94,8 +111,9 @@ S2-Lifecycle
 S4-Provenance
 TIME_MODEL
 TRUST
+Vol3-WritePipeline
 ```
 
 ---
 
-*ENG-MEM-001.1 Episode · Wave 1 Slice 1 · LocalBrain V1*
+*ENG-MEM-001.1 Episode · Gold standard slice · LocalBrain V1*
