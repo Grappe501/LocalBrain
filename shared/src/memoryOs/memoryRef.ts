@@ -7,10 +7,24 @@ export const MEMORY_OBJECT_REF_PREFIXES = [
   "episode:",
   "fact:",
   "artifact:",
+  "conversation:",
+  "turn:",
   "source:",
   "identity:",
   "decision:",
 ] as const;
+
+/** Substrate refs Conversation may reference — never own. */
+export const CONVERSATION_SUBSTRATE_REF_PREFIXES = [
+  "episode:",
+  "fact:",
+  "artifact:",
+] as const;
+
+export function isConversationSubstrateRef(value: string): boolean {
+  if (!value.trim()) return false;
+  return CONVERSATION_SUBSTRATE_REF_PREFIXES.some((prefix) => value.startsWith(prefix));
+}
 
 export function isMemoryObjectRef(value: string): boolean {
   if (!value.trim()) return false;

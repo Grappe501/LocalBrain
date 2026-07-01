@@ -72,3 +72,6 @@ export const FACT_INITIAL_LIFECYCLE: LifecycleState = "Captured";
 
 /** Initial state for persisted Artifact writes (S2 Captured). */
 export const ARTIFACT_INITIAL_LIFECYCLE: LifecycleState = "Captured";
+
+/** Initial state for persisted Conversation writes (S2 Captured). */
+export const CONVERSATION_INITIAL_LIFECYCLE: LifecycleState = "Captured";

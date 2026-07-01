@@ -3,6 +3,7 @@ import {
   EPISODE_KIND,
   FACT_KIND,
   ARTIFACT_KIND,
+  CONVERSATION_KIND,
   type CaptureMethod,
   type IdentityRef,
   type MemoryProvenanceEnvelope,
@@ -39,3 +40,4 @@ export function buildMemoryProvenanceEnvelope(
 export const MEMORY_AUDIT_OBJECT_EPISODE = EPISODE_KIND;
 export const MEMORY_AUDIT_OBJECT_FACT = FACT_KIND;
 export const MEMORY_AUDIT_OBJECT_ARTIFACT = ARTIFACT_KIND;
+export const MEMORY_AUDIT_OBJECT_CONVERSATION = CONVERSATION_KIND;

@@ -6,3 +6,5 @@ export * from "./memoryRef.js";
 export * from "./fact.js";
 export * from "./artifact.js";
 export * from "./artifactCustody.js";
+export * from "./conversation.js";
+export * from "./conversationTurn.js";

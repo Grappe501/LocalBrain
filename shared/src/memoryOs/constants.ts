@@ -7,3 +7,7 @@ export const FACT_SCHEMA_VERSION = "1.0.0" as const;
 export const FACT_KIND = "Fact" as const;
 export const ARTIFACT_SCHEMA_VERSION = "1.0.0" as const;
 export const ARTIFACT_KIND = "Artifact" as const;
+export const CONVERSATION_SCHEMA_VERSION = "1.0.0" as const;
+export const CONVERSATION_KIND = "Conversation" as const;
+export const CONVERSATION_TURN_SCHEMA_VERSION = "1.0.0" as const;
+export const CONVERSATION_TURN_KIND = "ConversationTurn" as const;

@@ -4,12 +4,16 @@ import type { CreateFactInput, SupersedeFactInput } from "./factService.js";
 import { createFact, explainFact, supersedeFact } from "./factService.js";
 import type { CreateArtifactInput } from "./artifactService.js";
 import { createArtifact } from "./artifactService.js";
+import type { CreateConversationInput } from "./conversationService.js";
+import { createConversation } from "./conversationService.js";
 import {
   getArtifactCustodyChain,
   transferArtifactCustody,
 } from "./artifactCustodyService.js";
-import type { Episode, Fact, Artifact, ArtifactCustodyEvent, IdentityRef } from "@localbrain/shared";
+import type { Episode, Fact, Artifact, ArtifactCustodyEvent, Conversation, ConversationTurn, IdentityRef } from "@localbrain/shared";
 import type { FactExplanation } from "./factExplainability.js";
+import type { ConversationContext } from "./conversationContext.js";
+import { explainConversationContext } from "./conversationContext.js";
 
 /** Vol 3 write path — Wave 1: validate → provenance → persist → audit (no index/recall). */
 export type EpisodeWriteResult = {
@@ -40,6 +44,17 @@ export type ArtifactCustodyWriteResult = {
 
 export type ArtifactCustodyChainResult = {
   chain: ArtifactCustodyEvent[];
+  engine_id: "ENG-MEM-001";
+};
+
+export type ConversationWriteResult = {
+  conversation: Conversation;
+  turns: ConversationTurn[];
+  engine_id: "ENG-MEM-001";
+};
+
+export type ConversationContextResult = {
+  context: ConversationContext;
   engine_id: "ENG-MEM-001";
 };
 
@@ -81,4 +96,13 @@ export function readArtifactCustodyChain(artifactId: string): ArtifactCustodyCha
 
 export function writeExplainFact(factId: string): { explanation: FactExplanation; engine_id: "ENG-MEM-001" } {
   return { explanation: explainFact(factId), engine_id: "ENG-MEM-001" };
+}
+
+export function writeConversation(input: CreateConversationInput): ConversationWriteResult {
+  const result = createConversation(input);
+  return { ...result, engine_id: "ENG-MEM-001" };
+}
+
+export function readConversationContext(conversationId: string): ConversationContextResult {
+  return { context: explainConversationContext(conversationId), engine_id: "ENG-MEM-001" };
 }
