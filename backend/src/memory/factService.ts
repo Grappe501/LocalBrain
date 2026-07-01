@@ -24,6 +24,7 @@ import {
   updateFactLifecycleState,
 } from "./factStore.js";
 import { assertFactSchemaVersion, FactValidationError, validateFactRecord } from "./factValidator.js";
+import { assertFactVerificationAuthority } from "./factProvenance.js";
 import { buildMemoryProvenanceEnvelope, MEMORY_AUDIT_OBJECT_FACT } from "./provenanceEnvelope.js";
 
 export type CreateFactInput = {
@@ -41,6 +42,10 @@ export type CreateFactInput = {
   confidence_level?: TrustLevel;
   valid_from?: string;
   valid_until?: string;
+  /** Supporting evidence anchors — defaults to [source_ref]. */
+  source_refs?: string[];
+  /** Who attested / accepted this knowledge — defaults to [captured_by]. */
+  authority_refs?: IdentityRef[];
 };
 
 export type SupersedeFactInput = {
@@ -70,6 +75,8 @@ function buildFactDraft(
   });
 
   const confidenceLevel = input.confidence_level ?? input.trust_level ?? "observed";
+  const sourceRefs = input.source_refs ?? [input.source_ref];
+  const authorityRefs = input.authority_refs ?? [input.captured_by];
 
   return {
     fact_id: crypto.randomUUID(),
@@ -87,6 +94,8 @@ function buildFactDraft(
     valid_until: input.valid_until,
     supersedes: lineage?.supersedes,
     supersession_reason: lineage?.supersession_reason,
+    source_refs: sourceRefs,
+    authority_refs: authorityRefs,
     lifecycle_state: FACT_INITIAL_LIFECYCLE,
     provenance,
     event_at: input.event_at,
@@ -139,6 +148,9 @@ export function transitionFactLifecycle(
 }
 
 export function verifyFact(factId: string, actor: IdentityRef): Fact {
+  const current = getFactById(factId);
+  if (!current) throw new FactNotFoundError(factId);
+  assertFactVerificationAuthority(current, actor);
   return transitionFactLifecycle(factId, "Verified", actor, "memory.verify");
 }
 

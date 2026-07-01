@@ -5,11 +5,13 @@ import {
   type FactFieldKey,
   isIso8601,
   isMemoryDomain,
+  isMemoryObjectRef,
   isTrustLevel,
   type LifecycleState,
 } from "@localbrain/shared";
 
 import { validateFactLineageFields } from "./factLineage.js";
+import { validateFactProvenanceAttachment } from "./factProvenance.js";
 
 export class FactValidationError extends Error {
   readonly field: string;
@@ -59,8 +61,8 @@ function validateProvenance(value: unknown): void {
   if (method !== "direct" && method !== "import" && method !== "inference" && method !== "system") {
     throw new FactValidationError(field, "invalid capture_method");
   }
-  if (typeof obj.source_ref !== "string" || !obj.source_ref.trim()) {
-    throw new FactValidationError(field, "source_ref is required");
+  if (typeof obj.source_ref !== "string" || !isMemoryObjectRef(obj.source_ref)) {
+    throw new FactValidationError(field, "source_ref must be a prefixed memory object ref");
   }
   if (obj.consent_ref !== null && typeof obj.consent_ref !== "string") {
     throw new FactValidationError(field, "consent_ref must be string or null");
@@ -92,6 +94,32 @@ function validateValidityInterval(validFrom: unknown, validUntil: unknown): void
     Date.parse(validFrom) > Date.parse(validUntil)
   ) {
     throw new FactValidationError("valid_from", "must not be after valid_until");
+  }
+}
+
+function validateSourceRefsField(value: unknown): void {
+  const field = "source_refs";
+  if (!Array.isArray(value) || value.length === 0) {
+    throw new FactValidationError(field, "at least one source reference required");
+  }
+  for (let i = 0; i < value.length; i += 1) {
+    const item = value[i];
+    if (typeof item !== "string" || !isMemoryObjectRef(item)) {
+      throw new FactValidationError(
+        `${field}[${i}]`,
+        "must be a prefixed memory object ref (episode:, source:, artifact:, …)",
+      );
+    }
+  }
+}
+
+function validateAuthorityRefsField(value: unknown): void {
+  const field = "authority_refs";
+  if (!Array.isArray(value) || value.length === 0) {
+    throw new FactValidationError(field, "at least one authority reference required");
+  }
+  for (let i = 0; i < value.length; i += 1) {
+    validateIdentityRef(value[i], `${field}[${i}]`);
   }
 }
 
@@ -145,6 +173,8 @@ export function validateFactRecord(value: unknown): Fact {
   validateTrustEnvelope(obj.confidence, "confidence");
   validateValidityInterval(obj.valid_from, obj.valid_until);
   validateFactLineageFields(obj);
+  validateSourceRefsField(obj.source_refs);
+  validateAuthorityRefsField(obj.authority_refs);
   if (typeof obj.lifecycle_state !== "string" || !obj.lifecycle_state.trim()) {
     throw new FactValidationError("lifecycle_state", "required");
   }
@@ -155,7 +185,10 @@ export function validateFactRecord(value: unknown): Fact {
   }
   validateProvenance(obj.provenance);
 
-  return obj as Fact;
+  const fact = obj as Fact;
+  validateFactProvenanceAttachment(fact);
+
+  return fact;
 }
 
 export function assertFactSchemaVersion(fact: Fact): void {

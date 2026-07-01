@@ -323,3 +323,114 @@ test("ENG-MEM-001.2.2 requires Verified prior fact before supersession", () => {
     shutdownApp();
   }
 });
+
+test("ENG-MEM-001.2.3 source_refs and authority_refs attached at capture", () => {
+  bootstrapApp();
+  try {
+    const actor = { identity_id: "ID-executive-001", identity_kind: "executive" };
+    const episodeRef = "episode:00000000-0000-4000-8000-000000000001";
+    const { fact } = writeFact({
+      ...sampleCreateInput(),
+      source_refs: [episodeRef, "source:training/volunteer-program"],
+      authority_refs: [
+        actor,
+        { identity_id: "ID-program-lead", identity_kind: "executive" },
+      ],
+    });
+    assert.ok(fact.source_refs.includes(episodeRef));
+    assert.ok(fact.source_refs.includes(fact.provenance.source_ref));
+    assert.ok(
+      fact.authority_refs.some(
+        (ref) => ref.identity_id === actor.identity_id && ref.identity_kind === actor.identity_kind,
+      ),
+    );
+    verifyFact(fact.fact_id, actor);
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-MEM-001.2.3 rejects Fact detached from evidence — source_refs missing envelope anchor", () => {
+  bootstrapApp();
+  try {
+    const { fact } = writeFact(sampleCreateInput());
+    assert.throws(
+      () =>
+        validateFactRecord({
+          ...fact,
+          fact_id: crypto.randomUUID(),
+          source_refs: ["episode:00000000-0000-4000-8000-000000000099"],
+        }),
+      (err: unknown) => err instanceof FactValidationError && err.field === "source_refs",
+    );
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-MEM-001.2.3 rejects empty source_refs", () => {
+  bootstrapApp();
+  try {
+    assert.throws(
+      () =>
+        writeFact({
+          ...sampleCreateInput(),
+          source_refs: [],
+        }),
+      FactValidationError,
+    );
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-MEM-001.2.3 verify requires actor in authority_refs", () => {
+  bootstrapApp();
+  try {
+    const lead = { identity_id: "ID-program-lead", identity_kind: "executive" };
+    const { fact } = writeFact({
+      ...sampleCreateInput(),
+      captured_by: lead,
+      authority_refs: [lead],
+    });
+    assert.throws(
+      () =>
+        verifyFact(fact.fact_id, {
+          identity_id: "ID-executive-001",
+          identity_kind: "executive",
+        }),
+      (err: unknown) => err instanceof FactValidationError && err.field === "authority_refs",
+    );
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-MEM-001.2.3 supersession preserves provenance attachment on successor", () => {
+  bootstrapApp();
+  try {
+    const actor = { identity_id: "ID-executive-001", identity_kind: "executive" };
+    const episodeRef = "episode:00000000-0000-4000-8000-000000000002";
+    const { fact } = writeFact({
+      ...sampleCreateInput(),
+      source_refs: [episodeRef, "source:training/volunteer-program"],
+    });
+    verifyFact(fact.fact_id, actor);
+    const { successor } = writeFactSupersession({
+      prior_fact_id: fact.fact_id,
+      reason: "Updated attestation from program lead.",
+      actor,
+      correction: {
+        ...sampleCreateInput(),
+        statement: "Volunteer training is complete — lead signed off.",
+        source_refs: [episodeRef, "source:training/sign-off"],
+        source_ref: "source:training/sign-off",
+      },
+    });
+    assert.ok(successor.source_refs.includes("source:training/sign-off"));
+    assert.ok(successor.source_refs.includes(episodeRef));
+    assert.ok(successor.authority_refs.some((ref) => ref.identity_id === actor.identity_id));
+  } finally {
+    shutdownApp();
+  }
+});

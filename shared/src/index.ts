@@ -183,6 +183,7 @@ export type {
   FactFieldKey,
   IdentityRef,
   LifecycleState,
+  MemoryObjectRef,
   MemoryProvenanceEnvelope,
   TrustEnvelope,
   TrustLevel,
@@ -209,7 +210,9 @@ export {
   isIso8601,
   isLifecycleTransitionAllowed,
   isMemoryDomain,
+  isMemoryObjectRef,
   isTrustLevel,
+  authorityRefsInclude,
   serializeEpisode,
   serializeFact,
 } from "./memoryOs/index.js";

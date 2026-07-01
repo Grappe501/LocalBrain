@@ -1,5 +1,6 @@
 import type { MemoryDomain } from "./primitives.js";
 import type { IdentityRef, MemoryProvenanceEnvelope, TrustEnvelope } from "./primitives.js";
+import type { MemoryObjectRef } from "./memoryRef.js";
 import type { LifecycleState } from "./lifecycle.js";
 import { FACT_SCHEMA_VERSION } from "./constants.js";
 
@@ -23,6 +24,10 @@ export type Fact = {
   supersedes?: string;
   /** Required when `supersedes` is set — chain integrity (TIME_MODEL). */
   supersession_reason?: string;
+  /** Supporting source anchors — must include `provenance.source_ref` (S4). */
+  source_refs: MemoryObjectRef[];
+  /** Institutional attestation — who accepted this as knowledge (S4 ownership). */
+  authority_refs: IdentityRef[];
   lifecycle_state: LifecycleState;
   provenance: MemoryProvenanceEnvelope;
   event_at: string;
@@ -44,6 +49,8 @@ export const FACT_FIELD_KEYS = [
   "superseded_at",
   "supersedes",
   "supersession_reason",
+  "source_refs",
+  "authority_refs",
   "lifecycle_state",
   "provenance",
   "event_at",
