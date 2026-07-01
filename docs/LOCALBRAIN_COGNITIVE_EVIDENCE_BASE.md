@@ -673,6 +673,71 @@ Convention may clarify · constrain · define — may NOT invent.
 
 ---
 
+### Convention Session 5 (Ethics)
+
+| Field | Value |
+| ----- | ----- |
+| Date | 2026-06-28 — post Session 4 (`41e7705`) |
+| Type | Engineering contract |
+| Depends on | [Sessions 1–4](./convention/) |
+| Deliverable | [Ethics Contract](./convention/CONVENTION-S5-ETHICS_CONTRACT.md) |
+| Outcome | **Passed** — [Burt packet](./burt_packets/MILESTONE-CON-S5.md) |
+
+#### Findings log
+
+| ID | Finding | Contract read | Outcome | Notes |
+| -- | ------- | ------------- | ------- | ----- |
+| CON-S5-001 | Consent | Scope · explicit Personal · revocation stops use · audit retained | **Resolved** | S2 ethics deferral closed |
+| CON-S5-002 | Immutability | Verified memory · provenance · trace append-only | **Resolved** | Supersession-only correction |
+| CON-S5-003 | Belief vs memory | E1/E2 invariants · conflict → revise belief | **Resolved** | PR-S4-005d/f |
+| CON-S5-004 | Forgetting | Explicit · rare · not erasure · S2 Forgotten aligned | **Resolved** | User-initiated path |
+| CON-S5-005 | Correction | Supersede workflow · dependent belief re-eval | **Resolved** | No in-place edit |
+| CON-S5-006 | Revocation | Consent · recommendation · decision · automation scope | **Resolved** | Forward-looking only |
+| CON-S5-007 | Authority | Executive binds · CoS/Dept recommend only | **Resolved** | PR-S4-005a |
+| CON-S5-008 | Disclosure | Gaps · provisional · expired · contradicting evidence | **Resolved** | Axiom 5 |
+| CON-S5-009 | Privacy boundaries | Domain independence · cross-boundary block | **Resolved** | Memory Domains aligned |
+| CON-S5-010 | Uncertainty disclosure | Memory Confidence gates · runtime vs epistemic | **Resolved** | S3 + RO-S3-017 |
+| CON-S5-011 | Executive override | Allowed with audit — never bypass binding approval | **Resolved** | Constitution aligned |
+| CON-S5-012 | Fail-closed matrix | Edge case → deterministic action class | **Resolved** | PMO success test |
+| CON-S5-013 | Audit obligations | ethics.* events linked to S2/S4 | **Resolved** | RO-CON-S4-001 closed |
+
+#### Session 5 gate
+
+- [x] Operational governance frozen — all PMO behavioral constraints
+- [x] Edge case matrix · fail-closed rules · audit obligations defined
+- [x] RO-CON-S4-001 · S2 Session 5 deferrals addressed
+- [x] No invented objects · no moral philosophy expansion
+- [x] Success test: identical behavior on ethical edge cases — **pass**
+
+| Outcome type | Count |
+| ------------ | ----- |
+| Resolved | 13 |
+| Clarification | 0 |
+| Open Question | 0 |
+| Invention | **0** |
+
+#### Convention obligations (from Session 5)
+
+| ID | Obligation |
+| -- | ---------- |
+| RO-CON-S5-001 | Factory + Memory OS: manifest bundles all five `convention_contract` versions |
+| RO-CON-S5-002 | H-027 harness: ethical edge-case regression suite |
+
+---
+
+### Convention Close
+
+| Field | Value |
+| ----- | ----- |
+| Date | 2026-06-28 — post Session 5 |
+| Deliverable | [Convention Close](./convention/CONVENTION-CLOSE.md) · [Burt packet](./burt_packets/MILESTONE-CONVENTION-CLOSE.md) |
+| Outcome | **Complete** — 5/5 sessions · 0 inventions · 0 Theory amendments |
+| Next | Empty Brain Factory → Memory OS |
+
+> **Design era complete for Memory OS substrate.** Engineering execution against frozen contracts.
+
+---
+
 #### Convention planned sessions
 
 | Session | Topic | Status |
@@ -681,7 +746,7 @@ Convention may clarify · constrain · define — may NOT invent.
 | CON-S2 | Memory Lifecycle | ✅ |
 | CON-S3 | Recall | ✅ |
 | CON-S4 | Provenance | ✅ |
-| CON-S5 | Ethics | ⬜ |
+| CON-S5 | Ethics | ✅ |
 
 ---
 
@@ -734,6 +799,8 @@ Amendments publish as v1.1, v1.2, … v1.0 text remains immutable. See [Falsific
 | E-CON-S2-2026 | convention | 2026-07-01 | Session 2 Memory Lifecycle — state machine · 6 resolved · audit hooks | [Lifecycle Contract](./convention/CONVENTION-S2-MEMORY_LIFECYCLE_CONTRACT.md) |
 | E-CON-S3-2026 | convention | 2026-06-28 | Session 3 Recall — pipeline contract · ranking invariants · Memory Confidence · 10 resolved | [Recall Contract](./convention/CONVENTION-S3-RECALL_CONTRACT.md) |
 | E-CON-S4-2026 | convention | 2026-06-28 | Session 4 Provenance — universal envelope · Why? chain · 14 resolved | [Provenance Contract](./convention/CONVENTION-S4-PROVENANCE_CONTRACT.md) |
+| E-CON-S5-2026 | convention | 2026-06-28 | Session 5 Ethics — operational governance · edge case matrix · 13 resolved | [Ethics Contract](./convention/CONVENTION-S5-ETHICS_CONTRACT.md) |
+| E-CON-CLOSE-2026 | gate | 2026-06-28 | Convention complete — 5/5 sessions · LB-OS-027 spec lock unlocked | [Convention Close](./convention/CONVENTION-CLOSE.md) |
 | E-META-PR-2026 | meta-evidence | 2026-06-28 | Sessions 1–3 pattern: claim-type separation · emergent implementation style (local · incremental · versioned · event-aware · self-observing) | Review method taxonomy — not evidence theory is correct |
 
 ### Peer review progress (institutional memory)

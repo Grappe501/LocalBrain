@@ -2,9 +2,9 @@
 
 > **Cover page for every V1 work session** · Refresh from `GET /api/epo/project-state` · CEO Mode  
 > **Platform checkpoint:** `3bfd4da` — Executive Office certified and locked (LB-OS-026.7)  
-> **Governance checkpoint:** Session 4 opened — Theory Validation begins  
-> **Phase boundary:** Platform Construction → Theory Validation  
-> **Observed:** 2026-06-30
+> **Governance checkpoint:** Convention closed — Factory era  
+> **Phase boundary:** Construction — Factory phase  
+> **Observed:** 2026-06-28
 
 ---
 
@@ -22,11 +22,10 @@ Overall Launch
 | Critical Path | Status | ETA |
 | ------------- | ------ | --: |
 | ✓ Executive Office Certification | Complete | — |
-| ▶ Session 4 — Executive Practitioner | In Progress | **0.7 days** |
-| □ Session 5 — Skeptic | Pending | **0.7 days** |
-| □ Theory v1.0 Freeze | Pending | **0.4 days** |
-| □ Executive Epistemology Convention | Pending | **2.9 days** |
-| □ Empty Brain Factory | Pending | **7.1 days** |
+| ✓ Peer Review S1–S5 | Complete | — |
+| ✓ Theory v1.0 Freeze | Complete | — |
+| ✓ Executive Epistemology Convention | Complete | — |
+| ▶ Empty Brain Factory | In Progress | **7.1 days** |
 | □ Memory OS | Pending | **14.3 days** |
 | □ Communications Office | Pending | **10.7 days** |
 | □ Commercial Beta | Pending | **3.6 days** |
@@ -38,8 +37,8 @@ Overall Launch
 ## Three levels of planning
 
 ```text
-Current Module ETA:     0.7 days   (tactical — when today's work finishes)
-Current Phase ETA:      4.7 days   (operational — Theory Validation completes)
+Current Module ETA:     7.1 days   (tactical — Factory)
+Current Phase ETA:      21.4 days  (operational — Factory + Memory OS)
 Predicted Beta:         Aug 9      (strategic — V1 ships)
 Confidence:             60%
 ```
@@ -47,7 +46,7 @@ Confidence:             60%
 | Level | Question | Source |
 | ----- | -------- | ------ |
 | **Tactical** | When does today's work finish? | Current module ETA |
-| **Operational** | When does this phase finish? | Current mega-phase ETA (Phase 2 — Theory Validation) |
+| **Operational** | When does this phase finish? | Factory + Memory OS forecast |
 | **Strategic** | When does V1 ship? | Predicted Commercial Beta |
 
 ---
@@ -57,7 +56,7 @@ Confidence:             60%
 | Module | Status | Notes |
 | ------ | ------ | ----- |
 | **Executive Office** | **CERTIFIED** | Locked · regression-protected · 6/6 dimensions PASS |
-| **Program Office** | **OPERATIONAL** | Build Command Center · phase forecast · CEO mode |
+| **Program Office** | **OPERATIONAL** | Build Command Center · phase forecast · CEO Mode |
 | **Capability Graph** | **CERTIFIED** | Graph integrity 6/6 · V1 scope only |
 | **Executive Office Experience** | **CERTIFIED** | Score 97 · navigation · workflow · cross-link PASS |
 
@@ -68,10 +67,8 @@ Confidence:             60%
 | Phase | Finishability |
 | ----- | ------------: |
 | Executive Office | 100% |
-| Session 4 — Practitioner | 100% |
-| Session 5 — Skeptic | 100% |
 | Theory Freeze | 100% |
-| Convention | 96% |
+| Convention | 100% |
 | Empty Brain Factory | 34% |
 | Memory OS | 18% |
 | Communications Office | 25% |
@@ -81,7 +78,7 @@ Progress tells you how much is done. Finishability tells you how well understood
 
 ---
 
-## PMO operating rules (post Theory Freeze)
+## PMO operating rules (post Convention Close)
 
 **V1 deferral rule:** If a proposed change does not shorten the critical path, improve certification quality, reduce launch risk, or fix a defect, it waits for V2.
 
@@ -98,24 +95,26 @@ Progress tells you how much is done. Finishability tells you how well understood
 
 **Burt session start:** Critical Path · Current Module · Certification Status · Blocking Issues · Smallest Next Executable Slice. If unclear → stop and ask.
 
-- **No architecture changes** unless a genuine contradiction is found (peer review complete — none found).
+- **No architecture changes** unless a genuine contradiction is found.
 - **No reopening certified modules** except critical defects.
+- **No doctrine expansion** — Memory OS implements frozen Convention contracts.
 
 Critical path only:
 
 ```text
 ✓ Theory Validation (Peer Review S1–S5)
 ✓ Theory Freeze
-▶ Convention → Factory → Memory OS → Communications → Commercial Beta
+✓ Convention (Sessions 1–5 + Close)
+▶ Empty Brain Factory → Memory OS → Communications → Commercial Beta
 ```
 
 ---
 
 ## Next module
 
-**Convention Session 5 — Ethics** ([Convention charter — Session 5](./LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md#session-5--memory-ethics) — open next)
+**Empty Brain Factory** ([LB-OS-PROD-010](./burt_packets/LB-OS-PROD-010-factory-reserved.md) · LB-OS-027.0)
 
-Contracts: [S1 Ontology](./convention/CONVENTION-S1-ONTOLOGY_CONTRACT.md) · [S2 Lifecycle](./convention/CONVENTION-S2-MEMORY_LIFECYCLE_CONTRACT.md) · [S3 Recall](./convention/CONVENTION-S3-RECALL_CONTRACT.md) · [S4 Provenance](./convention/CONVENTION-S4-PROVENANCE_CONTRACT.md)
+Convention contracts: [Close](./convention/CONVENTION-CLOSE.md) · [S1](./convention/CONVENTION-S1-ONTOLOGY_CONTRACT.md) · [S2](./convention/CONVENTION-S2-MEMORY_LIFECYCLE_CONTRACT.md) · [S3](./convention/CONVENTION-S3-RECALL_CONTRACT.md) · [S4](./convention/CONVENTION-S4-PROVENANCE_CONTRACT.md) · [S5](./convention/CONVENTION-S5-ETHICS_CONTRACT.md)
 
 ---
 
@@ -130,7 +129,7 @@ Design → Build → Test → PMO Review → Certification → Regression Lock �
 ## Burt mission
 
 > Finish the current module.  
-> **Now:** Convention Session 5 — Ethics
+> **Now:** Empty Brain Factory
 
 Everything else → [VERSION2_BACKLOG.md](./VERSION2_BACKLOG.md)
 
