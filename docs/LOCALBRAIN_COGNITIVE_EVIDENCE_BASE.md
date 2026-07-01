@@ -855,7 +855,9 @@ Amendments publish as v1.1, v1.2, … v1.0 text remains immutable. See [Falsific
 | E-CON-CLOSE-2026 | gate | 2026-06-28 | Convention complete — 5/5 sessions · LB-OS-027 spec lock unlocked | [Convention Close](./convention/CONVENTION-CLOSE.md) |
 | E-DESIGN-ERA-2026 | gate | 2026-06-28 | Design Era complete — Factory phase begins | [Design Era Close](./LOCALBRAIN_DESIGN_ERA_CLOSE.md) |
 | E-FAC-S1-2026 | factory | 2026-06-28 | Factory slice 1 — manufacture API · birth certificate · parity tests | [Factory Contract](./factory/FACTORY_CONTRACT.md) |
-| E-FAC-S2-2026 | factory | 2026-06-28 | Factory slice 2 — sealed package · install · nine-gate certification | [Factory Contract](./factory/FACTORY_CONTRACT.md) |
+| E-FAC-S2-2026 | factory | 2026-06-28 | Factory slice 2 — sealed package · install · certification engine | [Factory Contract](./factory/FACTORY_CONTRACT.md) |
+| E-FAC-S3-2026 | factory | 2026-07-01 | Factory slice 3 — native installer · ten-gate PMO certification · birth certificate persistence | [Factory Contract](./factory/FACTORY_CONTRACT.md) |
+| E-FAC-CERT-2026 | gate | 2026-07-01 | PMO Factory certification · `v1.0.0-factory-certified` · Factory locked | [Factory certification](./factory/certification/) |
 | E-META-PR-2026 | meta-evidence | 2026-06-28 | Sessions 1–3 pattern: claim-type separation · emergent implementation style (local · incremental · versioned · event-aware · self-observing) | Review method taxonomy — not evidence theory is correct |
 
 ### Peer review progress (institutional memory)

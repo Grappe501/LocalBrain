@@ -78,6 +78,7 @@ const MODULE_DEFS: {
     test_globs: [
       "backend/src/factory/factoryService.test.ts",
       "backend/src/factory/factoryPackage.test.ts",
+      "backend/src/factory/factoryInstaller.test.ts",
     ],
   },
   {

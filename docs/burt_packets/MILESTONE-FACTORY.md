@@ -7,8 +7,8 @@
 > ✓ Theory Freeze
 > ✓ Convention (Sessions 1–5 + Close)
 > ✓ Design Era Close
-> ▶ Empty Brain Factory (slices 1–2 complete)
-> □ Memory OS
+> ▶ Empty Brain Factory (CERTIFIED & LOCKED · `v1.0.0-factory-certified`)
+> □ Memory OS (authorized to begin design)
 > □ Communications Office
 > □ Commercial Beta
 >
@@ -17,7 +17,7 @@
 
 > **Depends on:** [Convention Close](../convention/CONVENTION-CLOSE.md) · [Design Era Close](../LOCALBRAIN_DESIGN_ERA_CLOSE.md)  
 > **Engine:** ENG-FAC-001 · **Slices:** LB-OS-PROD-010 · LB-OS-027.0  
-> **Next:** Factory slice 3 (native installer) → Memory OS (LB-OS-027)
+> **Next:** Memory OS design (LB-OS-027) — Factory immutable
 
 ---
 
@@ -46,25 +46,63 @@ Communications activates institutions.
 | Slice | Status | Deliverable |
 | ----- | ------ | ----------- |
 | 1 | ✅ | Manufacture API · birth certificate · parity tests |
-| 2 | ✅ | Sealed package · install · nine-gate certification |
-| 3 | ⬜ | Native installer artifact · Factory certification lock |
+| 2 | ✅ | Sealed package · install · certification engine |
+| 3 | ✅ | Native installer artifact · install/upgrade/uninstall · ten-gate PMO certification |
+| PMO Certification | ✅ | `v1.0.0-factory-certified` · Factory locked |
 
 ---
 
-## API (slice 2)
+## Status
+
+**Factory is CERTIFIED and LOCKED.** No further Factory behavior changes without a new certification cycle.
+
+Manufacturing record: [certification/](../factory/certification/)
+
+## API (slice 3)
 
 | Endpoint | Purpose |
 | -------- | ------- |
-| `GET /api/factory/package/download` | Download sealed appliance |
-| `POST /api/factory/package/install` | Install → Launch |
-| `GET /api/factory/certification` | Nine PMO gates |
-| `POST /api/factory/acceptance-test` | Full acceptance test |
+| `POST /api/factory/installer/generate` | Generate native installer artifact on disk |
+| `POST /api/factory/installer/install` | Install from artifact directory |
+| `GET /api/factory/installer/verify/:installId` | Verify persisted installation |
+| `POST /api/factory/installer/upgrade` | Upgrade (same `structural_hash` only) |
+| `POST /api/factory/installer/uninstall` | Uninstall |
+| `POST /api/factory/installer/first-launch` | Complete first-launch workflow |
+| `GET /api/factory/certification` | Ten PMO gates (with installer flow) |
+| `POST /api/factory/pmo-certification` | PMO certification · optional Factory lock |
+
+CLI: `npm run factory:generate` · `factory:install` · `factory:certify`
 
 ---
 
-## Certification gates (nine)
+## PMO certification gates (ten)
 
-Constitution · Convention · Executive Office · Capability Graph · Birth Certificate · Empty Profile · Personal Data · Installer Repeatability · Package Integrity
+| Gate | Criterion |
+| ---- | --------- |
+| Manufacturing | Package builds with valid integrity |
+| Installation | Install from artifact + verify |
+| Integrity | Package integrity hash |
+| Repeatability | Deterministic `structural_hash` across rebuilds |
+| Empty Brain | Canonical profile — no Steve/Kelly/Chris |
+| Convention | All five contracts embedded |
+| Executive Office | ≥8 departments |
+| Capability Graph | Graph certified |
+| Birth Certificate | Persisted to disk at install |
+| Package Verification | `INSTALL.sha256` matches |
+
+Lock Factory via `POST /api/factory/pmo-certification` with `{ "lock": true }` only when all ten pass.
+
+---
+
+## Engineering maturity
+
+| Stage | Factory completion |
+| ----- | -----------------: |
+| After slice 2 | ~45% |
+| After slice 3 | ~72% |
+| After PMO certification + lock | 100% |
+
+**Current:** 100% — certified `v1.0.0-factory-certified`
 
 ---
 

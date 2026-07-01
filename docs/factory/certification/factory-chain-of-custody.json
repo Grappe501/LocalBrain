@@ -1,0 +1,51 @@
+{
+  "ceremony_id": "PMO-FAC-2026-07-01",
+  "observed_at": "2026-07-01T13:39:28.370Z",
+  "release_tag": "v1.0.0-factory-certified",
+  "release_commit_note": "Resolve certified commit via git rev-parse v1.0.0-factory-certified",
+  "certification_report_hash": "bab27a22f9c0b2f995684848f99917b48c15555577214e34c1fdfc584abddfa3",
+  "structural_hash": "4bf7e7ecff330166b55087d72b5c79ef6cee89354f8981175e466aec9ab4abf8",
+  "integrity_hash": "ba30abe8c506b09e3a1b82965454a88b1db2987ef80f5bc07a6f20de92edf6e4",
+  "convention_contracts": {
+    "ontology": "CON-S1-2026-07",
+    "lifecycle": "CON-S2-2026-07",
+    "recall": "CON-S3-2026-07",
+    "provenance": "CON-S4-2026-07",
+    "ethics": "CON-S5-2026-07"
+  },
+  "gates": {
+    "manufacturing": "pass",
+    "installation": "pass",
+    "integrity": "pass",
+    "repeatability": "pass",
+    "empty_brain": "pass",
+    "convention": "pass",
+    "executive_office": "pass",
+    "capability_graph": "pass",
+    "birth_certificate": "pass",
+    "package_verification": "pass"
+  },
+  "gate_labels": {
+    "manufacturing": "Manufacturing",
+    "installation": "Installation",
+    "integrity": "Integrity",
+    "repeatability": "Repeatability",
+    "empty_brain": "Empty Brain",
+    "convention": "Convention",
+    "executive_office": "Executive Office",
+    "capability_graph": "Capability Graph",
+    "birth_certificate": "Birth Certificate",
+    "package_verification": "Package Verification"
+  },
+  "artifacts": {
+    "factory_certification": "factory-certification.json",
+    "factory_lock": "factory-lock.json",
+    "factory_release": "factory-release.json",
+    "factory_birth_certificate": "factory-birth-certificate.json",
+    "factory_manufacturing_report": "factory-manufacturing-report.md",
+    "factory_chain_of_custody": "factory-chain-of-custody.json",
+    "factory_capability_manifest": "factory-capability-manifest.json"
+  },
+  "locked": true,
+  "next_authorized_module": "memory_os"
+}

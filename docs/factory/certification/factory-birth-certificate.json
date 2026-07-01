@@ -1,0 +1,36 @@
+{
+  "manufacturer": "LocalBrain Factory",
+  "constitution_version": "1.0",
+  "office_pack": "executive_office_v1",
+  "capability_pack": "capability_graph_v1",
+  "factory_version": "FAC-1.0.0",
+  "migration_version": "MIG-1.0.0",
+  "identity": {
+    "instance_id": "CER-2e49986e-024e-4b93-9f4c-4390131e08b7",
+    "passport_id": "77cbb04b-d7c8-4cae-82fe-955822f1f550"
+  },
+  "authority": {
+    "status": "pre_activation",
+    "authority_stack": "authority_v1"
+  },
+  "passport": {
+    "passport_id": "77cbb04b-d7c8-4cae-82fe-955822f1f550",
+    "status": "issued_empty"
+  },
+  "license": {
+    "status": "pre_activation",
+    "license_id": "42625428-6d4f-4859-ab2d-0ea77d625fd1"
+  },
+  "manufactured_at": "2026-07-01T13:39:28.371Z",
+  "convention_contracts": {
+    "ontology": "CON-S1-2026-07",
+    "lifecycle": "CON-S2-2026-07",
+    "recall": "CON-S3-2026-07",
+    "provenance": "CON-S4-2026-07",
+    "ethics": "CON-S5-2026-07"
+  },
+  "contract_version": "FAC-2026-07",
+  "ceremonial": true,
+  "note": "Reference birth certificate schema at Factory lock — not a live instance.",
+  "structural_hash": "4bf7e7ecff330166b55087d72b5c79ef6cee89354f8981175e466aec9ab4abf8"
+}

@@ -1,0 +1,1110 @@
+{
+  "generated_at": "2026-07-01T13:39:28.370Z",
+  "capability_count": 66,
+  "graph_certified": true,
+  "capabilities": [
+    {
+      "capability_id": "CAP-EO-001",
+      "title": "Executive Office",
+      "departments": [
+        "Chief of Staff"
+      ],
+      "completion_status": "partial",
+      "maturity": {
+        "completion_percent": 55,
+        "health": "degraded",
+        "last_verified_slice": "LB-OS-026.67",
+        "dependency_capability_ids": []
+      }
+    },
+    {
+      "capability_id": "CAP-EPO-001",
+      "title": "Executive Program Office",
+      "departments": [
+        "Program Office"
+      ],
+      "completion_status": "production",
+      "maturity": {
+        "completion_percent": 92,
+        "health": "healthy",
+        "last_verified_slice": "LB-OS-026.6",
+        "dependency_capability_ids": []
+      }
+    },
+    {
+      "capability_id": "CAP-WS-001",
+      "title": "Living Workspace",
+      "departments": [
+        "Living Workspaces"
+      ],
+      "completion_status": "production",
+      "maturity": {
+        "completion_percent": 60,
+        "health": "healthy",
+        "last_verified_slice": "LB-OS-004",
+        "dependency_capability_ids": []
+      }
+    },
+    {
+      "capability_id": "CAP-KX-001",
+      "title": "Knowledge Explorer",
+      "departments": [
+        "Knowledge Explorer"
+      ],
+      "completion_status": "production",
+      "maturity": {
+        "completion_percent": 85,
+        "health": "healthy",
+        "last_verified_slice": "LB-OS-005",
+        "dependency_capability_ids": []
+      }
+    },
+    {
+      "capability_id": "CAP-ACT-001",
+      "title": "Actions",
+      "departments": [
+        "Actions"
+      ],
+      "completion_status": "production",
+      "maturity": {
+        "completion_percent": 95,
+        "health": "healthy",
+        "last_verified_slice": "LB-OS-010",
+        "dependency_capability_ids": []
+      }
+    },
+    {
+      "capability_id": "CAP-SYS-001",
+      "title": "System Health",
+      "departments": [
+        "System Health"
+      ],
+      "completion_status": "partial",
+      "maturity": {
+        "completion_percent": 88,
+        "health": "healthy",
+        "last_verified_slice": "LB-OS-011",
+        "dependency_capability_ids": []
+      }
+    },
+    {
+      "capability_id": "CAP-AI-001",
+      "title": "AI Provider Management",
+      "departments": [
+        "System Health",
+        "AI"
+      ],
+      "completion_status": "production",
+      "maturity": {
+        "completion_percent": 90,
+        "health": "healthy",
+        "last_verified_slice": "LB-OS-017",
+        "dependency_capability_ids": [
+          "CAP-SYS-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-LRN-001",
+      "title": "Learn — OJT Academy",
+      "departments": [
+        "Academy"
+      ],
+      "completion_status": "stub",
+      "maturity": {
+        "completion_percent": 10,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026",
+        "dependency_capability_ids": []
+      }
+    },
+    {
+      "capability_id": "CAP-SET-001",
+      "title": "Settings",
+      "departments": [
+        "Kernel"
+      ],
+      "completion_status": "partial",
+      "maturity": {
+        "completion_percent": 55,
+        "health": "degraded",
+        "last_verified_slice": "LB-OS-PROD-001",
+        "dependency_capability_ids": []
+      }
+    },
+    {
+      "capability_id": "CAP-PROD-001",
+      "title": "Instance Setup Wizard",
+      "departments": [
+        "Kernel"
+      ],
+      "completion_status": "partial",
+      "maturity": {
+        "completion_percent": 70,
+        "health": "healthy",
+        "last_verified_slice": "LB-OS-PROD-001",
+        "dependency_capability_ids": [
+          "CAP-SET-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-PROD-002",
+      "title": "Provider Vault & Connectors",
+      "departments": [
+        "Kernel",
+        "System Health"
+      ],
+      "completion_status": "partial",
+      "maturity": {
+        "completion_percent": 75,
+        "health": "healthy",
+        "last_verified_slice": "LB-OS-PROD-001",
+        "dependency_capability_ids": [
+          "CAP-AI-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-PROD-003",
+      "title": "Instance Profile & Package",
+      "departments": [
+        "Kernel",
+        "Chief of Staff"
+      ],
+      "completion_status": "partial",
+      "maturity": {
+        "completion_percent": 65,
+        "health": "healthy",
+        "last_verified_slice": "LB-OS-PROD-001",
+        "dependency_capability_ids": [
+          "CAP-PROD-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-MIG-001",
+      "title": "Migration Planner",
+      "departments": [
+        "Migration"
+      ],
+      "completion_status": "production",
+      "maturity": {
+        "completion_percent": 88,
+        "health": "healthy",
+        "last_verified_slice": "LB-OS-018",
+        "dependency_capability_ids": [
+          "CAP-MIG-002"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-MIG-002",
+      "title": "Filesystem Mapping Audit",
+      "departments": [
+        "Migration"
+      ],
+      "completion_status": "production",
+      "maturity": {
+        "completion_percent": 90,
+        "health": "healthy",
+        "last_verified_slice": "LB-OS-019",
+        "dependency_capability_ids": []
+      }
+    },
+    {
+      "capability_id": "CAP-CNS-001",
+      "title": "Executive Consolidation Briefing",
+      "departments": [
+        "Consolidation"
+      ],
+      "completion_status": "production",
+      "maturity": {
+        "completion_percent": 90,
+        "health": "healthy",
+        "last_verified_slice": "LB-OS-020",
+        "dependency_capability_ids": [
+          "CAP-MIG-002"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-EWA-001",
+      "title": "Executive Workspace Architecture",
+      "departments": [
+        "Migration",
+        "Architecture"
+      ],
+      "completion_status": "production",
+      "maturity": {
+        "completion_percent": 85,
+        "health": "healthy",
+        "last_verified_slice": "LB-OS-021",
+        "dependency_capability_ids": [
+          "CAP-MIG-002"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-DLS-001",
+      "title": "Digital Land Survey",
+      "departments": [
+        "Migration"
+      ],
+      "completion_status": "production",
+      "maturity": {
+        "completion_percent": 85,
+        "health": "healthy",
+        "last_verified_slice": "LB-OS-022",
+        "dependency_capability_ids": [
+          "CAP-EWA-001",
+          "CAP-MIG-002"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-PRF-001",
+      "title": "Migration Proof Engine",
+      "departments": [
+        "Migration"
+      ],
+      "completion_status": "production",
+      "maturity": {
+        "completion_percent": 88,
+        "health": "healthy",
+        "last_verified_slice": "LB-OS-023",
+        "dependency_capability_ids": [
+          "CAP-DLS-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-PLN-001",
+      "title": "Migration Planning",
+      "departments": [
+        "Migration"
+      ],
+      "completion_status": "production",
+      "maturity": {
+        "completion_percent": 90,
+        "health": "healthy",
+        "last_verified_slice": "LB-OS-024",
+        "dependency_capability_ids": [
+          "CAP-PRF-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-APP-001",
+      "title": "Executive Approval",
+      "departments": [
+        "Migration",
+        "Executive Office"
+      ],
+      "completion_status": "production",
+      "maturity": {
+        "completion_percent": 92,
+        "health": "healthy",
+        "last_verified_slice": "LB-OS-025",
+        "dependency_capability_ids": [
+          "CAP-PLN-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-CTO-001",
+      "title": "Migration Cutover",
+      "departments": [
+        "Migration"
+      ],
+      "completion_status": "production",
+      "maturity": {
+        "completion_percent": 95,
+        "health": "healthy",
+        "last_verified_slice": "LB-OS-026",
+        "dependency_capability_ids": [
+          "CAP-APP-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-ENG-001",
+      "title": "Engineering Studio",
+      "departments": [
+        "Engineering"
+      ],
+      "completion_status": "partial",
+      "maturity": {
+        "completion_percent": 75,
+        "health": "healthy",
+        "last_verified_slice": "LB-OS-012",
+        "dependency_capability_ids": []
+      }
+    },
+    {
+      "capability_id": "CAP-WRT-001",
+      "title": "Writing Studio",
+      "departments": [
+        "Writing"
+      ],
+      "completion_status": "partial",
+      "maturity": {
+        "completion_percent": 50,
+        "health": "degraded",
+        "last_verified_slice": "LB-OS-013",
+        "dependency_capability_ids": []
+      }
+    },
+    {
+      "capability_id": "CAP-DAT-001",
+      "title": "Data Intelligence Studio",
+      "departments": [
+        "Data & Intelligence"
+      ],
+      "completion_status": "partial",
+      "maturity": {
+        "completion_percent": 55,
+        "health": "degraded",
+        "last_verified_slice": "LB-OS-014",
+        "dependency_capability_ids": []
+      }
+    },
+    {
+      "capability_id": "CAP-REL-001",
+      "title": "Relationship Network",
+      "departments": [
+        "Relationships"
+      ],
+      "completion_status": "partial",
+      "maturity": {
+        "completion_percent": 45,
+        "health": "degraded",
+        "last_verified_slice": "LB-OS-015",
+        "dependency_capability_ids": []
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-GAC-001",
+      "title": "Google Accounts & Calendar Intelligence",
+      "departments": [
+        "Chief of Staff",
+        "Communications"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": []
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-GML-001",
+      "title": "Gmail / Email Command Center",
+      "departments": [
+        "Communications"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-FUT-GAC-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-CAL-001",
+      "title": "Calendar Intelligence",
+      "departments": [
+        "Chief of Staff"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-FUT-GAC-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-KNO-001",
+      "title": "Communications Knowledge Sources",
+      "departments": [
+        "Knowledge Explorer"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-FUT-GML-001",
+          "CAP-FUT-CAL-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-INB-001",
+      "title": "Executive Assistant Briefing Inbox",
+      "departments": [
+        "Chief of Staff"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-FUT-KNO-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-CFO-001",
+      "title": "CFO / Finance Department",
+      "departments": [
+        "Accounting & CFO"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-FUT-FKN-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-PBN-001",
+      "title": "Personal Finance & Budget",
+      "departments": [
+        "Accounting & CFO"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": []
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-NPB-001",
+      "title": "Nonprofit Finance & Budget",
+      "departments": [
+        "Accounting & CFO"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": []
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-CFB-001",
+      "title": "Campaign Finance & Budget",
+      "departments": [
+        "Accounting & CFO"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": []
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-BBN-001",
+      "title": "Business Budget",
+      "departments": [
+        "Accounting & CFO"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": []
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-FKN-001",
+      "title": "Finance Knowledge Sources",
+      "departments": [
+        "Accounting & CFO"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-FUT-PBN-001",
+          "CAP-FUT-NPB-001",
+          "CAP-FUT-CFB-001",
+          "CAP-FUT-BBN-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-HHD-001",
+      "title": "Household / Family Operations",
+      "departments": [
+        "Household"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": []
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-ECD-001",
+      "title": "Executive Communications Department",
+      "departments": [
+        "Chief of Staff",
+        "Communications"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-EO-001",
+          "CAP-FUT-PRV-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-VOI-001",
+      "title": "Executive Voice Interface",
+      "departments": [
+        "Chief of Staff"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-EO-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-MED-001",
+      "title": "Executive Digital World Monitor",
+      "departments": [
+        "Chief of Staff",
+        "Communications"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-EO-001",
+          "CAP-FUT-PRV-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-PVO-001",
+      "title": "Personal Voice Interface",
+      "departments": [
+        "Chief of Staff"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-FUT-VOI-001",
+          "CAP-EO-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-ENC-001",
+      "title": "Encryption, Key Vault, and Sovereign Routing",
+      "departments": [
+        "Chief of Staff",
+        "Migration"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-EO-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-PRV-001",
+      "title": "Data Sovereignty & Exposure Control",
+      "departments": [
+        "Chief of Staff",
+        "Migration"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-EO-001",
+          "CAP-FUT-ENC-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-SOVDASH-001",
+      "title": "Sovereignty Dashboard",
+      "departments": [
+        "Chief of Staff"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-FUT-ENC-001",
+          "CAP-FUT-PRV-001",
+          "CAP-EO-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-TRUST-001",
+      "title": "Department Trust Score",
+      "departments": [
+        "Chief of Staff"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-EO-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-MEMLED-001",
+      "title": "Executive Memory Ledger",
+      "departments": [
+        "Chief of Staff",
+        "Knowledge Explorer"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-EO-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-EXCAP-001",
+      "title": "Executive Capital Dashboard",
+      "departments": [
+        "Chief of Staff"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-EO-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-DEPTMAT-001",
+      "title": "Department Maturity",
+      "departments": [
+        "Chief of Staff"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-EO-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-INSTMEM-001",
+      "title": "Institutional Memory",
+      "departments": [
+        "Chief of Staff",
+        "Knowledge Explorer"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-EO-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-DECEVO-001",
+      "title": "Decision Evolution",
+      "departments": [
+        "Chief of Staff"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-FUT-INSTMEM-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-EEM-001",
+      "title": "Executive Engineering Memory",
+      "departments": [
+        "Chief of Staff",
+        "Engineering"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-FUT-INSTMEM-001",
+          "CAP-FUT-DECEVO-001",
+          "CAP-ENG-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-MBS-001",
+      "title": "Multi-Brain Workspace Sharing",
+      "departments": [
+        "Chief of Staff"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-PROD-003",
+          "CAP-FUT-PRV-001",
+          "CAP-FUT-ENC-001",
+          "CAP-FUT-IDT-001",
+          "CAP-FUT-EIA-001",
+          "CAP-FUT-PSP-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-UDI-001",
+      "title": "Universal Digital Ingestion",
+      "departments": [
+        "Chief of Staff",
+        "Knowledge Explorer"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-PROD-001",
+          "CAP-PROD-002",
+          "CAP-FUT-LIC-001",
+          "CAP-FUT-ING-001",
+          "CAP-FUT-ENC-001",
+          "CAP-FUT-PRV-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-LIC-001",
+      "title": "License & Subscription Gate",
+      "departments": [
+        "Kernel"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-PROD-003",
+          "CAP-FUT-ENC-001",
+          "CAP-FUT-IDT-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-SMC-001",
+      "title": "Social Media Connector Registry",
+      "departments": [
+        "Communications",
+        "Chief of Staff"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-FUT-LIC-001",
+          "CAP-FUT-ENC-001",
+          "CAP-FUT-PRV-001",
+          "CAP-FUT-ECD-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-MST-001",
+      "title": "Media Studio / Creative Workbench",
+      "departments": [
+        "Communications",
+        "Chief of Staff"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-FUT-SMC-001",
+          "CAP-FUT-LIC-001",
+          "CAP-FUT-PRV-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-ING-001",
+      "title": "Universal Device + Drive Ingestion Planner",
+      "departments": [
+        "Chief of Staff",
+        "Knowledge Explorer"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-PROD-001",
+          "CAP-PROD-002",
+          "CAP-FUT-LIC-001",
+          "CAP-FUT-IDT-001",
+          "CAP-FUT-ENC-001",
+          "CAP-FUT-PRV-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-MOB-001",
+      "title": "Mobile / Tablet Access Shell",
+      "departments": [
+        "Kernel",
+        "Chief of Staff"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-PROD-001",
+          "CAP-FUT-LIC-001",
+          "CAP-FUT-ENC-001",
+          "CAP-FUT-IDT-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-IDT-001",
+      "title": "Instance Identity, Transfer, and Single-Primary Enforcement",
+      "departments": [
+        "Kernel",
+        "Chief of Staff"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-PROD-001",
+          "CAP-PROD-003",
+          "CAP-FUT-LIC-001",
+          "CAP-FUT-ENC-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-EIA-001",
+      "title": "Executive Identity Authority",
+      "departments": [
+        "Kernel",
+        "Chief of Staff"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-PROD-001",
+          "CAP-PROD-003",
+          "CAP-FUT-IDT-001",
+          "CAP-FUT-LIC-001",
+          "CAP-FUT-ENC-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-PSP-001",
+      "title": "Executive Passport",
+      "departments": [
+        "Chief of Staff",
+        "Kernel"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-FUT-EIA-001",
+          "CAP-FUT-ENC-001",
+          "CAP-FUT-PRV-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-FAC-001",
+      "title": "Executive LocalBrain Factory",
+      "departments": [
+        "Kernel",
+        "Chief of Staff"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-PROD-001",
+          "CAP-PROD-003",
+          "CAP-FUT-EIA-001",
+          "CAP-FUT-PSP-001",
+          "CAP-FUT-LIC-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-EDG-001",
+      "title": "Executive Discovery",
+      "departments": [
+        "Chief of Staff",
+        "Kernel"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-PROD-001",
+          "CAP-FUT-FAC-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-OCON-001",
+      "title": "Office-Driven Connectors",
+      "departments": [
+        "Communications",
+        "Chief of Staff"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-FUT-ECD-001",
+          "CAP-FUT-ENC-001",
+          "CAP-FUT-PRV-001",
+          "CAP-PROD-002"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-CON-VER-001",
+      "title": "Versioned Constitution Migration",
+      "departments": [
+        "Chief of Staff",
+        "Kernel"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-FUT-FAC-001",
+          "CAP-FUT-EIA-001"
+        ]
+      }
+    },
+    {
+      "capability_id": "CAP-FUT-CCO-001",
+      "title": "Chief Compliance Officer",
+      "departments": [
+        "Legal",
+        "Chief of Staff"
+      ],
+      "completion_status": "planned",
+      "maturity": {
+        "completion_percent": 0,
+        "health": "stub",
+        "last_verified_slice": "LB-OS-026.66",
+        "dependency_capability_ids": [
+          "CAP-FUT-LIC-001",
+          "CAP-FUT-FAC-001",
+          "CAP-FUT-PRV-001"
+        ]
+      }
+    }
+  ],
+  "structural_hash": "4bf7e7ecff330166b55087d72b5c79ef6cee89354f8981175e466aec9ab4abf8"
+}

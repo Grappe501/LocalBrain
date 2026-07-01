@@ -148,15 +148,25 @@ export interface FactoryPackage {
 }
 
 export const FACTORY_CERT_DIMENSION_LABELS = {
-  constitution: "Constitution",
+  manufacturing: "Manufacturing",
+  installation: "Installation",
+  integrity: "Integrity",
+  repeatability: "Repeatability",
+  empty_brain: "Empty Brain",
   convention: "Convention",
   executive_office: "Executive Office",
   capability_graph: "Capability Graph",
   birth_certificate: "Birth Certificate",
-  empty_profile: "Empty Profile",
-  personal_data: "Personal Data",
-  installer_repeatability: "Installer Repeatability",
-  package_integrity: "Package Integrity",
+  package_verification: "Package Verification",
+} as const;
+
+/** @deprecated Slice 2 aliases — use PMO gate ids above */
+export const LEGACY_FACTORY_CERT_ALIASES = {
+  constitution: "manufacturing",
+  personal_data: "empty_brain",
+  installer_repeatability: "repeatability",
+  package_integrity: "integrity",
+  empty_profile: "empty_brain",
 } as const;
 
 export type FactoryCertDimensionId = keyof typeof FACTORY_CERT_DIMENSION_LABELS;
@@ -169,6 +179,50 @@ export interface FactoryCertDimensionRow {
   evidence: string | null;
 }
 
+export interface FactoryInstallerManifest {
+  installer_version: string;
+  factory_contract_version: typeof FACTORY_CONTRACT_VERSION;
+  package_id: string;
+  structural_hash: string;
+  integrity_hash: string;
+  generated_at: string;
+  artifact_files: {
+    package: string;
+    checksum: string;
+    installer_manifest: string;
+  };
+}
+
+export interface FactoryInstallRecord {
+  install_id: string;
+  install_path: string;
+  package_id: string;
+  structural_hash: string;
+  profile_instance_id: string;
+  installed_at: string;
+  upgraded_at: string | null;
+  uninstalled_at: string | null;
+  first_launch_completed: boolean;
+  first_launch_at: string | null;
+}
+
+export interface FactoryFirstLaunchState {
+  completed: boolean;
+  completed_at: string | null;
+  install_id: string;
+}
+
+export const FACTORY_INSTALLER_VERSION = "INS-1.0.0";
+
+export const FACTORY_ARTIFACT_FILES = {
+  package: "institution.package.json",
+  checksum: "INSTALL.sha256",
+  installer_manifest: "installer-manifest.json",
+  birth_certificate: "birth-certificate.json",
+  install_record: "install-record.json",
+  first_launch: "first-launch.json",
+} as const;
+
 export interface FactoryCertificationReport {
   module_id: "factory";
   module_name: string;
@@ -180,4 +234,6 @@ export interface FactoryCertificationReport {
   launch_status: "certified" | "needs_work";
   review_verdict: "PASS" | "NEEDS WORK";
   observed_at: string;
+  certification_locked?: boolean;
+  install_id?: string | null;
 }

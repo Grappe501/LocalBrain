@@ -1,0 +1,9 @@
+{
+  "module_id": "factory",
+  "module_name": "Empty Brain Factory",
+  "locked": true,
+  "certified": true,
+  "locked_at": "2026-07-01T13:39:28.370Z",
+  "release_tag": "v1.0.0-factory-certified",
+  "governance_rule": "Factory ONLY manufactures institutions — never learns, stores memories, personalizes, or changes behavior post-lock."
+}

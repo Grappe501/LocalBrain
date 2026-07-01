@@ -34,6 +34,12 @@ local_data/cutover_runs/*
 !local_data/cutover_runs/.gitkeep
 local_data/project_profiles/*
 !local_data/project_profiles/.gitkeep
+local_data/factory-dist/*
+!local_data/factory-dist/.gitkeep
+local_data/factory-installs/*
+!local_data/factory-installs/.gitkeep
+local_data/factory-test/*
+!local_data/factory-test/.gitkeep
 
 .DS_Store
 Thumbs.db

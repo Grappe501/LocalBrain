@@ -10,7 +10,9 @@
     "start": "node dist/server.js",
     "test": "node --import tsx --test src/**/*.test.ts",
     "atlas:generate": "tsx src/scripts/generateCapabilityAtlas.ts",
-    "office:generate": "tsx src/scripts/generateExecutiveOffice.ts"
+    "factory:generate": "tsx src/scripts/factoryInstallerCli.ts generate",
+    "factory:install": "tsx src/scripts/factoryInstallerCli.ts install",
+    "factory:certify": "tsx src/scripts/factoryInstallerCli.ts certify"
   },
   "dependencies": {
     "@localbrain/shared": "*",

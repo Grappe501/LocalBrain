@@ -1,0 +1,17 @@
+{
+  "release_tag": "v1.0.0-factory-certified",
+  "release_type": "factory_certified",
+  "app_version": "0.1.0",
+  "factory_version": "FAC-1.0.0",
+  "factory_contract_version": "FAC-2026-07",
+  "migration_version": "MIG-1.0.0",
+  "engine_id": "ENG-FAC-001",
+  "slice_id": "LB-OS-PROD-010",
+  "structural_hash": "4bf7e7ecff330166b55087d72b5c79ef6cee89354f8981175e466aec9ab4abf8",
+  "integrity_hash": "ba30abe8c506b09e3a1b82965454a88b1db2987ef80f5bc07a6f20de92edf6e4",
+  "package_id": "PKG-cc43cfb5-15dc-42dd-9a40-a07322825efa",
+  "certified_at": "2026-07-01T13:39:28.370Z",
+  "certified": true,
+  "locked": true,
+  "ready_for": "memory_os"
+}

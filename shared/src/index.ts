@@ -847,6 +847,8 @@ export {
   FACTORY_STRUCTURE_INCLUDED,
   MANUFACTURING_PRINCIPLE,
   institutionStructureMatches,
+  FACTORY_INSTALLER_VERSION,
+  FACTORY_ARTIFACT_FILES,
   FACTORY_PACKAGE_VERSION,
   FACTORY_CERT_DIMENSION_LABELS,
 } from "./factoryManufacturing.js";
@@ -860,4 +862,7 @@ export type {
   FactoryCertificationReport,
   FactoryCertDimensionRow,
   FactoryCertDimensionId,
+  FactoryInstallerManifest,
+  FactoryInstallRecord,
+  FactoryFirstLaunchState,
 } from "./factoryManufacturing.js";

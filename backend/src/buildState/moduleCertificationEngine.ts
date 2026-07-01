@@ -174,6 +174,7 @@ function certifyExecutiveOffice(): V1ModuleCertificationCard {
 const FACTORY_TESTS = [
   "backend/src/factory/factoryService.test.ts",
   "backend/src/factory/factoryPackage.test.ts",
+  "backend/src/factory/factoryInstaller.test.ts",
 ];
 
 function certifyFactoryModule(): V1ModuleCertificationCard {
@@ -193,8 +194,8 @@ function certifyFactoryModule(): V1ModuleCertificationCard {
     ),
     dim(
       "experience",
-      mapStatus(get("empty_profile")?.status ?? "needs_work"),
-      get("empty_profile")?.evidence ?? null,
+      mapStatus(get("installation")?.status ?? "needs_work"),
+      get("installation")?.evidence ?? null,
     ),
     dim(
       "tests",
@@ -203,8 +204,8 @@ function certifyFactoryModule(): V1ModuleCertificationCard {
     ),
     dim(
       "security",
-      mapStatus(get("personal_data")?.status ?? "needs_work"),
-      get("personal_data")?.evidence ?? null,
+      mapStatus(get("empty_brain")?.status ?? "needs_work"),
+      get("empty_brain")?.evidence ?? null,
     ),
     dim("kelly_sandbox", "not_applicable", "Factory — manufacturing gate; Kelly Sandbox is post-Memory OS"),
     dim(

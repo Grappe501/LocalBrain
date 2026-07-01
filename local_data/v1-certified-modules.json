@@ -4,6 +4,11 @@
       "module_id": "executive_office",
       "certified_at": "2026-06-30T22:17:44.373Z",
       "locked": true
+    },
+    {
+      "module_id": "factory",
+      "certified_at": "2026-07-01T13:38:43.142Z",
+      "locked": true
     }
   ]
 }

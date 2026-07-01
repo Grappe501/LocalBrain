@@ -181,13 +181,40 @@ timestamp:        ISO-8601
 - [x] Package build with structural + integrity hash
 - [x] Install from package (`POST /api/factory/package/install`)
 - [x] Download endpoint (`GET /api/factory/package/download`)
-- [x] Nine-gate Factory certification (`GET /api/factory/certification`)
+- [x] Ten-gate Factory certification (`GET /api/factory/certification`)
 - [x] Acceptance test: build → install → certify — no personal data
-- [x] Installer repeatability — deterministic structural hash
-- [ ] Native installer artifact (future)
-- [ ] Factory module certification lock (after PMO review)
+- [x] Repeatability — deterministic structural hash
 
-**Next slices:** native installer · authority stack export (PROD-008/009) · Factory certification lock
+## Factory gate (slice 3 — native installer)
+
+- [x] Native installer artifact (`POST /api/factory/installer/generate`)
+- [x] `INSTALL.sha256` package verification
+- [x] Install from artifact with filesystem birth certificate persistence
+- [x] Installation verification (`GET /api/factory/installer/verify/:installId`)
+- [x] Upgrade path — rejects `structural_hash` change
+- [x] Uninstall behavior
+- [x] First-launch workflow (`POST /api/factory/installer/first-launch`)
+- [x] Deterministic rebuild validation
+- [x] PMO ten-gate certification with installer flow
+- [x] Factory module certification lock (`npm run factory:certify -- --lock`)
+- [x] Immutable manufacturing record — [certification/](../certification/)
+
+## Factory gate (PMO certification — LOCKED)
+
+**Release:** `v1.0.0-factory-certified` · **Observed:** 2026-07-01
+
+```txt
+Factory
+├── NEVER learns
+├── NEVER stores memories
+├── NEVER personalizes
+├── NEVER changes behavior
+└── ONLY manufactures institutions
+```
+
+No future feature may modify Factory behavior without a new certification cycle.
+
+**Next module:** Memory OS (design only until spec lock)
 
 ---
 

@@ -47,14 +47,14 @@ test("install from package produces empty institution — no Steve", () => {
   }
 });
 
-test("factory acceptance test passes all nine certification gates", () => {
+test("factory acceptance test passes all ten PMO certification gates", () => {
   bootstrapApp();
   try {
     const result = runFactoryAcceptanceTest();
     assert.equal(result.passed, true, JSON.stringify(result.certification.dimensions, null, 2));
     assert.equal(result.certification.certified, true);
     assert.equal(result.certification.review_verdict, "PASS");
-    assert.equal(result.certification.dimensions.length, 9);
+    assert.equal(result.certification.dimensions.length, 10);
     assert.ok(result.certification.dimensions.every((d) => d.status === "pass"));
   } finally {
     shutdownApp();
@@ -74,14 +74,14 @@ test("tampered package fails integrity verification", () => {
   }
 });
 
-test("certifyFactory returns nine PMO gates", () => {
+test("certifyFactory returns ten PMO gates", () => {
   bootstrapApp();
   try {
     runFactoryAcceptanceTest();
     const report = certifyFactory();
     assert.equal(report.module_id, "factory");
-    assert.ok(report.dimensions.some((d) => d.dimension_id === "personal_data"));
-    assert.ok(report.dimensions.some((d) => d.dimension_id === "installer_repeatability"));
+    assert.ok(report.dimensions.some((d) => d.dimension_id === "empty_brain"));
+    assert.ok(report.dimensions.some((d) => d.dimension_id === "repeatability"));
   } finally {
     shutdownApp();
   }

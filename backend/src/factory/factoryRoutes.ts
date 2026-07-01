@@ -1,6 +1,18 @@
 import { Router } from "express";
 import type { FactoryPackage } from "@localbrain/shared";
+import { isModuleCertificationLocked } from "../buildState/v1CertificationRegistry.js";
 import { certifyFactory, runFactoryAcceptanceTest } from "./factoryCertificationEngine.js";
+import {
+  completeFirstLaunch,
+  generateInstallerArtifact,
+  getFactoryDistDir,
+  installFromArtifact,
+  loadPackageFromArtifact,
+  uninstallInstallation,
+  upgradeInstallation,
+  verifyInstallation,
+  verifyInstallerArtifact,
+} from "./factoryInstallerService.js";
 import {
   buildFactoryPackage,
   installFactoryPackage,
@@ -43,21 +55,21 @@ factoryRouter.get("/factory/manifest", (_req, res) => {
   });
 });
 
-/** Build sealed appliance package (Download). */
 factoryRouter.post("/factory/package/build", (_req, res) => {
   const pkg = buildFactoryPackage();
   const integrity = verifyPackageIntegrity(pkg);
   res.status(201).json({ package: pkg, integrity, observed_at: new Date().toISOString() });
 });
 
-/** Download latest package — same as build for v1 single-instance factory line. */
 factoryRouter.get("/factory/package/download", (_req, res) => {
   const pkg = buildFactoryPackage();
-  res.setHeader("Content-Disposition", `attachment; filename="localbrain-empty-institution-${pkg.structural_hash.slice(0, 8)}.json"`);
+  res.setHeader(
+    "Content-Disposition",
+    `attachment; filename="localbrain-empty-institution-${pkg.structural_hash.slice(0, 8)}.json"`,
+  );
   res.json(pkg);
 });
 
-/** Install sealed package (Install → Launch). */
 factoryRouter.post("/factory/package/install", (req, res) => {
   try {
     const pkg = req.body as FactoryPackage;
@@ -67,20 +79,105 @@ factoryRouter.post("/factory/package/install", (req, res) => {
       return;
     }
     const install = installFactoryPackage(pkg);
-    const certification = certifyFactory();
+    const certification = certifyFactory({ include_installer_flow: false });
     res.status(201).json({ install, certification, observed_at: new Date().toISOString() });
   } catch (e) {
     res.status(400).json({ error: e instanceof Error ? e.message : "Install failed" });
   }
 });
 
-/** PMO Factory certification — nine gates. */
-factoryRouter.get("/factory/certification", (_req, res) => {
-  res.json(certifyFactory());
+/** Slice 3 — generate native installer artifact on disk. */
+factoryRouter.post("/factory/installer/generate", (_req, res) => {
+  const result = generateInstallerArtifact();
+  const verification = verifyInstallerArtifact(result.artifact_dir);
+  res.status(201).json({
+    ...result,
+    dist_root: getFactoryDistDir(),
+    verification,
+    observed_at: new Date().toISOString(),
+  });
 });
 
-/** Full acceptance test: build → install → certify. */
-factoryRouter.post("/factory/acceptance-test", (_req, res) => {
-  const result = runFactoryAcceptanceTest();
-  res.status(result.passed ? 200 : 422).json(result);
+/** Slice 3 — install from artifact directory path. */
+factoryRouter.post("/factory/installer/install", (req, res) => {
+  try {
+    const artifactDir = String(req.body?.artifact_dir ?? "");
+    if (!artifactDir) {
+      res.status(400).json({ error: "artifact_dir required" });
+      return;
+    }
+    const record = installFromArtifact(artifactDir);
+    const verification = verifyInstallation(record.install_id);
+    res.status(201).json({ record, verification, observed_at: new Date().toISOString() });
+  } catch (e) {
+    res.status(400).json({ error: e instanceof Error ? e.message : "Install failed" });
+  }
+});
+
+factoryRouter.get("/factory/installer/verify/:installId", (req, res) => {
+  res.json(verifyInstallation(req.params.installId));
+});
+
+factoryRouter.post("/factory/installer/upgrade", (req, res) => {
+  try {
+    const installId = String(req.body?.install_id ?? "");
+    const artifactDir = String(req.body?.artifact_dir ?? "");
+    const record = upgradeInstallation(installId, artifactDir);
+    res.json({ record, observed_at: new Date().toISOString() });
+  } catch (e) {
+    res.status(400).json({ error: e instanceof Error ? e.message : "Upgrade failed" });
+  }
+});
+
+factoryRouter.post("/factory/installer/uninstall", (req, res) => {
+  const installId = String(req.body?.install_id ?? "");
+  res.json(uninstallInstallation(installId));
+});
+
+factoryRouter.post("/factory/installer/first-launch", (req, res) => {
+  try {
+    const installId = String(req.body?.install_id ?? "");
+    const state = completeFirstLaunch(installId);
+    res.json({ state, observed_at: new Date().toISOString() });
+  } catch (e) {
+    res.status(400).json({ error: e instanceof Error ? e.message : "First launch failed" });
+  }
+});
+
+/** PMO ten-gate Factory certification. */
+factoryRouter.get("/factory/certification", (_req, res) => {
+  res.json(certifyFactory({ include_installer_flow: true }));
+});
+
+factoryRouter.post("/factory/pmo-certification", (req, res) => {
+  const lock = req.body?.lock === true;
+  const report = certifyFactory({ include_installer_flow: true, lock_on_pass: lock });
+  res.status(report.certified ? 200 : 422).json({
+    ...report,
+    factory_locked: isModuleCertificationLocked("factory"),
+  });
+});
+
+factoryRouter.post("/factory/acceptance-test", (req, res) => {
+  const lock = req.body?.lock === true;
+  const result = runFactoryAcceptanceTest(lock);
+  res.status(result.passed ? 200 : 422).json({
+    ...result,
+    factory_locked: isModuleCertificationLocked("factory"),
+  });
+});
+
+/** Load package from generated artifact (for CLI / verification). */
+factoryRouter.get("/factory/installer/verify-artifact", (req, res) => {
+  const artifactDir = String(req.query.path ?? "");
+  if (!artifactDir) {
+    res.status(400).json({ error: "path query required" });
+    return;
+  }
+  try {
+    const pkg = loadPackageFromArtifact(artifactDir);
+    res.json({ valid: true, package_id: pkg.package_id, structural_hash: pkg.structural_hash });
+  } catch (e) {
+    res.status(400).json({ valid: false, error: e instanceof Error ? e.message : "Invalid" });
+  }
 });
