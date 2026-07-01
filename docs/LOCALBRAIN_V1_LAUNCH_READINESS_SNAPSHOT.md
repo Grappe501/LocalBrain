@@ -113,9 +113,9 @@ Critical path only:
 
 ## Next module
 
-**Executive Epistemology Convention — Session 2 (Memory Lifecycle)** ([MILESTONE-CON-S2](./burt_packets/MILESTONE-CON-S2.md) — open next)
+**Convention Session 3 — Recall** ([MILESTONE-CON-S3](./burt_packets/MILESTONE-CON-S3.md) — open next)
 
-Ontology contract: [CONVENTION-S1-ONTOLOGY_CONTRACT.md](./convention/CONVENTION-S1-ONTOLOGY_CONTRACT.md)
+Contracts: [S1 Ontology](./convention/CONVENTION-S1-ONTOLOGY_CONTRACT.md) · [S2 Lifecycle](./convention/CONVENTION-S2-MEMORY_LIFECYCLE_CONTRACT.md)
 
 ---
 

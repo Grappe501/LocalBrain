@@ -517,12 +517,61 @@ Convention may clarify · constrain · define — may NOT invent.
 | RO-CON-S1-001 | Session 2: full Memory lifecycle state machine + transition rules |
 | RO-CON-S1-002 | All Phase 2 engines declare ontology contract version in manifest |
 
+---
+
+### Convention Session 2 (Memory Lifecycle)
+
+| Field | Value |
+| ----- | ----- |
+| Date | 2026-07-01 — post Session 1 (`26cff40`) |
+| Type | Engineering contract |
+| Depends on | [Session 1 Ontology](./convention/CONVENTION-S1-ONTOLOGY_CONTRACT.md) |
+| Deliverable | [Memory Lifecycle Contract](./convention/CONVENTION-S2-MEMORY_LIFECYCLE_CONTRACT.md) |
+| Outcome | **Passed** — [Burt packet](./burt_packets/MILESTONE-CON-S2.md) |
+
+#### Findings log
+
+| ID | Finding | Contract read | Outcome | Notes |
+| -- | ------- | ------------- | ------- | ----- |
+| CON-S2-001 | Lifecycle state machine | Eight primary states + parallel Dismissed/Rejected/Superseded/Expired | **Resolved** | RO-CON-S1-001 closed |
+| CON-S2-002 | Forbidden transitions | No hard delete · no Referenced without Verified (unless provisional trace) | **Resolved** | Axiom 4 conservation enforced |
+| CON-S2-003 | Expiry semantics | Expiry = authority demotion · provenance preserved · re-verify path | **Resolved** | PR-S1-001 closed |
+| CON-S2-004 | Observation salience gate | capture · dismiss · defer · merge before Captured | **Resolved** | PR-S1-002 / CON-S1-002 closed |
+| CON-S2-005 | Required record fields | lifecycle_state + lineage + provisional flag extension | **Resolved** | CON-S1-010 closed |
+| CON-S2-006 | Domain TTL defaults | Dormant/archive thresholds per domain — configurable, state names frozen | **Clarification** | Executive domain shortest TTL — briefing synthesis |
+| CON-S2-007 | Audit hooks | memory.lifecycle events · trace links memory_id at reference time | **Resolved** | Session 3 recall builds on this |
+| CON-S2-008 | Forgotten semantics | Rare · explicit reason · terminal for authority · not erasure | **Resolved** | Aligns Factory no-delete-on-expiry rule |
+
+#### Session 2 gate
+
+- [x] State machine + transition rules frozen
+- [x] Audit hooks defined
+- [x] Session 1 open questions closed (CON-S1-010 · RO-CON-S1-001)
+- [x] No invented objects
+- [x] Success test: interoperable lifecycle — **pass**
+
+| Outcome type | Count |
+| ------------ | ----- |
+| Resolved | 6 |
+| Clarification | 1 |
+| Open Question | 0 |
+| Invention | **0** |
+
+#### Convention obligations (from Session 2)
+
+| ID | Obligation |
+| -- | ---------- |
+| RO-CON-S2-001 | Session 3: recall explainability contract on lifecycle-aware ranking |
+| RO-CON-S2-002 | Memory OS manifest declares `convention_contract: CON-S2-2026-07` |
+
+---
+
 #### Convention planned sessions
 
 | Session | Topic | Status |
 | ------- | ----- | ------ |
 | CON-S1 | Ontology | ✅ |
-| CON-S2 | Memory Lifecycle | ⬜ |
+| CON-S2 | Memory Lifecycle | ✅ |
 | CON-S3 | Recall | ⬜ |
 | CON-S4 | Provenance | ⬜ |
 | CON-S5 | Ethics | ⬜ |
@@ -575,6 +624,7 @@ Amendments publish as v1.1, v1.2, … v1.0 text remains immutable. See [Falsific
 | E-PR-S5-2026 | adversarial review | 2026-06-30 | Skeptic Session 5 — 7 attack surfaces · 0 contradictions · RO-S5-001–007 | None — theory survived destruction attempts; commercial risks flagged |
 | E-PR-FREEZE-2026 | gate | 2026-06-30 | Five-session peer review complete · Pre-H-027 gate Q1–Q5 all yes · Theory v1.0 frozen | Canon locked — amendments v1.1+ only |
 | E-CON-S1-2026 | convention | 2026-07-01 | Session 1 Ontology — 12 terms frozen · 8 resolved · interoperable vocabulary | [Ontology Contract](./convention/CONVENTION-S1-ONTOLOGY_CONTRACT.md) |
+| E-CON-S2-2026 | convention | 2026-07-01 | Session 2 Memory Lifecycle — state machine · 6 resolved · audit hooks | [Lifecycle Contract](./convention/CONVENTION-S2-MEMORY_LIFECYCLE_CONTRACT.md) |
 | E-META-PR-2026 | meta-evidence | 2026-06-28 | Sessions 1–3 pattern: claim-type separation · emergent implementation style (local · incremental · versioned · event-aware · self-observing) | Review method taxonomy — not evidence theory is correct |
 
 ### Peer review progress (institutional memory)
