@@ -10,7 +10,7 @@
 | **002** | [Fact](./ENG-MEM-001.2-FACT.md) | **Preserve institutional knowledge** | Knowledge engineering | COMPLETE |
 | **003** | [Artifact](./ENG-MEM-001.3-ARTIFACT.md) | **Preserve evidence** | Evidence engineering | COMPLETE |
 | **004** | [Conversation](./ENG-MEM-001.4-CONVERSATION.md) | **Preserve interpretation** | Interpretation engineering | **COMPLETE** |
-| **005** | ENG-MEM-001.5 DecisionCitation | **Preserve exercised authority** | Governance engineering | Reserved |
+| **005** | [DecisionCitation](./slices/ENG-MEM-001.5-DECISIONCITATION.md) | **Preserve exercised authority** | Governance engineering | **AUTHORIZED** |
 
 Later intelligence layers consume these responsibilities — they do not redefine them.
 
@@ -125,6 +125,20 @@ Conversation  →  may inform  →  Fact
 ```
 
 Conversation is never a Fact — discussion does not become knowledge automatically.
+
+---
+
+## The Authority Principle (binding — Reference Slice 005 AUTHORIZED)
+
+> **Authority is exercised. It is never inferred.**
+
+DecisionCitation cites the Decision Ledger — binding authority remains in the ledger (MAR-1).
+
+### A17 — Authority Integrity (binding — reserved at authorization)
+
+Executive question: *Who exercised institutional authority?*
+
+Verify: authority explicit · delegation traceable · ledger citation immutable · supporting refs intact · no inferred authority.
 
 ---
 

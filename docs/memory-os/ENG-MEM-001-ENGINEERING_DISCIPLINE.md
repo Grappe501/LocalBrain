@@ -39,7 +39,8 @@
 | **ENG-MEM-001.1 Episode** | **Time** — explicit temporal bounds on what happened |
 | **ENG-MEM-001.2 Fact** | **Knowledge must never become detached from evidence** · **institutional acceptance, not objective truth** · **Reference Slice 002** |
 | **ENG-MEM-001.3 Artifact** | **Evidence only — never conclusions** · **Authenticity — never correction** · **A13 binding** · **Reference Slice 003** |
-| **ENG-MEM-001.4 Conversation** | **Context only — never revision** · **Sequence — meaning depends on order** · **Interpretation survives disagreement** · **Original wording canonical** · **A14–A16 binding** · **Reference Slice 004 COMPLETE** |
+| **ENG-MEM-001.4 Conversation** | **Context only — never revision** · **A14–A16** · **Reference Slice 004 COMPLETE** |
+| **ENG-MEM-001.5 DecisionCitation** | **Authority exercised — never inferred** · **Ledger boundary** · **A17 binding** · **Reference Slice 005 AUTHORIZED** |
 
 ---
 
@@ -263,6 +264,34 @@ See [Reference Slices](./slices/REFERENCE_SLICES.md) · [ENG-MEM-001.4 Conversat
 
 ---
 
+## The Authority Principle (binding — Reference Slice 005)
+
+**Constitutional statement:**
+
+> **Authority is exercised. It is never inferred.**
+
+DecisionCitation cites the Decision Ledger — it does not duplicate binding authority (MAR-1).
+
+**Executive question:** What decisions were exercised? — not what Intelligence believes was decided.
+
+### Ledger boundary (binding)
+
+```text
+Decision Ledger     →  binding authority
+DecisionCitation    →  memory citation only
+```
+
+### Reference relationship (binding)
+
+```text
+DecisionCitation  →  may reference  →  Episode · Artifact · Fact · Conversation
+DecisionCitation  →  never owns     →  Episode · Artifact · Fact · Conversation
+```
+
+See [Reference Slices](./slices/REFERENCE_SLICES.md) · [ENG-MEM-001.5 DecisionCitation](./slices/ENG-MEM-001.5-DECISIONCITATION.md) · [Deterministic Foundation Doctrine](./DETERMINISTIC-FOUNDATION-DOCTRINE.md).
+
+---
+
 ## Historical boundary
 
 ```text
@@ -340,7 +369,7 @@ Do not implement all object types simultaneously. Complete **one slice** — sch
 | 2 | ENG-MEM-001.2 | **Fact** | [Slice 2](./slices/ENG-MEM-001.2-FACT.md) | **Reference Slice 002** · COMPLETE |
 | 3 | ENG-MEM-001.3 | **Artifact** | [Slice 3](./slices/ENG-MEM-001.3-ARTIFACT.md) | **Reference Slice 003** · COMPLETE |
 | 4 | ENG-MEM-001.4 | **Conversation** + **ConversationTurn** | [Slice 4](./slices/ENG-MEM-001.4-CONVERSATION.md) | **Reference Slice 004** · COMPLETE |
-| 5 | ENG-MEM-001.5 | **DecisionCitation** | Decision Ledger boundary · no duplicated authority |
+| 5 | ENG-MEM-001.5 | **DecisionCitation** | [Slice 5](./slices/ENG-MEM-001.5-DECISIONCITATION.md) | **Reference Slice 005** · AUTHORIZED |
 
 Remaining registry types (Skill, Relationship, Preference, Project, Organization, Task, Goal, Identity, DelegationGrant) follow in subsequent slices or Wave 1 extensions — **only after** slices 1–5 pass acceptance.
 
@@ -356,7 +385,7 @@ Slice
 ├── Charter                    slices/ENG-MEM-001.N-*.md
 ├── Specification References   anchors in charter
 ├── Engineering Decision Record  slices/ENG-MEM-001.N-EDR.md (when needed)
-├── Acceptance Checklist       A1–A11 universal · A12 knowledge · A13 evidence · A14–A16 Conversation
+├── Acceptance Checklist       A1–A11 universal · A12 knowledge · A13 evidence · A14–A16 Conversation · A17 DecisionCitation
 ├── Implementation             backend/src/memory/ …
 ├── Tests                      *.test.ts colocated
 ├── Close-out Report           slices/ENG-MEM-001.N-SLICE_CLOSEOUT.md

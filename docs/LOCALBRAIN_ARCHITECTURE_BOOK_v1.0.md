@@ -255,6 +255,47 @@ When you delegate, you do not become someone else. You issue a bounded grant —
 
 ---
 
+## Deterministic Foundation Doctrine
+
+LocalBrain is not deterministic end-to-end. It is **built on a deterministic foundation that enables explainable intelligence**.
+
+Wave 1 canonical storage — Episode, Fact, Artifact, Conversation, DecisionCitation — shares one property: given the same inputs, the substrate always produces the same outputs. Nothing is probabilistic at the memory layer. Nothing is inferred. Nothing is generated.
+
+Executive Intelligence (Wave 3+) may be probabilistic. It may hypothesize, recommend, plan, and summarize. Those outputs are **consumers** of deterministic substrates — never replacements for them.
+
+```text
+The deterministic substrate is constitutional.
+Executive Intelligence is advisory.
+
+Executive Intelligence may reason.
+It may recommend.
+It may hypothesize.
+It may plan.
+
+It may never rewrite the deterministic substrate.
+```
+
+Two foundations must never be confused:
+
+| Foundation | Question |
+| ---------- | -------- |
+| Deterministic Memory | What exists? |
+| Probabilistic Intelligence | What might this mean? |
+
+Most AI products stack everything on the model. LocalBrain stacks institution first:
+
+```text
+Institution → Memory → Evidence → Knowledge → Interpretation → Authority → Executive Intelligence
+```
+
+When the LLM changes, Memory does not change. Only the reasoning layer changes. That is intentional.
+
+> **AI should not be the memory of an institution. AI should reason over the institution's deterministic memory.**
+
+Full doctrine: [Deterministic Foundation Doctrine](./memory-os/DETERMINISTIC-FOUNDATION-DOCTRINE.md) · [ENG-MEM-001 Wave 1](./memory-os/ENG-MEM-001-WAVE1-CHARTER.md).
+
+---
+
 # Part VI — Becoming a Chief of Staff
 
 ## Emergence, not feature flag
@@ -425,6 +466,7 @@ None of this requires Memory to become "more AI." It requires Memory to remain *
 | Factory manufacturing law | [FACTORY_CONSTITUTION_v1.0.md](./factory/FACTORY_CONSTITUTION_v1.0.md) |
 | Convention close | [CONVENTION-CLOSE.md](./convention/CONVENTION-CLOSE.md) |
 | Memory OS specification | [memory-os/README.md](./memory-os/README.md) |
+| Deterministic foundation | [DETERMINISTIC-FOUNDATION-DOCTRINE.md](./memory-os/DETERMINISTIC-FOUNDATION-DOCTRINE.md) |
 | Memory freeze evidence | `E-MEM-FREEZE-2026` · tag `memory-spec-v1.0` |
 | Four platform systems | [LOCALBRAIN_FOUR_SYSTEMS.md](./LOCALBRAIN_FOUR_SYSTEMS.md) |
 | Institution model | [LOCALBRAIN_EXECUTIVE_INSTITUTION_MODEL.md](./LOCALBRAIN_EXECUTIVE_INSTITUTION_MODEL.md) |

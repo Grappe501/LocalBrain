@@ -33,12 +33,14 @@ Artifact  → Evidence
 Fact      → Knowledge
 ```
 
-Conversation (Reference Slice 004 — **COMPLETE**) established **interpretation**. DecisionCitation adds **authority**.
+Conversation (Reference Slice 004 — **COMPLETE**) established **interpretation**. DecisionCitation (Reference Slice 005 — **AUTHORIZED**) completes **authority** at acceptance.
 
 ```text
 Conversation     → Interpretation   (complete · Ref 004)
-DecisionCitation → Authority        (awaiting PMO authorization)
+DecisionCitation → Authority        (authorized · Ref 005)
 ```
+
+Deterministic substrate doctrine: [DETERMINISTIC-FOUNDATION-DOCTRINE.md](./DETERMINISTIC-FOUNDATION-DOCTRINE.md)
 
 ---
 

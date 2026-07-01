@@ -27,6 +27,7 @@ ENG-MEM-001 Wave 1 — canonical storage slices. Reference implementation: [ENG-
 | Document | Purpose |
 | -------- | ------- |
 | [Wave 1 Charter](./ENG-MEM-001-WAVE1-CHARTER.md) | MEM-009 Pass 1 scope |
+| [Deterministic Foundation Doctrine](./DETERMINISTIC-FOUNDATION-DOCTRINE.md) | Constitutional substrate vs advisory Intelligence |
 | [Engineering Discipline](./ENG-MEM-001-ENGINEERING_DISCIPLINE.md) | Spec-traceable commits · slice order |
 | [Wave 1 Slices](./slices/README.md) | Episode · Fact · Artifact · Conversation · DecisionCitation |
 
@@ -81,7 +82,7 @@ ENG-MEM-001 Wave 1 — canonical storage slices. Reference implementation: [ENG-
 ✓ ENG-MEM-001.2 Fact — Reference Slice 002 · 22/22 PASS
 ✓ ENG-MEM-001.3 Artifact — Reference Slice 003 · 17/17 PASS
 ✓ ENG-MEM-001.4 Conversation — Reference Slice 004 · 16/16 PASS
-▶ ENG-MEM-001.5 DecisionCitation — Wave 1 slice 5/5 (awaiting PMO authorization)
+▶ ENG-MEM-001.5 DecisionCitation — Wave 1 slice 5/5 (**AUTHORIZED** · Reference Slice 005 · completes Institutional Cognition Foundation)
 ```
 
 ---

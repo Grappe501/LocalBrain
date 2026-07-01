@@ -6,7 +6,7 @@
 > **Objects:** Conversation · ConversationTurn (child)  
 > **Closeout:** [ENG-MEM-001.4-SLICE_CLOSEOUT.md](./ENG-MEM-001.4-SLICE_CLOSEOUT.md)  
 > **Ceremony:** [ENG-PMO-003](../ENG-PMO-003-CONVERSATION-CEREMONY.md)  
-> **Unblocks:** ENG-MEM-001.5 DecisionCitation (awaiting PMO authorization)
+> **Unblocks:** [ENG-MEM-001.5 DecisionCitation](./ENG-MEM-001.5-DECISIONCITATION.md) — **AUTHORIZED**
 
 ```text
 Reference Implementation (engineering discipline)
