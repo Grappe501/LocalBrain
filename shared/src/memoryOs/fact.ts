@@ -15,6 +15,14 @@ export type Fact = {
   confidence: TrustEnvelope;
   valid_from?: string;
   valid_until?: string;
+  /** Newer fact that replaced this one (lineage — set on superseded record). */
+  superseded_by?: string;
+  /** When authority transferred to `superseded_by` (TIME_MODEL). */
+  superseded_at?: string;
+  /** Prior fact this record replaces (lineage — set on correcting record). */
+  supersedes?: string;
+  /** Required when `supersedes` is set — chain integrity (TIME_MODEL). */
+  supersession_reason?: string;
   lifecycle_state: LifecycleState;
   provenance: MemoryProvenanceEnvelope;
   event_at: string;
@@ -32,6 +40,10 @@ export const FACT_FIELD_KEYS = [
   "confidence",
   "valid_from",
   "valid_until",
+  "superseded_by",
+  "superseded_at",
+  "supersedes",
+  "supersession_reason",
   "lifecycle_state",
   "provenance",
   "event_at",

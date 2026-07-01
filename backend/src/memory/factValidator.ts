@@ -9,6 +9,8 @@ import {
   type LifecycleState,
 } from "@localbrain/shared";
 
+import { validateFactLineageFields } from "./factLineage.js";
+
 export class FactValidationError extends Error {
   readonly field: string;
 
@@ -103,7 +105,17 @@ export function validateFactRecord(value: unknown): Fact {
   }
 
   for (const key of FACT_FIELD_KEYS) {
-    if (key === "object_ref" || key === "valid_from" || key === "valid_until") continue;
+    if (
+      key === "object_ref" ||
+      key === "valid_from" ||
+      key === "valid_until" ||
+      key === "superseded_by" ||
+      key === "superseded_at" ||
+      key === "supersedes" ||
+      key === "supersession_reason"
+    ) {
+      continue;
+    }
     if (!(key in obj)) {
       throw new FactValidationError(key, "required field missing");
     }
@@ -132,6 +144,7 @@ export function validateFactRecord(value: unknown): Fact {
   }
   validateTrustEnvelope(obj.confidence, "confidence");
   validateValidityInterval(obj.valid_from, obj.valid_until);
+  validateFactLineageFields(obj);
   if (typeof obj.lifecycle_state !== "string" || !obj.lifecycle_state.trim()) {
     throw new FactValidationError("lifecycle_state", "required");
   }

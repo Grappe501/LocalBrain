@@ -65,12 +65,27 @@ export function updateFactLifecycleState(
   getDatabase()
     .prepare(
       `UPDATE memory_facts
-       SET lifecycle_state = ?, lifecycle_updated_at = ?
+       SET lifecycle_state = ?, payload_json = ?, lifecycle_updated_at = ?
        WHERE fact_id = ?`,
     )
-    .run(nextState, lifecycleUpdatedAt, factId);
+    .run(nextState, serializeFact(updated), lifecycleUpdatedAt, factId);
 
   return updated;
+}
+
+export function persistFactRecord(fact: Fact): void {
+  getDatabase()
+    .prepare(
+      `UPDATE memory_facts
+       SET lifecycle_state = ?, payload_json = ?, lifecycle_updated_at = ?
+       WHERE fact_id = ?`,
+    )
+    .run(
+      fact.lifecycle_state,
+      serializeFact(fact),
+      fact.superseded_at ?? new Date().toISOString(),
+      fact.fact_id,
+    );
 }
 
 /** Payload body is append-only — only lifecycle_state may change after insert. */

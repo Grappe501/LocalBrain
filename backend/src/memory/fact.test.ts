@@ -20,7 +20,8 @@ import {
   transitionFactLifecycle,
   verifyFact,
 } from "./factService.js";
-import { writeFact } from "./writePipeline.js";
+import { assertFactBodyUnchanged, FactContentMutationError } from "./factLineage.js";
+import { writeFact, writeFactSupersession } from "./writePipeline.js";
 
 function sampleCreateInput() {
   return {
@@ -165,7 +166,7 @@ test("ENG-MEM-001.2.1 time model — event_at, created_at, validity window", () 
   }
 });
 
-test("ENG-MEM-001.2.1 canonical Fact exists independently — no graph or lineage fields", () => {
+test("ENG-MEM-001.2.1 canonical Fact exists independently — lineage fields optional until supersession", () => {
   bootstrapApp();
   try {
     const { fact } = writeFact({
@@ -180,8 +181,142 @@ test("ENG-MEM-001.2.1 canonical Fact exists independently — no graph or lineag
     });
     assert.ok(fact.fact_id);
     assert.equal(fact.object_ref, undefined);
+    assert.equal(fact.supersedes, undefined);
+    assert.throws(
+      () => validateFactRecord({ ...fact, derived_from_episode: "EP-001" }),
+      FactValidationError,
+    );
     assert.throws(
       () => validateFactRecord({ ...fact, superseded_by: "other-fact" }),
+      FactValidationError,
+    );
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-MEM-001.2.2 supersession — Fact A superseded_by Fact B, append-only correction", () => {
+  bootstrapApp();
+  try {
+    const actor = { identity_id: "ID-executive-001", identity_kind: "executive" };
+    const { fact: factA } = writeFact({
+      ...sampleCreateInput(),
+      statement: "Volunteer training is in progress.",
+      object_ref: "status:in_progress",
+    });
+    verifyFact(factA.fact_id, actor);
+
+    const { prior, successor } = writeFactSupersession({
+      prior_fact_id: factA.fact_id,
+      reason: "Training completion verified by program lead.",
+      actor,
+      correction: {
+        ...sampleCreateInput(),
+        statement: "Volunteer training is complete.",
+        object_ref: "status:complete",
+        event_at: "2026-07-02T16:00:00.000Z",
+        valid_from: "2026-07-02T16:00:00.000Z",
+      },
+    });
+
+    assert.equal(prior.fact_id, factA.fact_id);
+    assert.equal(prior.lifecycle_state, "Superseded");
+    assert.equal(prior.superseded_by, successor.fact_id);
+    assert.ok(prior.superseded_at);
+    assert.equal(successor.supersedes, factA.fact_id);
+    assert.equal(successor.supersession_reason, "Training completion verified by program lead.");
+    assert.equal(successor.statement, "Volunteer training is complete.");
+
+    const loadedA = getFactById(factA.fact_id);
+    const loadedB = getFactById(successor.fact_id);
+    assert.ok(loadedA);
+    assert.ok(loadedB);
+    assert.equal(loadedA!.superseded_by, loadedB!.fact_id);
+    assert.equal(loadedB!.supersedes, loadedA!.fact_id);
+    assert.equal(getFactPayloadRevisionCount(factA.fact_id), 1);
+    assert.equal(getFactPayloadRevisionCount(successor.fact_id), 1);
+    assert.equal(countAuditEventsForObject("Fact", factA.fact_id), 3);
+    assert.equal(countAuditEventsForObject("Fact", successor.fact_id), 1);
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-MEM-001.2.2 rejects in-place statement mutation", () => {
+  bootstrapApp();
+  try {
+    const { fact } = writeFact(sampleCreateInput());
+    const mutated = { ...fact, statement: "Changed in place." };
+    assert.throws(
+      () => assertFactBodyUnchanged(fact, mutated),
+      FactContentMutationError,
+    );
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-MEM-001.2.2 rejects supersession without reason", () => {
+  bootstrapApp();
+  try {
+    const actor = { identity_id: "ID-executive-001", identity_kind: "executive" };
+    const { fact } = writeFact(sampleCreateInput());
+    verifyFact(fact.fact_id, actor);
+    assert.throws(
+      () =>
+        writeFactSupersession({
+          prior_fact_id: fact.fact_id,
+          reason: "   ",
+          actor,
+          correction: sampleCreateInput(),
+        }),
+      FactValidationError,
+    );
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-MEM-001.2.2 rejects double supersession", () => {
+  bootstrapApp();
+  try {
+    const actor = { identity_id: "ID-executive-001", identity_kind: "executive" };
+    const { fact } = writeFact(sampleCreateInput());
+    verifyFact(fact.fact_id, actor);
+    writeFactSupersession({
+      prior_fact_id: fact.fact_id,
+      reason: "First correction.",
+      actor,
+      correction: { ...sampleCreateInput(), statement: "First correction fact." },
+    });
+    assert.throws(
+      () =>
+        writeFactSupersession({
+          prior_fact_id: fact.fact_id,
+          reason: "Second correction.",
+          actor,
+          correction: { ...sampleCreateInput(), statement: "Second correction fact." },
+        }),
+      FactValidationError,
+    );
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-MEM-001.2.2 requires Verified prior fact before supersession", () => {
+  bootstrapApp();
+  try {
+    const actor = { identity_id: "ID-executive-001", identity_kind: "executive" };
+    const { fact } = writeFact(sampleCreateInput());
+    assert.throws(
+      () =>
+        writeFactSupersession({
+          prior_fact_id: fact.fact_id,
+          reason: "Too early.",
+          actor,
+          correction: sampleCreateInput(),
+        }),
       FactValidationError,
     );
   } finally {
