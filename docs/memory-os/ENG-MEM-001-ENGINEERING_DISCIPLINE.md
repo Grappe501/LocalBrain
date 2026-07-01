@@ -6,7 +6,7 @@
 
 > **Principle:** Every object must be valuable before intelligence touches it — valid, traceable, explainable, auditable, and reconstructable even if the Intelligence layer were completely disabled.
 
-> **Gold standard:** [ENG-MEM-001.1 Episode](./slices/ENG-MEM-001.1-EPISODE.md) — **Reference Slice 001** (engineering discipline). [ENG-MEM-001.2 Fact](./slices/ENG-MEM-001.2-FACT.md) — **Reference Slice 002** (knowledge engineering).
+> **Gold standard:** [Reference Slices](./slices/REFERENCE_SLICES.md) — **001** [Episode](./slices/ENG-MEM-001.1-EPISODE.md) (engineering discipline) · **002** [Fact](./slices/ENG-MEM-001.2-FACT.md) (knowledge engineering) · **003** [Artifact](./slices/ENG-MEM-001.3-ARTIFACT.md) (evidence engineering)
 
 > **Atomic units (binding):**
 > ```text
@@ -38,7 +38,7 @@
 | ----- | ----------- |
 | **ENG-MEM-001.1 Episode** | **Time** — explicit temporal bounds on what happened |
 | **ENG-MEM-001.2 Fact** | **Knowledge must never become detached from evidence** · **institutional acceptance, not objective truth** · **Reference Slice 002** |
-| **ENG-MEM-001.3 Artifact** | **Evidence only — never conclusions** · **Authenticity — never correction** · **A13 binding** |
+| **ENG-MEM-001.3 Artifact** | **Evidence only — never conclusions** · **Authenticity — never correction** · **A13 binding** · **Reference Slice 003** |
 
 ---
 
@@ -289,7 +289,7 @@ Do not implement all object types simultaneously. Complete **one slice** — sch
 | ----- | -- | ------ | ------- |
 | 1 | ENG-MEM-001.1 | **Episode** | [Slice 1](./slices/ENG-MEM-001.1-EPISODE.md) | **Reference Slice 001** · COMPLETE |
 | 2 | ENG-MEM-001.2 | **Fact** | [Slice 2](./slices/ENG-MEM-001.2-FACT.md) | **Reference Slice 002** · COMPLETE |
-| 3 | ENG-MEM-001.3 | **Artifact** | [Slice 3](./slices/ENG-MEM-001.3-ARTIFACT.md) | **Authorized** |
+| 3 | ENG-MEM-001.3 | **Artifact** | [Slice 3](./slices/ENG-MEM-001.3-ARTIFACT.md) | **Reference Slice 003** · COMPLETE |
 | 4 | ENG-MEM-001.4 | **Conversation** + **ConversationTurn** | attribution · chronology |
 | 5 | ENG-MEM-001.5 | **DecisionCitation** | Decision Ledger boundary · no duplicated authority |
 
@@ -343,6 +343,16 @@ Mirror PMO discipline: **binary pass/fail**. A slice does not start until the pr
 A12 is **binding platform philosophy** for knowledge — reconstruction, not interpretation. Fact implemented it in Wave 1 (`explainFactFromSubstrate`).
 
 A13 is **binding platform philosophy** for evidence — preservation, not correction. Artifact implements it in Wave 1.
+
+### Custody vs authenticity (Artifact — binding)
+
+> **Custody records stewardship — not authenticity.**
+
+```text
+Authenticity survives custody.
+```
+
+Custody events are append-only stewardship records. They never mutate Artifact body fields (`uri`, `content_ref`, `content_hash`, provenance).
 
 Record results in the slice document before opening the next slice.
 

@@ -41,6 +41,18 @@ export function migrateMemoryTables(): void {
     CREATE INDEX IF NOT EXISTS idx_memory_artifacts_domain ON memory_artifacts(domain);
     CREATE INDEX IF NOT EXISTS idx_memory_artifacts_lifecycle ON memory_artifacts(lifecycle_state);
 
+    CREATE TABLE IF NOT EXISTS memory_artifact_custody_events (
+      custody_event_id TEXT PRIMARY KEY,
+      artifact_id TEXT NOT NULL,
+      custody_event TEXT NOT NULL,
+      payload_json TEXT NOT NULL,
+      event_at TEXT NOT NULL,
+      recorded_at TEXT NOT NULL
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_memory_artifact_custody_artifact
+      ON memory_artifact_custody_events(artifact_id, event_at);
+
     CREATE TABLE IF NOT EXISTS memory_audit_events (
       audit_id INTEGER PRIMARY KEY AUTOINCREMENT,
       event_type TEXT NOT NULL,

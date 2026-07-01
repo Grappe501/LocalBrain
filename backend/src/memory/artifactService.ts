@@ -20,6 +20,7 @@ import {
   buildMemoryProvenanceEnvelope,
   MEMORY_AUDIT_OBJECT_ARTIFACT,
 } from "./provenanceEnvelope.js";
+import { recordInitialArtifactCustody } from "./artifactCustodyService.js";
 
 export type CreateArtifactInput = {
   domain: MemoryDomain;
@@ -78,6 +79,12 @@ export function createArtifact(input: CreateArtifactInput): Artifact {
       engine: "ENG-MEM-001",
     },
   });
+
+  recordInitialArtifactCustody(
+    artifact.artifact_id,
+    input.captured_by,
+    input.event_at,
+  );
 
   return artifact;
 }

@@ -22,7 +22,13 @@ import {
   transitionArtifactLifecycle,
   verifyArtifact,
 } from "./artifactService.js";
-import { writeArtifact } from "./writePipeline.js";
+import {
+  readArtifactCustodyChain,
+  writeArtifact,
+  writeArtifactCustodyTransfer,
+} from "./writePipeline.js";
+import { countArtifactCustodyEvents } from "./artifactCustodyStore.js";
+import { ArtifactCustodyValidationError, validateArtifactCustodyEvent } from "./artifactCustodyValidator.js";
 
 const SAMPLE_HASH =
   "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
@@ -72,6 +78,11 @@ test("ENG-MEM-001.3.1 create Artifact — schema, provenance, lifecycle Captured
     assert.ok(loaded);
     assert.ok(artifactsEquivalent(artifact, loaded!));
     assert.equal(countAuditEventsForObject("Artifact", artifact.artifact_id), 1);
+    assert.equal(countArtifactCustodyEvents(artifact.artifact_id), 1);
+    const { chain } = readArtifactCustodyChain(artifact.artifact_id);
+    assert.equal(chain.length, 1);
+    assert.equal(chain[0]!.custody_event, "initial_custody");
+    assert.equal(chain[0]!.new_custodian?.identity_id, "ID-executive-001");
   } finally {
     shutdownApp();
   }
@@ -262,6 +273,110 @@ test("ENG-MEM-001.3.1 artifact_id identity survives uri change concept — id no
     assert.notEqual(first.artifact_id, second.artifact_id);
     assert.notEqual(first.artifact_id, first.uri);
     assert.notEqual(second.artifact_id, second.uri);
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-MEM-001.3.2 initial custody — actor, timestamp, custodian on create", () => {
+  bootstrapApp();
+  try {
+    const { artifact } = writeArtifact(sampleContentRefInput());
+    const { chain } = readArtifactCustodyChain(artifact.artifact_id);
+    assert.equal(chain.length, 1);
+    const initial = chain[0]!;
+    assert.equal(initial.custody_event, "initial_custody");
+    assert.equal(initial.actor.identity_id, "ID-executive-001");
+    assert.equal(initial.event_at, "2026-07-01T12:30:00.000Z");
+    assert.equal(initial.previous_custodian, null);
+    assert.equal(initial.new_custodian?.identity_id, "ID-executive-001");
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-MEM-001.3.2 custody transfer — chain, actor attribution, reason", () => {
+  bootstrapApp();
+  try {
+    const { artifact } = writeArtifact(sampleUriInput());
+    const custodianA = { identity_id: "ID-executive-001", identity_kind: "executive" };
+    const custodianB = { identity_id: "ID-archivist-002", identity_kind: "staff" };
+
+    const { custody_event } = writeArtifactCustodyTransfer({
+      artifact_id: artifact.artifact_id,
+      actor: custodianA,
+      event_at: "2026-07-02T09:00:00.000Z",
+      previous_custodian: custodianA,
+      new_custodian: custodianB,
+      reason: "Transferred to archival storage",
+    });
+
+    assert.equal(custody_event.custody_event, "transfer");
+    assert.equal(custody_event.reason, "Transferred to archival storage");
+
+    const { chain } = readArtifactCustodyChain(artifact.artifact_id);
+    assert.equal(chain.length, 2);
+    assert.equal(chain[1]!.previous_custodian?.identity_id, "ID-executive-001");
+    assert.equal(chain[1]!.new_custodian?.identity_id, "ID-archivist-002");
+    assert.equal(chain[1]!.actor.identity_id, "ID-executive-001");
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-MEM-001.3.2 authenticity survives custody — artifact body unchanged after transfer", () => {
+  bootstrapApp();
+  try {
+    const { artifact } = writeArtifact(sampleContentRefInput());
+    const before = getArtifactById(artifact.artifact_id)!;
+
+    writeArtifactCustodyTransfer({
+      artifact_id: artifact.artifact_id,
+      actor: { identity_id: "ID-executive-001", identity_kind: "executive" },
+      event_at: "2026-07-02T10:00:00.000Z",
+      previous_custodian: { identity_id: "ID-executive-001", identity_kind: "executive" },
+      new_custodian: { identity_id: "ID-archivist-002", identity_kind: "staff" },
+    });
+
+    const after = getArtifactById(artifact.artifact_id)!;
+    assert.ok(artifactsEquivalent(before, after));
+    assert.equal(artifactContentFingerprint(before), artifactContentFingerprint(after));
+    assert.equal(before.content_hash, after.content_hash);
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-MEM-001.3.2 custody validator rejects unknown fields", () => {
+  bootstrapApp();
+  try {
+    const { chain } = readArtifactCustodyChain(writeArtifact(sampleUriInput()).artifact.artifact_id);
+    const malformed = { ...chain[0], evaluation_score: 0.95 };
+    assert.throws(
+      () => validateArtifactCustodyEvent(malformed),
+      (err: unknown) =>
+        err instanceof ArtifactCustodyValidationError && err.field === "evaluation_score",
+    );
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-MEM-001.3.2 transfer rejects mismatched previous custodian", () => {
+  bootstrapApp();
+  try {
+    const { artifact } = writeArtifact(sampleUriInput());
+    assert.throws(
+      () =>
+        writeArtifactCustodyTransfer({
+          artifact_id: artifact.artifact_id,
+          actor: { identity_id: "ID-executive-001", identity_kind: "executive" },
+          event_at: "2026-07-02T11:00:00.000Z",
+          previous_custodian: { identity_id: "ID-wrong-999", identity_kind: "staff" },
+          new_custodian: { identity_id: "ID-archivist-002", identity_kind: "staff" },
+        }),
+      /previous_custodian must match current custodian/,
+    );
   } finally {
     shutdownApp();
   }

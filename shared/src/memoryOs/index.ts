@@ -5,3 +5,4 @@ export * from "./episode.js";
 export * from "./memoryRef.js";
 export * from "./fact.js";
 export * from "./artifact.js";
+export * from "./artifactCustody.js";

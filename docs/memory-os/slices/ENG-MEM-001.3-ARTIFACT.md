@@ -1,16 +1,21 @@
 # ENG-MEM-001.3 — Artifact (Slice 3)
 
-> **Status:** **001.3.1 complete** — canonical storage implemented · PMO acceptance pending  
+> **Status:** **COMPLETE** — PMO accepted 2026-07-01 · **Reference Slice 003** (evidence engineering)  
 > **Wave:** 1 · Canonical Storage  
+> **Designation:** **Reference Slice 003** — follow Artifact for all future **evidence engineering**  
 > **Object:** Artifact — canonical evidence record  
-> **Blocks:** ENG-MEM-001.4 (Conversation)
+> **Index:** [Reference Slices](./REFERENCE_SLICES.md)  
+> **Unblocks:** ENG-MEM-001.4 Conversation (when chartered)
 
 ```text
 Reference Implementation (engineering discipline)
-ENG-MEM-001.1 Episode
+ENG-MEM-001.1 Episode — Reference Slice 001
 
 Reference Implementation (knowledge engineering — where applicable)
-ENG-MEM-001.2 Fact
+ENG-MEM-001.2 Fact — Reference Slice 002
+
+Reference Implementation (evidence engineering)
+ENG-MEM-001.3 Artifact — Reference Slice 003
 
 Specification Fidelity
 Required (100% or Not Accepted)
@@ -110,7 +115,14 @@ Fact sits **between** evidence and discussion — institutional knowledge ground
 
 Wave 1 **implementation** order (001.1 → 001.5) remains binding; the progression above is the **epistemic** model.
 
-### Executive questions
+### Executive questions (Artifact)
+
+| Concern | Executive question |
+| ------- | ------------------ |
+| **A13 Authenticity** | Can we still show exactly what we preserved? |
+| **Chain of custody** | Who has been responsible for preserving it? |
+
+One concerns the evidence itself. The other concerns stewardship.
 
 | Object | Executive question |
 | ------ | ------------------ |
@@ -219,6 +231,39 @@ A13 is the evidence counterpart to A12: Facts reconstruct understanding; Artifac
 
 ---
 
+## Chain of Custody (binding — 001.3.2)
+
+> **Custody records stewardship — not authenticity.**
+
+| Concern | Question |
+| ------- | -------- |
+| **Authenticity (A13)** | Is this the preserved evidence? |
+| **Custody** | Who has been responsible for it over time? |
+
+### Authenticity survives custody (binding)
+
+```text
+Authenticity survives custody.
+```
+
+An Artifact can change custodians one hundred times. Its authenticity does not change. Custody events are append-only and never mutate the Artifact body.
+
+### Custody records only
+
+| Field | Rule |
+| ----- | ---- |
+| `actor` | Who recorded the custody event |
+| `event_at` | When the stewardship change occurred |
+| `recorded_at` | When the event was persisted |
+| `custody_event` | `initial_custody` · `transfer` · `release` |
+| `previous_custodian` | Prior steward (null on initial) |
+| `new_custodian` | Successor steward (null on release) |
+| `reason` | Optional — when applicable |
+
+No interpretation · no evaluation · no evidence scoring.
+
+---
+
 ## Engineering invariants (Artifact)
 
 | Invariant | Rule |
@@ -236,10 +281,27 @@ A13 is the evidence counterpart to A12: Facts reconstruct understanding; Artifac
 
 | Commit | Scope |
 | ------ | ----- |
-| **001.3.1** | Canonical Artifact storage — schema · validation · persistence · S4 · lifecycle · identity · content hash (where applicable) · immutable preservation |
-| **001.3.2+** | As charter acceptance requires — chain-of-custody verification · A13 test harness |
+| **001.3.1** | Canonical Artifact storage — schema · validation · persistence · S4 · lifecycle · identity · content hash · immutable preservation · **COMPLETE** (`72d376d`) |
+| **001.3.2** | Chain of custody — append-only custody events · actor · timestamps · transfer validation · authenticity invariant |
 
 Keep each commit substrate-only — same discipline as Fact 001.2.1–001.2.4.
+
+### 001.3.2 scope (binding)
+
+**Deliver only:**
+
+- Append-only custody event substrate (`ArtifactCustodyEvent`)
+- Initial custody on capture
+- Transfer custody with previous/new custodian validation
+- Actor attribution · timestamps · optional reason
+- `Authenticity survives custody` invariant enforced in service layer
+
+**Explicitly exclude:**
+
+- OCR · indexing · extraction · search · AI
+- Evidence scoring · evaluation · interpretation
+
+---
 
 ### 001.3.1 scope (binding)
 
@@ -269,8 +331,20 @@ Keep each commit substrate-only — same discipline as Fact 001.2.1–001.2.4.
 - [x] `content_hash` when `content_ref` present (A13)  
 - [x] S2 lifecycle + S4 provenance (Episode/Fact patterns)  
 - [x] Persistence + append-only + authenticity invariants  
-- [x] Tests — 12/12 PASS (`artifact.test.ts`)  
-- [ ] Closeout with **Specification Fidelity: 100%**
+- [x] Tests — 17/17 PASS (`artifact.test.ts` — 001.3.1 + 001.3.2)  
+- [x] Slice closeout — **Specification Fidelity: 100%** · Reference Slice 003
+
+### PMO acceptance — 001.3.2
+
+```text
+ENG-MEM-001.3.2 Artifact Chain of Custody
+Tests:                  17/17 PASS
+Specification Fidelity: 100%
+Architectural Drift:    NONE
+STATUS:                 COMPLETE
+```
+
+**Slice result:** **COMPLETE** — Reference Slice 003 · 17/17 tests · PMO accepted 2026-07-01
 
 ---
 
@@ -291,8 +365,9 @@ Keep each commit substrate-only — same discipline as Fact 001.2.1–001.2.4.
 | A11 | No intelligence logic | PASS | |
 | A12 | Explainability | N/A | Knowledge objects — Artifact uses A13 |
 | A13 | **Authenticity** | PASS | 001.3.1 — identity · hash · immutability |
+| Custody | **Stewardship** | PASS | 001.3.2 — chain of custody · authenticity survives custody |
 
-**Slice result:** 001.3.1 engineering complete — 12/12 tests · slice closeout pending
+**Slice result:** **COMPLETE** — Reference Slice 003 · PMO accepted · 17/17 tests
 
 ---
 
