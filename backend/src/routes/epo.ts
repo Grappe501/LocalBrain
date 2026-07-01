@@ -16,7 +16,15 @@ epoRouter.get("/epo/readiness", (_req, res) => {
 
 epoRouter.get("/epo/overview", (_req, res) => {
   res.set("Cache-Control", "no-store, no-cache, must-revalidate");
-  res.json(getEpoOverview());
+  try {
+    res.json(getEpoOverview());
+  } catch (err) {
+    console.error("[epo/overview]", err);
+    res.status(500).json({
+      error: err instanceof Error ? err.message : "EPO overview failed",
+      engine_id: "ENG-BLD-001",
+    });
+  }
 });
 
 epoRouter.get("/epo/slices/:id", (req, res) => {

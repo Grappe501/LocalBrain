@@ -197,6 +197,10 @@ function buildSummary(
   active: EngMemWave1Slice | null,
   tag: string | null,
 ): string {
+  if (specFrozen && completeCount >= WAVE1_SLICE_COUNT) {
+    const tagLabel = tag ? ` · ${tag}` : "";
+    return `Institutional Cognition Foundation COMPLETE${tagLabel} · Wave 1 5/5 · Deterministic Foundation CLOSED · ENG-PMO-005`;
+  }
   if (specFrozen) {
     const tagLabel = tag ? ` · ${tag}` : "";
     const activeLabel = active ? ` · active ${active.slice_code} ${active.object}` : "";
@@ -211,12 +215,12 @@ function buildBuildingToday(
   active: EngMemWave1Slice | null,
   completeCount: number,
 ): string {
+  if (specFrozen && completeCount >= WAVE1_SLICE_COUNT) {
+    return "Institutional Cognition Foundation COMPLETE — Executive Intelligence Era authorized";
+  }
   if (specFrozen && active) {
     const sub = activeSubMilestone(active, completeCount);
     return `${active.slice_code} ${active.object} — ${sub}`;
-  }
-  if (specFrozen && completeCount >= WAVE1_SLICE_COUNT) {
-    return "ENG-MEM-001 Wave 1 complete — next MEM-009 wave";
   }
   if (specFrozen) {
     return `ENG-MEM-001 Wave 1 — ${completeCount}/${WAVE1_SLICE_COUNT} storage slices`;
@@ -251,6 +255,13 @@ function activeSubMilestone(active: EngMemWave1Slice, completeCount: number): st
       /* fall through */
     }
     return `001.3.2 chain of custody · ${waveLabel}`;
+  }
+
+  if (active.slice_code === "ENG-MEM-001.4") {
+    return `Reference Slice 004 · ${waveLabel}`;
+  }
+  if (active.slice_code === "ENG-MEM-001.5") {
+    return `Reference Slice 005 · Authority Principle · ${waveLabel}`;
   }
 
   return waveLabel;

@@ -79,7 +79,7 @@ NO NEW DOCTRINE
 
 > **Doctrine:** Teach LocalBrain to remember before it learns to reason.  
 > **Constitution:** [Article XIII — Executive Principle](./LOCALBRAIN_CONSTITUTION.md#article-xiii--executive-principle)  
-> **Gate:** [Executive Epistemology Convention](./LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md) **complete** — MEM-008 frozen `memory-spec-v1.0` · **ENG-MEM-001.3 Artifact** active (001.3.2 chain of custody).  
+> **Gate:** [Executive Epistemology Convention](./LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md) **complete** — MEM-008 frozen `memory-spec-v1.0` · **ENG-PMO-005** COMPLETE · Wave 1 **5/5** · Executive Intelligence Era **authorized**.  
 > **Prerequisite:** [Executive Cognition Peer Review](./LOCALBRAIN_EXECUTIVE_COGNITION_PEER_REVIEW.md) → Theory v1.0 frozen.
 
 | Slice | Name | Status |
@@ -88,7 +88,7 @@ NO NEW DOCTRINE
 | — | Executive Cognition Peer Review | ✅ Complete — S1–S5 passed · Theory v1.0 frozen 2026-06-30 · [Evidence Base](./LOCALBRAIN_COGNITIVE_EVIDENCE_BASE.md#theory-v10-freeze-peer-review-complete) · auto-synced from Evidence Base |
 | — | [Platform Audit](./LOCALBRAIN_PLATFORM_AUDIT.md) — build plan + navigation | ✅ Complete 2026-06-28 — gap report · route registry · EQ matrix · top 10 slices |
 | — | Executive Epistemology Convention (5 sessions) | ✅ Complete 2026-06-28 — [Convention Close](./convention/CONVENTION-CLOSE.md) · [contracts](./convention/) |
-| LB-OS-027 | Executive Memory Bootstrap | ▶ Implementation · `memory-spec-v1.0` · [ENG-MEM-001.3 Artifact](./memory-os/slices/ENG-MEM-001.3-ARTIFACT.md) · [MILESTONE-MEMORY-OS](./burt_packets/MILESTONE-MEMORY-OS.md) |
+| LB-OS-027 | Executive Memory Bootstrap | ✓ Wave 1 complete · `memory-spec-v1.0` · [ENG-PMO-005](./memory-os/ENG-PMO-005-CONSTITUTIONAL-COMPLETION.md) · [MILESTONE-MEMORY-OS](./burt_packets/MILESTONE-MEMORY-OS.md) |
 | LB-OS-028 | Memory Ingestion | ⬜ PLANNED |
 | LB-OS-029 | Memory Retrieval | ⬜ PLANNED |
 | LB-OS-030 | Executive Context Window | ⬜ PLANNED |
@@ -212,7 +212,7 @@ NO NEW DOCTRINE
 | LB-OS-PROD-011 | Chief Compliance Officer | 🔒 Reserved · CAP-FUT-CCO-001 |
 | LB-OS-CON-003 | Versioned Constitution Migration | 🔒 Reserved · CAP-FUT-CON-VER-001 |
 
-**Gate:** V1 implementation mode · **Next:** ENG-MEM-001.3.2 Artifact chain of custody — Memory OS Wave 1 · LB-OS-027
+**Gate:** V1 implementation mode · **Next:** Executive Intelligence Era — advisory cognition over deterministic substrates · Communications Office unblocked
 
 **Architecture phase:** ✅ **COMPLETE** · **Doctrine:** 🔒 **FROZEN** (feature freeze until launch — no new doctrine, reserved capabilities, offices, or cognitive layers)
 

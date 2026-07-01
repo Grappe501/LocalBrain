@@ -7,6 +7,7 @@ import {
   getActiveWorkspaceId,
   getWorkspace,
 } from "../workspaces/workspaceRegistry.js";
+import { projectWorkspaceLive } from "../liveSurface/workspaceProjection.js";
 import type { ExecutiveBriefingSignals } from "@localbrain/shared";
 
 export function collectExecutiveBriefingSignals(): ExecutiveBriefingSignals {
@@ -23,7 +24,8 @@ export function collectExecutiveBriefingSignals(): ExecutiveBriefingSignals {
   }
 
   const wsId = getActiveWorkspaceId();
-  const ws = wsId ? getWorkspace(wsId) : null;
+  const rawWs = wsId ? getWorkspace(wsId) : null;
+  const ws = rawWs ? projectWorkspaceLive(rawWs) : null;
   const build = computeBuildState();
 
   return {

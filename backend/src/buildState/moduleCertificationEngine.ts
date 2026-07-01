@@ -242,18 +242,36 @@ function certifyMemoryOsModule(): V1ModuleCertificationCard {
   const episodeTests = countTests(["backend/src/memory/episode.test.ts"]);
   const factTests = countTests(["backend/src/memory/fact.test.ts"]);
   const artifactTests = countTests(["backend/src/memory/artifact.test.ts"]);
+  const conversationTests = countTests(["backend/src/memory/conversation.test.ts"]);
+  const decisionCitationTests = countTests(["backend/src/memory/decisionCitation.test.ts"]);
   const memoryTests = {
-    files: episodeTests.files + factTests.files + artifactTests.files,
-    cases: episodeTests.cases + factTests.cases + artifactTests.cases,
+    files:
+      episodeTests.files +
+      factTests.files +
+      artifactTests.files +
+      conversationTests.files +
+      decisionCitationTests.files,
+    cases:
+      episodeTests.cases +
+      factTests.cases +
+      artifactTests.cases +
+      conversationTests.cases +
+      decisionCitationTests.cases,
   };
 
   const specPass = snap.spec_frozen;
   const refSliceNote =
-    snap.wave1_complete_count >= 2
-      ? "Reference Slice 002 (Fact) complete · Episode Reference Slice 001"
-      : snap.wave1_complete_count >= 1
-        ? "Reference Slice 001 (Episode)"
-        : null;
+    snap.wave1_complete_count >= 5
+      ? "Reference Slices 001–005 complete · ENG-PMO-005"
+      : snap.wave1_complete_count >= 4
+        ? "Reference Slices 001–004 complete"
+        : snap.wave1_complete_count >= 3
+          ? "Reference Slice 003 (Artifact) complete"
+          : snap.wave1_complete_count >= 2
+            ? "Reference Slice 002 (Fact) complete · Episode Reference Slice 001"
+            : snap.wave1_complete_count >= 1
+              ? "Reference Slice 001 (Episode)"
+              : null;
 
   const dimensions: V1CertDimensionRow[] = [
     dim(
@@ -267,15 +285,17 @@ function certifyMemoryOsModule(): V1ModuleCertificationCard {
       "experience",
       snap.wave1_complete_count > 0 ? "pass" : specPass ? "pending" : "pending",
       snap.wave1_complete_count > 0
-        ? `Institutional Evidence System — Wave 1 ${snap.wave1_complete_count}/${wave1.length || 5} · ${refSliceNote ?? "in progress"} · active ${snap.wave1_active_slice?.slice_code ?? "—"} ${snap.wave1_active_slice?.object ?? ""}`
+        ? snap.wave1_complete_count >= 5
+          ? `Institutional Cognition Foundation COMPLETE — Wave 1 5/5 · ${refSliceNote ?? "ENG-PMO-005"}`
+          : `Institutional Evidence System — Wave 1 ${snap.wave1_complete_count}/${wave1.length || 5} · ${refSliceNote ?? "in progress"} · active ${snap.wave1_active_slice?.slice_code ?? "—"} ${snap.wave1_active_slice?.object ?? ""}`
         : "MEM-009 Wave 1 storage slices not yet started",
     ),
     dim(
       "tests",
       memoryTests.cases >= 6 ? "pass" : "pending",
       memoryTests.cases >= 6
-        ? `${memoryTests.cases} memory storage tests (${episodeTests.cases} episode · ${factTests.cases} fact · ${artifactTests.cases} artifact)`
-        : "Episode · Fact · Artifact acceptance tests pending",
+        ? `${memoryTests.cases} memory storage tests (${episodeTests.cases} episode · ${factTests.cases} fact · ${artifactTests.cases} artifact · ${conversationTests.cases} conversation · ${decisionCitationTests.cases} decisionCitation)`
+        : "Episode · Fact · Artifact · Conversation · DecisionCitation acceptance tests pending",
     ),
     dim(
       "security",
@@ -289,7 +309,7 @@ function certifyMemoryOsModule(): V1ModuleCertificationCard {
       "launch",
       "pending",
       snap.wave1_complete_count >= 5
-        ? "Wave 1 complete — module certification gate pending"
+        ? "ENG-PMO-005 COMPLETE · Wave 1 5/5 · Executive Intelligence Era authorized"
         : snap.wave1_active_slice
           ? `Active: ${snap.wave1_active_slice.slice_code} ${snap.wave1_active_slice.object}`
           : "MEM-009 implementation in progress",

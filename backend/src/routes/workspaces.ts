@@ -27,7 +27,12 @@ workspacesRouter.get("/workspaces/active", (_req, res) => {
     res.status(404).json({ error: "Active workspace not found" });
     return;
   }
-  res.json({ workspace_id: id, workspace });
+  res.json({
+    workspace_id: id,
+    workspace: projectWorkspaceLive(workspace),
+    live_projection: id === "localbrain",
+    observed_at: new Date().toISOString(),
+  });
 });
 
 workspacesRouter.get("/workspaces/:id", (req, res) => {
@@ -76,7 +81,12 @@ workspacesRouter.post("/workspaces/:id/select", (req, res) => {
     res.status(404).json({ error: "Workspace not found" });
     return;
   }
-  res.json({ workspace_id: workspace.workspace_id, workspace });
+  res.json({
+    workspace_id: workspace.workspace_id,
+    workspace: projectWorkspaceLive(workspace),
+    live_projection: workspace.workspace_id === "localbrain",
+    observed_at: new Date().toISOString(),
+  });
 });
 
 workspacesRouter.post("/workspaces", (req, res) => {

@@ -25,13 +25,12 @@ test("memory OS progress reflects spec freeze and Wave 1 impl — not 100% at ME
   const snap = getMemoryOsProgressSnapshot();
   assert.equal(snap.spec_frozen, true);
   assert.equal(snap.mem008.passed, 107);
-  assert.equal(snap.wave1_complete_count, 3);
-  assert.ok(snap.module_progress_percent >= 78 && snap.module_progress_percent <= 82);
-  assert.ok(snap.module_progress_percent < 100);
+  assert.equal(snap.wave1_complete_count, 5);
+  assert.ok(snap.module_progress_percent >= 98 && snap.module_progress_percent <= 99);
   assert.ok(
-    snap.building_today.includes("3/5") ||
-      snap.building_today.includes("ENG-MEM-001.4") ||
-      snap.building_today.includes("Wave 1"),
+    snap.building_today.includes("Foundation COMPLETE") ||
+      snap.building_today.includes("Executive Intelligence Era") ||
+      snap.summary.includes("ENG-PMO-005"),
   );
 
   const state = computeBuildState();
@@ -39,15 +38,15 @@ test("memory OS progress reflects spec freeze and Wave 1 impl — not 100% at ME
   const memory = cc.modules.find((m) => m.module_id === "memory_os");
   assert.ok(memory);
   assert.equal(memory!.progress_percent, snap.module_progress_percent);
-  assert.ok(memory!.progress_percent < 100);
+  assert.ok(memory!.progress_percent >= 98);
   assert.equal(cc.critical_path.find((n) => n.step_id === "memory_os")?.status, "in_progress");
 
   const memCert = certifyCurrentModule("memory_os");
   assert.ok(memCert);
   assert.equal(memCert!.launch_status, "in_progress");
   const testsDim = memCert!.dimensions.find((d) => d.dimension_id === "tests");
-  assert.ok(testsDim?.evidence?.includes("artifact"));
-  assert.ok(memCert!.dimensions.find((d) => d.dimension_id === "experience")?.evidence?.includes("3/5"));
+  assert.ok(testsDim?.evidence?.includes("decisionCitation"));
+  assert.ok(memCert!.dimensions.find((d) => d.dimension_id === "experience")?.evidence?.includes("5/5"));
 });
 
 test("parseSliceRegistry loads dependencies from queue", () => {

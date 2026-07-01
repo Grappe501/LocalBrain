@@ -131,7 +131,7 @@ export const V1_PHASE_WORK_UNITS: Partial<
     { unit_id: "mem-freeze", label: "MEM-008 freeze + manifest lock", weight: 0.06 },
     { unit_id: "mem-w1-episode", label: "ENG-MEM-001.1 Episode (Reference Slice 001)", weight: 0.1 },
     { unit_id: "mem-w1-fact", label: "ENG-MEM-001.2 Fact (Reference Slice 002)", weight: 0.1 },
-    { unit_id: "mem-w1-artifact", label: "ENG-MEM-001.3 Artifact · 001.3.2 custody", weight: 0.08 },
+    { unit_id: "mem-w1-artifact", label: "ENG-MEM-001.3 Artifact (Reference Slice 003)", weight: 0.08 },
     { unit_id: "mem-w1-conversation", label: "ENG-MEM-001.4 Conversation", weight: 0.06 },
     { unit_id: "mem-w1-citation", label: "ENG-MEM-001.5 DecisionCitation", weight: 0.06 },
   ],
@@ -158,7 +158,7 @@ export const V1_PHASE_FINISHABILITY_BASE: Partial<Record<V1CriticalPathStep, num
   theory_v1_freeze: 95,
   executive_epistemology_convention: 63,
   empty_brain_factory: 100,
-  memory_os: 92,
+  memory_os: 99,
   communications_office: 25,
   commercial_beta: 70,
 };

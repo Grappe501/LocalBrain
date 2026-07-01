@@ -3,15 +3,20 @@ import test from "node:test";
 import { bootstrapApp, refreshPermissionEngine } from "../bootstrap.js";
 import { closeDatabase } from "../db/database.js";
 import { getRepoRoot } from "../db/repoRoot.js";
-import { createWorkspace, getWorkspace, listWorkspaces } from "./workspaceRegistry.js";
+import { getWorkspace, listWorkspaces, createWorkspace } from "./workspaceRegistry.js";
 import { getWorkspaceEvents } from "./workspaceEvents.js";
+import { projectWorkspaceLive } from "../liveSurface/workspaceProjection.js";
 
 test("localbrain seed has executive_context, focus, and success_definition", () => {
   bootstrapApp();
-  const ws = getWorkspace("localbrain");
+  const ws = projectWorkspaceLive(getWorkspace("localbrain")!);
   assert.ok(ws);
   assert.ok(ws.executive_context.length > 20);
-  assert.ok(ws.current_focus.includes("LB-OS-004"));
+  assert.ok(
+    ws.current_focus.includes("Foundation COMPLETE") ||
+      ws.current_focus.includes("Executive Intelligence") ||
+      ws.current_focus.includes("LB-OS-027"),
+  );
   assert.ok(ws.success_definition.includes("Executive Operating System"));
   assert.equal(ws.workspace_avatar, "🧠");
   assert.equal(ws.flags.pinned, true);

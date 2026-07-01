@@ -287,8 +287,8 @@ export function seedWorkspaces(): void {
     owner: "steve",
     parent_workspace_id: null,
     executive_context:
-      "LocalBrain is Steve's second brain and operating company — not a chatbot. Success means meaningful work compounds weekly. Current priority: thin core, safe permissions, workspace-first navigation, and modules only after the modularity gate (LB-OS-106).",
-    current_focus: "Workspace registry and LivingWorkspace foundation (LB-OS-004)",
+      "LocalBrain is Steve's Executive Operating System — not a chatbot. Wave 1 builds the Institutional Cognition Foundation: deterministic memory substrates that Executive Intelligence reasons over.",
+    current_focus: "Institutional Cognition Foundation COMPLETE · Executive Intelligence Era (LB-OS-027)",
     success_definition:
       "A modular AI Executive Operating System that becomes Steve's primary interface for work.",
     workspace_avatar: "🧠",
@@ -297,10 +297,22 @@ export function seedWorkspaces(): void {
     filesystem_roots: [repoRoot],
     profile: {
       mission: "Build Steve's Executive Operating System",
-      current_phase: "Core Infrastructure",
-      completed_slices: ["LB-OS-001", "LB-OS-002", "LB-OS-003"],
-      active_slice: "LB-OS-004",
-      next_slices: ["LB-OS-106", "LB-OS-005"],
+      current_phase: "Executive Memory · Wave 1 (5/5) · Foundation COMPLETE",
+      completed_slices: [
+        "LB-OS-001",
+        "LB-OS-002",
+        "LB-OS-003",
+        "LB-OS-004",
+        "LB-OS-106",
+        "ENG-MEM-001.1",
+        "ENG-MEM-001.2",
+        "ENG-MEM-001.3",
+        "ENG-MEM-001.4",
+        "ENG-MEM-001.5",
+        "ENG-PMO-005",
+      ],
+      active_slice: "Executive Intelligence Era",
+      next_slices: ["Executive Intelligence · retrieval · graph · advisory layer"],
       recent_decisions: [
         "PSP approved",
         "localbrain home mock",
@@ -309,9 +321,9 @@ export function seedWorkspaces(): void {
         "LivingWorkspace replaces Project Registry",
       ],
       chief_of_staff_summary:
-        "Shell and permission engine are live. Workspace registry is the spine — design LivingWorkspace correctly before explorer and modules expand. Object model freezes after 004; new capability ships as engines and modules.",
+        "Institutional Cognition Foundation COMPLETE — Wave 1 5/5. Episode · Fact · Artifact · Conversation · DecisionCitation. Deterministic Foundation CLOSED · ENG-PMO-005.",
       recommended_next_action:
-        "Complete LB-OS-004 registry, then LB-OS-106 modularity gate before explorer.",
+        "Executive Intelligence Era authorized — build advisory cognition over deterministic substrates.",
       repositories: [],
       contacts: [],
       calendar_links: [],
@@ -384,7 +396,7 @@ function seedLocalbrainEvents(): void {
     { event_type: "slice_completed" as const, title: "LB-OS-003 complete", detail: "Permission engine v2 shipped.", metadata: { slice: "LB-OS-003" } },
     { event_type: "chief_of_staff_recommendation" as const, title: "Ship workspace registry next", detail: "Freeze object model at 004; modules after 106." },
     { event_type: "decision_accepted" as const, title: "PSP approved", detail: "Product strategy phase signed off." },
-    { event_type: "focus_updated" as const, title: "Current focus updated", detail: "Workspace registry and LivingWorkspace foundation (LB-OS-004)." },
+    { event_type: "focus_updated" as const, title: "Current focus updated", detail: "Institutional Cognition Foundation COMPLETE · ENG-PMO-005." },
     { event_type: "success_definition_updated" as const, title: "Success definition set", detail: "Modular AI Executive OS as Steve's primary work interface." },
   ];
 

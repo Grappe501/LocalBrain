@@ -1505,10 +1505,10 @@ export const CAPABILITY_REGISTRY: CapabilityEntry[] = [
     maturity: {
       completion_percent: 60,
       health: "healthy",
-      last_verified_slice: "LB-OS-004",
+      last_verified_slice: "LB-OS-027",
       dependency_capability_ids: [],
     },
-    slice_id: "LB-OS-004",
+    slice_id: "LB-OS-027",
     nav_placement: "kernel",
     nav_label: "Workspace",
     nav_order: 11,

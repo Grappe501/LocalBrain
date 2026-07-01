@@ -131,20 +131,22 @@ Memory OS manifest must declare:
 ✓ Architecture Book v1.0
 ✓ ENG-MEM-001.1 Episode · Reference Slice 001
 ✓ ENG-MEM-001.2 Fact · Reference Slice 002
-✓ ENG-MEM-001.3.1 Artifact canonical storage (PMO complete)
-▶ ENG-MEM-001.3.2 Artifact chain of custody
-□ ENG-MEM-001.4 Conversation · 001.5 DecisionCitation
+✓ ENG-MEM-001.3 Artifact · Reference Slice 003
+✓ ENG-MEM-001.4 Conversation · Reference Slice 004
+✓ ENG-MEM-001.5 DecisionCitation · Reference Slice 005 · 19/19 PASS
+✓ ENG-PMO-005 — Institutional Cognition Foundation COMPLETE · Deterministic Foundation CLOSED
+▶ Executive Intelligence Era — AUTHORIZED
 ```
 
-### Wave 1 substrates (institutional evidence system)
+### Wave 1 substrates (Institutional Cognition Foundation)
 
 | Object | Verb | Status |
 | ------ | ---- | ------ |
 | Episode | records | COMPLETE |
 | Fact | accepts | COMPLETE |
-| Artifact | preserves | Active · 001.3.2 custody |
-| Conversation | captures | Blocked |
-| DecisionCitation | justifies | Blocked |
+| Artifact | preserves | COMPLETE |
+| Conversation | captures | COMPLETE |
+| DecisionCitation | justifies | COMPLETE · Reference Slice 005 · ENG-PMO-005 |
 
 ---
 

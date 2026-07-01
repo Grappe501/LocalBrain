@@ -1,9 +1,9 @@
 # LOCALBRAIN V1 — Launch Readiness Snapshot
 
 > **Cover page for every V1 work session** · Refresh from `GET /api/epo/project-state` · CEO Mode  
-> **Platform checkpoint:** `8951745` — MEM-008 specification freeze · `memory-spec-v1.0`  
-> **Governance checkpoint:** Factory locked `v1.0.0-factory-certified` · ENG-MEM-001 Wave 1 · Artifact active  
-> **Phase boundary:** Construction — Institutional Evidence System (MEM-009)  
+> **Platform checkpoint:** `54c3c8a` — ENG-PMO-004 DecisionCitation authorization · `memory-spec-v1.0`  
+> **Governance checkpoint:** Factory locked `v1.0.0-factory-certified` · ENG-MEM-001 Wave 1 **5/5** · ENG-PMO-005 COMPLETE  
+> **Phase boundary:** Construction — Institutional Cognition Foundation (MEM-009)  
 > **Observed:** 2026-07-01 · *static template — live values from Program Office API*
 
 ---
@@ -12,7 +12,7 @@
 LOCALBRAIN V1
 
 Overall Launch
-███████░░░  ~68%   (refresh from GET /api/epo/project-state)
+███████░░░  ~72%   (refresh from GET /api/epo/project-state)
 ```
 
 ---
@@ -26,9 +26,9 @@ Overall Launch
 | ✓ Theory v1.0 Freeze | Complete | — |
 | ✓ Executive Epistemology Convention | Complete | — |
 | ✓ Empty Brain Factory | Complete · locked | — |
-| ▶ Memory OS | In Progress · Wave 1 **3/5** · Reference Slices 001–003 complete | **~9 days** |
-| □ Communications Office | Pending | **~10 days** |
-| □ Commercial Beta | Pending | **~4 days** |
+| ✓ Memory OS | Wave 1 **5/5** · Reference Slices 001–005 complete · ENG-PMO-005 | **Complete** |
+| □ Communications Office | Pending | **~15 days** |
+| □ Commercial Beta | Pending | **~5 days** |
 
 *ETAs are evidence-adjusted sums from the adaptive forecast model — not manual estimates. Values update after every Burt completion pass.*
 
@@ -37,10 +37,10 @@ Overall Launch
 ## Three levels of planning
 
 ```text
-Current Module ETA:     ~11 days  (tactical — Memory OS Wave 1 · Artifact custody)
-Current Phase ETA:      ~21 days   (operational — Memory OS + Communications)
+Current Module ETA:     —         (tactical — Executive Intelligence Era)
+Current Phase ETA:      ~25 days  (operational — Memory OS + Communications)
 Predicted Beta:         (from adaptive forecast — refresh via API)
-Confidence:             ~65%
+Confidence:             ~67%
 ```
 
 | Level | Question | Source |
@@ -71,7 +71,7 @@ Confidence:             ~65%
 | Theory Freeze | 100% |
 | Convention | 100% |
 | Empty Brain Factory | 100% |
-| Memory OS | 92% (spec frozen · Wave 1 2/5 complete · Artifact active) |
+| Memory OS | 99% (spec frozen · Wave 1 5/5 · ENG-PMO-005 · Foundation COMPLETE) |
 | Communications Office | 25% |
 | Commercial Beta | 70% |
 
@@ -114,7 +114,7 @@ Critical path only:
 
 ## Next module
 
-**Memory OS** — spec frozen `memory-spec-v1.0` · **Institutional Evidence System** (Episode · Artifact · Fact)
+**Memory OS** — spec frozen `memory-spec-v1.0` · **Institutional Cognition Foundation** (Episode · Artifact · Fact · Conversation · DecisionCitation)
 
 | Track | Status |
 | ----- | ------ |
@@ -122,7 +122,8 @@ Critical path only:
 | ENG-MEM-001.1 Episode | ✅ COMPLETE · Reference Slice 001 · 6/6 tests |
 | ENG-MEM-001.2 Fact | ✅ COMPLETE · Reference Slice 002 · 22/22 tests |
 | ENG-MEM-001.3 Artifact | ✅ COMPLETE · Reference Slice 003 · 17/17 tests |
-| ENG-MEM-001.4 Conversation | Blocked — awaiting PMO authorization |
+| ENG-MEM-001.4 Conversation | ✅ COMPLETE · Reference Slice 004 · 16/16 tests |
+| ENG-MEM-001.5 DecisionCitation | ✓ COMPLETE · Reference Slice 005 · ENG-PMO-005 |
 
 **Critical path:** Wave 1 canonical storage (5 slices) → module certification → Communications Office
 
@@ -141,7 +142,7 @@ Design → Build → Test → PMO Review → Certification → Regression Lock �
 ## Burt mission
 
 > Finish the current module.  
-> **Now:** ENG-MEM-001 Wave 1 — 3/5 slices complete · next Conversation (Interpretation Principle locked) · Reference Slices 001–003
+> **Now:** Executive Intelligence Era authorized — deterministic substrates complete · ENG-PMO-005 · build advisory cognition over institutional memory
 
 Everything else → [VERSION2_BACKLOG.md](./VERSION2_BACKLOG.md)
 
