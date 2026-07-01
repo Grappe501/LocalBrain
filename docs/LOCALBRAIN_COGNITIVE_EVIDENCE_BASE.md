@@ -618,6 +618,61 @@ Convention may clarify · constrain · define — may NOT invent.
 
 ---
 
+### Convention Session 4 (Provenance)
+
+| Field | Value |
+| ----- | ----- |
+| Date | 2026-06-28 — post Session 3 (`7b75fa7`) |
+| Type | Engineering contract |
+| Depends on | [Session 1 Ontology](./convention/CONVENTION-S1-ONTOLOGY_CONTRACT.md) · [Session 2 Lifecycle](./convention/CONVENTION-S2-MEMORY_LIFECYCLE_CONTRACT.md) · [Session 3 Recall](./convention/CONVENTION-S3-RECALL_CONTRACT.md) |
+| Deliverable | [Provenance Contract](./convention/CONVENTION-S4-PROVENANCE_CONTRACT.md) |
+| Outcome | **Passed** — [Burt packet](./burt_packets/MILESTONE-CON-S4.md) |
+
+#### Findings log
+
+| ID | Finding | Contract read | Outcome | Notes |
+| -- | ------- | ------------- | ------- | ----- |
+| CON-S4-001 | Universal provenance envelope | `ProvenanceRecord` — append-only · pointer-based ancestry | **Resolved** | Contract not storage |
+| CON-S4-002 | Per-object requirements | Memory · Knowledge · Belief · Understanding · Decision · Recommendation | **Resolved** | Extends S1 ontology |
+| CON-S4-003 | Source classes | Eight normative classes from theory — no hostile-actor taxonomy | **Resolved** | PR-S4-003i aligned |
+| CON-S4-004 | Ancestry model | Axiom 4 questions · `parent_refs[]` · checkpoints | **Resolved** | RO-S3-001 closed at contract layer |
+| CON-S4-005 | Confidence source separation | Memory Confidence · strength · certainty · Reasoning · Runtime | **Resolved** | ENG-MC-001 direction |
+| CON-S4-006 | Supersession history | Bidirectional chain · expiry preserves provenance | **Resolved** | S2 PR-S1-001 aligned |
+| CON-S4-007 | Version + timestamps | Monotonic version · point-in-time binding at decision | **Resolved** | RO-S3-012 aligned |
+| CON-S4-008 | Ownership / attribution | Dept → CoS → council → executive — additive synthesis | **Resolved** | PR-S4-005e · RO-S4-010 |
+| CON-S4-009 | Trace linkage | trace_id · checkpoint_id · question_id · recall_id | **Resolved** | RO-S3-002 checkpoints |
+| CON-S4-010 | "Why?" resolution | `why()` · bounded default · lazy drill-down · deterministic chain_id | **Resolved** | PMO success test |
+| CON-S4-011 | Provenance break detection | Missing ref · broken parent · suppressed contradiction | **Resolved** | Withhold on break |
+| CON-S4-012 | Recommendation citations | provenance_bundle_id · citations[] · attribution[] · gaps[] | **Resolved** | RO-S4-009 direction |
+| CON-S4-013 | S3 recall integration | Deepens provenance_refs[] — RO-CON-S3-001 closed | **Resolved** | Recall certification unchanged |
+| CON-S4-014 | Recoverability without sync reconstruction | Checkpoints + lazy hops — not full tree walk upfront | **Resolved** | PR-S3-001 Model C |
+
+#### Session 4 gate
+
+- [x] Universal provenance envelope frozen for all cognitive objects
+- [x] Nine PMO fields + trace linkage defined per object class
+- [x] Deterministic "Why?" chain · break detection · citation requirements
+- [x] RO-CON-S3-001 · RO-S3-001 · RO-S4-010 · PR-S4-005e addressed at contract layer
+- [x] No invented objects
+- [x] Success test: deterministic "Why?" chain — **pass**
+
+| Outcome type | Count |
+| ------------ | ----- |
+| Resolved | 14 |
+| Clarification | 0 |
+| Open Question | 0 |
+| Invention | **0** |
+
+#### Convention obligations (from Session 4)
+
+| ID | Obligation |
+| -- | ---------- |
+| RO-CON-S4-001 | Session 5: ethics policy — consent · decay · immutability · belief/memory conflict |
+| RO-CON-S4-002 | Memory OS manifest declares `convention_contract: CON-S4-2026-07` |
+| RO-CON-S4-003 | Recommendation "Why?" UI binds to `provenance_bundle_id` — not model prose |
+
+---
+
 #### Convention planned sessions
 
 | Session | Topic | Status |
@@ -625,7 +680,7 @@ Convention may clarify · constrain · define — may NOT invent.
 | CON-S1 | Ontology | ✅ |
 | CON-S2 | Memory Lifecycle | ✅ |
 | CON-S3 | Recall | ✅ |
-| CON-S4 | Provenance | ⬜ |
+| CON-S4 | Provenance | ✅ |
 | CON-S5 | Ethics | ⬜ |
 
 ---
@@ -678,6 +733,7 @@ Amendments publish as v1.1, v1.2, … v1.0 text remains immutable. See [Falsific
 | E-CON-S1-2026 | convention | 2026-07-01 | Session 1 Ontology — 12 terms frozen · 8 resolved · interoperable vocabulary | [Ontology Contract](./convention/CONVENTION-S1-ONTOLOGY_CONTRACT.md) |
 | E-CON-S2-2026 | convention | 2026-07-01 | Session 2 Memory Lifecycle — state machine · 6 resolved · audit hooks | [Lifecycle Contract](./convention/CONVENTION-S2-MEMORY_LIFECYCLE_CONTRACT.md) |
 | E-CON-S3-2026 | convention | 2026-06-28 | Session 3 Recall — pipeline contract · ranking invariants · Memory Confidence · 10 resolved | [Recall Contract](./convention/CONVENTION-S3-RECALL_CONTRACT.md) |
+| E-CON-S4-2026 | convention | 2026-06-28 | Session 4 Provenance — universal envelope · Why? chain · 14 resolved | [Provenance Contract](./convention/CONVENTION-S4-PROVENANCE_CONTRACT.md) |
 | E-META-PR-2026 | meta-evidence | 2026-06-28 | Sessions 1–3 pattern: claim-type separation · emergent implementation style (local · incremental · versioned · event-aware · self-observing) | Review method taxonomy — not evidence theory is correct |
 
 ### Peer review progress (institutional memory)

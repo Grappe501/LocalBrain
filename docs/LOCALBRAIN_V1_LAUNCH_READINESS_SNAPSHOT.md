@@ -71,7 +71,7 @@ Confidence:             60%
 | Session 4 — Practitioner | 100% |
 | Session 5 — Skeptic | 100% |
 | Theory Freeze | 100% |
-| Convention | 80% |
+| Convention | 96% |
 | Empty Brain Factory | 34% |
 | Memory OS | 18% |
 | Communications Office | 25% |
@@ -113,9 +113,9 @@ Critical path only:
 
 ## Next module
 
-**Convention Session 4 — Provenance** ([Convention charter — Session 4](./LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md#session-4--memory-provenance) — open next)
+**Convention Session 5 — Ethics** ([Convention charter — Session 5](./LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md#session-5--memory-ethics) — open next)
 
-Contracts: [S1 Ontology](./convention/CONVENTION-S1-ONTOLOGY_CONTRACT.md) · [S2 Lifecycle](./convention/CONVENTION-S2-MEMORY_LIFECYCLE_CONTRACT.md) · [S3 Recall](./convention/CONVENTION-S3-RECALL_CONTRACT.md)
+Contracts: [S1 Ontology](./convention/CONVENTION-S1-ONTOLOGY_CONTRACT.md) · [S2 Lifecycle](./convention/CONVENTION-S2-MEMORY_LIFECYCLE_CONTRACT.md) · [S3 Recall](./convention/CONVENTION-S3-RECALL_CONTRACT.md) · [S4 Provenance](./convention/CONVENTION-S4-PROVENANCE_CONTRACT.md)
 
 ---
 
@@ -130,7 +130,7 @@ Design → Build → Test → PMO Review → Certification → Regression Lock �
 ## Burt mission
 
 > Finish the current module.  
-> **Now:** Convention Session 4 — Provenance
+> **Now:** Convention Session 5 — Ethics
 
 Everything else → [VERSION2_BACKLOG.md](./VERSION2_BACKLOG.md)
 
