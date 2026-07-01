@@ -62,7 +62,7 @@ Memory OS **never** modifies Factory behavior, birth certificate, or `structural
 | **MEM-006** | Executive Intelligence Integration | [Volume 6](../memory-os/VOLUME-6-EXECUTIVE_INTELLIGENCE.md) | ✅ Frozen |
 | **MEM-007** | Governance & Audit | [Volume 7](../memory-os/VOLUME-7-GOVERNANCE_AND_SAFETY.md) | ✅ Frozen |
 | **MEM-008** | Specification Freeze | [Exit criteria](../memory-os/MEM-008-EXIT_CRITERIA.md) · [Success test matrix](../memory-os/MEM-008-SUCCESS_TEST_MATRIX.md) | ✅ `memory-spec-v1.0` |
-| **MEM-009** | Implementation Pass 1 | ENG-MEM-001 first code | ▶ **Authorized** |
+| **MEM-009** | Implementation Pass 1 | [ENG-MEM-001 Wave 1 charter](../memory-os/ENG-MEM-001-WAVE1-CHARTER.md) · ENG-MEM-001 first code | ▶ **Authorized — Wave 1** |
 
 **Rule:** MEM-008 freeze required before MEM-009 — same discipline as Factory.
 

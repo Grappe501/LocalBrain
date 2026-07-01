@@ -53,7 +53,7 @@ Structured design review before MEM-008 freeze — same discipline as Factory pr
 | 7 | [Governance & Safety](./VOLUME-7-GOVERNANCE_AND_SAFETY.md) | MEM-007 | ✅ Frozen |
 
 **Freeze:** [MEM-008](./MEM-008-EXIT_CRITERIA.md) — **declared 2026-07-01**  
-**Implementation:** [MEM-009](../burt_packets/MILESTONE-MEMORY-OS.md) — **authorized**
+**Implementation:** [MEM-009](../burt_packets/MILESTONE-MEMORY-OS.md) — **authorized** · [Wave 1 charter](./ENG-MEM-001-WAVE1-CHARTER.md)
 
 **Interpretive canon:** [Architecture Book v1.0](../LOCALBRAIN_ARCHITECTURE_BOOK_v1.0.md) — why the system is shaped this way (non-normative)
 
