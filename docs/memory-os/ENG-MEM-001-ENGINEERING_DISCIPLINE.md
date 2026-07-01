@@ -39,6 +39,7 @@
 | **ENG-MEM-001.1 Episode** | **Time** — explicit temporal bounds on what happened |
 | **ENG-MEM-001.2 Fact** | **Knowledge must never become detached from evidence** · **institutional acceptance, not objective truth** · **Reference Slice 002** |
 | **ENG-MEM-001.3 Artifact** | **Evidence only — never conclusions** · **Authenticity — never correction** · **A13 binding** · **Reference Slice 003** |
+| **ENG-MEM-001.4 Conversation** | **Context only — never revision** · **Original wording canonical** · **A14 binding** · **Reference Slice 004** |
 
 ---
 
@@ -113,7 +114,7 @@ Each canonical object naturally answers one executive question. The Chief of Sta
 | Episode | What happened? |
 | Artifact | What evidence do we have? |
 | Fact | What do we know? |
-| Conversation | What did people think? |
+| Conversation | What were people saying? |
 | DecisionCitation | Why did we act? |
 
 The Chief of Staff does not replace memory, knowledge, evidence, explanation, or governance. It builds on all of them. That boundary is non-negotiable.
@@ -209,21 +210,42 @@ See [Executive questions](#executive-questions-one-substrate-per-question) above
 | What happened? | Episodes |
 | What evidence do we have? | Artifacts |
 | What do we know? | Facts |
-| What did people think? | Conversations |
+| What were people saying? | Conversations |
 | Why did we act? | DecisionCitation + Decision Ledger |
 
 ---
 
-## The Interpretation Principle (binding — Conversation, reserved)
+## The Conversation Principle (binding — Reference Slice 004)
+
+**Constitutional statement:**
+
+> **Conversations preserve interpretation at a point in time. They do not revise institutional history, evidence, or knowledge.**
 
 ```text
-Conversations preserve interpretation.
-They do not rewrite history.
+Interpretation preserves context.
 ```
 
-Conversations must never modify Episodes, Facts, or Artifacts. They preserve how humans interpreted those things at that moment.
+| Object | Preserves |
+| ------ | --------- |
+| Episode | events |
+| Artifact | evidence |
+| Fact | knowledge |
+| Conversation | context |
 
-**Executive question:** What did people think? — not what happened, what is true, or what evidence exists.
+Conversations must never modify Episodes, Facts, or Artifacts.
+
+**Executive question:** What were people saying? — not what do we know, what happened, or what evidence exists.
+
+### Original wording is canonical (binding)
+
+Turn content must never be cleaned, summarized, corrected, or rewritten. Intelligence summaries are separate Artifacts or derived objects.
+
+### Reference relationship (binding)
+
+```text
+Conversation  →  may reference  →  Episode · Artifact · Fact
+Conversation  →  never owns     →  Episode · Artifact · Fact
+```
 
 ### Interpretation never becomes knowledge (binding)
 
@@ -235,9 +257,9 @@ Interpretation never becomes knowledge without institutional acceptance.
 Conversation  →  may inform  →  Fact
 ```
 
-Conversation is never a Fact — analogous to Artifact → may support → Fact. Discussion does not become knowledge automatically.
+Conversation is never a Fact — discussion does not become knowledge automatically.
 
-See [Reference Slices](./slices/REFERENCE_SLICES.md) for constitutional responsibilities.
+See [Reference Slices](./slices/REFERENCE_SLICES.md) · [ENG-MEM-001.4 Conversation](./slices/ENG-MEM-001.4-CONVERSATION.md).
 
 ---
 
@@ -317,7 +339,7 @@ Do not implement all object types simultaneously. Complete **one slice** — sch
 | 1 | ENG-MEM-001.1 | **Episode** | [Slice 1](./slices/ENG-MEM-001.1-EPISODE.md) | **Reference Slice 001** · COMPLETE |
 | 2 | ENG-MEM-001.2 | **Fact** | [Slice 2](./slices/ENG-MEM-001.2-FACT.md) | **Reference Slice 002** · COMPLETE |
 | 3 | ENG-MEM-001.3 | **Artifact** | [Slice 3](./slices/ENG-MEM-001.3-ARTIFACT.md) | **Reference Slice 003** · COMPLETE |
-| 4 | ENG-MEM-001.4 | **Conversation** + **ConversationTurn** | attribution · chronology |
+| 4 | ENG-MEM-001.4 | **Conversation** + **ConversationTurn** | [Slice 4](./slices/ENG-MEM-001.4-CONVERSATION.md) | **Reference Slice 004** · AUTHORIZED |
 | 5 | ENG-MEM-001.5 | **DecisionCitation** | Decision Ledger boundary · no duplicated authority |
 
 Remaining registry types (Skill, Relationship, Preference, Project, Organization, Task, Goal, Identity, DelegationGrant) follow in subsequent slices or Wave 1 extensions — **only after** slices 1–5 pass acceptance.
@@ -334,7 +356,7 @@ Slice
 ├── Charter                    slices/ENG-MEM-001.N-*.md
 ├── Specification References   anchors in charter
 ├── Engineering Decision Record  slices/ENG-MEM-001.N-EDR.md (when needed)
-├── Acceptance Checklist       A1–A11 universal · A12 knowledge objects · A13 Artifact
+├── Acceptance Checklist       A1–A11 universal · A12 knowledge · A13 evidence · A14 Conversation
 ├── Implementation             backend/src/memory/ …
 ├── Tests                      *.test.ts colocated
 ├── Close-out Report           slices/ENG-MEM-001.N-SLICE_CLOSEOUT.md
@@ -366,10 +388,13 @@ Mirror PMO discipline: **binary pass/fail**. A slice does not start until the pr
 | A11 | No intelligence logic | No inference · planning · LLM |
 | A12 | **Explainability** | Substrate reconstruction — **not interpretation**. **Permanent acceptance philosophy** for institutional-knowledge objects: answer *Why do you exist?* from stored state · provenance · lineage · authority · lifecycle — **no AI**. Fact implemented A12 in Wave 1; future knowledge objects follow Reference Slice 002. See [Fact A12](./slices/ENG-MEM-001.2-FACT.md#a12--explainability-binding). |
 | A13 | **Authenticity** | **Required for Artifact.** Every Artifact must answer *Can this still be shown exactly as it was originally preserved?* without requiring transformation. Verify: original identity retained · provenance retained · timestamps retained · content hash retained (where applicable) · chain of custody retained. **No AI · no reconstruction · no interpretation** — simply preservation. See [Artifact A13](./slices/ENG-MEM-001.3-ARTIFACT.md#a13--authenticity-binding). |
+| A14 | **Context Preservation** | **Required for Conversation.** Every Conversation must answer *What context produced this interpretation?* using only stored conversation data — participants · turn order · attribution · timestamps · references. **No AI · no correctness judgment · no normalization** — simply context reconstruction. See [Conversation A14](./slices/ENG-MEM-001.4-CONVERSATION.md#a14--context-preservation-binding). |
 
 A12 is **binding platform philosophy** for knowledge — reconstruction, not interpretation. Fact implemented it in Wave 1 (`explainFactFromSubstrate`).
 
 A13 is **binding platform philosophy** for evidence — preservation, not correction. Artifact implements it in Wave 1.
+
+A14 is **binding platform philosophy** for interpretation — context reconstruction, not revision. Conversation implements it in Wave 1.
 
 ### Custody vs authenticity (Artifact — binding)
 

@@ -33,7 +33,12 @@ Artifact  → Evidence
 Fact      → Knowledge
 ```
 
-Conversation and DecisionCitation establish **interpretation** and **authority** — a different class of capability.
+Conversation (Reference Slice 004 — **AUTHORIZED**) adds **context**. DecisionCitation adds **authority**.
+
+```text
+Conversation     → Context
+DecisionCitation → Authority
+```
 
 ---
 

@@ -5,7 +5,7 @@
 > **Designation:** **Reference Slice 003** — follow Artifact for all future **evidence engineering**  
 > **Object:** Artifact — canonical evidence record  
 > **Index:** [Reference Slices](./REFERENCE_SLICES.md)  
-> **Unblocks:** ENG-MEM-001.4 Conversation (when chartered)
+> **Unblocks:** [ENG-MEM-001.4 Conversation](./ENG-MEM-001.4-CONVERSATION.md) — **AUTHORIZED**
 
 ```text
 Reference Implementation (engineering discipline)
@@ -129,7 +129,7 @@ One concerns the evidence itself. The other concerns stewardship.
 | Episode | What happened? |
 | Artifact | What evidence do we have? |
 | Fact | What do we know? |
-| Conversation | What did people think? |
+| Conversation | What were people saying? |
 | DecisionCitation | Why did we act? |
 
 ---

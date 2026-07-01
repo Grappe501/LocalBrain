@@ -33,7 +33,8 @@ Chief of Staff   → I can help you decide what to do next.   (Executive Intelli
 The progression is deliberate. Each layer adds capability without blurring the layer below. Executive Intelligence culminates the stack — it does not replace memory, knowledge, evidence, explanation, or governance.
 
 **Foundational substrates (complete):** Episode · Artifact · Fact — history · evidence · knowledge.  
-**Next class of capability:** Conversation (interpretation) · DecisionCitation (authority).
+**Authorized — interpretation class:** [ENG-MEM-001.4 Conversation](./slices/ENG-MEM-001.4-CONVERSATION.md) — context · Reference Slice 004.  
+**Remaining:** DecisionCitation (authority) — blocked on 001.4 completion.
 
 **Fact Principle:** [Engineering Discipline § The Fact Principle](./ENG-MEM-001-ENGINEERING_DISCIPLINE.md#the-fact-principle-binding)
 
