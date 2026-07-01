@@ -7,6 +7,7 @@ export function getDatabase(): Database.Database {
   if (!dbInstance) {
     dbInstance = new Database(getDefaultDbPath());
     dbInstance.pragma("journal_mode = WAL");
+    dbInstance.pragma("busy_timeout = 10000");
   }
   return dbInstance;
 }
