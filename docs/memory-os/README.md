@@ -51,6 +51,16 @@ ENG-MEM-001 Wave 1 — canonical storage slices. Reference implementation: [ENG-
 
 ---
 
+## MAR-2 Authority Architecture Review (complete)
+
+| Document | Purpose |
+| -------- | ------- |
+| [MAR-2 Authority Architecture Review](./MAR-2-AUTHORITY-ARCHITECTURE_REVIEW.md) | Final substrate review — DecisionCitation |
+| [ENG-PMO-005 Constitutional Completion](./ENG-PMO-005-CONSTITUTIONAL-COMPLETION.md) | **COMPLETE** — Institutional Cognition Foundation · Deterministic Foundation closed |
+| [The Five Constitutional Substrates](./THE-FIVE-CONSTITUTIONAL-SUBSTRATES.md) | Binding constitutional doctrine — five substrates |
+
+---
+
 ## Design volumes
 
 | Vol | Document | Milestone | Status |
@@ -82,7 +92,10 @@ ENG-MEM-001 Wave 1 — canonical storage slices. Reference implementation: [ENG-
 ✓ ENG-MEM-001.2 Fact — Reference Slice 002 · 22/22 PASS
 ✓ ENG-MEM-001.3 Artifact — Reference Slice 003 · 17/17 PASS
 ✓ ENG-MEM-001.4 Conversation — Reference Slice 004 · 16/16 PASS
-▶ ENG-MEM-001.5 DecisionCitation — Wave 1 slice 5/5 (**AUTHORIZED** · Reference Slice 005 · completes Institutional Cognition Foundation)
+✓ MAR-2 Authority Architecture Review — DecisionCitation
+✓ ENG-MEM-001.5 DecisionCitation — Reference Slice 005 · 19/19 PASS
+✓ ENG-PMO-005 — Institutional Cognition Foundation COMPLETE · Deterministic Foundation CLOSED
+▶ Executive Intelligence Era — AUTHORIZED
 ```
 
 ---

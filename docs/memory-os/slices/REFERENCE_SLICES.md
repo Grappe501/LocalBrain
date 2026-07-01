@@ -10,7 +10,7 @@
 | **002** | [Fact](./ENG-MEM-001.2-FACT.md) | **Preserve institutional knowledge** | Knowledge engineering | COMPLETE |
 | **003** | [Artifact](./ENG-MEM-001.3-ARTIFACT.md) | **Preserve evidence** | Evidence engineering | COMPLETE |
 | **004** | [Conversation](./ENG-MEM-001.4-CONVERSATION.md) | **Preserve interpretation** | Interpretation engineering | **COMPLETE** |
-| **005** | [DecisionCitation](./slices/ENG-MEM-001.5-DECISIONCITATION.md) | **Preserve exercised authority** | Governance engineering | **AUTHORIZED** |
+| **005** | [DecisionCitation](./slices/ENG-MEM-001.5-DECISIONCITATION.md) | **Preserve exercised authority** | Governance engineering | **COMPLETE** |
 
 Later intelligence layers consume these responsibilities — they do not redefine them.
 

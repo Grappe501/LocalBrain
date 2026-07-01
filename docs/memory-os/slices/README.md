@@ -56,6 +56,6 @@ Chief of Staff   → I can help you decide what to do next.   (later wave)
 | 2 | [ENG-MEM-001.2](./ENG-MEM-001.2-FACT.md) | Fact | **COMPLETE** — Reference Slice 002 |
 | 3 | [ENG-MEM-001.3](./ENG-MEM-001.3-ARTIFACT.md) | Artifact | **COMPLETE** — Reference Slice 003 |
 | 4 | [ENG-MEM-001.4](./ENG-MEM-001.4-CONVERSATION.md) | Conversation + ConversationTurn | **COMPLETE** — Reference Slice 004 |
-| 5 | [ENG-MEM-001.5](./slices/ENG-MEM-001.5-DECISIONCITATION.md) | DecisionCitation | **AUTHORIZED** — Reference Slice 005 |
+| 5 | [ENG-MEM-001.5](./ENG-MEM-001.5-DECISIONCITATION.md) | DecisionCitation | **COMPLETE** — Reference Slice 005 |
 
 Slice documents are added as each slice opens. Acceptance and **Specification Fidelity: 100%** required before the next slice begins.

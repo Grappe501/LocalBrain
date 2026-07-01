@@ -1,8 +1,8 @@
 # Deterministic Foundation Doctrine
 
-> **Status:** Binding architectural doctrine · LocalBrain V1  
+> **Status:** Binding architectural doctrine · LocalBrain V1 · **Deterministic Foundation CLOSED** (ENG-PMO-005)  
 > **Authority:** Interpretive canon — [Architecture Book § Deterministic Foundation](../LOCALBRAIN_ARCHITECTURE_BOOK_v1.0.md#deterministic-foundation-doctrine)  
-> **Engine:** ENG-MEM-001 Wave 1 establishes the substrate
+> **Engine:** ENG-MEM-001 Wave 1 — Institutional Cognition Foundation **COMPLETE**
 
 ---
 
@@ -34,7 +34,7 @@ Input → Canonical Episode      → Always identical
 Input → Canonical Fact         → Always identical
 Input → Canonical Artifact     → Always identical
 Input → Canonical Conversation → Always identical
-Input → Canonical DecisionCitation → Always identical (when implemented)
+Input → Canonical DecisionCitation → Always identical
 ```
 
 Nothing is probabilistic. Nothing is inferred. Nothing is generated at the substrate layer.
@@ -109,7 +109,23 @@ Episode, Artifact, Fact, Conversation, and DecisionCitation are not "AI memories
 
 ## Model independence
 
-When the LLM changes, Memory does not change. Episodes, Facts, Artifacts, and Conversations do not change. Only the reasoning layer changes. That is intentional.
+When the LLM changes, Memory does not change. Episodes, Facts, Artifacts, Conversations, and DecisionCitations do not change. Only the reasoning layer changes. That is intentional.
+
+---
+
+## Philosophical conclusion (binding — effective ENG-PMO-005)
+
+Effective at Reference Slice 005 acceptance:
+
+> Institutions should not depend on the memory of machines.
+>
+> Institutions should preserve their own history, evidence, knowledge, interpretation, and authority in deterministic form.
+>
+> Intelligence should reason over those records—not replace them.
+>
+> Models will evolve. Institutions should endure.
+
+Ceremony: [ENG-PMO-005 Constitutional Completion](./ENG-PMO-005-CONSTITUTIONAL-COMPLETION.md)
 
 ---
 

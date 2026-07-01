@@ -1,13 +1,12 @@
 # ENG-MEM-001.5 — DecisionCitation (Slice 5)
 
-> **Status:** **AUTHORIZED** — PMO 2026-07-01 · **Reference Slice 005** (governance engineering)  
-> **Wave:** 1 · Institutional Cognition Foundation (constitutional completion)  
+> **Status:** **COMPLETE** — PMO 2026-07-01 · **Reference Slice 005** (governance engineering)  
+> **Wave:** 1 · Institutional Cognition Foundation — **COMPLETE**  
 > **Designation:** **Reference Slice 005** — follow DecisionCitation for all future **governance engineering**  
 > **Object:** DecisionCitation — cites Decision Ledger; does not duplicate binding authority  
-> **Ceremony:** [ENG-PMO-004](../ENG-PMO-004-DECISIONCITATION-AUTHORIZATION.md)  
-> **Design review:** [MAR-2 Authority Architecture Review](../MAR-2-AUTHORITY-ARCHITECTURE_REVIEW.md) — **COMPLETE** · gates 001.5.1  
-> **Completion ceremony:** [ENG-PMO-005](../ENG-PMO-005-CONSTITUTIONAL-COMPLETION.md) — RESERVED  
-> **Completes:** Institutional Cognition Foundation (Wave 1 substrate set)
+> **Ceremony:** [ENG-PMO-004](../ENG-PMO-004-DECISIONCITATION-AUTHORIZATION.md) · [ENG-PMO-005](../ENG-PMO-005-CONSTITUTIONAL-COMPLETION.md)  
+> **Design review:** [MAR-2 Authority Architecture Review](../MAR-2-AUTHORITY-ARCHITECTURE_REVIEW.md) — **COMPLETE**  
+> **Completes:** Institutional Cognition Foundation (Wave 1 substrate set) · Deterministic Foundation
 
 ```text
 Reference Implementation (engineering discipline)
@@ -37,7 +36,8 @@ Required (100% or Not Accepted)
 ENG-MEM-001.5
 DecisionCitation
 STATUS:
-AUTHORIZED
+COMPLETE
+Reference Slice 005
 ```
 
 Architecture shift at this slice: Wave 1 completes the transition from preserving **information and interpretation** to preserving **institutional authority** — what the institution formally decided, not what Intelligence believes was decided.
@@ -242,7 +242,7 @@ Acceptance verifies:
 | ------ | ----- |
 | **001.5.1** | Canonical DecisionCitation storage — schema · validation · persistence · S4 · lifecycle · ledger citation · decider · supporting refs — **COMPLETE** (`33d9173`) |
 | **001.5.2** | Authority integrity — A17 · `verifyDecisionCitationAuthorityIntegrity()` · exercised authority only — **COMPLETE** (`4d23dec`) |
-| **001.5.3** | Governance guarantees — Recording Principle · ledger boundary invariants · reject reconstruction fields — **COMPLETE** |
+| **001.5.3** | Governance guarantees — Recording Principle · ledger boundary invariants · reject reconstruction fields — **COMPLETE** (`aec6a2d`) |
 
 Keep each commit substrate-only — same discipline as Conversation 001.4.1–001.4.3 and Artifact 001.3.1–001.3.2.
 
@@ -293,12 +293,37 @@ Keep each commit substrate-only — same discipline as Conversation 001.4.1–00
 
 ## Deliverables
 
-- [ ] DecisionCitation schema (`shared/src/memoryOs/decisionCitation.ts`)
-- [ ] Validator — reject unknown fields · authority-only · ledger boundary
-- [ ] S2 lifecycle + S4 provenance (Reference Slice patterns)
-- [ ] Persistence + append-only + reference-not-ownership invariants
-- [ ] Tests including A17 authority reconstruction walk
-- [ ] Slice closeout — **Specification Fidelity: 100%** · Reference Slice 005
+- [x] DecisionCitation schema (`shared/src/memoryOs/decisionCitation.ts`)
+- [x] Validator — reject unknown fields · authority-only · ledger boundary
+- [x] S2 lifecycle + S4 provenance (Reference Slice patterns)
+- [x] Persistence + append-only + reference-not-ownership invariants
+- [x] Tests — 19/19 PASS (`decisionCitation.test.ts` — A17 · governance guarantees)
+- [x] Slice closeout — **Specification Fidelity: 100%** · Reference Slice 005
+
+---
+
+## Engineering acceptance
+
+| # | Check | Status |
+| - | ----- | ------ |
+| A1 | Schema matches Volume 2 | PASS |
+| A2 | Registry fields complete | PASS |
+| A3 | S2 lifecycle implemented | PASS |
+| A4 | S4 provenance envelope | PASS |
+| A5 | Time model implemented | PASS |
+| A6 | Trust metadata implemented | PASS |
+| A7 | Serialization round-trip | PASS |
+| A8 | Append-only invariant | PASS |
+| A9 | Factory boundary respected | PASS |
+| A10 | No retrieval logic | PASS |
+| A11 | No intelligence logic | PASS |
+| A12 | Explainability | N/A — governance objects |
+| A13 | Authenticity | N/A — governance objects |
+| A14–A16 | Conversation integrity | N/A — governance objects |
+| A17 | **Authority Integrity** | PASS — 001.5.2 |
+| Governance | Recording · Ledger · Doctrine enforcement | PASS — 001.5.3 |
+
+**Slice result:** **COMPLETE** — Reference Slice 005 · 19/19 tests · PMO accepted 2026-07-01 · [Closeout](./ENG-MEM-001.5-SLICE_CLOSEOUT.md)
 
 ---
 

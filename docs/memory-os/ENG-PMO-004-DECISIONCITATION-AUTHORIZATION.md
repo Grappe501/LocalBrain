@@ -37,10 +37,14 @@ DecisionCitation answers: *What did the institution formally decide?*
 | Principle | Statement |
 | --------- | ----------- |
 | Authority Principle | **Authority is exercised. It is never inferred.** |
+| Recording Principle | **Authority is recorded. It is never reconstructed.** |
+| Governance Principle | **Authority creates responsibility. It does not create truth.** |
 | Ledger boundary (MAR-1) | Binding decision authority remains in Decision Ledger — Memory stores `DecisionCitation` only |
 | Reference relationship | DecisionCitation may reference Episode · Artifact · Fact · Conversation — never owns them |
 | A17 (reserved) | *Who exercised institutional authority?* — authority explicit · delegation traceable · decision immutable |
+| MAR-2 | [Authority Architecture Review](./MAR-2-AUTHORITY-ARCHITECTURE_REVIEW.md) — **COMPLETE** · gates 001.5.1 |
 | Deterministic substrate | [Deterministic Foundation Doctrine](./DETERMINISTIC-FOUNDATION-DOCTRINE.md) |
+| PMO-005 (reserved) | [Constitutional Completion Milestone](./ENG-PMO-005-CONSTITUTIONAL-COMPLETION.md) |
 
 ## Five institutional integrities
 

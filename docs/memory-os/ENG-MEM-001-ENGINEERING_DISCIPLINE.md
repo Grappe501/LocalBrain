@@ -40,7 +40,7 @@
 | **ENG-MEM-001.2 Fact** | **Knowledge must never become detached from evidence** · **institutional acceptance, not objective truth** · **Reference Slice 002** |
 | **ENG-MEM-001.3 Artifact** | **Evidence only — never conclusions** · **Authenticity — never correction** · **A13 binding** · **Reference Slice 003** |
 | **ENG-MEM-001.4 Conversation** | **Context only — never revision** · **A14–A16** · **Reference Slice 004 COMPLETE** |
-| **ENG-MEM-001.5 DecisionCitation** | **Authority exercised — never inferred** · **Ledger boundary** · **A17 binding** · **Reference Slice 005 AUTHORIZED** |
+| **ENG-MEM-001.5 DecisionCitation** | **Authority exercised — never inferred** · **Ledger boundary** · **A17 binding** · **Reference Slice 005 COMPLETE** |
 
 ---
 
@@ -369,7 +369,7 @@ Do not implement all object types simultaneously. Complete **one slice** — sch
 | 2 | ENG-MEM-001.2 | **Fact** | [Slice 2](./slices/ENG-MEM-001.2-FACT.md) | **Reference Slice 002** · COMPLETE |
 | 3 | ENG-MEM-001.3 | **Artifact** | [Slice 3](./slices/ENG-MEM-001.3-ARTIFACT.md) | **Reference Slice 003** · COMPLETE |
 | 4 | ENG-MEM-001.4 | **Conversation** + **ConversationTurn** | [Slice 4](./slices/ENG-MEM-001.4-CONVERSATION.md) | **Reference Slice 004** · COMPLETE |
-| 5 | ENG-MEM-001.5 | **DecisionCitation** | [Slice 5](./slices/ENG-MEM-001.5-DECISIONCITATION.md) | **Reference Slice 005** · AUTHORIZED |
+| 5 | ENG-MEM-001.5 | **DecisionCitation** | [Slice 5](./slices/ENG-MEM-001.5-DECISIONCITATION.md) | **Reference Slice 005** · **COMPLETE** |
 
 Remaining registry types (Skill, Relationship, Preference, Project, Organization, Task, Goal, Identity, DelegationGrant) follow in subsequent slices or Wave 1 extensions — **only after** slices 1–5 pass acceptance.
 

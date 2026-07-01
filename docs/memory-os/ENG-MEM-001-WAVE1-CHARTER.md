@@ -1,11 +1,11 @@
 # ENG-MEM-001 — Wave 1: Institutional Cognition Foundation
 
 > **Milestone name:** **Institutional Cognition Foundation**  
-> **Status:** Engineering charter — authorized at MEM-008 freeze · **4/5 slices PMO complete** · **001.5 AUTHORIZED** (Reference Slice 005)  
+> **Status:** **COMPLETE** — Wave 1 · 5/5 substrates · [ENG-PMO-005](./ENG-PMO-005-CONSTITUTIONAL-COMPLETION.md)  
 > **Engine:** ENG-MEM-001 · **Milestone:** MEM-009 Implementation Pass 1 · Wave 1  
 > **Specification:** `memory-spec-v1.0` · tag `memory-spec-v1.0`  
 > **Governance:** [ENG / OPS / ENG-PMO commit histories](./ENG-PMO-GOVERNANCE.md)  
-> **Blocks:** Wave 2 (Retrieval) · Wave 3 (Intelligence) · Wave 4 (Organizational Intelligence)
+> **Unblocks:** Executive Intelligence Era · Wave 2 (Retrieval) · Wave 3 (Intelligence) · Wave 4 (Organizational Intelligence)
 
 ---
 
@@ -32,8 +32,11 @@ Chief of Staff   → I can help you decide what to do next.   (Executive Intelli
 
 The progression is deliberate. Each layer adds capability without blurring the layer below. Executive Intelligence culminates the stack — it does not replace memory, knowledge, evidence, explanation, or governance.
 
-**Information-preserving substrates (complete):** Episode · Artifact · Fact · Conversation — history · evidence · knowledge · interpretation.  
-**Authority substrate (authorized):** [ENG-MEM-001.5 DecisionCitation](./slices/ENG-MEM-001.5-DECISIONCITATION.md) — governance · Reference Slice 005 · completes foundation at acceptance.
+**All five substrates complete:** Episode · Artifact · Fact · Conversation · DecisionCitation — history · evidence · knowledge · interpretation · authority.
+
+**Constitutional doctrine:** [The Five Constitutional Substrates](./THE-FIVE-CONSTITUTIONAL-SUBSTRATES.md)
+
+**Post-foundation:** Executive Intelligence Era authorized at [ENG-PMO-005](./ENG-PMO-005-CONSTITUTIONAL-COMPLETION.md).
 
 **Fact Principle:** [Engineering Discipline § The Fact Principle](./ENG-MEM-001-ENGINEERING_DISCIPLINE.md#the-fact-principle-binding)
 

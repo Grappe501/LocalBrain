@@ -23,24 +23,25 @@ Do not mix histories in a single commit. Implementation fidelity and observabili
 
 ## Wave 1 milestone name
 
-Wave 1 is more than canonical storage. It establishes the **Institutional Cognition Foundation** — the layer that preserves fundamental kinds of institutional information before any reasoning occurs.
+Wave 1 establishes the **Institutional Cognition Foundation** — the layer that preserves fundamental kinds of institutional information before any reasoning occurs.
 
-Foundational substrates complete (Reference Slices 001–003):
+**Status:** **COMPLETE** — all five substrates · Reference Slices 001–005 · [ENG-PMO-005](./ENG-PMO-005-CONSTITUTIONAL-COMPLETION.md)
 
-```text
-Episode   → History
-Artifact  → Evidence
-Fact      → Knowledge
-```
-
-Conversation (Reference Slice 004 — **COMPLETE**) established **interpretation**. DecisionCitation (Reference Slice 005 — **AUTHORIZED**) completes **authority** at acceptance.
+Foundational substrates:
 
 ```text
-Conversation     → Interpretation   (complete · Ref 004)
-DecisionCitation → Authority        (authorized · Ref 005)
+Episode          → History
+Artifact         → Evidence
+Fact             → Knowledge
+Conversation     → Interpretation
+DecisionCitation → Authority
 ```
 
-Deterministic substrate doctrine: [DETERMINISTIC-FOUNDATION-DOCTRINE.md](./DETERMINISTIC-FOUNDATION-DOCTRINE.md)
+Deterministic substrate doctrine: [DETERMINISTIC-FOUNDATION-DOCTRINE.md](./DETERMINISTIC-FOUNDATION-DOCTRINE.md) — **CLOSED** at substrate layer
+
+**Constitutional doctrine:** [The Five Constitutional Substrates](./THE-FIVE-CONSTITUTIONAL-SUBSTRATES.md)
+
+**Post-foundation era:** **Executive Intelligence Era** — substrate era complete · Intelligence may consume deterministic records
 
 ---
 
