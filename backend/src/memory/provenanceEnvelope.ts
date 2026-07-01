@@ -1,6 +1,7 @@
 import {
   CON_S4_VERSION,
   EPISODE_KIND,
+  FACT_KIND,
   type CaptureMethod,
   type IdentityRef,
   type MemoryProvenanceEnvelope,
@@ -35,3 +36,4 @@ export function buildMemoryProvenanceEnvelope(
 }
 
 export const MEMORY_AUDIT_OBJECT_EPISODE = EPISODE_KIND;
+export const MEMORY_AUDIT_OBJECT_FACT = FACT_KIND;

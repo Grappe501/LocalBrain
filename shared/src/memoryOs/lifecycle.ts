@@ -66,3 +66,6 @@ export function isLifecycleTransitionAllowed(
 
 /** Initial state for persisted Episode writes (S2 Captured). */
 export const EPISODE_INITIAL_LIFECYCLE: LifecycleState = "Captured";
+
+/** Initial state for persisted Fact writes (S2 Captured). */
+export const FACT_INITIAL_LIFECYCLE: LifecycleState = "Captured";
