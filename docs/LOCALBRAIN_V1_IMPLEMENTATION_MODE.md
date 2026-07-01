@@ -60,8 +60,8 @@ NO NEW COGNITIVE LAYERS
 | Phase | Track | Work |
 | ----- | ----- | ---- |
 | **1** | D — Executive Offices | Finish Executive Office — polish, navigation, certification, usability |
-| **2** | A — Executive Theory | Peer Review Session 4 → Session 5 → Freeze Theory v1.0 |
-| **3** | A — Executive Theory | Executive Epistemology Convention — lock every contract, no more interpretation |
+| **2** | A — Executive Theory | ~~Peer Review Session 4 → Session 5 → Freeze Theory v1.0~~ **✅ Complete 2026-06-30** |
+| **3** | A — Executive Theory | **▶ Executive Epistemology Convention** — lock every contract, no more interpretation |
 | **4** | B — Manufacturing | Empty Brain Factory — packaging, installer, birth certificate, passport, authority, license, settings, provider vault |
 | **5** | C — Memory OS | Memory OS — first truly living component |
 | **6** | D/E | Communications Office — email, SMS, calendar, relationships, CoS briefing |
@@ -97,11 +97,11 @@ Every morning `/program-office` answers only:
 
 ```txt
 LOCALBRAIN V1 ROADMAP
-□ Executive Office Certification
-□ Session 4
-□ Session 5
-□ Theory Freeze
-□ Convention
+✓ Executive Office Certification
+✓ Session 4
+✓ Session 5
+✓ Theory Freeze
+▶ Convention
 □ Empty Brain Factory
 □ Memory OS
 □ Communications Office

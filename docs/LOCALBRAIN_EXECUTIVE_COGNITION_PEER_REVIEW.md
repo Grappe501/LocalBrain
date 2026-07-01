@@ -127,7 +127,7 @@ Peer review in research avoids reviewers influencing one another. Same disciplin
 | **2** | **Cognitive scientist** | Cognitive assumptions · evidence requirements | ✅ Passed 2026-06-28 (research obligations) |
 | **3** | **Systems engineer** | Scalability · determinism · modularity | ✅ Passed 2026-06-28 (engineering obligations) |
 | **4** | **Executive practitioner** | Does this help someone make better decisions? | ✅ Passed 2026-06-30 (practitioner obligations) · [Session 4 packet](./burt_packets/MILESTONE-PR-S4.md) |
-| **5** | **Skeptic** | Assume the theory is wrong · find weakest points | ⬜ Pending |
+| **5** | **Skeptic** | Assume the theory is wrong · find weakest points | ✅ Passed 2026-06-30 (skeptic obligations) · [Session 5 packet](./burt_packets/MILESTONE-PR-S5.md) |
 
 Record findings in [Cognitive Evidence Base](./LOCALBRAIN_COGNITIVE_EVIDENCE_BASE.md). Every criticism receives **one of four outcomes** — no "change it now":
 
@@ -236,16 +236,16 @@ Amendments to Theory v1.0 follow Constitution-style process — documented in Ev
 
 | Field | Value |
 | ----- | ----- |
-| Review date | |
-| Participants | |
-| Gate Q1–Q5 | pass / fail + notes |
-| Consistency | |
-| Completeness | |
-| Minimality | |
-| Independence | |
-| Falsifiability | |
-| Adversarial findings | |
-| Outcome | **Theory v1.0 frozen** / revise and re-review |
+| Review date | 2026-06-28 — 2026-06-30 |
+| Participants | Five independent sessions (Philosopher · Cognitive Scientist · Systems Engineer · Executive Practitioner · Skeptic) |
+| Gate Q1–Q5 | **pass** — all yes at Session 5 close |
+| Consistency | Pass — 0 contradictions across 5 sessions |
+| Completeness | Pass — gaps deferred to Convention ontology |
+| Minimality | Pass — collapse tests distinguish load-bearing constructs |
+| Independence | Pass — LLM substitutable per axioms |
+| Falsifiability | Pass — Falsification Charter; RO-S5-002 extends coverage |
+| Adversarial findings | 0 Amendment Candidates · commercial risks flagged (simplicity · adoption) |
+| Outcome | **Theory v1.0 frozen** — 2026-06-30 |
 
 ---
 

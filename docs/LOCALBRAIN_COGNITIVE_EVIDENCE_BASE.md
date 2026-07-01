@@ -77,7 +77,7 @@ Links:           docs · commits · trace IDs
 | 2 | Cognitive scientist | ✅ Passed (research obligations) | [PR-S2 below](#peer-review-session-2-cognitive-scientist) |
 | 3 | Systems engineer | ✅ Passed (engineering obligations) | [PR-S3 below](#peer-review-session-3-systems-engineer) |
 | 4 | Executive practitioner | ✅ Passed (practitioner obligations) | [PR-S4 below](#peer-review-session-4-executive-practitioner) |
-| 5 | Skeptic | ⬜ Pending | — |
+| 5 | Skeptic | ✅ Passed (skeptic obligations) | [PR-S5 below](#peer-review-session-5-skeptic) |
 
 **Submission packet:** Frozen at `7b6ab71`. Findings only in this document until Sessions 1–5 complete → then Convention Agenda.
 
@@ -356,6 +356,114 @@ Links:           docs · commits · trace IDs
 | PR-S4-004 | Time pressure | ✅ |
 | PR-S4-005 | Accountability | ✅ |
 
+---
+
+### Peer Review Session 5 (Skeptic)
+
+| Field | Value |
+| ----- | ----- |
+| Date | ▶ Open 2026-06-30 — post Session 4 close (`8899886`) |
+| Reviewer | Independent (Skeptic — adversarial) |
+| Submission | Frozen at `7b6ab71` |
+| Mindset | **Assume the theory is wrong** — destroy it if possible |
+| Outcome | **Passed (skeptic obligations)** — 2026-06-30 · [Burt packet](./burt_packets/MILESTONE-PR-S5.md) |
+
+#### Findings log
+
+| ID | Finding | Skeptic read | Outcome | Notes |
+| -- | ------- | ------------ | ------- | ----- |
+| PR-S5-001a | WMA ↔ Judgment ↔ World Model loop | WMA estimated against **reality** (predictive surprise · outcome mismatch) · JQ evaluates **process given what was believed knowable** — different questions · loop is feedback, not definition | **Resolved** | Not circular if WMA is outcome-grounded and JQ is process-grounded — charter row 27 tests the link |
+| PR-S5-001b | Cognitive Leverage numerator | JQ × WMA × Mission Alignment × Action Quality — conceptual law, not arithmetic · terms correlate · implementation could double-count leverage | **Open Question** | RO-S5-001: operationalize ELS without treating formula as independent multipliers |
+| PR-S5-001c | Trace validates JQ validates Trace | JQ scored on structured process criteria + **inter-rater** (RO-S2-001) · not "trace completeness = good thinking" | **Clarification** | Goodhart risk remains — anti-theater protocol required before JQ headline |
+| PR-S5-002a | Charter falsifiers | 14 explicit "what would prove wrong" rows · conservation · Agency · MCP · tension · equilibrium · LLM independence | **Resolved** | Theory layer has pre-committed falsifiers — not vibes |
+| PR-S5-002b | "Implementation wasn't good enough" dodge | Charter steward promise: **only evidence** redefines theory · product/theory separation explicit · failed implementation ≠ theory survival by default | **Resolved** | Escape hatch blocked at doctrine layer — but requires discipline at review time |
+| PR-S5-002c | Gaps in charter coverage | **ELS** · **Cognitive Capital** · **Day-90 retention** lack dedicated falsifier rows | **Open Question** | RO-S5-002: extend charter at Convention — not Theory v1.1 |
+| PR-S5-003a | Collapse: Memory Confidence | Recommendations degrade to provenance + Intellectual Humility · recall gating weakens | **Resolved** | Helpful pillar · not load-bearing — theory survives |
+| PR-S5-003b | Collapse: WMA | JQ loses "given what was believed knowable" anchor · MCP/tension/agency still operate | **Clarification** | Theory weakens without WMA · does not self-contradict — WMA is justified load |
+| PR-S5-003c | Collapse: Cognitive Trace | JQ unmeasurable · accountability collapses · Axiom 4 ancestry at risk | **Resolved** | Load-bearing — removal breaks meta-cognition layer, not a hidden dependency |
+| PR-S5-003d | Collapse: CoS | Departments recommend directly · Steve synthesizes manually · institution → tool pile | **Resolved** | Load-bearing at **scale** · single-user minimal path exists — CoS justified |
+| PR-S5-003e | Collapse: Mission Stack | Tension + priority still rank work · MCP optimization weakens · attention protection degrades | **Clarification** | Mission Stack is high-leverage, not sole routing mechanism |
+| PR-S5-004a | Goodhart: JQ | Optimize trace completeness / council theater without better thinking | **Open Question** | RO-S5-003: inter-rater JQ · outcome-independent process rubric · spot audits |
+| PR-S5-004b | Goodhart: WMA | Avoid predictions to avoid being wrong | **Clarification** | Predictive surprise + falsification requirement counters abstention gaming |
+| PR-S5-004c | Goodhart: Calibration | Always report low confidence | **Resolved** | Decision Economics **Cost of Delay** punishes permanent under-confidence |
+| PR-S5-004d | Goodhart: Trust (Phase 2) | Inflate source reliability to weight recommendations | **Open Question** | RO-S5-004: trust surfaces need outcome-grounded decay — ties RO-S4-005 |
+| PR-S5-005a | Simplicity: notebook + calendar + GPT + email | Disciplined solo executive may reach **~90% on episodic tasks** without LocalBrain | **Open Question** | **Highest commercial risk** — product falsifier, not theory contradiction · Kelly must quantify gap |
+| PR-S5-005b | What simple stack cannot do | Provenance conservation · approval-gated institutional action · cognitive entropy reduction at scale · six-month accountable replay | **Resolved** | Theory claims **institutional executive cognition** — not chat assistance |
+| PR-S5-006a | Economic: complexity vs value | Platform complexity is real · ECL is explicit cost denominator · value claim is **empirical** | **Open Question** | RO-S5-005: ELS gain must exceed operator burden at Commercial Beta gate |
+| PR-S5-006b | Economic: maintenance burden | Theory does not claim complexity is free · Cognitive Equilibrium forbids MCP-at-any-ECL-cost | **Resolved** | Economic attack lands on product proof, not architectural logic |
+| PR-S5-007a | Adoption: Day 90 | Theory makes **no retention guarantee** · attention protection + equilibrium designed to reduce abandonment | **Clarification** | Adoption is empirical · outside theory scope · mandatory beta metric |
+| PR-S5-007b | Adoption: ceremony fatigue | Many surfaces without synthesis → abandonment (PR-S4-001e) | **Open Question** | RO-S5-006: Day-90 active use + net ECL trend — Kelly/Chris beta |
+
+#### Pre-H-027 gate (five questions)
+
+| # | Question | Result |
+| - | -------- | ------ |
+| 1 | Is the theory internally consistent? | **Yes** — no circular definition found that makes constructs self-proving |
+| 2 | Is it minimal? | **Yes** — collapse tests distinguish load-bearing (Trace · CoS at scale) from optional (Memory Confidence) |
+| 3 | Is it falsifiable? | **Yes** — Falsification Charter pre-commits; gaps noted for ELS/Capital/retention |
+| 4 | Is its scope explicit? | **Yes** — executive cognition only; not consciousness/emotion |
+| 5 | Would we still believe it if every LLM disappeared? | **Yes** — inference is substitutable; governance/memory/decision architecture remains |
+
+#### Session 5 gate
+
+- [x] No unresolved **Amendment Candidate** without evidence plan
+- [x] All **Clarification** / **Open Question** items deferred (skeptic — not Theory edit)
+- [x] Success criterion met: failed to destroy theory with adversarial attacks requiring Theory v1.1
+
+**Skeptic conclusion:** Theory survived deliberate destruction attempts. Strongest surviving risks are **commercial** (simplicity · economics · adoption), not logical contradiction. Goodhart and measurement gaming require operational countermeasures before metrics become headlines.
+
+| Outcome type | Count |
+| ------------ | ----- |
+| Resolved | 9 |
+| Clarification | 6 |
+| Open Question | 7 |
+| Amendment Candidate | 0 |
+| Skeptic contradictions | **0** |
+
+#### Skeptic obligations (from Session 5)
+
+| ID | Obligation |
+| -- | ---------- |
+| RO-S5-001 | Operationalize ELS/leverage without literal multiplication of correlated numerators |
+| RO-S5-002 | Extend Falsification Charter — ELS · Cognitive Capital · Day-90 retention rows |
+| RO-S5-003 | JQ anti-Goodhart: inter-rater reliability + process rubric before headline metric |
+| RO-S5-004 | Trust-surface outcome-grounded decay (align RO-S4-005) |
+| RO-S5-005 | Commercial Beta gate: ELS gain vs operator burden (ECL-adjusted) |
+| RO-S5-006 | Day-90 active use + net ECL trend at Kelly/Chris beta |
+| RO-S5-007 | Simplicity benchmark: document episodic-task gap (notebook+GPT vs LocalBrain) |
+
+#### Session 5 planned review areas (complete)
+
+| ID | Topic | Status |
+| -- | ----- | ------ |
+| PR-S5-001 | Hidden circular reasoning | ✅ |
+| PR-S5-002 | Unfalsifiable claims | ✅ |
+| PR-S5-003 | Collapse tests | ✅ |
+| PR-S5-004 | Goodhart attack | ✅ |
+| PR-S5-005 | Simplicity attack | ✅ |
+| PR-S5-006 | Economic attack | ✅ |
+| PR-S5-007 | Adoption attack | ✅ |
+
+---
+
+## Theory v1.0 freeze (peer review complete)
+
+| Field | Value |
+| ----- | ----- |
+| Frozen at | `7b6ab71` (submission) · peer review closed `8899886` → Session 5 close |
+| Gate Q1–Q5 | **All yes** — [Session 5 gate](#pre-h-027-gate-five-questions) |
+| Sessions | S1 Philosopher · S2 Cognitive Scientist · S3 Systems Engineer · S4 Executive Practitioner · S5 Skeptic — **all passed** |
+| Theory amendments | **0** |
+| Contradictions requiring redesign | **0** |
+| Next | [Executive Epistemology Convention](./LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md) Sessions 1–5 |
+
+> **We've deliberately attacked this architecture from five independent perspectives and have not found a contradiction requiring redesign.**
+
+Amendments only as v1.1+ with evidence — [Canon preservation](./LOCALBRAIN_FALSIFICATION_CHARTER.md#canon-preservation).
+
+---
+
+#### Session 2 planned review areas (complete)
 
 | ID | Topic | Status |
 | -- | ----- | ------ |
@@ -375,7 +483,8 @@ Links:           docs · commits · trace IDs
 | PR-S2 Cognitive Scientist | 2026-06-28 | **Passed (research obligations)** — 0 empirical contradictions · 2 clarifications · 3 open questions | [PR-S2](#peer-review-session-2-cognitive-scientist) |
 | PR-S3 Systems Engineer | 2026-06-28 | **Passed (engineering obligations)** — 0 engineering contradictions · RO-S3-001–020 | [PR-S3](#peer-review-session-3-systems-engineer) |
 | PR-S4 Executive Practitioner | 2026-06-30 | **Passed (practitioner obligations)** — 0 contradictions · 17 resolved · 8 clarifications · 9 open questions · RO-S4-001–011 | [PR-S4](#peer-review-session-4-executive-practitioner) |
-| Executive Cognition Peer Review (aggregate) | 📋 In progress | Session 5 (Skeptic) pending · five gate questions open | [Peer Review doc](./LOCALBRAIN_EXECUTIVE_COGNITION_PEER_REVIEW.md) |
+| PR-S5 Skeptic | 2026-06-30 | **Passed (skeptic obligations)** — 0 contradictions · 9 resolved · 6 clarifications · 7 open questions · RO-S5-001–007 | [PR-S5](#peer-review-session-5-skeptic) |
+| Executive Cognition Peer Review (aggregate) | 2026-06-30 | **Complete — Theory v1.0 frozen** · five sessions passed · 0 amendments | [Peer Review doc](./LOCALBRAIN_EXECUTIVE_COGNITION_PEER_REVIEW.md) · [Theory Freeze](#theory-v10-freeze-peer-review-complete) |
 
 ---
 
@@ -396,6 +505,9 @@ Amendments publish as v1.1, v1.2, … v1.0 text remains immutable. See [Falsific
 | E-PR-S1-2026 | adversarial review | 2026-06-28 | Philosopher Session 1 — 5 attack surfaces · 0 contradictions · 3 clarifications · 2 open questions | None — internal coherence supported; Convention agenda deferred |
 | E-PR-S2-2026 | adversarial review | 2026-06-28 | Cognitive Scientist Session 2 — 5 attack surfaces · 0 empirical contradictions · research obligations RO-S2-001–007 | None — empirical plausibility supported; H-* validation agenda defined |
 | E-PR-S3-2026 | adversarial review | 2026-06-28 | Systems Engineer Session 3 — 5 attack surfaces · 0 engineering contradictions · obligations RO-S3-001–020 | None — engineering feasibility supported; implementation style emergent |
+| E-PR-S4-2026 | adversarial review | 2026-06-30 | Executive Practitioner Session 4 — 5 attack surfaces · 0 contradictions · RO-S4-001–011 | None — executive utility supported; practitioner obligations recorded |
+| E-PR-S5-2026 | adversarial review | 2026-06-30 | Skeptic Session 5 — 7 attack surfaces · 0 contradictions · RO-S5-001–007 | None — theory survived destruction attempts; commercial risks flagged |
+| E-PR-FREEZE-2026 | gate | 2026-06-30 | Five-session peer review complete · Pre-H-027 gate Q1–Q5 all yes · Theory v1.0 frozen | Canon locked — amendments v1.1+ only |
 | E-META-PR-2026 | meta-evidence | 2026-06-28 | Sessions 1–3 pattern: claim-type separation · emergent implementation style (local · incremental · versioned · event-aware · self-observing) | Review method taxonomy — not evidence theory is correct |
 
 ### Peer review progress (institutional memory)
@@ -405,10 +517,10 @@ Amendments publish as v1.1, v1.2, … v1.0 text remains immutable. See [Falsific
 | 1 Philosopher | Internal logical consistency | Passed — 0 contradictions; boundary-definition questions |
 | 2 Cognitive Scientist | Empirical plausibility | Passed (research obligations) — 0 contradictions; measurement/validation obligations |
 | 3 Systems Engineer | Engineering feasibility | Passed (engineering obligations) — 0 contradictions; RO-S3-001–020 |
-| 4 Executive Practitioner | Decision utility | ▶ In progress |
-| 5 Skeptic | Assume theory wrong | ⬜ Pending |
+| 4 Executive Practitioner | Decision utility | Passed (practitioner obligations) — RO-S4-001–011 |
+| 5 Skeptic | Assume theory wrong | Passed (skeptic obligations) — RO-S5-001–007 |
 
-**Confidence after S1–S3 (reviewer assessment, not certification):** Theory coherence strong · scientific plausibility sufficient to justify experimentation · engineering feasibility supported with obligations — not yet validated in implementation.
+**Peer review complete (2026-06-30):** Five independent adversarial sessions · **0 contradictions** · **0 Theory amendments** · Theory v1.0 frozen → Convention next.
 
 ---
 

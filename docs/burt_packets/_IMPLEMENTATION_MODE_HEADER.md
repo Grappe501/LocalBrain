@@ -7,11 +7,11 @@ Copy this block to the **top of every Burt packet** during V1 implementation mod
 ```txt
 > **LOCALBRAIN V1 ROADMAP** · Architecture FROZEN · Implementation mode
 >
-> □ Executive Office Certification
-> □ Session 4
-> □ Session 5
-> □ Theory Freeze
-> □ Convention
+> ✓ Executive Office Certification
+> ✓ Session 4
+> ✓ Session 5
+> ✓ Theory Freeze
+> ▶ Convention
 > □ Empty Brain Factory
 > □ Memory OS
 > □ Communications Office

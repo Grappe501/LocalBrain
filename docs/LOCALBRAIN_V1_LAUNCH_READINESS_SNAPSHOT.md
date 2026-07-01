@@ -68,9 +68,9 @@ Confidence:             60%
 | Phase | Finishability |
 | ----- | ------------: |
 | Executive Office | 100% |
-| Session 4 — Practitioner | 96% |
-| Session 5 — Skeptic | 88% |
-| Theory Freeze | 95% |
+| Session 4 — Practitioner | 100% |
+| Session 5 — Skeptic | 100% |
+| Theory Freeze | 100% |
 | Convention | 63% |
 | Empty Brain Factory | 34% |
 | Memory OS | 18% |
@@ -81,7 +81,7 @@ Progress tells you how much is done. Finishability tells you how well understood
 
 ---
 
-## PMO operating rules (Session 4 gate)
+## PMO operating rules (post Theory Freeze)
 
 **V1 deferral rule:** If a proposed change does not shorten the critical path, improve certification quality, reduce launch risk, or fix a defect, it waits for V2.
 
@@ -98,23 +98,24 @@ Progress tells you how much is done. Finishability tells you how well understood
 
 **Burt session start:** Critical Path · Current Module · Certification Status · Blocking Issues · Smallest Next Executable Slice. If unclear → stop and ask.
 
-- **No implementation work** during Session 4.
-- **No architecture changes** unless a genuine contradiction is found.
+- **No architecture changes** unless a genuine contradiction is found (peer review complete — none found).
 - **No reopening certified modules** except critical defects.
 
 Critical path only:
 
 ```text
-Theory Validation → Theory Freeze → Convention → Factory → Memory OS → Communications → Commercial Beta
+✓ Theory Validation (Peer Review S1–S5)
+✓ Theory Freeze
+▶ Convention → Factory → Memory OS → Communications → Commercial Beta
 ```
 
 ---
 
 ## Next module
 
-**Executive Practitioner Review** ([MILESTONE-PR-S4](./burt_packets/MILESTONE-PR-S4.md))
+**Executive Epistemology Convention** ([Convention doc](./LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md))
 
-Theory frozen at commit `7b6ab71`. Record findings in [Cognitive Evidence Base](./LOCALBRAIN_COGNITIVE_EVIDENCE_BASE.md) only.
+Theory frozen at commit `7b6ab71` · peer review closed 2026-06-30. Findings in [Cognitive Evidence Base](./LOCALBRAIN_COGNITIVE_EVIDENCE_BASE.md).
 
 ---
 
@@ -129,7 +130,7 @@ Design → Build → Test → PMO Review → Certification → Regression Lock �
 ## Burt mission
 
 > Finish the current module.  
-> **Now:** Peer Review Session 4 — Executive Practitioner
+> **Now:** Executive Epistemology Convention — Session 1 (Ontology)
 
 Everything else → [VERSION2_BACKLOG.md](./VERSION2_BACKLOG.md)
 
