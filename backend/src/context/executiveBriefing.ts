@@ -10,35 +10,59 @@ export type BriefingSection = {
 export function buildExecutiveBriefingSections(): BriefingSection[] {
   const ei = getExecutiveIntelligenceEraSnapshot();
 
-  const todayPriorities = ei.doctrine_frozen
+  const todayPriorities = ei.retrieval_complete
     ? [
-        "1. ENG-EI-001 Constitutional Retrieval — read-only · cite · package evidence",
-        "2. Doctrine Fidelity — Articles I–IX · fidelity-first engineering",
-        "3. Communications Office — unblocked after ENG-EI-001 acceptance",
+        "1. ENG-EI-002 Executive Brief — first Evidence Package consumer · Lane 2",
+        "2. Work Product Contract candidate — every assertion traceable to package",
+        "3. No recommendations · no prioritization · doctrine-compliant brief only",
       ]
-    : ei.mar3_complete
+    : ei.implementation_started
       ? [
-          "1. EI-001 doctrine freeze ceremony — tag ei-doctrine-v1.0",
-          "2. Executive Intelligence Doctrine — 9 articles · MAR-3 COMPLETE",
-          "3. ENG-EI-001 Constitutional Retrieval — AUTHORIZED after freeze",
+          "1. ENG-EI-001 quality phase — completeness · exclusion reasons · citation integrity",
+          "2. Evidence Package Contract — retrieval without making it smarter",
+          "3. ENG-EI-001 charter acceptance (A1–A9) before Communications Office",
         ]
-      : [
-          "1. MAR-3 Executive Intelligence Architecture Review — Q1–Q7",
-          "2. Executive Intelligence Doctrine — 9 articles · evidence threshold model",
-          "3. EI-001 doctrine freeze ceremony after MAR-3 PASS",
-        ];
+      : ei.doctrine_frozen
+        ? [
+            "1. ENG-EI-001.1 Constitutional Retrieval — read-only · cite · package evidence",
+            "2. Doctrine Fidelity — Articles I–IX · fidelity-first engineering",
+            "3. Evidence Package Contract — constitutional bridge to Executive Intelligence",
+          ]
+        : ei.mar3_complete
+          ? [
+              "1. EI-001 doctrine freeze ceremony — tag ei-doctrine-v1.0",
+              "2. Executive Intelligence Doctrine — 9 articles · MAR-3 COMPLETE",
+              "3. ENG-EI-001 Constitutional Retrieval — AUTHORIZED after freeze",
+            ]
+          : [
+              "1. MAR-3 Executive Intelligence Architecture Review — Q1–Q7",
+              "2. Executive Intelligence Doctrine — 9 articles · evidence threshold model",
+              "3. EI-001 doctrine freeze ceremony after MAR-3 PASS",
+            ];
 
-  const eiEraLines = ei.doctrine_frozen
+  const eiEraLines = ei.retrieval_complete
     ? [
-        "ei-doctrine-v1.0 FROZEN · ENG-PMO-006 · ENG-PMO-007 governance refinements",
-        "ENG-EI-001 Constitutional Retrieval AUTHORIZED — first code against frozen doctrine",
-        "Metric: Doctrine Fidelity (Articles I–IX · 100%)",
+        "ENG-EI-001 COMPLETE · ENG-PMO-008 · ENG-EI-DOC-003",
+        `Evidence Package Contract ${ei.retrieval_contract_version ?? "ENG-EI-001.3"} · ${ei.retrieval_tests_count}/${ei.retrieval_tests_count} retrieval tests`,
+        "Constitutional Retrieval complete — Executive Intelligence consumes, does not revalidate",
       ]
-    : [
-        "Doctrine AUTHORIZED · Articles I–IX · burden of proof · safe degradation",
-        "Sequence: Doctrine → MAR-3 → EI-001 → ENG-EI-001 Constitutional Retrieval",
-        "No advisory implementation before ei-doctrine-v1.0 freeze",
-      ];
+    : ei.implementation_started
+      ? [
+          `ENG-EI-001 IN PROGRESS · ${ei.impl_slices_complete.join(" · ")} COMPLETE`,
+          `Evidence Package Contract ${ei.retrieval_contract_version ?? "ENG-EI-001"} · ${ei.retrieval_tests_count}/${ei.retrieval_tests_count} retrieval tests`,
+          `${ei.implementation_phase} phase · Doctrine Fidelity · without making it smarter`,
+        ]
+      : ei.doctrine_frozen
+        ? [
+            "ei-doctrine-v1.0 FROZEN · ENG-PMO-006 · ENG-PMO-007 governance refinements",
+            "ENG-EI-001 Constitutional Retrieval AUTHORIZED — first code against frozen doctrine",
+            "Metric: Doctrine Fidelity (Articles I–IX · 100%)",
+          ]
+        : [
+            "Doctrine AUTHORIZED · Articles I–IX · burden of proof · safe degradation",
+            "Sequence: Doctrine → MAR-3 → EI-001 → ENG-EI-001 Constitutional Retrieval",
+            "No advisory implementation before ei-doctrine-v1.0 freeze",
+          ];
 
   return [
     {
@@ -67,9 +91,13 @@ export function buildExecutiveBriefingSections(): BriefingSection[] {
       title: "Certified modules",
       lines: [
         "Executive Office · Empty Brain Factory · Capability Graph · Experience — locked",
-        ei.doctrine_frozen
-          ? "Communications awaits ENG-EI-001 Constitutional Retrieval"
-          : "Communications awaits EI-001 doctrine freeze",
+        ei.retrieval_complete
+          ? "Communications awaits ENG-EI-002 Executive Brief"
+          : ei.implementation_started
+            ? "Communications awaits ENG-EI-001 charter acceptance"
+            : ei.doctrine_frozen
+              ? "Communications awaits ENG-EI-001 Constitutional Retrieval"
+              : "Communications awaits EI-001 doctrine freeze",
       ],
     },
     {

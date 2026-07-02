@@ -63,7 +63,7 @@ test("parsePhaseSections derives phases from checklist", () => {
   assert.ok(migration!.slice_ids.includes("LB-OS-020"));
 });
 
-test("Executive Intelligence Era metrics reflect frozen doctrine and ENG-EI-001 authorization", () => {
+test("Executive Intelligence Era metrics reflect ENG-EI-001 complete and ENG-EI-002 next", () => {
   const ei = getExecutiveIntelligenceEraSnapshot();
   assert.equal(ei.era_authorized, true);
   assert.equal(ei.doctrine_articles, 9);
@@ -71,8 +71,15 @@ test("Executive Intelligence Era metrics reflect frozen doctrine and ENG-EI-001 
   assert.equal(ei.mar3_questions_pending, 0);
   assert.equal(ei.doctrine_frozen, true);
   assert.equal(ei.pre_impl_progress_percent, 100);
-  assert.ok(ei.building_today.includes("ENG-EI-001"));
-  assert.ok(ei.summary.includes("FROZEN"));
+  assert.equal(ei.implementation_started, true);
+  assert.equal(ei.retrieval_complete, true);
+  assert.equal(ei.implementation_phase, "work_product");
+  assert.deepEqual(ei.impl_slices_complete, ["ENG-EI-001.1", "ENG-EI-001.2", "ENG-EI-001.3"]);
+  assert.equal(ei.impl_progress_percent, 100);
+  assert.equal(ei.retrieval_contract_version, "ENG-EI-001.3");
+  assert.equal(ei.retrieval_tests_count, 12);
+  assert.ok(ei.building_today.includes("ENG-EI-002"));
+  assert.ok(ei.summary.includes("ENG-EI-001 COMPLETE"));
 });
 
 test("computeBuildState projects current sprint and velocity", () => {

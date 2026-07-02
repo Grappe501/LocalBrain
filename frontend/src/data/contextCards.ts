@@ -61,14 +61,14 @@ export const CONTEXT_CARDS: readonly ContextCard[] = [
   {
     id: "executive-intelligence",
     title: "Executive Intelligence",
-    status: "active",
-    detail: "ei-doctrine-v1.0 FROZEN · ENG-PMO-006/007 · ENG-EI-001 AUTHORIZED · Doctrine Fidelity",
+    status: "complete",
+    detail: "ENG-EI-001 COMPLETE · ENG-PMO-008 · Evidence Package Contract ENG-EI-001.3 · 12/12 tests",
   },
   {
     id: "communications",
     title: "Communications Office",
     status: "planned",
-    detail: "Unblocked after ENG-EI-001 · Institutional Cognition Foundation V1 COMPLETE",
+    detail: "Awaiting ENG-EI-002 Executive Brief · Constitutional Retrieval complete",
   },
 ] as const;
 

@@ -1,6 +1,6 @@
 # ENG-EI-001.1 — Constitutional Retrieval · Substrate Read Path
 
-> **Status:** **IN PROGRESS**  
+> **Status:** **COMPLETE**  
 > **Parent:** [ENG-EI-001 Charter](../ENG-EI-001-CHARTER.md)  
 > **Engine:** ENG-EI-001 · `ei-doctrine-v1.0`
 

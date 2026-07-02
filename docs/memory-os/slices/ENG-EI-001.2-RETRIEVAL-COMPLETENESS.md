@@ -1,6 +1,6 @@
 # ENG-EI-001.2 — Retrieval Completeness and Exclusion Reasons
 
-> **Status:** **IN PROGRESS**  
+> **Status:** **COMPLETE**  
 > **Parent:** [ENG-EI-001 Charter](../ENG-EI-001-CHARTER.md) · [Evidence Package Contract](../ENG-EI-EVIDENCE-PACKAGE-CONTRACT.md)  
 > **Phase:** Quality — without making it smarter
 

@@ -122,7 +122,7 @@ Deterministic substrate doctrine: [DETERMINISTIC-FOUNDATION-DOCTRINE.md](./DETER
 
 **Constitutional doctrine:** [The Five Constitutional Substrates](./THE-FIVE-CONSTITUTIONAL-SUBSTRATES.md)
 
-**Post-foundation era:** **Executive Intelligence Era** — `ei-doctrine-v1.0` **FROZEN** · [ENG-EI-001](./ENG-EI-001-CHARTER.md) **COMPLETE** · [ENG-PMO-008](./ENG-PMO-008-CONSTITUTIONAL-RETRIEVAL-ACCEPTANCE.md)
+**Post-foundation era:** **Executive Intelligence Era** — `ei-doctrine-v1.0` **FROZEN** · [ENG-EI-001](./ENG-EI-001-CHARTER.md) **COMPLETE** · [ENG-PMO-008](./ENG-PMO-008-CONSTITUTIONAL-RETRIEVAL-ACCEPTANCE.md) · ENG-EI-002 **NEXT**
 
 ---
 

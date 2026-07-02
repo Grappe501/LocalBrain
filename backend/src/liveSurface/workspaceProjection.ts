@@ -33,18 +33,26 @@ export function projectWorkspaceLive(ws: LivingWorkspace): LivingWorkspace {
       ...ws.profile,
       mission: ws.profile.mission ?? "Build Steve's Executive Operating System",
       current_phase: foundationComplete
-        ? ei.doctrine_frozen
-          ? `Executive Intelligence Era · ei-doctrine-v1.0 FROZEN · ENG-EI-001 AUTHORIZED`
-          : `Executive Intelligence Era · ${ei.pre_impl_progress_percent}% pre-implementation`
+        ? ei.retrieval_complete
+          ? `Executive Intelligence Era · ENG-EI-001 COMPLETE · ENG-EI-002 Executive Brief`
+          : ei.implementation_started
+            ? `Executive Intelligence Era · ENG-EI-001 ${ei.implementation_phase} phase · ${ei.impl_slices_complete.join(" · ")} COMPLETE`
+            : ei.doctrine_frozen
+              ? `Executive Intelligence Era · ei-doctrine-v1.0 FROZEN · ENG-EI-001 AUTHORIZED`
+              : `Executive Intelligence Era · ${ei.pre_impl_progress_percent}% pre-implementation`
         : `Institutional Cognition Foundation · ${mem.wave1_complete_count}/5 substrates`,
       completed_slices: completed.slice(-15),
       active_slice: foundationComplete
         ? ei.smallest_next_slice
         : activeEngMem ?? state.current_slice_id ?? ws.profile.active_slice,
       next_slices: foundationComplete
-        ? ei.doctrine_frozen
-          ? ["ENG-EI-001 Constitutional Retrieval", "Communications Office"]
-          : ["EI-001 doctrine freeze (ei-doctrine-v1.0)", "ENG-EI-001 Constitutional Retrieval"]
+        ? ei.retrieval_complete
+          ? ["ENG-EI-002 Executive Brief", "Communications Office"]
+          : ei.implementation_started
+            ? ["ENG-EI-001 charter acceptance (A1–A9)", "Communications Office"]
+            : ei.doctrine_frozen
+              ? ["ENG-EI-001.1 Constitutional Retrieval", "Communications Office"]
+              : ["EI-001 doctrine freeze (ei-doctrine-v1.0)", "ENG-EI-001 Constitutional Retrieval"]
         : state.current_sprint.queued.length > 0
           ? state.current_sprint.queued
           : mem.wave1_active_slice

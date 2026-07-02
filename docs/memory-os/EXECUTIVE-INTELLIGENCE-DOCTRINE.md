@@ -4,7 +4,7 @@
 > **Prerequisite:** [ENG-PMO-005](./ENG-PMO-005-CONSTITUTIONAL-COMPLETION.md) · [Deterministic Foundation Doctrine](./DETERMINISTIC-FOUNDATION-DOCTRINE.md) · [The Five Constitutional Substrates](./THE-FIVE-CONSTITUTIONAL-SUBSTRATES.md)  
 > **Design review:** [MAR-3](./MAR-3-EXECUTIVE-INTELLIGENCE-ARCHITECTURE_REVIEW.md) — **COMPLETE**  
 > **Lock:** [ei-doctrine-lock.json](./certification/ei-doctrine-lock.json)  
-> **First implementation:** [ENG-EI-001 Constitutional Retrieval](./ENG-EI-001-CHARTER.md) — **AUTHORIZED**  
+> **First implementation:** [ENG-EI-001 Constitutional Retrieval](./ENG-EI-001-CHARTER.md) — **COMPLETE** · [ENG-PMO-008](./ENG-PMO-008-CONSTITUTIONAL-RETRIEVAL-ACCEPTANCE.md) · [ENG-EI-DOC-003](./ENG-EI-DOC-003-CONSTITUTIONAL-RETRIEVAL-COMPLETE.md)  
 > **Constitutional design phase:** **COMPLETE** · `ei-doctrine-v1.0` · [ENG-PMO-006](./ENG-PMO-006-EI-DOCTRINE-FREEZE.md)
 
 **Engineering metric:** **Doctrine Fidelity** — see [ENG-EI-001](./ENG-EI-001-CHARTER.md)

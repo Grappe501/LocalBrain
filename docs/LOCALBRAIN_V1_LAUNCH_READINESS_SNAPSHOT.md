@@ -1,9 +1,9 @@
 # LOCALBRAIN V1 — Launch Readiness Snapshot
 
 > **Cover page for every V1 work session** · Refresh from `GET /api/epo/project-state` · CEO Mode  
-> **Platform checkpoint:** `bf89040` — ENG-PMO-007 governance refinements · `ei-doctrine-v1.0` · `memory-spec-v1.0`  
-> **Governance checkpoint:** Institutional Cognition Foundation V1 **COMPLETE** · Executive Intelligence Doctrine V1 **FROZEN** · ENG-EI-001 **AUTHORIZED**  
-> **Phase boundary:** Construction — **ENG-EI-001 Constitutional Retrieval** (first implementation against frozen doctrine)  
+> **Platform checkpoint:** `c2f31c2` — ENG-EI-DOC-003 · ENG-PMO-008 · Contract `ENG-EI-001.3` · `memory-spec-v1.0`  
+> **Governance checkpoint:** Institutional Cognition Foundation V1 **COMPLETE** · Executive Intelligence Doctrine V1 **FROZEN** · ENG-EI-001 **COMPLETE** · ENG-EI-002 **NEXT**  
+> **Phase boundary:** Construction — **ENG-EI-002 Executive Brief** (first Evidence Package consumer · Lane 2)  
 > **Observed:** 2026-07-02 · *static template — live values from Program Office API*
 
 ---
@@ -12,7 +12,7 @@
 LOCALBRAIN V1
 
 Overall Launch
-███████░░░  ~75%   (refresh from GET /api/epo/project-state)
+████████░░  ~78%   (refresh from GET /api/epo/project-state)
 ```
 
 ---
@@ -27,8 +27,9 @@ Overall Launch
 | ✓ Executive Epistemology Convention | Complete | — |
 | ✓ Empty Brain Factory | Complete · locked | — |
 | ✓ Memory OS | Institutional Cognition Foundation V1 · **100%** | **Complete** |
-| ▶ Executive Intelligence Era | `ei-doctrine-v1.0` FROZEN · ENG-EI-001 AUTHORIZED · pre-impl **100%** | **In progress** |
-| □ Communications Office | Awaiting ENG-EI-001 Constitutional Retrieval | **~15 days** |
+| ✓ Constitutional Retrieval | ENG-EI-001 **COMPLETE** · ENG-PMO-008 · Contract `ENG-EI-001.3` · 12/12 tests | **Complete** |
+| ▶ Executive Intelligence Era | ENG-EI-002 Executive Brief — first work product consumer | **In progress** |
+| □ Communications Office | Awaiting ENG-EI-002 Executive Brief | **~15 days** |
 | □ Commercial Beta | Pending | **~5 days** |
 
 *ETAs are evidence-adjusted sums from the adaptive forecast model — not manual estimates. Values update after every Burt completion pass.*
@@ -38,16 +39,16 @@ Overall Launch
 ## Three levels of planning
 
 ```text
-Current Module ETA:     —         (tactical — ENG-EI-001 Constitutional Retrieval)
-Current Phase ETA:      ~22 days  (operational — EI implementation + Communications)
+Current Module ETA:     —         (tactical — ENG-EI-002 Executive Brief)
+Current Phase ETA:      ~20 days  (operational — first work product + Communications)
 Predicted Beta:         (from adaptive forecast — refresh via API)
-Confidence:             ~67%
+Confidence:             ~68%
 ```
 
 | Level | Question | Source |
 | ----- | -------- | ------ |
 | **Tactical** | When does today's work finish? | Current module ETA |
-| **Operational** | When does this phase finish? | EI Era implementation + Communications forecast |
+| **Operational** | When does this phase finish? | ENG-EI-002 + Communications forecast |
 | **Strategic** | When does V1 ship? | Predicted Commercial Beta |
 
 ---
@@ -73,7 +74,8 @@ Confidence:             ~67%
 | Convention | 100% |
 | Empty Brain Factory | 100% |
 | Memory OS | 100% (Institutional Cognition Foundation V1 · ENG-PMO-005) |
-| Executive Intelligence Era | 85% (doctrine frozen · governance complete · ENG-EI-001 scoped) |
+| Constitutional Retrieval | 100% (ENG-EI-001 · ENG-PMO-008 · ENG-EI-DOC-003) |
+| Executive Intelligence Era | 85% (ENG-EI-002 Executive Brief scoped · Lane 2) |
 | Communications Office | 25% |
 | Commercial Beta | 70% |
 
@@ -111,24 +113,25 @@ Critical path only:
 ✓ Empty Brain Factory (v1.0.0-factory-certified)
 ✓ Institutional Cognition Foundation V1 (memory-spec-v1.0)
 ✓ Executive Intelligence Doctrine V1 (ei-doctrine-v1.0 · ENG-PMO-006/007)
-▶ ENG-EI-001 Constitutional Retrieval → Communications → Commercial Beta
+✓ ENG-EI-001 Constitutional Retrieval (ENG-PMO-008 · ENG-EI-DOC-003)
+▶ ENG-EI-002 Executive Brief → Communications → Commercial Beta
 ```
 
 ---
 
 ## Next module
 
-**ENG-EI-001 Constitutional Retrieval** — first code against frozen doctrine
+**ENG-EI-002 Executive Brief** — first Evidence Package consumer · Reference Consumer 001 · Lane 2
 
 | Track | Status |
 | ----- | ------ |
 | Executive Intelligence Doctrine V1 | ✅ **FROZEN** · `ei-doctrine-v1.0` · Articles I–IX |
-| MAR-3 Architecture Review | ✅ **COMPLETE** · Q1–Q7 PASS |
-| EI-001 Doctrine Freeze | ✅ **DECLARED FROZEN** · ENG-PMO-006 |
-| ENG-PMO-007 Governance Refinements | ✅ **COMPLETE** · Doctrine Fidelity · terminology |
-| ENG-EI-001 Constitutional Retrieval | ▶ **AUTHORIZED** · read-only · cite · package |
+| ENG-EI-001 Constitutional Retrieval | ✅ **COMPLETE** · ENG-PMO-008 · A1–A9 PASS |
+| ENG-EI-001.1–001.3 Implementation | ✅ **COMPLETE** · correctness · transparency · auditability |
+| Evidence Package Contract | ✅ **ACCEPTED** · `ENG-EI-001.3` · [ENG-EI-DOC-003](./memory-os/ENG-EI-DOC-003-CONSTITUTIONAL-RETRIEVAL-COMPLETE.md) |
+| ENG-EI-002 Executive Brief | ▶ **NEXT** · Work Product Contract candidate |
 
-**Critical path:** ENG-EI-001 → Communications Office → Commercial Beta
+**Critical path:** ENG-EI-002 Executive Brief → Communications Office → Commercial Beta
 
 Institutional Cognition Foundation V1 (complete):
 
@@ -168,7 +171,7 @@ Design → Build → Test → PMO Review → Certification → Regression Lock �
 ## Burt mission
 
 > Finish the current module.  
-> **Now:** ENG-EI-001 Constitutional Retrieval — read-only substrate access · citation assembly · evidence packaging · Doctrine Fidelity
+> **Now:** ENG-EI-002 Executive Brief — Evidence Package → doctrine-compliant brief · Lane 2 · no recommendations
 
 Everything else → [VERSION2_BACKLOG.md](./VERSION2_BACKLOG.md)
 

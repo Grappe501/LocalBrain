@@ -1,7 +1,7 @@
 # Memory OS — Design Package
 
 > **Status:** **FROZEN** — `memory-spec-v1.0` · Wave 1 **5/5 COMPLETE** · ENG-PMO-005  
-> **Current era:** [Executive Intelligence Doctrine](./EXECUTIVE-INTELLIGENCE-DOCTRINE.md) **V1 FROZEN** · `ei-doctrine-v1.0` · [ENG-EI-001](./ENG-EI-001-CHARTER.md) AUTHORIZED  
+> **Current era:** [Executive Intelligence Doctrine](./EXECUTIVE-INTELLIGENCE-DOCTRINE.md) **V1 FROZEN** · `ei-doctrine-v1.0` · [ENG-EI-001](./ENG-EI-001-CHARTER.md) **COMPLETE** · ENG-EI-002 **NEXT**  
 > **Engine:** ENG-MEM-001 · **Implementation:** MEM-009 Pass 1 **COMPLETE**  
 > **Authorized:** Post `v1.0.0-factory-certified` Factory lock  
 > **Depends on:** [Factory Constitution v1.0](../factory/FACTORY_CONSTITUTION_v1.0.md) · [Convention Close](../convention/CONVENTION-CLOSE.md)  
@@ -62,7 +62,7 @@ ENG-MEM-001 Wave 1 — canonical storage slices. Reference implementation: [ENG-
 
 ---
 
-## Executive Intelligence Era (doctrine frozen · implementation authorized)
+## Executive Intelligence Era (doctrine frozen · retrieval complete)
 
 | Document | Purpose |
 | -------- | ------- |
@@ -70,12 +70,14 @@ ENG-MEM-001 Wave 1 — canonical storage slices. Reference implementation: [ENG-
 | [EI-001 Doctrine Freeze](./EI-001-DOCTRINE-FREEZE.md) | **DECLARED FROZEN** · 2026-07-02 |
 | [ENG-PMO-006 EI Doctrine Freeze](./ENG-PMO-006-EI-DOCTRINE-FREEZE.md) | PMO ceremony · `ei-doctrine-v1.0` |
 | [ENG-PMO-007 EI Governance Refinements](./ENG-PMO-007-EI-GOVERNANCE-REFINEMENTS.md) | Doctrine Fidelity · terminology · lane promises |
+| [ENG-PMO-008 Constitutional Retrieval Acceptance](./ENG-PMO-008-CONSTITUTIONAL-RETRIEVAL-ACCEPTANCE.md) | **COMPLETE** — ENG-EI-001 closeout |
 | [MAR-3 Architecture Review](./MAR-3-EXECUTIVE-INTELLIGENCE-ARCHITECTURE_REVIEW.md) | **COMPLETE** — Q1–Q7 PASS |
-| [ENG-EI-001 Constitutional Retrieval](./ENG-EI-001-CHARTER.md) | **AUTHORIZED** — first slice · fidelity-first |
+| [ENG-EI-001 Constitutional Retrieval](./ENG-EI-001-CHARTER.md) | **COMPLETE** — Evidence Package Contract accepted |
+| [ENG-EI-DOC-003 Constitutional Retrieval Complete](./ENG-EI-DOC-003-CONSTITUTIONAL-RETRIEVAL-COMPLETE.md) | Engineering guarantees for downstream consumers |
 | [ENG-EI-DOC-001 Engineering Discipline](./ENG-EI-DOC-001-ENGINEERING-DISCIPLINE.md) | Implementation rules frozen · living law |
 | [ENG-EI Engineering Discipline](./ENG-EI-ENGINEERING-DISCIPLINE.md) | Doctrine-traceable commits · infrastructure-before-intelligence |
-| [ENG-EI Evidence Package Contract](./ENG-EI-EVIDENCE-PACKAGE-CONTRACT.md) | Stable retrieval → intelligence interface |
-| [ENG-EI-DOC-002](./ENG-EI-DOC-002-EVIDENCE-PACKAGE-CONTRACT.md) | Contract established · quality phase |
+| [ENG-EI Evidence Package Contract](./ENG-EI-EVIDENCE-PACKAGE-CONTRACT.md) | Stable retrieval → intelligence interface · `ENG-EI-001.3` |
+| [ENG-EI-DOC-002](./ENG-EI-DOC-002-EVIDENCE-PACKAGE-CONTRACT.md) | Contract established |
 | [Verification Lanes](./VERIFICATION-LANES.md) | Three Correctness Model · COMPLETE |
 | [ENG-PMO Governance](./ENG-PMO-GOVERNANCE.md) | ENG / OPS / ENG-PMO separation |
 
@@ -117,7 +119,9 @@ ENG-MEM-001 Wave 1 — canonical storage slices. Reference implementation: [ENG-
 ✓ ENG-PMO-005 — Institutional Cognition Foundation COMPLETE · Deterministic Foundation CLOSED
 ✓ MAR-3 Executive Intelligence Architecture Review — Q1–Q7 PASS
 ✓ EI-001 Doctrine Freeze · ei-doctrine-v1.0 · ENG-PMO-006
-▶ ENG-EI-001 Constitutional Retrieval — AUTHORIZED · fidelity-first
+✓ ENG-EI-001.1–001.3 Constitutional Retrieval — COMPLETE
+✓ ENG-PMO-008 · ENG-EI-DOC-003 — Evidence Package Contract accepted
+▶ ENG-EI-002 Executive Brief — first Evidence Package consumer
 ```
 
 ---
@@ -128,7 +132,3 @@ ENG-MEM-001 Wave 1 — canonical storage slices. Reference implementation: [ENG-
 - [Memory Domains](../LOCALBRAIN_MEMORY_DOMAINS.md)
 - [Executive Epistemology Convention](../LOCALBRAIN_EXECUTIVE_EPISTEMOLOGY_CONVENTION.md)
 - [Constitution Article XIII](../LOCALBRAIN_CONSTITUTION.md)
-
----
-
-*Memory OS Design Package · LocalBrain V1 · LB-OS-027*

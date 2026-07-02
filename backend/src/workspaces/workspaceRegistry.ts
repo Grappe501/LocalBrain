@@ -288,7 +288,7 @@ export function seedWorkspaces(): void {
     parent_workspace_id: null,
     executive_context:
       "LocalBrain is Steve's Executive Operating System — not a chatbot. Wave 1 builds the Institutional Cognition Foundation: deterministic memory substrates that Executive Intelligence reasons over.",
-    current_focus: "ENG-EI-001 Constitutional Retrieval — read-only · cite · package evidence",
+    current_focus: "ENG-EI-002 Executive Brief — first Evidence Package consumer · Lane 2",
     success_definition:
       "A modular AI Executive Operating System that becomes Steve's primary interface for work.",
     workspace_avatar: "🧠",
@@ -297,7 +297,7 @@ export function seedWorkspaces(): void {
     filesystem_roots: [repoRoot],
     profile: {
       mission: "Build Steve's Executive Operating System",
-      current_phase: "Executive Intelligence Era · ei-doctrine-v1.0 FROZEN · ENG-EI-001 AUTHORIZED",
+      current_phase: "Executive Intelligence Era · ENG-EI-001 COMPLETE · ENG-EI-002 Executive Brief",
       completed_slices: [
         "LB-OS-001",
         "LB-OS-002",
@@ -312,10 +312,14 @@ export function seedWorkspaces(): void {
         "ENG-PMO-005",
         "ENG-PMO-006",
         "ENG-PMO-007",
+        "ENG-EI-001.1",
+        "ENG-EI-001.2",
+        "ENG-EI-001.3",
+        "ENG-PMO-008",
       ],
-      active_slice: "ENG-EI-001 Constitutional Retrieval",
+      active_slice: "ENG-EI-002 Executive Brief",
       next_slices: [
-        "ENG-EI-001 Constitutional Retrieval",
+        "ENG-EI-002 Executive Brief",
         "Communications Office",
       ],
       recent_decisions: [
@@ -327,9 +331,9 @@ export function seedWorkspaces(): void {
         "ENG-PMO-005 Constitutional Completion",
       ],
       chief_of_staff_summary:
-        "Institutional Cognition Foundation V1 COMPLETE · ei-doctrine-v1.0 FROZEN · ENG-EI-001 AUTHORIZED · fidelity-first engineering",
+        "ENG-EI-001 COMPLETE · ENG-PMO-008 · Evidence Package Contract ENG-EI-001.3 · 12/12 retrieval tests",
       recommended_next_action:
-        "ENG-EI-001 Constitutional Retrieval — read-only substrate access · citation assembly · evidence packaging",
+        "ENG-EI-002 Executive Brief — Reference Consumer 001 · Lane 2 behavioral verification",
       repositories: [],
       contacts: [],
       calendar_links: [],

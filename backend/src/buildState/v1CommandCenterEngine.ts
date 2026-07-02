@@ -28,6 +28,8 @@ import { getMemoryOsModuleProgress, getMemoryOsProgressSnapshot } from "./memory
 import {
   getExecutiveIntelligenceEraSnapshot,
   isExecutiveIntelligenceDoctrineFrozen,
+  isConstitutionalRetrievalComplete,
+  isExecutiveIntelligenceImplementationStarted,
 } from "./executiveIntelligenceEraMetrics.js";
 import { parsePeerReviewProgress } from "../epo/checklistParser.js";
 import { isModuleCertificationLocked } from "./v1CertificationRegistry.js";
@@ -241,8 +243,11 @@ function moduleBlockers(
     if (mem.wave1_complete_count >= 5 && !isExecutiveIntelligenceDoctrineFrozen()) {
       return "EI-001 doctrine freeze pending";
     }
-    if (mem.wave1_complete_count >= 5 && isExecutiveIntelligenceDoctrineFrozen()) {
-      return "ENG-EI-001 Constitutional Retrieval pending";
+    if (mem.wave1_complete_count >= 5 && isConstitutionalRetrievalComplete()) {
+      return "ENG-EI-002 Executive Brief pending";
+    }
+    if (mem.wave1_complete_count >= 5 && isExecutiveIntelligenceImplementationStarted()) {
+      return "ENG-EI-001 charter acceptance pending";
     }
   }
   if (moduleId === "memory_os" && isModuleCertificationLocked("factory")) {
