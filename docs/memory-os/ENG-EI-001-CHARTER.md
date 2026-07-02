@@ -177,6 +177,7 @@ Companion to the Institutional Cognition Foundation:
 | Slice | Scope |
 | ----- | ----- |
 | [ENG-EI-001.1](./slices/ENG-EI-001.1-CONSTITUTIONAL-RETRIEVAL.md) | Substrate read path · evidence package · coverage report |
+| [ENG-EI-001.2](./slices/ENG-EI-001.2-RETRIEVAL-COMPLETENESS.md) | Completeness · rule-level exclusions · citation integrity |
 
 ---
 

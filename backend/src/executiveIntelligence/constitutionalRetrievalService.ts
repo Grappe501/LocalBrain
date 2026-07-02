@@ -15,6 +15,7 @@ import type {
   Episode,
   ExcludedRecord,
   Fact,
+  InclusionRuleApplication,
   MemoryDomain,
   RetrievalCoverageReport,
 } from "@localbrain/shared";
@@ -22,6 +23,8 @@ import {
   CONSTITUTIONAL_RETRIEVAL_ENGINE_ID,
   CONSTITUTIONAL_RETRIEVAL_VERSION,
   CONSTITUTIONAL_SUBSTRATE_KINDS,
+  RETRIEVAL_RULE_IDS,
+  RETRIEVAL_RULES,
 } from "@localbrain/shared";
 import { getArtifactById } from "../memory/artifactStore.js";
 import { getConversationById } from "../memory/conversationStore.js";
@@ -36,6 +39,11 @@ import {
   listEpisodesReadOnly,
   listFactsReadOnly,
 } from "../memory/substrateReadAccess.js";
+import {
+  buildCompletenessReport,
+  exclusionFromRule,
+  verifyCitationIntegrity,
+} from "./citationIntegrity.js";
 
 function emptyRetrievedCounts(): Record<ConstitutionalSubstrateKind, number> {
   return {
@@ -45,6 +53,10 @@ function emptyRetrievedCounts(): Record<ConstitutionalSubstrateKind, number> {
     conversation: 0,
     decision_citation: 0,
   };
+}
+
+function emptyRequestedCounts(): Record<ConstitutionalSubstrateKind, number> {
+  return emptyRetrievedCounts();
 }
 
 function citationRef(substrate: ConstitutionalSubstrateKind, recordId: string): string {
@@ -93,6 +105,17 @@ function domainMatches(
   return recordDomain === filter;
 }
 
+function countRequestedRefs(
+  request: ConstitutionalRetrievalRequest,
+): Record<ConstitutionalSubstrateKind, number> {
+  const counts = emptyRequestedCounts();
+  const refs = request.substrate_refs ?? {};
+  for (const substrate of CONSTITUTIONAL_SUBSTRATE_KINDS) {
+    counts[substrate] = refs[substrate]?.length ?? 0;
+  }
+  return counts;
+}
+
 function fetchById(
   substrate: ConstitutionalSubstrateKind,
   recordId: string,
@@ -109,11 +132,11 @@ function fetchById(
     case "episode": {
       const episode = getEpisodeById(recordId);
       if (!episode) {
-        excluded.push({ substrate, record_id: recordId, reason: "not_found" });
+        excluded.push(exclusionFromRule(substrate, recordId, "not_found"));
         return null;
       }
       if (!domainMatches(episode.domain, domain)) {
-        excluded.push({ substrate, record_id: recordId, reason: "domain_mismatch" });
+        excluded.push(exclusionFromRule(substrate, recordId, "domain_mismatch"));
         return null;
       }
       return { kind: "episode", episode };
@@ -121,11 +144,11 @@ function fetchById(
     case "fact": {
       const fact = getFactById(recordId);
       if (!fact) {
-        excluded.push({ substrate, record_id: recordId, reason: "not_found" });
+        excluded.push(exclusionFromRule(substrate, recordId, "not_found"));
         return null;
       }
       if (!domainMatches(fact.domain, domain)) {
-        excluded.push({ substrate, record_id: recordId, reason: "domain_mismatch" });
+        excluded.push(exclusionFromRule(substrate, recordId, "domain_mismatch"));
         return null;
       }
       return { kind: "fact", fact };
@@ -133,11 +156,11 @@ function fetchById(
     case "artifact": {
       const artifact = getArtifactById(recordId);
       if (!artifact) {
-        excluded.push({ substrate, record_id: recordId, reason: "not_found" });
+        excluded.push(exclusionFromRule(substrate, recordId, "not_found"));
         return null;
       }
       if (!domainMatches(artifact.domain, domain)) {
-        excluded.push({ substrate, record_id: recordId, reason: "domain_mismatch" });
+        excluded.push(exclusionFromRule(substrate, recordId, "domain_mismatch"));
         return null;
       }
       return { kind: "artifact", artifact };
@@ -145,11 +168,11 @@ function fetchById(
     case "conversation": {
       const conversation = getConversationById(recordId);
       if (!conversation) {
-        excluded.push({ substrate, record_id: recordId, reason: "not_found" });
+        excluded.push(exclusionFromRule(substrate, recordId, "not_found"));
         return null;
       }
       if (!domainMatches(conversation.domain, domain)) {
-        excluded.push({ substrate, record_id: recordId, reason: "domain_mismatch" });
+        excluded.push(exclusionFromRule(substrate, recordId, "domain_mismatch"));
         return null;
       }
       return { kind: "conversation", conversation };
@@ -157,7 +180,7 @@ function fetchById(
     case "decision_citation": {
       const citation = getDecisionCitationById(recordId);
       if (!citation) {
-        excluded.push({ substrate, record_id: recordId, reason: "not_found" });
+        excluded.push(exclusionFromRule(substrate, recordId, "not_found"));
         return null;
       }
       return { kind: "decision_citation", citation };
@@ -169,6 +192,34 @@ function fetchById(
 
 function sortCitations(citations: ConstitutionalCitation[]): ConstitutionalCitation[] {
   return [...citations].sort((a, b) => a.ordering_key.localeCompare(b.ordering_key));
+}
+
+function buildCoverageReport(input: {
+  substratesSearched: ConstitutionalSubstrateKind[];
+  retrieved: Record<ConstitutionalSubstrateKind, number>;
+  excluded: ExcludedRecord[];
+  inclusionRules: InclusionRuleApplication[];
+  completenessMode: "explicit_refs" | "domain_scan" | "global_scan";
+  substratesRequired: ConstitutionalSubstrateKind[];
+  recordsRequested: Record<ConstitutionalSubstrateKind, number>;
+  citationCount: number;
+}): RetrievalCoverageReport {
+  return {
+    substrates_searched: input.substratesSearched,
+    records_retrieved: input.retrieved,
+    records_excluded: input.excluded,
+    inclusion_rules_applied: input.inclusionRules,
+    completeness: buildCompletenessReport({
+      mode: input.completenessMode,
+      substratesRequired: input.substratesRequired,
+      recordsRequested: input.recordsRequested,
+      recordsRetrieved: input.retrieved,
+      exclusionsCount: input.excluded.length,
+    }),
+    retrieval_timestamp: new Date().toISOString(),
+    retrieval_version: CONSTITUTIONAL_RETRIEVAL_VERSION,
+    citation_count: input.citationCount,
+  };
 }
 
 function assembleFromRefs(
@@ -192,6 +243,16 @@ function assembleFromRefs(
   const decision_citations: DecisionCitation[] = [];
   const citations: ConstitutionalCitation[] = [];
   const retrieved = emptyRetrievedCounts();
+  const recordsRequested = countRequestedRefs(request);
+
+  const explicitRule = RETRIEVAL_RULES[RETRIEVAL_RULE_IDS.EXPLICIT_REF];
+  const inclusionRules: InclusionRuleApplication[] = [
+    {
+      rule_id: explicitRule.rule_id,
+      rule_description: explicitRule.description,
+      substrates: [...substratesSearched],
+    },
+  ];
 
   const refs = request.substrate_refs ?? {};
   for (const substrate of CONSTITUTIONAL_SUBSTRATE_KINDS) {
@@ -257,15 +318,18 @@ function assembleFromRefs(
     }
   }
 
+  inclusionRules[0]!.substrates = [...substratesSearched];
   const sorted = sortCitations(citations);
-  const coverage_report: RetrievalCoverageReport = {
-    substrates_searched: [...substratesSearched],
-    records_retrieved: retrieved,
-    records_excluded: excluded,
-    retrieval_timestamp: new Date().toISOString(),
-    retrieval_version: CONSTITUTIONAL_RETRIEVAL_VERSION,
-    citation_count: sorted.length,
-  };
+  const coverage_report = buildCoverageReport({
+    substratesSearched: [...substratesSearched],
+    retrieved,
+    excluded,
+    inclusionRules,
+    completenessMode: "explicit_refs",
+    substratesRequired: [...substratesSearched],
+    recordsRequested,
+    citationCount: sorted.length,
+  });
 
   return {
     episodes,
@@ -302,6 +366,29 @@ function assembleFromDomainScan(
     ? ["episode", "fact", "artifact", "conversation"]
     : [...CONSTITUTIONAL_SUBSTRATE_KINDS];
 
+  const inclusionRules: InclusionRuleApplication[] = [];
+  if (request.domain) {
+    const scanRule = RETRIEVAL_RULES[RETRIEVAL_RULE_IDS.DOMAIN_SCAN];
+    const skipRule = RETRIEVAL_RULES[RETRIEVAL_RULE_IDS.DOMAIN_SKIP_DECISION_CITATION];
+    inclusionRules.push({
+      rule_id: scanRule.rule_id,
+      rule_description: scanRule.description,
+      substrates: substratesSearched,
+    });
+    inclusionRules.push({
+      rule_id: skipRule.rule_id,
+      rule_description: skipRule.description,
+      substrates: ["decision_citation"],
+    });
+  } else {
+    const globalRule = RETRIEVAL_RULES[RETRIEVAL_RULE_IDS.GLOBAL_SCAN];
+    inclusionRules.push({
+      rule_id: globalRule.rule_id,
+      rule_description: globalRule.description,
+      substrates: [...CONSTITUTIONAL_SUBSTRATE_KINDS],
+    });
+  }
+
   const citations: ConstitutionalCitation[] = [
     ...episodes.map((e) => buildCitation("episode", e.episode_id, episodeEventAt(e))),
     ...facts.map((f) => buildCitation("fact", f.fact_id, factEventAt(f))),
@@ -321,21 +408,26 @@ function assembleFromDomainScan(
     turns: getConversationTurnsByConversationId(conversation.conversation_id),
   }));
 
-  const sorted = sortCitations(citations);
-  const coverage_report: RetrievalCoverageReport = {
-    substrates_searched: substratesSearched,
-    records_retrieved: {
-      episode: episodes.length,
-      fact: facts.length,
-      artifact: artifacts.length,
-      conversation: conversations.length,
-      decision_citation: decision_citations.length,
-    },
-    records_excluded: [],
-    retrieval_timestamp: new Date().toISOString(),
-    retrieval_version: CONSTITUTIONAL_RETRIEVAL_VERSION,
-    citation_count: sorted.length,
+  const retrieved = {
+    episode: episodes.length,
+    fact: facts.length,
+    artifact: artifacts.length,
+    conversation: conversations.length,
+    decision_citation: decision_citations.length,
   };
+
+  const sorted = sortCitations(citations);
+  const completenessMode = request.domain ? "domain_scan" : "global_scan";
+  const coverage_report = buildCoverageReport({
+    substratesSearched,
+    retrieved,
+    excluded: [],
+    inclusionRules,
+    completenessMode,
+    substratesRequired: substratesSearched,
+    recordsRequested: emptyRequestedCounts(),
+    citationCount: sorted.length,
+  });
 
   return {
     episodes,
@@ -357,7 +449,15 @@ function hasExplicitRefs(request: ConstitutionalRetrievalRequest): boolean {
 function resolveStatus(
   body: Pick<ConstitutionalEvidencePackage, "citations" | "coverage_report">,
   explicitRefs: boolean,
+  citationIntegrityFailed: boolean,
 ): Pick<ConstitutionalEvidencePackage, "status" | "status_reason"> {
+  if (citationIntegrityFailed) {
+    return {
+      status: "withheld",
+      status_reason:
+        "Evidence package withheld — citation integrity failure (Article IV · Article IX).",
+    };
+  }
   if (explicitRefs && body.coverage_report.records_excluded.length > 0) {
     return {
       status: "withheld",
@@ -383,7 +483,17 @@ export function assembleConstitutionalEvidencePackage(
   const body = explicitRefs
     ? assembleFromRefs(request)
     : assembleFromDomainScan(request);
-  const { status, status_reason } = resolveStatus(body, explicitRefs);
+
+  const integrity = verifyCitationIntegrity(body);
+  if (!integrity.valid) {
+    body.coverage_report.records_excluded.push(...integrity.broken);
+  }
+
+  const { status, status_reason } = resolveStatus(
+    body,
+    explicitRefs,
+    !integrity.valid,
+  );
   const assembled_at = new Date().toISOString();
 
   return {

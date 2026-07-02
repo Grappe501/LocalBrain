@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { CONSTITUTIONAL_RETRIEVAL_VERSION } from "@localbrain/shared";
+import { CONSTITUTIONAL_RETRIEVAL_VERSION, RETRIEVAL_RULE_IDS } from "@localbrain/shared";
 import { bootstrapApp, shutdownApp } from "../bootstrap.js";
 import {
   writeArtifact,
@@ -161,6 +161,8 @@ test("ENG-EI-001.1 missing ref withholds package and records exclusion in covera
     assert.ok(pkg.status_reason?.includes("withheld"));
     assert.equal(pkg.coverage_report.records_excluded.length, 1);
     assert.equal(pkg.coverage_report.records_excluded[0]?.reason, "not_found");
+    assert.equal(pkg.coverage_report.records_excluded[0]?.rule_id, RETRIEVAL_RULE_IDS.REF_NOT_FOUND);
+    assert.ok(pkg.coverage_report.records_excluded[0]?.rule_description);
     assert.equal(pkg.episodes.length, 1);
     assert.equal(pkg.facts.length, 0);
   } finally {
@@ -179,6 +181,79 @@ test("ENG-EI-001.1 empty domain scan reports insufficient evidence without fabri
     assert.equal(pkg.status, "insufficient_evidence");
     assert.equal(pkg.citations.length, 0);
     assert.ok(pkg.status_reason?.includes("insufficient evidence"));
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-EI-001.2 domain scan documents inclusion rules and completeness", () => {
+  bootstrapApp();
+  try {
+    seedInitiativeXRecords();
+    const pkg = assembleConstitutionalEvidencePackage({
+      request_id: "req-initiative-x-004",
+      scope_label: "Initiative X",
+      domain: "executive",
+    });
+    assert.equal(pkg.retrieval_version, CONSTITUTIONAL_RETRIEVAL_VERSION);
+    assert.ok(pkg.coverage_report.inclusion_rules_applied.length >= 2);
+    assert.ok(
+      pkg.coverage_report.inclusion_rules_applied.some(
+        (r) => r.rule_id === RETRIEVAL_RULE_IDS.DOMAIN_SCAN,
+      ),
+    );
+    assert.ok(
+      pkg.coverage_report.inclusion_rules_applied.some(
+        (r) => r.rule_id === RETRIEVAL_RULE_IDS.DOMAIN_SKIP_DECISION_CITATION,
+      ),
+    );
+    assert.equal(pkg.coverage_report.completeness.mode, "domain_scan");
+    assert.ok(pkg.coverage_report.completeness.all_required_resolved);
+    assert.ok(pkg.coverage_report.completeness.substrates_with_results.length >= 4);
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-EI-001.2 explicit refs record requested counts in completeness report", () => {
+  bootstrapApp();
+  try {
+    const { episode, fact } = seedInitiativeXRecords();
+    const pkg = assembleConstitutionalEvidencePackage({
+      request_id: "req-initiative-x-005",
+      scope_label: "Initiative X",
+      substrate_refs: {
+        episode: [episode.episode_id],
+        fact: [fact.fact_id],
+      },
+    });
+    assert.equal(pkg.coverage_report.completeness.mode, "explicit_refs");
+    assert.equal(pkg.coverage_report.completeness.records_requested.episode, 1);
+    assert.equal(pkg.coverage_report.completeness.records_requested.fact, 1);
+    assert.equal(pkg.coverage_report.completeness.all_required_resolved, true);
+    assert.ok(
+      pkg.coverage_report.inclusion_rules_applied.some(
+        (r) => r.rule_id === RETRIEVAL_RULE_IDS.EXPLICIT_REF,
+      ),
+    );
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-EI-001.2 domain mismatch exclusion cites RULE-DOMAIN-FILTER", () => {
+  bootstrapApp();
+  try {
+    const { episode } = seedInitiativeXRecords();
+    const pkg = assembleConstitutionalEvidencePackage({
+      request_id: "req-domain-mismatch",
+      scope_label: "Initiative X",
+      domain: "learning",
+      substrate_refs: { episode: [episode.episode_id] },
+    });
+    assert.equal(pkg.status, "withheld");
+    assert.equal(pkg.coverage_report.records_excluded[0]?.reason, "domain_mismatch");
+    assert.equal(pkg.coverage_report.records_excluded[0]?.rule_id, RETRIEVAL_RULE_IDS.DOMAIN_FILTER);
   } finally {
     shutdownApp();
   }

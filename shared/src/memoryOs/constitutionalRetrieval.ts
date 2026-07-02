@@ -7,9 +7,15 @@ import type {
   Fact,
   MemoryDomain,
 } from "./index.js";
+import type {
+  InclusionRuleApplication,
+  RetrievalCompletenessReport,
+  RetrievalExclusionReason,
+  RetrievalRuleId,
+} from "./retrievalRules.js";
 
-/** ENG-EI-001.1 — Constitutional Retrieval implementation version. */
-export const CONSTITUTIONAL_RETRIEVAL_VERSION = "ENG-EI-001.1" as const;
+/** ENG-EI-001.2 — Constitutional Retrieval · completeness · exclusion reasons. */
+export const CONSTITUTIONAL_RETRIEVAL_VERSION = "ENG-EI-001.2" as const;
 
 export const CONSTITUTIONAL_RETRIEVAL_ENGINE_ID = "ENG-EI-001" as const;
 
@@ -36,13 +42,17 @@ export type ConstitutionalRetrievalRequest = {
 export type ExcludedRecord = {
   substrate: ConstitutionalSubstrateKind;
   record_id: string;
-  reason: "not_found" | "domain_mismatch";
+  reason: RetrievalExclusionReason;
+  rule_id: RetrievalRuleId;
+  rule_description: string;
 };
 
 export type RetrievalCoverageReport = {
   substrates_searched: ConstitutionalSubstrateKind[];
   records_retrieved: Record<ConstitutionalSubstrateKind, number>;
   records_excluded: ExcludedRecord[];
+  inclusion_rules_applied: InclusionRuleApplication[];
+  completeness: RetrievalCompletenessReport;
   retrieval_timestamp: string;
   retrieval_version: typeof CONSTITUTIONAL_RETRIEVAL_VERSION;
   citation_count: number;
