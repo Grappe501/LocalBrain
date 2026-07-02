@@ -74,6 +74,7 @@ ENG-MEM-001 Wave 1 — canonical storage slices. Reference implementation: [ENG-
 | [MAR-3 Architecture Review](./MAR-3-EXECUTIVE-INTELLIGENCE-ARCHITECTURE_REVIEW.md) | **COMPLETE** — Q1–Q7 PASS |
 | [ENG-EI-001 Constitutional Retrieval](./ENG-EI-001-CHARTER.md) | **COMPLETE** — Evidence Package Contract accepted |
 | [ENG-EI-DOC-003 Constitutional Retrieval Complete](./ENG-EI-DOC-003-CONSTITUTIONAL-RETRIEVAL-COMPLETE.md) | Engineering guarantees for downstream consumers |
+| [ENG-EI-002 Executive Brief](./ENG-EI-002-CHARTER.md) | **AUTHORIZED** — Reference Consumer 001 · Lane 2 |
 | [ENG-EI-DOC-001 Engineering Discipline](./ENG-EI-DOC-001-ENGINEERING-DISCIPLINE.md) | Implementation rules frozen · living law |
 | [ENG-EI Engineering Discipline](./ENG-EI-ENGINEERING-DISCIPLINE.md) | Doctrine-traceable commits · infrastructure-before-intelligence |
 | [ENG-EI Evidence Package Contract](./ENG-EI-EVIDENCE-PACKAGE-CONTRACT.md) | Stable retrieval → intelligence interface · `ENG-EI-001.3` |
@@ -121,7 +122,7 @@ ENG-MEM-001 Wave 1 — canonical storage slices. Reference implementation: [ENG-
 ✓ EI-001 Doctrine Freeze · ei-doctrine-v1.0 · ENG-PMO-006
 ✓ ENG-EI-001.1–001.3 Constitutional Retrieval — COMPLETE
 ✓ ENG-PMO-008 · ENG-EI-DOC-003 — Evidence Package Contract accepted
-▶ ENG-EI-002 Executive Brief — first Evidence Package consumer
+▶ ENG-EI-002 Executive Brief — Reference Consumer 001 · ENG-EI-002.1 contract
 ```
 
 ---

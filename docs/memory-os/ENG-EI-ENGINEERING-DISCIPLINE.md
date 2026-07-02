@@ -20,8 +20,8 @@ ENG-EI-001.1    Correctness proven · COMPLETE
 ENG-EI-DOC-002  Evidence Package Contract
 ENG-EI-001.3    Ordering · retrieval audit · COMPLETE
 ENG-PMO-008     Constitutional Retrieval accepted
-──────── Performance (deferred) ─────
-ENG-EI-002      First Evidence Package consumer              ▶ next
+ENG-EI-002      Executive Brief — Reference Consumer      ▶ AUTHORIZED
+ENG-EI-002.1    Brief contract · deterministic renderer   ▶ next
 ```
 
 Every implementation commit after this line must trace back to the frozen doctrine.

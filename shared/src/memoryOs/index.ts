@@ -10,4 +10,5 @@ export * from "./conversation.js";
 export * from "./conversationTurn.js";
 export * from "./decisionCitation.js";
 export * from "./constitutionalRetrieval.js";
+export * from "./executiveBrief.js";
 export * from "./retrievalRules.js";
