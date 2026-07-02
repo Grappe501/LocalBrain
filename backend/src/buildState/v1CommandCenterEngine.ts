@@ -24,10 +24,11 @@ import path from "node:path";
 import type { BuildStateSnapshot } from "./buildStateEngine.js";
 import { getCommitCount, getRecentCommits } from "./gitMetrics.js";
 import { certifyCurrentModule } from "./moduleCertificationEngine.js";
+import { getMemoryOsModuleProgress, getMemoryOsProgressSnapshot } from "./memoryOsSpecMetrics.js";
 import {
-  getMemoryOsModuleProgress,
-  getMemoryOsProgressSnapshot,
-} from "./memoryOsSpecMetrics.js";
+  getExecutiveIntelligenceEraSnapshot,
+  isExecutiveIntelligenceDoctrineFrozen,
+} from "./executiveIntelligenceEraMetrics.js";
 import { parsePeerReviewProgress } from "../epo/checklistParser.js";
 import { isModuleCertificationLocked } from "./v1CertificationRegistry.js";
 import { getRepoRoot } from "../db/repoRoot.js";
@@ -235,6 +236,15 @@ function moduleBlockers(
   state: BuildStateSnapshot,
   moduleProgress: Map<string, number>,
 ): string {
+  if (moduleId === "communications" && isModuleCertificationLocked("factory")) {
+    const mem = getMemoryOsProgressSnapshot();
+    if (mem.wave1_complete_count >= 5 && !isExecutiveIntelligenceDoctrineFrozen()) {
+      return "EI-001 doctrine freeze pending";
+    }
+    if (mem.wave1_complete_count >= 5 && isExecutiveIntelligenceDoctrineFrozen()) {
+      return "ENG-EI-001 Constitutional Retrieval pending";
+    }
+  }
   if (moduleId === "memory_os" && isModuleCertificationLocked("factory")) {
     return "None";
   }
@@ -413,8 +423,16 @@ export function computeV1CommandCenter(state: BuildStateSnapshot): V1CommandCent
   const factoryModule = modules.find((m) => m.module_id === "factory");
   const memoryModule = modules.find((m) => m.module_id === "memory_os");
   const memoryProgress = getMemoryOsProgressSnapshot();
+  const eiEra = getExecutiveIntelligenceEraSnapshot();
   let buildingToday: string | null;
   if (
+    factoryModule?.certified &&
+    memoryModule &&
+    memoryModule.progress_percent >= 100 &&
+    (eiEra.era_authorized || eiEra.doctrine_frozen)
+  ) {
+    buildingToday = eiEra.building_today;
+  } else if (
     factoryModule?.certified &&
     memoryModule &&
     memoryModule.progress_percent > 0 &&

@@ -21,6 +21,7 @@ import {
   getMemoryOsProgressSnapshot,
   parseEngMemWave1Slices,
 } from "./memoryOsSpecMetrics.js";
+import { getExecutiveIntelligenceEraSnapshot } from "./executiveIntelligenceEraMetrics.js";
 import {
   hasRegression,
   isModuleCertificationLocked,
@@ -309,7 +310,7 @@ function certifyMemoryOsModule(): V1ModuleCertificationCard {
       "launch",
       "pending",
       snap.wave1_complete_count >= 5
-        ? "ENG-PMO-005 COMPLETE · Wave 1 5/5 · Executive Intelligence Era authorized"
+        ? getExecutiveIntelligenceEraSnapshot().summary
         : snap.wave1_active_slice
           ? `Active: ${snap.wave1_active_slice.slice_code} ${snap.wave1_active_slice.object}`
           : "MEM-009 implementation in progress",

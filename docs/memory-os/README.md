@@ -1,7 +1,7 @@
 # Memory OS — Design Package
 
 > **Status:** **FROZEN** — `memory-spec-v1.0` · Wave 1 **5/5 COMPLETE** · ENG-PMO-005  
-> **Current era:** [Executive Intelligence Doctrine](./EXECUTIVE-INTELLIGENCE-DOCTRINE.md) · [MAR-3](./MAR-3-EXECUTIVE-INTELLIGENCE-ARCHITECTURE_REVIEW.md) pre-freeze  
+> **Current era:** [Executive Intelligence Doctrine](./EXECUTIVE-INTELLIGENCE-DOCTRINE.md) **V1 FROZEN** · `ei-doctrine-v1.0` · [ENG-EI-001](./ENG-EI-001-CHARTER.md) AUTHORIZED  
 > **Engine:** ENG-MEM-001 · **Implementation:** MEM-009 Pass 1 **COMPLETE**  
 > **Authorized:** Post `v1.0.0-factory-certified` Factory lock  
 > **Depends on:** [Factory Constitution v1.0](../factory/FACTORY_CONSTITUTION_v1.0.md) · [Convention Close](../convention/CONVENTION-CLOSE.md)  

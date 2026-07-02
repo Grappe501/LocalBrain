@@ -4,11 +4,11 @@ export type ContextCard = {
   id: string;
   title: string;
   status: ContextCardStatus;
-  /** One-line institutional state — refreshed with Wave 1 progress. */
+  /** One-line institutional state — synced with Executive Intelligence Era posture. */
   detail: string;
 };
 
-/** Nine cards — five Institutional Cognition substrates + four V1 module posture cards. */
+/** Ten cards — five substrates · four V1 modules · Executive Intelligence Era. */
 export const CONTEXT_CARDS: readonly ContextCard[] = [
   {
     id: "episode",
@@ -59,10 +59,16 @@ export const CONTEXT_CARDS: readonly ContextCard[] = [
     detail: "Module certified · 6/6 dimensions PASS",
   },
   {
+    id: "executive-intelligence",
+    title: "Executive Intelligence",
+    status: "active",
+    detail: "ei-doctrine-v1.0 FROZEN · ENG-PMO-006/007 · ENG-EI-001 AUTHORIZED · Doctrine Fidelity",
+  },
+  {
     id: "communications",
     title: "Communications Office",
     status: "planned",
-    detail: "Unblocked — Executive Intelligence Era authorized (ENG-PMO-005)",
+    detail: "Unblocked after ENG-EI-001 · Institutional Cognition Foundation V1 COMPLETE",
   },
 ] as const;
 

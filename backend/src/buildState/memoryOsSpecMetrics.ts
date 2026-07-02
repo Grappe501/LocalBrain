@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { getRepoRoot } from "../db/repoRoot.js";
+import { getExecutiveIntelligenceEraSnapshot } from "./executiveIntelligenceEraMetrics.js";
 
 export const MEM008_TOTAL_TESTS = 107;
 export const WAVE1_SLICE_COUNT = 5;
@@ -184,6 +185,7 @@ function moduleProgressPercent(
   if (specFrozen) {
     const specShare = MEMORY_SPEC_MODULE_WEIGHT;
     const implShare = Math.round((implProgress / 100) * MEMORY_IMPL_MODULE_WEIGHT);
+    if (implProgress >= 100) return 100;
     return Math.min(99, specShare + implShare);
   }
   const preFreeze = Math.max(getMemoryOsSpecArtifactPercent(), Math.round(specProgress * 0.45));
@@ -216,7 +218,7 @@ function buildBuildingToday(
   completeCount: number,
 ): string {
   if (specFrozen && completeCount >= WAVE1_SLICE_COUNT) {
-    return "Institutional Cognition Foundation COMPLETE — Executive Intelligence Era authorized";
+    return getExecutiveIntelligenceEraSnapshot().building_today;
   }
   if (specFrozen && active) {
     const sub = activeSubMilestone(active, completeCount);

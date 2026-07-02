@@ -288,7 +288,7 @@ export function seedWorkspaces(): void {
     parent_workspace_id: null,
     executive_context:
       "LocalBrain is Steve's Executive Operating System — not a chatbot. Wave 1 builds the Institutional Cognition Foundation: deterministic memory substrates that Executive Intelligence reasons over.",
-    current_focus: "Institutional Cognition Foundation COMPLETE · Executive Intelligence Era (LB-OS-027)",
+    current_focus: "ENG-EI-001 Constitutional Retrieval — read-only · cite · package evidence",
     success_definition:
       "A modular AI Executive Operating System that becomes Steve's primary interface for work.",
     workspace_avatar: "🧠",
@@ -297,7 +297,7 @@ export function seedWorkspaces(): void {
     filesystem_roots: [repoRoot],
     profile: {
       mission: "Build Steve's Executive Operating System",
-      current_phase: "Executive Memory · Wave 1 (5/5) · Foundation COMPLETE",
+      current_phase: "Executive Intelligence Era · ei-doctrine-v1.0 FROZEN · ENG-EI-001 AUTHORIZED",
       completed_slices: [
         "LB-OS-001",
         "LB-OS-002",
@@ -310,20 +310,26 @@ export function seedWorkspaces(): void {
         "ENG-MEM-001.4",
         "ENG-MEM-001.5",
         "ENG-PMO-005",
+        "ENG-PMO-006",
+        "ENG-PMO-007",
       ],
-      active_slice: "Executive Intelligence Era",
-      next_slices: ["Executive Intelligence · retrieval · graph · advisory layer"],
+      active_slice: "ENG-EI-001 Constitutional Retrieval",
+      next_slices: [
+        "ENG-EI-001 Constitutional Retrieval",
+        "Communications Office",
+      ],
       recent_decisions: [
         "PSP approved",
         "localbrain home mock",
         "CFO briefing-only in shell",
         "MODULARITY GATE after 004",
         "LivingWorkspace replaces Project Registry",
+        "ENG-PMO-005 Constitutional Completion",
       ],
       chief_of_staff_summary:
-        "Institutional Cognition Foundation COMPLETE — Wave 1 5/5. Episode · Fact · Artifact · Conversation · DecisionCitation. Deterministic Foundation CLOSED · ENG-PMO-005.",
+        "Institutional Cognition Foundation V1 COMPLETE · ei-doctrine-v1.0 FROZEN · ENG-EI-001 AUTHORIZED · fidelity-first engineering",
       recommended_next_action:
-        "Executive Intelligence Era authorized — build advisory cognition over deterministic substrates.",
+        "ENG-EI-001 Constitutional Retrieval — read-only substrate access · citation assembly · evidence packaging",
       repositories: [],
       contacts: [],
       calendar_links: [],

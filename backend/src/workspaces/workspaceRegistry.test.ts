@@ -13,9 +13,9 @@ test("localbrain seed has executive_context, focus, and success_definition", () 
   assert.ok(ws);
   assert.ok(ws.executive_context.length > 20);
   assert.ok(
-    ws.current_focus.includes("Foundation COMPLETE") ||
-      ws.current_focus.includes("Executive Intelligence") ||
-      ws.current_focus.includes("LB-OS-027"),
+    ws.current_focus.includes("ENG-EI-001") ||
+      ws.current_focus.includes("Constitutional Retrieval") ||
+      ws.current_focus.includes("Executive Intelligence"),
   );
   assert.ok(ws.success_definition.includes("Executive Operating System"));
   assert.equal(ws.workspace_avatar, "🧠");

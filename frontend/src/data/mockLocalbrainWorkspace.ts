@@ -8,11 +8,12 @@ export const LOCALBRAIN_WORKSPACE = {
 } as const;
 
 export const MOCK_WORKSPACE_SIGNALS = [
-  { label: "Memory OS Wave 1", value: "5/5 complete · Foundation COMPLETE", tone: "neutral" as const },
+  { label: "Institutional Cognition Foundation V1", value: "5/5 COMPLETE · memory-spec-v1.0 · 100%", tone: "neutral" as const },
   { label: "Institutional substrates", value: "Episode · Fact · Artifact · Conversation · DecisionCitation ✓", tone: "neutral" as const },
-  { label: "V1 launch score", value: "~78% · refresh Program Office", tone: "neutral" as const },
-  { label: "Executive Intelligence Era", value: "AUTHORIZED · ENG-PMO-005", tone: "neutral" as const },
-  { label: "Communications Office", value: "Unblocked — Wave 1 closed", tone: "neutral" as const },
+  { label: "Executive Intelligence Era", value: "ei-doctrine-v1.0 FROZEN · ENG-EI-001 AUTHORIZED", tone: "neutral" as const },
+  { label: "V1 launch score", value: "~75% · refresh Program Office", tone: "neutral" as const },
+  { label: "Next slice", value: "ENG-EI-001 Constitutional Retrieval", tone: "neutral" as const },
+  { label: "Communications Office", value: "Awaiting ENG-EI-001 · doctrine frozen", tone: "neutral" as const },
 ];
 
-export const MOCK_SIGNAL_COUNT = 4;
+export const MOCK_SIGNAL_COUNT = MOCK_WORKSPACE_SIGNALS.length;

@@ -34,7 +34,7 @@ export function CommandPalette() {
     >
       <div className="command-palette" onClick={(e) => e.stopPropagation()}>
         <h2 className="command-palette__title">Chief of Staff — quick route</h2>
-        <p className="command-palette__hint">Quick route · Program Office · Wave 1 5/5 · Foundation COMPLETE</p>
+        <p className="command-palette__hint">Quick route · ei-doctrine-v1.0 FROZEN · ENG-EI-001 next · Foundation V1 COMPLETE</p>
         <ul className="command-palette__list">
           {PALETTE_ITEMS.map((item) => (
             <li key={item.path}>

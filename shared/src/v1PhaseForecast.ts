@@ -158,7 +158,7 @@ export const V1_PHASE_FINISHABILITY_BASE: Partial<Record<V1CriticalPathStep, num
   theory_v1_freeze: 95,
   executive_epistemology_convention: 63,
   empty_brain_factory: 100,
-  memory_os: 99,
+  memory_os: 100,
   communications_office: 25,
   commercial_beta: 70,
 };

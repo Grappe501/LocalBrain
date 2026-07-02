@@ -46,7 +46,7 @@ export const SURFACE_REGISTRY: LiveSurfaceEntry[] = [
     maturity_level: 2,
     target_maturity_level: 5,
     next_upgrade_slice: "MEM-010",
-    next_upgrade_summary: "Executive Intelligence Era — advisory cognition over deterministic substrates (L3)",
+    next_upgrade_summary: "Executive Intelligence Era — ei-doctrine-v1.0 FROZEN · ENG-EI-001 Constitutional Retrieval",
   },
   {
     route: "/actions",
