@@ -9,3 +9,4 @@ export * from "./artifactCustody.js";
 export * from "./conversation.js";
 export * from "./conversationTurn.js";
 export * from "./decisionCitation.js";
+export * from "./constitutionalRetrieval.js";

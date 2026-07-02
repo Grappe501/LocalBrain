@@ -199,9 +199,17 @@ Do not mix governance refinements into ENG-EI implementation commits.
 
 ## Defining sentences
 
-> **Constitutional Retrieval reads and cites. It does not reason or recommend.**
+> **Constitutional Retrieval assembles constitutional records. It does not evaluate them.**
 
 > **DecisionCitation records authority. It does not perform authority.**
+
+Layer progression:
+
+* **Memory preserves constitutional records.**
+* **Constitutional Retrieval assembles constitutional records.**
+* **Executive Intelligence reasons over constitutional records.**
+* **Policy decides.**
+* **Decision Ledger records authority.**
 
 Companion for later slices:
 

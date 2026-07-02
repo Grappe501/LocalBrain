@@ -156,11 +156,27 @@ No Executive Intelligence implementation code ships before EI-001 freeze.
 
 ## Defining sentence (effective at authorization)
 
-> **Constitutional Retrieval reads and cites. It does not reason or recommend.**
+> **Constitutional Retrieval assembles constitutional records. It does not evaluate them.**
+
+Layer progression:
+
+* **Memory preserves constitutional records.**
+* **Constitutional Retrieval assembles constitutional records.**
+* **Executive Intelligence reasons over constitutional records.**
+* **Policy decides.**
+* **Decision Ledger records authority.**
 
 Companion to the Institutional Cognition Foundation:
 
 > **DecisionCitation records authority. It does not perform authority.**
+
+---
+
+## Implementation slices
+
+| Slice | Scope |
+| ----- | ----- |
+| [ENG-EI-001.1](./slices/ENG-EI-001.1-CONSTITUTIONAL-RETRIEVAL.md) | Substrate read path · evidence package · coverage report |
 
 ---
 
