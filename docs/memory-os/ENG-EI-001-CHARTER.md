@@ -14,11 +14,30 @@
 
 > **Fidelity-first:** Did we implement the doctrine faithfully? — not "Is the doctrine still correct?"
 
-Wave 1 was architecture-first. Executive Intelligence Era is **fidelity-first**. The doctrine is frozen at `ei-doctrine-v1.0`.
+The **Institutional Cognition Foundation** was architecture-first (**Specification Fidelity**). The **Executive Intelligence Era** is fidelity-first (**Doctrine Fidelity**). The doctrine is frozen at `ei-doctrine-v1.0`.
 
-This is not "build the Chief of Staff." It is the same progression that served Wave 1: constitutional fidelity first, probabilistic capability later.
+This is not "build the Chief of Staff." It is the same progression that served the Institutional Cognition Foundation: constitutional fidelity first, probabilistic capability later.
 
-**Binding discipline:** Same ENG / OPS / ENG-PMO separation as Wave 1. No advisory behavior ships in this slice.
+**Binding discipline:** Same ENG / OPS / ENG-PMO separation. No advisory behavior ships in this slice.
+
+---
+
+## Doctrine Fidelity (binding)
+
+Every ENG-EI slice — including this one — must report **Doctrine Fidelity** against Articles I–IX:
+
+```text
+Article I      PASS
+Article II     PASS
+...
+Article IX     PASS
+Doctrine Fidelity:
+100%
+```
+
+This is the Executive Intelligence Era equivalent of **Specification Fidelity** during the Institutional Cognition Foundation.
+
+ENG-EI-001 applies Articles II · IV · VIII · IX at the retrieval boundary (read · cite · withhold · no mutation). Full article matrix applies to later slices that emit work products.
 
 ---
 
@@ -84,7 +103,7 @@ ENG-EI-001 consumes Wave 1 outputs. It does not extend substrate semantics.
 | Conversation | Read · cite · assemble evidence |
 | DecisionCitation | Read · cite · assemble evidence |
 
-All Wave 1 integrity classes (A12–A17) remain enforced. Constitutional Retrieval inherits them — it does not relax them.
+All Institutional Cognition Foundation integrity classes (A12–A17) remain enforced. Constitutional Retrieval inherits them — it does not relax them.
 
 ---
 
@@ -99,7 +118,8 @@ All Wave 1 integrity classes (A12–A17) remain enforced. Constitutional Retriev
 | A5 | No uncited evidence bundle emitted (MAR-3 Q3 negative) | ⬜ |
 | A6 | Retrieval failure reports insufficient evidence — no fabrication (MAR-3 Q6 negative) | ⬜ |
 | A7 | Evidence bundle withheld when citation set below minimum (Article IX · burden of proof) | ⬜ |
-| A8 | PMO slice acceptance | ⬜ |
+| A8 | Doctrine Fidelity — applicable articles PASS at retrieval boundary | ⬜ |
+| A9 | PMO slice acceptance | ⬜ |
 
 ---
 
@@ -125,10 +145,10 @@ No Executive Intelligence implementation code ships before EI-001 freeze.
 
 > **Constitutional Retrieval reads and cites. It does not reason or recommend.**
 
-Companion to Wave 1:
+Companion to the Institutional Cognition Foundation:
 
 > **DecisionCitation records authority. It does not perform authority.**
 
 ---
 
-*ENG-EI-001 · Constitutional Retrieval · RESERVED · LocalBrain V1 · Executive Intelligence Era · 2026*
+*ENG-EI-001 · Constitutional Retrieval · AUTHORIZED · LocalBrain V1 · Executive Intelligence Era · 2026*

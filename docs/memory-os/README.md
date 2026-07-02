@@ -68,7 +68,8 @@ ENG-MEM-001 Wave 1 — canonical storage slices. Reference implementation: [ENG-
 | -------- | ------- |
 | [Executive Intelligence Doctrine](./EXECUTIVE-INTELLIGENCE-DOCTRINE.md) | **FROZEN** — `ei-doctrine-v1.0` |
 | [EI-001 Doctrine Freeze](./EI-001-DOCTRINE-FREEZE.md) | **DECLARED FROZEN** · 2026-07-02 |
-| [ENG-PMO-006 EI Doctrine Freeze](./ENG-PMO-006-EI-DOCTRINE-FREEZE.md) | PMO ceremony |
+| [ENG-PMO-006 EI Doctrine Freeze](./ENG-PMO-006-EI-DOCTRINE-FREEZE.md) | PMO ceremony · `ei-doctrine-v1.0` |
+| [ENG-PMO-007 EI Governance Refinements](./ENG-PMO-007-EI-GOVERNANCE-REFINEMENTS.md) | Doctrine Fidelity · terminology · lane promises |
 | [MAR-3 Architecture Review](./MAR-3-EXECUTIVE-INTELLIGENCE-ARCHITECTURE_REVIEW.md) | **COMPLETE** — Q1–Q7 PASS |
 | [ENG-EI-001 Constitutional Retrieval](./ENG-EI-001-CHARTER.md) | **AUTHORIZED** — first slice · fidelity-first |
 | [Verification Lanes](./VERIFICATION-LANES.md) | Three Correctness Model · COMPLETE |

@@ -1,7 +1,7 @@
 # ENG-PMO-005 — Constitutional Completion Milestone
 
 > **Type:** PMO acceptance ceremony — constitutional event, not a coding milestone  
-> **Status:** **COMPLETE** — accepted 2026-07-01  
+> **Status:** **COMPLETE** — Version 1 · accepted 2026-07-01 · **Frozen** · `memory-spec-v1.0`  
 > **Governance:** [ENG / OPS / ENG-PMO](./ENG-PMO-GOVERNANCE.md)  
 > **Prior authorization:** [ENG-PMO-004](./ENG-PMO-004-DECISIONCITATION-AUTHORIZATION.md)  
 > **Engineering closeout:** [ENG-MEM-001.5-SLICE_CLOSEOUT](./slices/ENG-MEM-001.5-SLICE_CLOSEOUT.md)

@@ -50,31 +50,59 @@ These are distinct responsibilities. **Do not introduce another governance docum
 
 ---
 
-## Corpus stability · cadence shift
+## Terminology (binding)
 
-Wave 1 required substantial constitutional writing because foundational concepts did not yet exist.
+Use **constitutional era names** — not wave numbers — in current engineering and PMO records:
 
-**From here:** let governance do its job. Highest-leverage activity is **implementation and validation** — not additional doctrine unless MAR-3 uncovers a genuine constitutional defect.
+| Historical (archive) | Constitutional name (use) |
+| -------------------- | ------------------------- |
+| Wave 1 | **Institutional Cognition Foundation** |
+| Wave 2 | **Executive Intelligence Era** |
 
-```text
-MAR-3 PASS (assuming no Required amendment)
-      ↓
-EI-001 doctrine freeze
-      ↓
-Verification Framework already complete
-      ↓
-ENG-EI-001 · build · verify against lanes
-      ↓
-Future doctrine changes — demonstrated need only
-```
-
-Executive Intelligence should not repeat Wave 1's volume of governance work unless evidence requires it.
+Wave labels remain valid in historical commits and closeouts only.
 
 ---
 
-## Wave 1 milestone name
+## Engineering fidelity metrics
 
-Wave 1 establishes the **Institutional Cognition Foundation** — the layer that preserves fundamental kinds of institutional information before any reasoning occurs.
+| Era | Metric | Question |
+| --- | ------ | -------- |
+| **Institutional Cognition Foundation** | **Specification Fidelity** | Did we implement `memory-spec-v1.0` faithfully? |
+| **Executive Intelligence Era** | **Doctrine Fidelity** | Did we implement `ei-doctrine-v1.0` faithfully? |
+
+Every ENG-EI slice reports **Doctrine Fidelity** — Articles I–IX PASS · 100% required for acceptance.
+
+---
+
+## Three constitutional eras (complete)
+
+| Era | Result |
+| --- | ------ |
+| **Factory** | Institutions can be manufactured deterministically. |
+| **Institutional Cognition Foundation** | Institutions can preserve trustworthy records. |
+| **Executive Intelligence Era** | Institutions can reason over those records without replacing them. |
+
+---
+
+## Corpus stability · cadence shift
+
+The **Institutional Cognition Foundation** required substantial constitutional writing because foundational concepts did not yet exist.
+
+**Constitutional design phase: COMPLETE.** Highest-leverage activity is **implementation and validation** — not additional doctrine unless demonstrated need requires it.
+
+```text
+ei-doctrine-v1.0 FROZEN                         ✓
+        ↓
+ENG-EI-001 · Constitutional Retrieval           ▶
+        ↓
+Citation Engine · Executive work products
+        ↓
+Doctrine Fidelity verification · PMO acceptance
+```
+
+---
+
+## Institutional Cognition Foundation (complete)
 
 **Status:** **COMPLETE** — all five substrates · Reference Slices 001–005 · [ENG-PMO-005](./ENG-PMO-005-CONSTITUTIONAL-COMPLETION.md)
 

@@ -31,6 +31,27 @@ Detail in [MAR-3](./MAR-3-EXECUTIVE-INTELLIGENCE-ARCHITECTURE_REVIEW.md). Outcom
 
 ---
 
+## PMO permanent record (EI-001)
+
+```text
+EI-001
+Executive Intelligence Doctrine
+Status:
+FROZEN
+Tag:
+ei-doctrine-v1.0
+Architecture Review:
+MAR-3 PASS
+Required Amendments:
+0
+Implementation:
+AUTHORIZED
+```
+
+Nothing more is needed. The constitutional work is complete.
+
+---
+
 ## Acceptance
 
 ```text
@@ -67,11 +88,56 @@ This is not "Executive Intelligence shipped." It is **doctrine frozen** — the 
 
 ---
 
+## Three constitutional eras (complete)
+
+| Era | Result |
+| --- | ------ |
+| **Factory** | Institutions can be manufactured deterministically. |
+| **Institutional Cognition Foundation** | Institutions can preserve trustworthy records. |
+| **Executive Intelligence Era** | Institutions can reason over those records without replacing them. |
+
+**Constitutional design phase:** **COMPLETE.** Value is measured by implementation fidelity, not new doctrine.
+
+---
+
+## Platform architecture (defining)
+
+```text
+Institution
+        │
+        ▼
+Constitution
+        │
+        ▼
+Deterministic Foundation
+        │
+        ▼
+Executive Intelligence
+        │
+        ▼
+Policy
+        │
+        ▼
+Decision Ledger
+        │
+        ▼
+Institution
+```
+
+An **institutional governance architecture** that uses AI in one bounded layer — not an AI architecture with governance bolted on.
+
+> **An operating system for accountable institutional decision support.**
+
+A Chief of Staff is the first executive role that inhabits this framework — not the definition of the platform.
+
+---
+
 ## Engineering shift (binding)
 
 ```text
-Wave 1                    Executive Intelligence Era
-Architecture-first   →    Fidelity-first
+Institutional Cognition Foundation     Executive Intelligence Era
+Specification Fidelity            →    Doctrine Fidelity
+Architecture-first                →    Fidelity-first
 ```
 
 Every ENG-EI slice answers:

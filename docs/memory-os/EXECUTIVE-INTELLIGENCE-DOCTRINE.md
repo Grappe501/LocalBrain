@@ -1,10 +1,14 @@
 # Executive Intelligence Doctrine
 
-> **Status:** **FROZEN** — `ei-doctrine-v1.0` · [EI-001](./EI-001-DOCTRINE-FREEZE.md) · [ENG-PMO-006](./ENG-PMO-006-EI-DOCTRINE-FREEZE.md)  
+> **Status:** **FROZEN** — **Version 1** · `ei-doctrine-v1.0` · [EI-001](./EI-001-DOCTRINE-FREEZE.md) · [ENG-PMO-006](./ENG-PMO-006-EI-DOCTRINE-FREEZE.md) · [ENG-PMO-007](./ENG-PMO-007-EI-GOVERNANCE-REFINEMENTS.md)  
 > **Prerequisite:** [ENG-PMO-005](./ENG-PMO-005-CONSTITUTIONAL-COMPLETION.md) · [Deterministic Foundation Doctrine](./DETERMINISTIC-FOUNDATION-DOCTRINE.md) · [The Five Constitutional Substrates](./THE-FIVE-CONSTITUTIONAL-SUBSTRATES.md)  
 > **Design review:** [MAR-3](./MAR-3-EXECUTIVE-INTELLIGENCE-ARCHITECTURE_REVIEW.md) — **COMPLETE**  
 > **Lock:** [ei-doctrine-lock.json](./certification/ei-doctrine-lock.json)  
 > **First implementation:** [ENG-EI-001 Constitutional Retrieval](./ENG-EI-001-CHARTER.md) — **AUTHORIZED**  
+> **Constitutional design phase:** **COMPLETE** · `ei-doctrine-v1.0` · [ENG-PMO-006](./ENG-PMO-006-EI-DOCTRINE-FREEZE.md)
+
+**Engineering metric:** **Doctrine Fidelity** — see [ENG-EI-001](./ENG-EI-001-CHARTER.md)
+
 > **Engineering specification:** [Volume 6 — Executive Intelligence](./VOLUME-6-EXECUTIVE_INTELLIGENCE.md) (implements frozen doctrine — does not redefine it)  
 > **Amendments:** Executive Intelligence v2+ may amend this doctrine — never implicit behavior change · same discipline as Factory Constitution and Memory Specification
 

@@ -29,13 +29,13 @@ A Lane 1 failure is fundamentally different from a Lane 3 failure. They must nev
 
 ## Verification lanes
 
-| Lane | Name | Validates |
-| ---- | ---- | --------- |
-| **Lane 1** | **Constitutional Verification** | Memory is constitutionally sound |
-| **Lane 2** | **Behavioral Verification** | Reasoning respects the doctrine |
-| **Lane 3** | **Operational Verification** | Runtime delivers capabilities reliably |
+| Lane | Name | Validates | Promise |
+| ---- | ---- | --------- | ------- |
+| **Lane 1** | **Constitutional Verification** | Memory is constitutionally sound | **Protects the institution** |
+| **Lane 2** | **Behavioral Verification** | Reasoning respects the doctrine | **Protects leadership** |
+| **Lane 3** | **Operational Verification** | Runtime delivers capabilities reliably | **Protects availability** |
 
-Each lane validates a **different promise** to the user.
+Three different promises — never averaged into one health score.
 
 Executive Intelligence Doctrine:
 

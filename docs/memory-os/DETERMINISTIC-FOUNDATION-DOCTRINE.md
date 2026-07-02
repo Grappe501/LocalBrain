@@ -1,8 +1,8 @@
 # Deterministic Foundation Doctrine
 
-> **Status:** Binding architectural doctrine · LocalBrain V1 · **Deterministic Foundation CLOSED** (ENG-PMO-005)  
+> **Status:** Binding architectural doctrine · LocalBrain V1 · **Institutional Cognition Foundation Version 1** · **Complete** · **Frozen** (`memory-spec-v1.0`)  
 > **Authority:** Interpretive canon — [Architecture Book § Deterministic Foundation](../LOCALBRAIN_ARCHITECTURE_BOOK_v1.0.md#deterministic-foundation-doctrine)  
-> **Engine:** ENG-MEM-001 Wave 1 — Institutional Cognition Foundation **COMPLETE**
+> **Engine:** ENG-MEM-001 — Wave 1 archived · use **Institutional Cognition Foundation** in current records
 
 ---
 

@@ -1,8 +1,9 @@
 # ENG-MEM-001 — Wave 1: Institutional Cognition Foundation
 
-> **Milestone name:** **Institutional Cognition Foundation**  
-> **Status:** **COMPLETE** — Wave 1 · 5/5 substrates · [ENG-PMO-005](./ENG-PMO-005-CONSTITUTIONAL-COMPLETION.md)  
-> **Engine:** ENG-MEM-001 · **Milestone:** MEM-009 Implementation Pass 1 · Wave 1  
+> **Milestone name:** **Institutional Cognition Foundation** — **Version 1**  
+> **Status:** **COMPLETE** · **Frozen** · `memory-spec-v1.0` · [ENG-PMO-005](./ENG-PMO-005-CONSTITUTIONAL-COMPLETION.md)  
+> **Historical label:** Wave 1 (archive only — use constitutional name in current records)  
+> **Engine:** ENG-MEM-001 · **Milestone:** MEM-009 Implementation Pass 1  
 > **Specification:** `memory-spec-v1.0` · tag `memory-spec-v1.0`  
 > **Governance:** [ENG / OPS / ENG-PMO commit histories](./ENG-PMO-GOVERNANCE.md)  
 > **Unblocks:** Executive Intelligence Era · Wave 2 (Retrieval) · Wave 3 (Intelligence) · Wave 4 (Organizational Intelligence)
