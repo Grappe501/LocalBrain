@@ -8,14 +8,18 @@
 
 > **Production line:** Charter → Doctrine → Implementation → Verification → PMO Acceptance → Closeout
 
+> **Evidence Package Contract:** [ENG-EI-EVIDENCE-PACKAGE-CONTRACT.md](./ENG-EI-EVIDENCE-PACKAGE-CONTRACT.md) · [ENG-EI-DOC-002](./ENG-EI-DOC-002-EVIDENCE-PACKAGE-CONTRACT.md)
+
 ```text
 ──────── Governance complete ────────
 ENG-PMO-006  Executive Intelligence Doctrine Freeze
 ENG-PMO-007  Governance refinements
 OPS-004      Platform synchronized to doctrine
 ENG-EI-DOC-001  Engineering discipline frozen
-──────── Engineering begins here ────────
-ENG-EI-001.1 Constitutional Retrieval
+ENG-EI-001.1    Correctness proven
+ENG-EI-DOC-002  Evidence Package Contract
+──────── Quality phase ───────────────
+ENG-EI-001.x  Retrieval quality (without making it smarter)
 ```
 
 Every implementation commit after this line must trace back to the frozen doctrine.
@@ -133,6 +137,22 @@ Executive Work Product       ← later ENG-EI slices
 ```
 
 **ENG-EI-001 tests remain almost entirely deterministic.** Probabilistic behavior belongs after the evidence package exists.
+
+### Remainder of ENG-EI-001 (binding objective)
+
+> **Increase retrieval quality without changing constitutional behavior.**
+
+| Phase | Question | Status |
+| ----- | -------- | ------ |
+| Correctness | Constitutionally valid package? | ✅ ENG-EI-001.1 |
+| **Quality** | Complete · organized · transparent? | **Current** |
+| Performance | Efficient at scale · same properties? | Later |
+
+Guiding question:
+
+> **Does this make the constitutional evidence package better without making it smarter?**
+
+See [Evidence Package Contract](./ENG-EI-EVIDENCE-PACKAGE-CONTRACT.md).
 
 ---
 

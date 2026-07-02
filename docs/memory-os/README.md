@@ -74,6 +74,8 @@ ENG-MEM-001 Wave 1 — canonical storage slices. Reference implementation: [ENG-
 | [ENG-EI-001 Constitutional Retrieval](./ENG-EI-001-CHARTER.md) | **AUTHORIZED** — first slice · fidelity-first |
 | [ENG-EI-DOC-001 Engineering Discipline](./ENG-EI-DOC-001-ENGINEERING-DISCIPLINE.md) | Implementation rules frozen · living law |
 | [ENG-EI Engineering Discipline](./ENG-EI-ENGINEERING-DISCIPLINE.md) | Doctrine-traceable commits · infrastructure-before-intelligence |
+| [ENG-EI Evidence Package Contract](./ENG-EI-EVIDENCE-PACKAGE-CONTRACT.md) | Stable retrieval → intelligence interface |
+| [ENG-EI-DOC-002](./ENG-EI-DOC-002-EVIDENCE-PACKAGE-CONTRACT.md) | Contract established · quality phase |
 | [Verification Lanes](./VERIFICATION-LANES.md) | Three Correctness Model · COMPLETE |
 | [ENG-PMO Governance](./ENG-PMO-GOVERNANCE.md) | ENG / OPS / ENG-PMO separation |
 
