@@ -4,6 +4,7 @@
 > **Milestone name:** **Constitutional Retrieval**  
 > **Prerequisite:** [EI-001 Doctrine Freeze](./EI-001-DOCTRINE-FREEZE.md) · [ENG-PMO-006](./ENG-PMO-006-EI-DOCTRINE-FREEZE.md) · `ei-doctrine-v1.0`  
 > **Specification:** Frozen [Executive Intelligence Doctrine](./EXECUTIVE-INTELLIGENCE-DOCTRINE.md) — fidelity-first  
+> **Engineering discipline:** [ENG-EI Engineering Discipline](./ENG-EI-ENGINEERING-DISCIPLINE.md) · [ENG-EI-DOC-001](./ENG-EI-DOC-001-ENGINEERING-DISCIPLINE.md)  
 > **Governance:** [ENG / OPS / ENG-PMO commit histories](./ENG-PMO-GOVERNANCE.md)
 
 ---
@@ -39,7 +40,19 @@ This is the Executive Intelligence Era equivalent of **Specification Fidelity** 
 
 ENG-EI-001 applies Articles II · IV · VIII · IX at the retrieval boundary (read · cite · withhold · no mutation). Full article matrix applies to later slices that emit work products.
 
+**Commit discipline:** Every ENG-EI commit begins with the Doctrine Fidelity block — see [ENG-EI Engineering Discipline](./ENG-EI-ENGINEERING-DISCIPLINE.md) · Rule 1.
+
 ---
+
+## Product outcome (binding)
+
+By slice closeout, the platform must answer:
+
+> **Prepare everything relevant to this issue.**
+
+The output is a **constitutional evidence package** — Episodes · Facts · Artifacts · Conversations · DecisionCitations — ordered, cited, packaged, and ready. No recommendations. No reasoning. No course of action.
+
+Only after evidence packaging exists does Executive Assessment become possible.
 
 ## Mission
 

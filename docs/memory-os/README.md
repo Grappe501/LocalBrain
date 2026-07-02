@@ -72,6 +72,8 @@ ENG-MEM-001 Wave 1 — canonical storage slices. Reference implementation: [ENG-
 | [ENG-PMO-007 EI Governance Refinements](./ENG-PMO-007-EI-GOVERNANCE-REFINEMENTS.md) | Doctrine Fidelity · terminology · lane promises |
 | [MAR-3 Architecture Review](./MAR-3-EXECUTIVE-INTELLIGENCE-ARCHITECTURE_REVIEW.md) | **COMPLETE** — Q1–Q7 PASS |
 | [ENG-EI-001 Constitutional Retrieval](./ENG-EI-001-CHARTER.md) | **AUTHORIZED** — first slice · fidelity-first |
+| [ENG-EI-DOC-001 Engineering Discipline](./ENG-EI-DOC-001-ENGINEERING-DISCIPLINE.md) | Implementation rules frozen · living law |
+| [ENG-EI Engineering Discipline](./ENG-EI-ENGINEERING-DISCIPLINE.md) | Doctrine-traceable commits · infrastructure-before-intelligence |
 | [Verification Lanes](./VERIFICATION-LANES.md) | Three Correctness Model · COMPLETE |
 | [ENG-PMO Governance](./ENG-PMO-GOVERNANCE.md) | ENG / OPS / ENG-PMO separation |
 

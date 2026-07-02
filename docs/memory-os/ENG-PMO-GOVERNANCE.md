@@ -72,6 +72,8 @@ Wave labels remain valid in historical commits and closeouts only.
 
 Every ENG-EI slice reports **Doctrine Fidelity** — Articles I–IX PASS · 100% required for acceptance.
 
+**Commit format:** Every ENG-EI commit begins with a Doctrine Fidelity block — see [ENG-EI Engineering Discipline](./ENG-EI-ENGINEERING-DISCIPLINE.md).
+
 ---
 
 ## Three constitutional eras (complete)
