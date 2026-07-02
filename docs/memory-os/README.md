@@ -1,7 +1,8 @@
 # Memory OS — Design Package
 
-> **Status:** **FROZEN** — `memory-spec-v1.0` · MEM-009 authorized  
-> **Engine:** ENG-MEM-001 · **Implementation:** MEM-009 Pass 1  
+> **Status:** **FROZEN** — `memory-spec-v1.0` · Wave 1 **5/5 COMPLETE** · ENG-PMO-005  
+> **Current era:** [Executive Intelligence Doctrine](./EXECUTIVE-INTELLIGENCE-DOCTRINE.md) · [MAR-3](./MAR-3-EXECUTIVE-INTELLIGENCE-ARCHITECTURE_REVIEW.md) pre-freeze  
+> **Engine:** ENG-MEM-001 · **Implementation:** MEM-009 Pass 1 **COMPLETE**  
 > **Authorized:** Post `v1.0.0-factory-certified` Factory lock  
 > **Depends on:** [Factory Constitution v1.0](../factory/FACTORY_CONSTITUTION_v1.0.md) · [Convention Close](../convention/CONVENTION-CLOSE.md)  
 > **Milestone:** [MILESTONE-MEMORY-OS](../burt_packets/MILESTONE-MEMORY-OS.md)
@@ -61,6 +62,20 @@ ENG-MEM-001 Wave 1 — canonical storage slices. Reference implementation: [ENG-
 
 ---
 
+## Executive Intelligence Era (doctrine frozen · implementation authorized)
+
+| Document | Purpose |
+| -------- | ------- |
+| [Executive Intelligence Doctrine](./EXECUTIVE-INTELLIGENCE-DOCTRINE.md) | **FROZEN** — `ei-doctrine-v1.0` |
+| [EI-001 Doctrine Freeze](./EI-001-DOCTRINE-FREEZE.md) | **DECLARED FROZEN** · 2026-07-02 |
+| [ENG-PMO-006 EI Doctrine Freeze](./ENG-PMO-006-EI-DOCTRINE-FREEZE.md) | PMO ceremony |
+| [MAR-3 Architecture Review](./MAR-3-EXECUTIVE-INTELLIGENCE-ARCHITECTURE_REVIEW.md) | **COMPLETE** — Q1–Q7 PASS |
+| [ENG-EI-001 Constitutional Retrieval](./ENG-EI-001-CHARTER.md) | **AUTHORIZED** — first slice · fidelity-first |
+| [Verification Lanes](./VERIFICATION-LANES.md) | Three Correctness Model · COMPLETE |
+| [ENG-PMO Governance](./ENG-PMO-GOVERNANCE.md) | ENG / OPS / ENG-PMO separation |
+
+---
+
 ## Design volumes
 
 | Vol | Document | Milestone | Status |
@@ -95,7 +110,9 @@ ENG-MEM-001 Wave 1 — canonical storage slices. Reference implementation: [ENG-
 ✓ MAR-2 Authority Architecture Review — DecisionCitation
 ✓ ENG-MEM-001.5 DecisionCitation — Reference Slice 005 · 19/19 PASS
 ✓ ENG-PMO-005 — Institutional Cognition Foundation COMPLETE · Deterministic Foundation CLOSED
-▶ Executive Intelligence Era — AUTHORIZED
+✓ MAR-3 Executive Intelligence Architecture Review — Q1–Q7 PASS
+✓ EI-001 Doctrine Freeze · ei-doctrine-v1.0 · ENG-PMO-006
+▶ ENG-EI-001 Constitutional Retrieval — AUTHORIZED · fidelity-first
 ```
 
 ---

@@ -10,7 +10,8 @@
 > ✓ Empty Brain Factory (v1.0.0-factory-certified)
 > ✓ Memory OS Specification (memory-spec-v1.0)
 > ✓ Architecture Book v1.0
-> ▶ Memory OS Implementation (MEM-009 Wave 1)
+> ✓ Memory OS Implementation (MEM-009 Wave 1 · 5/5 · ENG-PMO-005)
+> ▶ Executive Intelligence Era (MAR-3 → EI-001 → ENG-EI-001)
 > □ Communications Office
 > □ Commercial Beta
 >

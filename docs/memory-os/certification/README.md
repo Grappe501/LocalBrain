@@ -13,6 +13,17 @@
 | [memory-spec-release.json](./memory-spec-release.json) | Frozen specification release record |
 | [memory-spec-lock.json](./memory-spec-lock.json) | Specification lock declaration |
 | [memory-spec-chain-of-custody.json](./memory-spec-chain-of-custody.json) | PMO freeze ceremony chain of custody |
+| [ei-doctrine-release.json](./ei-doctrine-release.json) | Executive Intelligence doctrine release record |
+| [ei-doctrine-lock.json](./ei-doctrine-lock.json) | EI doctrine lock · `ei-doctrine-v1.0` |
+
+---
+
+## Executive Intelligence doctrine
+
+- **Release tag:** `ei-doctrine-v1.0`
+- **Evidence:** `E-EI-FREEZE-2026`
+- **Ceremony:** [ENG-PMO-006](../ENG-PMO-006-EI-DOCTRINE-FREEZE.md)
+- Post-freeze: fidelity-first ENG-EI implementation — doctrine amendments require v1.1+ cycle
 
 ---
 

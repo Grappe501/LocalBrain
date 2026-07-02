@@ -127,6 +127,8 @@ Effective at Reference Slice 005 acceptance:
 
 Ceremony: [ENG-PMO-005 Constitutional Completion](./ENG-PMO-005-CONSTITUTIONAL-COMPLETION.md)
 
+**Successor doctrine:** [Executive Intelligence Doctrine](./EXECUTIVE-INTELLIGENCE-DOCTRINE.md) — advisory era · authorized pre-implementation
+
 ---
 
 *Deterministic Foundation Doctrine · LocalBrain V1 · 2026*

@@ -1,0 +1,12 @@
+{
+  "release_tag": "ei-doctrine-v1.0",
+  "release_type": "doctrine_freeze",
+  "frozen_at": "2026-07-02T00:00:00.000Z",
+  "ceremony": "EI-001",
+  "pmo_record": "ENG-PMO-006",
+  "mar_review": "MAR-3",
+  "primary_artifact": "EXECUTIVE-INTELLIGENCE-DOCTRINE.md",
+  "verification_framework": "VERIFICATION-LANES.md",
+  "first_implementation_charter": "ENG-EI-001-CHARTER.md",
+  "engineering_discipline": "Fidelity-first — implement doctrine faithfully; do not reopen doctrine in pull requests"
+}

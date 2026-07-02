@@ -1,0 +1,14 @@
+{
+  "module_id": "executive_intelligence",
+  "module_name": "Executive Intelligence Doctrine",
+  "doctrine_locked": true,
+  "doctrine_frozen": true,
+  "frozen_at": "2026-07-02T00:00:00.000Z",
+  "release_tag": "ei-doctrine-v1.0",
+  "doctrine_version": "1.0",
+  "engine_id": "ENG-EI-001",
+  "governance_rule": "Executive Intelligence implements frozen doctrine — ei-doctrine-v1.0 before advisory implementation. Fidelity-first engineering.",
+  "mar_review": "MAR-3",
+  "articles": 9,
+  "evidence_id": "E-EI-FREEZE-2026"
+}

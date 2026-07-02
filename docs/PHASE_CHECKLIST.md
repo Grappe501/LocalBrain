@@ -198,7 +198,7 @@ NO NEW DOCTRINE
 | LB-OS-026.8 | Productization / Instance Onboarding | ✅ PROD-001 |
 | LB-OS-026.9 | Provider Vault & Connector Settings | ✅ PROD-001 |
 | LB-OS-027.0 | Empty Brain Factory / Packaging | ✅ Certified · `v1.0.0-factory-certified` · [MILESTONE-FACTORY](./burt_packets/MILESTONE-FACTORY.md) · [FACTORY_CONSTITUTION](./factory/FACTORY_CONSTITUTION_v1.0.md) |
-| LB-OS-027 | Executive Memory Bootstrap | ▶ Implementation · `memory-spec-v1.0` · [ENG-MEM-001.3 Artifact](./memory-os/slices/ENG-MEM-001.3-ARTIFACT.md) · [MILESTONE-MEMORY-OS](./burt_packets/MILESTONE-MEMORY-OS.md) · [design package](./memory-os/README.md) |
+| LB-OS-027 | Executive Memory Bootstrap | ✅ Wave 1 **5/5** COMPLETE · ENG-PMO-005 · Deterministic Foundation CLOSED · [Executive Intelligence Doctrine](./memory-os/EXECUTIVE-INTELLIGENCE-DOCTRINE.md) · [MAR-3](./memory-os/MAR-3-EXECUTIVE-INTELLIGENCE-ARCHITECTURE_REVIEW.md) pre-freeze |
 | LB-OS-027.1 | Multi-Brain Sharing (reserved) | 🔒 Reserved · CAP-FUT-MBS-001 |
 | LB-OS-PROD-002 | License & Subscription Gate | 🔒 Reserved · [Burt](./burt_packets/LB-OS-PROD-002-006-reserved.md) · CAP-FUT-LIC-001 |
 | LB-OS-PROD-003 | Social Media Connector Registry | 🔒 Reserved · CAP-FUT-SMC-001 |
@@ -212,7 +212,7 @@ NO NEW DOCTRINE
 | LB-OS-PROD-011 | Chief Compliance Officer | 🔒 Reserved · CAP-FUT-CCO-001 |
 | LB-OS-CON-003 | Versioned Constitution Migration | 🔒 Reserved · CAP-FUT-CON-VER-001 |
 
-**Gate:** V1 implementation mode · **Next:** Executive Intelligence Era — advisory cognition over deterministic substrates · Communications Office unblocked
+**Gate:** V1 implementation mode · **Next:** MAR-3 Executive Intelligence Architecture Review → EI-001 doctrine freeze (`ei-doctrine-v1.0`) → ENG-EI-001 Constitutional Retrieval · Communications Office unblocked after EI-001
 
 **Architecture phase:** ✅ **COMPLETE** · **Doctrine:** 🔒 **FROZEN** (feature freeze until launch — no new doctrine, reserved capabilities, offices, or cognitive layers)
 
