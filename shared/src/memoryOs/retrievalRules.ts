@@ -1,5 +1,5 @@
 /**
- * Deterministic retrieval rules — ENG-EI-001.2
+ * Deterministic retrieval rules — ENG-EI-001.2 · ENG-EI-001.3
  */
 
 export const RETRIEVAL_RULE_IDS = {

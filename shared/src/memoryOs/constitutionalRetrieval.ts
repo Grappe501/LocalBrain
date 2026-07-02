@@ -14,10 +14,14 @@ import type {
   RetrievalRuleId,
 } from "./retrievalRules.js";
 
-/** ENG-EI-001.2 — Constitutional Retrieval · completeness · exclusion reasons. */
-export const CONSTITUTIONAL_RETRIEVAL_VERSION = "ENG-EI-001.2" as const;
+/** ENG-EI-001.3 — Constitutional Retrieval · ordering · retrieval audit. */
+export const CONSTITUTIONAL_RETRIEVAL_VERSION = "ENG-EI-001.3" as const;
 
 export const CONSTITUTIONAL_RETRIEVAL_ENGINE_ID = "ENG-EI-001" as const;
+
+/** Binding citation and record ordering — no relevance ranking. */
+export const CONSTITUTIONAL_RETRIEVAL_ORDERING_SPEC =
+  "event_at:asc,substrate:constitutional_order,record_id:asc" as const;
 
 export const CONSTITUTIONAL_SUBSTRATE_KINDS = [
   "episode",
@@ -58,6 +62,15 @@ export type RetrievalCoverageReport = {
   citation_count: number;
 };
 
+export type RetrievalAuditTrail = {
+  retrieval_version: typeof CONSTITUTIONAL_RETRIEVAL_VERSION;
+  request_fingerprint: string;
+  package_fingerprint: string;
+  substrates_searched: ConstitutionalSubstrateKind[];
+  citation_order: string[];
+  ordering_spec: typeof CONSTITUTIONAL_RETRIEVAL_ORDERING_SPEC;
+};
+
 export type ConstitutionalCitation = {
   citation_ref: string;
   substrate: ConstitutionalSubstrateKind;
@@ -91,4 +104,5 @@ export type ConstitutionalEvidencePackage = {
   decision_citations: DecisionCitation[];
   citations: ConstitutionalCitation[];
   coverage_report: RetrievalCoverageReport;
+  retrieval_audit: RetrievalAuditTrail;
 };

@@ -3,7 +3,7 @@
 > **Status:** Binding engineering contract · not constitutional governance  
 > **Parent:** [ENG-EI-001 Charter](./ENG-EI-001-CHARTER.md) · [Engineering Discipline](./ENG-EI-ENGINEERING-DISCIPLINE.md)  
 > **Canonical types:** `shared/src/memoryOs/constitutionalRetrieval.ts`  
-> **Version:** `ENG-EI-001.1` (initial)
+> **Version:** `ENG-EI-001.3` (ordering · retrieval audit)
 
 ---
 
@@ -39,6 +39,7 @@ Evidence Package Contract
 | `episodes` · `facts` · `artifacts` · `conversations` · `decision_citations` | Constitutional substrate records — read-only |
 | `citations` | Citation set — every included record cited |
 | `coverage_report` | Coverage transparency — searched · retrieved · excluded |
+| `retrieval_audit` | Request/package fingerprints · citation order · ordering spec |
 
 **Out of contract:** ranking · summarization · recommendations · prioritization · synthesis · probabilistic confidence.
 

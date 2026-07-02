@@ -44,6 +44,20 @@ import {
   exclusionFromRule,
   verifyCitationIntegrity,
 } from "./citationIntegrity.js";
+import {
+  buildRetrievalAuditTrail,
+  deterministicPackageId,
+} from "./retrievalAudit.js";
+import {
+  sortArtifacts,
+  sortCitationsStable,
+  sortConversationEvidence,
+  sortDecisionCitations,
+  sortEpisodes,
+  sortExcludedRecords,
+  sortFacts,
+  sortSubstratesSearched,
+} from "./retrievalOrdering.js";
 
 function emptyRetrievedCounts(): Record<ConstitutionalSubstrateKind, number> {
   return {
@@ -93,7 +107,7 @@ function buildCitation(
     substrate,
     record_id: recordId,
     event_at: eventAt,
-    ordering_key: `${eventAt}\0${recordId}`,
+    ordering_key: `${eventAt}\0${substrate}\0${recordId}`,
   };
 }
 
@@ -191,7 +205,37 @@ function fetchById(
 }
 
 function sortCitations(citations: ConstitutionalCitation[]): ConstitutionalCitation[] {
-  return [...citations].sort((a, b) => a.ordering_key.localeCompare(b.ordering_key));
+  return sortCitationsStable(citations);
+}
+
+function applyDeterministicOrdering<
+  T extends Pick<
+    ConstitutionalEvidencePackage,
+    | "episodes"
+    | "facts"
+    | "artifacts"
+    | "conversations"
+    | "decision_citations"
+    | "citations"
+    | "coverage_report"
+  >,
+>(body: T): T {
+  const citations = sortCitations(body.citations);
+  return {
+    ...body,
+    episodes: sortEpisodes(body.episodes),
+    facts: sortFacts(body.facts),
+    artifacts: sortArtifacts(body.artifacts),
+    conversations: sortConversationEvidence(body.conversations),
+    decision_citations: sortDecisionCitations(body.decision_citations),
+    citations,
+    coverage_report: {
+      ...body.coverage_report,
+      substrates_searched: sortSubstratesSearched(body.coverage_report.substrates_searched),
+      records_excluded: sortExcludedRecords(body.coverage_report.records_excluded),
+      citation_count: citations.length,
+    },
+  };
 }
 
 function buildCoverageReport(input: {
@@ -480,7 +524,7 @@ export function assembleConstitutionalEvidencePackage(
   request: ConstitutionalRetrievalRequest,
 ): ConstitutionalEvidencePackage {
   const explicitRefs = hasExplicitRefs(request);
-  const body = explicitRefs
+  let body = explicitRefs
     ? assembleFromRefs(request)
     : assembleFromDomainScan(request);
 
@@ -489,21 +533,37 @@ export function assembleConstitutionalEvidencePackage(
     body.coverage_report.records_excluded.push(...integrity.broken);
   }
 
+  body = applyDeterministicOrdering(body);
+
   const { status, status_reason } = resolveStatus(
     body,
     explicitRefs,
     !integrity.valid,
   );
   const assembled_at = new Date().toISOString();
+  const retrieval_audit = buildRetrievalAuditTrail({
+    request,
+    status,
+    status_reason,
+    substrates_searched: body.coverage_report.substrates_searched,
+    citations: body.citations,
+    episodes: body.episodes,
+    facts: body.facts,
+    artifacts: body.artifacts,
+    conversations: body.conversations,
+    decision_citations: body.decision_citations,
+    coverage_report: body.coverage_report,
+  });
 
   return {
-    package_id: crypto.randomUUID(),
+    package_id: deterministicPackageId(retrieval_audit.package_fingerprint),
     request_id: request.request_id,
     scope_label: request.scope_label,
     status,
     status_reason,
     retrieval_version: CONSTITUTIONAL_RETRIEVAL_VERSION,
     assembled_at,
+    retrieval_audit,
     ...body,
   };
 }

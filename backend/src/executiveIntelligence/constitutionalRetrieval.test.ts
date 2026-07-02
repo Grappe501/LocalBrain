@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { CONSTITUTIONAL_RETRIEVAL_VERSION, RETRIEVAL_RULE_IDS } from "@localbrain/shared";
+import { CONSTITUTIONAL_RETRIEVAL_ORDERING_SPEC, CONSTITUTIONAL_RETRIEVAL_VERSION, RETRIEVAL_RULE_IDS } from "@localbrain/shared";
 import { bootstrapApp, shutdownApp } from "../bootstrap.js";
 import {
   writeArtifact,
@@ -13,6 +13,8 @@ import {
   assembleConstitutionalEvidencePackage,
   CONSTITUTIONAL_RETRIEVAL_ENGINE_ID,
 } from "./constitutionalRetrievalService.js";
+import { buildRequestFingerprint } from "./retrievalAudit.js";
+import { substrateOrdinal } from "./retrievalOrdering.js";
 
 const EXEC = { identity_id: "ID-executive-001", identity_kind: "executive" };
 
@@ -278,6 +280,140 @@ test("ENG-EI-001.1 assembly is deterministic for identical requests", () => {
       b.citations.map((c) => c.citation_ref),
     );
     assert.equal(a.coverage_report.citation_count, b.coverage_report.citation_count);
+    assert.equal(a.retrieval_audit.package_fingerprint, b.retrieval_audit.package_fingerprint);
+    assert.equal(a.package_id, b.package_id);
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-EI-001.3 package carries retrieval audit with version and ordering spec", () => {
+  bootstrapApp();
+  try {
+    const { episode, fact } = seedInitiativeXRecords();
+    const pkg = assembleConstitutionalEvidencePackage({
+      request_id: "req-audit-001",
+      scope_label: "Initiative X",
+      substrate_refs: {
+        episode: [episode.episode_id],
+        fact: [fact.fact_id],
+      },
+    });
+    assert.equal(pkg.retrieval_version, CONSTITUTIONAL_RETRIEVAL_VERSION);
+    assert.equal(pkg.retrieval_audit.retrieval_version, CONSTITUTIONAL_RETRIEVAL_VERSION);
+    assert.equal(pkg.retrieval_audit.ordering_spec, CONSTITUTIONAL_RETRIEVAL_ORDERING_SPEC);
+    assert.ok(pkg.retrieval_audit.request_fingerprint.length === 64);
+    assert.ok(pkg.retrieval_audit.package_fingerprint.length === 64);
+    assert.equal(pkg.package_id, `pkg-${pkg.retrieval_audit.package_fingerprint.slice(0, 32)}`);
+    assert.deepEqual(
+      pkg.retrieval_audit.citation_order,
+      pkg.citations.map((c) => c.citation_ref),
+    );
+    assert.deepEqual(
+      pkg.retrieval_audit.substrates_searched,
+      pkg.coverage_report.substrates_searched,
+    );
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-EI-001.3 request fingerprint is stable regardless of substrate_refs list order", () => {
+  bootstrapApp();
+  try {
+    const { episode, fact, artifact } = seedInitiativeXRecords();
+    const forward = {
+      request_id: "req-fingerprint-001",
+      scope_label: "Initiative X",
+      substrate_refs: {
+        episode: [episode.episode_id],
+        fact: [fact.fact_id],
+        artifact: [artifact.artifact_id],
+      },
+    };
+    const reversed = {
+      ...forward,
+      substrate_refs: {
+        episode: [...forward.substrate_refs.episode!].reverse(),
+        fact: [...forward.substrate_refs.fact!].reverse(),
+        artifact: [...forward.substrate_refs.artifact!].reverse(),
+      },
+    };
+    assert.equal(buildRequestFingerprint(forward), buildRequestFingerprint(reversed));
+    const a = assembleConstitutionalEvidencePackage(forward);
+    const b = assembleConstitutionalEvidencePackage(reversed);
+    assert.equal(a.retrieval_audit.request_fingerprint, b.retrieval_audit.request_fingerprint);
+    assert.equal(a.retrieval_audit.package_fingerprint, b.retrieval_audit.package_fingerprint);
+    assert.deepEqual(a.citations.map((c) => c.citation_ref), b.citations.map((c) => c.citation_ref));
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-EI-001.3 citations and substrate records use stable constitutional ordering", () => {
+  bootstrapApp();
+  try {
+    const { episode, fact, artifact, conversation, citation } = seedInitiativeXRecords();
+    const pkg = assembleConstitutionalEvidencePackage({
+      request_id: "req-order-001",
+      scope_label: "Initiative X",
+      substrate_refs: {
+        decision_citation: [citation.citation_id],
+        conversation: [conversation.conversation_id],
+        artifact: [artifact.artifact_id],
+        fact: [fact.fact_id],
+        episode: [episode.episode_id],
+      },
+    });
+    const citationRefs = pkg.citations.map((c) => c.citation_ref);
+    const sortedRefs = [...pkg.citations]
+      .sort(
+        (a, b) =>
+          a.ordering_key.localeCompare(b.ordering_key) ||
+          substrateOrdinal(a.substrate) - substrateOrdinal(b.substrate) ||
+          a.record_id.localeCompare(b.record_id),
+      )
+      .map((c) => c.citation_ref);
+    assert.deepEqual(citationRefs, sortedRefs);
+    for (let i = 1; i < pkg.citations.length; i++) {
+      assert.ok(pkg.citations[i - 1]!.ordering_key <= pkg.citations[i]!.ordering_key);
+    }
+    assert.deepEqual(pkg.coverage_report.substrates_searched, [
+      "episode",
+      "fact",
+      "artifact",
+      "conversation",
+      "decision_citation",
+    ]);
+    const episodeTimes = pkg.episodes.map((e) => e.event_at);
+    assert.deepEqual(episodeTimes, [...episodeTimes].sort());
+    const factTimes = pkg.facts.map((f) => f.event_at);
+    assert.deepEqual(factTimes, [...factTimes].sort());
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-EI-001.3 repeat assembly produces identical audit trail fingerprints", () => {
+  bootstrapApp();
+  try {
+    seedInitiativeXRecords();
+    const request = {
+      request_id: "req-repeat-001",
+      scope_label: "Initiative X",
+      domain: "executive" as const,
+    };
+    const first = assembleConstitutionalEvidencePackage(request);
+    const second = assembleConstitutionalEvidencePackage(request);
+    assert.equal(first.retrieval_audit.package_fingerprint, second.retrieval_audit.package_fingerprint);
+    assert.equal(first.retrieval_audit.request_fingerprint, second.retrieval_audit.request_fingerprint);
+    assert.deepEqual(first.retrieval_audit.citation_order, second.retrieval_audit.citation_order);
+    assert.equal(first.package_id, second.package_id);
+    assert.notEqual(first.assembled_at, second.assembled_at);
+    assert.notEqual(
+      first.coverage_report.retrieval_timestamp,
+      second.coverage_report.retrieval_timestamp,
+    );
   } finally {
     shutdownApp();
   }

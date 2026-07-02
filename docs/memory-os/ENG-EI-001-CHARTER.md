@@ -1,6 +1,6 @@
 # ENG-EI-001 — Constitutional Retrieval
 
-> **Status:** **AUTHORIZED** — first implementation slice · `ei-doctrine-v1.0` frozen  
+> **Status:** **IN PROGRESS** — quality phase · `ENG-EI-001.1`–`ENG-EI-001.2` **COMPLETE** · `ei-doctrine-v1.0` frozen  
 > **Milestone name:** **Constitutional Retrieval**  
 > **Prerequisite:** [EI-001 Doctrine Freeze](./EI-001-DOCTRINE-FREEZE.md) · [ENG-PMO-006](./ENG-PMO-006-EI-DOCTRINE-FREEZE.md) · `ei-doctrine-v1.0`  
 > **Specification:** Frozen [Executive Intelligence Doctrine](./EXECUTIVE-INTELLIGENCE-DOCTRINE.md) — fidelity-first  
@@ -174,11 +174,12 @@ Companion to the Institutional Cognition Foundation:
 
 ## Implementation slices
 
-| Slice | Scope |
-| ----- | ----- |
-| [ENG-EI-001.1](./slices/ENG-EI-001.1-CONSTITUTIONAL-RETRIEVAL.md) | Substrate read path · evidence package · coverage report |
-| [ENG-EI-001.2](./slices/ENG-EI-001.2-RETRIEVAL-COMPLETENESS.md) | Completeness · rule-level exclusions · citation integrity |
+| Slice | Scope | Status |
+| ----- | ----- | ------ |
+| [ENG-EI-001.1](./slices/ENG-EI-001.1-CONSTITUTIONAL-RETRIEVAL.md) | Substrate read path · evidence package · coverage report | ✅ **COMPLETE** |
+| [ENG-EI-001.2](./slices/ENG-EI-001.2-RETRIEVAL-COMPLETENESS.md) | Completeness · rule-level exclusions · citation integrity | ✅ **COMPLETE** |
+| [ENG-EI-001.3](./slices/ENG-EI-001.3-RETRIEVAL-ORDERING-AUDIT.md) | Ordering · request/package fingerprints · retrieval audit | ✅ **COMPLETE** |
 
 ---
 
-*ENG-EI-001 · Constitutional Retrieval · AUTHORIZED · LocalBrain V1 · Executive Intelligence Era · 2026*
+*ENG-EI-001 · Constitutional Retrieval · IN PROGRESS · quality phase · LocalBrain V1 · Executive Intelligence Era · 2026*
