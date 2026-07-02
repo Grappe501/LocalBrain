@@ -37,7 +37,7 @@ Types in `shared/src/memoryOs/constitutionalRetrieval.ts` are the contract schem
 
 > **Increase retrieval quality without changing constitutional behavior.**
 
-Current phase: **Quality** — completeness · citation integrity · coverage transparency.
+**Status:** **COMPLETE** — [ENG-PMO-008](./ENG-PMO-008-CONSTITUTIONAL-RETRIEVAL-ACCEPTANCE.md). Performance phase deferred until a charter requires it.
 
 ---
 

@@ -3,7 +3,7 @@
 > **Status:** Binding engineering contract · not constitutional governance  
 > **Parent:** [ENG-EI-001 Charter](./ENG-EI-001-CHARTER.md) · [Engineering Discipline](./ENG-EI-ENGINEERING-DISCIPLINE.md)  
 > **Canonical types:** `shared/src/memoryOs/constitutionalRetrieval.ts`  
-> **Version:** `ENG-EI-001.3` (ordering · retrieval audit)
+> **Version:** `ENG-EI-001.3` (ordering · retrieval audit) · **ACCEPTED** · [ENG-PMO-008](./ENG-PMO-008-CONSTITUTIONAL-RETRIEVAL-ACCEPTANCE.md)
 
 ---
 
@@ -49,8 +49,8 @@ Evidence Package Contract
 
 | Phase | Question | Status |
 | ----- | -------- | ------ |
-| **Correctness** | Is the evidence package constitutionally valid? | ✅ Proven by ENG-EI-001.1 |
-| **Quality** | Is it complete, organized, and transparent? | **Current focus** |
+| **Correctness** | Is the evidence package constitutionally valid? | ✅ Proven · ENG-EI-001.1 |
+| **Quality** | Is it complete, organized, and transparent? | ✅ Proven · ENG-EI-001.2 · ENG-EI-001.3 · [ENG-PMO-008](./ENG-PMO-008-CONSTITUTIONAL-RETRIEVAL-ACCEPTANCE.md) |
 | **Performance** | Can it be produced efficiently at scale without changing constitutional properties? | Later |
 
 **Order is binding:** Performance must never compromise correctness or quality. Frozen doctrine makes that testable.

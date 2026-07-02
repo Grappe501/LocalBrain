@@ -18,10 +18,10 @@ OPS-004      Platform synchronized to doctrine
 ENG-EI-DOC-001  Engineering discipline frozen
 ENG-EI-001.1    Correctness proven · COMPLETE
 ENG-EI-DOC-002  Evidence Package Contract
-ENG-EI-001.2    Completeness · exclusion reasons · COMPLETE
 ENG-EI-001.3    Ordering · retrieval audit · COMPLETE
-──────── Quality phase ───────────────
-ENG-EI-001.x  Retrieval quality (without making it smarter)
+ENG-PMO-008     Constitutional Retrieval accepted
+──────── Performance (deferred) ─────
+ENG-EI-002      First Evidence Package consumer              ▶ next
 ```
 
 Every implementation commit after this line must trace back to the frozen doctrine.
