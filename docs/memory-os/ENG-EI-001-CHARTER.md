@@ -1,6 +1,6 @@
 # ENG-EI-001 — Constitutional Retrieval
 
-> **Status:** **IN PROGRESS** — quality phase · `ENG-EI-001.1`–`ENG-EI-001.2` **COMPLETE** · `ei-doctrine-v1.0` frozen  
+> **Status:** **COMPLETE** — [ENG-PMO-008](./ENG-PMO-008-CONSTITUTIONAL-RETRIEVAL-ACCEPTANCE.md) · `ENG-EI-001.1`–`ENG-EI-001.3` · Contract `ENG-EI-001.3`  
 > **Milestone name:** **Constitutional Retrieval**  
 > **Prerequisite:** [EI-001 Doctrine Freeze](./EI-001-DOCTRINE-FREEZE.md) · [ENG-PMO-006](./ENG-PMO-006-EI-DOCTRINE-FREEZE.md) · `ei-doctrine-v1.0`  
 > **Specification:** Frozen [Executive Intelligence Doctrine](./EXECUTIVE-INTELLIGENCE-DOCTRINE.md) — fidelity-first  
@@ -120,19 +120,19 @@ All Institutional Cognition Foundation integrity classes (A12–A17) remain enfo
 
 ---
 
-## Acceptance criteria (planned)
+## Acceptance criteria
 
 | # | Criterion | Status |
 | - | --------- | ------ |
-| A1 | Read-only access to all five constitutional substrates | ⬜ |
-| A2 | Citation assembly produces valid substrate reference sets | ⬜ |
-| A3 | Evidence packaging includes traceability metadata | ⬜ |
-| A4 | No code path mutates constitutional substrates (MAR-3 Q1 negative) | ⬜ |
-| A5 | No uncited evidence bundle emitted (MAR-3 Q3 negative) | ⬜ |
-| A6 | Retrieval failure reports insufficient evidence — no fabrication (MAR-3 Q6 negative) | ⬜ |
-| A7 | Evidence bundle withheld when citation set below minimum (Article IX · burden of proof) | ⬜ |
-| A8 | Doctrine Fidelity — applicable articles PASS at retrieval boundary | ⬜ |
-| A9 | PMO slice acceptance | ⬜ |
+| A1 | Read-only access to all five constitutional substrates | ✅ **PASS** |
+| A2 | Citation assembly produces valid substrate reference sets | ✅ **PASS** |
+| A3 | Evidence packaging includes traceability metadata | ✅ **PASS** |
+| A4 | No code path mutates constitutional substrates (MAR-3 Q1 negative) | ✅ **PASS** |
+| A5 | No uncited evidence bundle emitted (MAR-3 Q3 negative) | ✅ **PASS** |
+| A6 | Retrieval failure reports insufficient evidence — no fabrication (MAR-3 Q6 negative) | ✅ **PASS** |
+| A7 | Evidence bundle withheld when citation set below minimum (Article IX · burden of proof) | ✅ **PASS** |
+| A8 | Doctrine Fidelity — applicable articles PASS at retrieval boundary | ✅ **PASS** |
+| A9 | PMO slice acceptance | ✅ **PASS** · [ENG-PMO-008](./ENG-PMO-008-CONSTITUTIONAL-RETRIEVAL-ACCEPTANCE.md) |
 
 ---
 
@@ -141,13 +141,9 @@ All Institutional Cognition Foundation integrity classes (A12–A17) remain enfo
 ```text
 EI-001 doctrine freeze (ei-doctrine-v1.0)
         ↓
-ENG-EI-001 Constitutional Retrieval     ← this charter
+ENG-EI-001 Constitutional Retrieval     ← COMPLETE · ENG-PMO-008
         ↓
-Implementation slices
-        ↓
-PMO acceptance
-        ↓
-Later ENG-EI slices (reasoning · work products · advisory layer)
+Later ENG-EI slices (reasoning · work products · advisory layer)     ▶ next
 ```
 
 No Executive Intelligence implementation code ships before EI-001 freeze.
@@ -182,4 +178,4 @@ Companion to the Institutional Cognition Foundation:
 
 ---
 
-*ENG-EI-001 · Constitutional Retrieval · IN PROGRESS · quality phase · LocalBrain V1 · Executive Intelligence Era · 2026*
+*ENG-EI-001 · Constitutional Retrieval · COMPLETE · ENG-PMO-008 · LocalBrain V1 · Executive Intelligence Era · 2026*
