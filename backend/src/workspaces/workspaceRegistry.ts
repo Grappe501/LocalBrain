@@ -288,7 +288,7 @@ export function seedWorkspaces(): void {
     parent_workspace_id: null,
     executive_context:
       "LocalBrain is Steve's Executive Operating System — not a chatbot. Wave 1 builds the Institutional Cognition Foundation: deterministic memory substrates that Executive Intelligence reasons over.",
-    current_focus: "ENG-COM-001.3 COMPLETE · ENG-PMO-012 · 7/7 advisory · inherited advisory restraint",
+    current_focus: "ENG-PMO-013 PENDING · Communications Office module evaluation · inherited baseline committed",
     success_definition:
       "A modular AI Executive Operating System that becomes Steve's primary interface for work.",
     workspace_avatar: "🧠",
@@ -297,7 +297,7 @@ export function seedWorkspaces(): void {
     filesystem_roots: [repoRoot],
     profile: {
       mission: "Build Steve's Executive Operating System",
-      current_phase: "Communications Office · ENG-COM-001.3 COMPLETE · ENG-PMO-012 · module evaluation next",
+      current_phase: "Communications Office · ENG-PMO-013 module evaluation PENDING",
       completed_slices: [
         "LB-OS-001",
         "LB-OS-002",
@@ -326,10 +326,10 @@ export function seedWorkspaces(): void {
         "ENG-COM-001.3",
         "ENG-PMO-012",
       ],
-      active_slice: "Communications Office module evaluation",
+      active_slice: "ENG-PMO-013 Communications Office module evaluation",
       next_slices: [
-        "Communications Office module evaluation",
-        "Commercial Beta",
+        "ENG-PMO-013 Communications Office module evaluation",
+        "Commercial Beta preparation",
       ],
       recent_decisions: [
         "PSP approved",
@@ -340,9 +340,9 @@ export function seedWorkspaces(): void {
         "ENG-PMO-005 Constitutional Completion",
       ],
       chief_of_staff_summary:
-        "ENG-COM-001.3 COMPLETE · ENG-PMO-012 · Contract ENG-COM-001.3 · 19/19 behavioral tests · advisory restraint inherited",
+        "ENG-PMO-013 PENDING · inherited traceability + uncertainty + advisory restraint · 19/19 behavioral tests",
       recommended_next_action:
-        "Communications Office module evaluation — has the office earned completion as a V1 subsystem?",
+        "ENG-PMO-013 module evaluation — has the Communications Office earned completion as a V1 subsystem?",
       repositories: [],
       contacts: [],
       calendar_links: [],

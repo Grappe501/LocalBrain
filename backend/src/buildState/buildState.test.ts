@@ -88,7 +88,7 @@ test("Executive Intelligence Era metrics reflect ENG-EI-002 complete and determi
   assert.ok(ei.smallest_next_slice.includes("Communications"));
 });
 
-test("Communications Office metrics reflect ENG-COM-001.3 complete", () => {
+test("Communications Office metrics reflect ENG-PMO-013 module evaluation pending", () => {
   const com = getCommunicationsOfficeSnapshot();
   assert.equal(com.charter_authorized, true);
   assert.equal(com.office_started, true);
@@ -96,20 +96,20 @@ test("Communications Office metrics reflect ENG-COM-001.3 complete", () => {
   assert.equal(com.slice_001_2_complete, true);
   assert.equal(com.slice_001_3_authorized, true);
   assert.equal(com.slice_001_3_complete, true);
+  assert.equal(com.module_evaluation_pending, true);
+  assert.equal(com.module_complete, false);
   assert.equal(com.baseline_stable, false);
-  assert.equal(com.slice_active, null);
+  assert.equal(com.slice_active, "ENG-PMO-013");
   assert.equal(com.module_progress_percent, 90);
-  assert.ok(com.building_today.includes("ENG-COM-001.3"));
-  assert.ok(com.building_today.includes("COMPLETE"));
+  assert.ok(com.building_today.includes("ENG-PMO-013"));
   assert.ok(com.smallest_next_slice.includes("module evaluation"));
   assert.equal(com.contract_version, "ENG-COM-001.3");
 });
 
-test("V1 command center reflects ENG-COM-001.3 complete", () => {
+test("V1 command center reflects ENG-PMO-013 module evaluation pending", () => {
   const state = computeBuildState();
   const cc = computeV1CommandCenter(state);
-  assert.ok(cc.building_today?.includes("ENG-COM-001.3"));
-  assert.ok(cc.building_today?.includes("COMPLETE"));
+  assert.ok(cc.building_today?.includes("ENG-PMO-013"));
   const comms = cc.modules.find((m) => m.module_id === "communications");
   assert.ok(comms);
   assert.equal(comms!.progress_percent, 90);

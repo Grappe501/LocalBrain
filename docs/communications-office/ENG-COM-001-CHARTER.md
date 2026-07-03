@@ -152,7 +152,7 @@ The following **emerge** from answering the architectural question with engineer
 | [ENG-COM-001.2](./slices/ENG-COM-001.2-UNCERTAINTY-PRESERVATION.md) | Can uncertainty survive probabilistic rewriting? | ✅ **COMPLETE** · [ENG-PMO-011](./ENG-PMO-011-UNCERTAINTY-PRESERVATION-ACCEPTANCE.md) |
 | [ENG-COM-001.3](./slices/ENG-COM-001.3-ADVISORY-RESTRAINT.md) | Can advisory restraint survive ambiguous prompts? | ✅ **COMPLETE** · [ENG-PMO-012](./ENG-PMO-012-ADVISORY-RESTRAINT-ACCEPTANCE.md) |
 
-This charter authorizes the crossing. Slices 001.1 + 001.2 + 001.3 **COMPLETE** · behavioral stack inherited · module evaluation next.
+This charter authorizes the crossing. Slices 001.1 + 001.2 + 001.3 **COMPLETE** · behavioral stack inherited · [ENG-PMO-013](./ENG-PMO-013-COMMUNICATIONS-OFFICE-MODULE-EVALUATION.md) **PENDING**.
 
 ---
 
@@ -160,8 +160,8 @@ This charter authorizes the crossing. Slices 001.1 + 001.2 + 001.3 **COMPLETE** 
 
 ```text
 Engineering truth:     ENG-COM-001.3 COMPLETE · ENG-PMO-012 · Contract ENG-COM-001.3 · 19/19 behavioral tests · advisory restraint inherited
-Operational truth:     Communications Office · module evaluation pending
-Next repository act:   Communications Office module evaluation — not engineering
+Operational truth:     ENG-PMO-013 module evaluation PENDING
+Next repository act:   PMO module disposition only — not engineering
 ```
 
 ---

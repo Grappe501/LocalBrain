@@ -161,7 +161,7 @@ Implementation · advisory restraint validator · behavioral tests · implementa
 
 Advisory restraint is now an **earned behavioral capability** that later Communications slices inherit without reopening the question.
 
-Module-level evaluation of Communications Office completeness is a **separate gate** — not automatic upon slice acceptance.
+**Module evaluation:** [ENG-PMO-013](../ENG-PMO-013-COMMUNICATIONS-OFFICE-MODULE-EVALUATION.md) **PENDING**
 
 ---
 

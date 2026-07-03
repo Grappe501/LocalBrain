@@ -140,7 +140,7 @@ Next authority
 ```text
 Slice accepted (ENG-COM-001.3 COMPLETE)
       ↓
-Communications Office module evaluation
+[ENG-PMO-013](./ENG-PMO-013-COMMUNICATIONS-OFFICE-MODULE-EVALUATION.md) Module Evaluation
       ↓
 Release governance (Commercial Beta)
 ```

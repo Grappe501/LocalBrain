@@ -14,7 +14,19 @@ export function buildExecutiveBriefingSections(): BriefingSection[] {
   const comActive = ei.work_product_complete && com.office_started;
 
   const todayPriorities = comActive
-    ? com.slice_001_3_complete
+    ? com.module_evaluation_pending
+      ? [
+          "1. ENG-PMO-013 PENDING — Communications Office module evaluation · inherited baseline committed",
+          "2. Inherited: traceability · uncertainty · advisory restraint — not under evaluation",
+          "3. Engineering closed — module-level gate only · no slice reopening",
+        ]
+      : com.module_complete
+        ? [
+            "1. Communications Office COMPLETE · ENG-PMO-013 · V1 subsystem earned",
+            "2. Inherited behavioral stack · 19/19 tests · Commercial Beta preparation next",
+            "3. Release governance remains a separate authority",
+          ]
+        : com.slice_001_3_complete
       ? [
           "1. ENG-COM-001.3 COMPLETE · ENG-PMO-012 — advisory restraint inherited",
           "2. Inherited: traceability (C1–C5) · uncertainty (U1–U5) · advisory restraint (A1–A5)",
@@ -133,7 +145,19 @@ export function buildExecutiveBriefingSections(): BriefingSection[] {
                 "No advisory implementation before ei-doctrine-v1.0 freeze",
               ];
 
-  const comLines = com.slice_001_3_complete
+  const comLines = com.module_evaluation_pending
+    ? [
+        `ENG-PMO-013 PENDING · Communications Office module evaluation`,
+        "Inherited: traceability · uncertainty · advisory restraint · committed baseline",
+        "Question: has the Communications Office earned completion as a V1 subsystem?",
+      ]
+    : com.module_complete
+      ? [
+          "Communications Office COMPLETE · ENG-PMO-013 · V1 subsystem",
+          `Contract ${com.contract_version ?? "ENG-COM-001.3"} · 19/19 behavioral tests`,
+          "Commercial Beta preparation — release gate separate",
+        ]
+      : com.slice_001_3_complete
     ? [
         `ENG-COM-001.3 COMPLETE · ENG-PMO-012 · Contract ${com.contract_version ?? "ENG-COM-001.3"} · ${com.advisory_tests_count}/${com.advisory_tests_count} advisory tests`,
         "Inherited: traceability · uncertainty preservation · advisory restraint",
@@ -213,7 +237,11 @@ export function buildExecutiveBriefingSections(): BriefingSection[] {
       lines: [
         "Executive Office · Empty Brain Factory · Capability Graph · Experience — locked",
         comActive
-          ? com.slice_001_3_complete
+          ? com.module_evaluation_pending
+            ? "Communications Office · ENG-PMO-013 module evaluation pending"
+            : com.module_complete
+              ? "Communications Office COMPLETE · ENG-PMO-013"
+              : com.slice_001_3_complete
             ? "Communications Office IN PROGRESS · ENG-COM-001.3 COMPLETE · module evaluation next"
             : com.slice_001_3_implementation_frozen && !com.slice_001_3_complete
             ? "Communications Office IN PROGRESS · ENG-COM-001.3 FROZEN · ENG-PMO-012 pending"

@@ -78,7 +78,15 @@ export function projectWorkspaceLive(ws: LivingWorkspace): LivingWorkspace {
 
       current_phase: comActive
 
-        ? com.slice_001_3_complete
+        ? com.module_complete
+
+          ? "Communications Office · COMPLETE · ENG-PMO-013"
+
+          : com.module_evaluation_pending
+
+          ? "Communications Office · ENG-PMO-013 module evaluation PENDING"
+
+          : com.slice_001_3_complete
 
           ? "Communications Office · ENG-COM-001.3 COMPLETE · ENG-PMO-012 · module evaluation next"
 
@@ -148,7 +156,15 @@ export function projectWorkspaceLive(ws: LivingWorkspace): LivingWorkspace {
 
       next_slices: comActive
 
-        ? com.slice_001_3_complete
+        ? com.module_complete
+
+          ? ["Commercial Beta preparation"]
+
+          : com.module_evaluation_pending
+
+          ? ["ENG-PMO-013 Communications Office module evaluation", "Commercial Beta"]
+
+          : com.slice_001_3_complete
 
           ? ["Communications Office module evaluation", "Commercial Beta"]
 

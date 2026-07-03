@@ -161,9 +161,13 @@ function findCurrentAndNext(
 
   if (isWorkProductComplete() && isCommunicationsOfficeStarted()) {
     const com = getCommunicationsOfficeSnapshot();
-    phaseLabel = com.slice_001_3_complete
-      ? "Communications Office · ENG-COM-001.3 COMPLETE · ENG-PMO-012"
-      : com.slice_001_3_implementation_frozen && !com.slice_001_3_complete
+    phaseLabel = com.module_complete
+      ? "Communications Office · COMPLETE · ENG-PMO-013"
+      : com.module_evaluation_pending
+        ? "Communications Office · ENG-PMO-013 module evaluation"
+        : com.slice_001_3_complete
+          ? "Communications Office · ENG-COM-001.3 COMPLETE · ENG-PMO-012"
+          : com.slice_001_3_implementation_frozen && !com.slice_001_3_complete
       ? "Communications Office · ENG-COM-001.3 IMPLEMENTATION FROZEN"
       : com.slice_001_3_authorized && !com.slice_001_3_complete
       ? "Communications Office · ENG-COM-001.3 AUTHORIZED · active crossing"

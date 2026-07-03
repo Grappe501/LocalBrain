@@ -32,7 +32,7 @@ export const SURFACE_REGISTRY: LiveSurfaceEntry[] = [
     maturity_level: 2,
     target_maturity_level: 5,
     next_upgrade_slice: "LB-OS-026.7",
-    next_upgrade_summary: "ENG-COM-001.3 COMPLETE · ENG-PMO-012 · inherited advisory restraint",
+    next_upgrade_summary: "ENG-PMO-013 module evaluation · inherited baseline committed",
   },
   {
     route: "/workspace/:workspaceId",
@@ -46,7 +46,7 @@ export const SURFACE_REGISTRY: LiveSurfaceEntry[] = [
     maturity_level: 2,
     target_maturity_level: 5,
     next_upgrade_slice: "MEM-010",
-    next_upgrade_summary: "ENG-COM-001.3 COMPLETE · Contract ENG-COM-001.3 · module evaluation next",
+    next_upgrade_summary: "ENG-PMO-013 module evaluation · Contract ENG-COM-001.3",
   },
   {
     route: "/actions",
@@ -82,7 +82,7 @@ export const SURFACE_REGISTRY: LiveSurfaceEntry[] = [
     maturity_level: 3,
     target_maturity_level: 5,
     next_upgrade_slice: "LB-OS-026.7",
-    next_upgrade_summary: "ENG-COM-001.3 COMPLETE · module evaluation · Program Office live build state (L4)",
+    next_upgrade_summary: "ENG-PMO-013 module evaluation · Program Office live build state (L4)",
   },
   {
     route: "/system",

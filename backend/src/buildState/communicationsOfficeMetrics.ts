@@ -8,6 +8,7 @@ const CHARTER_PATH = path.join(DOCS, "ENG-COM-001-CHARTER.md");
 const PMO_010_PATH = path.join(DOCS, "ENG-PMO-010-TRACEABLE-DRAFT-ACCEPTANCE.md");
 const PMO_011_PATH = path.join(DOCS, "ENG-PMO-011-UNCERTAINTY-PRESERVATION-ACCEPTANCE.md");
 const PMO_012_PATH = path.join(DOCS, "ENG-PMO-012-ADVISORY-RESTRAINT-ACCEPTANCE.md");
+const PMO_013_PATH = path.join(DOCS, "ENG-PMO-013-COMMUNICATIONS-OFFICE-MODULE-EVALUATION.md");
 const SLICE_001_1_PATH = path.join(DOCS, "slices", "ENG-COM-001.1-TRACEABLE-DRAFT-GENERATION.md");
 const SLICE_001_2_PATH = path.join(DOCS, "slices", "ENG-COM-001.2-UNCERTAINTY-PRESERVATION.md");
 const SLICE_001_3_PATH = path.join(DOCS, "slices", "ENG-COM-001.3-ADVISORY-RESTRAINT.md");
@@ -46,6 +47,8 @@ export type CommunicationsOfficeSnapshot = {
   slice_001_3_complete: boolean;
   slice_001_3_implementation_frozen: boolean;
   slice_001_3_pmo_pending: boolean;
+  module_evaluation_pending: boolean;
+  module_complete: boolean;
   slice_001_2_implementation_frozen: boolean;
   slice_001_2_pmo_pending: boolean;
   baseline_stable: boolean;
@@ -126,6 +129,19 @@ function detectSlice001_3PmoPending(): boolean {
   return true;
 }
 
+function detectModuleEvaluationComplete(): boolean {
+  if (fs.existsSync(PMO_013_PATH) && parsePmoComplete(readDoc(PMO_013_PATH))) return true;
+  const charter = readDoc(CHARTER_PATH);
+  return /Communications Office.*\*\*COMPLETE\*\*/i.test(charter) || /module evaluation.*COMPLETE/i.test(charter);
+}
+
+function detectModuleEvaluationPending(): boolean {
+  if (detectModuleEvaluationComplete()) return false;
+  if (!detectSlice001_3Complete()) return false;
+  if (fs.existsSync(PMO_013_PATH)) return parsePmoPending(readDoc(PMO_013_PATH));
+  return true;
+}
+
 function detectSlice001_2Frozen(): boolean {
   if (detectSlice001_2Complete()) return false;
   const slice = readDoc(SLICE_001_2_PATH);
@@ -175,6 +191,8 @@ export function getCommunicationsOfficeSnapshot(): CommunicationsOfficeSnapshot 
   const slice_001_3_implementation_frozen = detectSlice001_3Frozen();
   const slice_001_3_pmo_pending =
     slice_001_3_implementation_frozen && detectSlice001_3PmoPending();
+  const module_complete = detectModuleEvaluationComplete();
+  const module_evaluation_pending = detectModuleEvaluationPending();
   const slice_001_2_implementation_frozen = detectSlice001_2Frozen();
   const slice_001_2_pmo_pending =
     slice_001_2_implementation_frozen && detectSlice001_2PmoPending();
@@ -185,9 +203,11 @@ export function getCommunicationsOfficeSnapshot(): CommunicationsOfficeSnapshot 
   if (slice_001_3_complete) slices_complete.push("ENG-COM-001.3");
 
   const office_started = charter_authorized && isWorkProductComplete();
-  const slice_active = slice_001_3_complete
-    ? null
-    : slice_001_3_authorized
+  const slice_active = module_evaluation_pending
+    ? "ENG-PMO-013"
+    : slice_001_3_complete
+      ? null
+      : slice_001_3_authorized
       ? "ENG-COM-001.3"
       : slice_001_2_complete
         ? null
@@ -209,7 +229,9 @@ export function getCommunicationsOfficeSnapshot(): CommunicationsOfficeSnapshot 
 
   let module_progress_percent = 0;
   if (office_started) {
-    if (slice_001_3_complete) module_progress_percent = 90;
+    if (module_complete) module_progress_percent = 100;
+    else if (module_evaluation_pending) module_progress_percent = 90;
+    else if (slice_001_3_complete) module_progress_percent = 90;
     else if (slice_001_3_implementation_frozen) module_progress_percent = 88;
     else if (slice_001_3_authorized) module_progress_percent = 86;
     else if (slice_001_2_complete) module_progress_percent = 85;
@@ -222,7 +244,21 @@ export function getCommunicationsOfficeSnapshot(): CommunicationsOfficeSnapshot 
   let smallest_next_slice: string;
   let summary: string;
 
-  if (slice_001_3_complete) {
+  if (module_complete) {
+    const behavioralTotal =
+      traceability_tests_count + uncertainty_tests_count + advisory_tests_count;
+    building_today = `Communications Office COMPLETE · ENG-PMO-013 · Contract ${contract_version ?? "ENG-COM-001.3"} · ${behavioralTotal}/${behavioralTotal} behavioral tests`;
+    smallest_next_slice = "Commercial Beta preparation";
+    summary =
+      "Communications Office V1 subsystem COMPLETE · inherited traceability + uncertainty + advisory restraint";
+  } else if (module_evaluation_pending) {
+    const behavioralTotal =
+      traceability_tests_count + uncertainty_tests_count + advisory_tests_count;
+    building_today = `ENG-PMO-013 PENDING · Communications Office module evaluation · ${behavioralTotal}/${behavioralTotal} behavioral tests · inherited baseline committed`;
+    smallest_next_slice = "ENG-PMO-013 Communications Office module evaluation (E1–E6 · scope · integration · readiness)";
+    summary =
+      "Behavioral slices COMPLETE · inherited baseline · module-level gate active · engineering closed";
+  } else if (slice_001_3_complete) {
     const behavioralTotal =
       traceability_tests_count + uncertainty_tests_count + advisory_tests_count;
     const advisoryLabel = `${advisory_tests_count}/${advisory_tests_count} advisory`;
@@ -268,7 +304,11 @@ export function getCommunicationsOfficeSnapshot(): CommunicationsOfficeSnapshot 
     summary = "Deterministic executive pipeline closed · Communications Office next";
   }
 
-  const critical_path_detail = slice_001_3_complete
+  const critical_path_detail = module_complete
+    ? "Communications Office COMPLETE → Commercial Beta preparation"
+    : module_evaluation_pending
+      ? "ENG-PMO-013 module evaluation → Commercial Beta"
+      : slice_001_3_complete
     ? "ENG-COM-001.3 COMPLETE → Communications Office module evaluation → Commercial Beta"
     : slice_001_3_implementation_frozen && !slice_001_3_complete
     ? "ENG-COM-001.3 FROZEN → ENG-PMO-012 → module evaluation → Commercial Beta"
@@ -291,6 +331,8 @@ export function getCommunicationsOfficeSnapshot(): CommunicationsOfficeSnapshot 
     slice_001_3_complete,
     slice_001_3_implementation_frozen,
     slice_001_3_pmo_pending,
+    module_evaluation_pending,
+    module_complete,
     slice_001_2_implementation_frozen,
     slice_001_2_pmo_pending,
     baseline_stable,

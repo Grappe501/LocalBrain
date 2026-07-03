@@ -9,6 +9,8 @@
 | 2 | [ENG-COM-001.2](./ENG-COM-001.2-UNCERTAINTY-PRESERVATION.md) | Can uncertainty survive probabilistic rewriting? | ✅ **COMPLETE** · [ENG-PMO-011](../ENG-PMO-011-UNCERTAINTY-PRESERVATION-ACCEPTANCE.md) |
 | 3 | [ENG-COM-001.3](./ENG-COM-001.3-ADVISORY-RESTRAINT.md) | Can advisory restraint survive ambiguous prompts? | ✅ **COMPLETE** · [ENG-PMO-012](../ENG-PMO-012-ADVISORY-RESTRAINT-ACCEPTANCE.md) |
 
+**Module gate:** [ENG-PMO-013](../ENG-PMO-013-COMMUNICATIONS-OFFICE-MODULE-EVALUATION.md) **PENDING**
+
 Future slices emerge from evidence — not from charter expansion.
 
 ---
