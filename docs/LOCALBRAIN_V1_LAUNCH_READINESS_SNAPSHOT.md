@@ -6,9 +6,9 @@
 
 > **Platform checkpoint:** ENG-PMO-009 — ENG-EI-002 **COMPLETE** · Work Product Contract `ENG-EI-002.2` · Evidence Package `ENG-EI-001.3`  
 
-> **Governance checkpoint:** Communications Office **COMPLETE** · [ENG-PMO-013](./communications-office/ENG-PMO-013-COMMUNICATIONS-OFFICE-MODULE-EVALUATION.md) · Commercial Beta preparation next  
+> **Governance checkpoint:** Communications Office **COMPLETE** · [ENG-PMO-013](./communications-office/ENG-PMO-013-COMMUNICATIONS-OFFICE-MODULE-EVALUATION.md) · [ENG-CONTACT-001](./contact-management/ENG-CONTACT-001-CHARTER.md) **AUTHORIZED** · Contact Management before Commercial Beta  
 
-> **Phase boundary:** Execution — **Communications Office V1 subsystem COMPLETE** · engineering closed · Commercial Beta preparation  
+> **Phase boundary:** Execution — Communications Office **COMPLETE** · Contact Management V1 next · Commercial Beta after module acceptance  
 
 > **Observed:** 2026-07-03 · *static template — live values from Program Office API*
 
@@ -26,7 +26,7 @@ LOCALBRAIN V1
 
 Overall Launch
 
-█████████░  ~93%   (refresh from GET /api/epo/project-state)
+█████████▌  ~95%   (live from GET /api/epo/project-state)
 
 ```
 
@@ -60,9 +60,11 @@ Overall Launch
 
 | ✓ Executive Intelligence Era | ENG-EI-002 **COMPLETE** · ENG-PMO-009 · Contract `ENG-EI-002.2` · 7/7 brief tests · Reference Consumer 001 | **Complete** |
 
-| ✅ Communications Office | **COMPLETE** · ENG-PMO-013 · Contract `ENG-COM-001.3` · 18/18 behavioral tests | **Commercial Beta prep** |
+| ✅ Communications Office | **COMPLETE** · ENG-PMO-013 · Contract `ENG-COM-001.3` · 18/18 behavioral tests | — |
 
-| □ Commercial Beta | Pending Communications validation | **~5 days** |
+| ▶ Contact Management V1 | **AUTHORIZED** · [ENG-CONTACT-001](./contact-management/ENG-CONTACT-001-CHARTER.md) · slice 001.1 next | **~5 days** |
+
+| □ Commercial Beta | After Contact Management module acceptance | **~5 days** |
 
 
 
@@ -80,7 +82,7 @@ Overall Launch
 
 ```text
 
-Current Module ETA:     Commercial Beta preparation   (next governance scope)
+Current Module ETA:     Contact Management V1 (ENG-CONTACT-001.1)   (active crossing)
 
 Current Phase ETA:      ~20 days  (operational — Communications + Commercial Beta)
 
@@ -232,7 +234,7 @@ Critical path only:
 
 ✓ ENG-EI-002 Executive Brief (ENG-PMO-009 · deterministic pipeline closed)
 
-▶ Commercial Beta preparation (Communications Office COMPLETE)
+▶ Contact Management V1 (ENG-CONTACT-001 · slice 001.1)
 
 ```
 
@@ -244,9 +246,7 @@ Critical path only:
 
 ## Next module
 
-
-
-**[ENG-COM-001.3 Advisory Restraint](./communications-office/slices/ENG-COM-001.3-ADVISORY-RESTRAINT.md)** — **COMPLETE** · ENG-PMO-012 ACCEPTED · advisory restraint inherited
+**Contact Management V1** — [ENG-CONTACT-001](./contact-management/ENG-CONTACT-001-CHARTER.md) **AUTHORIZED** · practical release dependency before Commercial Beta
 
 
 
@@ -266,11 +266,11 @@ Critical path only:
 
 | ENG-COM-001.2 Uncertainty Preservation | ✅ **COMPLETE** · ENG-PMO-011 · 11/11 behavioral tests |
 
-| ENG-COM-001.3 Advisory Restraint | ✅ **COMPLETE** · ENG-PMO-012 · 19/19 behavioral · advisory restraint inherited |
+| ENG-COM-001.3 Advisory Restraint | ✅ **COMPLETE** · ENG-PMO-012 · 18/18 behavioral · advisory restraint inherited |
 
 
 
-**Critical path:** Commercial Beta preparation
+**Critical path:** Contact Management V1 → Commercial Beta
 
 
 
@@ -364,7 +364,7 @@ Design → Build → Test → PMO Review → Certification → Regression Lock �
 
 > Finish the current module.  
 
-> **Now:** Communications Office **COMPLETE** · [ENG-PMO-013](./communications-office/ENG-PMO-013-COMMUNICATIONS-OFFICE-MODULE-EVALUATION.md) — Commercial Beta preparation is the next governance scope.
+> **Now:** [ENG-CONTACT-001](./contact-management/ENG-CONTACT-001-CHARTER.md) **AUTHORIZED** — Contact Management V1 before Commercial Beta · Communications Office [ENG-PMO-013](./communications-office/ENG-PMO-013-COMMUNICATIONS-OFFICE-MODULE-EVALUATION.md) **COMPLETE**
 
 
 

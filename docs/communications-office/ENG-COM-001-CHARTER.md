@@ -160,8 +160,8 @@ This charter authorizes the crossing. Slices 001.1 + 001.2 + 001.3 **COMPLETE** 
 
 ```text
 Engineering truth:     Communications Office V1 subsystem COMPLETE · ENG-PMO-013 · Contract ENG-COM-001.3 · 18/18 behavioral tests
-Operational truth:     Commercial Beta preparation — next governance scope
-Next repository act:   Commercial Beta preparation — not engineering unless new crossing authorized
+Operational truth:     Contact Management V1 (ENG-CONTACT-001) — practical release dependency before Commercial Beta
+Next repository act:   ENG-CONTACT-001.1 Canonical Contact storage
 ```
 
 ---
