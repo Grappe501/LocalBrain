@@ -14,6 +14,7 @@ export const V1_CRITICAL_PATH = [
   "empty_brain_factory",
   "memory_os",
   "communications_office",
+  "contact_management",
   "commercial_beta",
 ] as const;
 
@@ -28,6 +29,7 @@ export const V1_CRITICAL_PATH_LABELS: Record<V1CriticalPathStep, string> = {
   empty_brain_factory: "Empty Brain Factory",
   memory_os: "Memory OS",
   communications_office: "Communications Office",
+  contact_management: "Contact Management",
   commercial_beta: "Commercial beta",
 };
 
@@ -41,6 +43,7 @@ export const V1_BURNDOWN_ESTIMATES_DAYS: Record<V1CriticalPathStep, number> = {
   empty_brain_factory: 10,
   memory_os: 20,
   communications_office: 15,
+  contact_management: 5,
   commercial_beta: 5,
 };
 
@@ -51,7 +54,8 @@ export const V1_LAUNCH_WEIGHTS = {
   factory: 0.2,
   memory_os: 0.3,
   communications: 0.2,
-  documentation_beta: 0.05,
+  contact_management: 0.03,
+  documentation_beta: 0.02,
 } as const;
 
 export type V1LaunchWeightArea = keyof typeof V1_LAUNCH_WEIGHTS;

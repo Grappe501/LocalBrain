@@ -183,7 +183,7 @@ Slice definitions emerge as prior slices complete. See [slices/README.md](./slic
 ## Institutional posture
 
 ```text
-Engineering truth:     ENG-CONTACT-001.2 IMPLEMENTATION FROZEN · `/api/contacts/*` · `/studio/contacts`
+Engineering truth:     ENG-CONTACT-001.3 IMPLEMENTATION FROZEN · CSV import/export · `/studio/contacts`
 Operational truth:     Contact Management V1 before Commercial Beta
 Prior crossing:        ENG-CONTACT-001.1 storage · 7/7 PASS
 Next repository act:   ENG-CONTACT-001.4 Communications draft linking

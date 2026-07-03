@@ -248,7 +248,7 @@ export function getCommunicationsOfficeSnapshot(): CommunicationsOfficeSnapshot 
     const behavioralTotal =
       traceability_tests_count + uncertainty_tests_count + advisory_tests_count;
     building_today = `Communications Office COMPLETE · ENG-PMO-013 · Contract ${contract_version ?? "ENG-COM-001.3"} · ${behavioralTotal}/${behavioralTotal} behavioral tests`;
-    smallest_next_slice = "Commercial Beta preparation";
+    smallest_next_slice = "Contact Management V1 (ENG-CONTACT-001)";
     summary =
       "Communications Office V1 subsystem COMPLETE · inherited traceability + uncertainty + advisory restraint";
   } else if (module_evaluation_pending) {
@@ -305,7 +305,7 @@ export function getCommunicationsOfficeSnapshot(): CommunicationsOfficeSnapshot 
   }
 
   const critical_path_detail = module_complete
-    ? "Communications Office COMPLETE → Commercial Beta preparation"
+    ? "Communications Office COMPLETE → Contact Management V1 → Commercial Beta"
     : module_evaluation_pending
       ? "ENG-PMO-013 module evaluation → Commercial Beta"
       : slice_001_3_complete

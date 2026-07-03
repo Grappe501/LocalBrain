@@ -1,6 +1,7 @@
 /** Executive Briefing metadata for CoS context — mirrors Program Office posture. */
 
 import { getCommunicationsOfficeSnapshot } from "../buildState/communicationsOfficeMetrics.js";
+import { getContactManagementSnapshot } from "../buildState/contactManagementMetrics.js";
 import { getExecutiveIntelligenceEraSnapshot } from "../buildState/executiveIntelligenceEraMetrics.js";
 
 export type BriefingSection = {
@@ -11,6 +12,7 @@ export type BriefingSection = {
 export function buildExecutiveBriefingSections(): BriefingSection[] {
   const ei = getExecutiveIntelligenceEraSnapshot();
   const com = getCommunicationsOfficeSnapshot();
+  const contact = getContactManagementSnapshot();
   const comActive = ei.work_product_complete && com.office_started;
 
   const todayPriorities = comActive
@@ -21,11 +23,29 @@ export function buildExecutiveBriefingSections(): BriefingSection[] {
           "3. Engineering closed — module-level gate only · no slice reopening",
         ]
       : com.module_complete
-        ? [
-            "1. Communications Office COMPLETE · ENG-PMO-013 · V1 subsystem earned",
-            "2. Inherited behavioral stack · 19/19 tests · Commercial Beta preparation next",
-            "3. Release governance remains a separate authority",
-          ]
+        ? contact.crossing_started
+          ? contact.slice_001_3_complete
+            ? [
+                "1. ENG-CONTACT-001.3 COMPLETE · CSV import/export live · 18/18 contact tests",
+                "2. Contact Management 75% · COM draft linking next (ENG-CONTACT-001.4)",
+                "3. Commercial Beta blocked until Contact Management module acceptance",
+              ]
+            : contact.slice_001_2_complete
+            ? [
+                "1. ENG-CONTACT-001.2 COMPLETE · /studio/contacts live · workbench CRUD earned",
+                "2. Contact Management 55% · CSV import/export next (ENG-CONTACT-001.3)",
+                "3. Commercial Beta blocked until Contact Management module acceptance",
+              ]
+            : [
+                "1. ENG-CONTACT-001 AUTHORIZED · Contact Management V1 active crossing",
+                "2. Canonical storage COMPLETE · workbench UI next",
+                "3. Commercial Beta remains separate release gate",
+              ]
+          : [
+              "1. Communications Office COMPLETE · ENG-PMO-013 · V1 subsystem earned",
+              "2. Inherited behavioral stack · 18/18 tests · Contact Management next",
+              "3. Release governance remains a separate authority",
+            ]
         : com.slice_001_3_complete
       ? [
           "1. ENG-COM-001.3 COMPLETE · ENG-PMO-012 — advisory restraint inherited",
@@ -154,8 +174,10 @@ export function buildExecutiveBriefingSections(): BriefingSection[] {
     : com.module_complete
       ? [
           "Communications Office COMPLETE · ENG-PMO-013 · V1 subsystem",
-          `Contract ${com.contract_version ?? "ENG-COM-001.3"} · 19/19 behavioral tests`,
-          "Commercial Beta preparation — release gate separate",
+          `Contract ${com.contract_version ?? "ENG-COM-001.3"} · 18/18 behavioral tests`,
+          contact.crossing_started
+            ? `Handoff: Contact Management V1 · ${contact.module_progress_percent}% · ${contact.smallest_next_slice}`
+            : "Contact Management V1 — next practical release dependency",
         ]
       : com.slice_001_3_complete
     ? [
@@ -221,6 +243,17 @@ export function buildExecutiveBriefingSections(): BriefingSection[] {
     sections.push({
       title: "Communications Office",
       lines: comLines,
+    });
+  }
+
+  if (contact.crossing_started) {
+    sections.push({
+      title: "Contact Management",
+      lines: [
+        contact.building_today,
+        contact.summary,
+        `Next: ${contact.smallest_next_slice}`,
+      ],
     });
   }
 

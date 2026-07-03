@@ -8,7 +8,7 @@ export type ContextCard = {
   detail: string;
 };
 
-/** Ten cards — five substrates · four V1 modules · Executive Intelligence Era. */
+/** Eleven cards — five substrates · four V1 modules · Executive Intelligence · Contact Management. */
 export const CONTEXT_CARDS: readonly ContextCard[] = [
   {
     id: "episode",
@@ -67,8 +67,14 @@ export const CONTEXT_CARDS: readonly ContextCard[] = [
   {
     id: "communications",
     title: "Communications Office",
+    status: "complete",
+    detail: "ENG-PMO-013 COMPLETE · Contract ENG-COM-001.3 · 18/18 behavioral · V1 subsystem earned",
+  },
+  {
+    id: "contact-management",
+    title: "Contact Management",
     status: "active",
-    detail: "Communications Office COMPLETE · ENG-PMO-013 · Contract ENG-COM-001.3 · 18/18 behavioral · Commercial Beta prep next",
+    detail: "ENG-CONTACT-001.3 COMPLETE · CSV import/export · 75% · 18/18 tests · COM linking next",
   },
 ] as const;
 

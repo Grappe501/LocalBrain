@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { bootstrapApp } from "../bootstrap.js";
+import { bootstrapApp, shutdownApp } from "../bootstrap.js";
 import { closeDatabase } from "../db/database.js";
 import { parsePhaseChecklistSlices, parsePhaseSections, parsePeerReviewProgress } from "../epo/checklistParser.js";
 import { explainBlocker } from "../epo/blockerExplainer.js";
@@ -102,14 +102,30 @@ test("Communications Office metrics reflect module complete", () => {
   assert.equal(com.slice_active, null);
   assert.equal(com.module_progress_percent, 100);
   assert.ok(com.building_today.includes("COMPLETE"));
-  assert.ok(com.smallest_next_slice.includes("Commercial Beta"));
+  assert.ok(com.smallest_next_slice.includes("Contact Management"));
   assert.equal(com.contract_version, "ENG-COM-001.3");
+});
+
+test("V1 command center reflects Contact Management active crossing", () => {
+  const state = computeBuildState();
+  const cc = computeV1CommandCenter(state);
+  assert.ok(
+    cc.building_today?.includes("ENG-CONTACT") ||
+      cc.building_today?.includes("Contact Management"),
+  );
+  const contact = cc.modules.find((m) => m.module_id === "contact_management");
+  assert.ok(contact);
+  assert.equal(contact!.progress_percent, 75);
+  assert.equal(contact!.status, "in_progress");
+  assert.equal(contact!.version, "ENG-CONTACT-001.3");
+  const comms = cc.modules.find((m) => m.module_id === "communications");
+  assert.ok(comms);
+  assert.equal(comms!.progress_percent, 100);
 });
 
 test("V1 command center reflects Communications Office module complete", () => {
   const state = computeBuildState();
   const cc = computeV1CommandCenter(state);
-  assert.ok(cc.building_today?.includes("COMPLETE"));
   const comms = cc.modules.find((m) => m.module_id === "communications");
   assert.ok(comms);
   assert.equal(comms!.progress_percent, 100);
@@ -122,7 +138,9 @@ test("computeBuildState projects current sprint and velocity", () => {
   const cc = computeV1CommandCenter(state);
   assert.ok(state.current_slice_id);
   assert.ok(
-    cc.building_today?.includes("ENG-COM-001") ||
+    cc.building_today?.includes("ENG-CONTACT") ||
+      cc.building_today?.includes("Contact Management") ||
+      cc.building_today?.includes("ENG-COM-001") ||
       cc.building_today?.includes("Communications Office") ||
       cc.building_today?.includes("Communications"),
   );
@@ -147,58 +165,71 @@ test("computeBuildState projects current sprint and velocity", () => {
 });
 
 test("getEpoOverview exposes build state engine fields", () => {
-  const overview = getEpoOverview();
-  assert.equal(overview.read_only, true);
-  assert.equal(overview.build_state_engine_id, BUILD_STATE_ENGINE_ID);
-  assert.ok(overview.current_slice_id);
-  assert.ok(
-    overview.current_phase_label.toLowerCase().includes("memory") ||
-      overview.current_phase_label.includes("Executive Memory") ||
-      overview.current_phase_label.includes("Executive Intelligence") ||
-      overview.current_phase_label.includes("Communications") ||
-      overview.v1_command_center?.building_today?.includes("ENG-COM-001") ||
-      overview.v1_command_center?.building_today?.includes("Communications Office") ||
-      overview.v1_command_center?.building_today?.includes("COMPLETE") ||
-      overview.v1_command_center?.building_today?.includes("ENG-EI-002"),
-  );
-  assert.ok(overview.phases.length >= 4);
-  assert.ok(overview.commit_timeline.length > 0);
-  assert.ok(overview.experience_maturity.length >= 10);
-  assert.equal(overview.experience_maturity_engine_id, "ENG-EXP-001");
-  assert.ok(overview.v1_command_center);
-  assert.equal(overview.v1_command_center.engine_id, "ENG-BLD-001-V1CC");
-  assert.ok(overview.v1_command_center.modules.length >= 6);
-  assert.ok(overview.v1_command_center.v1_launch_score_percent >= 0);
-  assert.ok(overview.project_state);
-  assert.equal(overview.project_state.engine_id, "ENG-BLD-001-PSTATE");
-  assert.equal(
-    overview.metrics.overall_progress_percent,
-    overview.project_state.launch_score_percent,
-  );
-  assert.ok(overview.project_state.build_history.length > 0);
-  assert.ok(overview.project_state.launch_countdown);
-  assert.ok(overview.project_state.ceo_mode);
-  assert.ok(overview.project_state.ceo_mode.v1_roadmap.length === 9);
-  const commsComplete =
-    overview.v1_command_center.modules.find((m) => m.module_id === "communications")
-      ?.progress_percent === 100;
-  assert.ok(
-    overview.project_state.ceo_mode.current_module_certification || commsComplete,
-  );
-  assert.ok(overview.project_state.ceo_mode.phase_forecast);
-  assert.equal(overview.project_state.ceo_mode.phase_forecast.engine_id, "ENG-BLD-001-PFCST");
-  assert.ok(overview.project_state.ceo_mode.phase_forecast.phases.length === 9);
-  assert.ok(overview.project_state.ceo_mode.phase_forecast.current_mega_phase.label.includes("Phase"));
-  assert.ok(overview.project_state.ceo_mode.burt_session_start);
-  assert.ok(overview.project_state.ceo_mode.burt_session_start.current_critical_path);
-  const roadmap = overview.project_state.ceo_mode.v1_roadmap;
-  assert.equal(roadmap.find((r) => r.id === "session_4")?.status, "complete");
-  assert.equal(roadmap.find((r) => r.id === "session_5")?.status, "complete");
-  assert.equal(roadmap.find((r) => r.id === "theory_freeze")?.status, "complete");
-  assert.equal(roadmap.find((r) => r.id === "convention")?.status, "complete");
-  assert.ok(overview.project_state.ceo_mode.theory_status.frozen);
-  assert.equal(overview.project_state.ceo_mode.theory_status.remaining_risk, "IMPLEMENTATION");
-  assert.equal(overview.project_state.launch_countdown.current_phase, "Construction");
+  bootstrapApp();
+  try {
+    const overview = getEpoOverview();
+    assert.equal(overview.read_only, true);
+    assert.equal(overview.build_state_engine_id, BUILD_STATE_ENGINE_ID);
+    assert.ok(overview.current_slice_id);
+    assert.ok(
+      overview.current_phase_label.toLowerCase().includes("memory") ||
+        overview.current_phase_label.includes("Executive Memory") ||
+        overview.current_phase_label.includes("Executive Intelligence") ||
+        overview.current_phase_label.includes("Communications") ||
+        overview.v1_command_center?.building_today?.includes("ENG-CONTACT") ||
+        overview.v1_command_center?.building_today?.includes("Contact Management") ||
+        overview.v1_command_center?.building_today?.includes("ENG-COM-001") ||
+        overview.v1_command_center?.building_today?.includes("Communications Office") ||
+        overview.v1_command_center?.building_today?.includes("COMPLETE") ||
+        overview.v1_command_center?.building_today?.includes("ENG-EI-002"),
+    );
+    assert.ok(overview.phases.length >= 4);
+    assert.ok(overview.commit_timeline.length > 0);
+    assert.ok(overview.experience_maturity.length >= 10);
+    assert.equal(overview.experience_maturity_engine_id, "ENG-EXP-001");
+    assert.ok(overview.v1_command_center);
+    assert.equal(overview.v1_command_center.engine_id, "ENG-BLD-001-V1CC");
+    assert.ok(overview.v1_command_center.modules.length >= 7);
+    assert.ok(overview.v1_command_center.v1_launch_score_percent >= 0);
+    assert.ok(overview.project_state);
+    assert.equal(overview.project_state.engine_id, "ENG-BLD-001-PSTATE");
+    assert.equal(
+      overview.metrics.overall_progress_percent,
+      overview.project_state.launch_score_percent,
+    );
+    assert.ok(overview.project_state.build_history.length > 0);
+    assert.ok(overview.project_state.launch_countdown);
+    assert.ok(overview.project_state.ceo_mode);
+    assert.ok(overview.project_state.ceo_mode.v1_roadmap.length === 10);
+    const contactModule = overview.v1_command_center.modules.find(
+      (m) => m.module_id === "contact_management",
+    );
+    assert.ok(contactModule);
+    assert.equal(contactModule?.progress_percent, 75);
+    const commsComplete =
+      overview.v1_command_center.modules.find((m) => m.module_id === "communications")
+        ?.progress_percent === 100;
+    assert.ok(
+      overview.project_state.ceo_mode.current_module_certification || commsComplete,
+    );
+    assert.ok(overview.project_state.ceo_mode.phase_forecast);
+    assert.equal(overview.project_state.ceo_mode.phase_forecast.engine_id, "ENG-BLD-001-PFCST");
+    assert.ok(overview.project_state.ceo_mode.phase_forecast.phases.length === 10);
+    assert.ok(overview.project_state.ceo_mode.phase_forecast.current_mega_phase.label.includes("Phase"));
+    assert.ok(overview.project_state.ceo_mode.burt_session_start);
+    assert.ok(overview.project_state.ceo_mode.burt_session_start.current_critical_path);
+    const roadmap = overview.project_state.ceo_mode.v1_roadmap;
+    assert.equal(roadmap.find((r) => r.id === "session_4")?.status, "complete");
+    assert.equal(roadmap.find((r) => r.id === "session_5")?.status, "complete");
+    assert.equal(roadmap.find((r) => r.id === "theory_freeze")?.status, "complete");
+    assert.equal(roadmap.find((r) => r.id === "convention")?.status, "complete");
+    assert.equal(roadmap.find((r) => r.id === "contact_management")?.status, "in_progress");
+    assert.ok(overview.project_state.ceo_mode.theory_status.frozen);
+    assert.equal(overview.project_state.ceo_mode.theory_status.remaining_risk, "IMPLEMENTATION");
+    assert.equal(overview.project_state.launch_countdown.current_phase, "Construction");
+  } finally {
+    shutdownApp();
+  }
 });
 
 test("parsePeerReviewProgress reads Evidence Base automatically", () => {
@@ -261,7 +292,7 @@ test("getProjectState is single source of truth for launch metrics", () => {
 test("computeV1CommandCenter projects critical path and weighted score", () => {
   const state = computeBuildState();
   const cc = computeV1CommandCenter(state);
-  assert.equal(cc.critical_path.length, 9);
+  assert.equal(cc.critical_path.length, 10);
   assert.ok(cc.modules.some((m) => m.module_id === "executive_office"));
   assert.ok(cc.launch_breakdown.reduce((s, r) => s + r.weight_percent, 0) === 100);
   assert.ok(cc.product_version.includes("V1-implement"));

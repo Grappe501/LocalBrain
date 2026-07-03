@@ -17,6 +17,7 @@ export const V1_ROADMAP_ITEMS: {
   { id: "empty_brain_factory", label: "Empty Brain Factory", critical_path_step: "empty_brain_factory" },
   { id: "memory_os", label: "Memory OS", critical_path_step: "memory_os" },
   { id: "communications_office", label: "Communications Office", critical_path_step: "communications_office" },
+  { id: "contact_management", label: "Contact Management", critical_path_step: "contact_management" },
   { id: "commercial_beta", label: "Commercial Beta", critical_path_step: "commercial_beta" },
 ];
 
@@ -88,7 +89,8 @@ export const BURT_PACKET_V1_ROADMAP_BLOCK = `> **LOCALBRAIN V1 ROADMAP** · Arch
 > □ Convention
 > □ Empty Brain Factory
 > □ Memory OS
-> □ Communications Office
+> ✓ Communications Office
+> ▶ Contact Management V1
 > □ Commercial Beta
 >
 > Everything else → VERSION2_BACKLOG.md

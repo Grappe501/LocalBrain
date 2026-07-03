@@ -62,7 +62,7 @@ Overall Launch
 
 | ✅ Communications Office | **COMPLETE** · ENG-PMO-013 · Contract `ENG-COM-001.3` · 18/18 behavioral tests | — |
 
-| ▶ Contact Management V1 | **AUTHORIZED** · [ENG-CONTACT-001](./contact-management/ENG-CONTACT-001-CHARTER.md) · slice 001.1 next | **~5 days** |
+| ▶ Contact Management V1 | **75%** · ENG-CONTACT-001.3 COMPLETE · CSV import/export live · 18/18 tests | **ENG-CONTACT-001.4** |
 
 | □ Commercial Beta | After Contact Management module acceptance | **~5 days** |
 
@@ -82,7 +82,7 @@ Overall Launch
 
 ```text
 
-Current Module ETA:     Contact Management V1 (ENG-CONTACT-001.1)   (active crossing)
+Current Module ETA:     ENG-CONTACT-001.4 Communications draft linking
 
 Current Phase ETA:      ~20 days  (operational — Communications + Commercial Beta)
 
@@ -234,7 +234,7 @@ Critical path only:
 
 ✓ ENG-EI-002 Executive Brief (ENG-PMO-009 · deterministic pipeline closed)
 
-▶ Contact Management V1 (ENG-CONTACT-001 · slice 001.1)
+▶ ENG-CONTACT-001.4 Communications draft linking (001.3 COMPLETE · CSV import/export live)
 
 ```
 

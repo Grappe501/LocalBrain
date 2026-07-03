@@ -31,6 +31,11 @@ import {
   isCommunicationsOfficeStarted,
 } from "./communicationsOfficeMetrics.js";
 import {
+  getContactManagementModuleProgress,
+  getContactManagementSnapshot,
+  isContactManagementStarted,
+} from "./contactManagementMetrics.js";
+import {
   getExecutiveIntelligenceEraSnapshot,
   isExecutiveIntelligenceDoctrineFrozen,
   isConstitutionalRetrievalComplete,
@@ -122,6 +127,20 @@ const MODULE_DEFS: {
       "backend/src/communicationsOffice/communicationsDraft.test.ts",
       "backend/src/communicationsOffice/communicationsDraftUncertainty.test.ts",
       "backend/src/communicationsOffice/communicationsDraftAdvisoryRestraint.test.ts",
+    ],
+  },
+  {
+    module_id: "contact_management",
+    name: "Contact Management",
+    version: "ENG-CONTACT-001.2",
+    weight_area: "contact_management",
+    owner: null,
+    path_steps: ["contact_management"],
+    slice_ids: ["ENG-CONTACT-001.1", "ENG-CONTACT-001.2", "ENG-CONTACT-001.3", "ENG-CONTACT-001.4"],
+    test_globs: [
+      "backend/src/contacts/contactRepository.test.ts",
+      "backend/src/contacts/contactRoutes.test.ts",
+      "backend/src/contacts/contactCsv.test.ts",
     ],
   },
   {
@@ -274,6 +293,12 @@ function moduleBlockers(
   if (moduleId === "memory_os" && isModuleCertificationLocked("factory")) {
     return "None";
   }
+  if (moduleId === "documentation_beta") {
+    const contact = getContactManagementSnapshot();
+    if (contact.crossing_started && contact.module_progress_percent < 100) {
+      return "Contact Management V1";
+    }
+  }
   const def = MODULE_DEFS.find((m) => m.module_id === moduleId);
   if (!def) return "None";
   const firstStep = def.path_steps[0];
@@ -354,6 +379,9 @@ export function computeV1CommandCenter(state: BuildStateSnapshot): V1CommandCent
     ) {
       progress = Math.max(progress, getCommunicationsOfficeModuleProgress());
     }
+    if (def.module_id === "contact_management" && isContactManagementStarted()) {
+      progress = Math.max(progress, getContactManagementModuleProgress());
+    }
     moduleProgress.set(def.module_id, Math.min(progress, 100));
   }
 
@@ -377,6 +405,8 @@ export function computeV1CommandCenter(state: BuildStateSnapshot): V1CommandCent
 
     const comSnap =
       def.module_id === "communications" ? getCommunicationsOfficeSnapshot() : null;
+    const contactSnap =
+      def.module_id === "contact_management" ? getContactManagementSnapshot() : null;
     const version =
       def.module_id === "factory" && factoryCert?.certification_locked
         ? "1.0"
@@ -388,7 +418,13 @@ export function computeV1CommandCenter(state: BuildStateSnapshot): V1CommandCent
             ? comSnap.slice_001_3_authorized && !comSnap.slice_001_3_complete
               ? "ENG-COM-001.3"
               : (comSnap.contract_version ?? "0.1")
-            : def.version;
+            : def.module_id === "contact_management" && contactSnap?.crossing_started
+              ? contactSnap.slice_001_3_complete
+                ? "ENG-CONTACT-001.3"
+                : contactSnap.slice_001_2_complete
+                  ? "ENG-CONTACT-001.2"
+                  : (contactSnap.contract_version ?? "ENG-CONTACT-001.1")
+              : def.version;
 
     return {
       module_id: def.module_id,
@@ -443,7 +479,7 @@ export function computeV1CommandCenter(state: BuildStateSnapshot): V1CommandCent
     const module_progress = mod?.progress_percent ?? 0;
     return {
       area,
-      label: mod?.name ?? area,
+      label: mod?.name ?? area.replace(/_/g, " "),
       weight_percent: Math.round(weight * 100),
       module_progress_percent: module_progress,
       weighted_contribution: Math.round(module_progress * weight),
@@ -471,7 +507,12 @@ export function computeV1CommandCenter(state: BuildStateSnapshot): V1CommandCent
     isWorkProductComplete() &&
     isCommunicationsOfficeStarted()
   ) {
-    buildingToday = getCommunicationsOfficeSnapshot().building_today;
+    const com = getCommunicationsOfficeSnapshot();
+    if (com.module_complete && isContactManagementStarted()) {
+      buildingToday = getContactManagementSnapshot().building_today;
+    } else {
+      buildingToday = com.building_today;
+    }
   } else if (
     factoryModule?.certified &&
     memoryModule &&

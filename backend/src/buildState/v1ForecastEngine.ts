@@ -165,7 +165,9 @@ function moduleVelocityRows(cc: V1CommandCenter): V1ModuleVelocityRow[] {
             ? b.step_id === "memory_os"
             : mod.module_id === "communications"
               ? b.step_id === "communications_office"
-              : false,
+              : mod.module_id === "contact_management"
+                ? b.step_id === "contact_management"
+                : false,
     );
     const expected = step?.estimated_days ?? 5;
 

@@ -84,6 +84,7 @@ export const V1_PHASE_DISPLAY_LABELS: Record<string, string> = {
   empty_brain_factory: "Empty Brain Factory",
   memory_os: "Memory OS",
   communications_office: "Communications Office",
+  contact_management: "Contact Management",
   commercial_beta: "Commercial Beta",
 };
 
@@ -142,6 +143,13 @@ export const V1_PHASE_WORK_UNITS: Partial<
     { unit_id: "com-brief", label: "CoS briefing feed", weight: 0.2 },
     { unit_id: "com-cert", label: "Certification", weight: 0.15 },
   ],
+  contact_management: [
+    { unit_id: "contact-storage", label: "Canonical contact storage", weight: 0.25 },
+    { unit_id: "contact-api-ui", label: "CRUD API + workbench UI", weight: 0.25 },
+    { unit_id: "contact-csv", label: "CSV import/export", weight: 0.2 },
+    { unit_id: "contact-com-link", label: "Communications draft linking", weight: 0.2 },
+    { unit_id: "contact-pmo", label: "PMO module acceptance", weight: 0.1 },
+  ],
   commercial_beta: [
     { unit_id: "beta-docs", label: "Documentation", weight: 0.3 },
     { unit_id: "beta-kelly", label: "Kelly onboarding", weight: 0.3 },
@@ -160,6 +168,7 @@ export const V1_PHASE_FINISHABILITY_BASE: Partial<Record<V1CriticalPathStep, num
   empty_brain_factory: 100,
   memory_os: 100,
   communications_office: 25,
+  contact_management: 80,
   commercial_beta: 70,
 };
 
@@ -186,6 +195,6 @@ export const V1_MEGA_PHASES: {
   {
     id: "cognitive_construction",
     label: "Phase 3 — Cognitive Construction",
-    steps: ["empty_brain_factory", "memory_os", "communications_office", "commercial_beta"],
+    steps: ["empty_brain_factory", "memory_os", "communications_office", "contact_management", "commercial_beta"],
   },
 ];

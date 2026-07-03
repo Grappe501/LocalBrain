@@ -105,9 +105,11 @@ function stepProgressPercent(stepId: V1CriticalPathStep, cc: V1CommandCenter): n
             ? "memory_os"
             : stepId === "communications_office"
               ? "communications"
-              : stepId === "commercial_beta"
-                ? "documentation_beta"
-                : null;
+              : stepId === "contact_management"
+                ? "contact_management"
+                : stepId === "commercial_beta"
+                  ? "documentation_beta"
+                  : null;
 
   const mod = moduleId ? cc.modules.find((m) => m.module_id === moduleId) : null;
   if (!mod) return 35;
@@ -127,9 +129,11 @@ function stepProgressPercent(stepId: V1CriticalPathStep, cc: V1CommandCenter): n
                 ? "memory_os"
                 : r.critical_path_step === "communications_office"
                   ? "communications"
-                  : r.critical_path_step === "commercial_beta"
-                    ? "documentation_beta"
-                    : null;
+                  : r.critical_path_step === "contact_management"
+                    ? "contact_management"
+                    : r.critical_path_step === "commercial_beta"
+                      ? "documentation_beta"
+                      : null;
       return mid === moduleId;
     });
     const totalEst = moduleSteps.reduce(
