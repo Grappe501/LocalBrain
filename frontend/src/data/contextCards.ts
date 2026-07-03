@@ -74,7 +74,7 @@ export const CONTEXT_CARDS: readonly ContextCard[] = [
     id: "contact-management",
     title: "Contact Management",
     status: "active",
-    detail: "ENG-CONTACT-001.3 COMPLETE · CSV import/export · 75% · 18/18 tests · COM linking next",
+    detail: "ENG-CONTACT-001.4 COMPLETE · COM draft linking · 90% · 23/23 tests · PMO module eval next",
   },
 ] as const;
 

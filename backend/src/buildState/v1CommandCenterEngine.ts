@@ -141,6 +141,8 @@ const MODULE_DEFS: {
       "backend/src/contacts/contactRepository.test.ts",
       "backend/src/contacts/contactRoutes.test.ts",
       "backend/src/contacts/contactCsv.test.ts",
+      "backend/src/contacts/contactDraftLink.test.ts",
+      "backend/src/contacts/contactDraftLinkRoutes.test.ts",
     ],
   },
   {
@@ -419,11 +421,13 @@ export function computeV1CommandCenter(state: BuildStateSnapshot): V1CommandCent
               ? "ENG-COM-001.3"
               : (comSnap.contract_version ?? "0.1")
             : def.module_id === "contact_management" && contactSnap?.crossing_started
-              ? contactSnap.slice_001_3_complete
-                ? "ENG-CONTACT-001.3"
-                : contactSnap.slice_001_2_complete
-                  ? "ENG-CONTACT-001.2"
-                  : (contactSnap.contract_version ?? "ENG-CONTACT-001.1")
+              ? contactSnap.slice_001_4_complete
+                ? "ENG-CONTACT-001.4"
+                : contactSnap.slice_001_3_complete
+                  ? "ENG-CONTACT-001.3"
+                  : contactSnap.slice_001_2_complete
+                    ? "ENG-CONTACT-001.2"
+                    : (contactSnap.contract_version ?? "ENG-CONTACT-001.1")
               : def.version;
 
     return {

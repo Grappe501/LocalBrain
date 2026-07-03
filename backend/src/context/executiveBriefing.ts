@@ -24,7 +24,13 @@ export function buildExecutiveBriefingSections(): BriefingSection[] {
         ]
       : com.module_complete
         ? contact.crossing_started
-          ? contact.slice_001_3_complete
+          ? contact.slice_001_4_complete
+            ? [
+                "1. ENG-CONTACT-001.4 COMPLETE · COM draft linking live · 23/23 contact tests",
+                "2. Contact Management 90% · PMO module evaluation next (ENG-PMO-014 or successor)",
+                "3. Commercial Beta blocked until Contact Management module acceptance",
+              ]
+            : contact.slice_001_3_complete
             ? [
                 "1. ENG-CONTACT-001.3 COMPLETE · CSV import/export live · 18/18 contact tests",
                 "2. Contact Management 75% · COM draft linking next (ENG-CONTACT-001.4)",

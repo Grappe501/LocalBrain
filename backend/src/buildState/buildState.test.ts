@@ -115,9 +115,9 @@ test("V1 command center reflects Contact Management active crossing", () => {
   );
   const contact = cc.modules.find((m) => m.module_id === "contact_management");
   assert.ok(contact);
-  assert.equal(contact!.progress_percent, 75);
+  assert.equal(contact!.progress_percent, 90);
   assert.equal(contact!.status, "in_progress");
-  assert.equal(contact!.version, "ENG-CONTACT-001.3");
+  assert.equal(contact!.version, "ENG-CONTACT-001.4");
   const comms = cc.modules.find((m) => m.module_id === "communications");
   assert.ok(comms);
   assert.equal(comms!.progress_percent, 100);
@@ -205,7 +205,7 @@ test("getEpoOverview exposes build state engine fields", () => {
       (m) => m.module_id === "contact_management",
     );
     assert.ok(contactModule);
-    assert.equal(contactModule?.progress_percent, 75);
+    assert.equal(contactModule?.progress_percent, 90);
     const commsComplete =
       overview.v1_command_center.modules.find((m) => m.module_id === "communications")
         ?.progress_percent === 100;

@@ -25,6 +25,20 @@ const ROUTES_TEST_PATH = path.join(
   "contactRoutes.test.ts",
 );
 const CSV_TEST_PATH = path.join(getRepoRoot(), "backend", "src", "contacts", "contactCsv.test.ts");
+const DRAFT_LINK_TEST_PATH = path.join(
+  getRepoRoot(),
+  "backend",
+  "src",
+  "contacts",
+  "contactDraftLink.test.ts",
+);
+const DRAFT_LINK_ROUTES_TEST_PATH = path.join(
+  getRepoRoot(),
+  "backend",
+  "src",
+  "contacts",
+  "contactDraftLinkRoutes.test.ts",
+);
 
 export const CONTACT_SLICE_TARGET = 4;
 
@@ -34,6 +48,7 @@ export type ContactManagementSnapshot = {
   slice_001_1_complete: boolean;
   slice_001_2_complete: boolean;
   slice_001_3_complete: boolean;
+  slice_001_4_complete: boolean;
   slice_001_3_authorized: boolean;
   slice_001_4_authorized: boolean;
   module_complete: boolean;
@@ -43,6 +58,7 @@ export type ContactManagementSnapshot = {
   repository_tests_count: number;
   routes_tests_count: number;
   csv_tests_count: number;
+  draft_link_tests_count: number;
   module_progress_percent: number;
   building_today: string;
   summary: string;
@@ -65,7 +81,7 @@ function parseSliceStatus(text: string): string | null {
 
 function sliceEvidenceComplete(text: string): boolean {
   const pending = (text.match(/\|\s*Pending\s*\|/gi) ?? []).length;
-  return pending === 0 && /C7.*✅|7\/7|11\/11/i.test(text);
+  return pending === 0 && /C7.*✅|7\/7|11\/11|23\/23/i.test(text);
 }
 
 function detectCharterAuthorized(): boolean {
@@ -141,17 +157,19 @@ export function getContactManagementSnapshot(): ContactManagementSnapshot {
   if (slice_001_1_complete) slices_complete.push("ENG-CONTACT-001.1");
   if (slice_001_2_complete) slices_complete.push("ENG-CONTACT-001.2");
   if (slice_001_3_complete) slices_complete.push("ENG-CONTACT-001.3");
-  if (slice_001_3_complete) slices_complete.push("ENG-CONTACT-001.3");
   if (slice_001_4_complete) slices_complete.push("ENG-CONTACT-001.4");
 
   const repository_tests_count = countTests(REPOSITORY_TEST_PATH);
   const routes_tests_count = countTests(ROUTES_TEST_PATH);
   const csv_tests_count = countTests(CSV_TEST_PATH);
+  const draft_link_tests_count =
+    countTests(DRAFT_LINK_TEST_PATH) + countTests(DRAFT_LINK_ROUTES_TEST_PATH);
   const contract_version = parseContractVersion();
 
   let slice_active: string | null = null;
   if (module_complete) slice_active = null;
-  else if (slice_001_2_complete && !slice_001_3_complete) slice_active = "ENG-CONTACT-001.3";
+  else if (slice_001_4_complete) slice_active = null;
+  else if (slice_001_3_complete && !slice_001_4_complete) slice_active = "ENG-CONTACT-001.4";
   else if (slice_001_2_complete && !slice_001_3_complete) slice_active = "ENG-CONTACT-001.3";
   else if (slice_001_1_complete && !slice_001_2_complete) slice_active = "ENG-CONTACT-001.2";
   else if (crossing_started) slice_active = "ENG-CONTACT-001.1";
@@ -161,13 +179,13 @@ export function getContactManagementSnapshot(): ContactManagementSnapshot {
     if (module_complete) module_progress_percent = 100;
     else if (slice_001_4_complete) module_progress_percent = 90;
     else if (slice_001_3_complete) module_progress_percent = 75;
-    else if (slice_001_3_complete) module_progress_percent = 75;
-  else if (slice_001_2_complete) module_progress_percent = 55;
+    else if (slice_001_2_complete) module_progress_percent = 55;
     else if (slice_001_1_complete) module_progress_percent = 35;
     else if (charter_authorized) module_progress_percent = 15;
   }
 
-  const behavioralTotal = repository_tests_count + routes_tests_count + csv_tests_count;
+  const behavioralTotal =
+    repository_tests_count + routes_tests_count + csv_tests_count + draft_link_tests_count;
 
   let building_today: string;
   let smallest_next_slice: string;
@@ -177,6 +195,10 @@ export function getContactManagementSnapshot(): ContactManagementSnapshot {
     building_today = `Contact Management V1 COMPLETE · ${behavioralTotal}/${behavioralTotal} tests · Commercial Beta next`;
     smallest_next_slice = "Commercial Beta preparation";
     summary = "Contact Management V1 COMPLETE · trustworthy people records for beta";
+  } else if (slice_001_4_complete) {
+    building_today = `ENG-CONTACT-001.4 COMPLETE · COM draft linking live · ${behavioralTotal}/${behavioralTotal} tests · PMO module eval next`;
+    smallest_next_slice = "PMO module evaluation (ENG-PMO-014 or successor)";
+    summary = "All four ENG-CONTACT slices frozen · engineering complete · PMO gate next";
   } else if (slice_001_3_complete) {
     building_today = `ENG-CONTACT-001.3 COMPLETE · CSV import/export live · ${behavioralTotal}/${behavioralTotal} tests · COM linking next`;
     smallest_next_slice = "ENG-CONTACT-001.4 Communications draft linking";
@@ -201,9 +223,11 @@ export function getContactManagementSnapshot(): ContactManagementSnapshot {
 
   const critical_path_detail = module_complete
     ? "Contact Management COMPLETE → Commercial Beta"
-    : crossing_started
-      ? "Contact Management V1 → Commercial Beta"
-      : "Communications Office → Contact Management → Commercial Beta";
+    : slice_001_4_complete
+      ? "ENG-CONTACT engineering complete → PMO module evaluation → Commercial Beta"
+      : crossing_started
+        ? "Contact Management V1 → Commercial Beta"
+        : "Communications Office → Contact Management → Commercial Beta";
 
   return {
     charter_authorized,
@@ -211,6 +235,7 @@ export function getContactManagementSnapshot(): ContactManagementSnapshot {
     slice_001_1_complete,
     slice_001_2_complete,
     slice_001_3_complete,
+    slice_001_4_complete,
     slice_001_3_authorized,
     slice_001_4_authorized,
     module_complete,
@@ -220,6 +245,7 @@ export function getContactManagementSnapshot(): ContactManagementSnapshot {
     repository_tests_count,
     routes_tests_count,
     csv_tests_count,
+    draft_link_tests_count,
     module_progress_percent,
     building_today,
     summary,
