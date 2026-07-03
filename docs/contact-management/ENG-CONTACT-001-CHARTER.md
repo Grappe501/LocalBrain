@@ -172,7 +172,7 @@ Success **is**:
 | Slice | Behavioral question | Status |
 | ----- | ------------------- | ------ |
 | [ENG-CONTACT-001.1](./slices/ENG-CONTACT-001.1-CANONICAL-CONTACT-STORAGE.md) | Can canonical contact records persist with integrity? | **IMPLEMENTATION FROZEN** |
-| ENG-CONTACT-001.2 | Can contacts be managed through API and UI? | Reserved |
+| ENG-CONTACT-001.2 | Can beta users manage contacts through the workbench? | **IMPLEMENTATION FROZEN** |
 | ENG-CONTACT-001.3 | Can CSV import/export round-trip without loss? | Reserved |
 | ENG-CONTACT-001.4 | Can contacts link to Communications drafts? | Reserved |
 
@@ -183,10 +183,10 @@ Slice definitions emerge as prior slices complete. See [slices/README.md](./slic
 ## Institutional posture
 
 ```text
-Engineering truth:     ENG-CONTACT-001 AUTHORIZED · first slice ENG-CONTACT-001.1 · implementation not started
+Engineering truth:     ENG-CONTACT-001.2 IMPLEMENTATION FROZEN · `/api/contacts/*` · `/studio/contacts`
 Operational truth:     Contact Management V1 before Commercial Beta
-Prior crossing:        Communications Office COMPLETE · ENG-PMO-013
-Next repository act:   ENG-CONTACT-001.1 Canonical Contact storage
+Prior crossing:        ENG-CONTACT-001.1 storage · 7/7 PASS
+Next repository act:   ENG-CONTACT-001.3 CSV import/export
 ```
 
 ---

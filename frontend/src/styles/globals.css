@@ -3120,6 +3120,175 @@ a {
   background: #fffbeb;
 }
 
+/* ENG-CONTACT-001.2 Contact Management */
+.contact-dept {
+  padding: 1.25rem 1.5rem 2rem;
+  max-width: 1200px;
+}
+
+.contact-dept__header h1 {
+  margin: 0.25rem 0;
+}
+
+.contact-dept__meta {
+  color: #64748b;
+  font-size: 0.9rem;
+  margin: 0.25rem 0 1rem;
+}
+
+.contact-dept__error {
+  color: #b91c1c;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.contact-dept__layout {
+  display: grid;
+  grid-template-columns: minmax(240px, 320px) 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.contact-dept__list-panel,
+.contact-dept__detail-panel {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  background: #fff;
+  padding: 1rem;
+}
+
+.contact-dept__toolbar {
+  margin-bottom: 0.75rem;
+}
+
+.contact-dept__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.contact-dept__field input,
+.contact-dept__field select,
+.contact-dept__field textarea {
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.65rem;
+  font: inherit;
+}
+
+.contact-dept__checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.contact-dept__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.contact-dept__list-item {
+  width: 100%;
+  text-align: left;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  background: #f8fafc;
+  padding: 0.65rem 0.75rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.contact-dept__list-item--active {
+  border-color: #2563eb;
+  background: #eff6ff;
+}
+
+.contact-dept__list-item span {
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+.contact-dept__archived {
+  color: #b45309;
+  font-size: 0.8rem;
+}
+
+.contact-dept__empty {
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.contact-dept__form h2,
+.contact-dept__affiliations h3 {
+  margin-top: 0;
+}
+
+.contact-dept__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.contact-dept__affiliations ul {
+  margin: 0 0 0.75rem;
+  padding-left: 1.1rem;
+}
+
+.contact-dept__actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.contact-dept__primary,
+.contact-dept__secondary {
+  border-radius: 0.5rem;
+  padding: 0.55rem 0.9rem;
+  font: inherit;
+  cursor: pointer;
+}
+
+.contact-dept__primary {
+  background: #2563eb;
+  color: #fff;
+  border: 1px solid #2563eb;
+}
+
+.contact-dept__secondary {
+  background: #fff;
+  color: #0f172a;
+  border: 1px solid #cbd5e1;
+}
+
+.contact-dept__primary:disabled,
+.contact-dept__secondary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 900px) {
+  .contact-dept__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-dept__row {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* LB-OS-017 AI Provider Management */
 .ai-providers {
   padding: 1.25rem 1.5rem 2rem;

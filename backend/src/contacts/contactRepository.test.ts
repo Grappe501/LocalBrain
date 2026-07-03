@@ -1,3 +1,4 @@
+import crypto from "node:crypto";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { CONTACT_RECORD_VERSION } from "@localbrain/shared";
@@ -9,6 +10,8 @@ import {
   getContactById,
   linkContactToOrganization,
   listContacts,
+  listContactOrganizations,
+  restoreContact,
   updateContact,
   ContactDuplicateEmailError,
 } from "./contactRepository.js";
@@ -24,7 +27,7 @@ import {
   serializeTags,
 } from "./contactSerde.js";
 
-const WORKSPACE = "localbrain";
+const WORKSPACE = `localbrain-contact-${crypto.randomUUID().slice(0, 8)}`;
 
 test("contact contract version is ENG-CONTACT-001.1", () => {
   assert.equal(CONTACT_RECORD_VERSION, "ENG-CONTACT-001.1");
@@ -173,6 +176,37 @@ test("listContacts filters by search tag and email", () => {
 
     const bySearch = listContacts({ workspace_id: WORKSPACE, search: "alpha" });
     assert.equal(bySearch.length, 1);
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("archive and restore contact", () => {
+  bootstrapApp();
+  try {
+    const created = createContact({
+      workspace_id: WORKSPACE,
+      display_name: "Restore Me",
+      emails: [{ email: "restore@example.com" }],
+    });
+
+    const archived = archiveContact(created.contact_id);
+    assert.ok(archived?.archived);
+
+    const restored = restoreContact(created.contact_id);
+    assert.ok(restored);
+    assert.equal(restored?.archived, false);
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("listContactOrganizations returns workspace orgs", () => {
+  bootstrapApp();
+  try {
+    createContactOrganization({ workspace_id: WORKSPACE, name: "Org A" });
+    const orgs = listContactOrganizations(WORKSPACE);
+    assert.ok(orgs.some((org) => org.name === "Org A"));
   } finally {
     shutdownApp();
   }

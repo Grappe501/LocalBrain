@@ -215,6 +215,32 @@ export function archiveContact(contactId: string): ContactRecordWithAffiliations
   return getContactById(contactId);
 }
 
+export function restoreContact(contactId: string): ContactRecordWithAffiliations | null {
+  const result = getDatabase()
+    .prepare(
+      `UPDATE contacts
+       SET archived = 0, updated_at = datetime('now')
+       WHERE contact_id = ?`,
+    )
+    .run(contactId);
+  if (result.changes === 0) return null;
+  return getContactById(contactId);
+}
+
+export function listContactOrganizations(
+  workspaceId: string,
+  options: { include_archived?: boolean } = {},
+): ContactOrganization[] {
+  let sql = "SELECT * FROM contact_organizations WHERE workspace_id = ?";
+  if (!options.include_archived) {
+    sql += " AND archived = 0";
+  }
+  sql += " ORDER BY name COLLATE NOCASE ASC";
+
+  const rows = getDatabase().prepare(sql).all(workspaceId) as ContactOrganizationRow[];
+  return rows.map(rowToContactOrganization);
+}
+
 export function listContacts(filter: ContactListFilter): ContactRecordWithAffiliations[] {
   const params: (string | number)[] = [filter.workspace_id];
   let sql = "SELECT * FROM contacts WHERE workspace_id = ?";

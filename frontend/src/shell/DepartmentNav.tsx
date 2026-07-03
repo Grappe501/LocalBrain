@@ -7,6 +7,7 @@ const V1_DEPARTMENT_ORDER = [
   "engineering-studio",
   "writing-studio",
   "data-studio",
+  "contact-studio",
   "relationship-studio",
 ] as const;
 

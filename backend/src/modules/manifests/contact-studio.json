@@ -1,0 +1,22 @@
+{
+  "module_id": "contact-studio",
+  "name": "Contacts",
+  "domain": "contacts",
+  "version": "0.1.0",
+  "status": "active",
+  "routes": [{ "path": "/studio/contacts", "pattern": "studio/contacts/*" }],
+  "permissions": ["filesystem:read"],
+  "tools": [],
+  "agents": [],
+  "data_sources": ["contact_records"],
+  "capabilities": [
+    {
+      "capability_id": "CAP-CONTACT-001",
+      "dependencies": ["ENG-CONTACT-001"]
+    }
+  ],
+  "dependencies": [],
+  "nav_placement": "department",
+  "lazy_load_boundary": "modules/contact-studio/Entry",
+  "description": "Contact Management V1 — trustworthy people records for Commercial Beta (ENG-CONTACT-001.2)"
+}
