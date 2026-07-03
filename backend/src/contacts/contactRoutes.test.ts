@@ -116,3 +116,67 @@ test("contacts organizations list requires workspace_id", async () => {
     shutdownApp();
   }
 });
+
+test("contacts CSV export import preview and commit routes", async () => {
+  bootstrapApp();
+  const workspace = `${WORKSPACE}-csv-${crypto.randomUUID().slice(0, 8)}`;
+  const app = createApp();
+  const server = app.listen(0);
+  const port = (server.address() as { port: number }).port;
+  const base = `http://127.0.0.1:${port}/api/contacts`;
+
+  try {
+    const createRes = await fetch(`${base}?workspace_id=${workspace}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        workspace_id: workspace,
+        display_name: "CSV Route User",
+        emails: [{ email: "csv.route@example.com" }],
+        tags: ["import-test"],
+      }),
+    });
+    assert.equal(createRes.status, 201);
+
+    const exportRes = await fetch(`${base}/export.csv?workspace_id=${workspace}`);
+    assert.equal(exportRes.status, 200);
+    assert.match(exportRes.headers.get("content-type") ?? "", /text\/csv/);
+    const exported = await exportRes.text();
+    assert.ok(exported.includes("csv.route@example.com"));
+
+    const previewRes = await fetch(`${base}/import/preview?workspace_id=${workspace}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        workspace_id: workspace,
+        csv_text: exported,
+        duplicate_policy: "update",
+      }),
+    });
+    assert.equal(previewRes.status, 200);
+    const previewBody = (await previewRes.json()) as {
+      preview: { update_count: number; can_commit: boolean };
+    };
+    assert.equal(previewBody.preview.update_count, 1);
+    assert.equal(previewBody.preview.can_commit, true);
+
+    const importCsv = `${exported.split("\r\n")[0]}
+,Fresh Import,,,fresh.import@example.com,501-555-0200,beta,From CSV,none,false`;
+
+    const commitRes = await fetch(`${base}/import/commit?workspace_id=${workspace}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        workspace_id: workspace,
+        csv_text: importCsv,
+        duplicate_policy: "skip",
+      }),
+    });
+    assert.equal(commitRes.status, 201);
+    const commitBody = (await commitRes.json()) as { result: { created_count: number } };
+    assert.equal(commitBody.result.created_count, 1);
+  } finally {
+    server.close();
+    shutdownApp();
+  }
+});

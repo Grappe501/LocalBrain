@@ -3144,6 +3144,51 @@ a {
   border-radius: 0.5rem;
 }
 
+.contact-dept__notice {
+  color: #166534;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.contact-dept__file-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.75rem;
+  border-radius: 0.375rem;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.contact-dept__import {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  background: #f8fafc;
+}
+
+.contact-dept__import h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+
+.contact-dept__import-report {
+  margin-top: 0.75rem;
+  max-height: 12rem;
+  overflow: auto;
+  font-size: 0.8125rem;
+}
+
+.contact-dept__import-report ul {
+  margin: 0.35rem 0 0;
+  padding-left: 1.1rem;
+}
+
 .contact-dept__layout {
   display: grid;
   grid-template-columns: minmax(240px, 320px) 1fr;

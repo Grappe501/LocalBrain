@@ -1,13 +1,21 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import type { ContactOrganization, ContactRecordWithAffiliations } from "@localbrain/shared";
+import type {
+  ContactImportPreviewResult,
+  ContactOrganization,
+  ContactRecordWithAffiliations,
+} from "@localbrain/shared";
 import {
   OUTREACH_STATUS_OPTIONS,
+  type ContactImportDuplicatePolicy,
   archiveContactApi,
+  commitContactImportApi,
   createContactApi,
   createContactOrganizationApi,
+  exportContactsCsv,
   fetchContactOrganizations,
   fetchContacts,
   linkContactAffiliationApi,
+  previewContactImportApi,
   restoreContactApi,
   updateContactApi,
 } from "../../api/contacts";
@@ -80,6 +88,11 @@ export function ContactManagementView() {
   const [newOrgName, setNewOrgName] = useState("");
   const [linkOrgId, setLinkOrgId] = useState("");
   const [linkRole, setLinkRole] = useState("");
+  const [importOpen, setImportOpen] = useState(false);
+  const [importCsvText, setImportCsvText] = useState("");
+  const [duplicatePolicy, setDuplicatePolicy] = useState<ContactImportDuplicatePolicy>("error");
+  const [importPreview, setImportPreview] = useState<ContactImportPreviewResult | null>(null);
+  const [importMessage, setImportMessage] = useState<string | null>(null);
 
   const selected = useMemo(
     () => contacts.find((contact) => contact.contact_id === selectedId) ?? null,
@@ -203,6 +216,88 @@ export function ContactManagementView() {
     }
   }
 
+  async function handleExportCsv() {
+    setSaving(true);
+    setError(null);
+    try {
+      const csv = await exportContactsCsv({
+        workspace_id: WORKSPACE_ID,
+        include_archived: includeArchived,
+        search: search.trim() || undefined,
+        tag: tagFilter.trim() || undefined,
+      });
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const anchor = document.createElement("a");
+      anchor.href = url;
+      anchor.download = `contacts-${WORKSPACE_ID}.csv`;
+      anchor.click();
+      URL.revokeObjectURL(url);
+      setImportMessage("Contacts exported to CSV.");
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "CSV export failed");
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  async function handleImportFile(file: File) {
+    setError(null);
+    setImportMessage(null);
+    setImportPreview(null);
+    try {
+      const csv_text = await file.text();
+      setImportCsvText(csv_text);
+      setImportOpen(true);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Could not read CSV file");
+    }
+  }
+
+  async function handleImportPreview() {
+    if (!importCsvText.trim()) return;
+    setSaving(true);
+    setError(null);
+    setImportMessage(null);
+    try {
+      const response = await previewContactImportApi({
+        workspace_id: WORKSPACE_ID,
+        csv_text: importCsvText,
+        duplicate_policy: duplicatePolicy,
+      });
+      setImportPreview(response.preview);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Import preview failed");
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  async function handleImportCommit() {
+    if (!importCsvText.trim() || !importPreview?.can_commit) return;
+    setSaving(true);
+    setError(null);
+    try {
+      const response = await commitContactImportApi({
+        workspace_id: WORKSPACE_ID,
+        csv_text: importCsvText,
+        duplicate_policy: duplicatePolicy,
+      });
+      const { result } = response;
+      setImportMessage(
+        `Import complete — ${result.created_count} created, ${result.updated_count} updated, ${result.skipped_count} skipped, ${result.failed_count} failed.`,
+      );
+      setImportPreview(null);
+      setImportCsvText("");
+      setImportOpen(false);
+      await loadContacts();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Import commit failed");
+    } finally {
+      setSaving(false);
+    }
+  }
+
   async function handleLinkOrganization() {
     if (!selectedId || !linkOrgId) return;
     setSaving(true);
@@ -227,9 +322,11 @@ export function ContactManagementView() {
       <header className="contact-dept__header">
         <h1>Contact Management</h1>
         <p className="contact-dept__meta">
-          ENG-CONTACT-001.2 · workspace {WORKSPACE_ID} · human-controlled outreach only
+          ENG-CONTACT-001.3 · workspace {WORKSPACE_ID} · CSV import/export · human-controlled outreach only
         </p>
       </header>
+
+      {importMessage ? <p className="contact-dept__notice">{importMessage}</p> : null}
 
       {error ? <p className="contact-dept__error">{error}</p> : null}
 
@@ -239,7 +336,95 @@ export function ContactManagementView() {
             <button type="button" className="contact-dept__primary" onClick={beginCreate}>
               New contact
             </button>
+            <button
+              type="button"
+              className="contact-dept__secondary"
+              disabled={saving}
+              onClick={() => void handleExportCsv()}
+            >
+              Export CSV
+            </button>
+            <label className="contact-dept__file-button">
+              Import CSV
+              <input
+                type="file"
+                accept=".csv,text/csv"
+                hidden
+                onChange={(event) => {
+                  const file = event.target.files?.[0];
+                  if (file) void handleImportFile(file);
+                  event.target.value = "";
+                }}
+              />
+            </label>
           </div>
+
+          {importOpen ? (
+            <section className="contact-dept__import">
+              <h2>CSV import preview</h2>
+              <label className="contact-dept__field">
+                <span>Duplicate handling</span>
+                <select
+                  value={duplicatePolicy}
+                  onChange={(event) =>
+                    setDuplicatePolicy(event.target.value as ContactImportDuplicatePolicy)
+                  }
+                >
+                  <option value="error">Block duplicates (safest)</option>
+                  <option value="skip">Skip duplicates</option>
+                  <option value="update">Update existing by email</option>
+                </select>
+              </label>
+              <div className="contact-dept__actions">
+                <button
+                  type="button"
+                  className="contact-dept__secondary"
+                  disabled={saving || !importCsvText.trim()}
+                  onClick={() => void handleImportPreview()}
+                >
+                  Preview import
+                </button>
+                <button
+                  type="button"
+                  className="contact-dept__primary"
+                  disabled={saving || !importPreview?.can_commit}
+                  onClick={() => void handleImportCommit()}
+                >
+                  Commit import
+                </button>
+                <button
+                  type="button"
+                  className="contact-dept__secondary"
+                  onClick={() => {
+                    setImportOpen(false);
+                    setImportPreview(null);
+                    setImportCsvText("");
+                  }}
+                >
+                  Cancel
+                </button>
+              </div>
+              {importPreview ? (
+                <div className="contact-dept__import-report">
+                  <p>
+                    {importPreview.total_rows} rows · {importPreview.create_count} create ·{" "}
+                    {importPreview.update_count} update · {importPreview.skip_count} skip ·{" "}
+                    {importPreview.error_count} error
+                  </p>
+                  <ul>
+                    {importPreview.rows.map((row) => (
+                      <li key={row.row_number}>
+                        Row {row.row_number}: {row.action} — {row.display_name || "(no name)"}
+                        {row.email ? ` · ${row.email}` : ""}
+                        {row.errors.length > 0 ? ` · ${row.errors.join("; ")}` : ""}
+                        {row.warnings.length > 0 ? ` · ${row.warnings.join("; ")}` : ""}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+            </section>
+          ) : null}
 
           <label className="contact-dept__field">
             <span>Search</span>

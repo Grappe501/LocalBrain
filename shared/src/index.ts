@@ -314,6 +314,8 @@ export {
 export {
   CONTACT_RECORD_ENGINE_ID,
   CONTACT_RECORD_VERSION,
+  CONTACT_CSV_VERSION,
+  CONTACT_CSV_HEADERS,
 } from "./contacts/index.js";
 export type {
   ContactAddress,
@@ -328,6 +330,15 @@ export type {
   CreateContactInput,
   CreateContactOrganizationInput,
   UpdateContactInput,
+  ContactCsvHeader,
+  ContactImportDuplicatePolicy,
+  ContactImportRowAction,
+  ContactImportPreviewRow,
+  ContactImportPreviewResult,
+  ContactImportCommitRowResult,
+  ContactImportCommitResult,
+  ContactImportPreviewInput,
+  ContactImportCommitInput,
 } from "./contacts/index.js";
 export type {
   AssetCollection,

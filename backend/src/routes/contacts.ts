@@ -12,12 +12,17 @@ import {
   updateContact,
   ContactDuplicateEmailError,
 } from "../contacts/contactRepository.js";
+import {
+  commitContactImport,
+  exportContactsCsv,
+  previewContactImport,
+} from "../contacts/contactCsv.js";
 import { ContactValidationError } from "../contacts/contactValidator.js";
 
 export const contactsRouter = Router();
 
-const ENGINE_ID = "ENG-CONTACT-001.2";
-const SLICE_ID = "ENG-CONTACT-001.2";
+const ENGINE_ID = "ENG-CONTACT-001.3";
+const SLICE_ID = "ENG-CONTACT-001.3";
 
 function resolveWorkspaceId(queryValue: unknown, bodyValue: unknown): string | null {
   const candidate =
@@ -43,6 +48,81 @@ function mapContactError(error: unknown, res: import("express").Response): boole
   }
   return false;
 }
+
+contactsRouter.get("/contacts/export.csv", (req, res) => {
+  const workspace_id = resolveWorkspaceId(req.query.workspace_id, undefined);
+  if (!workspace_id) {
+    res.status(400).json({ error: "workspace_id is required" });
+    return;
+  }
+
+  const csv = exportContactsCsv({
+    workspace_id,
+    include_archived: req.query.include_archived === "true",
+    search: typeof req.query.search === "string" ? req.query.search : undefined,
+    tag: typeof req.query.tag === "string" ? req.query.tag : undefined,
+    email: typeof req.query.email === "string" ? req.query.email : undefined,
+  });
+
+  res.setHeader("Content-Type", "text/csv; charset=utf-8");
+  res.setHeader(
+    "Content-Disposition",
+    `attachment; filename="contacts-${workspace_id}.csv"`,
+  );
+  res.send(csv);
+});
+
+contactsRouter.post("/contacts/import/preview", (req, res) => {
+  const workspace_id = resolveWorkspaceId(req.query.workspace_id, req.body?.workspace_id);
+  if (!workspace_id) {
+    res.status(400).json({ error: "workspace_id is required" });
+    return;
+  }
+
+  const csv_text = typeof req.body?.csv_text === "string" ? req.body.csv_text : "";
+  if (!csv_text.trim()) {
+    res.status(400).json({ error: "csv_text is required" });
+    return;
+  }
+
+  try {
+    const preview = previewContactImport({
+      workspace_id,
+      csv_text,
+      duplicate_policy: req.body?.duplicate_policy,
+    });
+    res.json({ slice_id: SLICE_ID, engine_id: ENGINE_ID, preview });
+  } catch (error) {
+    if (mapContactError(error, res)) return;
+    throw error;
+  }
+});
+
+contactsRouter.post("/contacts/import/commit", (req, res) => {
+  const workspace_id = resolveWorkspaceId(req.query.workspace_id, req.body?.workspace_id);
+  if (!workspace_id) {
+    res.status(400).json({ error: "workspace_id is required" });
+    return;
+  }
+
+  const csv_text = typeof req.body?.csv_text === "string" ? req.body.csv_text : "";
+  if (!csv_text.trim()) {
+    res.status(400).json({ error: "csv_text is required" });
+    return;
+  }
+
+  try {
+    const result = commitContactImport({
+      workspace_id,
+      csv_text,
+      duplicate_policy: req.body?.duplicate_policy,
+    });
+    res.status(201).json({ slice_id: SLICE_ID, engine_id: ENGINE_ID, result });
+  } catch (error) {
+    if (mapContactError(error, res)) return;
+    throw error;
+  }
+});
 
 contactsRouter.get("/contacts/organizations/list", (req, res) => {
   const workspace_id = resolveWorkspaceId(req.query.workspace_id, undefined);

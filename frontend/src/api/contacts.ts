@@ -141,3 +141,59 @@ export const OUTREACH_STATUS_OPTIONS: ContactOutreachStatus[] = [
   "sent",
   "replied",
 ];
+
+export type ContactImportDuplicatePolicy = "skip" | "update" | "error";
+
+export async function exportContactsCsv(options: {
+  workspace_id: string;
+  include_archived?: boolean;
+  search?: string;
+  tag?: string;
+}): Promise<string> {
+  const params = new URLSearchParams({ workspace_id: options.workspace_id });
+  if (options.include_archived) params.set("include_archived", "true");
+  if (options.search) params.set("search", options.search);
+  if (options.tag) params.set("tag", options.tag);
+
+  const res = await fetch(`/api/contacts/export.csv?${params.toString()}`);
+  if (!res.ok) throw new Error(await parseError(res));
+  return res.text();
+}
+
+export async function previewContactImportApi(options: {
+  workspace_id: string;
+  csv_text: string;
+  duplicate_policy?: ContactImportDuplicatePolicy;
+}) {
+  const res = await fetch(
+    `/api/contacts/import/preview?workspace_id=${encodeURIComponent(options.workspace_id)}`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(options),
+    },
+  );
+  if (!res.ok) throw new Error(await parseError(res));
+  return res.json() as Promise<{
+    preview: import("@localbrain/shared").ContactImportPreviewResult;
+  }>;
+}
+
+export async function commitContactImportApi(options: {
+  workspace_id: string;
+  csv_text: string;
+  duplicate_policy?: ContactImportDuplicatePolicy;
+}) {
+  const res = await fetch(
+    `/api/contacts/import/commit?workspace_id=${encodeURIComponent(options.workspace_id)}`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(options),
+    },
+  );
+  if (!res.ok) throw new Error(await parseError(res));
+  return res.json() as Promise<{
+    result: import("@localbrain/shared").ContactImportCommitResult;
+  }>;
+}
