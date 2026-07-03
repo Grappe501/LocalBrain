@@ -1,6 +1,6 @@
 # ENG-CONTACT-001.1 — Canonical Contact Storage
 
-> **Status:** **AUTHORIZED** — 2026-07-03  
+> **Status:** **IMPLEMENTATION FROZEN** — 2026-07-03 · repository + contract landed · PMO pending  
 > **Parent:** [ENG-CONTACT-001 Charter](../ENG-CONTACT-001-CHARTER.md)  
 > **Phase:** First behavioral slice · storage foundation · no UI · no CSV · no COM wiring
 
@@ -73,13 +73,13 @@ PMO evaluates evidence, not UI polish.
 
 | # | Criterion |
 | - | --------- |
-| C1 | `ContactRecord` contract published in shared with version constant | Pending |
-| C2 | SQLite schema migrates cleanly on fresh and existing installs | Pending |
-| C3 | Create/read/update/archive round-trip preserves all required fields | Pending |
-| C4 | Duplicate email within same workspace is rejected or surfaced — policy documented | Pending |
-| C5 | Organization affiliation links persist and resolve on read | Pending |
-| C6 | Archived contacts excluded from default list · recoverable | Pending |
-| C7 | Behavioral tests pass in isolation (OPS-TEST-004 lane) | Pending |
+| C1 | `ContactRecord` contract published in shared with version constant | ✅ |
+| C2 | SQLite schema migrates cleanly on fresh and existing installs | ✅ |
+| C3 | Create/read/update/archive round-trip preserves all required fields | ✅ |
+| C4 | Duplicate email within same workspace is rejected or surfaced — policy documented | ✅ |
+| C5 | Organization affiliation links persist and resolve on read | ✅ |
+| C6 | Archived contacts excluded from default list · recoverable | ✅ |
+| C7 | Behavioral tests pass in isolation (OPS-TEST-004 lane) | ✅ · 7/7 |
 
 ---
 

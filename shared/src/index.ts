@@ -311,6 +311,24 @@ export {
   serializeEpisode,
   serializeFact,
 } from "./memoryOs/index.js";
+export {
+  CONTACT_RECORD_ENGINE_ID,
+  CONTACT_RECORD_VERSION,
+} from "./contacts/index.js";
+export type {
+  ContactAddress,
+  ContactEmail,
+  ContactListFilter,
+  ContactOrganization,
+  ContactOrganizationAffiliation,
+  ContactOutreachStatus,
+  ContactPhone,
+  ContactRecord,
+  ContactRecordWithAffiliations,
+  CreateContactInput,
+  CreateContactOrganizationInput,
+  UpdateContactInput,
+} from "./contacts/index.js";
 export type {
   AssetCollection,
   AssetHealthSignals,

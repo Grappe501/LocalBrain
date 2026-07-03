@@ -171,7 +171,7 @@ Success **is**:
 
 | Slice | Behavioral question | Status |
 | ----- | ------------------- | ------ |
-| [ENG-CONTACT-001.1](./slices/ENG-CONTACT-001.1-CANONICAL-CONTACT-STORAGE.md) | Can canonical contact records persist with integrity? | **AUTHORIZED** |
+| [ENG-CONTACT-001.1](./slices/ENG-CONTACT-001.1-CANONICAL-CONTACT-STORAGE.md) | Can canonical contact records persist with integrity? | **IMPLEMENTATION FROZEN** |
 | ENG-CONTACT-001.2 | Can contacts be managed through API and UI? | Reserved |
 | ENG-CONTACT-001.3 | Can CSV import/export round-trip without loss? | Reserved |
 | ENG-CONTACT-001.4 | Can contacts link to Communications drafts? | Reserved |
