@@ -122,7 +122,9 @@ Deterministic substrate doctrine: [DETERMINISTIC-FOUNDATION-DOCTRINE.md](./DETER
 
 **Constitutional doctrine:** [The Five Constitutional Substrates](./THE-FIVE-CONSTITUTIONAL-SUBSTRATES.md)
 
-**Post-foundation era:** **Executive Intelligence Era** — `ei-doctrine-v1.0` **FROZEN** · [ENG-EI-001](./ENG-EI-001-CHARTER.md) **COMPLETE** · [ENG-PMO-008](./ENG-PMO-008-CONSTITUTIONAL-RETRIEVAL-ACCEPTANCE.md) · ENG-EI-002 **NEXT**
+**Post-foundation era:** **Executive Intelligence Era** — deterministic pipeline **COMPLETE** · ENG-EI-002 **COMPLETE** · Reference Consumer 001 · [ENG-PMO-009](./ENG-PMO-009-EXECUTIVE-BRIEF-ACCEPTANCE.md)
+
+**Behavioral slices:** [ENG-COM-001.1](../communications-office/slices/ENG-COM-001.1-TRACEABLE-DRAFT-GENERATION.md) + [001.2](../communications-office/slices/ENG-COM-001.2-UNCERTAINTY-PRESERVATION.md) + [001.3](../communications-office/slices/ENG-COM-001.3-ADVISORY-RESTRAINT.md) **COMPLETE** · inherited traceability + uncertainty + advisory restraint · **module evaluation next**
 
 ---
 

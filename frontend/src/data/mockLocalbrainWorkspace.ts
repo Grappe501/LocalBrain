@@ -9,11 +9,11 @@ export const LOCALBRAIN_WORKSPACE = {
 
 export const MOCK_WORKSPACE_SIGNALS = [
   { label: "Institutional Cognition Foundation V1", value: "5/5 COMPLETE · memory-spec-v1.0 · 100%", tone: "neutral" as const },
-  { label: "Institutional substrates", value: "Episode · Fact · Artifact · Conversation · DecisionCitation ✓", tone: "neutral" as const },
-  { label: "Executive Intelligence Era", value: "ENG-EI-001 COMPLETE · Contract ENG-EI-001.3 · ENG-EI-002 next", tone: "neutral" as const },
-  { label: "V1 launch score", value: "~78% · refresh Program Office", tone: "neutral" as const },
-  { label: "Next slice", value: "ENG-EI-002 Executive Brief", tone: "neutral" as const },
-  { label: "Communications Office", value: "Awaiting ENG-EI-002 Executive Brief", tone: "neutral" as const },
-];
+  { label: "Inherited capabilities", value: "Traceability · Uncertainty · contracts · doctrine", tone: "neutral" as const },
+  { label: "ENG-COM-001.3", value: "COMPLETE · ENG-PMO-012 · 7/7 advisory · inherited", tone: "positive" as const },
+  { label: "Active slice", value: "Communications Office module evaluation", tone: "neutral" as const },
+  { label: "V1 launch score", value: "~93% · refresh Program Office", tone: "neutral" as const },
+  { label: "Communications Office", value: "90% · behavioral slices COMPLETE · module gate next", tone: "neutral" as const },
+] as const;
 
 export const MOCK_SIGNAL_COUNT = MOCK_WORKSPACE_SIGNALS.length;

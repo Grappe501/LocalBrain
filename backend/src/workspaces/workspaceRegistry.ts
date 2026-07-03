@@ -288,7 +288,7 @@ export function seedWorkspaces(): void {
     parent_workspace_id: null,
     executive_context:
       "LocalBrain is Steve's Executive Operating System — not a chatbot. Wave 1 builds the Institutional Cognition Foundation: deterministic memory substrates that Executive Intelligence reasons over.",
-    current_focus: "ENG-EI-002 Executive Brief — first Evidence Package consumer · Lane 2",
+    current_focus: "ENG-COM-001.3 COMPLETE · ENG-PMO-012 · 7/7 advisory · inherited advisory restraint",
     success_definition:
       "A modular AI Executive Operating System that becomes Steve's primary interface for work.",
     workspace_avatar: "🧠",
@@ -297,7 +297,7 @@ export function seedWorkspaces(): void {
     filesystem_roots: [repoRoot],
     profile: {
       mission: "Build Steve's Executive Operating System",
-      current_phase: "Executive Intelligence Era · ENG-EI-001 COMPLETE · ENG-EI-002 Executive Brief",
+      current_phase: "Communications Office · ENG-COM-001.3 COMPLETE · ENG-PMO-012 · module evaluation next",
       completed_slices: [
         "LB-OS-001",
         "LB-OS-002",
@@ -316,11 +316,20 @@ export function seedWorkspaces(): void {
         "ENG-EI-001.2",
         "ENG-EI-001.3",
         "ENG-PMO-008",
+        "ENG-EI-002.1",
+        "ENG-EI-002.2",
+        "ENG-PMO-009",
+        "ENG-COM-001.1",
+        "ENG-PMO-010",
+        "ENG-COM-001.2",
+        "ENG-PMO-011",
+        "ENG-COM-001.3",
+        "ENG-PMO-012",
       ],
-      active_slice: "ENG-EI-002 Executive Brief",
+      active_slice: "Communications Office module evaluation",
       next_slices: [
-        "ENG-EI-002 Executive Brief",
-        "Communications Office",
+        "Communications Office module evaluation",
+        "Commercial Beta",
       ],
       recent_decisions: [
         "PSP approved",
@@ -331,9 +340,9 @@ export function seedWorkspaces(): void {
         "ENG-PMO-005 Constitutional Completion",
       ],
       chief_of_staff_summary:
-        "ENG-EI-001 COMPLETE · ENG-PMO-008 · Evidence Package Contract ENG-EI-001.3 · 12/12 retrieval tests",
+        "ENG-COM-001.3 COMPLETE · ENG-PMO-012 · Contract ENG-COM-001.3 · 19/19 behavioral tests · advisory restraint inherited",
       recommended_next_action:
-        "ENG-EI-002 Executive Brief — Reference Consumer 001 · Lane 2 behavioral verification",
+        "Communications Office module evaluation — has the office earned completion as a V1 subsystem?",
       repositories: [],
       contacts: [],
       calendar_links: [],

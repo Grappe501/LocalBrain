@@ -32,7 +32,7 @@ export const SURFACE_REGISTRY: LiveSurfaceEntry[] = [
     maturity_level: 2,
     target_maturity_level: 5,
     next_upgrade_slice: "LB-OS-026.7",
-    next_upgrade_summary: "Executive Office home — Chief of Staff narrative replaces mock briefing",
+    next_upgrade_summary: "ENG-COM-001.3 COMPLETE · ENG-PMO-012 · inherited advisory restraint",
   },
   {
     route: "/workspace/:workspaceId",
@@ -46,7 +46,7 @@ export const SURFACE_REGISTRY: LiveSurfaceEntry[] = [
     maturity_level: 2,
     target_maturity_level: 5,
     next_upgrade_slice: "MEM-010",
-    next_upgrade_summary: "ENG-EI-002 Executive Brief — first Evidence Package consumer · Lane 2",
+    next_upgrade_summary: "ENG-COM-001.3 COMPLETE · Contract ENG-COM-001.3 · module evaluation next",
   },
   {
     route: "/actions",
@@ -82,7 +82,7 @@ export const SURFACE_REGISTRY: LiveSurfaceEntry[] = [
     maturity_level: 3,
     target_maturity_level: 5,
     next_upgrade_slice: "LB-OS-026.7",
-    next_upgrade_summary: "Executive Office experience zone alongside build state (L4)",
+    next_upgrade_summary: "ENG-COM-001.3 COMPLETE · module evaluation · Program Office live build state (L4)",
   },
   {
     route: "/system",

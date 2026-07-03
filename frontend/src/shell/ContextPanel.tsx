@@ -26,7 +26,7 @@ export function ContextPanel() {
   return (
     <aside className="context-panel" aria-label="System context">
       <h2 className="context-panel__title">Context</h2>
-      <p className="context-panel__count">{CONTEXT_CARDS.length} cards · Foundation V1 complete · Executive Intelligence Era</p>
+      <p className="context-panel__count">{CONTEXT_CARDS.length} cards · ENG-COM-001.3 COMPLETE · module evaluation next</p>
       <ul className="context-panel__cards">
         {CONTEXT_CARDS.map((card) => (
           <li key={card.id} className="context-panel__card">

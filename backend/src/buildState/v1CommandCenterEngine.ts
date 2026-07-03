@@ -26,10 +26,17 @@ import { getCommitCount, getRecentCommits } from "./gitMetrics.js";
 import { certifyCurrentModule } from "./moduleCertificationEngine.js";
 import { getMemoryOsModuleProgress, getMemoryOsProgressSnapshot } from "./memoryOsSpecMetrics.js";
 import {
+  getCommunicationsOfficeModuleProgress,
+  getCommunicationsOfficeSnapshot,
+  isCommunicationsOfficeStarted,
+} from "./communicationsOfficeMetrics.js";
+import {
   getExecutiveIntelligenceEraSnapshot,
   isExecutiveIntelligenceDoctrineFrozen,
   isConstitutionalRetrievalComplete,
   isExecutiveIntelligenceImplementationStarted,
+  isWorkProductComplete,
+  isWorkProductImplementationStarted,
 } from "./executiveIntelligenceEraMetrics.js";
 import { parsePeerReviewProgress } from "../epo/checklistParser.js";
 import { isModuleCertificationLocked } from "./v1CertificationRegistry.js";
@@ -110,8 +117,12 @@ const MODULE_DEFS: {
     weight_area: "communications",
     owner: null,
     path_steps: ["communications_office"],
-    slice_ids: [],
-    test_globs: [],
+    slice_ids: ["ENG-COM-001.1", "ENG-COM-001.2", "ENG-COM-001.3"],
+    test_globs: [
+      "backend/src/communicationsOffice/communicationsDraft.test.ts",
+      "backend/src/communicationsOffice/communicationsDraftUncertainty.test.ts",
+      "backend/src/communicationsOffice/communicationsDraftAdvisoryRestraint.test.ts",
+    ],
   },
   {
     module_id: "documentation_beta",
@@ -243,6 +254,16 @@ function moduleBlockers(
     if (mem.wave1_complete_count >= 5 && !isExecutiveIntelligenceDoctrineFrozen()) {
       return "EI-001 doctrine freeze pending";
     }
+    if (mem.wave1_complete_count >= 5 && isWorkProductComplete()) {
+      const com = getCommunicationsOfficeSnapshot();
+      if (com.slice_001_2_pmo_pending || (com.office_started && com.module_progress_percent > 0)) {
+        return "None";
+      }
+      return "ENG-COM-001.1 Traceable Draft pending";
+    }
+    if (mem.wave1_complete_count >= 5 && isWorkProductImplementationStarted()) {
+      return "ENG-EI-002 charter acceptance pending";
+    }
     if (mem.wave1_complete_count >= 5 && isConstitutionalRetrievalComplete()) {
       return "ENG-EI-002 Executive Brief pending";
     }
@@ -326,6 +347,13 @@ export function computeV1CommandCenter(state: BuildStateSnapshot): V1CommandCent
     if (def.module_id === "theory_convention") {
       progress = Math.max(progress, theoryConventionProgress(peerReview));
     }
+    if (
+      def.module_id === "communications" &&
+      isModuleCertificationLocked("factory") &&
+      isWorkProductComplete()
+    ) {
+      progress = Math.max(progress, getCommunicationsOfficeModuleProgress());
+    }
     moduleProgress.set(def.module_id, Math.min(progress, 100));
   }
 
@@ -347,6 +375,8 @@ export function computeV1CommandCenter(state: BuildStateSnapshot): V1CommandCent
           ? true
           : progress >= 100 && tests.total > 0;
 
+    const comSnap =
+      def.module_id === "communications" ? getCommunicationsOfficeSnapshot() : null;
     const version =
       def.module_id === "factory" && factoryCert?.certification_locked
         ? "1.0"
@@ -354,7 +384,11 @@ export function computeV1CommandCenter(state: BuildStateSnapshot): V1CommandCent
           ? getMemoryOsProgressSnapshot().spec_frozen
             ? "0.2-impl"
             : "0.2-spec"
-          : def.version;
+          : def.module_id === "communications" && comSnap?.office_started
+            ? comSnap.slice_001_3_authorized && !comSnap.slice_001_3_complete
+              ? "ENG-COM-001.3"
+              : (comSnap.contract_version ?? "0.1")
+            : def.version;
 
     return {
       module_id: def.module_id,
@@ -431,6 +465,14 @@ export function computeV1CommandCenter(state: BuildStateSnapshot): V1CommandCent
   const eiEra = getExecutiveIntelligenceEraSnapshot();
   let buildingToday: string | null;
   if (
+    factoryModule?.certified &&
+    memoryModule &&
+    memoryModule.progress_percent >= 100 &&
+    isWorkProductComplete() &&
+    isCommunicationsOfficeStarted()
+  ) {
+    buildingToday = getCommunicationsOfficeSnapshot().building_today;
+  } else if (
     factoryModule?.certified &&
     memoryModule &&
     memoryModule.progress_percent >= 100 &&

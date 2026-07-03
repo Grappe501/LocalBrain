@@ -1,7 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import { getRepoRoot } from "../db/repoRoot.js";
-import { getExecutiveIntelligenceEraSnapshot } from "./executiveIntelligenceEraMetrics.js";
+import { getCommunicationsOfficeSnapshot, isCommunicationsOfficeStarted } from "./communicationsOfficeMetrics.js";
+import { getExecutiveIntelligenceEraSnapshot, isWorkProductComplete } from "./executiveIntelligenceEraMetrics.js";
 
 export const MEM008_TOTAL_TESTS = 107;
 export const WAVE1_SLICE_COUNT = 5;
@@ -218,6 +219,9 @@ function buildBuildingToday(
   completeCount: number,
 ): string {
   if (specFrozen && completeCount >= WAVE1_SLICE_COUNT) {
+    if (isWorkProductComplete() && isCommunicationsOfficeStarted()) {
+      return getCommunicationsOfficeSnapshot().building_today;
+    }
     return getExecutiveIntelligenceEraSnapshot().building_today;
   }
   if (specFrozen && active) {

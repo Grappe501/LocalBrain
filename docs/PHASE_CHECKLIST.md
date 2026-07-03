@@ -88,7 +88,7 @@ NO NEW DOCTRINE
 | — | Executive Cognition Peer Review | ✅ Complete — S1–S5 passed · Theory v1.0 frozen 2026-06-30 · [Evidence Base](./LOCALBRAIN_COGNITIVE_EVIDENCE_BASE.md#theory-v10-freeze-peer-review-complete) · auto-synced from Evidence Base |
 | — | [Platform Audit](./LOCALBRAIN_PLATFORM_AUDIT.md) — build plan + navigation | ✅ Complete 2026-06-28 — gap report · route registry · EQ matrix · top 10 slices |
 | — | Executive Epistemology Convention (5 sessions) | ✅ Complete 2026-06-28 — [Convention Close](./convention/CONVENTION-CLOSE.md) · [contracts](./convention/) |
-| LB-OS-027 | Executive Memory Bootstrap | ✓ Wave 1 complete · `memory-spec-v1.0` · [ENG-PMO-005](./memory-os/ENG-PMO-005-CONSTITUTIONAL-COMPLETION.md) · [MILESTONE-MEMORY-OS](./burt_packets/MILESTONE-MEMORY-OS.md) |
+| LB-OS-027 | Executive Memory Bootstrap | ✅ Wave 1 complete · ENG-EI-002 **COMPLETE** · ENG-PMO-009 · [MILESTONE-MEMORY-OS](./burt_packets/MILESTONE-MEMORY-OS.md) |
 | LB-OS-028 | Memory Ingestion | ⬜ PLANNED |
 | LB-OS-029 | Memory Retrieval | ⬜ PLANNED |
 | LB-OS-030 | Executive Context Window | ⬜ PLANNED |
@@ -198,7 +198,7 @@ NO NEW DOCTRINE
 | LB-OS-026.8 | Productization / Instance Onboarding | ✅ PROD-001 |
 | LB-OS-026.9 | Provider Vault & Connector Settings | ✅ PROD-001 |
 | LB-OS-027.0 | Empty Brain Factory / Packaging | ✅ Certified · `v1.0.0-factory-certified` · [MILESTONE-FACTORY](./burt_packets/MILESTONE-FACTORY.md) · [FACTORY_CONSTITUTION](./factory/FACTORY_CONSTITUTION_v1.0.md) |
-| LB-OS-027 | Executive Memory Bootstrap | ✅ Institutional Cognition Foundation V1 **COMPLETE** · ENG-PMO-005 · `memory-spec-v1.0` · [Executive Intelligence Doctrine](./memory-os/EXECUTIVE-INTELLIGENCE-DOCTRINE.md) **FROZEN** · ENG-EI-001 **COMPLETE** · ENG-PMO-008 |
+| LB-OS-027 | Executive Memory Bootstrap | ✅ Institutional Cognition Foundation V1 **COMPLETE** · ENG-EI-001 **COMPLETE** · ENG-EI-002 **COMPLETE** · ENG-PMO-009 |
 | LB-OS-027.1 | Multi-Brain Sharing (reserved) | 🔒 Reserved · CAP-FUT-MBS-001 |
 | LB-OS-PROD-002 | License & Subscription Gate | 🔒 Reserved · [Burt](./burt_packets/LB-OS-PROD-002-006-reserved.md) · CAP-FUT-LIC-001 |
 | LB-OS-PROD-003 | Social Media Connector Registry | 🔒 Reserved · CAP-FUT-SMC-001 |
@@ -212,7 +212,7 @@ NO NEW DOCTRINE
 | LB-OS-PROD-011 | Chief Compliance Officer | 🔒 Reserved · CAP-FUT-CCO-001 |
 | LB-OS-CON-003 | Versioned Constitution Migration | 🔒 Reserved · CAP-FUT-CON-VER-001 |
 
-**Gate:** V1 implementation mode · **Next:** ENG-EI-002 Executive Brief → Communications Office · ENG-EI-001 **COMPLETE** · Evidence Package Contract **ACCEPTED**
+**Gate:** V1 implementation mode · **ENG-COM-001.3** [Advisory Restraint](./communications-office/slices/ENG-COM-001.3-ADVISORY-RESTRAINT.md) **COMPLETE** · ENG-PMO-012 ACCEPTED → module evaluation → Commercial Beta
 
 **Architecture phase:** ✅ **COMPLETE** · **Doctrine:** 🔒 **FROZEN** (feature freeze until launch — no new doctrine, reserved capabilities, offices, or cognitive layers)
 

@@ -26,6 +26,8 @@ import {
 } from "./gitMetrics.js";
 import { parsePeerReviewProgress, buildTheoryFrozenStatus, theoryValidationPhaseLabel } from "../epo/checklistParser.js";
 import { resolveConsolidationCursor } from "./consolidationCursor.js";
+import { getCommunicationsOfficeSnapshot, isCommunicationsOfficeStarted } from "./communicationsOfficeMetrics.js";
+import { isWorkProductComplete } from "./executiveIntelligenceEraMetrics.js";
 
 export const BUILD_STATE_ENGINE_ID = "ENG-BLD-001";
 
@@ -155,6 +157,25 @@ function findCurrentAndNext(
       const parsed = parsedMap.get(anchor.slice_id);
       if (parsed) phaseLabel = parsed.phase_label;
     }
+  }
+
+  if (isWorkProductComplete() && isCommunicationsOfficeStarted()) {
+    const com = getCommunicationsOfficeSnapshot();
+    phaseLabel = com.slice_001_3_complete
+      ? "Communications Office · ENG-COM-001.3 COMPLETE · ENG-PMO-012"
+      : com.slice_001_3_implementation_frozen && !com.slice_001_3_complete
+      ? "Communications Office · ENG-COM-001.3 IMPLEMENTATION FROZEN"
+      : com.slice_001_3_authorized && !com.slice_001_3_complete
+      ? "Communications Office · ENG-COM-001.3 AUTHORIZED · active crossing"
+      : com.baseline_stable
+        ? "Communications Office · stable baseline · no active architectural uncertainty"
+        : com.slice_001_2_complete
+        ? "Communications Office · ENG-COM-001.2 COMPLETE · ENG-PMO-011"
+        : com.slice_001_2_implementation_frozen
+          ? "Communications Office · ENG-COM-001.2 IMPLEMENTATION FROZEN"
+          : com.slice_001_1_complete
+            ? "Communications Office · ENG-COM-001.1 COMPLETE"
+            : "Communications Office · ENG-COM-001 AUTHORIZED";
   }
 
   return { current, next, phaseLabel };

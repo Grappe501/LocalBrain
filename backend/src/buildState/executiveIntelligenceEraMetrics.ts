@@ -42,10 +42,35 @@ const CONTRACT_VERSION_PATH = path.join(
 );
 
 const PMO_008_PATH = path.join(DOCS, "ENG-PMO-008-CONSTITUTIONAL-RETRIEVAL-ACCEPTANCE.md");
+const PMO_009_PATH = path.join(DOCS, "ENG-PMO-009-EXECUTIVE-BRIEF-ACCEPTANCE.md");
 const DOC_003_PATH = path.join(DOCS, "ENG-EI-DOC-003-CONSTITUTIONAL-RETRIEVAL-COMPLETE.md");
+const EXECUTIVE_BRIEF_RENDERER_PATH = path.join(
+  getRepoRoot(),
+  "backend",
+  "src",
+  "executiveIntelligence",
+  "executiveBriefRenderer.ts",
+);
+const EXECUTIVE_BRIEF_CONTRACT_PATH = path.join(
+  getRepoRoot(),
+  "shared",
+  "src",
+  "memoryOs",
+  "executiveBrief.ts",
+);
+const EXECUTIVE_BRIEF_TEST_PATH = path.join(
+  getRepoRoot(),
+  "backend",
+  "src",
+  "executiveIntelligence",
+  "executiveBrief.test.ts",
+);
 
 /** Planned ENG-EI-001 implementation slices — all shipped before PMO-008. */
 export const ENG_EI_001_IMPL_SLICE_TARGET = 3;
+
+/** Planned ENG-EI-002 implementation slices — both shipped before PMO-009. */
+export const ENG_EI_002_IMPL_SLICE_TARGET = 2;
 
 export type ExecutiveIntelligenceImplementationPhase =
   | "pre_implementation"
@@ -80,6 +105,57 @@ function countArticles(text: string): number {
 
 function fileExists(relPath: string): boolean {
   return fs.existsSync(path.join(getRepoRoot(), relPath));
+}
+
+function parseBriefContractVersion(): string | null {
+  try {
+    const text = fs.readFileSync(EXECUTIVE_BRIEF_CONTRACT_PATH, "utf8");
+    const m = text.match(/EXECUTIVE_BRIEF_VERSION\s*=\s*"([^"]+)"/);
+    return m?.[1] ?? null;
+  } catch {
+    return null;
+  }
+}
+
+function countBriefTests(): number {
+  try {
+    const text = fs.readFileSync(EXECUTIVE_BRIEF_TEST_PATH, "utf8");
+    return (text.match(/^test\(/gm) ?? []).length;
+  } catch {
+    return 0;
+  }
+}
+
+function detectWorkProductComplete(): boolean {
+  if (fs.existsSync(PMO_009_PATH)) return true;
+  const charter = readDoc("ENG-EI-002-CHARTER.md");
+  return /\*\*COMPLETE\*\*/i.test(charter) && /ENG-PMO-009/i.test(charter);
+}
+
+function detectWorkProductSlicesComplete(): string[] {
+  const complete: string[] = [];
+  if (
+    fs.existsSync(EXECUTIVE_BRIEF_RENDERER_PATH) &&
+    fs.existsSync(EXECUTIVE_BRIEF_CONTRACT_PATH)
+  ) {
+    complete.push("ENG-EI-002.1");
+    if (parseBriefContractVersion() === "ENG-EI-002.2") {
+      complete.push("ENG-EI-002.2");
+    }
+  }
+  return complete;
+}
+
+function workProductProgressPercent(
+  slicesComplete: string[],
+  workProductComplete: boolean,
+): number {
+  if (workProductComplete) return 100;
+  if (slicesComplete.length === 0) return 0;
+  return Math.min(
+    99,
+    Math.round((slicesComplete.length / ENG_EI_002_IMPL_SLICE_TARGET) * 100),
+  );
 }
 
 function parseContractVersion(): string | null {
@@ -163,6 +239,13 @@ export type ExecutiveIntelligenceEraSnapshot = {
   retrieval_contract_version: string | null;
   retrieval_tests_count: number;
   retrieval_complete: boolean;
+  work_product_started: boolean;
+  work_product_complete: boolean;
+  work_product_slices_complete: string[];
+  work_product_progress_percent: number;
+  work_product_contract_version: string | null;
+  reference_consumer_id: string | null;
+  brief_tests_count: number;
   building_today: string;
   summary: string;
   smallest_next_slice: string;
@@ -189,6 +272,7 @@ export function getExecutiveIntelligenceEraSnapshot(): ExecutiveIntelligenceEraS
   const mar3 = readDoc("MAR-3-EXECUTIVE-INTELLIGENCE-ARCHITECTURE_REVIEW.md");
   const ei001 = readDoc("EI-001-DOCTRINE-FREEZE.md");
   const engEi001 = readDoc("ENG-EI-001-CHARTER.md");
+  const engEi002 = readDoc("ENG-EI-002-CHARTER.md");
 
   const doctrine_status = parseStatus(doctrine) ?? "UNKNOWN";
   const mar3_status = parseStatus(mar3) ?? "UNKNOWN";
@@ -232,12 +316,42 @@ export function getExecutiveIntelligenceEraSnapshot(): ExecutiveIntelligenceEraS
     : implProgressPercent(impl_slices_complete);
   const retrieval_contract_version = parseContractVersion();
   const retrieval_tests_count = countRetrievalTests();
+  const work_product_slices_complete = detectWorkProductSlicesComplete();
+  const work_product_complete = detectWorkProductComplete();
+  const work_product_started =
+    work_product_slices_complete.length > 0 || work_product_complete;
+  const work_product_progress_percent = workProductProgressPercent(
+    work_product_slices_complete,
+    work_product_complete,
+  );
+  const work_product_contract_version = parseBriefContractVersion();
+  const brief_tests_count = countBriefTests();
+  const reference_consumer_id = work_product_complete ? "Reference Consumer 001" : null;
 
   let building_today: string;
   let smallest_next_slice: string;
   let summary: string;
 
-  if (doctrine_frozen && retrieval_complete) {
+  if (doctrine_frozen && retrieval_complete && work_product_complete) {
+    const briefContract = work_product_contract_version ?? "ENG-EI-002.2";
+    const briefTestLabel =
+      brief_tests_count > 0 ? `${brief_tests_count}/${brief_tests_count} brief tests` : "brief tests";
+    building_today = `ENG-EI-002 COMPLETE · Reference Consumer 001 · Work Product Contract ${briefContract} · deterministic pipeline closed · ${briefTestLabel}`;
+    smallest_next_slice =
+      "Probabilistic reasoning must inhabit deterministic interfaces — Communications Office";
+    summary = `ENG-EI-002 COMPLETE · ENG-PMO-009 · Reference Consumer 001 · Lane 2 · deterministic executive pipeline closed`;
+  } else if (doctrine_frozen && retrieval_complete && work_product_started) {
+    const wpLabel = work_product_slices_complete.join(" · ");
+    const briefContract = work_product_contract_version ?? "ENG-EI-002";
+    const briefTestLabel =
+      brief_tests_count > 0 ? `${brief_tests_count}/${brief_tests_count} brief tests` : "brief tests";
+    const retrievalContract = retrieval_contract_version ?? "ENG-EI-001.3";
+    building_today = `ENG-EI-002 quality phase — ${wpLabel} COMPLETE · Work Product Contract ${briefContract} · ${briefTestLabel}`;
+    smallest_next_slice = work_product_slices_complete.includes("ENG-EI-002.2")
+      ? "ENG-EI-002 charter acceptance (B1–B9) — Reference Consumer 001"
+      : "ENG-EI-002.2 behavioral fidelity — citation grouping · omissions · without making it smarter";
+    summary = `ENG-EI-002 IN PROGRESS · ${wpLabel} · Lane 2 · Evidence Package ${retrievalContract} · Doctrine Fidelity`;
+  } else if (doctrine_frozen && retrieval_complete) {
     const contractLabel = retrieval_contract_version ?? "ENG-EI-001.3";
     const testLabel =
       retrieval_tests_count > 0 ? `${retrieval_tests_count}/${retrieval_tests_count} retrieval tests` : "retrieval tests";
@@ -270,9 +384,13 @@ export function getExecutiveIntelligenceEraSnapshot(): ExecutiveIntelligenceEraS
     summary = "Executive Intelligence Era authorized · doctrine in progress";
   }
 
-  const critical_path_detail = retrieval_complete
-    ? "ENG-EI-001 COMPLETE → ENG-EI-002 Executive Brief → Communications → Commercial Beta"
-    : "Doctrine → MAR-3 → EI-001 (ei-doctrine-v1.0) → ENG-EI-001 Constitutional Retrieval → Communications";
+  const critical_path_detail = work_product_complete
+    ? "Deterministic executive pipeline COMPLETE → Communications → Commercial Beta"
+    : retrieval_complete
+      ? work_product_started
+        ? "ENG-EI-001 COMPLETE → ENG-EI-002 IN PROGRESS → Communications → Commercial Beta"
+        : "ENG-EI-001 COMPLETE → ENG-EI-002 Executive Brief → Communications → Commercial Beta"
+      : "Doctrine → MAR-3 → EI-001 (ei-doctrine-v1.0) → ENG-EI-001 Constitutional Retrieval → Communications";
 
   return {
     era_authorized,
@@ -292,6 +410,13 @@ export function getExecutiveIntelligenceEraSnapshot(): ExecutiveIntelligenceEraS
     retrieval_contract_version,
     retrieval_tests_count,
     retrieval_complete,
+    work_product_started,
+    work_product_complete,
+    work_product_slices_complete,
+    work_product_progress_percent,
+    work_product_contract_version,
+    reference_consumer_id,
+    brief_tests_count,
     building_today,
     summary,
     smallest_next_slice,
@@ -309,4 +434,12 @@ export function isExecutiveIntelligenceImplementationStarted(): boolean {
 
 export function isConstitutionalRetrievalComplete(): boolean {
   return getExecutiveIntelligenceEraSnapshot().retrieval_complete;
+}
+
+export function isWorkProductImplementationStarted(): boolean {
+  return getExecutiveIntelligenceEraSnapshot().work_product_started;
+}
+
+export function isWorkProductComplete(): boolean {
+  return getExecutiveIntelligenceEraSnapshot().work_product_complete;
 }

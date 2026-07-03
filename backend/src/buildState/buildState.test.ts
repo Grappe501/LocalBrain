@@ -10,6 +10,7 @@ import { certifyCurrentModule } from "./moduleCertificationEngine.js";
 import { computeAdaptiveForecast } from "./v1ForecastEngine.js";
 import { computeV1CommandCenter } from "./v1CommandCenterEngine.js";
 import { getMemoryOsProgressSnapshot } from "./memoryOsSpecMetrics.js";
+import { getCommunicationsOfficeSnapshot } from "./communicationsOfficeMetrics.js";
 import { getExecutiveIntelligenceEraSnapshot } from "./executiveIntelligenceEraMetrics.js";
 import { parseSliceRegistry } from "./sliceRegistry.js";
 
@@ -29,9 +30,8 @@ test("memory OS progress reflects spec freeze and Wave 1 impl — 100% at founda
   assert.equal(snap.wave1_complete_count, 5);
   assert.equal(snap.module_progress_percent, 100);
   assert.ok(
-    snap.building_today.includes("ENG-EI-001") ||
-      snap.building_today.includes("Constitutional Retrieval") ||
-      snap.summary.includes("FROZEN"),
+    snap.building_today.includes("ENG-COM-001") ||
+      snap.building_today.includes("Communications"),
   );
 
   const state = computeBuildState();
@@ -63,7 +63,7 @@ test("parsePhaseSections derives phases from checklist", () => {
   assert.ok(migration!.slice_ids.includes("LB-OS-020"));
 });
 
-test("Executive Intelligence Era metrics reflect ENG-EI-001 complete and ENG-EI-002 next", () => {
+test("Executive Intelligence Era metrics reflect ENG-EI-002 complete and deterministic pipeline closed", () => {
   const ei = getExecutiveIntelligenceEraSnapshot();
   assert.equal(ei.era_authorized, true);
   assert.equal(ei.doctrine_articles, 9);
@@ -71,15 +71,50 @@ test("Executive Intelligence Era metrics reflect ENG-EI-001 complete and ENG-EI-
   assert.equal(ei.mar3_questions_pending, 0);
   assert.equal(ei.doctrine_frozen, true);
   assert.equal(ei.pre_impl_progress_percent, 100);
-  assert.equal(ei.implementation_started, true);
   assert.equal(ei.retrieval_complete, true);
+  assert.equal(ei.work_product_started, true);
+  assert.equal(ei.work_product_complete, true);
   assert.equal(ei.implementation_phase, "work_product");
-  assert.deepEqual(ei.impl_slices_complete, ["ENG-EI-001.1", "ENG-EI-001.2", "ENG-EI-001.3"]);
-  assert.equal(ei.impl_progress_percent, 100);
+  assert.deepEqual(ei.work_product_slices_complete, ["ENG-EI-002.1", "ENG-EI-002.2"]);
+  assert.equal(ei.work_product_progress_percent, 100);
+  assert.equal(ei.work_product_contract_version, "ENG-EI-002.2");
+  assert.equal(ei.reference_consumer_id, "Reference Consumer 001");
+  assert.equal(ei.brief_tests_count, 7);
   assert.equal(ei.retrieval_contract_version, "ENG-EI-001.3");
   assert.equal(ei.retrieval_tests_count, 12);
-  assert.ok(ei.building_today.includes("ENG-EI-002"));
-  assert.ok(ei.summary.includes("ENG-EI-001 COMPLETE"));
+  assert.ok(ei.building_today.includes("ENG-EI-002 COMPLETE"));
+  assert.ok(ei.building_today.includes("Reference Consumer 001"));
+  assert.ok(ei.summary.includes("ENG-PMO-009"));
+  assert.ok(ei.smallest_next_slice.includes("Communications"));
+});
+
+test("Communications Office metrics reflect ENG-COM-001.3 complete", () => {
+  const com = getCommunicationsOfficeSnapshot();
+  assert.equal(com.charter_authorized, true);
+  assert.equal(com.office_started, true);
+  assert.equal(com.slice_001_1_complete, true);
+  assert.equal(com.slice_001_2_complete, true);
+  assert.equal(com.slice_001_3_authorized, true);
+  assert.equal(com.slice_001_3_complete, true);
+  assert.equal(com.baseline_stable, false);
+  assert.equal(com.slice_active, null);
+  assert.equal(com.module_progress_percent, 90);
+  assert.ok(com.building_today.includes("ENG-COM-001.3"));
+  assert.ok(com.building_today.includes("COMPLETE"));
+  assert.ok(com.smallest_next_slice.includes("module evaluation"));
+  assert.equal(com.contract_version, "ENG-COM-001.3");
+});
+
+test("V1 command center reflects ENG-COM-001.3 complete", () => {
+  const state = computeBuildState();
+  const cc = computeV1CommandCenter(state);
+  assert.ok(cc.building_today?.includes("ENG-COM-001.3"));
+  assert.ok(cc.building_today?.includes("COMPLETE"));
+  const comms = cc.modules.find((m) => m.module_id === "communications");
+  assert.ok(comms);
+  assert.equal(comms!.progress_percent, 90);
+  assert.equal(comms!.version, "ENG-COM-001.3");
+  assert.equal(comms!.status, "in_progress");
 });
 
 test("computeBuildState projects current sprint and velocity", () => {
@@ -87,16 +122,16 @@ test("computeBuildState projects current sprint and velocity", () => {
   const cc = computeV1CommandCenter(state);
   assert.ok(state.current_slice_id);
   assert.ok(
-    cc.building_today?.includes("ENG-EI-001") ||
-      cc.building_today?.includes("Constitutional Retrieval") ||
-      cc.building_today?.includes("Executive Intelligence") ||
-      state.current_slice_id?.startsWith("LB-OS-"),
+    cc.building_today?.includes("ENG-COM-001") ||
+      cc.building_today?.includes("Communications"),
   );
   assert.ok(
     state.current_phase_label.toLowerCase().includes("memory") ||
       state.current_phase_label.includes("Executive Memory") ||
       state.current_phase_label.includes("Executive Intelligence") ||
-      cc.building_today?.includes("ENG-EI-001"),
+      state.current_phase_label.includes("Communications") ||
+      cc.building_today?.includes("ENG-COM-001") ||
+      cc.building_today?.includes("ENG-EI-002"),
   );
   assert.ok(
     state.build_graph.some((n) => n.slice_id === "LB-OS-020" && n.status === "released"),
@@ -118,7 +153,9 @@ test("getEpoOverview exposes build state engine fields", () => {
     overview.current_phase_label.toLowerCase().includes("memory") ||
       overview.current_phase_label.includes("Executive Memory") ||
       overview.current_phase_label.includes("Executive Intelligence") ||
-      overview.v1_command_center?.building_today?.includes("ENG-EI-001"),
+      overview.current_phase_label.includes("Communications") ||
+      overview.v1_command_center?.building_today?.includes("ENG-COM-001") ||
+      overview.v1_command_center?.building_today?.includes("ENG-EI-002"),
   );
   assert.ok(overview.phases.length >= 4);
   assert.ok(overview.commit_timeline.length > 0);
