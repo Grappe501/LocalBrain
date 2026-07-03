@@ -212,7 +212,7 @@ NO NEW DOCTRINE
 | LB-OS-PROD-011 | Chief Compliance Officer | 🔒 Reserved · CAP-FUT-CCO-001 |
 | LB-OS-CON-003 | Versioned Constitution Migration | 🔒 Reserved · CAP-FUT-CON-VER-001 |
 
-**Gate:** V1 implementation mode · Communications Office **COMPLETE** · [ENG-PMO-013](./communications-office/ENG-PMO-013-COMMUNICATIONS-OFFICE-MODULE-EVALUATION.md) → Commercial Beta preparation
+**Gate:** V1 implementation mode · Contact Management **COMPLETE** · [ENG-PMO-014](./contact-management/ENG-PMO-014-CONTACT-MANAGEMENT-MODULE-EVALUATION.md) → Commercial Beta preparation
 
 **Architecture phase:** ✅ **COMPLETE** · **Doctrine:** 🔒 **FROZEN** (feature freeze until launch — no new doctrine, reserved capabilities, offices, or cognitive layers)
 

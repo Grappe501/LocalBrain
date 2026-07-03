@@ -32,7 +32,7 @@ export const SURFACE_REGISTRY: LiveSurfaceEntry[] = [
     maturity_level: 2,
     target_maturity_level: 5,
     next_upgrade_slice: "LB-OS-026.7",
-    next_upgrade_summary: "Contact Management 90% · PMO module evaluation next · engineering complete",
+    next_upgrade_summary: "Commercial Beta preparation · Contact Management COMPLETE · ENG-PMO-014",
   },
   {
     route: "/workspace/:workspaceId",
@@ -82,7 +82,7 @@ export const SURFACE_REGISTRY: LiveSurfaceEntry[] = [
     maturity_level: 3,
     target_maturity_level: 5,
     next_upgrade_slice: "LB-OS-026.7",
-    next_upgrade_summary: "Contact Management 90% · ENG-CONTACT-001.4 COMPLETE · PMO module eval next",
+    next_upgrade_summary: "Commercial Beta preparation · all V1 subsystems complete through Contact Management",
   },
   {
     route: "/system",

@@ -8,8 +8,8 @@
 | 1 | [ENG-CONTACT-001.1](./ENG-CONTACT-001.1-CANONICAL-CONTACT-STORAGE.md) | Can canonical contact records persist with integrity? | **IMPLEMENTATION FROZEN** |
 | 2 | [ENG-CONTACT-001.2](./ENG-CONTACT-001.2-CRUD-API-WORKBENCH-UI.md) | Can contacts be managed through API and UI? | **IMPLEMENTATION FROZEN** |
 | 3 | [ENG-CONTACT-001.3](./ENG-CONTACT-001.3-CSV-IMPORT-EXPORT.md) | Can CSV import/export round-trip without loss? | **IMPLEMENTATION FROZEN** |
-| 4 | [ENG-CONTACT-001.4](./ENG-CONTACT-001.4-COM-DRAFT-LINKING.md) | Can contacts link to Communications drafts? | **IMPLEMENTATION FROZEN** |
+| 4 | [ENG-CONTACT-001.4](./ENG-CONTACT-001.4-COM-DRAFT-LINKING.md) | Can contacts link to Communications drafts? | **IMPLEMENTATION FROZEN** · [ENG-PMO-014](../ENG-PMO-014-CONTACT-MANAGEMENT-MODULE-EVALUATION.md) **COMPLETE** |
 
 ---
 
-*ENG-CONTACT-001 slices · LocalBrain V1 · Contact Management · 2026*
+*ENG-CONTACT-001 slices · LocalBrain V1 · Contact Management · module evaluation COMPLETE · 2026*

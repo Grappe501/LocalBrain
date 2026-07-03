@@ -24,7 +24,13 @@ export function buildExecutiveBriefingSections(): BriefingSection[] {
         ]
       : com.module_complete
         ? contact.crossing_started
-          ? contact.slice_001_4_complete
+          ? contact.module_complete
+            ? [
+                "1. Contact Management COMPLETE · ENG-PMO-014 · V1 subsystem earned · 23/23 tests",
+                "2. Commercial Beta preparation — product surfaces and release governance",
+                "3. Release governance remains a separate authority",
+              ]
+            : contact.slice_001_4_complete
             ? [
                 "1. ENG-CONTACT-001.4 COMPLETE · COM draft linking live · 23/23 contact tests",
                 "2. Contact Management 90% · PMO module evaluation next (ENG-PMO-014 or successor)",
@@ -279,7 +285,9 @@ export function buildExecutiveBriefingSections(): BriefingSection[] {
           ? com.module_evaluation_pending
             ? "Communications Office · ENG-PMO-013 module evaluation pending"
             : com.module_complete
-              ? "Communications Office COMPLETE · ENG-PMO-013"
+              ? contact.module_complete
+                ? "Communications Office COMPLETE · ENG-PMO-013 · Contact Management COMPLETE · ENG-PMO-014"
+                : "Communications Office COMPLETE · ENG-PMO-013"
               : com.slice_001_3_complete
             ? "Communications Office IN PROGRESS · ENG-COM-001.3 COMPLETE · module evaluation next"
             : com.slice_001_3_implementation_frozen && !com.slice_001_3_complete

@@ -4,6 +4,8 @@ import { computeBuildState } from "../buildState/buildStateEngine.js";
 
 import { getCommunicationsOfficeSnapshot } from "../buildState/communicationsOfficeMetrics.js";
 
+import { getContactManagementSnapshot, isContactManagementStarted } from "../buildState/contactManagementMetrics.js";
+
 import { getExecutiveIntelligenceEraSnapshot } from "../buildState/executiveIntelligenceEraMetrics.js";
 
 import { getMemoryOsProgressSnapshot } from "../buildState/memoryOsSpecMetrics.js";
@@ -30,6 +32,8 @@ export function projectWorkspaceLive(ws: LivingWorkspace): LivingWorkspace {
 
   const com = getCommunicationsOfficeSnapshot();
 
+  const contact = getContactManagementSnapshot();
+
   const completed = state.slices.filter((s) => s.status === "complete").map((s) => s.slice_id);
 
   const activeEngMem = mem.wave1_active_slice
@@ -44,6 +48,8 @@ export function projectWorkspaceLive(ws: LivingWorkspace): LivingWorkspace {
 
   const comActive = foundationComplete && ei.work_product_complete && com.office_started;
 
+  const contactActive = comActive && isContactManagementStarted();
+
 
 
   return {
@@ -52,7 +58,11 @@ export function projectWorkspaceLive(ws: LivingWorkspace): LivingWorkspace {
 
     status: "active",
 
-    current_focus: comActive
+    current_focus: contactActive
+
+      ? contact.building_today
+
+      : comActive
 
       ? com.building_today
 
@@ -76,7 +86,19 @@ export function projectWorkspaceLive(ws: LivingWorkspace): LivingWorkspace {
 
       mission: ws.profile.mission ?? "Build Steve's Executive Operating System",
 
-      current_phase: comActive
+      current_phase: contactActive
+
+        ? contact.module_complete
+
+          ? "Contact Management · COMPLETE · ENG-PMO-014"
+
+          : contact.slice_001_4_complete
+
+            ? "Contact Management · ENG-CONTACT-001.4 COMPLETE · PMO eval next"
+
+            : "Contact Management · active crossing"
+
+        : comActive
 
         ? com.module_complete
 
@@ -144,7 +166,11 @@ export function projectWorkspaceLive(ws: LivingWorkspace): LivingWorkspace {
 
       completed_slices: completed.slice(-15),
 
-      active_slice: comActive
+      active_slice: contactActive
+
+        ? contact.smallest_next_slice
+
+        : comActive
 
         ? com.smallest_next_slice
 
@@ -154,7 +180,19 @@ export function projectWorkspaceLive(ws: LivingWorkspace): LivingWorkspace {
 
           : activeEngMem ?? state.current_slice_id ?? ws.profile.active_slice,
 
-      next_slices: comActive
+      next_slices: contactActive
+
+        ? contact.module_complete
+
+          ? ["Commercial Beta preparation"]
+
+          : contact.slice_001_4_complete
+
+            ? ["ENG-PMO-014 Contact Management module evaluation", "Commercial Beta preparation"]
+
+            : [contact.smallest_next_slice, "Commercial Beta preparation"]
+
+        : comActive
 
         ? com.module_complete
 
@@ -232,7 +270,11 @@ export function projectWorkspaceLive(ws: LivingWorkspace): LivingWorkspace {
 
               : (ws.profile.next_slices ?? []),
 
-      chief_of_staff_summary: comActive
+      chief_of_staff_summary: contactActive
+
+        ? contact.summary
+
+        : comActive
 
         ? com.summary
 
@@ -242,7 +284,11 @@ export function projectWorkspaceLive(ws: LivingWorkspace): LivingWorkspace {
 
           : mem.summary ?? state.gate_text ?? ws.profile.chief_of_staff_summary,
 
-      recommended_next_action: comActive
+      recommended_next_action: contactActive
+
+        ? contact.smallest_next_slice
+
+        : comActive
 
         ? com.smallest_next_slice
 

@@ -1,6 +1,6 @@
 # ENG-CONTACT-001 — Contact Management V1
 
-> **Status:** **AUTHORIZED** — 2026-07-03  
+> **Status:** **AUTHORIZED** — 2026-07-03 · **Subsystem COMPLETE** · ENG-PMO-014 · 2026-07-03  
 > **Crossing:** Contact Management · practical people records for Commercial Beta  
 > **Prerequisite:** [ENG-PMO-013](../communications-office/ENG-PMO-013-COMMUNICATIONS-OFFICE-MODULE-EVALUATION.md) · Communications Office V1 subsystem **COMPLETE**  
 > **Governance:** [ENG / OPS / ENG-PMO](../memory-os/ENG-PMO-GOVERNANCE.md)  
@@ -162,7 +162,7 @@ Success **is**:
 | 4 | Admin / workbench UI | `/studio/contacts` or integrated contacts surface |
 | 5 | CSV import / export | Human-initiated only |
 | 6 | Link contacts to Communications drafts | Wire COM request to `contact_id` |
-| 7 | PMO module acceptance | ENG-PMO-014 or successor |
+| 7 | PMO module acceptance | [ENG-PMO-014](./ENG-PMO-014-CONTACT-MANAGEMENT-MODULE-EVALUATION.md) **COMPLETE** |
 | 8 | Commercial Beta | Next gate after module acceptance |
 
 ---
@@ -183,10 +183,10 @@ Slice definitions emerge as prior slices complete. See [slices/README.md](./slic
 ## Institutional posture
 
 ```text
-Engineering truth:     ENG-CONTACT-001.4 IMPLEMENTATION FROZEN · COM draft linking · `/studio/contacts`
-Operational truth:     Contact Management V1 before Commercial Beta
-Prior crossing:        ENG-CONTACT-001.1 storage · 7/7 PASS
-Next repository act:   PMO module evaluation (ENG-PMO-014 or successor)
+Engineering truth:     ENG-CONTACT-001.4 IMPLEMENTATION FROZEN · all four slices complete · 23/23 tests
+Operational truth:     [ENG-PMO-014](./ENG-PMO-014-CONTACT-MANAGEMENT-MODULE-EVALUATION.md) COMPLETE · Contact Management V1 subsystem earned
+Prior crossing:        ENG-CONTACT-001.1–001.4 · IMPLEMENTATION FROZEN
+Next repository act:   Commercial Beta preparation (separate gate)
 ```
 
 ---

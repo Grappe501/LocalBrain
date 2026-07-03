@@ -6,9 +6,9 @@
 
 > **Platform checkpoint:** ENG-PMO-009 — ENG-EI-002 **COMPLETE** · Work Product Contract `ENG-EI-002.2` · Evidence Package `ENG-EI-001.3`  
 
-> **Governance checkpoint:** Communications Office **COMPLETE** · [ENG-PMO-013](./communications-office/ENG-PMO-013-COMMUNICATIONS-OFFICE-MODULE-EVALUATION.md) · [ENG-CONTACT-001](./contact-management/ENG-CONTACT-001-CHARTER.md) **AUTHORIZED** · Contact Management before Commercial Beta  
+> **Governance checkpoint:** Contact Management **COMPLETE** · [ENG-PMO-014](./contact-management/ENG-PMO-014-CONTACT-MANAGEMENT-MODULE-EVALUATION.md) · Commercial Beta preparation next  
 
-> **Phase boundary:** Execution — Communications Office **COMPLETE** · Contact Management V1 next · Commercial Beta after module acceptance  
+> **Phase boundary:** Execution — **Contact Management V1 subsystem COMPLETE** · engineering closed · Commercial Beta preparation  
 
 > **Observed:** 2026-07-03 · *static template — live values from Program Office API*
 
@@ -26,7 +26,7 @@ LOCALBRAIN V1
 
 Overall Launch
 
-█████████▌  ~95%   (live from GET /api/epo/project-state)
+█████████▊  ~98%   (live from GET /api/epo/project-state)
 
 ```
 
@@ -62,9 +62,9 @@ Overall Launch
 
 | ✅ Communications Office | **COMPLETE** · ENG-PMO-013 · Contract `ENG-COM-001.3` · 18/18 behavioral tests | — |
 
-| ▶ Contact Management V1 | **90%** · ENG-CONTACT-001.4 COMPLETE · COM draft linking live · 23/23 tests | **PMO module evaluation** |
+| ✅ Contact Management V1 | **COMPLETE** · ENG-PMO-014 · Contract `ENG-CONTACT-001.1` · 23/23 tests | **Commercial Beta prep** |
 
-| □ Commercial Beta | After Contact Management module acceptance | **~5 days** |
+| ▶ Commercial Beta | After Commercial Beta readiness evaluation | **~5 days** |
 
 
 
@@ -82,13 +82,13 @@ Overall Launch
 
 ```text
 
-Current Module ETA:     PMO module evaluation (ENG-PMO-014 or successor)
+Current Module ETA:     Commercial Beta preparation   (next governance scope)
 
-Current Phase ETA:      ~20 days  (operational — Contact acceptance + Commercial Beta)
+Current Phase ETA:      ~5 days  (operational — Commercial Beta readiness)
 
 Predicted Beta:         Jul 17    (adaptive forecast · refresh via API)
 
-Confidence:             ~90%
+Confidence:             ~95%
 
 ```
 
@@ -157,6 +157,8 @@ Confidence:             ~90%
 | Executive Intelligence Era | 100% (ENG-EI-002 · ENG-PMO-009 · Work Product Contract ENG-EI-002.2) |
 
 | Communications Office | 100% (ENG-PMO-013 COMPLETE · V1 subsystem earned) |
+
+| Contact Management | 100% (ENG-PMO-014 COMPLETE · V1 subsystem earned) |
 
 | Commercial Beta | 70% |
 
@@ -234,9 +236,9 @@ Critical path only:
 
 ✓ ENG-EI-002 Executive Brief (ENG-PMO-009 · deterministic pipeline closed)
 
-✓ ENG-CONTACT-001.4 Communications draft linking (001.4 COMPLETE · COM draft linking · 23/23 tests)
+✓ ENG-CONTACT-001.4 Communications draft linking (ENG-PMO-014 · Contact Management V1 subsystem earned)
 
-▶ PMO module evaluation — Contact Management V1 subsystem acceptance
+▶ Commercial Beta preparation
 
 ```
 
@@ -248,13 +250,21 @@ Critical path only:
 
 ## Next module
 
-**Contact Management V1** — [ENG-CONTACT-001](./contact-management/ENG-CONTACT-001-CHARTER.md) **AUTHORIZED** · practical release dependency before Commercial Beta
+**Commercial Beta preparation** — product surfaces and release governance · separate authority from subsystem completion
 
 
 
 | Track | Status |
 
 | ----- | ------ |
+
+| ENG-CONTACT-001.1 Canonical storage | ✅ **COMPLETE** · IMPLEMENTATION FROZEN |
+
+| ENG-CONTACT-001.2 CRUD API + workbench UI | ✅ **COMPLETE** · IMPLEMENTATION FROZEN |
+
+| ENG-CONTACT-001.3 CSV import/export | ✅ **COMPLETE** · IMPLEMENTATION FROZEN |
+
+| ENG-CONTACT-001.4 COM draft linking | ✅ **COMPLETE** · IMPLEMENTATION FROZEN · [ENG-PMO-014](./contact-management/ENG-PMO-014-CONTACT-MANAGEMENT-MODULE-EVALUATION.md) |
 
 | ENG-EI-001 Constitutional Retrieval | ✅ **COMPLETE** · ENG-PMO-008 · Evidence Package `ENG-EI-001.3` |
 
@@ -272,7 +282,7 @@ Critical path only:
 
 
 
-**Critical path:** Contact Management V1 → Commercial Beta
+**Critical path:** Commercial Beta preparation
 
 
 
@@ -366,7 +376,7 @@ Design → Build → Test → PMO Review → Certification → Regression Lock �
 
 > Finish the current module.  
 
-> **Now:** [ENG-CONTACT-001](./contact-management/ENG-CONTACT-001-CHARTER.md) **AUTHORIZED** — Contact Management V1 before Commercial Beta · Communications Office [ENG-PMO-013](./communications-office/ENG-PMO-013-COMMUNICATIONS-OFFICE-MODULE-EVALUATION.md) **COMPLETE**
+> **Now:** Contact Management **COMPLETE** · [ENG-PMO-014](./contact-management/ENG-PMO-014-CONTACT-MANAGEMENT-MODULE-EVALUATION.md) — Commercial Beta preparation is the next governance scope.
 
 
 

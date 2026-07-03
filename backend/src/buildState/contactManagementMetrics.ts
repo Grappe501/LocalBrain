@@ -9,6 +9,7 @@ const SLICE_001_1_PATH = path.join(DOCS, "slices", "ENG-CONTACT-001.1-CANONICAL-
 const SLICE_001_2_PATH = path.join(DOCS, "slices", "ENG-CONTACT-001.2-CRUD-API-WORKBENCH-UI.md");
 const SLICE_001_3_PATH = path.join(DOCS, "slices", "ENG-CONTACT-001.3-CSV-IMPORT-EXPORT.md");
 const SLICE_001_4_PATH = path.join(DOCS, "slices", "ENG-CONTACT-001.4-COM-DRAFT-LINKING.md");
+const PMO_014_PATH = path.join(DOCS, "ENG-PMO-014-CONTACT-MANAGEMENT-MODULE-EVALUATION.md");
 const CONTRACT_PATH = path.join(getRepoRoot(), "shared", "src", "contacts", "contactRecord.ts");
 const REPOSITORY_TEST_PATH = path.join(
   getRepoRoot(),
@@ -84,6 +85,10 @@ function sliceEvidenceComplete(text: string): boolean {
   return pending === 0 && /C7.*✅|7\/7|11\/11|23\/23/i.test(text);
 }
 
+function parsePmoComplete(text: string): boolean {
+  return /\*\*Status:\*\*\s*\*\*COMPLETE\*\*/i.test(text);
+}
+
 function detectCharterAuthorized(): boolean {
   const text = readDoc(CHARTER_PATH);
   return /\*\*AUTHORIZED\*\*/i.test(text);
@@ -108,6 +113,7 @@ function detectSlice001_4Authorized(): boolean {
 }
 
 function detectModuleComplete(): boolean {
+  if (fs.existsSync(PMO_014_PATH) && parsePmoComplete(readDoc(PMO_014_PATH))) return true;
   const charter = readDoc(CHARTER_PATH);
   return /module acceptance.*COMPLETE/i.test(charter) || /Contact Management V1.*\*\*COMPLETE\*\*/i.test(charter);
 }
@@ -192,9 +198,9 @@ export function getContactManagementSnapshot(): ContactManagementSnapshot {
   let summary: string;
 
   if (module_complete) {
-    building_today = `Contact Management V1 COMPLETE · ${behavioralTotal}/${behavioralTotal} tests · Commercial Beta next`;
+    building_today = `Contact Management V1 COMPLETE · ENG-PMO-014 · Contract ${contract_version ?? "ENG-CONTACT-001.1"} · ${behavioralTotal}/${behavioralTotal} tests`;
     smallest_next_slice = "Commercial Beta preparation";
-    summary = "Contact Management V1 COMPLETE · trustworthy people records for beta";
+    summary = "Contact Management V1 subsystem COMPLETE · trustworthy people records for beta";
   } else if (slice_001_4_complete) {
     building_today = `ENG-CONTACT-001.4 COMPLETE · COM draft linking live · ${behavioralTotal}/${behavioralTotal} tests · PMO module eval next`;
     smallest_next_slice = "PMO module evaluation (ENG-PMO-014 or successor)";

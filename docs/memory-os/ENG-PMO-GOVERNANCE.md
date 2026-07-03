@@ -124,7 +124,7 @@ Deterministic substrate doctrine: [DETERMINISTIC-FOUNDATION-DOCTRINE.md](./DETER
 
 **Post-foundation era:** **Executive Intelligence Era** — deterministic pipeline **COMPLETE** · ENG-EI-002 **COMPLETE** · Reference Consumer 001 · [ENG-PMO-009](./ENG-PMO-009-EXECUTIVE-BRIEF-ACCEPTANCE.md)
 
-**Active gate:** Communications Office **COMPLETE** · [ENG-PMO-013](./ENG-PMO-013-COMMUNICATIONS-OFFICE-MODULE-EVALUATION.md) · Commercial Beta preparation next · engineering **closed**
+**Active gate:** Contact Management **COMPLETE** · [ENG-PMO-014](../contact-management/ENG-PMO-014-CONTACT-MANAGEMENT-MODULE-EVALUATION.md) · Commercial Beta preparation next · engineering **closed**
 
 ---
 

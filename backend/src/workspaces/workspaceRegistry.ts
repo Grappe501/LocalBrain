@@ -288,7 +288,7 @@ export function seedWorkspaces(): void {
     parent_workspace_id: null,
     executive_context:
       "LocalBrain is Steve's Executive Operating System — not a chatbot. Wave 1 builds the Institutional Cognition Foundation: deterministic memory substrates that Executive Intelligence reasons over.",
-    current_focus: "Communications Office COMPLETE · ENG-PMO-013 · Commercial Beta preparation next",
+    current_focus: "Contact Management COMPLETE · ENG-PMO-014 · Commercial Beta preparation next",
     success_definition:
       "A modular AI Executive Operating System that becomes Steve's primary interface for work.",
     workspace_avatar: "🧠",
@@ -297,7 +297,7 @@ export function seedWorkspaces(): void {
     filesystem_roots: [repoRoot],
     profile: {
       mission: "Build Steve's Executive Operating System",
-      current_phase: "Communications Office · V1 subsystem COMPLETE · ENG-PMO-013",
+      current_phase: "Contact Management · V1 subsystem COMPLETE · ENG-PMO-014",
       completed_slices: [
         "LB-OS-001",
         "LB-OS-002",
@@ -325,6 +325,11 @@ export function seedWorkspaces(): void {
         "ENG-PMO-011",
         "ENG-COM-001.3",
         "ENG-PMO-013",
+        "ENG-CONTACT-001.1",
+        "ENG-CONTACT-001.2",
+        "ENG-CONTACT-001.3",
+        "ENG-CONTACT-001.4",
+        "ENG-PMO-014",
       ],
       active_slice: "Commercial Beta preparation",
       next_slices: ["Commercial Beta preparation"],
@@ -337,7 +342,7 @@ export function seedWorkspaces(): void {
         "ENG-PMO-005 Constitutional Completion",
       ],
       chief_of_staff_summary:
-        "Communications Office COMPLETE · ENG-PMO-013 · 18/18 behavioral · inherited stack committed",
+        "Contact Management COMPLETE · ENG-PMO-014 · 23/23 behavioral · inherited V1 subsystems committed",
       recommended_next_action:
         "Commercial Beta preparation — product surfaces and release governance (separate authority)",
       repositories: [],

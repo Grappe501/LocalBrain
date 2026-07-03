@@ -11,6 +11,7 @@ import { computeAdaptiveForecast } from "./v1ForecastEngine.js";
 import { computeV1CommandCenter } from "./v1CommandCenterEngine.js";
 import { getMemoryOsProgressSnapshot } from "./memoryOsSpecMetrics.js";
 import { getCommunicationsOfficeSnapshot } from "./communicationsOfficeMetrics.js";
+import { getContactManagementSnapshot } from "./contactManagementMetrics.js";
 import { getExecutiveIntelligenceEraSnapshot } from "./executiveIntelligenceEraMetrics.js";
 import { parseSliceRegistry } from "./sliceRegistry.js";
 
@@ -106,17 +107,32 @@ test("Communications Office metrics reflect module complete", () => {
   assert.equal(com.contract_version, "ENG-COM-001.3");
 });
 
-test("V1 command center reflects Contact Management active crossing", () => {
+test("Contact Management metrics reflect module complete", () => {
+  const contact = getContactManagementSnapshot();
+  assert.equal(contact.charter_authorized, true);
+  assert.equal(contact.crossing_started, true);
+  assert.equal(contact.slice_001_1_complete, true);
+  assert.equal(contact.slice_001_2_complete, true);
+  assert.equal(contact.slice_001_3_complete, true);
+  assert.equal(contact.slice_001_4_complete, true);
+  assert.equal(contact.module_complete, true);
+  assert.equal(contact.slice_active, null);
+  assert.equal(contact.module_progress_percent, 100);
+  assert.ok(contact.building_today.includes("COMPLETE"));
+  assert.ok(contact.smallest_next_slice.includes("Commercial Beta"));
+});
+
+test("V1 command center reflects Contact Management module complete", () => {
   const state = computeBuildState();
   const cc = computeV1CommandCenter(state);
   assert.ok(
-    cc.building_today?.includes("ENG-CONTACT") ||
-      cc.building_today?.includes("Contact Management"),
+    cc.building_today?.includes("Contact Management") ||
+      cc.building_today?.includes("COMPLETE"),
   );
   const contact = cc.modules.find((m) => m.module_id === "contact_management");
   assert.ok(contact);
-  assert.equal(contact!.progress_percent, 90);
-  assert.equal(contact!.status, "in_progress");
+  assert.equal(contact!.progress_percent, 100);
+  assert.equal(contact!.status, "complete");
   assert.equal(contact!.version, "ENG-CONTACT-001.4");
   const comms = cc.modules.find((m) => m.module_id === "communications");
   assert.ok(comms);
@@ -205,12 +221,16 @@ test("getEpoOverview exposes build state engine fields", () => {
       (m) => m.module_id === "contact_management",
     );
     assert.ok(contactModule);
-    assert.equal(contactModule?.progress_percent, 90);
+    assert.equal(contactModule?.progress_percent, 100);
+    assert.equal(contactModule?.status, "complete");
     const commsComplete =
       overview.v1_command_center.modules.find((m) => m.module_id === "communications")
         ?.progress_percent === 100;
+    const contactComplete =
+      overview.v1_command_center.modules.find((m) => m.module_id === "contact_management")
+        ?.progress_percent === 100;
     assert.ok(
-      overview.project_state.ceo_mode.current_module_certification || commsComplete,
+      overview.project_state.ceo_mode.current_module_certification || commsComplete || contactComplete,
     );
     assert.ok(overview.project_state.ceo_mode.phase_forecast);
     assert.equal(overview.project_state.ceo_mode.phase_forecast.engine_id, "ENG-BLD-001-PFCST");
@@ -223,7 +243,7 @@ test("getEpoOverview exposes build state engine fields", () => {
     assert.equal(roadmap.find((r) => r.id === "session_5")?.status, "complete");
     assert.equal(roadmap.find((r) => r.id === "theory_freeze")?.status, "complete");
     assert.equal(roadmap.find((r) => r.id === "convention")?.status, "complete");
-    assert.equal(roadmap.find((r) => r.id === "contact_management")?.status, "in_progress");
+    assert.equal(roadmap.find((r) => r.id === "contact_management")?.status, "complete");
     assert.ok(overview.project_state.ceo_mode.theory_status.frozen);
     assert.equal(overview.project_state.ceo_mode.theory_status.remaining_risk, "IMPLEMENTATION");
     assert.equal(overview.project_state.launch_countdown.current_phase, "Construction");
