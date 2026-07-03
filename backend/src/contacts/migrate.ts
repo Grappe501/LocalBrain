@@ -41,5 +41,35 @@ export function migrateContactTables(): void {
     CREATE INDEX IF NOT EXISTS idx_contacts_workspace ON contacts(workspace_id);
     CREATE INDEX IF NOT EXISTS idx_contacts_workspace_archived ON contacts(workspace_id, archived);
     CREATE INDEX IF NOT EXISTS idx_contact_orgs_workspace ON contact_organizations(workspace_id);
+
+    CREATE TABLE IF NOT EXISTS contact_draft_links (
+      link_id TEXT PRIMARY KEY,
+      workspace_id TEXT NOT NULL,
+      contact_id TEXT NOT NULL,
+      draft_id TEXT NOT NULL,
+      request_id TEXT NOT NULL,
+      intent_label TEXT NOT NULL,
+      audience_label TEXT,
+      body_preview TEXT NOT NULL DEFAULT '',
+      draft_json TEXT NOT NULL,
+      recipient_snapshot_json TEXT NOT NULL,
+      linked_at TEXT NOT NULL DEFAULT (datetime('now')),
+      FOREIGN KEY (contact_id) REFERENCES contacts(contact_id)
+    );
+
+    CREATE TABLE IF NOT EXISTS contact_outreach_audit (
+      audit_id TEXT PRIMARY KEY,
+      workspace_id TEXT NOT NULL,
+      contact_id TEXT NOT NULL,
+      outreach_status TEXT NOT NULL,
+      note TEXT NOT NULL DEFAULT '',
+      draft_link_id TEXT,
+      created_at TEXT NOT NULL DEFAULT (datetime('now')),
+      FOREIGN KEY (contact_id) REFERENCES contacts(contact_id)
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_contact_draft_links_contact ON contact_draft_links(contact_id);
+    CREATE INDEX IF NOT EXISTS idx_contact_draft_links_workspace ON contact_draft_links(workspace_id);
+    CREATE INDEX IF NOT EXISTS idx_contact_outreach_audit_contact ON contact_outreach_audit(contact_id);
   `);
 }

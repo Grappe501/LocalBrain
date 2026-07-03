@@ -17,6 +17,17 @@ export type CommunicationsDraftRequest = {
   /** Bounded communications intent — e.g. "Status update to board". */
   intent_label: string;
   audience_label?: string;
+  /** ENG-CONTACT-001.4 — primary recipient metadata; COM generator does not consume. */
+  contact_id?: string;
+  /** ENG-CONTACT-001.4 — additional recipients; link layer only. */
+  recipient_refs?: readonly ContactRecipientRef[];
+};
+
+/** Lightweight recipient pointer — Contacts owns the record; COM owns the draft. */
+export type ContactRecipientRef = {
+  contact_id: string;
+  display_name?: string;
+  email?: string;
 };
 
 export type CommunicationsDraftWithheldKind =

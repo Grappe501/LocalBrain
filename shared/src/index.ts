@@ -210,6 +210,7 @@ export type {
   CommunicationsDraftCitationEntry,
   CommunicationsDraftCitationMapping,
   CommunicationsDraftRequest,
+  ContactRecipientRef,
   CommunicationsDraftStatement,
   CommunicationsDraftWithheldItem,
   CommunicationsDraftWithheldKind,
@@ -316,6 +317,7 @@ export {
   CONTACT_RECORD_VERSION,
   CONTACT_CSV_VERSION,
   CONTACT_CSV_HEADERS,
+  CONTACT_DRAFT_LINK_VERSION,
 } from "./contacts/index.js";
 export type {
   ContactAddress,
@@ -339,6 +341,11 @@ export type {
   ContactImportCommitResult,
   ContactImportPreviewInput,
   ContactImportCommitInput,
+  ContactDraftLink,
+  ContactOutreachAuditEntry,
+  UpdateContactOutreachInput,
+  GenerateContactLinkedDraftInput,
+  GenerateContactLinkedDraftResult,
 } from "./contacts/index.js";
 export type {
   AssetCollection,

@@ -174,7 +174,7 @@ Success **is**:
 | [ENG-CONTACT-001.1](./slices/ENG-CONTACT-001.1-CANONICAL-CONTACT-STORAGE.md) | Can canonical contact records persist with integrity? | **IMPLEMENTATION FROZEN** |
 | ENG-CONTACT-001.2 | Can beta users manage contacts through the workbench? | **IMPLEMENTATION FROZEN** |
 | ENG-CONTACT-001.3 | Can CSV import/export round-trip without loss? | **IMPLEMENTATION FROZEN** |
-| ENG-CONTACT-001.4 | Can contacts link to Communications drafts? | Reserved |
+| ENG-CONTACT-001.4 | Can contacts link to Communications drafts? | **IMPLEMENTATION FROZEN** |
 
 Slice definitions emerge as prior slices complete. See [slices/README.md](./slices/README.md).
 
@@ -183,10 +183,10 @@ Slice definitions emerge as prior slices complete. See [slices/README.md](./slic
 ## Institutional posture
 
 ```text
-Engineering truth:     ENG-CONTACT-001.3 IMPLEMENTATION FROZEN · CSV import/export · `/studio/contacts`
+Engineering truth:     ENG-CONTACT-001.4 IMPLEMENTATION FROZEN · COM draft linking · `/studio/contacts`
 Operational truth:     Contact Management V1 before Commercial Beta
 Prior crossing:        ENG-CONTACT-001.1 storage · 7/7 PASS
-Next repository act:   ENG-CONTACT-001.4 Communications draft linking
+Next repository act:   PMO module evaluation (ENG-PMO-014 or successor)
 ```
 
 ---

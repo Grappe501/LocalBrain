@@ -17,12 +17,17 @@ import {
   exportContactsCsv,
   previewContactImport,
 } from "../contacts/contactCsv.js";
+import {
+  listContactDraftLinks,
+  listContactOutreachAudit,
+  updateContactOutreachWithAudit,
+} from "../contacts/contactDraftLinkRepository.js";
 import { ContactValidationError } from "../contacts/contactValidator.js";
 
 export const contactsRouter = Router();
 
-const ENGINE_ID = "ENG-CONTACT-001.3";
-const SLICE_ID = "ENG-CONTACT-001.3";
+const ENGINE_ID = "ENG-CONTACT-001.4";
+const SLICE_ID = "ENG-CONTACT-001.4";
 
 function resolveWorkspaceId(queryValue: unknown, bodyValue: unknown): string | null {
   const candidate =
@@ -215,6 +220,52 @@ contactsRouter.post("/contacts", (req, res) => {
     }
 
     res.status(201).json({ slice_id: SLICE_ID, engine_id: ENGINE_ID, contact });
+  } catch (error) {
+    if (mapContactError(error, res)) return;
+    throw error;
+  }
+});
+
+contactsRouter.get("/contacts/:id/drafts", (req, res) => {
+  const contact = getContactById(req.params.id);
+  if (!contact) {
+    res.status(404).json({ error: "contact_not_found" });
+    return;
+  }
+  res.json({
+    slice_id: SLICE_ID,
+    engine_id: ENGINE_ID,
+    contact_id: contact.contact_id,
+    drafts: listContactDraftLinks(contact.contact_id),
+  });
+});
+
+contactsRouter.get("/contacts/:id/outreach-audit", (req, res) => {
+  const contact = getContactById(req.params.id);
+  if (!contact) {
+    res.status(404).json({ error: "contact_not_found" });
+    return;
+  }
+  res.json({
+    slice_id: SLICE_ID,
+    engine_id: ENGINE_ID,
+    contact_id: contact.contact_id,
+    audit: listContactOutreachAudit(contact.contact_id),
+  });
+});
+
+contactsRouter.post("/contacts/:id/outreach", (req, res) => {
+  try {
+    const contact = updateContactOutreachWithAudit(req.params.id, {
+      outreach_status: req.body?.outreach_status,
+      note: req.body?.note ?? "",
+      draft_link_id: req.body?.draft_link_id,
+    });
+    if (!contact) {
+      res.status(404).json({ error: "contact_not_found" });
+      return;
+    }
+    res.json({ slice_id: SLICE_ID, engine_id: ENGINE_ID, contact });
   } catch (error) {
     if (mapContactError(error, res)) return;
     throw error;

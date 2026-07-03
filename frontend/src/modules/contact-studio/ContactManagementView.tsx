@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type {
+  ContactDraftLink,
   ContactImportPreviewResult,
   ContactOrganization,
+  ContactOutreachAuditEntry,
   ContactRecordWithAffiliations,
 } from "@localbrain/shared";
 import {
@@ -12,12 +14,16 @@ import {
   createContactApi,
   createContactOrganizationApi,
   exportContactsCsv,
+  fetchContactDrafts,
   fetchContactOrganizations,
+  fetchContactOutreachAudit,
   fetchContacts,
+  generateContactLinkedDraftApi,
   linkContactAffiliationApi,
   previewContactImportApi,
   restoreContactApi,
   updateContactApi,
+  updateContactOutreachApi,
 } from "../../api/contacts";
 
 const WORKSPACE_ID = "localbrain";
@@ -93,11 +99,39 @@ export function ContactManagementView() {
   const [duplicatePolicy, setDuplicatePolicy] = useState<ContactImportDuplicatePolicy>("error");
   const [importPreview, setImportPreview] = useState<ContactImportPreviewResult | null>(null);
   const [importMessage, setImportMessage] = useState<string | null>(null);
+  const [linkedDrafts, setLinkedDrafts] = useState<ContactDraftLink[]>([]);
+  const [outreachAudit, setOutreachAudit] = useState<ContactOutreachAuditEntry[]>([]);
+  const [outreachNote, setOutreachNote] = useState("");
+  const [draftIntent, setDraftIntent] = useState("");
+  const [draftAudience, setDraftAudience] = useState("");
 
   const selected = useMemo(
     () => contacts.find((contact) => contact.contact_id === selectedId) ?? null,
     [contacts, selectedId],
   );
+
+  const loadContactDrafts = useCallback(async (contactId: string) => {
+    try {
+      const [{ drafts }, { audit }] = await Promise.all([
+        fetchContactDrafts(contactId),
+        fetchContactOutreachAudit(contactId),
+      ]);
+      setLinkedDrafts(drafts);
+      setOutreachAudit(audit);
+    } catch {
+      setLinkedDrafts([]);
+      setOutreachAudit([]);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (selectedId && !creating) {
+      void loadContactDrafts(selectedId);
+    } else {
+      setLinkedDrafts([]);
+      setOutreachAudit([]);
+    }
+  }, [selectedId, creating, loadContactDrafts]);
 
   const loadContacts = useCallback(async () => {
     try {
@@ -298,6 +332,49 @@ export function ContactManagementView() {
     }
   }
 
+  async function handleOutreachUpdate() {
+    if (!selectedId || !outreachNote.trim()) return;
+    setSaving(true);
+    setError(null);
+    try {
+      await updateContactOutreachApi({
+        contact_id: selectedId,
+        outreach_status: form.outreach_status,
+        note: outreachNote.trim(),
+      });
+      setOutreachNote("");
+      await loadContacts();
+      await loadContactDrafts(selectedId);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Outreach update failed");
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  async function handleGenerateDraft() {
+    if (!selectedId || !draftIntent.trim()) return;
+    setSaving(true);
+    setError(null);
+    try {
+      await generateContactLinkedDraftApi({
+        workspace_id: WORKSPACE_ID,
+        contact_id: selectedId,
+        intent_label: draftIntent.trim(),
+        audience_label: draftAudience.trim() || undefined,
+        use_fixture: true,
+      });
+      setDraftIntent("");
+      setDraftAudience("");
+      setImportMessage("Communications draft linked — advisory only, no send path.");
+      await loadContactDrafts(selectedId);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Draft generation failed");
+    } finally {
+      setSaving(false);
+    }
+  }
+
   async function handleLinkOrganization() {
     if (!selectedId || !linkOrgId) return;
     setSaving(true);
@@ -322,7 +399,7 @@ export function ContactManagementView() {
       <header className="contact-dept__header">
         <h1>Contact Management</h1>
         <p className="contact-dept__meta">
-          ENG-CONTACT-001.3 · workspace {WORKSPACE_ID} · CSV import/export · human-controlled outreach only
+          ENG-CONTACT-001.4 · workspace {WORKSPACE_ID} · COM draft linking · human outreach only
         </p>
       </header>
 
@@ -557,6 +634,86 @@ export function ContactManagementView() {
                   ))}
                 </select>
               </label>
+
+              {!creating && selected ? (
+                <section className="contact-dept__affiliations">
+                  <h3>Outreach audit</h3>
+                  <label className="contact-dept__field">
+                    <span>Audit note (required to update status)</span>
+                    <textarea
+                      rows={2}
+                      value={outreachNote}
+                      onChange={(event) => setOutreachNote(event.target.value)}
+                      placeholder="Human-initiated outreach note — no automated send."
+                    />
+                  </label>
+                  <button
+                    type="button"
+                    className="contact-dept__secondary"
+                    disabled={saving || !outreachNote.trim()}
+                    onClick={() => void handleOutreachUpdate()}
+                  >
+                    Update outreach status
+                  </button>
+                  {outreachAudit.length === 0 ? (
+                    <p className="contact-dept__empty">No outreach audit entries yet.</p>
+                  ) : (
+                    <ul>
+                      {outreachAudit.map((entry) => (
+                        <li key={entry.audit_id}>
+                          <strong>{entry.outreach_status}</strong> · {entry.note}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </section>
+              ) : null}
+
+              {!creating && selected ? (
+                <section className="contact-dept__affiliations">
+                  <h3>Communications drafts</h3>
+                  <p className="contact-dept__empty">
+                    Contacts own people records. Communications owns drafts. Links connect them.
+                  </p>
+                  <label className="contact-dept__field">
+                    <span>Draft intent</span>
+                    <input
+                      value={draftIntent}
+                      onChange={(event) => setDraftIntent(event.target.value)}
+                      placeholder="Board update…"
+                    />
+                  </label>
+                  <label className="contact-dept__field">
+                    <span>Audience (optional)</span>
+                    <input
+                      value={draftAudience}
+                      onChange={(event) => setDraftAudience(event.target.value)}
+                      placeholder="Board observers…"
+                    />
+                  </label>
+                  <button
+                    type="button"
+                    className="contact-dept__secondary"
+                    disabled={saving || !draftIntent.trim()}
+                    onClick={() => void handleGenerateDraft()}
+                  >
+                    Generate linked draft
+                  </button>
+                  {linkedDrafts.length === 0 ? (
+                    <p className="contact-dept__empty">No linked Communications drafts yet.</p>
+                  ) : (
+                    <ul>
+                      {linkedDrafts.map((draft) => (
+                        <li key={draft.link_id}>
+                          <strong>{draft.intent_label}</strong>
+                          {draft.audience_label ? ` · ${draft.audience_label}` : ""}
+                          <div>{draft.body_preview}</div>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </section>
+              ) : null}
 
               <label className="contact-dept__field">
                 <span>Notes</span>

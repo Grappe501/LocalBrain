@@ -197,3 +197,53 @@ export async function commitContactImportApi(options: {
     result: import("@localbrain/shared").ContactImportCommitResult;
   }>;
 }
+
+export async function fetchContactDrafts(contactId: string) {
+  const res = await fetch(`/api/contacts/${encodeURIComponent(contactId)}/drafts`);
+  if (!res.ok) throw new Error(await parseError(res));
+  return res.json() as Promise<{ drafts: import("@localbrain/shared").ContactDraftLink[] }>;
+}
+
+export async function fetchContactOutreachAudit(contactId: string) {
+  const res = await fetch(`/api/contacts/${encodeURIComponent(contactId)}/outreach-audit`);
+  if (!res.ok) throw new Error(await parseError(res));
+  return res.json() as Promise<{ audit: import("@localbrain/shared").ContactOutreachAuditEntry[] }>;
+}
+
+export async function updateContactOutreachApi(options: {
+  contact_id: string;
+  outreach_status: ContactOutreachStatus;
+  note: string;
+  draft_link_id?: string;
+}) {
+  const res = await fetch(`/api/contacts/${encodeURIComponent(options.contact_id)}/outreach`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      outreach_status: options.outreach_status,
+      note: options.note,
+      draft_link_id: options.draft_link_id,
+    }),
+  });
+  if (!res.ok) throw new Error(await parseError(res));
+  return res.json() as Promise<{ contact: ContactRecordWithAffiliations }>;
+}
+
+export async function generateContactLinkedDraftApi(options: {
+  workspace_id: string;
+  contact_id: string;
+  intent_label: string;
+  audience_label?: string;
+  use_fixture?: boolean;
+}) {
+  const res = await fetch("/api/communications/drafts/generate", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(options),
+  });
+  if (!res.ok) throw new Error(await parseError(res));
+  return res.json() as Promise<{
+    result: import("@localbrain/shared").GenerateContactLinkedDraftResult;
+    draft: import("@localbrain/shared").TraceableDraftGenerationResult;
+  }>;
+}
