@@ -88,7 +88,7 @@ test("Executive Intelligence Era metrics reflect ENG-EI-002 complete and determi
   assert.ok(ei.smallest_next_slice.includes("Communications"));
 });
 
-test("Communications Office metrics reflect ENG-PMO-013 module evaluation pending", () => {
+test("Communications Office metrics reflect module complete", () => {
   const com = getCommunicationsOfficeSnapshot();
   assert.equal(com.charter_authorized, true);
   assert.equal(com.office_started, true);
@@ -96,25 +96,25 @@ test("Communications Office metrics reflect ENG-PMO-013 module evaluation pendin
   assert.equal(com.slice_001_2_complete, true);
   assert.equal(com.slice_001_3_authorized, true);
   assert.equal(com.slice_001_3_complete, true);
-  assert.equal(com.module_evaluation_pending, true);
-  assert.equal(com.module_complete, false);
+  assert.equal(com.module_evaluation_pending, false);
+  assert.equal(com.module_complete, true);
   assert.equal(com.baseline_stable, false);
-  assert.equal(com.slice_active, "ENG-PMO-013");
-  assert.equal(com.module_progress_percent, 90);
-  assert.ok(com.building_today.includes("ENG-PMO-013"));
-  assert.ok(com.smallest_next_slice.includes("module evaluation"));
+  assert.equal(com.slice_active, null);
+  assert.equal(com.module_progress_percent, 100);
+  assert.ok(com.building_today.includes("COMPLETE"));
+  assert.ok(com.smallest_next_slice.includes("Commercial Beta"));
   assert.equal(com.contract_version, "ENG-COM-001.3");
 });
 
-test("V1 command center reflects ENG-PMO-013 module evaluation pending", () => {
+test("V1 command center reflects Communications Office module complete", () => {
   const state = computeBuildState();
   const cc = computeV1CommandCenter(state);
-  assert.ok(cc.building_today?.includes("ENG-PMO-013"));
+  assert.ok(cc.building_today?.includes("COMPLETE"));
   const comms = cc.modules.find((m) => m.module_id === "communications");
   assert.ok(comms);
-  assert.equal(comms!.progress_percent, 90);
+  assert.equal(comms!.progress_percent, 100);
   assert.equal(comms!.version, "ENG-COM-001.3");
-  assert.equal(comms!.status, "in_progress");
+  assert.equal(comms!.status, "complete");
 });
 
 test("computeBuildState projects current sprint and velocity", () => {
@@ -123,6 +123,7 @@ test("computeBuildState projects current sprint and velocity", () => {
   assert.ok(state.current_slice_id);
   assert.ok(
     cc.building_today?.includes("ENG-COM-001") ||
+      cc.building_today?.includes("Communications Office") ||
       cc.building_today?.includes("Communications"),
   );
   assert.ok(
@@ -131,6 +132,7 @@ test("computeBuildState projects current sprint and velocity", () => {
       state.current_phase_label.includes("Executive Intelligence") ||
       state.current_phase_label.includes("Communications") ||
       cc.building_today?.includes("ENG-COM-001") ||
+      cc.building_today?.includes("Communications Office") ||
       cc.building_today?.includes("ENG-EI-002"),
   );
   assert.ok(
@@ -155,6 +157,8 @@ test("getEpoOverview exposes build state engine fields", () => {
       overview.current_phase_label.includes("Executive Intelligence") ||
       overview.current_phase_label.includes("Communications") ||
       overview.v1_command_center?.building_today?.includes("ENG-COM-001") ||
+      overview.v1_command_center?.building_today?.includes("Communications Office") ||
+      overview.v1_command_center?.building_today?.includes("COMPLETE") ||
       overview.v1_command_center?.building_today?.includes("ENG-EI-002"),
   );
   assert.ok(overview.phases.length >= 4);
@@ -175,7 +179,12 @@ test("getEpoOverview exposes build state engine fields", () => {
   assert.ok(overview.project_state.launch_countdown);
   assert.ok(overview.project_state.ceo_mode);
   assert.ok(overview.project_state.ceo_mode.v1_roadmap.length === 9);
-  assert.ok(overview.project_state.ceo_mode.current_module_certification);
+  const commsComplete =
+    overview.v1_command_center.modules.find((m) => m.module_id === "communications")
+      ?.progress_percent === 100;
+  assert.ok(
+    overview.project_state.ceo_mode.current_module_certification || commsComplete,
+  );
   assert.ok(overview.project_state.ceo_mode.phase_forecast);
   assert.equal(overview.project_state.ceo_mode.phase_forecast.engine_id, "ENG-BLD-001-PFCST");
   assert.ok(overview.project_state.ceo_mode.phase_forecast.phases.length === 9);

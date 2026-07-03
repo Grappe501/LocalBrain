@@ -1,8 +1,8 @@
 # ENG-PMO-013 — Communications Office Module Evaluation
 
 > **Type:** PMO module evaluation ceremony — subsystem closeout · not slice acceptance · not implementation  
-> **Status:** **PENDING** — inherited baseline committed · awaiting disposition · 2026-07-03  
-> **Prerequisite:** [ENG-COM-001 Charter](./ENG-COM-001-CHARTER.md) · [ENG-PMO-010](./ENG-PMO-010-TRACEABLE-DRAFT-ACCEPTANCE.md) · [ENG-PMO-011](./ENG-PMO-011-UNCERTAINTY-PRESERVATION-ACCEPTANCE.md) · [ENG-PMO-012](./ENG-PMO-012-ADVISORY-RESTRAINT-ACCEPTANCE.md) · 19/19 behavioral tests PASS · commit `12fd9f0`  
+> **Status:** **COMPLETE** — 2026-07-03  
+> **Prerequisite:** [ENG-COM-001 Charter](./ENG-COM-001-CHARTER.md) · [ENG-PMO-010](./ENG-PMO-010-TRACEABLE-DRAFT-ACCEPTANCE.md) · [ENG-PMO-011](./ENG-PMO-011-UNCERTAINTY-PRESERVATION-ACCEPTANCE.md) · [ENG-PMO-012](./ENG-PMO-012-ADVISORY-RESTRAINT-ACCEPTANCE.md) · behavioral baseline commit `12fd9f0` · ceremony opened commit `61c4e90`  
 > **Governance:** [ENG / OPS / ENG-PMO](../memory-os/ENG-PMO-GOVERNANCE.md)
 
 ---
@@ -13,12 +13,15 @@
 ENG-PMO-013
 ENG-COM-001
 Communications Office Module Evaluation
-Inherited baseline:
-Traceability · Uncertainty · Advisory restraint
-Behavioral tests:
-19/19 PASS (5 + 6 + 7)
+Scope:           PASS
+Capability:        PASS
+Boundaries:        PASS
+Integration:       PASS
+Operational readiness: PASS
+Behavioral tests:  18/18 PASS (5 + 6 + 7)
 Disposition:
-PENDING
+COMPLETE
+Communications Office V1 subsystem earned
 ```
 
 ---
@@ -27,116 +30,73 @@ PENDING
 
 > **Has the Communications Office earned completion as a V1 subsystem?**
 
-**Answer:** *Pending PMO disposition.*
+**Answer:** **Yes.**
 
-This is a **module-level** question — not a behavioral slice question.
+The subsystem satisfies the [ENG-COM-001](./ENG-COM-001-CHARTER.md) architectural question at module level. Slice acceptances (PMO-010/011/012) were not revisited — they are inherited historical facts.
 
 ---
 
 ## Authority boundaries (held constant)
 
-The following are **not** under evaluation. They are inherited capabilities and must not be reopened:
+The following were **not** under evaluation:
 
 | Ceremony | Capability | Status |
 | -------- | ---------- | ------ |
-| [ENG-PMO-010](./ENG-PMO-010-TRACEABLE-DRAFT-ACCEPTANCE.md) | Traceability (C1–C5) | **INHERITED** |
-| [ENG-PMO-011](./ENG-PMO-011-UNCERTAINTY-PRESERVATION-ACCEPTANCE.md) | Uncertainty preservation (U1–U5) | **INHERITED** |
-| [ENG-PMO-012](./ENG-PMO-012-ADVISORY-RESTRAINT-ACCEPTANCE.md) | Advisory restraint (A1–A5) | **INHERITED** |
-
-Reopening any slice acceptance requires an explicit amendment process — not this ceremony.
+| [ENG-PMO-010](./ENG-PMO-010-TRACEABLE-DRAFT-ACCEPTANCE.md) | Traceability (C1–C5) | **INHERITED** · not reopened |
+| [ENG-PMO-011](./ENG-PMO-011-UNCERTAINTY-PRESERVATION-ACCEPTANCE.md) | Uncertainty preservation (U1–U5) | **INHERITED** · not reopened |
+| [ENG-PMO-012](./ENG-PMO-012-ADVISORY-RESTRAINT-ACCEPTANCE.md) | Advisory restraint (A1–A5) | **INHERITED** · not reopened |
 
 ---
 
-## Inherited capability stack (committed baseline)
+## Module evaluation criteria — disposition
 
-```text
-Deterministic interfaces
-Evidence Package Contract (ENG-EI-001.3)
-Work Product Contract (ENG-EI-002.2)
-Traceability (ENG-COM-001.1 · ENG-PMO-010)
-Uncertainty preservation (ENG-COM-001.2 · ENG-PMO-011)
-Advisory restraint (ENG-COM-001.3 · ENG-PMO-012)
-```
+| Area | Evaluation question | Verdict | Basis |
+| ---- | ------------------- | ------- | ----- |
+| **Scope** | Does the Communications Office satisfy the V1 charter? | **PASS** | Charter E1–E6 mapped to earned slice evidence · three authorized behavioral slices **COMPLETE** · architectural question answered without scope expansion |
+| **Capability** | Are all inherited capabilities present and composable? | **PASS** | Composed pipeline: Traceability → Uncertainty → Advisory Restraint → Assembler · contract `ENG-COM-001.3` · 18/18 behavioral tests |
+| **Boundaries** | Does the office remain entirely within constitutional scope? | **PASS** | No publishing · connectors · campaign logic · or policy formation in tree · charter out-of-scope table honored · validators reject boundary violations |
+| **Integration** | Does it operate correctly within the deterministic executive pipeline? | **PASS** | `generateTraceableCommunicationsDraft()` consumes `ConstitutionalEvidencePackage` · withhold path on incomplete package · fixture + optional LLM adapter · deterministic interfaces held constant |
+| **Operational readiness** | Is the subsystem complete enough to support Commercial Beta preparation? | **PASS** | Constitutional probabilistic inhabitant earned as backend library + contract + tests · product surfaces (UI · API routes) explicitly deferred — identified gaps for beta **preparation**, not module failure |
 
-Composed pipeline (backend):
-
-```text
-Proposal → Traceability → Uncertainty → Advisory Restraint → Assembler
-```
-
-Contract: `ENG-COM-001.3` · `shared/src/memoryOs/communicationsDraft.ts`
+**Gate question:** Is any criterion only partially satisfied? **No.**
 
 ---
 
-## Module evaluation criteria — evidence under review
+## Charter evidence mapping (E1–E6) — module view
 
-PMO evaluates the **subsystem as a whole** against the [ENG-COM-001 charter](./ENG-COM-001-CHARTER.md).
-
-| Area | Question | Verdict | Evidence |
-| ---- | -------- | ------- | -------- |
-| **Scope** | Does the Communications Office satisfy the V1 charter evidence requirements (E1–E6)? | *pending* | Charter E1–E6 mapped to slice evidence · [slices](./slices/README.md) |
-| **Capability** | Are all required inherited behavioral capabilities present and composable? | *pending* | Three validators + assembler · 19/19 behavioral tests · contract `ENG-COM-001.3` |
-| **Boundaries** | Does the office remain within its constitutional scope (no policy, action, publishing, connectors)? | *pending* | Charter out-of-scope table · validator rejection paths · no publishing/connectors in tree |
-| **Integration** | Does it operate correctly within the deterministic pipeline (Evidence Package in → accountable draft out)? | *pending* | `traceableDraftGenerator.ts` · `validateComposedDraftProposal()` · fixture + optional LLM adapter |
-| **Readiness** | Is the subsystem complete enough to support Commercial Beta preparation? | *pending* | Backend library + tests only · no Communications UI · no `/api/communications/*` route · Program Office metrics at 90% |
-
-**Gate question:** Is any criterion only partially satisfied? *Pending PMO review.*
+| Charter req | Module satisfaction | Basis |
+| ----------- | ------------------- | ----- |
+| E1 Every substantive claim traceable | **Earned** | Inherited traceability · PMO-010 |
+| E2 Uncertainty preserved | **Earned** | Inherited uncertainty · PMO-011 |
+| E3 Evidence boundaries preserved | **Earned** | Composed validators · epistemic profiles |
+| E4 Unsupported claims withheld | **Earned** | Withhold paths · incomplete package handling |
+| E5 Output remains advisory | **Earned** | Inherited advisory restraint · PMO-012 |
+| E6 Reasoning within communication scope | **Earned** | `CommunicationsDraftRequest` binding · scope validators · request-bound fixtures |
 
 ---
 
-## Charter evidence mapping (E1–E6)
+## What this disposition promotes
 
-| Charter req | Inherited from | Basis |
-| ----------- | -------------- | ----- |
-| E1 Every substantive claim traceable | Traceability · PMO-010 | C1–C5 · 5/5 tests |
-| E2 Uncertainty preserved | Uncertainty · PMO-011 | U1–U5 · 6/6 tests |
-| E3 Evidence boundaries preserved | Traceability + uncertainty | Composed validators |
-| E4 Unsupported claims withheld | Traceability · C4/C5 | Withhold paths in tests |
-| E5 Output remains advisory | Advisory restraint · PMO-012 | A1–A5 · 7/7 tests |
-| E6 Reasoning within communication scope | Traceability + request binding | Draft request contract |
+Disposition **COMPLETE** promotes exactly one outcome:
 
----
+> **The Communications Office is a completed V1 subsystem** — constitutionally accountable probabilistic draft generation with inherited behavioral guarantees.
 
-## Authoritative test commands (isolated)
+This disposition does **not**:
 
-```bash
-cd shared && npm run build
-cd backend && node --import tsx --test src/communicationsOffice/communicationsDraft.test.ts
-cd backend && node --import tsx --test src/communicationsOffice/communicationsDraftUncertainty.test.ts
-cd backend && node --import tsx --test src/communicationsOffice/communicationsDraftAdvisoryRestraint.test.ts
-```
-
-**Expected:** 5/5 + 6/6 + 7/7 PASS
+* authorize Commercial Beta
+* establish release readiness
+* require product UI or API routes (those belong to Commercial Beta preparation)
+* reopen any slice acceptance
 
 ---
 
-## Explicitly not in scope for this evaluation
+## Explicitly deferred to Commercial Beta preparation
 
-This ceremony does **not** decide:
+The following are **known gaps** — not module failures — for the next governance scope:
 
-* Commercial Beta authorization
-* Release readiness or launch date
-* Volunteer Management · Campaign Director · connector activation
-* Writing quality · tone · provider comparison
-* Reopening traceability, uncertainty, or advisory restraint
-
----
-
-## Disposition outcomes (binary)
-
-### If COMPLETE
-
-Disposition **COMPLETE** promotes the Communications Office to a **completed V1 subsystem**:
-
-> The repository has demonstrated constitutionally accountable probabilistic draft generation as an earned module — behavioral stack inherited · ready for Commercial Beta **preparation** (not authorization).
-
-Critical path advances to Commercial Beta preparation. Engineering does not resume unless a **new crossing** is authorized for a specific module-level gap.
-
-### If NOT COMPLETE
-
-Disposition **NOT COMPLETE** identifies **only** the missing module-level criterion. Authority returns to engineering **only if** that criterion requires new evidence — not for general refinement.
-
-No automatic cascade. No slice reopening.
+* Communications workbench UI
+* `/api/communications/*` product routes
+* Connector activation · publishing · workflow
 
 ---
 
@@ -145,32 +105,32 @@ No automatic cascade. No slice reopening.
 ```text
 ENG-COM-001.3 COMPLETE
         ↓
-ENG-PMO-012 ACCEPTED (commit 12fd9f0)
+ENG-PMO-012 ACCEPTED (12fd9f0)
         ↓
-Inherited capability baseline
+ENG-PMO-013 OPENED (61c4e90)
         ↓
-ENG-PMO-013 Module Evaluation  ← this ceremony
+ENG-PMO-013 COMPLETE
         ↓
-Completed V1 subsystem (if earned)
+Communications Office V1 subsystem earned
         ↓
-Commercial Beta readiness (separate gate)
+Commercial Beta preparation (separate gate)
 ```
 
 ---
 
-## Repository state during evaluation
+## Repository state after PMO-013
 
 ```text
 Engineering
-    CLOSED (behavioral slices complete)
+    CLOSED (no active crossing)
 PMO
-    ENG-PMO-013 PENDING
-Inherited capabilities
-    Traceability · Uncertainty · Advisory restraint
+    ENG-PMO-013 COMPLETE
+Subsystem
+    Communications Office V1 COMPLETE
 Next authority
-    PMO module disposition only
+    Commercial Beta preparation
 ```
 
 ---
 
-*ENG-PMO-013 · Communications Office Module Evaluation · PENDING · LocalBrain V1 · 2026*
+*ENG-PMO-013 · Communications Office Module Evaluation · COMPLETE · LocalBrain V1 · 2026*

@@ -124,7 +124,7 @@ Deterministic substrate doctrine: [DETERMINISTIC-FOUNDATION-DOCTRINE.md](./DETER
 
 **Post-foundation era:** **Executive Intelligence Era** — deterministic pipeline **COMPLETE** · ENG-EI-002 **COMPLETE** · Reference Consumer 001 · [ENG-PMO-009](./ENG-PMO-009-EXECUTIVE-BRIEF-ACCEPTANCE.md)
 
-**Active gate:** [ENG-PMO-013 Communications Office Module Evaluation](../communications-office/ENG-PMO-013-COMMUNICATIONS-OFFICE-MODULE-EVALUATION.md) **PENDING** · [001.1](../communications-office/slices/ENG-COM-001.1-TRACEABLE-DRAFT-GENERATION.md) + [001.2](../communications-office/slices/ENG-COM-001.2-UNCERTAINTY-PRESERVATION.md) + [001.3](../communications-office/slices/ENG-COM-001.3-ADVISORY-RESTRAINT.md) **COMPLETE** · inherited traceability + uncertainty + advisory restraint · engineering **closed**
+**Active gate:** Communications Office **COMPLETE** · [ENG-PMO-013](./ENG-PMO-013-COMMUNICATIONS-OFFICE-MODULE-EVALUATION.md) · Commercial Beta preparation next · engineering **closed**
 
 ---
 

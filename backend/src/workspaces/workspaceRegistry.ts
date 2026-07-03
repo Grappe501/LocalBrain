@@ -288,7 +288,7 @@ export function seedWorkspaces(): void {
     parent_workspace_id: null,
     executive_context:
       "LocalBrain is Steve's Executive Operating System — not a chatbot. Wave 1 builds the Institutional Cognition Foundation: deterministic memory substrates that Executive Intelligence reasons over.",
-    current_focus: "ENG-PMO-013 PENDING · Communications Office module evaluation · inherited baseline committed",
+    current_focus: "Communications Office COMPLETE · ENG-PMO-013 · Commercial Beta preparation next",
     success_definition:
       "A modular AI Executive Operating System that becomes Steve's primary interface for work.",
     workspace_avatar: "🧠",
@@ -297,7 +297,7 @@ export function seedWorkspaces(): void {
     filesystem_roots: [repoRoot],
     profile: {
       mission: "Build Steve's Executive Operating System",
-      current_phase: "Communications Office · ENG-PMO-013 module evaluation PENDING",
+      current_phase: "Communications Office · V1 subsystem COMPLETE · ENG-PMO-013",
       completed_slices: [
         "LB-OS-001",
         "LB-OS-002",
@@ -324,13 +324,10 @@ export function seedWorkspaces(): void {
         "ENG-COM-001.2",
         "ENG-PMO-011",
         "ENG-COM-001.3",
-        "ENG-PMO-012",
+        "ENG-PMO-013",
       ],
-      active_slice: "ENG-PMO-013 Communications Office module evaluation",
-      next_slices: [
-        "ENG-PMO-013 Communications Office module evaluation",
-        "Commercial Beta preparation",
-      ],
+      active_slice: "Commercial Beta preparation",
+      next_slices: ["Commercial Beta preparation"],
       recent_decisions: [
         "PSP approved",
         "localbrain home mock",
@@ -340,9 +337,9 @@ export function seedWorkspaces(): void {
         "ENG-PMO-005 Constitutional Completion",
       ],
       chief_of_staff_summary:
-        "ENG-PMO-013 PENDING · inherited traceability + uncertainty + advisory restraint · 19/19 behavioral tests",
+        "Communications Office COMPLETE · ENG-PMO-013 · 18/18 behavioral · inherited stack committed",
       recommended_next_action:
-        "ENG-PMO-013 module evaluation — has the Communications Office earned completion as a V1 subsystem?",
+        "Commercial Beta preparation — product surfaces and release governance (separate authority)",
       repositories: [],
       contacts: [],
       calendar_links: [],

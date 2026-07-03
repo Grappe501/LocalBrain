@@ -6,9 +6,9 @@
 
 > **Platform checkpoint:** ENG-PMO-009 — ENG-EI-002 **COMPLETE** · Work Product Contract `ENG-EI-002.2` · Evidence Package `ENG-EI-001.3`  
 
-> **Governance checkpoint:** Deterministic executive pipeline **CLOSED** · [ENG-COM-001.1](./communications-office/slices/ENG-COM-001.1-TRACEABLE-DRAFT-GENERATION.md) + [001.2](./communications-office/slices/ENG-COM-001.2-UNCERTAINTY-PRESERVATION.md) + [001.3](./communications-office/slices/ENG-COM-001.3-ADVISORY-RESTRAINT.md) **COMPLETE** · ENG-PMO-012 ACCEPTED · [ENG-PMO-013](./communications-office/ENG-PMO-013-COMMUNICATIONS-OFFICE-MODULE-EVALUATION.md) **PENDING**  
+> **Governance checkpoint:** Communications Office **COMPLETE** · [ENG-PMO-013](./communications-office/ENG-PMO-013-COMMUNICATIONS-OFFICE-MODULE-EVALUATION.md) · Commercial Beta preparation next  
 
-> **Phase boundary:** Execution — **ENG-PMO-013 module evaluation PENDING** · inherited baseline committed · engineering closed  
+> **Phase boundary:** Execution — **Communications Office V1 subsystem COMPLETE** · engineering closed · Commercial Beta preparation  
 
 > **Observed:** 2026-07-03 · *static template — live values from Program Office API*
 
@@ -60,7 +60,7 @@ Overall Launch
 
 | ✓ Executive Intelligence Era | ENG-EI-002 **COMPLETE** · ENG-PMO-009 · Contract `ENG-EI-002.2` · 7/7 brief tests · Reference Consumer 001 | **Complete** |
 
-| ▶ Communications Office | ENG-PMO-013 **PENDING** · inherited baseline · 19/19 behavioral tests · engineering closed | **module evaluation** |
+| ✅ Communications Office | **COMPLETE** · ENG-PMO-013 · Contract `ENG-COM-001.3` · 18/18 behavioral tests | **Commercial Beta prep** |
 
 | □ Commercial Beta | Pending Communications validation | **~5 days** |
 
@@ -80,7 +80,7 @@ Overall Launch
 
 ```text
 
-Current Module ETA:     module evaluation   (tactical — Communications Office module gate)
+Current Module ETA:     Commercial Beta preparation   (next governance scope)
 
 Current Phase ETA:      ~20 days  (operational — Communications + Commercial Beta)
 
@@ -154,7 +154,7 @@ Confidence:             ~75%
 
 | Executive Intelligence Era | 100% (ENG-EI-002 · ENG-PMO-009 · Work Product Contract ENG-EI-002.2) |
 
-| Communications Office | 90% (ENG-PMO-013 module evaluation PENDING · inherited baseline committed) |
+| Communications Office | 100% (ENG-PMO-013 COMPLETE · V1 subsystem earned) |
 
 | Commercial Beta | 70% |
 
@@ -232,7 +232,7 @@ Critical path only:
 
 ✓ ENG-EI-002 Executive Brief (ENG-PMO-009 · deterministic pipeline closed)
 
-▶ ENG-PMO-013 Module Evaluation (PENDING) → Commercial Beta preparation
+▶ Commercial Beta preparation (Communications Office COMPLETE)
 
 ```
 
@@ -270,7 +270,7 @@ Critical path only:
 
 
 
-**Critical path:** ENG-PMO-013 module evaluation → Commercial Beta preparation
+**Critical path:** Commercial Beta preparation
 
 
 
@@ -364,7 +364,7 @@ Design → Build → Test → PMO Review → Certification → Regression Lock �
 
 > Finish the current module.  
 
-> **Now:** [ENG-PMO-013 Module Evaluation](./communications-office/ENG-PMO-013-COMMUNICATIONS-OFFICE-MODULE-EVALUATION.md) **PENDING** — inherited baseline committed · engineering closed · then Commercial Beta preparation.
+> **Now:** Communications Office **COMPLETE** · [ENG-PMO-013](./communications-office/ENG-PMO-013-COMMUNICATIONS-OFFICE-MODULE-EVALUATION.md) — Commercial Beta preparation is the next governance scope.
 
 
 

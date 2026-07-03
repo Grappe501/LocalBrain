@@ -1,6 +1,6 @@
 # ENG-COM-001 — Communications Office
 
-> **Status:** **AUTHORIZED** — 2026-07-02  
+> **Status:** **AUTHORIZED** — 2026-07-02 · **Subsystem COMPLETE** · ENG-PMO-013 · 2026-07-03  
 > **Crossing:** Communications Office · first probabilistic inhabitant  
 > **Prerequisite:** [ENG-PMO-009](../memory-os/ENG-PMO-009-EXECUTIVE-BRIEF-ACCEPTANCE.md) · [ENG-EI-DOC-005](../memory-os/ENG-EI-DOC-005-DETERMINISTIC-EXECUTIVE-PIPELINE-COMPLETE.md) · deterministic executive pipeline **CLOSED**  
 > **Governance:** [ENG / OPS / ENG-PMO](../memory-os/ENG-PMO-GOVERNANCE.md)  
@@ -152,16 +152,16 @@ The following **emerge** from answering the architectural question with engineer
 | [ENG-COM-001.2](./slices/ENG-COM-001.2-UNCERTAINTY-PRESERVATION.md) | Can uncertainty survive probabilistic rewriting? | ✅ **COMPLETE** · [ENG-PMO-011](./ENG-PMO-011-UNCERTAINTY-PRESERVATION-ACCEPTANCE.md) |
 | [ENG-COM-001.3](./slices/ENG-COM-001.3-ADVISORY-RESTRAINT.md) | Can advisory restraint survive ambiguous prompts? | ✅ **COMPLETE** · [ENG-PMO-012](./ENG-PMO-012-ADVISORY-RESTRAINT-ACCEPTANCE.md) |
 
-This charter authorizes the crossing. Slices 001.1 + 001.2 + 001.3 **COMPLETE** · behavioral stack inherited · [ENG-PMO-013](./ENG-PMO-013-COMMUNICATIONS-OFFICE-MODULE-EVALUATION.md) **PENDING**.
+This charter authorizes the crossing. Slices 001.1 + 001.2 + 001.3 **COMPLETE** · [ENG-PMO-013](./ENG-PMO-013-COMMUNICATIONS-OFFICE-MODULE-EVALUATION.md) **COMPLETE** · Communications Office V1 subsystem earned.
 
 ---
 
 ## Institutional posture
 
 ```text
-Engineering truth:     ENG-COM-001.3 COMPLETE · ENG-PMO-012 · Contract ENG-COM-001.3 · 19/19 behavioral tests · advisory restraint inherited
-Operational truth:     ENG-PMO-013 module evaluation PENDING
-Next repository act:   PMO module disposition only — not engineering
+Engineering truth:     Communications Office V1 subsystem COMPLETE · ENG-PMO-013 · Contract ENG-COM-001.3 · 18/18 behavioral tests
+Operational truth:     Commercial Beta preparation — next governance scope
+Next repository act:   Commercial Beta preparation — not engineering unless new crossing authorized
 ```
 
 ---

@@ -68,7 +68,7 @@ export const CONTEXT_CARDS: readonly ContextCard[] = [
     id: "communications",
     title: "Communications Office",
     status: "active",
-    detail: "ENG-PMO-013 PENDING · inherited traceability + uncertainty + advisory restraint · 19/19 behavioral · module evaluation active",
+    detail: "Communications Office COMPLETE · ENG-PMO-013 · Contract ENG-COM-001.3 · 18/18 behavioral · Commercial Beta prep next",
   },
 ] as const;
 
