@@ -8,6 +8,7 @@ This directory is the immutable manufacturing record for LocalBrain V1 Factory.
 
 | Artifact | Purpose |
 | -------- | ------- |
+| [Factory Constitution v1.0](../FACTORY_CONSTITUTION_v1.0.md) | Constitutional document for the manufacturing layer |
 | [factory-certification.json](./factory-certification.json) | Full ten-gate PMO certification report |
 | [factory-lock.json](./factory-lock.json) | Factory lock record and governance rule |
 | [factory-release.json](./factory-release.json) | Release metadata and structural hashes |

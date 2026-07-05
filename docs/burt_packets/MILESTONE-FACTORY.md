@@ -17,7 +17,7 @@
 
 > **Depends on:** [Convention Close](../convention/CONVENTION-CLOSE.md) · [Design Era Close](../LOCALBRAIN_DESIGN_ERA_CLOSE.md)  
 > **Engine:** ENG-FAC-001 · **Slices:** LB-OS-PROD-010 · LB-OS-027.0  
-> **Next:** Memory OS design (LB-OS-027) — Factory immutable
+> **Next:** Memory OS specification ([MILESTONE-MEMORY-OS](../burt_packets/MILESTONE-MEMORY-OS.md)) — Factory immutable
 
 ---
 

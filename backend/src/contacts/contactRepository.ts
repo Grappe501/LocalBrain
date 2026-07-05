@@ -50,19 +50,41 @@ function lookupContactIdByEmail(workspaceId: string, normalizedEmail: string): s
 }
 
 function attachAffiliations(record: ContactRecord): ContactRecordWithAffiliations {
-  const rows = getDatabase()
+  const memberRows = getDatabase()
     .prepare(
-      `SELECT l.organization_id, l.role_label, o.name
-       FROM contact_organization_links l
+      `SELECT l.organization_id, l.custom_role_label, l.membership_role, o.name
+       FROM contact_organization_members l
        INNER JOIN contact_organizations o ON o.organization_id = l.organization_id
-       WHERE l.contact_id = ? AND o.archived = 0
+       WHERE l.contact_id = ? AND l.effective_until IS NULL AND o.archived = 0
        ORDER BY o.name ASC`,
     )
     .all(record.contact_id) as {
     organization_id: string;
-    role_label: string | null;
+    custom_role_label: string | null;
+    membership_role: string;
     name: string;
   }[];
+
+  const rows =
+    memberRows.length > 0
+      ? memberRows.map((row) => ({
+          organization_id: row.organization_id,
+          name: row.name,
+          role_label: row.custom_role_label ?? row.membership_role,
+        }))
+      : (getDatabase()
+          .prepare(
+            `SELECT l.organization_id, l.role_label, o.name
+       FROM contact_organization_links l
+       INNER JOIN contact_organizations o ON o.organization_id = l.organization_id
+       WHERE l.contact_id = ? AND o.archived = 0
+       ORDER BY o.name ASC`,
+          )
+          .all(record.contact_id) as {
+          organization_id: string;
+          role_label: string | null;
+          name: string;
+        }[]);
 
   return {
     ...record,
@@ -94,7 +116,7 @@ export function createContact(input: CreateContactInput): ContactRecordWithAffil
   const validated = validateCreateContactInput(input);
   const duplicate = findDuplicateEmailConflict(
     validated.workspace_id,
-    validated.emails,
+    validated.emails ?? [],
     null,
     lookupContactIdByEmail,
   );
@@ -117,10 +139,10 @@ export function createContact(input: CreateContactInput): ContactRecordWithAffil
       display_name: validated.display_name,
       first_name: validated.first_name ?? null,
       last_name: validated.last_name ?? null,
-      emails_json: serializeEmails(validated.emails),
-      phones_json: serializePhones(validated.phones),
-      addresses_json: serializeAddresses(validated.addresses),
-      tags_json: serializeTags(validated.tags),
+      emails_json: serializeEmails(validated.emails ?? []),
+      phones_json: serializePhones(validated.phones ?? []),
+      addresses_json: serializeAddresses(validated.addresses ?? []),
+      tags_json: serializeTags(validated.tags ?? []),
       notes: validated.notes ?? "",
       outreach_status: validated.outreach_status ?? "none",
     });

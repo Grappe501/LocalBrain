@@ -1,6 +1,7 @@
 # Empty Brain Factory — Manufacturing Contract
 
 > **Status:** **FROZEN** — manufacturing contract for ENG-FAC-001  
+> **Constitution:** [Factory Constitution v1.0](./FACTORY_CONSTITUTION_v1.0.md) — amend only via certification cycle  
 > **Depends on:** [Convention Close](../convention/CONVENTION-CLOSE.md) · [Design Era Close](../LOCALBRAIN_DESIGN_ERA_CLOSE.md)  
 > **Type:** Engineering contract — behavior frozen · packaging/installer implementation free  
 > **Slice:** LB-OS-PROD-010 · LB-OS-027.0  
@@ -214,7 +215,7 @@ Factory
 
 No future feature may modify Factory behavior without a new certification cycle.
 
-**Next module:** Memory OS (design only until spec lock)
+**Next module:** Memory OS specification ([MILESTONE-MEMORY-OS](../burt_packets/MILESTONE-MEMORY-OS.md) · MEM-001–MEM-008 · no implementation until MEM-008 freeze)
 
 ---
 

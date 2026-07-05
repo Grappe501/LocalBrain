@@ -167,6 +167,12 @@ Success **is**:
 
 ---
 
+## V2 — Contact Management (reserved)
+
+After Commercial Beta, authoritative **facts** deepen under [ENG-CONTACT-002](./ENG-CONTACT-002-CHARTER.md) **RESERVED** — interpretations (Relationship Studio) and recommendations (Executive Intelligence) remain separate authorities.
+
+---
+
 ## Implementation slices
 
 | Slice | Behavioral question | Status |

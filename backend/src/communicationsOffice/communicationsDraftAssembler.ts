@@ -69,13 +69,14 @@ function citationSummary(
     }
     case "artifact": {
       const record = pkg.artifacts.find((a) => a.artifact_id === citation.record_id);
-      return record?.title ?? record?.storage_ref ?? citation.citation_ref;
+      return record?.content_ref ?? record?.uri ?? record?.mime_type ?? citation.citation_ref;
     }
     case "conversation": {
       const record = pkg.conversations.find(
         (c) => c.conversation.conversation_id === citation.record_id,
       );
-      return record?.conversation.source_ref ?? citation.citation_ref;
+      const turn = record?.turns.at(-1)?.content;
+      return turn ?? record?.conversation.channel ?? citation.citation_ref;
     }
     case "decision_citation": {
       const record = pkg.decision_citations.find(

@@ -36,6 +36,11 @@ import {
   isContactManagementStarted,
 } from "./contactManagementMetrics.js";
 import {
+  getGovernedPlatformSnapshot,
+  getOperatorValidationProgress,
+  isGovernedPlatformEraActive,
+} from "./governedPlatformMetrics.js";
+import {
   getExecutiveIntelligenceEraSnapshot,
   isExecutiveIntelligenceDoctrineFrozen,
   isConstitutionalRetrievalComplete,
@@ -143,6 +148,15 @@ const MODULE_DEFS: {
       "backend/src/contacts/contactCsv.test.ts",
       "backend/src/contacts/contactDraftLink.test.ts",
       "backend/src/contacts/contactDraftLinkRoutes.test.ts",
+      "backend/src/contacts/contactContext.test.ts",
+      "backend/src/contacts/contactStewardship.test.ts",
+      "backend/src/contacts/contactHousehold.test.ts",
+      "backend/src/contacts/contactOrganization.test.ts",
+      "backend/src/contacts/contactAction.test.ts",
+      "backend/src/contacts/contactBrief.test.ts",
+      "backend/src/contacts/relationshipAnalytics.test.ts",
+      "backend/src/ucie/ucie.test.ts",
+      "backend/src/operatorWalkthrough/walkthrough001.test.ts",
     ],
   },
   {
@@ -151,7 +165,7 @@ const MODULE_DEFS: {
     version: "0.0",
     weight_area: "documentation_beta",
     owner: null,
-    path_steps: ["commercial_beta"],
+    path_steps: ["operator_validation", "commercial_beta"],
     slice_ids: [],
     test_globs: [],
   },
@@ -235,6 +249,17 @@ function stepStatus(
   const theoryStatus = theoryStepStatus(step, pr);
   if (theoryStatus) return theoryStatus;
 
+  if (step === "operator_validation") {
+    const contactProg = moduleProgress.get("contact_management") ?? 0;
+    if (contactProg < 100) return "waiting";
+    if (isGovernedPlatformEraActive()) {
+      const docProg = moduleProgress.get("documentation_beta") ?? 0;
+      if (docProg >= 100) return "complete";
+      return "in_progress";
+    }
+    return "not_started";
+  }
+
   const def = MODULE_DEFS.find((m) => m.path_steps.includes(step));
   if (!def) return "not_started";
 
@@ -297,6 +322,9 @@ function moduleBlockers(
   }
   if (moduleId === "documentation_beta") {
     const contact = getContactManagementSnapshot();
+    if (isGovernedPlatformEraActive()) {
+      return "PRL-4 operator validation pending";
+    }
     if (contact.crossing_started && contact.module_progress_percent < 100) {
       return "Contact Management V1";
     }
@@ -384,6 +412,9 @@ export function computeV1CommandCenter(state: BuildStateSnapshot): V1CommandCent
     if (def.module_id === "contact_management" && isContactManagementStarted()) {
       progress = Math.max(progress, getContactManagementModuleProgress());
     }
+    if (def.module_id === "documentation_beta" && isGovernedPlatformEraActive()) {
+      progress = Math.max(progress, getOperatorValidationProgress());
+    }
     moduleProgress.set(def.module_id, Math.min(progress, 100));
   }
 
@@ -420,7 +451,11 @@ export function computeV1CommandCenter(state: BuildStateSnapshot): V1CommandCent
             ? comSnap.slice_001_3_authorized && !comSnap.slice_001_3_complete
               ? "ENG-COM-001.3"
               : (comSnap.contract_version ?? "0.1")
-            : def.module_id === "contact_management" && contactSnap?.crossing_started
+            : def.module_id === "contact_management" && isGovernedPlatformEraActive()
+              ? "CONTACT-V3+UCIE · PRL-3"
+              : def.module_id === "documentation_beta" && isGovernedPlatformEraActive()
+                ? "Operator Validation · PRL-4"
+              : def.module_id === "contact_management" && contactSnap?.crossing_started
               ? contactSnap.slice_001_4_complete
                 ? "ENG-CONTACT-001.4"
                 : contactSnap.slice_001_3_complete
@@ -432,14 +467,17 @@ export function computeV1CommandCenter(state: BuildStateSnapshot): V1CommandCent
 
     return {
       module_id: def.module_id,
-      name: def.name,
+      name:
+        def.module_id === "documentation_beta" && isGovernedPlatformEraActive()
+          ? "Operator Validation & Beta"
+          : def.name,
       version,
       progress_percent: progress,
       status: eoCert?.regression_detected ? "in_progress" : status,
       eta_label: etaLabel(status, estDays),
       owner: def.owner,
       blockers: eoCert?.regression_detected
-        ? ["REGRESSION — module failed re-certification"]
+        ? "REGRESSION — module failed re-certification"
         : blockers,
       tests_label: testsLabel,
       weight_area: def.weight_area,
@@ -513,7 +551,11 @@ export function computeV1CommandCenter(state: BuildStateSnapshot): V1CommandCent
   ) {
     const com = getCommunicationsOfficeSnapshot();
     if (com.module_complete && isContactManagementStarted()) {
-      buildingToday = getContactManagementSnapshot().building_today;
+      if (isGovernedPlatformEraActive()) {
+        buildingToday = getGovernedPlatformSnapshot().building_today;
+      } else {
+        buildingToday = getContactManagementSnapshot().building_today;
+      }
     } else {
       buildingToday = com.building_today;
     }

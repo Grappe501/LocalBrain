@@ -11,7 +11,7 @@
   "data_sources": ["localbrain_db", "filesystem_index", "digital_asset_registry"],
   "capabilities": [
     {
-      "capability_id": "CAP-DI-001",
+      "capability_id": "CAP-DAT-001",
       "dependencies": ["ENG-PM-001", "ENG-KE-001", "ENG-WR-001", "ENG-DA-001"]
     }
   ],

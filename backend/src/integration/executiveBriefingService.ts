@@ -1,5 +1,6 @@
 import { buildExecutiveOfficeExperience } from "@localbrain/shared";
 import { computeBuildState } from "../buildState/buildStateEngine.js";
+import { getGovernedPlatformSnapshot, isGovernedPlatformEraActive } from "../buildState/governedPlatformMetrics.js";
 import { getConsolidationBriefing } from "../consolidation/consolidationService.js";
 import { runGraphIntegrityCertification } from "../integration/executiveExperienceAudit.js";
 import { runV1Acceptance } from "../v1/v1SpineVerifier.js";
@@ -27,6 +28,7 @@ export function collectExecutiveBriefingSignals(): ExecutiveBriefingSignals {
   const rawWs = wsId ? getWorkspace(wsId) : null;
   const ws = rawWs ? projectWorkspaceLive(rawWs) : null;
   const build = computeBuildState();
+  const governed = isGovernedPlatformEraActive() ? getGovernedPlatformSnapshot() : null;
 
   return {
     v1_overall_pass: v1.overall_pass,
@@ -37,6 +39,11 @@ export function collectExecutiveBriefingSignals(): ExecutiveBriefingSignals {
     workspace_id: ws?.workspace_id ?? null,
     workspace_focus: ws?.current_focus ?? null,
     current_build_slice: build.current_slice_id,
+    governed_era_active: governed?.era_active ?? false,
+    platform_readiness_level: governed?.platform_readiness_level ?? null,
+    prime_directive: governed ? "Protect the evidence." : null,
+    current_gate: governed ? "PRL-4 — Internal Operator Validated" : null,
+    building_today: governed?.building_today ?? null,
   };
 }
 

@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import type {
   EpoCoverageBars,
   EpoOverview,
@@ -7,8 +8,11 @@ import type {
   ExecutiveExperienceCertification,
   IntegrationAuditReport,
   PlatformReadinessReport,
+  PlatformStateReport,
 } from "@localbrain/shared";
 import { ExecutiveQuestionShell } from "../components/ExecutiveQuestionShell";
+import { CampaignOperatingSystemPanel } from "../components/CampaignOperatingSystemPanel";
+import { workbenchDocHref, workbenchRouteHref } from "@localbrain/shared";
 import { useLiveRefresh } from "../hooks/useLiveRefresh";
 import {
   fetchEpoDocs,
@@ -16,6 +20,7 @@ import {
   fetchEpoSlice,
   fetchEpoWhy,
   fetchPlatformReadiness,
+  fetchPlatformStateAudit,
 } from "../api/epo";
 import { fetchIntegrationAudit, fetchExecutiveExperienceAudit } from "../api/integration";
 
@@ -58,6 +63,7 @@ export function ProgramOfficeView() {
   const [integration, setIntegration] = useState<IntegrationAuditReport | null>(null);
   const [experience, setExperience] = useState<ExecutiveExperienceCertification | null>(null);
   const [readiness, setReadiness] = useState<PlatformReadinessReport | null>(null);
+  const [platformAudit, setPlatformAudit] = useState<PlatformStateReport | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -67,18 +73,20 @@ export function ProgramOfficeView() {
     if (!background) setRefreshing(true);
     try {
       setError(null);
-      const [ov, docList, integ, exp, ready] = await Promise.all([
+      const [ov, docList, integ, exp, ready, psa] = await Promise.all([
         fetchEpoOverview(),
         fetchEpoDocs(),
         fetchIntegrationAudit().catch(() => null),
         fetchExecutiveExperienceAudit().catch(() => null),
         fetchPlatformReadiness().catch(() => null),
+        fetchPlatformStateAudit().catch(() => null),
       ]);
       setOverview(ov);
       setDocs(docList);
       setIntegration(integ);
       setExperience(exp);
       setReadiness(ready);
+      setPlatformAudit(psa);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Failed to load Program Office");
     } finally {
@@ -176,6 +184,172 @@ export function ProgramOfficeView() {
       </header>
 
       <ExecutiveQuestionShell route="/program-office" observedAt={overview.observed_at} />
+
+      <CampaignOperatingSystemPanel />
+
+      {overview.governed_platform ? (
+        <section className="epo-governed" aria-label="Governed platform posture">
+          <header className="epo-governed__header">
+            <h2>Governed Platform · {overview.governed_platform.platform_readiness_level}</h2>
+            <p className="epo-governed__directive">{overview.governed_platform.prime_directive}</p>
+            <p className="epo-governed__building">{overview.governed_platform.building_today}</p>
+          </header>
+          <dl className="epo-governed__stats">
+            <div>
+              <dt>Current gate</dt>
+              <dd>{overview.governed_platform.current_gate}</dd>
+            </div>
+            <div>
+              <dt>Active milestone</dt>
+              <dd>{overview.governed_platform.active_milestone_name}</dd>
+            </div>
+            <div>
+              <dt>Next milestone</dt>
+              <dd>{overview.governed_platform.next_milestone_name}</dd>
+            </div>
+            <div>
+              <dt>Critical path</dt>
+              <dd>{overview.governed_platform.critical_path_detail}</dd>
+            </div>
+          </dl>
+
+          <h3 className="epo-governed__subtitle">Roadmap — next 15 steps</h3>
+          <table className="epo-governed__roadmap">
+            <thead>
+              <tr>
+                <th>Step</th>
+                <th>Phase</th>
+                <th>Status</th>
+                <th>Detail</th>
+              </tr>
+            </thead>
+            <tbody>
+              {overview.governed_platform.roadmap_steps.map((step) => (
+                <tr key={step.step_id} className={`epo-governed__row--${step.status}`}>
+                  <td>{step.label}</td>
+                  <td>{step.phase}</td>
+                  <td>{step.status.replace("_", " ")}</td>
+                  <td>{step.detail}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          <h3 className="epo-governed__subtitle">Live capability categories</h3>
+          <div className="epo-governed__capabilities">
+            {overview.governed_platform.capability_categories.map((cat) => (
+              <article key={cat.category_id} className="epo-governed__cap-card">
+                <header>
+                  <strong>{cat.title}</strong>
+                  <span className={`epo-governed__cap-status epo-governed__cap-status--${cat.status}`}>
+                    {cat.status}
+                  </span>
+                  <span className="epo-governed__cap-pct">{cat.readiness_percent}%</span>
+                </header>
+                <p>{cat.summary}</p>
+                <p className="epo-governed__cap-routes">
+                  {cat.primary_routes.length > 0
+                    ? cat.primary_routes.map((r, i) => (
+                        <span key={r}>
+                          {i > 0 ? " · " : null}
+                          <Link to={workbenchRouteHref(r)}>{r}</Link>
+                        </span>
+                      ))
+                    : cat.status === "reserved"
+                      ? (
+                          <Link to={workbenchDocHref("docs/platform/FIRST-PRINCIPLES-STACK.md")}>
+                            Read reserved architecture
+                          </Link>
+                        )
+                      : "Backend module"}
+                </p>
+              </article>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      {platformAudit ? (
+        <section className="epo-psa" aria-label="Platform State Audit PSA-001">
+          <header className="epo-psa__header">
+            <h2>Platform State Audit · {platformAudit.audit_id}</h2>
+            <p className="epo-psa__question">Can the workbench accurately explain itself?</p>
+            <p className="epo-psa__coherence">
+              Platform Coherence: <strong>{platformAudit.platform_coherence.score_percent}%</strong>{" "}
+              <span className={`epo-psa__coherence-label epo-psa__coherence-label--${platformAudit.platform_coherence.label}`}>
+                {platformAudit.platform_coherence.label.replace("_", " ")}
+              </span>
+              · {platformAudit.platform_coherence.checks_passed}/{platformAudit.platform_coherence.checks_total} checks
+              · {platformAudit.platform_coherence.drift_count} drift
+            </p>
+          </header>
+
+          <div className="epo-psa__grid">
+            <article className="epo-psa__panel">
+              <h3>1. Canonical State</h3>
+              <dl className="epo-psa__canonical">
+                <div><dt>Phase</dt><dd>{platformAudit.canonical_state.current_phase}</dd></div>
+                <div><dt>PRL</dt><dd>{platformAudit.canonical_state.prl_level}</dd></div>
+                <div><dt>CPAT</dt><dd>{platformAudit.canonical_state.cpat_status}</dd></div>
+                <div><dt>Prime Directive</dt><dd>{platformAudit.canonical_state.prime_directive}</dd></div>
+                <div><dt>Building today</dt><dd>{platformAudit.canonical_state.building_today}</dd></div>
+                <div><dt>Next operator action</dt><dd>{platformAudit.canonical_state.next_operator_action}</dd></div>
+              </dl>
+            </article>
+
+            <article className="epo-psa__panel">
+              <h3>2. Drift Report</h3>
+              {platformAudit.drift_report.length === 0 ? (
+                <p className="epo-psa__ok">No cross-surface drift detected.</p>
+              ) : (
+                <ul className="epo-psa__drift">
+                  {platformAudit.drift_report.map((d) => (
+                    <li key={`${d.field}-${d.source_a}`} className={`epo-psa__drift--${d.severity}`}>
+                      <strong>{d.field}</strong>: {d.source_a} vs {d.source_b}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </article>
+
+            <article className="epo-psa__panel">
+              <h3>3. Capability Progress</h3>
+              <ul className="epo-psa__progress">
+                {platformAudit.capability_progress.map((row) => (
+                  <li key={row.subsystem_id}>
+                    <span className="epo-psa__progress-label">{row.label}</span>
+                    <code className="epo-psa__progress-bar">{row.progress_bar}</code>
+                    <span className="epo-psa__progress-pct">{row.readiness_percent}%</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+
+            <article className="epo-psa__panel">
+              <h3>4. Next Horizon</h3>
+              <ol className="epo-psa__horizon">
+                {platformAudit.next_horizon.map((step) => (
+                  <li key={step.step_id} className={`epo-psa__horizon--${step.status}`}>
+                    {step.label}
+                  </li>
+                ))}
+              </ol>
+            </article>
+          </div>
+
+          <details className="epo-psa__layers">
+            <summary>Audit layers ({platformAudit.layers.length})</summary>
+            <ul>
+              {platformAudit.layers.map((layer) => (
+                <li key={layer.layer_id}>
+                  <strong>{layer.layer_name}</strong> — {layer.passed ? "pass" : "needs work"} · {layer.score_percent}%
+                  {layer.findings.length > 0 ? ` · ${layer.findings.length} finding(s)` : null}
+                </li>
+              ))}
+            </ul>
+          </details>
+        </section>
+      ) : null}
 
       <section className="epo-ceo" aria-label="Program Office CEO Mode">
         <section className="epo-burt-start" aria-label="Burt session start">
@@ -1438,7 +1612,9 @@ Production Brains
           {docs.slice(0, 40).map((d) => (
             <li key={d.path}>
               <span className="epo-doc-list__cat">{d.category}</span>
-              <strong>{d.title}</strong>
+              <Link to={workbenchDocHref(d.path)}>
+                <strong>{d.title}</strong>
+              </Link>
               <span className="epo-doc-list__path">{d.path}</span>
               <p>{d.quick_summary}</p>
             </li>

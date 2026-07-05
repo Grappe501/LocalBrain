@@ -21,12 +21,16 @@ export async function fetchContacts(options: {
   tag?: string;
   email?: string;
   include_archived?: boolean;
+  context_id?: string;
+  context_primary_only?: boolean;
 }): Promise<ContactRecordWithAffiliations[]> {
   const params = new URLSearchParams({ workspace_id: options.workspace_id });
   if (options.search) params.set("search", options.search);
   if (options.tag) params.set("tag", options.tag);
   if (options.email) params.set("email", options.email);
   if (options.include_archived) params.set("include_archived", "true");
+  if (options.context_id) params.set("context_id", options.context_id);
+  if (options.context_primary_only) params.set("context_primary_only", "true");
 
   const res = await fetch(`/api/contacts?${params.toString()}`);
   if (!res.ok) throw new Error(await parseError(res));

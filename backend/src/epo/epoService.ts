@@ -12,6 +12,8 @@ import { parsePhaseChecklistSlices } from "./checklistParser.js";
 import { computeBuildState, BUILD_STATE_ENGINE_ID, changelogDecisions } from "../buildState/buildStateEngine.js";
 import { computeV1CommandCenter } from "../buildState/v1CommandCenterEngine.js";
 import { computeProjectState } from "../buildState/projectStateEngine.js";
+import { getGovernedPlatformSnapshot, isGovernedPlatformEraActive } from "../buildState/governedPlatformMetrics.js";
+import { buildGovernedPlatformDashboard } from "@localbrain/shared";
 import { getRecentCommits } from "./gitReader.js";
 import { computeEngineeringScore } from "../engineering/engineeringScore.js";
 import { explainBlocker } from "./blockerExplainer.js";
@@ -58,6 +60,18 @@ export function getEpoOverview(): EpoOverview {
   const workspaces = listWorkspaces().filter((w) => !w.flags.hidden);
   const docs = listDocumentationLibrary();
   const engScore = computeEngineeringScore().score;
+  const gpSnap = isGovernedPlatformEraActive() ? getGovernedPlatformSnapshot() : null;
+  const governed_platform = gpSnap
+    ? buildGovernedPlatformDashboard({
+        era_active: gpSnap.era_active,
+        platform_readiness_level: gpSnap.platform_readiness_level ?? "PRL-3",
+        phase_label: gpSnap.phase_label,
+        building_today: gpSnap.building_today,
+        smallest_next_slice: gpSnap.smallest_next_slice,
+        critical_path_detail: gpSnap.critical_path_detail,
+        operator_walkthrough_id: gpSnap.operator_walkthrough_id,
+      })
+    : null;
 
   return {
     current_phase_label: state.current_phase_label,
@@ -92,6 +106,7 @@ export function getEpoOverview(): EpoOverview {
     experience_maturity_engine_id: EXPERIENCE_MATURITY_ENGINE_ID,
     v1_command_center,
     project_state,
+    governed_platform,
     read_only: true,
     observed_at: new Date().toISOString(),
   };

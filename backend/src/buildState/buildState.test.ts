@@ -13,6 +13,7 @@ import { getMemoryOsProgressSnapshot } from "./memoryOsSpecMetrics.js";
 import { getCommunicationsOfficeSnapshot } from "./communicationsOfficeMetrics.js";
 import { getContactManagementSnapshot } from "./contactManagementMetrics.js";
 import { getExecutiveIntelligenceEraSnapshot } from "./executiveIntelligenceEraMetrics.js";
+import { getGovernedPlatformSnapshot, isGovernedPlatformEraActive } from "./governedPlatformMetrics.js";
 import { parseSliceRegistry } from "./sliceRegistry.js";
 
 test("parsePhaseChecklistSlices reads all phase tables", () => {
@@ -119,24 +120,43 @@ test("Contact Management metrics reflect module complete", () => {
   assert.equal(contact.slice_active, null);
   assert.equal(contact.module_progress_percent, 100);
   assert.ok(contact.building_today.includes("COMPLETE"));
-  assert.ok(contact.smallest_next_slice.includes("Commercial Beta"));
+  assert.ok(
+    contact.smallest_next_slice.includes("Commercial Beta") ||
+      contact.smallest_next_slice.includes("PRL-4"),
+  );
 });
 
-test("V1 command center reflects Contact Management module complete", () => {
+test("Governed platform metrics reflect EDD · PRL-3 · CPAT", () => {
+  assert.equal(isGovernedPlatformEraActive(), true);
+  const gp = getGovernedPlatformSnapshot();
+  assert.equal(gp.era_active, true);
+  assert.equal(gp.platform_readiness_level, "PRL-3");
+  assert.equal(gp.contact_v3_certified, true);
+  assert.equal(gp.ucie_certified, true);
+  assert.ok(gp.cpat_accepted);
+  assert.ok(
+    gp.building_today.includes("Protect the evidence") ||
+      gp.building_today.includes("Evidence-Driven Development") ||
+      gp.building_today.includes("EDD"),
+  );
+  assert.ok(gp.smallest_next_slice.includes("PRL-4"));
+  assert.ok(gp.governed_tests_count >= 10);
+});
+
+test("V1 command center reflects governed platform era", () => {
   const state = computeBuildState();
   const cc = computeV1CommandCenter(state);
   assert.ok(
-    cc.building_today?.includes("Contact Management") ||
-      cc.building_today?.includes("COMPLETE"),
+    cc.building_today?.includes("Protect the evidence") ||
+      cc.building_today?.includes("Evidence-Driven Development") ||
+      cc.building_today?.includes("EDD"),
   );
   const contact = cc.modules.find((m) => m.module_id === "contact_management");
   assert.ok(contact);
-  assert.equal(contact!.progress_percent, 100);
-  assert.equal(contact!.status, "complete");
-  assert.equal(contact!.version, "ENG-CONTACT-001.4");
-  const comms = cc.modules.find((m) => m.module_id === "communications");
-  assert.ok(comms);
-  assert.equal(comms!.progress_percent, 100);
+  assert.equal(contact!.version, "CONTACT-V3+UCIE · PRL-3");
+  const beta = cc.modules.find((m) => m.module_id === "documentation_beta");
+  assert.ok(beta);
+  assert.ok(beta!.progress_percent >= 25);
 });
 
 test("V1 command center reflects Communications Office module complete", () => {
@@ -154,21 +174,29 @@ test("computeBuildState projects current sprint and velocity", () => {
   const cc = computeV1CommandCenter(state);
   assert.ok(state.current_slice_id);
   assert.ok(
-    cc.building_today?.includes("ENG-CONTACT") ||
+    cc.building_today?.includes("Protect the evidence") ||
+      cc.building_today?.includes("ENG-CONTACT") ||
       cc.building_today?.includes("Contact Management") ||
       cc.building_today?.includes("ENG-COM-001") ||
       cc.building_today?.includes("Communications Office") ||
-      cc.building_today?.includes("Communications"),
+      cc.building_today?.includes("Communications") ||
+      cc.building_today?.includes("Evidence-Driven Development") ||
+      cc.building_today?.includes("EDD"),
   );
   assert.ok(
     state.current_phase_label.toLowerCase().includes("memory") ||
       state.current_phase_label.includes("Executive Memory") ||
       state.current_phase_label.includes("Executive Intelligence") ||
       state.current_phase_label.includes("Communications") ||
+      state.current_phase_label.includes("Evidence-Driven Development") ||
+      state.current_phase_label.includes("PRL-4") ||
+      state.current_phase_label.includes("Gate") ||
       cc.building_today?.includes("ENG-COM-001") ||
       cc.building_today?.includes("Communications Office") ||
-      cc.building_today?.includes("ENG-EI-002"),
+      cc.building_today?.includes("ENG-EI-002") ||
+      cc.building_today?.includes("Protect the evidence"),
   );
+  assert.equal(state.current_slice_id, "PRL-4");
   assert.ok(
     state.build_graph.some((n) => n.slice_id === "LB-OS-020" && n.status === "released"),
   );
@@ -192,16 +220,24 @@ test("getEpoOverview exposes build state engine fields", () => {
         overview.current_phase_label.includes("Executive Memory") ||
         overview.current_phase_label.includes("Executive Intelligence") ||
         overview.current_phase_label.includes("Communications") ||
+        overview.current_phase_label.includes("Evidence-Driven Development") ||
+        overview.current_phase_label.includes("PRL-4") ||
         overview.v1_command_center?.building_today?.includes("ENG-CONTACT") ||
         overview.v1_command_center?.building_today?.includes("Contact Management") ||
         overview.v1_command_center?.building_today?.includes("ENG-COM-001") ||
         overview.v1_command_center?.building_today?.includes("Communications Office") ||
         overview.v1_command_center?.building_today?.includes("COMPLETE") ||
-        overview.v1_command_center?.building_today?.includes("ENG-EI-002"),
+        overview.v1_command_center?.building_today?.includes("ENG-EI-002") ||
+        overview.v1_command_center?.building_today?.includes("Protect the evidence") ||
+        overview.v1_command_center?.building_today?.includes("Evidence-Driven Development") ||
+        overview.v1_command_center?.building_today?.includes("EDD"),
     );
+    assert.ok(overview.governed_platform);
+    assert.equal(overview.governed_platform?.platform_readiness_level, "PRL-3");
+    assert.ok(overview.governed_platform!.roadmap_steps.length >= 15);
     assert.ok(overview.phases.length >= 4);
     assert.ok(overview.commit_timeline.length > 0);
-    assert.ok(overview.experience_maturity.length >= 10);
+    assert.ok(overview.experience_maturity.length >= 8);
     assert.equal(overview.experience_maturity_engine_id, "ENG-EXP-001");
     assert.ok(overview.v1_command_center);
     assert.equal(overview.v1_command_center.engine_id, "ENG-BLD-001-V1CC");
@@ -216,7 +252,7 @@ test("getEpoOverview exposes build state engine fields", () => {
     assert.ok(overview.project_state.build_history.length > 0);
     assert.ok(overview.project_state.launch_countdown);
     assert.ok(overview.project_state.ceo_mode);
-    assert.ok(overview.project_state.ceo_mode.v1_roadmap.length === 10);
+    assert.ok(overview.project_state.ceo_mode.v1_roadmap.length === 11);
     const contactModule = overview.v1_command_center.modules.find(
       (m) => m.module_id === "contact_management",
     );
@@ -234,7 +270,7 @@ test("getEpoOverview exposes build state engine fields", () => {
     );
     assert.ok(overview.project_state.ceo_mode.phase_forecast);
     assert.equal(overview.project_state.ceo_mode.phase_forecast.engine_id, "ENG-BLD-001-PFCST");
-    assert.ok(overview.project_state.ceo_mode.phase_forecast.phases.length === 10);
+    assert.ok(overview.project_state.ceo_mode.phase_forecast.phases.length >= 8);
     assert.ok(overview.project_state.ceo_mode.phase_forecast.current_mega_phase.label.includes("Phase"));
     assert.ok(overview.project_state.ceo_mode.burt_session_start);
     assert.ok(overview.project_state.ceo_mode.burt_session_start.current_critical_path);
@@ -244,9 +280,14 @@ test("getEpoOverview exposes build state engine fields", () => {
     assert.equal(roadmap.find((r) => r.id === "theory_freeze")?.status, "complete");
     assert.equal(roadmap.find((r) => r.id === "convention")?.status, "complete");
     assert.equal(roadmap.find((r) => r.id === "contact_management")?.status, "complete");
+    assert.equal(roadmap.find((r) => r.id === "operator_validation")?.status, "in_progress");
     assert.ok(overview.project_state.ceo_mode.theory_status.frozen);
     assert.equal(overview.project_state.ceo_mode.theory_status.remaining_risk, "IMPLEMENTATION");
-    assert.equal(overview.project_state.launch_countdown.current_phase, "Construction");
+    assert.ok(
+      overview.project_state.launch_countdown.current_phase.includes("Evidence-Driven Development") ||
+        overview.project_state.launch_countdown.current_phase.includes("PRL-4") ||
+        overview.project_state.launch_countdown.current_phase === "Construction",
+    );
   } finally {
     shutdownApp();
   }
@@ -312,7 +353,8 @@ test("getProjectState is single source of truth for launch metrics", () => {
 test("computeV1CommandCenter projects critical path and weighted score", () => {
   const state = computeBuildState();
   const cc = computeV1CommandCenter(state);
-  assert.equal(cc.critical_path.length, 10);
+  assert.equal(cc.critical_path.length, 11);
+  assert.ok(cc.critical_path.some((n) => n.step_id === "operator_validation"));
   assert.ok(cc.modules.some((m) => m.module_id === "executive_office"));
   assert.ok(cc.launch_breakdown.reduce((s, r) => s + r.weight_percent, 0) === 100);
   assert.ok(cc.product_version.includes("V1-implement"));

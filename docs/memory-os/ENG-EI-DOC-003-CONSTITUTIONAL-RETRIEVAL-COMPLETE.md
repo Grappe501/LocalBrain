@@ -60,15 +60,15 @@ Replaceability (Article V) depends on this boundary.
 
 ---
 
-## Next engineering milestone
+## Next engineering frontier
 
 ```text
-Evidence Package
+Deterministic executive pipeline — COMPLETE · [ENG-EI-DOC-005](./ENG-EI-DOC-005-DETERMINISTIC-EXECUTIVE-PIPELINE-COMPLETE.md)
         ↓
-Executive Brief
+Probabilistic Executive Intelligence (future charters only)
 ```
 
-First doctrine-compliant work product — not recommendations · not prioritization · not planning.
+First doctrine-compliant probabilistic work products — only where authorized, consuming established contracts.
 
 ---
 

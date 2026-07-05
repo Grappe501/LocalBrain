@@ -5,6 +5,7 @@ import type {
   ContactOrganization,
   ContactOutreachAuditEntry,
   ContactRecordWithAffiliations,
+  RelationshipContext,
 } from "@localbrain/shared";
 import {
   OUTREACH_STATUS_OPTIONS,
@@ -25,8 +26,23 @@ import {
   updateContactApi,
   updateContactOutreachApi,
 } from "../../api/contacts";
+import { ExecutiveQuestionShell } from "../../components/ExecutiveQuestionShell";
+import { fetchWorkspaceContexts } from "../../api/contactContext";
+import { ContactContextFilterDrawer } from "./ContactContextFilterDrawer";
+import { ContactContextPanel } from "./ContactContextPanel";
+import { ContactBriefPanel } from "./ContactBriefPanel";
+import { ContactStewardshipPanel } from "./ContactStewardshipPanel";
+import { ContactOrganizationPanel } from "./ContactOrganizationPanel";
+import { ContactHouseholdPanel } from "./ContactHouseholdPanel";
+import { ContactActionPanel } from "./ContactActionPanel";
+import { ContactTimelinePanel } from "./ContactTimelinePanel";
+import { RelationshipAnalyticsDashboardPanel } from "./RelationshipAnalyticsDashboard";
 
 const WORKSPACE_ID = "localbrain";
+
+type WorkspaceView = "contacts" | "analytics";
+
+type DetailTab = "profile" | "timeline";
 
 type FormState = {
   display_name: string;
@@ -87,6 +103,9 @@ export function ContactManagementView() {
   const [form, setForm] = useState<FormState>(EMPTY_FORM);
   const [search, setSearch] = useState("");
   const [tagFilter, setTagFilter] = useState("");
+  const [contextFilterId, setContextFilterId] = useState("");
+  const [contextPrimaryOnly, setContextPrimaryOnly] = useState(false);
+  const [workspaceContexts, setWorkspaceContexts] = useState<RelationshipContext[]>([]);
   const [includeArchived, setIncludeArchived] = useState(false);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -104,6 +123,13 @@ export function ContactManagementView() {
   const [outreachNote, setOutreachNote] = useState("");
   const [draftIntent, setDraftIntent] = useState("");
   const [draftAudience, setDraftAudience] = useState("");
+  const [detailTab, setDetailTab] = useState<DetailTab>("profile");
+  const [workspaceView, setWorkspaceView] = useState<WorkspaceView>("contacts");
+  const [openActionCount, setOpenActionCount] = useState(0);
+
+  useEffect(() => {
+    setOpenActionCount(0);
+  }, [selectedId]);
 
   const selected = useMemo(
     () => contacts.find((contact) => contact.contact_id === selectedId) ?? null,
@@ -141,6 +167,8 @@ export function ContactManagementView() {
         search: search.trim() || undefined,
         tag: tagFilter.trim() || undefined,
         include_archived: includeArchived,
+        context_id: contextFilterId || undefined,
+        context_primary_only: contextPrimaryOnly,
       });
       setContacts(rows);
     } catch (e) {
@@ -148,7 +176,15 @@ export function ContactManagementView() {
     } finally {
       setLoading(false);
     }
-  }, [search, tagFilter, includeArchived]);
+  }, [search, tagFilter, includeArchived, contextFilterId, contextPrimaryOnly]);
+
+  const loadWorkspaceContexts = useCallback(async () => {
+    try {
+      setWorkspaceContexts(await fetchWorkspaceContexts(WORKSPACE_ID));
+    } catch {
+      setWorkspaceContexts([]);
+    }
+  }, []);
 
   const loadOrganizations = useCallback(async () => {
     try {
@@ -165,6 +201,10 @@ export function ContactManagementView() {
   useEffect(() => {
     void loadOrganizations();
   }, [loadOrganizations]);
+
+  useEffect(() => {
+    void loadWorkspaceContexts();
+  }, [loadWorkspaceContexts]);
 
   useEffect(() => {
     if (creating) {
@@ -396,17 +436,56 @@ export function ContactManagementView() {
 
   return (
     <div className="contact-dept">
+      <ExecutiveQuestionShell route="/studio/contacts" />
       <header className="contact-dept__header">
         <h1>Contact Management</h1>
         <p className="contact-dept__meta">
-          ENG-CONTACT-001.4 · workspace {WORKSPACE_ID} · COM draft linking · human outreach only
+          ENG-CONTACT-001.4 · CONTACT-V3-014 Timeline · CONTACT-V3-016.1 Context · workspace {WORKSPACE_ID} · human outreach only
         </p>
+        <div className="contact-dept__view-toggle" role="tablist">
+          <button
+            type="button"
+            role="tab"
+            aria-selected={workspaceView === "contacts"}
+            className={
+              workspaceView === "contacts"
+                ? "contact-dept__tab contact-dept__tab--active"
+                : "contact-dept__tab"
+            }
+            onClick={() => setWorkspaceView("contacts")}
+          >
+            Contacts
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected={workspaceView === "analytics"}
+            className={
+              workspaceView === "analytics"
+                ? "contact-dept__tab contact-dept__tab--active"
+                : "contact-dept__tab"
+            }
+            onClick={() => setWorkspaceView("analytics")}
+          >
+            Relationship analytics
+          </button>
+        </div>
       </header>
 
       {importMessage ? <p className="contact-dept__notice">{importMessage}</p> : null}
 
       {error ? <p className="contact-dept__error">{error}</p> : null}
 
+      {workspaceView === "analytics" ? (
+        <RelationshipAnalyticsDashboardPanel
+          workspaceId={WORKSPACE_ID}
+          contexts={workspaceContexts}
+          onSelectContact={(contactId) => {
+            setWorkspaceView("contacts");
+            void selectContact(contactId);
+          }}
+        />
+      ) : (
       <div className="contact-dept__layout">
         <aside className="contact-dept__list-panel">
           <div className="contact-dept__toolbar">
@@ -523,6 +602,14 @@ export function ContactManagementView() {
             />
           </label>
 
+          <ContactContextFilterDrawer
+            contexts={workspaceContexts}
+            contextId={contextFilterId}
+            primaryOnly={contextPrimaryOnly}
+            onContextIdChange={setContextFilterId}
+            onPrimaryOnlyChange={setContextPrimaryOnly}
+          />
+
           <label className="contact-dept__checkbox">
             <input
               type="checkbox"
@@ -561,258 +648,447 @@ export function ContactManagementView() {
         <section className="contact-dept__detail-panel">
           {!creating && !selected ? (
             <p className="contact-dept__empty">Select a contact or create a new one.</p>
-          ) : (
-            <form className="contact-dept__form" onSubmit={(event) => void handleSave(event)}>
-              <h2>{creating ? "New contact" : selected?.display_name ?? "Contact"}</h2>
-
-              <label className="contact-dept__field">
-                <span>Display name</span>
-                <input
-                  required
-                  value={form.display_name}
-                  onChange={(event) => setForm({ ...form, display_name: event.target.value })}
-                />
-              </label>
-
-              <div className="contact-dept__row">
-                <label className="contact-dept__field">
-                  <span>First name</span>
-                  <input
-                    value={form.first_name}
-                    onChange={(event) => setForm({ ...form, first_name: event.target.value })}
-                  />
-                </label>
-                <label className="contact-dept__field">
-                  <span>Last name</span>
-                  <input
-                    value={form.last_name}
-                    onChange={(event) => setForm({ ...form, last_name: event.target.value })}
-                  />
-                </label>
-              </div>
-
-              <label className="contact-dept__field">
-                <span>Email</span>
-                <input
-                  type="email"
-                  value={form.email}
-                  onChange={(event) => setForm({ ...form, email: event.target.value })}
-                />
-              </label>
-
-              <label className="contact-dept__field">
-                <span>Phone</span>
-                <input
-                  value={form.phone}
-                  onChange={(event) => setForm({ ...form, phone: event.target.value })}
-                />
-              </label>
-
-              <label className="contact-dept__field">
-                <span>Tags (comma-separated)</span>
-                <input
-                  value={form.tags}
-                  onChange={(event) => setForm({ ...form, tags: event.target.value })}
-                />
-              </label>
-
-              <label className="contact-dept__field">
-                <span>Outreach status</span>
-                <select
-                  value={form.outreach_status}
-                  onChange={(event) =>
-                    setForm({
-                      ...form,
-                      outreach_status: event.target.value as FormState["outreach_status"],
-                    })
+          ) : !creating && selected ? (
+            <>
+              <div className="contact-dept__tabs" role="tablist">
+                <div className="contact-dept__header-row">
+                  <h2 className="contact-dept__contact-title">
+                    {selected.display_name}
+                    {openActionCount > 0 ? (
+                      <span className="contact-action__header-badge" title="Open actions">
+                        {openActionCount} open
+                      </span>
+                    ) : null}
+                  </h2>
+                </div>
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={detailTab === "profile"}
+                  className={
+                    detailTab === "profile"
+                      ? "contact-dept__tab contact-dept__tab--active"
+                      : "contact-dept__tab"
                   }
+                  onClick={() => setDetailTab("profile")}
                 >
-                  {OUTREACH_STATUS_OPTIONS.map((status) => (
-                    <option key={status} value={status}>
-                      {status}
-                    </option>
-                  ))}
-                </select>
-              </label>
-
-              {!creating && selected ? (
-                <section className="contact-dept__affiliations">
-                  <h3>Outreach audit</h3>
-                  <label className="contact-dept__field">
-                    <span>Audit note (required to update status)</span>
-                    <textarea
-                      rows={2}
-                      value={outreachNote}
-                      onChange={(event) => setOutreachNote(event.target.value)}
-                      placeholder="Human-initiated outreach note — no automated send."
-                    />
-                  </label>
-                  <button
-                    type="button"
-                    className="contact-dept__secondary"
-                    disabled={saving || !outreachNote.trim()}
-                    onClick={() => void handleOutreachUpdate()}
-                  >
-                    Update outreach status
-                  </button>
-                  {outreachAudit.length === 0 ? (
-                    <p className="contact-dept__empty">No outreach audit entries yet.</p>
-                  ) : (
-                    <ul>
-                      {outreachAudit.map((entry) => (
-                        <li key={entry.audit_id}>
-                          <strong>{entry.outreach_status}</strong> · {entry.note}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </section>
-              ) : null}
-
-              {!creating && selected ? (
-                <section className="contact-dept__affiliations">
-                  <h3>Communications drafts</h3>
-                  <p className="contact-dept__empty">
-                    Contacts own people records. Communications owns drafts. Links connect them.
-                  </p>
-                  <label className="contact-dept__field">
-                    <span>Draft intent</span>
-                    <input
-                      value={draftIntent}
-                      onChange={(event) => setDraftIntent(event.target.value)}
-                      placeholder="Board update…"
-                    />
-                  </label>
-                  <label className="contact-dept__field">
-                    <span>Audience (optional)</span>
-                    <input
-                      value={draftAudience}
-                      onChange={(event) => setDraftAudience(event.target.value)}
-                      placeholder="Board observers…"
-                    />
-                  </label>
-                  <button
-                    type="button"
-                    className="contact-dept__secondary"
-                    disabled={saving || !draftIntent.trim()}
-                    onClick={() => void handleGenerateDraft()}
-                  >
-                    Generate linked draft
-                  </button>
-                  {linkedDrafts.length === 0 ? (
-                    <p className="contact-dept__empty">No linked Communications drafts yet.</p>
-                  ) : (
-                    <ul>
-                      {linkedDrafts.map((draft) => (
-                        <li key={draft.link_id}>
-                          <strong>{draft.intent_label}</strong>
-                          {draft.audience_label ? ` · ${draft.audience_label}` : ""}
-                          <div>{draft.body_preview}</div>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </section>
-              ) : null}
-
-              <label className="contact-dept__field">
-                <span>Notes</span>
-                <textarea
-                  rows={4}
-                  value={form.notes}
-                  onChange={(event) => setForm({ ...form, notes: event.target.value })}
-                />
-              </label>
-
-              {!creating && selected ? (
-                <section className="contact-dept__affiliations">
-                  <h3>Organizations</h3>
-                  {selected.affiliations.length === 0 ? (
-                    <p className="contact-dept__empty">No organization affiliations yet.</p>
-                  ) : (
-                    <ul>
-                      {selected.affiliations.map((affiliation) => (
-                        <li key={affiliation.organization_id}>
-                          <strong>{affiliation.organization_name}</strong>
-                          {affiliation.role_label ? ` · ${affiliation.role_label}` : ""}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-
-                  <div className="contact-dept__row">
-                    <label className="contact-dept__field">
-                      <span>Link organization</span>
-                      <select
-                        value={linkOrgId}
-                        onChange={(event) => setLinkOrgId(event.target.value)}
-                      >
-                        <option value="">Select…</option>
-                        {organizations.map((org) => (
-                          <option key={org.organization_id} value={org.organization_id}>
-                            {org.name}
-                          </option>
-                        ))}
-                      </select>
-                    </label>
-                    <label className="contact-dept__field">
-                      <span>Role</span>
-                      <input
-                        value={linkRole}
-                        onChange={(event) => setLinkRole(event.target.value)}
-                        placeholder="Board member…"
-                      />
-                    </label>
-                  </div>
-                  <button
-                    type="button"
-                    className="contact-dept__secondary"
-                    disabled={!linkOrgId || saving}
-                    onClick={() => void handleLinkOrganization()}
-                  >
-                    Add affiliation
-                  </button>
-
-                  <div className="contact-dept__row">
-                    <label className="contact-dept__field">
-                      <span>New organization</span>
-                      <input
-                        value={newOrgName}
-                        onChange={(event) => setNewOrgName(event.target.value)}
-                        placeholder="Organization name"
-                      />
-                    </label>
-                    <button
-                      type="button"
-                      className="contact-dept__secondary"
-                      disabled={!newOrgName.trim() || saving}
-                      onClick={() => void handleCreateOrganization()}
-                    >
-                      Create org
-                    </button>
-                  </div>
-                </section>
-              ) : null}
-
-              <div className="contact-dept__actions">
-                <button type="submit" className="contact-dept__primary" disabled={saving}>
-                  {saving ? "Saving…" : creating ? "Create contact" : "Save changes"}
+                  Profile
                 </button>
-                {!creating && selected ? (
-                  <button
-                    type="button"
-                    className="contact-dept__secondary"
-                    disabled={saving}
-                    onClick={() => void handleArchiveToggle()}
-                  >
-                    {selected.archived ? "Restore contact" : "Archive contact"}
-                  </button>
-                ) : null}
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={detailTab === "timeline"}
+                  className={
+                    detailTab === "timeline"
+                      ? "contact-dept__tab contact-dept__tab--active"
+                      : "contact-dept__tab"
+                  }
+                  onClick={() => setDetailTab("timeline")}
+                >
+                  Timeline
+                </button>
               </div>
-            </form>
+              {detailTab === "timeline" ? (
+                <ContactTimelinePanel
+                  contactId={selected.contact_id}
+                  workspaceId={WORKSPACE_ID}
+                  contactName={selected.display_name}
+                  disabled={saving}
+                />
+              ) : (
+                <>
+                  <ContactBriefPanel contactId={selected.contact_id} disabled={saving} />
+                  <ContactStewardshipPanel contactId={selected.contact_id} disabled={saving} />
+                  <ContactOrganizationPanel
+                    contactId={selected.contact_id}
+                    workspaceId={WORKSPACE_ID}
+                    disabled={saving}
+                  />
+                  <ContactHouseholdPanel
+                    contactId={selected.contact_id}
+                    workspaceId={WORKSPACE_ID}
+                    disabled={saving}
+                  />
+                  <ContactContextPanel
+                    contactId={selected.contact_id}
+                    workspaceId={WORKSPACE_ID}
+                    disabled={saving}
+                  />
+                  <ContactActionPanel
+                    contactId={selected.contact_id}
+                    disabled={saving}
+                    onSummaryChange={setOpenActionCount}
+                  />
+                  <ContactProfileForm
+                  creating={creating}
+                  selected={selected}
+                  form={form}
+                  setForm={setForm}
+                  saving={saving}
+                  outreachNote={outreachNote}
+                  setOutreachNote={setOutreachNote}
+                  linkedDrafts={linkedDrafts}
+                  outreachAudit={outreachAudit}
+                  draftIntent={draftIntent}
+                  setDraftIntent={setDraftIntent}
+                  draftAudience={draftAudience}
+                  setDraftAudience={setDraftAudience}
+                  organizations={organizations}
+                  linkOrgId={linkOrgId}
+                  setLinkOrgId={setLinkOrgId}
+                  linkRole={linkRole}
+                  setLinkRole={setLinkRole}
+                  newOrgName={newOrgName}
+                  setNewOrgName={setNewOrgName}
+                  onSave={(event) => void handleSave(event)}
+                  onArchiveToggle={() => void handleArchiveToggle()}
+                  onOutreachUpdate={() => void handleOutreachUpdate()}
+                  onGenerateDraft={() => void handleGenerateDraft()}
+                  onLinkOrganization={() => void handleLinkOrganization()}
+                  onCreateOrganization={() => void handleCreateOrganization()}
+                />
+                </>
+              )}
+            </>
+          ) : (
+            <ContactProfileForm
+              creating={creating}
+              selected={selected}
+              form={form}
+              setForm={setForm}
+              saving={saving}
+              outreachNote={outreachNote}
+              setOutreachNote={setOutreachNote}
+              linkedDrafts={linkedDrafts}
+              outreachAudit={outreachAudit}
+              draftIntent={draftIntent}
+              setDraftIntent={setDraftIntent}
+              draftAudience={draftAudience}
+              setDraftAudience={setDraftAudience}
+              organizations={organizations}
+              linkOrgId={linkOrgId}
+              setLinkOrgId={setLinkOrgId}
+              linkRole={linkRole}
+              setLinkRole={setLinkRole}
+              newOrgName={newOrgName}
+              setNewOrgName={setNewOrgName}
+              onSave={(event) => void handleSave(event)}
+              onArchiveToggle={() => void handleArchiveToggle()}
+              onOutreachUpdate={() => void handleOutreachUpdate()}
+              onGenerateDraft={() => void handleGenerateDraft()}
+              onLinkOrganization={() => void handleLinkOrganization()}
+              onCreateOrganization={() => void handleCreateOrganization()}
+            />
           )}
         </section>
       </div>
+      )}
     </div>
+  );
+}
+
+type ContactProfileFormProps = {
+  creating: boolean;
+  selected: ContactRecordWithAffiliations | null;
+  form: FormState;
+  setForm: React.Dispatch<React.SetStateAction<FormState>>;
+  saving: boolean;
+  outreachNote: string;
+  setOutreachNote: (value: string) => void;
+  linkedDrafts: ContactDraftLink[];
+  outreachAudit: ContactOutreachAuditEntry[];
+  draftIntent: string;
+  setDraftIntent: (value: string) => void;
+  draftAudience: string;
+  setDraftAudience: (value: string) => void;
+  organizations: ContactOrganization[];
+  linkOrgId: string;
+  setLinkOrgId: (value: string) => void;
+  linkRole: string;
+  setLinkRole: (value: string) => void;
+  newOrgName: string;
+  setNewOrgName: (value: string) => void;
+  onSave: (event: React.FormEvent) => void;
+  onArchiveToggle: () => void;
+  onOutreachUpdate: () => void;
+  onGenerateDraft: () => void;
+  onLinkOrganization: () => void;
+  onCreateOrganization: () => void;
+};
+
+function ContactProfileForm({
+  creating,
+  selected,
+  form,
+  setForm,
+  saving,
+  outreachNote,
+  setOutreachNote,
+  linkedDrafts,
+  outreachAudit,
+  draftIntent,
+  setDraftIntent,
+  draftAudience,
+  setDraftAudience,
+  organizations,
+  linkOrgId,
+  setLinkOrgId,
+  linkRole,
+  setLinkRole,
+  newOrgName,
+  setNewOrgName,
+  onSave,
+  onArchiveToggle,
+  onOutreachUpdate,
+  onGenerateDraft,
+  onLinkOrganization,
+  onCreateOrganization,
+}: ContactProfileFormProps) {
+  return (
+    <form className="contact-dept__form" onSubmit={onSave}>
+      <h2>{creating ? "New contact" : selected?.display_name ?? "Contact"}</h2>
+
+      <label className="contact-dept__field">
+        <span>Display name</span>
+        <input
+          required
+          value={form.display_name}
+          onChange={(event) => setForm({ ...form, display_name: event.target.value })}
+        />
+      </label>
+
+      <div className="contact-dept__row">
+        <label className="contact-dept__field">
+          <span>First name</span>
+          <input
+            value={form.first_name}
+            onChange={(event) => setForm({ ...form, first_name: event.target.value })}
+          />
+        </label>
+        <label className="contact-dept__field">
+          <span>Last name</span>
+          <input
+            value={form.last_name}
+            onChange={(event) => setForm({ ...form, last_name: event.target.value })}
+          />
+        </label>
+      </div>
+
+      <label className="contact-dept__field">
+        <span>Email</span>
+        <input
+          type="email"
+          value={form.email}
+          onChange={(event) => setForm({ ...form, email: event.target.value })}
+        />
+      </label>
+
+      <label className="contact-dept__field">
+        <span>Phone</span>
+        <input
+          value={form.phone}
+          onChange={(event) => setForm({ ...form, phone: event.target.value })}
+        />
+      </label>
+
+      <label className="contact-dept__field">
+        <span>Tags (comma-separated)</span>
+        <input
+          value={form.tags}
+          onChange={(event) => setForm({ ...form, tags: event.target.value })}
+        />
+      </label>
+
+      <label className="contact-dept__field">
+        <span>Outreach status</span>
+        <select
+          value={form.outreach_status}
+          onChange={(event) =>
+            setForm({
+              ...form,
+              outreach_status: event.target.value as FormState["outreach_status"],
+            })
+          }
+        >
+          {OUTREACH_STATUS_OPTIONS.map((status) => (
+            <option key={status} value={status}>
+              {status}
+            </option>
+          ))}
+        </select>
+      </label>
+
+      {!creating && selected ? (
+        <section className="contact-dept__affiliations">
+          <h3>Outreach audit</h3>
+          <label className="contact-dept__field">
+            <span>Audit note (required to update status)</span>
+            <textarea
+              rows={2}
+              value={outreachNote}
+              onChange={(event) => setOutreachNote(event.target.value)}
+              placeholder="Human-initiated outreach note — no automated send."
+            />
+          </label>
+          <button
+            type="button"
+            className="contact-dept__secondary"
+            disabled={saving || !outreachNote.trim()}
+            onClick={onOutreachUpdate}
+          >
+            Update outreach status
+          </button>
+          {outreachAudit.length === 0 ? (
+            <p className="contact-dept__empty">No outreach audit entries yet.</p>
+          ) : (
+            <ul>
+              {outreachAudit.map((entry) => (
+                <li key={entry.audit_id}>
+                  <strong>{entry.outreach_status}</strong> · {entry.note}
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+      ) : null}
+
+      {!creating && selected ? (
+        <section className="contact-dept__affiliations">
+          <h3>Communications drafts</h3>
+          <p className="contact-dept__empty">
+            Contacts own people records. Communications owns drafts. Links connect them.
+          </p>
+          <label className="contact-dept__field">
+            <span>Draft intent</span>
+            <input
+              value={draftIntent}
+              onChange={(event) => setDraftIntent(event.target.value)}
+              placeholder="Board update…"
+            />
+          </label>
+          <label className="contact-dept__field">
+            <span>Audience (optional)</span>
+            <input
+              value={draftAudience}
+              onChange={(event) => setDraftAudience(event.target.value)}
+              placeholder="Board observers…"
+            />
+          </label>
+          <button
+            type="button"
+            className="contact-dept__secondary"
+            disabled={saving || !draftIntent.trim()}
+            onClick={onGenerateDraft}
+          >
+            Generate linked draft
+          </button>
+          {linkedDrafts.length === 0 ? (
+            <p className="contact-dept__empty">No linked Communications drafts yet.</p>
+          ) : (
+            <ul>
+              {linkedDrafts.map((draft) => (
+                <li key={draft.link_id}>
+                  <strong>{draft.intent_label}</strong>
+                  {draft.audience_label ? ` · ${draft.audience_label}` : ""}
+                  <div>{draft.body_preview}</div>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+      ) : null}
+
+      <label className="contact-dept__field">
+        <span>Notes</span>
+        <textarea
+          rows={4}
+          value={form.notes}
+          onChange={(event) => setForm({ ...form, notes: event.target.value })}
+        />
+      </label>
+
+      {!creating && selected ? (
+        <section className="contact-dept__affiliations">
+          <h3>Organizations</h3>
+          {selected.affiliations.length === 0 ? (
+            <p className="contact-dept__empty">No organization affiliations yet.</p>
+          ) : (
+            <ul>
+              {selected.affiliations.map((affiliation) => (
+                <li key={affiliation.organization_id}>
+                  <strong>{affiliation.organization_name}</strong>
+                  {affiliation.role_label ? ` · ${affiliation.role_label}` : ""}
+                </li>
+              ))}
+            </ul>
+          )}
+
+          <div className="contact-dept__row">
+            <label className="contact-dept__field">
+              <span>Link organization</span>
+              <select value={linkOrgId} onChange={(event) => setLinkOrgId(event.target.value)}>
+                <option value="">Select…</option>
+                {organizations.map((org) => (
+                  <option key={org.organization_id} value={org.organization_id}>
+                    {org.name}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="contact-dept__field">
+              <span>Role</span>
+              <input
+                value={linkRole}
+                onChange={(event) => setLinkRole(event.target.value)}
+                placeholder="Board member…"
+              />
+            </label>
+          </div>
+          <button
+            type="button"
+            className="contact-dept__secondary"
+            disabled={!linkOrgId || saving}
+            onClick={onLinkOrganization}
+          >
+            Add affiliation
+          </button>
+
+          <div className="contact-dept__row">
+            <label className="contact-dept__field">
+              <span>New organization</span>
+              <input
+                value={newOrgName}
+                onChange={(event) => setNewOrgName(event.target.value)}
+                placeholder="Organization name"
+              />
+            </label>
+            <button
+              type="button"
+              className="contact-dept__secondary"
+              disabled={!newOrgName.trim() || saving}
+              onClick={onCreateOrganization}
+            >
+              Create org
+            </button>
+          </div>
+        </section>
+      ) : null}
+
+      <div className="contact-dept__actions">
+        <button type="submit" className="contact-dept__primary" disabled={saving}>
+          {saving ? "Saving…" : creating ? "Create contact" : "Save changes"}
+        </button>
+        {!creating && selected ? (
+          <button
+            type="button"
+            className="contact-dept__secondary"
+            disabled={saving}
+            onClick={onArchiveToggle}
+          >
+            {selected.archived ? "Restore contact" : "Archive contact"}
+          </button>
+        ) : null}
+      </div>
+    </form>
   );
 }

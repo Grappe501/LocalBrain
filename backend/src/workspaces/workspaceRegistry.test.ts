@@ -13,11 +13,16 @@ test("localbrain seed has executive_context, focus, and success_definition", () 
   assert.ok(ws);
   assert.ok(ws.executive_context.length > 20);
   assert.ok(
-    ws.current_focus.includes("ENG-COM-001.3") ||
-      ws.current_focus.includes("Communications") ||
-      ws.current_focus.includes("Stable baseline"),
+    ws.current_focus.includes("Protect the evidence") ||
+      ws.current_focus.includes("Evidence-Driven Development") ||
+      ws.current_focus.includes("EDD") ||
+      ws.current_focus.includes("PRL-3") ||
+      ws.current_focus.includes("PRL-4"),
   );
-  assert.ok(ws.success_definition.includes("Executive Operating System"));
+  assert.ok(
+    ws.success_definition.includes("Executive Operating System") ||
+      ws.success_definition.includes("governed"),
+  );
   assert.equal(ws.workspace_avatar, "🧠");
   assert.equal(ws.flags.pinned, true);
 });

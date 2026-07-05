@@ -108,6 +108,12 @@ export interface ExecutiveBriefingSignals {
   workspace_id?: string | null;
   workspace_focus?: string | null;
   current_build_slice?: string | null;
+  /** Governed platform era — EDD / PRL-4 */
+  governed_era_active?: boolean | null;
+  platform_readiness_level?: string | null;
+  prime_directive?: string | null;
+  current_gate?: string | null;
+  building_today?: string | null;
 }
 
 function departmentStatus(dept: DepartmentProjection): DepartmentReportStatus {
@@ -155,6 +161,9 @@ function buildZones(): ExecutiveOfficeZone[] {
       items: [
         { label: "Living Workspace", route: "/workspace/localbrain" },
         { label: "Program Office", route: "/program-office" },
+        { label: "Contact Management", route: "/studio/contacts" },
+        { label: "Identity Acquisition (UCIE)", route: "/studio/ingestion" },
+        { label: "Volunteer Operations (VOP)", route: "/studio/volunteer" },
         { label: "Executive Questions", route: "/#executive-questions" },
       ],
     },
@@ -230,6 +239,18 @@ function buildChiefOfStaffBriefing(
   );
 
   const top_priorities: string[] = [];
+  if (signals?.governed_era_active) {
+    if (signals.prime_directive) {
+      top_priorities.push(`Prime Directive: ${signals.prime_directive}`);
+    }
+    if (signals.current_gate) {
+      top_priorities.push(`Current gate: ${signals.current_gate}`);
+    }
+    if (signals.building_today) {
+      top_priorities.push(signals.building_today);
+    }
+    top_priorities.push("Open Program Office for roadmap, capabilities, and evidence scoreboard");
+  }
   if (signals?.v1_failed_checks?.length) {
     for (const label of signals.v1_failed_checks.slice(0, 3)) {
       top_priorities.push(`V1 spine: ${label}`);
@@ -238,7 +259,7 @@ function buildChiefOfStaffBriefing(
   if (signals?.consolidation_score != null && signals.consolidation_score >= 50) {
     top_priorities.push("Review consolidation opportunity from live asset registry");
   }
-  if (signals?.current_build_slice) {
+  if (!signals?.governed_era_active && signals?.current_build_slice) {
     top_priorities.push(`Current build slice: ${signals.current_build_slice}`);
   }
   if (top_priorities.length === 0) {

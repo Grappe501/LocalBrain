@@ -34,8 +34,8 @@ Accepted
 
 | Layer | Evidence |
 | ----- | -------- |
-| **Build state** | `buildState.test.ts` 17/17 · Memory OS 100% · `building_today` → ENG-EI-001 |
-| **Command center** | Memory OS critical path **complete** · Communications blocked on ENG-EI-001 (expected) |
+| **Build state** | `buildState.test.ts` 18/18 · Memory OS 100% · `building_today` → ENG-EI-002 COMPLETE · ENG-PMO-009 |
+| **Command center** | Deterministic pipeline closed · Communications blocked on `Communications Office pending` |
 | **Live surface** | `liveSurface.test.ts` PASS when isolated |
 | **Workspace projection** | `executiveIntelligenceEraMetrics` drives localbrain focus post–Wave 1 |
 

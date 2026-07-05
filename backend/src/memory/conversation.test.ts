@@ -42,7 +42,6 @@ import {
   CONVERSATION_SEQUENCE_QUESTION,
   isCompleteSequenceIntegrity,
 } from "./conversationSequenceIntegrity.js";
-import { ConversationTurnValidationError } from "./conversationTurnValidator.js";
 import { writeArtifact } from "./writePipeline.js";
 import { getArtifactById } from "./artifactStore.js";
 

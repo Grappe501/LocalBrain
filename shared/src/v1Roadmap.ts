@@ -18,6 +18,7 @@ export const V1_ROADMAP_ITEMS: {
   { id: "memory_os", label: "Memory OS", critical_path_step: "memory_os" },
   { id: "communications_office", label: "Communications Office", critical_path_step: "communications_office" },
   { id: "contact_management", label: "Contact Management", critical_path_step: "contact_management" },
+  { id: "operator_validation", label: "Operator Validation (PRL-4)", critical_path_step: "operator_validation" },
   { id: "commercial_beta", label: "Commercial Beta", critical_path_step: "commercial_beta" },
 ];
 

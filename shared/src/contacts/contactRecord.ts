@@ -101,4 +101,6 @@ export type ContactListFilter = {
   search?: string;
   tag?: string;
   email?: string;
+  context_id?: string;
+  context_primary_only?: boolean;
 };

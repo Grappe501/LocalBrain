@@ -77,12 +77,12 @@ Subsystem charters, slice acceptances, and module evaluations are **historical f
 
 | Area | Evaluation focus | Preparation evidence |
 | ---- | ---------------- | -------------------- |
-| **Product** | Are beta workflows coherent end to end? | Kelly/Chris task paths · workbench surfaces · cross-subsystem flows documented |
-| **Operational** | Are dashboards, metrics, and projections synchronized with repository truth? | Program Office API · launch snapshot · context cards · workspace projection — no contradiction |
-| **User readiness** | Can Kelly, Chris, and trusted beta users accomplish intended tasks without engineering assistance? | [Launch criteria](../LOCALBRAIN_V1_LAUNCH_CRITERIA.md) beta cohort · Kelly Sandbox · guided workflows |
-| **Data** | Is seed/demo data appropriate and is user data handled correctly? | Workspace seed posture · no personal Steve data in permanent Memory OS before factory gate · import/export discipline |
-| **Connector posture** | Which integrations are enabled, disabled, or intentionally deferred for beta? | Explicit connector matrix · no silent activation · send paths remain approval-gated |
-| **Support** | Is there a documented process for collecting beta feedback and triaging issues? | Feedback channel · triage workflow · severity classification · OPS review cadence |
+| **Product** | Are beta workflows coherent end to end? | [001.1 Commercial Beta workflow map](./ENG-BETA-001.1-BETA-WORKFLOW-MAP.md) · [001.4 Onboarding](./ENG-BETA-001.4-BETA-ONBOARDING.md) |
+| **Operational** | Are dashboards, metrics, and projections synchronized with repository truth? | OPS sync **after** prep evidence · Program Office API |
+| **User readiness** | Can reference operators and later cohorts accomplish meaningful work without engineering assistance? | [001.4 Onboarding](./ENG-BETA-001.4-BETA-ONBOARDING.md) · [BETA-OBS sessions](../ops/beta-feedback/BETA-OBS-SCHEMA.md) · human-help metric |
+| **Data** | Is seed/demo data appropriate and is user data handled correctly? | [001.3 Seed/demo data plan](./ENG-BETA-001.3-SEED-DEMO-DATA-PLAN.md) |
+| **Connector posture** | Which integrations are enabled, disabled, or intentionally deferred for beta? | [001.2 Connector posture matrix](./ENG-BETA-001.2-CONNECTOR-POSTURE-MATRIX.md) |
+| **Support** | Are BETA-OBS session records collected · issues triaged only when needed? | [001.5 Feedback & triage](./ENG-BETA-001.5-FEEDBACK-ISSUE-TRIAGE.md) · [BETA-OBS schema](../ops/beta-feedback/BETA-OBS-SCHEMA.md) |
 
 PMO evaluates **release evidence**, not feature count.
 
@@ -109,13 +109,15 @@ Proposals for excluded items belong in [VERSION2_BACKLOG.md](../VERSION2_BACKLOG
 
 ## Beta cohort (binding reference)
 
-Per [LOCALBRAIN_V1_LAUNCH_CRITERIA.md](../LOCALBRAIN_V1_LAUNCH_CRITERIA.md) Phase 7:
+Per [LOCALBRAIN_V1_LAUNCH_CRITERIA.md](../LOCALBRAIN_V1_LAUNCH_CRITERIA.md) Phase 7 — staged as **reference operators** then expand:
 
-* **Kelly**
-* **Chris**
-* One or two additional trusted customers
+| Phase | Cohort | Question |
+| ----- | ------ | -------- |
+| **A** | Kelly · Chris (reference operators) | Can a knowledgeable operator accomplish meaningful work without engineering? |
+| **B** | Trusted internal users (campaign-aware) | Can someone learn the product? |
+| **C** | Outside beta (architecture-unfamiliar) | Can the product teach itself? |
 
-User readiness evidence must be evaluable against this cohort — not against engineering convenience.
+Staged expansion per [001.4 onboarding](./ENG-BETA-001.4-BETA-ONBOARDING.md). Primary evidence: [BETA-OBS session records](../ops/beta-feedback/BETA-OBS-SCHEMA.md).
 
 ---
 
@@ -170,13 +172,19 @@ Engineering commits under preparation are **release-scoped** — product surface
 
 | Step | Artifact | Notes |
 | ---- | -------- | ----- |
-| 1 | ENG-BETA-001 charter | This document · **OPENED** |
-| 2 | Beta workflow map | End-to-end paths across inherited subsystems |
-| 3 | Connector posture matrix | Enabled · disabled · deferred |
-| 4 | Beta feedback + triage process | Support dimension |
-| 5 | OPS preparation sync | Operational surfaces match release evidence |
-| 6 | Readiness evaluation | ENG-PMO-015 or successor |
-| 7 | Commercial Beta availability | Separate promotion gate |
+| 1 | ENG-BETA-001 charter | This document · **OPENED** · committed |
+| 2 | [Commercial Beta workflow map](./ENG-BETA-001.1-BETA-WORKFLOW-MAP.md) | **DRAFT** · primary evidence · W-001 reference journey · steps 1–6 · observation capture |
+| 3 | [Connector posture matrix](./ENG-BETA-001.2-CONNECTOR-POSTURE-MATRIX.md) | **DRAFT** |
+| 4 | [Seed & demo data plan](./ENG-BETA-001.3-SEED-DEMO-DATA-PLAN.md) | **DRAFT** |
+| 5 | [Beta onboarding](./ENG-BETA-001.4-BETA-ONBOARDING.md) | **DRAFT** |
+| 6 | [Feedback & issue triage](./ENG-BETA-001.5-FEEDBACK-ISSUE-TRIAGE.md) | **DRAFT** |
+| 7 | [Release checklist](./ENG-BETA-001.6-RELEASE-CHECKLIST.md) | DRAFT · preparation COMPLETE gate |
+| — | [BETA-OBS schema](../ops/beta-feedback/BETA-OBS-SCHEMA.md) | **Canonical beta evidence** · hypothesis-driven |
+| — | [BETA-OBS-001 Kelly](../ops/beta-feedback/BETA-OBS-001-KELLY-REFERENCE-OPERATOR-SESSION.md) | **OPEN** · Phase A first session |
+| — | [Evidence Ledger](../ops/beta-feedback/EVIDENCE-LEDGER.md) | Session registry · hypothesis tally · metrics |
+| 8 | OPS preparation sync | Operational surfaces match evidence · **deferred** |
+| 9 | Readiness evaluation | ENG-PMO-015 or successor |
+| 10 | Commercial Beta availability | Separate promotion gate |
 
 ---
 
@@ -185,10 +193,12 @@ Engineering commits under preparation are **release-scoped** — product surface
 ```text
 Engineering truth:     All V1 subsystems COMPLETE · inherited baseline committed
 Governance truth:      ENG-BETA-001 OPENED · release-level preparation active
-Module governance:     CLOSED (no active subsystem crossing)
-Active authority:      Commercial Beta preparation
-Next repository act:   Preparation evidence · connector posture · beta workflow map
+Mode:                  Building → learning · observational pilot active
+Active phase:          Phase 0 admin smoke → Phase A (Kelly · reference operator)
+Evidence surface:      BETA-OBS session records (canonical)
+Next repository act:   BETA-OBS-001 · Kelly · observe · do not explain
 Readiness gate:        ENG-PMO-015 or successor (not opened)
+V2 documentation:      Uncommitted · post–Commercial Beta era
 ```
 
 ---

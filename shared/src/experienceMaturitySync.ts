@@ -11,9 +11,9 @@ import { maturityLabel } from "./experienceMaturity.js";
 import type { LiveSurfaceEntry, LiveSurfaceMode } from "./liveSurface.js";
 
 /** Platform-wide next step when a capability chain is complete */
-export const PLATFORM_EXPERIENCE_NEXT_SLICE = "LB-OS-026.7";
+export const PLATFORM_EXPERIENCE_NEXT_SLICE = "OPERATOR-WALKTHROUGH-001";
 export const PLATFORM_EXPERIENCE_NEXT_SUMMARY =
-  "Executive Office home — Chief of Staff narrative replaces mock briefing sections";
+  "PRL-4 operator validation · Evidence-Driven Development · CPAT v1.0 benchmark";
 
 /** Manual overrides when capability graph misroutes — prefer SURFACE_REGISTRY paths first */
 export const EXPERIENCE_MATURITY_UPGRADE_HINTS: Record<
@@ -25,9 +25,9 @@ export const EXPERIENCE_MATURITY_UPGRADE_HINTS: Record<
     next_upgrade_summary: PLATFORM_EXPERIENCE_NEXT_SUMMARY,
   },
   "/program-office": {
-    next_upgrade_slice: PLATFORM_EXPERIENCE_NEXT_SLICE,
+    next_upgrade_slice: "OPERATOR-WALKTHROUGH-001",
     next_upgrade_summary:
-      "Surface Executive Office experience certification alongside build state (L3→L4)",
+      "PRL readiness snapshots · operator evidence packages · OEC register",
   },
 };
 

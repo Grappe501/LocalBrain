@@ -1,14 +1,12 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { CAMPAIGN_WORKBENCH_QUICK_ROUTES } from "@localbrain/shared";
 import { useAppSettings } from "../context/AppSettingsContext";
 
-const PALETTE_ITEMS = [
-  { label: "Executive Office", path: "/" },
-  { label: "Living Workspace — localbrain", path: "/workspace/localbrain" },
-  { label: "Knowledge Explorer (stub)", path: "/explorer" },
-  { label: "Learn — OJT", path: "/learn" },
-  { label: "Settings", path: "/settings" },
-];
+const PALETTE_ITEMS = CAMPAIGN_WORKBENCH_QUICK_ROUTES.map((item) => ({
+  label: item.label,
+  path: item.route,
+}));
 
 export function CommandPalette() {
   const { paletteOpen, setPaletteOpen } = useAppSettings();
@@ -34,7 +32,9 @@ export function CommandPalette() {
     >
       <div className="command-palette" onClick={(e) => e.stopPropagation()}>
         <h2 className="command-palette__title">Chief of Staff — quick route</h2>
-        <p className="command-palette__hint">Quick route · Contact Management COMPLETE · 100% · Commercial Beta prep</p>
+        <p className="command-palette__hint">
+          Campaign Institution OS · Ctrl+K quick routes · PRL-4 operator validation next
+        </p>
         <ul className="command-palette__list">
           {PALETTE_ITEMS.map((item) => (
             <li key={item.path}>

@@ -31,7 +31,7 @@ function baseStatementText(
     }
     case "artifact": {
       const record = pkg.artifacts.find((a) => a.artifact_id === citation.record_id);
-      const label = record?.title ?? record?.storage_ref ?? citation.record_id;
+      const label = record?.content_ref ?? record?.uri ?? record?.mime_type ?? citation.record_id;
       return `Artifact on file: ${label}.`;
     }
     case "conversation": {

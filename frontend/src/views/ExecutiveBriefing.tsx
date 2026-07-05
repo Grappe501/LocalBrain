@@ -6,12 +6,12 @@ import type {
   ExecutiveOfficeZone,
 } from "@localbrain/shared";
 import { useActiveWorkspace } from "../context/ActiveWorkspaceContext";
-import { fetchExecutiveOfficeExperience } from "../api/executiveOffice";
+import { fetchExecutiveOfficeExperienceFull } from "../api/executiveOffice";
+import type { ExecutiveBriefingSignals, V1AcceptanceReport } from "@localbrain/shared";
 import { V1MilestoneBanner } from "../components/V1MilestoneBanner";
 import { ExecutiveQuestionHub } from "../components/ExecutiveQuestionHeader";
 import { ExecutiveQuestionShell } from "../components/ExecutiveQuestionShell";
 import { fetchV1Acceptance } from "../api/v1Spine";
-import type { V1AcceptanceReport } from "@localbrain/shared";
 
 function ScaffoldBanner({ mode }: { mode: ExecutiveOfficeExperience["projection_mode"] }) {
   if (mode !== "scaffold") return null;
@@ -103,14 +103,18 @@ function ZoneNav({ zone }: { zone: ExecutiveOfficeZone }) {
 export function ExecutiveBriefing() {
   const { workspace, loading } = useActiveWorkspace();
   const [experience, setExperience] = useState<ExecutiveOfficeExperience | null>(null);
+  const [briefingSignals, setBriefingSignals] = useState<ExecutiveBriefingSignals | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [v1, setV1] = useState<V1AcceptanceReport | null>(null);
   const wsId = workspace?.workspace_id ?? "localbrain";
   const wsTitle = workspace?.title ?? "LocalBrain";
 
   useEffect(() => {
-    void fetchExecutiveOfficeExperience()
-      .then(setExperience)
+    void fetchExecutiveOfficeExperienceFull()
+      .then((data) => {
+        setExperience(data.experience);
+        setBriefingSignals(data.signals ?? null);
+      })
       .catch((e) => setError(e instanceof Error ? e.message : "Failed to load office"));
     void fetchV1Acceptance()
       .then(setV1)
@@ -149,7 +153,18 @@ export function ExecutiveBriefing() {
 
       {experience ? <ScaffoldBanner mode={experience.projection_mode} /> : null}
 
-      <V1MilestoneBanner report={v1} />
+      <V1MilestoneBanner
+        report={v1}
+        governed={
+          briefingSignals?.governed_era_active
+            ? {
+                platform_readiness_level: briefingSignals.platform_readiness_level ?? "PRL-3",
+                current_gate: briefingSignals.current_gate ?? "PRL-4",
+                prime_directive: briefingSignals.prime_directive ?? "Protect the evidence.",
+              }
+            : null
+        }
+      />
 
       <section className="executive-office__cos" aria-labelledby="cos-briefing-title">
         <h2 id="cos-briefing-title">{briefing?.title ?? "Chief of Staff Briefing"}</h2>

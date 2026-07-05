@@ -11,8 +11,8 @@
 > ✓ Memory OS Specification (memory-spec-v1.0)
 > ✓ Architecture Book v1.0
 > ✓ Memory OS Implementation (MEM-009 Wave 1 · 5/5 · ENG-PMO-005)
-> ▶ Executive Intelligence Era (MAR-3 → EI-001 → ENG-EI-001)
-> □ Communications Office
+> ✓ Executive Intelligence Era · ENG-EI-002 COMPLETE · ENG-PMO-009 · Reference Consumer 001
+> ▶ Communications Office
 > □ Commercial Beta
 >
 > Everything else → VERSION2_BACKLOG.md
@@ -136,7 +136,8 @@ Memory OS manifest must declare:
 ✓ ENG-MEM-001.4 Conversation · Reference Slice 004
 ✓ ENG-MEM-001.5 DecisionCitation · Reference Slice 005 · 19/19 PASS
 ✓ ENG-PMO-005 — Institutional Cognition Foundation COMPLETE · Deterministic Foundation CLOSED
-▶ Executive Intelligence Era — AUTHORIZED
+✓ ENG-PMO-009 — Executive Brief accepted · deterministic pipeline CLOSED · Reference Consumer 001
+▶ Communications Office — controlled experiment
 ```
 
 ### Wave 1 substrates (Institutional Cognition Foundation)

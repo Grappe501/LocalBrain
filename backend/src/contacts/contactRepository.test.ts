@@ -1,5 +1,5 @@
 import crypto from "node:crypto";
-import test from "node:test";
+import { describe, test } from "node:test";
 import assert from "node:assert/strict";
 import { CONTACT_RECORD_VERSION } from "@localbrain/shared";
 import { bootstrapApp, shutdownApp } from "../bootstrap.js";
@@ -45,6 +45,7 @@ test("contact serde round-trips structured fields", () => {
   assert.deepEqual(parseTagsJson(tags), ["donor", "board"]);
 });
 
+describe("contactRepository (database)", { concurrency: 1 }, () => {
 test("create read update archive contact round-trip", () => {
   bootstrapApp();
   try {
@@ -226,4 +227,5 @@ test("validation rejects empty display name", () => {
   } finally {
     shutdownApp();
   }
+});
 });

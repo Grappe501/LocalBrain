@@ -28,6 +28,7 @@ import { computeV1CommandCenter } from "./v1CommandCenterEngine.js";
 import { computeAdaptiveForecast } from "./v1ForecastEngine.js";
 import { computePhaseForecast } from "./v1PhaseForecastEngine.js";
 import { recordV1Heartbeat } from "./v1Heartbeat.js";
+import { getGovernedPlatformSnapshot, isGovernedPlatformEraActive } from "./governedPlatformMetrics.js";
 
 function formatHistoryDateLabel(iso: string, today: string, yesterday: string): string {
   if (iso === today) return "Today";
@@ -108,6 +109,21 @@ function buildLaunchCountdown(cc: V1CommandCenter): LaunchCountdown {
   const modulesRemaining = cc.modules.filter((m) => m.progress_percent < 100).length;
   const modulesCertified = cc.modules.filter((m) => m.certified).length;
   const theory = buildTheoryFrozenStatus(parsePeerReviewProgress());
+
+  if (isGovernedPlatformEraActive()) {
+    const gp = getGovernedPlatformSnapshot();
+    return {
+      product_label: "LOCALBRAIN V1",
+      current_phase: `${gp.phase_label} · ${gp.platform_readiness_level} · PRL-4 gate`,
+      overall_progress_percent: cc.v1_launch_score_percent,
+      critical_path_remaining_days: cc.days_to_v1_estimate,
+      modules_remaining: modulesRemaining,
+      modules_certified: modulesCertified,
+      open_critical_bugs: 0,
+      architecture_status: "FROZEN",
+      target: "Operator Validation → Commercial Beta",
+    };
+  }
 
   return {
     product_label: "LOCALBRAIN V1",

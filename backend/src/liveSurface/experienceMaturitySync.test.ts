@@ -12,15 +12,15 @@ test("experience maturity syncs from ENG-CAP-001", () => {
   const home = matrix.find((r) => r.route === "/");
   assert.ok(home);
   assert.equal(home?.capability_id, "CAP-EO-001");
-  assert.equal(home?.next_upgrade_slice, "LB-OS-026.7");
-  assert.ok(home?.next_upgrade_summary.includes("Executive Office"));
+  assert.equal(home?.next_upgrade_slice, "OPERATOR-WALKTHROUGH-001");
+  assert.ok(home?.next_upgrade_summary.includes("PRL-4"));
   assert.equal(home?.last_verified_slice, "LB-OS-026.67");
 
   const epo = matrix.find((r) => r.route === "/program-office");
   assert.ok(epo);
   assert.equal(epo?.capability_id, "CAP-EPO-001");
   assert.equal(epo?.maturity_level, 3);
-  assert.equal(epo?.next_upgrade_slice, "LB-OS-026.7");
+  assert.equal(epo?.next_upgrade_slice, "OPERATOR-WALKTHROUGH-001");
 
   const cutover = matrix.find((r) => r.route === "/migration/cutover");
   assert.ok(cutover);

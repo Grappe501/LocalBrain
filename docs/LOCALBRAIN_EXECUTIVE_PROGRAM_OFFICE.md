@@ -1,5 +1,8 @@
 # LocalBrain Executive Program Office (EPO) v1.0
 
+> **Evolution:** LB-OS-012.5 construction EPO is a **precursor** to [EPO-001 Platform Governance](./epo/EPO-001-RESERVATION.md) — reserved, not yet implemented as governed subsystem.  
+> **Platform architecture:** [Three trust domains + EPO](./platform/GOVERNED-PLATFORM-ARCHITECTURE.md)
+
 > **Executive Office core feature** — mission control for the entire LocalBrain build.  
 > **Not** an Engineering Department page. **Not** a simple checklist.  
 > Parent: [Executive Office](./LOCALBRAIN_EXECUTIVE_OFFICE.md) · Decisions: [Decision Ledger](./LOCALBRAIN_DECISION_LEDGER.md) · Checklist: [Phase Checklist](./PHASE_CHECKLIST.md)

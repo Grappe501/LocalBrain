@@ -15,6 +15,7 @@ export const V1_CRITICAL_PATH = [
   "memory_os",
   "communications_office",
   "contact_management",
+  "operator_validation",
   "commercial_beta",
 ] as const;
 
@@ -30,6 +31,7 @@ export const V1_CRITICAL_PATH_LABELS: Record<V1CriticalPathStep, string> = {
   memory_os: "Memory OS",
   communications_office: "Communications Office",
   contact_management: "Contact Management",
+  operator_validation: "Operator validation (PRL-4)",
   commercial_beta: "Commercial beta",
 };
 
@@ -44,6 +46,7 @@ export const V1_BURNDOWN_ESTIMATES_DAYS: Record<V1CriticalPathStep, number> = {
   memory_os: 20,
   communications_office: 15,
   contact_management: 5,
+  operator_validation: 14,
   commercial_beta: 5,
 };
 

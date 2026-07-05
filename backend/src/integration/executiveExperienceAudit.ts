@@ -43,6 +43,9 @@ export const LIVE_PRODUCTION_ROUTES = [
   "/studio/engineering",
   "/studio/writing",
   "/studio/data",
+  "/studio/contacts",
+  "/studio/ingestion",
+  "/studio/volunteer",
   "/studio/relationships",
 ] as const;
 

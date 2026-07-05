@@ -123,6 +123,7 @@ export interface EpoOverview {
   experience_maturity_engine_id: string;
   v1_command_center: V1CommandCenter;
   project_state: ProjectState;
+  governed_platform: import("./operatorReadiness/platformRoadmap.js").GovernedPlatformDashboard | null;
   read_only: true;
   observed_at: string;
 }

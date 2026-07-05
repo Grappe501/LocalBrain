@@ -10,7 +10,7 @@
 > □ Convention
 > □ Empty Brain Factory
 > □ Memory OS
-> □ Communications Office
+> ✓ Communications Office
 > □ Commercial Beta
 >
 > Everything else → VERSION2_BACKLOG.md

@@ -1,0 +1,22 @@
+{
+  "module_id": "ingestion-studio",
+  "name": "Identity Acquisition",
+  "domain": "ingestion",
+  "version": "1.0.0",
+  "status": "active",
+  "routes": [{ "path": "/studio/ingestion", "pattern": "studio/ingestion/*" }],
+  "permissions": ["filesystem:read"],
+  "tools": [],
+  "agents": [],
+  "data_sources": ["ucie_import_sessions"],
+  "capabilities": [
+    {
+      "capability_id": "CAP-UCIE-100",
+      "dependencies": ["CONTACT-V3-100"]
+    }
+  ],
+  "dependencies": ["contact-studio"],
+  "nav_placement": "department",
+  "lazy_load_boundary": "modules/ingestion-studio/Entry",
+  "description": "CONTACT-V3-100 — Universal Contact Ingestion Engine (Identity Acquisition Platform)"
+}

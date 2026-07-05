@@ -1,7 +1,7 @@
 # Memory OS — Design Package
 
 > **Status:** **FROZEN** — `memory-spec-v1.0` · Wave 1 **5/5 COMPLETE** · ENG-PMO-005  
-> **Current era:** [Executive Intelligence Doctrine](./EXECUTIVE-INTELLIGENCE-DOCTRINE.md) **V1 FROZEN** · `ei-doctrine-v1.0` · [ENG-EI-001](./ENG-EI-001-CHARTER.md) **COMPLETE** · ENG-EI-002 **NEXT**  
+> **Current era:** [Executive Intelligence Doctrine](./EXECUTIVE-INTELLIGENCE-DOCTRINE.md) **V1 FROZEN** · deterministic executive pipeline **COMPLETE** · ENG-EI-002 **COMPLETE** · Reference Consumer 001  
 > **Engine:** ENG-MEM-001 · **Implementation:** MEM-009 Pass 1 **COMPLETE**  
 > **Authorized:** Post `v1.0.0-factory-certified` Factory lock  
 > **Depends on:** [Factory Constitution v1.0](../factory/FACTORY_CONSTITUTION_v1.0.md) · [Convention Close](../convention/CONVENTION-CLOSE.md)  
@@ -74,7 +74,11 @@ ENG-MEM-001 Wave 1 — canonical storage slices. Reference implementation: [ENG-
 | [MAR-3 Architecture Review](./MAR-3-EXECUTIVE-INTELLIGENCE-ARCHITECTURE_REVIEW.md) | **COMPLETE** — Q1–Q7 PASS |
 | [ENG-EI-001 Constitutional Retrieval](./ENG-EI-001-CHARTER.md) | **COMPLETE** — Evidence Package Contract accepted |
 | [ENG-EI-DOC-003 Constitutional Retrieval Complete](./ENG-EI-DOC-003-CONSTITUTIONAL-RETRIEVAL-COMPLETE.md) | Engineering guarantees for downstream consumers |
-| [ENG-EI-002 Executive Brief](./ENG-EI-002-CHARTER.md) | **AUTHORIZED** — Reference Consumer 001 · Lane 2 |
+| [ENG-PMO-009 Executive Brief Acceptance](./ENG-PMO-009-EXECUTIVE-BRIEF-ACCEPTANCE.md) | **COMPLETE** — ENG-EI-002 closeout · Reference Consumer 001 |
+| [ENG-EI-002 Executive Brief](./ENG-EI-002-CHARTER.md) | **COMPLETE** — Reference Consumer 001 · Work Product Contract `ENG-EI-002.2` |
+| [ENG-EI Work Product Contract](./ENG-EI-WORK-PRODUCT-CONTRACT.md) | Stable consumption → intelligence interface · `ENG-EI-002.2` |
+| [ENG-EI-DOC-004](./ENG-EI-DOC-004-WORK-PRODUCT-CONTRACT.md) | Work Product Contract established |
+| [ENG-EI-DOC-005](./ENG-EI-DOC-005-DETERMINISTIC-EXECUTIVE-PIPELINE-COMPLETE.md) | Deterministic executive pipeline complete |
 | [ENG-EI-DOC-001 Engineering Discipline](./ENG-EI-DOC-001-ENGINEERING-DISCIPLINE.md) | Implementation rules frozen · living law |
 | [ENG-EI Engineering Discipline](./ENG-EI-ENGINEERING-DISCIPLINE.md) | Doctrine-traceable commits · infrastructure-before-intelligence |
 | [ENG-EI Evidence Package Contract](./ENG-EI-EVIDENCE-PACKAGE-CONTRACT.md) | Stable retrieval → intelligence interface · `ENG-EI-001.3` |
@@ -122,7 +126,7 @@ ENG-MEM-001 Wave 1 — canonical storage slices. Reference implementation: [ENG-
 ✓ EI-001 Doctrine Freeze · ei-doctrine-v1.0 · ENG-PMO-006
 ✓ ENG-EI-001.1–001.3 Constitutional Retrieval — COMPLETE
 ✓ ENG-PMO-008 · ENG-EI-DOC-003 — Evidence Package Contract accepted
-▶ ENG-EI-002 Executive Brief — Reference Consumer 001 · ENG-EI-002.1 contract
+✓ ENG-PMO-009 · ENG-EI-DOC-004 · ENG-EI-DOC-005 — Work Product Contract accepted · deterministic pipeline closed
 ```
 
 ---

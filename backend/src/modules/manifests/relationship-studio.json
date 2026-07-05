@@ -11,7 +11,7 @@
   "data_sources": ["contacts_intel"],
   "capabilities": [
     {
-      "capability_id": "CAP-RL-001",
+      "capability_id": "CAP-REL-001",
       "dependencies": ["ENG-PM-001", "ENG-WR-001", "ENG-KE-001"]
     }
   ],

@@ -395,7 +395,7 @@ export function parsePeerReviewProgress(): PeerReviewProgress {
 }
 
 /** Build theory freeze panel from Evidence Base (or checklist fallback). */
-export function buildTheoryFrozenStatus(pr: PeerReviewProgress): import("./v1Roadmap.js").TheoryFrozenStatus {
+export function buildTheoryFrozenStatus(pr: PeerReviewProgress): import("@localbrain/shared").TheoryFrozenStatus {
   const evidencePath = path.join(getRepoRoot(), EVIDENCE_BASE_REL);
   let amendments = 0;
   let contradictions = 0;

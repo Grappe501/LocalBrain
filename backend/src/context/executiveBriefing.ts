@@ -3,6 +3,7 @@
 import { getCommunicationsOfficeSnapshot } from "../buildState/communicationsOfficeMetrics.js";
 import { getContactManagementSnapshot } from "../buildState/contactManagementMetrics.js";
 import { getExecutiveIntelligenceEraSnapshot } from "../buildState/executiveIntelligenceEraMetrics.js";
+import { isGovernedPlatformEraActive } from "../buildState/governedPlatformMetrics.js";
 
 export type BriefingSection = {
   title: string;
@@ -14,8 +15,15 @@ export function buildExecutiveBriefingSections(): BriefingSection[] {
   const com = getCommunicationsOfficeSnapshot();
   const contact = getContactManagementSnapshot();
   const comActive = ei.work_product_complete && com.office_started;
+  const governedActive = isGovernedPlatformEraActive();
 
-  const todayPriorities = comActive
+  const todayPriorities = governedActive
+    ? [
+        "1. Prime Directive: Protect the evidence · EDD · PRL-3 · CPAT v1.0 passing",
+        "2. PRL-4 gate — OPERATOR-WALKTHROUGH-001 · Kelly briefing frame · facilitator card + scribe",
+        "3. Celebrate: We learned something true · bounded hardening only · doctrine frozen",
+      ]
+    : comActive
     ? com.module_evaluation_pending
       ? [
           "1. ENG-PMO-013 PENDING — Communications Office module evaluation · inherited baseline committed",

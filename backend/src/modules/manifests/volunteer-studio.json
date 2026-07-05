@@ -1,0 +1,22 @@
+{
+  "module_id": "volunteer-studio",
+  "name": "Volunteer Operations",
+  "domain": "volunteer",
+  "version": "1.0.0",
+  "status": "active",
+  "routes": [{ "path": "/studio/volunteer", "pattern": "studio/volunteer/*" }],
+  "permissions": ["filesystem:read"],
+  "tools": [],
+  "agents": [],
+  "data_sources": ["vop_volunteer_profiles", "vop_work_items"],
+  "capabilities": [
+    {
+      "capability_id": "CAP-VOP-001",
+      "dependencies": ["CAP-CONTACT-001", "CAP-UCIE-100"]
+    }
+  ],
+  "dependencies": ["contact-studio", "ingestion-studio"],
+  "nav_placement": "department",
+  "lazy_load_boundary": "modules/volunteer-studio/Entry",
+  "description": "VOP-001 — Volunteer Work Marketplace · coordinate people, don't just assign tasks"
+}

@@ -27,7 +27,9 @@ import {
 import { parsePeerReviewProgress, buildTheoryFrozenStatus, theoryValidationPhaseLabel } from "../epo/checklistParser.js";
 import { resolveConsolidationCursor } from "./consolidationCursor.js";
 import { getCommunicationsOfficeSnapshot, isCommunicationsOfficeStarted } from "./communicationsOfficeMetrics.js";
+import { getGovernedPlatformSnapshot, isGovernedPlatformEraActive } from "./governedPlatformMetrics.js";
 import { isWorkProductComplete } from "./executiveIntelligenceEraMetrics.js";
+import { applyGovernedBuildOverrides } from "./governedBuildProjection.js";
 
 export const BUILD_STATE_ENGINE_ID = "ENG-BLD-001";
 
@@ -161,6 +163,45 @@ function findCurrentAndNext(
 
   if (isWorkProductComplete() && isCommunicationsOfficeStarted()) {
     const com = getCommunicationsOfficeSnapshot();
+    if (isGovernedPlatformEraActive()) {
+      const gp = getGovernedPlatformSnapshot();
+      phaseLabel = `${gp.phase_label} · ${gp.platform_readiness_level} · Gate: PRL-4`;
+      return {
+        current: {
+          slice_id: "PRL-4",
+          name: "Internal Operator Validated (OPERATOR-WALKTHROUGH-001)",
+          status: "in_progress",
+          burt_packet_path: "docs/operator-readiness/WALKTHROUGH-001-SCENARIO.md",
+          spec_doc_path: "docs/operator-readiness/PRL-4-EXIT-CONTRACT.md",
+          dependencies: ["OPERATOR-WALKTHROUGH-001"],
+          coverage: {
+            implementation: 100,
+            tests: 100,
+            documentation: 100,
+            user_guide: 80,
+            ojt_lesson: 60,
+          },
+          blocker_explanation: null,
+        },
+        next: {
+          slice_id: "PRL-4-EXIT-CONTRACT",
+          name: "PRL-4 Exit Contract Assessment",
+          status: "planned",
+          burt_packet_path: "docs/operator-readiness/PRL-4-EXIT-CONTRACT.md",
+          spec_doc_path: null,
+          dependencies: ["PRL-4"],
+          coverage: {
+            implementation: 25,
+            tests: 100,
+            documentation: 100,
+            user_guide: 50,
+            ojt_lesson: 40,
+          },
+          blocker_explanation: "Requires ≥3 signed operator evidence packages",
+        },
+        phaseLabel,
+      };
+    }
     phaseLabel = com.module_complete
       ? "Communications Office · COMPLETE · ENG-PMO-013"
       : com.module_evaluation_pending
@@ -326,7 +367,7 @@ export function computeBuildState(): BuildStateSnapshot {
 
   const completed = summaries.filter((s) => s.status === "complete").length;
 
-  return {
+  return applyGovernedBuildOverrides({
     slices: summaries,
     phases: buildPhases(parsePhaseSections(), map),
     current_sprint: buildCurrentSprint(summaries, orderedIds, current?.slice_id ?? null),
@@ -341,7 +382,7 @@ export function computeBuildState(): BuildStateSnapshot {
     commit_timeline: recentCommits,
     completed_count: completed,
     total_count: summaries.length,
-  };
+  });
 }
 
 export { changelogDecisions };

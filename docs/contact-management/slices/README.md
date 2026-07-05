@@ -10,6 +10,8 @@
 | 3 | [ENG-CONTACT-001.3](./ENG-CONTACT-001.3-CSV-IMPORT-EXPORT.md) | Can CSV import/export round-trip without loss? | **IMPLEMENTATION FROZEN** |
 | 4 | [ENG-CONTACT-001.4](./ENG-CONTACT-001.4-COM-DRAFT-LINKING.md) | Can contacts link to Communications drafts? | **IMPLEMENTATION FROZEN** · [ENG-PMO-014](../ENG-PMO-014-CONTACT-MANAGEMENT-MODULE-EVALUATION.md) **COMPLETE** |
 
+**V2 (reserved):** [ENG-CONTACT-002 slices](./ENG-CONTACT-002-README.md) · post–Commercial Beta · not authorized
+
 ---
 
 *ENG-CONTACT-001 slices · LocalBrain V1 · Contact Management · module evaluation COMPLETE · 2026*

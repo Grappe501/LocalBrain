@@ -1,6 +1,9 @@
 import { Router } from "express";
 import { getEpoOverview, getEpoSliceDetail, getProjectState, listDocumentationLibrary } from "../epo/epoService.js";
+import { readDocumentationFile } from "../epo/docsLibrary.js";
 import { getPlatformReadinessReport } from "../certification/platformReadinessService.js";
+import { runPlatformStateAudit } from "../audit/platformStateAuditEngine.js";
+import { formatPlatformStateReportMarkdown } from "@localbrain/shared";
 
 export const epoRouter = Router();
 
@@ -12,6 +15,25 @@ epoRouter.get("/epo/project-state", (_req, res) => {
 epoRouter.get("/epo/readiness", (_req, res) => {
   res.set("Cache-Control", "no-store, no-cache, must-revalidate");
   res.json(getPlatformReadinessReport());
+});
+
+epoRouter.get("/epo/platform-state-audit", (_req, res) => {
+  res.set("Cache-Control", "no-store, no-cache, must-revalidate");
+  try {
+    const report = runPlatformStateAudit();
+    const format = _req.query.format;
+    if (format === "markdown") {
+      res.type("text/markdown").send(formatPlatformStateReportMarkdown(report));
+      return;
+    }
+    res.json(report);
+  } catch (err) {
+    console.error("[epo/platform-state-audit]", err);
+    res.status(500).json({
+      error: err instanceof Error ? err.message : "Platform state audit failed",
+      engine_id: "ENG-PSA-001",
+    });
+  }
 });
 
 epoRouter.get("/epo/overview", (_req, res) => {
@@ -39,6 +61,17 @@ epoRouter.get("/epo/slices/:id", (req, res) => {
 epoRouter.get("/epo/docs", (req, res) => {
   const q = typeof req.query.q === "string" ? req.query.q : undefined;
   res.json({ docs: listDocumentationLibrary(q) });
+});
+
+epoRouter.get("/epo/docs/content", (req, res) => {
+  const rel = typeof req.query.path === "string" ? req.query.path : "";
+  const doc = readDocumentationFile(rel);
+  if (!doc) {
+    res.status(404).json({ error: "Document not found or path not allowed" });
+    return;
+  }
+  res.set("Cache-Control", "no-store, no-cache, must-revalidate");
+  res.json(doc);
 });
 
 epoRouter.get("/epo/why/:id", (req, res) => {

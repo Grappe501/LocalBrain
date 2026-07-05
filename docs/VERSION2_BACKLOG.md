@@ -21,7 +21,7 @@ Do not implement. Do not reserve capabilities. Do not write doctrine.
 
 | Date | Idea | Notes | Target |
 | ---- | ---- | ----- | ------ |
-| — | *(empty — add ideas here)* | | V2+ |
+| 2026-07-03 | [ENG-CONTACT-002 Contact Management V2](./contact-management/ENG-CONTACT-002-CHARTER.md) | Institutional record of people · orgs · identity · objective interaction ledger · fact search · **facts only** — trust/influence/recommendations in RS/EI | V2 · post–Commercial Beta |
 
 ---
 

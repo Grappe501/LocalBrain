@@ -8,6 +8,8 @@ import { getContactManagementSnapshot, isContactManagementStarted } from "../bui
 
 import { getExecutiveIntelligenceEraSnapshot } from "../buildState/executiveIntelligenceEraMetrics.js";
 
+import { getGovernedPlatformSnapshot, isGovernedPlatformEraActive } from "../buildState/governedPlatformMetrics.js";
+
 import { getMemoryOsProgressSnapshot } from "../buildState/memoryOsSpecMetrics.js";
 
 
@@ -34,6 +36,10 @@ export function projectWorkspaceLive(ws: LivingWorkspace): LivingWorkspace {
 
   const contact = getContactManagementSnapshot();
 
+  const governed = getGovernedPlatformSnapshot();
+
+  const governedActive = isGovernedPlatformEraActive();
+
   const completed = state.slices.filter((s) => s.status === "complete").map((s) => s.slice_id);
 
   const activeEngMem = mem.wave1_active_slice
@@ -58,7 +64,11 @@ export function projectWorkspaceLive(ws: LivingWorkspace): LivingWorkspace {
 
     status: "active",
 
-    current_focus: contactActive
+    current_focus: governedActive
+
+      ? governed.building_today
+
+      : contactActive
 
       ? contact.building_today
 
@@ -86,7 +96,11 @@ export function projectWorkspaceLive(ws: LivingWorkspace): LivingWorkspace {
 
       mission: ws.profile.mission ?? "Build Steve's Executive Operating System",
 
-      current_phase: contactActive
+      current_phase: governedActive
+
+        ? "Evidence-Driven Development · PRL-3 · Governed Platform"
+
+        : contactActive
 
         ? contact.module_complete
 
@@ -166,7 +180,11 @@ export function projectWorkspaceLive(ws: LivingWorkspace): LivingWorkspace {
 
       completed_slices: completed.slice(-15),
 
-      active_slice: contactActive
+      active_slice: governedActive
+
+        ? governed.smallest_next_slice
+
+        : contactActive
 
         ? contact.smallest_next_slice
 
@@ -180,7 +198,11 @@ export function projectWorkspaceLive(ws: LivingWorkspace): LivingWorkspace {
 
           : activeEngMem ?? state.current_slice_id ?? ws.profile.active_slice,
 
-      next_slices: contactActive
+      next_slices: governedActive
+
+        ? [governed.smallest_next_slice, "Commercial Beta preparation"]
+
+        : contactActive
 
         ? contact.module_complete
 
@@ -270,7 +292,11 @@ export function projectWorkspaceLive(ws: LivingWorkspace): LivingWorkspace {
 
               : (ws.profile.next_slices ?? []),
 
-      chief_of_staff_summary: contactActive
+      chief_of_staff_summary: governedActive
+
+        ? governed.summary
+
+        : contactActive
 
         ? contact.summary
 
@@ -284,7 +310,11 @@ export function projectWorkspaceLive(ws: LivingWorkspace): LivingWorkspace {
 
           : mem.summary ?? state.gate_text ?? ws.profile.chief_of_staff_summary,
 
-      recommended_next_action: contactActive
+      recommended_next_action: governedActive
+
+        ? governed.smallest_next_slice
+
+        : contactActive
 
         ? contact.smallest_next_slice
 

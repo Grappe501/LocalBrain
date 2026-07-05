@@ -6,6 +6,8 @@ const WritingEntry = lazy(() => import("../modules/writing-studio/Entry"));
 const DataIntelligenceEntry = lazy(() => import("../modules/data-studio/Entry"));
 const RelationshipNetworkEntry = lazy(() => import("../modules/relationship-studio/Entry"));
 const ContactStudioEntry = lazy(() => import("../modules/contact-studio/Entry"));
+const IngestionStudioEntry = lazy(() => import("../modules/ingestion-studio/Entry"));
+const VolunteerStudioEntry = lazy(() => import("../modules/volunteer-studio/Entry"));
 
 type Props = {
   moduleId: string;
@@ -48,6 +50,22 @@ export function LazyModuleRoute({ moduleId }: Props) {
     return (
       <Suspense fallback={<p className="module-route-loading">Loading module…</p>}>
         <ContactStudioEntry />
+      </Suspense>
+    );
+  }
+
+  if (moduleId === "ingestion-studio") {
+    return (
+      <Suspense fallback={<p className="module-route-loading">Loading module…</p>}>
+        <IngestionStudioEntry />
+      </Suspense>
+    );
+  }
+
+  if (moduleId === "volunteer-studio") {
+    return (
+      <Suspense fallback={<p className="module-route-loading">Loading module…</p>}>
+        <VolunteerStudioEntry />
       </Suspense>
     );
   }

@@ -1,6 +1,6 @@
 # ENG-EI-002.1 — Executive Brief Contract and Deterministic Renderer
 
-> **Status:** **IN PROGRESS**  
+> **Status:** **COMPLETE**  
 > **Parent:** [ENG-EI-002 Charter](../ENG-EI-002-CHARTER.md) · [ENG-EI-DOC-003](../ENG-EI-DOC-003-CONSTITUTIONAL-RETRIEVAL-COMPLETE.md)  
 > **Phase:** Lane 2 — faithful consumption · not impressive
 

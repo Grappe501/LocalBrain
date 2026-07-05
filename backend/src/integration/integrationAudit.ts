@@ -37,6 +37,9 @@ export const EXECUTIVE_SHELL_ROUTES = [
   "/studio/engineering",
   "/studio/writing",
   "/studio/data",
+  "/studio/contacts",
+  "/studio/ingestion",
+  "/studio/volunteer",
   "/studio/relationships",
 ];
 

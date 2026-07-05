@@ -24,12 +24,15 @@ test("projectWorkspaceLive syncs localbrain from build state", () => {
   const projected = projectWorkspaceLive(ws!);
   assert.ok(state.current_slice_id);
   assert.ok(
-    projected.current_focus.includes("COMPLETE") ||
-      projected.current_focus.includes("Commercial Beta"),
+    projected.current_focus.includes("Evidence-Driven Development") ||
+      projected.current_focus.includes("PRL-3") ||
+      projected.current_focus.includes("PRL-4"),
   );
-  assert.ok(projected.profile.current_phase?.includes("COMPLETE"));
+  assert.ok(projected.profile.current_phase?.includes("Evidence-Driven Development"));
   assert.ok(
-    projected.profile.next_slices?.some((s) => s.includes("Commercial Beta")),
+    projected.profile.next_slices?.some(
+      (s) => s.includes("PRL-4") || s.includes("OPERATOR-WALKTHROUGH"),
+    ),
   );
 });
 

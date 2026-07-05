@@ -8,6 +8,8 @@
 
 > **Production line:** Charter → Doctrine → Implementation → Verification → PMO Acceptance → Closeout
 
+> **Work Product Contract:** [ENG-EI-WORK-PRODUCT-CONTRACT.md](./ENG-EI-WORK-PRODUCT-CONTRACT.md) · [ENG-EI-DOC-004](./ENG-EI-DOC-004-WORK-PRODUCT-CONTRACT.md)
+
 > **Evidence Package Contract:** [ENG-EI-EVIDENCE-PACKAGE-CONTRACT.md](./ENG-EI-EVIDENCE-PACKAGE-CONTRACT.md) · [ENG-EI-DOC-002](./ENG-EI-DOC-002-EVIDENCE-PACKAGE-CONTRACT.md)
 
 ```text
@@ -20,8 +22,12 @@ ENG-EI-001.1    Correctness proven · COMPLETE
 ENG-EI-DOC-002  Evidence Package Contract
 ENG-EI-001.3    Ordering · retrieval audit · COMPLETE
 ENG-PMO-008     Constitutional Retrieval accepted
-ENG-EI-002      Executive Brief — Reference Consumer      ▶ AUTHORIZED
-ENG-EI-002.1    Brief contract · deterministic renderer   ▶ next
+ENG-EI-002      Executive Brief — Reference Consumer 001    COMPLETE
+ENG-EI-002.1    Brief contract · deterministic renderer     COMPLETE
+ENG-EI-002.2    Behavioral fidelity                         COMPLETE
+ENG-PMO-009     Executive Brief accepted
+ENG-EI-DOC-004  Work Product Contract
+ENG-EI-DOC-005  Deterministic executive pipeline complete
 ```
 
 Every implementation commit after this line must trace back to the frozen doctrine.

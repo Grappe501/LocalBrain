@@ -266,18 +266,10 @@ export function syncFilesystemRootsToAllowedFolders(): void {
   }
 }
 
-export function seedWorkspaces(): void {
-  const seeded = getDatabase()
-    .prepare("SELECT value FROM settings WHERE key = 'workspace_registry_seed_v1'")
-    .get() as { value: string } | undefined;
-
-  if (seeded?.value === "done") {
-    return;
-  }
-
+function buildCanonicalLocalbrainWorkspace(): LivingWorkspace {
   const repoRoot = getRepoRoot();
 
-  const localbrain: LivingWorkspace = {
+  return {
     workspace_id: "localbrain",
     workspace_type: "meta",
     title: "LocalBrain",
@@ -288,16 +280,16 @@ export function seedWorkspaces(): void {
     parent_workspace_id: null,
     executive_context:
       "LocalBrain is Steve's Executive Operating System — not a chatbot. Wave 1 builds the Institutional Cognition Foundation: deterministic memory substrates that Executive Intelligence reasons over.",
-    current_focus: "Contact Management COMPLETE · ENG-PMO-014 · Commercial Beta preparation next",
+    current_focus: "Protect the evidence · EDD · PRL-3 · CPAT v1.0 · PRL-4 operator sessions",
     success_definition:
-      "A modular AI Executive Operating System that becomes Steve's primary interface for work.",
+      "A governed constituent operating platform validated by operators — not just passing tests.",
     workspace_avatar: "🧠",
     workspace_color: "#3b82f6",
     workspace_icon: "meta",
     filesystem_roots: [repoRoot],
     profile: {
       mission: "Build Steve's Executive Operating System",
-      current_phase: "Contact Management · V1 subsystem COMPLETE · ENG-PMO-014",
+      current_phase: "Evidence-Driven Development · PRL-3 · Governed Platform",
       completed_slices: [
         "LB-OS-001",
         "LB-OS-002",
@@ -330,21 +322,28 @@ export function seedWorkspaces(): void {
         "ENG-CONTACT-001.3",
         "ENG-CONTACT-001.4",
         "ENG-PMO-014",
+        "CONTACT-V3-100",
+        "CONTACT-V3-016.1",
+        "CONTACT-V3-016",
+        "CONTACT-V3-017",
+        "CONTACT-V3-018",
+        "CONTACT-V3-019",
+        "CONTACT-V3-020",
+        "CONTACT-V3-021",
+        "OPERATOR-WALKTHROUGH-001",
       ],
-      active_slice: "Commercial Beta preparation",
-      next_slices: ["Commercial Beta preparation"],
+      active_slice: "PRL-4 — Internal Operator Validated",
+      next_slices: ["PRL-4 operator evidence", "Commercial Beta preparation"],
       recent_decisions: [
         "PSP approved",
-        "localbrain home mock",
-        "CFO briefing-only in shell",
-        "MODULARITY GATE after 004",
-        "LivingWorkspace replaces Project Registry",
-        "ENG-PMO-005 Constitutional Completion",
+        "Contact v3 + UCIE certified",
+        "CPAT v1.0 accepted",
+        "Evidence-Driven Development declared",
       ],
       chief_of_staff_summary:
-        "Contact Management COMPLETE · ENG-PMO-014 · 23/23 behavioral · inherited V1 subsystems committed",
+        "Protect the evidence · Governed platform · Contact v3 + UCIE · PRL-3 · operator sessions drive iteration",
       recommended_next_action:
-        "Commercial Beta preparation — product surfaces and release governance (separate authority)",
+        "Prime Directive: Protect the evidence · Run OPERATOR-WALKTHROUGH-001 · Kelly briefing frame · facilitator card + scribe",
       repositories: [],
       contacts: [],
       calendar_links: [],
@@ -362,8 +361,19 @@ export function seedWorkspaces(): void {
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString(),
   };
+}
 
-  upsertWorkspace(localbrain);
+export function seedWorkspaces(): void {
+  upsertWorkspace(buildCanonicalLocalbrainWorkspace());
+
+  const seeded = getDatabase()
+    .prepare("SELECT value FROM settings WHERE key = 'workspace_registry_seed_v1'")
+    .get() as { value: string } | undefined;
+
+  if (seeded?.value === "done") {
+    syncFilesystemRootsToAllowedFolders();
+    return;
+  }
 
   const stubs: Array<Partial<LivingWorkspace> & { workspace_id: string; workspace_type: WorkspaceType; title: string }> = [
     { workspace_id: "reddirt", workspace_type: "campaign", title: "RedDirt", filesystem_roots: [], flags: { hidden: false } },

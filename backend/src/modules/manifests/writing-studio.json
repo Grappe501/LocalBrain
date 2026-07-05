@@ -11,7 +11,7 @@
   "data_sources": ["KS-DOCS", "KS-EXPLORER"],
   "capabilities": [
     {
-      "capability_id": "CAP-WR-001",
+      "capability_id": "CAP-WRT-001",
       "dependencies": ["ENG-PM-001", "ENG-WR-001", "ENG-KE-001"]
     }
   ],

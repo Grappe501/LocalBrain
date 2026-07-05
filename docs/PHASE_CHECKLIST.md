@@ -212,7 +212,35 @@ NO NEW DOCTRINE
 | LB-OS-PROD-011 | Chief Compliance Officer | 🔒 Reserved · CAP-FUT-CCO-001 |
 | LB-OS-CON-003 | Versioned Constitution Migration | 🔒 Reserved · CAP-FUT-CON-VER-001 |
 
-**Gate:** V1 implementation mode · Contact Management **COMPLETE** · [ENG-PMO-014](./contact-management/ENG-PMO-014-CONTACT-MANAGEMENT-MODULE-EVALUATION.md) → Commercial Beta preparation
+**Gate:** V1 implementation mode · Contact Management **COMPLETE** · Governed Platform **PRL-3** · [Evidence-Driven Development](./operator-readiness/EVIDENCE-DRIVEN-DEVELOPMENT.md) → **PRL-4** operator validation
+
+---
+
+## Phase 14 — Governed Constituent Platform (Contact v3 + UCIE + EDD)
+
+> **Status:** Implementation Phase 1 **COMPLETE** · **PRL-3** · EDD declared 2026-07-05  
+> **Next gate:** [PRL-4 Exit Contract](./operator-readiness/PRL-4-EXIT-CONTRACT.md)
+
+| Slice / milestone | Name | Status |
+| ----------------- | ---- | ------ |
+| CONTACT-V3-016.1 | Relationship Context Engine | ✅ Reference Pattern Certified |
+| CONTACT-V3-016 | Stewardship Engine | ✅ Reference Pattern Certified |
+| CONTACT-V3-017 | Action Engine | ✅ Reference Pattern Certified |
+| CONTACT-V3-018 | Household Engine | ✅ Reference Pattern Certified |
+| CONTACT-V3-019 | Organization Engine | ✅ Reference Pattern Certified |
+| CONTACT-V3-020 | AI Contact Briefs | ✅ Reference Pattern Certified |
+| CONTACT-V3-021 | Relationship Analytics | ✅ Reference Pattern Certified |
+| CONTACT-V3-100 | UCIE — Identity Acquisition Platform | ✅ Reference Pattern Certified |
+| VOP-001 | Volunteer Operations — Work Marketplace | ✅ Reference Pattern Certified |
+| **FED-001** | **Federation & Synchronization** | 🔒 **Reserved** · [Graph](./federation/FEDERATION-GRAPH-MODEL.md) · [Sponsorship](./federation/FEDERATION-SPONSORSHIP-MODEL.md) · One Person. One LocalBrain. Many Governed Sponsorships. |
+| **WSP-001** | **GitHub-Backed Sovereign Collaboration Workspace** | 🔒 **Reserved** · Workspace Ledger · [WSP-001 Reservation](./collaboration/WSP-001-RESERVATION.md) |
+| **ILG-001** | **Institutional Ledger** | 🔒 **Reserved** · [ILG-001 Reservation](./institution/ILG-001-RESERVATION.md) · [Digital Institution Charter](./institution/DIGITAL-INSTITUTION-CHARTER.md) |
+| OPERATOR-WALKTHROUGH-001 | Canonical Platform Acceptance Test v1.0 | ✅ CPAT accepted · automated passing |
+| PRL-4 | Internal Operator Validated | ⏳ **Current gate** |
+
+**Doctrine:** [Certified Implementation Doctrine](./platform/CERTIFIED-IMPLEMENTATION-DOCTRINE.md) — frozen
+
+**Gate:** Operator evidence packages · Platform Health Score ≥ 90% · OECs dispositioned
 
 **Architecture phase:** ✅ **COMPLETE** · **Doctrine:** 🔒 **FROZEN** (feature freeze until launch — no new doctrine, reserved capabilities, offices, or cognitive layers)
 
@@ -534,6 +562,8 @@ Steve = owner · Actions = approval-gated · Audit = always on (when team ships)
 | 2026-06-28 | Pillar 17 Executive Office · AI Executive OS · LB-OS-087–096 |
 | 2026-06-28 | Build Slice Queue v2.0 authoritative |
 
+| 2026-07-05 | Phase 14 Governed Platform · EDD · PRL-3 · CPAT v1.0 · PRL-4 gate · workbench roadmap crawl |
+
 ---
 
-*Phase checklist · 2026-06-28*
+*Phase checklist · 2026-07-05*

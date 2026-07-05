@@ -1,6 +1,9 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { EXECUTIVE_BRIEF_VERSION } from "@localbrain/shared";
+import {
+  EXECUTIVE_BRIEF_SECTION_ORDER,
+  EXECUTIVE_BRIEF_VERSION,
+} from "@localbrain/shared";
 import { bootstrapApp, shutdownApp } from "../bootstrap.js";
 import {
   writeConversation,
@@ -154,6 +157,105 @@ test("ENG-EI-002.1 render is deterministic for identical package input", () => {
       a.sections.map((s) => s.statements.map((st) => st.citation_refs)),
       b.sections.map((s) => s.statements.map((st) => st.citation_refs)),
     );
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-EI-002.2 decision citations carry multi-citation supporting refs", () => {
+  bootstrapApp();
+  try {
+    const { episode, fact, citation } = seedBriefFixture();
+    const pkg = assembleConstitutionalEvidencePackage({
+      request_id: "req-brief-004",
+      scope_label: "Brief fixture",
+      substrate_refs: {
+        episode: [episode.episode_id],
+        fact: [fact.fact_id],
+        decision_citation: [citation.citation_id],
+      },
+    });
+    const brief = renderExecutiveBriefFromPackage(pkg);
+    const decisionStatement = brief.sections
+      .find((s) => s.section_id === "sec-decisions")
+      ?.statements.find((s) =>
+        s.citation_refs.includes(`decision_citation:${citation.citation_id}`),
+      );
+
+    assert.ok(decisionStatement);
+    assert.ok(decisionStatement!.citation_refs.length >= 3);
+    assert.ok(decisionStatement!.citation_refs.includes(`episode:${episode.episode_id}`));
+    assert.ok(decisionStatement!.citation_refs.includes(`fact:${fact.fact_id}`));
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-EI-002.2 citation groups link sections to assertion and evidence refs", () => {
+  bootstrapApp();
+  try {
+    const { episode, fact } = seedBriefFixture();
+    const pkg = assembleConstitutionalEvidencePackage({
+      request_id: "req-brief-005",
+      scope_label: "Brief fixture",
+      substrate_refs: {
+        episode: [episode.episode_id],
+        fact: [fact.fact_id],
+      },
+    });
+    const brief = renderExecutiveBriefFromPackage(pkg);
+
+    assert.ok(brief.citation_groups.length >= 2);
+    const factsGroup = brief.citation_groups.find((g) => g.section_id === "sec-facts");
+    assert.ok(factsGroup);
+    assert.ok(factsGroup!.statement_ids.length > 0);
+    assert.deepEqual(factsGroup!.citation_refs, [`fact:${fact.fact_id}`]);
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-EI-002.2 evidence boundaries distinguish reported absent and excluded", () => {
+  bootstrapApp();
+  try {
+    const { episode } = seedBriefFixture();
+    const pkg = assembleConstitutionalEvidencePackage({
+      request_id: "req-brief-006",
+      scope_label: "Brief fixture",
+      substrate_refs: {
+        episode: [episode.episode_id],
+        fact: ["fact-missing"],
+      },
+    });
+    const brief = renderExecutiveBriefFromPackage(pkg);
+
+    assert.ok(brief.evidence_boundaries.some((b) => b.kind === "reported"));
+    assert.ok(brief.evidence_boundaries.some((b) => b.kind === "absent"));
+    assert.ok(brief.evidence_boundaries.some((b) => b.kind === "withheld"));
+    assert.ok(brief.omission_notes.some((n) => n.kind === "substrate_gap"));
+  } finally {
+    shutdownApp();
+  }
+});
+
+test("ENG-EI-002.2 sections follow deterministic constitutional ordering", () => {
+  bootstrapApp();
+  try {
+    const { episode, fact, conversation, citation } = seedBriefFixture();
+    const pkg = assembleConstitutionalEvidencePackage({
+      request_id: "req-brief-007",
+      scope_label: "Brief fixture",
+      substrate_refs: {
+        decision_citation: [citation.citation_id],
+        conversation: [conversation.conversation_id],
+        fact: [fact.fact_id],
+        episode: [episode.episode_id],
+      },
+    });
+    const brief = renderExecutiveBriefFromPackage(pkg);
+    const sectionIds = brief.sections.map((s) => s.section_id);
+    const expected = EXECUTIVE_BRIEF_SECTION_ORDER.filter((id) => sectionIds.includes(id));
+    assert.deepEqual(sectionIds, expected);
   } finally {
     shutdownApp();
   }

@@ -22,6 +22,15 @@ const DOC_CATEGORIES: { prefix: string; category: string }[] = [
   { prefix: "LOCALBRAIN_GOOGLE", category: "Future Plans" },
   { prefix: "LOCALBRAIN_TEAM", category: "Future Plans" },
   { prefix: "LOCALBRAIN_NETWORK", category: "Future Plans" },
+  { prefix: "operator-readiness", category: "Operator Readiness" },
+  { prefix: "platform/", category: "Platform Constitution" },
+  { prefix: "institution/", category: "Institution OS" },
+  { prefix: "federation/", category: "Federation (Reserved)" },
+  { prefix: "collaboration/", category: "Collaboration (Reserved)" },
+  { prefix: "epo/", category: "Governance (Reserved)" },
+  { prefix: "ucie/", category: "UCIE" },
+  { prefix: "vop/", category: "VOP" },
+  { prefix: "contact-management/", category: "Contact Management" },
   { prefix: "PHASE_CHECKLIST", category: "Build Plans" },
   { prefix: "LOCALBRAIN_WRITING", category: "Departments" },
   { prefix: "LOCALBRAIN_DATABASE", category: "Database" },
@@ -100,4 +109,19 @@ export function listDocumentationLibrary(query?: string): EpoDocEntry[] {
     );
   }
   return result;
+}
+
+const SAFE_DOC_PATH = /^docs\/[a-zA-Z0-9_./-]+\.md$/;
+
+/** Read a single markdown file under docs/ for workbench doc viewer. */
+export function readDocumentationFile(relPath: string): { path: string; title: string; content: string } | null {
+  const normalized = relPath.replace(/\\/g, "/");
+  if (!SAFE_DOC_PATH.test(normalized) || normalized.includes("..")) return null;
+  const full = path.join(getRepoRoot(), normalized);
+  if (!fs.existsSync(full) || !fs.statSync(full).isFile()) return null;
+  const content = fs.readFileSync(full, "utf8");
+  const title =
+    content.match(/^#\s+(.+)/m)?.[1]?.replace(/\*\*/g, "").trim() ??
+    path.basename(normalized);
+  return { path: normalized, title, content };
 }

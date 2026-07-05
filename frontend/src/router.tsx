@@ -22,7 +22,7 @@ import { SettingsPage } from "./views/SettingsPage";
 import { OnboardingWizardView } from "./views/OnboardingWizardView";
 import { InstanceSettingsView } from "./views/InstanceSettingsView";
 import { ProvidersSettingsView } from "./views/ProvidersSettingsView";
-import { LazyModuleRoute } from "./views/LazyModuleRoute";
+import { DocViewerView } from "./views/DocViewerView";
 
 export function AppRouter() {
   const { departmentModules, loading } = useModuleRegistry();
@@ -37,6 +37,7 @@ export function AppRouter() {
         <Route path="learn" element={<LearnStub />} />
         <Route path="actions" element={<ActionsView />} />
         <Route path="program-office" element={<ProgramOfficeView />} />
+        <Route path="docs/view" element={<DocViewerView />} />
         <Route path="system" element={<SystemHealthView />} />
         <Route path="system/providers" element={<AiProvidersView />} />
         <Route path="migration" element={<MigrationPlannerView />} />
