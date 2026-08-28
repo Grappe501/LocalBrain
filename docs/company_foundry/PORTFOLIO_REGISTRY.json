@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "updated": "2026-08-28",
+  "audit_slice": "CF-002",
+  "status": "portfolio_triage_complete",
+  "products": [
+    {"id":"souschef","name":"SousChef / HomeChef AI","tier":"A","technical_readiness":90,"commercial_readiness":72,"disposition":"accelerate","priority_first_revenue":1},
+    {"id":"localbrain","name":"LocalBrain","tier":"A","technical_readiness":85,"commercial_readiness":58,"disposition":"accelerate_narrow_icp","priority_first_revenue":4},
+    {"id":"campaignos","name":"CampaignOS / RedDirt Commercial Extraction","tier":"A","technical_readiness":80,"commercial_readiness":65,"disposition":"accelerate_clean_extraction","priority_first_revenue":3},
+    {"id":"votematch","name":"VoteMatch","tier":"A","technical_readiness":76,"commercial_readiness":62,"disposition":"accelerate_after_hardening","priority_first_revenue":2},
+    {"id":"canonforge","name":"CanonForge Knowledge OS","tier":"A","technical_readiness":70,"commercial_readiness":45,"disposition":"market_validate_and_extract","priority_first_revenue":5},
+    {"id":"contactlist","name":"ContactList / PeopleBase","tier":"B","technical_readiness":70,"commercial_readiness":50,"disposition":"incubate_shared_data_layer"},
+    {"id":"eventops","name":"Event Operations","tier":"B","technical_readiness":58,"commercial_readiness":55,"disposition":"incubate"},
+    {"id":"foundryos","name":"FoundryOS","tier":"B","technical_readiness":63,"commercial_readiness":40,"disposition":"internal_first"}
+  ],
+  "founding_five": ["souschef","localbrain","campaignos","votematch","canonforge"],
+  "next_slice": "CF-003"
+}
