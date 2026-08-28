@@ -13,6 +13,16 @@ import {
   submitModuleAttempt,
 } from "../companyFoundry/learnerProgress.js";
 import {
+  assignProductionPhase,
+  getEligibleProductionPhases,
+  getProductionAssignmentDetail,
+  getProductionLabMetrics,
+  listProductionAssignments,
+  reviewProductionWork,
+  startProductionAssignment,
+  submitProductionWork,
+} from "../companyFoundry/productionLab.js";
+import {
   addFoundryEvidence,
   createFoundryProposal,
   getFoundryAudit,
@@ -108,6 +118,66 @@ companyFoundryRouter.post("/foundry/academy/enrollments/:enrollmentId/stages/:st
   return res.status(201).json({ gate, dashboard: getLearnerDashboard(req.params.enrollmentId) });
 });
 
+// CF-012D Production Lab
+companyFoundryRouter.get("/foundry/production-lab/metrics", (_req, res) => res.json(getProductionLabMetrics()));
+companyFoundryRouter.get("/foundry/production-lab/assignments", (req, res) => {
+  const builderId = req.query.builderId ? String(req.query.builderId) : undefined;
+  return res.json({ assignments: listProductionAssignments(builderId) });
+});
+companyFoundryRouter.get("/foundry/production-lab/assignments/:assignmentId", (req, res) => {
+  const detail = getProductionAssignmentDetail(req.params.assignmentId);
+  if (!detail) return res.status(404).json({ error: "production_assignment_not_found" });
+  return res.json(detail);
+});
+companyFoundryRouter.get("/foundry/production-lab/eligible/:builderId", (req, res) => {
+  return res.json({ phases: getEligibleProductionPhases(req.params.builderId) });
+});
+companyFoundryRouter.post("/foundry/production-lab/assignments", (req, res) => {
+  const phaseId = String(req.body?.phaseId ?? "").trim();
+  const builderId = String(req.body?.builderId ?? "").trim();
+  const assignedBy = String(req.body?.assignedBy ?? "").trim();
+  const pvs = Number(req.body?.pvs);
+  if (!phaseId || !builderId || !assignedBy || !Number.isFinite(pvs)) return res.status(400).json({ error: "invalid_assignment" });
+  const result = assignProductionPhase({
+    phaseId,
+    builderId,
+    assignedBy,
+    pvs,
+    contributionShare: req.body?.contributionShare === undefined ? undefined : Number(req.body.contributionShare),
+    budgetAttributionUsd: req.body?.budgetAttributionUsd === undefined ? undefined : Number(req.body.budgetAttributionUsd),
+    compensationNote: req.body?.compensationNote ? String(req.body.compensationNote) : undefined,
+  });
+  if (!result.ok) return res.status(409).json(result);
+  return res.status(201).json(result);
+});
+companyFoundryRouter.post("/foundry/production-lab/assignments/:assignmentId/start", (req, res) => {
+  const builderId = String(req.body?.builderId ?? "").trim();
+  if (!builderId) return res.status(400).json({ error: "builder_id_required" });
+  const result = startProductionAssignment(req.params.assignmentId, builderId);
+  if (!result.ok) return res.status(409).json(result);
+  return res.json(result);
+});
+companyFoundryRouter.post("/foundry/production-lab/assignments/:assignmentId/submit", (req, res) => {
+  const builderId = String(req.body?.builderId ?? "").trim();
+  const summary = String(req.body?.summary ?? "").trim();
+  const evidence = Array.isArray(req.body?.evidence) ? req.body.evidence : [];
+  const validation = Array.isArray(req.body?.validation) ? req.body.validation : [];
+  if (!builderId || !summary) return res.status(400).json({ error: "invalid_production_submission" });
+  const result = submitProductionWork({ assignmentId: req.params.assignmentId, builderId, summary, evidence, validation, knownLimits: Array.isArray(req.body?.knownLimits) ? req.body.knownLimits : [] });
+  if (!result.ok) return res.status(409).json(result);
+  return res.status(201).json(result);
+});
+companyFoundryRouter.post("/foundry/production-lab/assignments/:assignmentId/review", (req, res) => {
+  const submissionId = String(req.body?.submissionId ?? "").trim();
+  const reviewerId = String(req.body?.reviewerId ?? "").trim();
+  const rationale = String(req.body?.rationale ?? "").trim();
+  const decision = req.body?.decision;
+  if (!submissionId || !reviewerId || !rationale || !["accepted", "rework", "rejected"].includes(decision)) return res.status(400).json({ error: "invalid_production_review" });
+  const result = reviewProductionWork({ assignmentId: req.params.assignmentId, submissionId, reviewerId, decision, rationale, qualityMultiplier: req.body?.qualityMultiplier });
+  if (!result.ok) return res.status(result.error === "self_acceptance_forbidden" ? 403 : 409).json(result);
+  return res.status(201).json(result);
+});
+
 companyFoundryRouter.get("/foundry/products/:productId", (req, res) => {
   const product = products.find((item) => item.id === req.params.productId);
   if (!product) return res.status(404).json({ error: "product_not_found" });
@@ -176,6 +246,13 @@ companyFoundryRouter.get("/foundry/write-capabilities", (_req, res) => res.json(
   academyProgressTrackingEnabled: true,
   academyRemediationEnabled: true,
   academyStageGateEnabled: true,
+  productionLabEnabled: true,
+  productionAssignmentEnabled: true,
+  productionEvidenceSubmissionEnabled: true,
+  independentProductionReviewEnabled: true,
+  productionPvpCreditEnabled: true,
+  projectBudgetAttributionEnabled: true,
+  projectBudgetFinancialExecutionEnabled: false,
   productMutationEnabled: false,
   payrollEnabled: false,
   equityIssuanceEnabled: false,
