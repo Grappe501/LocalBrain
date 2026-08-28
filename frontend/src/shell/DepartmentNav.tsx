@@ -24,6 +24,7 @@ export function DepartmentNav() {
 
   const navItems = [
     { label: "Office", path: "/", capability_id: "CAP-EO-001" },
+    { label: "Company Foundry", path: "/foundry", capability_id: "CF-006B" },
     ...v1Departments.map((m) => ({
       label: m.name,
       path: m.routes[0]?.path ?? `/studio/${m.domain}`,
@@ -37,7 +38,7 @@ export function DepartmentNav() {
       <p className="department-nav__note">
         {loading
           ? "Loading module manifests…"
-          : `Executive OS V1 · ${v1Departments.length} departments · ENG-CAP-001 nav`}
+          : `Executive OS V1 · ${v1Departments.length} departments · Company Foundry · ENG-CAP-001 nav`}
       </p>
       <ul className="department-nav__list">
         {navItems.map((dept) => (
