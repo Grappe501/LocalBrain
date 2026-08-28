@@ -7,6 +7,7 @@ import { ActionsView } from "./views/ActionsView";
 import { KnowledgeExplorerView } from "./views/KnowledgeExplorerView";
 import { LearnStub } from "./views/LearnStub";
 import { ProgramOfficeView } from "./views/ProgramOfficeView";
+import { CompanyFoundryView } from "./views/CompanyFoundryView";
 import { SystemHealthView } from "./views/SystemHealthView";
 import { AiProvidersView } from "./views/AiProvidersView";
 import { MigrationPlannerView } from "./views/MigrationPlannerView";
@@ -37,6 +38,7 @@ export function AppRouter() {
         <Route path="learn" element={<LearnStub />} />
         <Route path="actions" element={<ActionsView />} />
         <Route path="program-office" element={<ProgramOfficeView />} />
+        <Route path="foundry" element={<CompanyFoundryView />} />
         <Route path="docs/view" element={<DocViewerView />} />
         <Route path="system" element={<SystemHealthView />} />
         <Route path="system/providers" element={<AiProvidersView />} />
@@ -68,4 +70,11 @@ export function AppRouter() {
       </Route>
     </Routes>
   );
+}
+
+function LazyModuleRoute({ moduleId }: { moduleId: string }) {
+  const { getLazyComponent } = useModuleRegistry();
+  const Component = getLazyComponent(moduleId);
+  if (!Component) return <Navigate to="/" replace />;
+  return <Component />;
 }
