@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { getDatabase } from "../db/database.js";
 
-export type FoundryProposalKind = "product_change" | "builder_application" | "phase_submission" | "capstone_application" | "registry_change";
+export type FoundryProposalKind = "product_change" | "builder_application" | "phase_submission" | "capstone_application" | "master_plan_proposal" | "registry_change";
 export type FoundryProposalStatus = "draft" | "submitted" | "under_review" | "accepted" | "rejected" | "withdrawn";
 
 export type FoundryProposalRecord = {
