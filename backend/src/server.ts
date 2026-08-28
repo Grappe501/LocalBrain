@@ -31,56 +31,11 @@ import { liveSurfaceRouter } from "./routes/liveSurface.js";
 import { companyFoundryRouter } from "./routes/companyFoundry.js";
 import { capstoneNotebookRouter } from "./routes/capstoneNotebook.js";
 import { companyFoundryMasterPlanRouter } from "./routes/companyFoundryMasterPlan.js";
+import { capstoneDefenseRouter } from "./routes/capstoneDefense.js";
 import { settingsRouter } from "./settings/settingsRoutes.js";
 import { factoryRouter } from "./factory/factoryRoutes.js";
 import { getRegisteredModules } from "./core/moduleLoader.js";
 import { runBackgroundIndex } from "./knowledgeExplorer/indexer.js";
-
-const port = Number(process.env.LOCALBRAIN_PORT ?? 4545);
-
-bootstrapApp();
-runBackgroundIndex();
-
-const app = express();
-
-app.use(cors());
-app.use(express.json());
-app.use("/api", healthRouter);
-app.use("/api", commandRouter);
-app.use("/api", safetyRouter);
-app.use("/api", workspacesRouter);
-app.use("/api", modulesRouter);
-app.use("/api", assetsRouter);
-app.use("/api", actionsRouter);
-app.use("/api", filesRouter);
-app.use("/api", knowledgeExplorerRouter);
-app.use("/api", cosRouter);
-app.use("/api", systemRouter);
-app.use("/api", epoRouter);
-app.use("/api", engineeringRouter);
-app.use("/api", writingRouter);
-app.use("/api", dataIntelligenceRouter);
-app.use("/api", relationshipNetworkRouter);
-app.use("/api", contactsRouter);
-app.use("/api", ucieRouter);
-app.use("/api", vopRouter);
-app.use("/api", communicationsDraftsRouter);
-app.use("/api", v1Router);
-app.use("/api", providersRouter);
-app.use("/api", migrationRouter);
-app.use("/api", consolidationRouter);
-app.use("/api", integrationRouter);
-app.use("/api", liveSurfaceRouter);
-app.use("/api", companyFoundryRouter);
-app.use("/api", capstoneNotebookRouter);
-app.use("/api", companyFoundryMasterPlanRouter);
-app.use("/api", settingsRouter);
-app.use("/api", factoryRouter);
-
-app.listen(port, () => {
-  const db = isDatabaseConnected();
-  const modules = getRegisteredModules();
-  console.log(`LocalBrain backend listening on http://localhost:${port}`);
-  console.log(`Permission engine v2 — database ${db ? "connected" : "FAILED"}`);
-  console.log(`Module loader — ${modules.length} manifests registered (LB-OS-106)`);
-});
+const port=Number(process.env.LOCALBRAIN_PORT??4545); bootstrapApp(); runBackgroundIndex(); const app=express(); app.use(cors()); app.use(express.json());
+for(const router of [healthRouter,commandRouter,safetyRouter,workspacesRouter,modulesRouter,assetsRouter,actionsRouter,filesRouter,knowledgeExplorerRouter,cosRouter,systemRouter,epoRouter,engineeringRouter,writingRouter,dataIntelligenceRouter,relationshipNetworkRouter,contactsRouter,ucieRouter,vopRouter,communicationsDraftsRouter,v1Router,providersRouter,migrationRouter,consolidationRouter,integrationRouter,liveSurfaceRouter,companyFoundryRouter,capstoneNotebookRouter,companyFoundryMasterPlanRouter,capstoneDefenseRouter,settingsRouter,factoryRouter]) app.use("/api",router);
+app.listen(port,()=>{const db=isDatabaseConnected();const modules=getRegisteredModules();console.log(`LocalBrain backend listening on http://localhost:${port}`);console.log(`Permission engine v2 — database ${db?"connected":"FAILED"}`);console.log(`Module loader — ${modules.length} manifests registered (LB-OS-106)`);});
