@@ -1,0 +1,1 @@
+import {Router} from "express";import {getAcademyOperatorConsole} from "../companyFoundry/operatorConsole.js";export const operatorConsoleRouter=Router();operatorConsoleRouter.get('/foundry/academy/operator-console',(_req,res)=>res.json(getAcademyOperatorConsole()));
