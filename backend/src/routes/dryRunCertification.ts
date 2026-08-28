@@ -1,0 +1,6 @@
+import {Router} from 'express';import {certifyAcademyLaunch,getDryRunPacket,listDryRuns,resolveDryRunDefect,runAcademyDryRun} from '../companyFoundry/dryRunCertification.js';export const dryRunCertificationRouter=Router();
+dryRunCertificationRouter.get('/foundry/academy/dry-runs',(_req,res)=>res.json({runs:listDryRuns()}));
+dryRunCertificationRouter.post('/foundry/academy/dry-runs',(req,res)=>{const r=runAcademyDryRun({label:String(req.body?.label??'Cohort 1 Dry Run'),createdBy:String(req.body?.createdBy??'operator')});return res.status(201).json(r);});
+dryRunCertificationRouter.get('/foundry/academy/dry-runs/:id',(req,res)=>{const r=getDryRunPacket(req.params.id);return r?res.json(r):res.status(404).json({error:'dry_run_not_found'});});
+dryRunCertificationRouter.post('/foundry/academy/dry-runs/:id/certify',(req,res)=>{const r=certifyAcademyLaunch({dryRunId:req.params.id,decision:req.body?.decision,certifiedBy:String(req.body?.certifiedBy??''),rationale:String(req.body?.rationale??'')});return r.ok?res.status(201).json(r):res.status(409).json(r);});
+dryRunCertificationRouter.post('/foundry/academy/defects/:id/resolve',(req,res)=>{const r=resolveDryRunDefect({defectId:req.params.id,actorId:String(req.body?.actorId??''),note:String(req.body?.note??'')});return r.ok?res.json(r):res.status(404).json(r);});
