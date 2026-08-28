@@ -24,6 +24,7 @@ import { migrateApprovalTables } from "./migration/approval/migrate.js";
 import { migrateCutoverTables } from "./migration/cutover/migrate.js";
 import { migrateConsolidationTables } from "./consolidation/consolidationScore.js";
 import { migrateProviderTables } from "./providers/migrate.js";
+import { migrateCompanyFoundryTables } from "./companyFoundry/persistence.js";
 import { initPermissionEngine } from "./safety/permissionEngine.js";
 import {
   migrateWorkspaceTables,
@@ -56,6 +57,7 @@ export function bootstrapApp(): void {
   migrateContactTables();
   migrateUcieTables();
   migrateVopTables();
+  migrateCompanyFoundryTables();
   ensureActionStorageDirs();
   refreshIntelligence();
   seedWorkspaces();
