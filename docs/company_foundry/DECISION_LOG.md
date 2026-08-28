@@ -87,5 +87,46 @@ Residual accruals may be shown weekly or near-real-time, but the baseline accoun
 ### CF-DEC-027 — Sale economics are separate from residual economics
 Residual participation does not automatically convey ownership or a percentage of a product sale. Each Capstone agreement must explicitly define sale, spinout, license, merger, shutdown, and outside-investment treatment.
 
-### CF-DEC-028 — Next slice
-CF-005 will build the Builder Academy + Phase Value System: curriculum, capability ladder, acceptance gates, Capstone Master Plan template, 90-day production standard, team formation, performance ledger, anti-gaming controls, and dashboard requirements.
+## 2026-08-28 — CF-005
+
+### CF-DEC-028 — Builder Academy is finite and production-based
+The default core apprenticeship is a 12-week paid program, subject to legal scheduling/classification review. It uses real company work and ends in graduation, exception extension, or program completion/exit rather than open-ended internship status.
+
+### CF-DEC-029 — The Foundry teaches a disciplined AI build loop
+The canonical method is Understand → Inspect → Plan → Specify → Build → Verify → Explain → Commit → Review → Learn. AI speed is encouraged, but builders remain responsible for architecture, correctness, security, and explanation of submitted work.
+
+### CF-DEC-030 — Capability is evidence-based
+Builder progression uses six levels (L0–L5) and independent capability dimensions. Time served or traditional credentials do not substitute for accepted evidence.
+
+### CF-DEC-031 — Phase Value Score is the common difficulty/value language
+PVS initially uses complexity, business value, risk, scarcity, outcome ownership, urgency, and reuse discount. The initial formula is PVS=(2C+3B+2R+S+2O+U)-2D, subject to empirical recalibration after real cohorts.
+
+### CF-DEC-032 — Phase Value Points are not money or equity
+Accepted phases generate PVP as an evidence/productivity metric adjusted for contribution and quality. PVP does not automatically grant wages, equity, residual rights, or securities.
+
+### CF-DEC-033 — Paid phases require independent acceptance
+Builders cannot self-accept paid work. Submission must include appropriate validation evidence; normal quality rework does not create a second paid phase.
+
+### CF-DEC-034 — Graduation is eligibility, not ownership
+Graduating the Academy makes a builder eligible for continued production/venture pathways. It does not guarantee parent equity, a Capstone, residual participation, or continued employment/contracting.
+
+### CF-DEC-035 — Ownership-track graduates face a 90-day proof period
+An invited venture-track graduate demonstrates sustained accepted production, quality, reliability, teamwork, and business impact for 90 days before long-term ownership decisions are made.
+
+### CF-DEC-036 — The graduation build and the venture Capstone are separate
+The 12-week graduation build proves independent production capability. A residual-bearing Capstone exists only after a separate Master Build Plan passes Company Foundry admission gates.
+
+### CF-DEC-037 — Capstones require business and economic validation
+Capstone Master Plans must define the customer/problem, V1, commercialization, architecture, phase sequence, staffing, budget, PVS, DPR waterfall, company residual of at least 25%, lead residual no greater than 51%, team allocations, and kill/continuation criteria.
+
+### CF-DEC-038 — Cohort size follows productive capacity
+The Foundry will not recruit apprentices simply to increase headcount. Cohort size is limited by payroll, real production phases, mentor/reviewer capacity, compute capacity, product demand, and likely graduate placement.
+
+### CF-DEC-039 — Recruiting is not the business model
+Referral bonuses and mentoring/team-lead rewards may exist, but no compensation is based primarily on building a recruiting downline or recruiting investors. Economic rewards derive from legitimate work and product outcomes.
+
+### CF-DEC-040 — Team behavior is part of ownership-track qualification
+Technical speed alone is insufficient. Hiding errors, credit theft, destructive competition, documentation refusal, security negligence, abuse, or gaming the phase system can block advancement regardless of raw code output.
+
+### CF-DEC-041 — Next slice
+CF-006 will build the actual Company Foundry control plane inside LocalBrain: navigation, portfolio/master-plan registries, builder roster/capability ledger, PVS calculator, phase/acceptance board, Capstone view, residual simulator, separated economic ledgers, metrics, and doctrine navigation. Initial implementation is read-first and cannot issue real payroll/equity or make financial transfers.
