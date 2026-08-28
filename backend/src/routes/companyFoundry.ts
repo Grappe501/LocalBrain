@@ -2,6 +2,17 @@ import { Router } from "express";
 import { products, masterPlans, phases, snapshot, validateSnapshot } from "../companyFoundry/companyFoundryRegistry.js";
 import { academyDoctrine, academyModules, academyStages } from "../companyFoundry/academyCurriculum.js";
 import {
+  decideStageGate,
+  enrollBuilder,
+  getEnrollment,
+  getLearnerDashboard,
+  getModuleProgress,
+  getGateRecords,
+  listEnrollments,
+  startModule,
+  submitModuleAttempt,
+} from "../companyFoundry/learnerProgress.js";
+import {
   addFoundryEvidence,
   createFoundryProposal,
   getFoundryAudit,
@@ -49,6 +60,52 @@ companyFoundryRouter.get("/foundry/academy/modules/:moduleId", (req, res) => {
   if (!module) return res.status(404).json({ error: "academy_module_not_found" });
   const stage = academyStages.find((item) => item.id === module.stageId) ?? null;
   return res.json({ module, stage });
+});
+
+companyFoundryRouter.get("/foundry/academy/enrollments", (_req, res) => res.json({ enrollments: listEnrollments() }));
+companyFoundryRouter.post("/foundry/academy/enrollments", (req, res) => {
+  const builderId = String(req.body?.builderId ?? "").trim();
+  const cohortId = req.body?.cohortId ? String(req.body.cohortId) : null;
+  if (!builderId) return res.status(400).json({ error: "builder_id_required" });
+  return res.status(201).json({ enrollment: enrollBuilder({ builderId, cohortId }) });
+});
+companyFoundryRouter.get("/foundry/academy/enrollments/:enrollmentId", (req, res) => {
+  const enrollment = getEnrollment(req.params.enrollmentId);
+  if (!enrollment) return res.status(404).json({ error: "academy_enrollment_not_found" });
+  return res.json({ enrollment, progress: getModuleProgress(enrollment.id), gates: getGateRecords(enrollment.id) });
+});
+companyFoundryRouter.get("/foundry/academy/enrollments/:enrollmentId/dashboard", (req, res) => {
+  const dashboard = getLearnerDashboard(req.params.enrollmentId);
+  if (!dashboard) return res.status(404).json({ error: "academy_enrollment_not_found" });
+  return res.json(dashboard);
+});
+companyFoundryRouter.post("/foundry/academy/enrollments/:enrollmentId/modules/:moduleId/start", (req, res) => {
+  const progress = startModule(req.params.enrollmentId, req.params.moduleId);
+  if (!progress) return res.status(409).json({ error: "module_not_startable" });
+  return res.json({ progress });
+});
+companyFoundryRouter.post("/foundry/academy/enrollments/:enrollmentId/modules/:moduleId/attempt", (req, res) => {
+  const passed = req.body?.passed;
+  if (typeof passed !== "boolean") return res.status(400).json({ error: "passed_boolean_required" });
+  const progress = submitModuleAttempt({
+    enrollmentId: req.params.enrollmentId,
+    moduleId: req.params.moduleId,
+    score: req.body?.score,
+    passed,
+    evidence: Array.isArray(req.body?.evidence) ? req.body.evidence : [],
+    feedback: Array.isArray(req.body?.feedback) ? req.body.feedback : [],
+  });
+  if (!progress) return res.status(409).json({ error: "module_attempt_not_allowed" });
+  return res.status(201).json({ progress, dashboard: getLearnerDashboard(req.params.enrollmentId) });
+});
+companyFoundryRouter.post("/foundry/academy/enrollments/:enrollmentId/stages/:stageId/gate", (req, res) => {
+  const evaluatorId = String(req.body?.evaluatorId ?? "").trim();
+  const rationale = String(req.body?.rationale ?? "").trim();
+  const passed = req.body?.passed;
+  if (!evaluatorId || !rationale || typeof passed !== "boolean") return res.status(400).json({ error: "invalid_gate_decision" });
+  const gate = decideStageGate({ enrollmentId: req.params.enrollmentId, stageId: req.params.stageId, evaluatorId, passed, rationale });
+  if (!gate) return res.status(409).json({ error: "stage_gate_not_decidable" });
+  return res.status(201).json({ gate, dashboard: getLearnerDashboard(req.params.enrollmentId) });
 });
 
 companyFoundryRouter.get("/foundry/products/:productId", (req, res) => {
@@ -115,6 +172,10 @@ companyFoundryRouter.get("/foundry/write-capabilities", (_req, res) => res.json(
   acceptedMasterPlanAdmissionEnabled: true,
   phaseCapabilityCreditEnabled: true,
   academyCurriculumReadEnabled: true,
+  academyEnrollmentEnabled: true,
+  academyProgressTrackingEnabled: true,
+  academyRemediationEnabled: true,
+  academyStageGateEnabled: true,
   productMutationEnabled: false,
   payrollEnabled: false,
   equityIssuanceEnabled: false,
