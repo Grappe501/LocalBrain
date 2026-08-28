@@ -26,6 +26,7 @@ import { migrateConsolidationTables } from "./consolidation/consolidationScore.j
 import { migrateProviderTables } from "./providers/migrate.js";
 import { migrateCompanyFoundryTables } from "./companyFoundry/persistence.js";
 import { migrateFoundryEffectTables } from "./companyFoundry/effects.js";
+import { migrateLearnerProgressTables } from "./companyFoundry/learnerProgress.js";
 import { initPermissionEngine } from "./safety/permissionEngine.js";
 import {
   migrateWorkspaceTables,
@@ -60,6 +61,7 @@ export function bootstrapApp(): void {
   migrateVopTables();
   migrateCompanyFoundryTables();
   migrateFoundryEffectTables();
+  migrateLearnerProgressTables();
   ensureActionStorageDirs();
   refreshIntelligence();
   seedWorkspaces();
