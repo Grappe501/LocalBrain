@@ -49,7 +49,7 @@ companyFoundryRouter.get("/foundry/proposals/:proposalId", (req, res) => {
 
 companyFoundryRouter.post("/foundry/proposals", (req, res) => {
   const { kind, subjectId, submittedBy, title, summary, payload } = req.body ?? {};
-  const allowedKinds: FoundryProposalKind[] = ["product_change", "builder_application", "phase_submission", "capstone_application", "registry_change"];
+  const allowedKinds: FoundryProposalKind[] = ["product_change", "builder_application", "phase_submission", "capstone_application", "master_plan_proposal", "registry_change"];
   if (!allowedKinds.includes(kind) || !submittedBy || !title || !summary) return res.status(400).json({ error: "invalid_proposal" });
   return res.status(201).json({ proposal: createFoundryProposal({ kind, subjectId, submittedBy, title, summary, payload }) });
 });
