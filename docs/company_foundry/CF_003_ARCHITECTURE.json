@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "slice": "CF-003",
   "status": "architecture_complete_professional_review_required",
   "date": "2026-08-28",
@@ -11,13 +11,20 @@
     "existing_ip_rule": "provenance_and_written_transfer_required"
   },
   "contribution_classes": ["cash","equipment_property","existing_ip","future_services","network_reputation_intangibles"],
-  "compensation_instruments": ["hourly_cash","fixed_phase_payment","parent_equity_incentive","product_economic_units","revenue_royalty","profit_participation","performance_bonus"],
+  "compensation_instruments": ["hourly_cash","fixed_phase_payment","parent_equity_incentive","product_residual_participation","revenue_royalty","performance_bonus"],
   "builder_levels": ["apprentice","qualified_builder","venture_builder","product_lead_venture_founder"],
-  "capstone_51_percent": {
-    "status": "working_design",
-    "applies_to": "defined_product_founder_pool",
-    "does_not_automatically_convey": ["parent_company_control","source_code_ip","gross_revenue","subsidiary_voting_control"],
-    "requires": ["vesting","continuing_contribution_rules","defined_profit_waterfall","sale_spinout_terms","counsel_review"]
+  "capstone_residual_model": {
+    "status": "founder_doctrine_clarified",
+    "eligibility": "only_an_accepted_master_plan_completed_as_the_builders_capstone",
+    "ownership_conveyed": false,
+    "capstone_lead_residual_target_max_percent": 51,
+    "team_members_receive_residual_percentages": true,
+    "company_residual_floor_percent": 25,
+    "company_may_retain_more_than_floor": true,
+    "residual_denominator": "defined_distributable_product_residual_after_authorized_waterfall",
+    "allocation_rule": "capstone_lead_plus_team_plus_company_plus_any_other_authorized_pool_must_equal_100_percent_of_distributable_residual",
+    "does_not_convey": ["parent_company_equity","product_equity","source_code_ip","subsidiary_voting_control","gross_revenue_ownership"],
+    "requires": ["accepted_master_plan","capstone_acceptance","team_allocation_schedule","defined_residual_waterfall","continuing_performance_terms_if_adopted","sale_spinout_terms","counsel_tax_accounting_review"]
   },
   "mark_server": {
     "treatment": "capital_or_property_transaction_separate_from_builder_equity",
