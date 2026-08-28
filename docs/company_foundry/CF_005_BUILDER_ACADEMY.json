@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "slice": "CF-005",
+  "status": "complete_professional_review_required",
+  "date": "2026-08-28",
+  "apprenticeship": {
+    "working_hourly_rate_usd": 20,
+    "core_duration_weeks": 12,
+    "finite": true,
+    "phases": [
+      {"weeks":"0","name":"admission_orientation"},
+      {"weeks":"1-2","name":"method_foundations"},
+      {"weeks":"3-4","name":"guided_production"},
+      {"weeks":"5-6","name":"independent_phases"},
+      {"weeks":"7-8","name":"cross_functional_production"},
+      {"weeks":"9-10","name":"ownership_leadership"},
+      {"weeks":"11-12","name":"graduation_build"}
+    ]
+  },
+  "capability_levels": [
+    "L0_apprentice",
+    "L1_guided_builder",
+    "L2_independent_builder",
+    "L3_venture_builder",
+    "L4_product_lead",
+    "L5_foundry_architect_executive_technical_leader"
+  ],
+  "capability_dimensions": [
+    "product_comprehension","technical_execution","ai_tool_leverage","debugging_problem_solving","validation_testing","security_privacy","documentation_handoff","estimation_scope_control","teamwork_communication","review_mentoring","architecture_system_thinking","business_value_judgment","reliability_ownership","learning_velocity"
+  ],
+  "phase_value": {
+    "formula": "PVS=(2C+3B+2R+S+2O+U)-2D",
+    "factors": {"C":"complexity","B":"business_value","R":"risk","S":"scarcity","O":"outcome_ownership","U":"urgency","D":"reuse_discount"},
+    "bands": [
+      {"id":"P0","name":"starter","min":1,"max":8},
+      {"id":"P1","name":"basic","min":9,"max":16},
+      {"id":"P2","name":"standard","min":17,"max":24},
+      {"id":"P3","name":"advanced","min":25,"max":32},
+      {"id":"P4","name":"critical","min":33,"max":40},
+      {"id":"P5","name":"venture_defining","min":41,"max":null}
+    ],
+    "phase_value_points_formula": "PVP=PVS*contribution_share*quality_multiplier",
+    "pvp_is_currency": false,
+    "pvp_automatically_grants_equity": false
+  },
+  "acceptance_states": ["draft","approved","assigned","in_progress","submitted","validation","accepted","rework","rejected","settled"],
+  "self_acceptance_allowed": false,
+  "graduation": {
+    "automatic_ownership": false,
+    "outcomes": ["graduate_venture_track","graduate_production_track","extended_by_exception","completed_not_invited"]
+  },
+  "post_graduation_proof_days": 90,
+  "capstone": {
+    "requires_accepted_master_build_plan": true,
+    "normal_graduation_build_is_capstone": false,
+    "minimum_company_residual_percent": 25,
+    "maximum_lead_residual_percent": 51,
+    "team_residual_disclosure_required": true,
+    "ownership_conveyed": false
+  },
+  "method_loop": ["understand","inspect","plan","specify","build","verify","explain","commit","review","learn"],
+  "anti_gaming": ["no_lines_of_code_compensation","no_artificial_phase_splitting","no_self_acceptance","no_fake_tests","no_hidden_defects","no_security_bypass","no_recruiting_downline_compensation"],
+  "next_slice": "CF-006"
+}
