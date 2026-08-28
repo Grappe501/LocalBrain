@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { products, masterPlans, phases, snapshot, validateSnapshot } from "../companyFoundry/companyFoundryRegistry.js";
+import { academyDoctrine, academyModules, academyStages } from "../companyFoundry/academyCurriculum.js";
 import {
   addFoundryEvidence,
   createFoundryProposal,
@@ -34,6 +35,21 @@ companyFoundryRouter.get("/foundry/builders", (_req, res) => res.json({ builders
 companyFoundryRouter.get("/foundry/capability-events", (req, res) => res.json({ events: listFoundryCapabilityEvents(req.query.builderId ? String(req.query.builderId) : undefined) }));
 companyFoundryRouter.get("/foundry/cohorts", (_req, res) => res.json({ cohorts: listFoundryCohorts() }));
 companyFoundryRouter.get("/foundry/admitted-master-plans", (_req, res) => res.json({ masterPlans: listFoundryMasterPlanRecords() }));
+
+companyFoundryRouter.get("/foundry/academy/curriculum", (_req, res) => {
+  return res.json({ doctrine: academyDoctrine, stages: academyStages, modules: academyModules });
+});
+companyFoundryRouter.get("/foundry/academy/stages/:stageId", (req, res) => {
+  const stage = academyStages.find((item) => item.id === req.params.stageId);
+  if (!stage) return res.status(404).json({ error: "academy_stage_not_found" });
+  return res.json({ stage, modules: academyModules.filter((item) => item.stageId === stage.id) });
+});
+companyFoundryRouter.get("/foundry/academy/modules/:moduleId", (req, res) => {
+  const module = academyModules.find((item) => item.id === req.params.moduleId);
+  if (!module) return res.status(404).json({ error: "academy_module_not_found" });
+  const stage = academyStages.find((item) => item.id === module.stageId) ?? null;
+  return res.json({ module, stage });
+});
 
 companyFoundryRouter.get("/foundry/products/:productId", (req, res) => {
   const product = products.find((item) => item.id === req.params.productId);
@@ -98,6 +114,7 @@ companyFoundryRouter.get("/foundry/write-capabilities", (_req, res) => res.json(
   builderAdmissionEnabled: true,
   acceptedMasterPlanAdmissionEnabled: true,
   phaseCapabilityCreditEnabled: true,
+  academyCurriculumReadEnabled: true,
   productMutationEnabled: false,
   payrollEnabled: false,
   equityIssuanceEnabled: false,
