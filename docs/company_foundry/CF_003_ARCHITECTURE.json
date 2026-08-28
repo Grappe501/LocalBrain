@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "slice": "CF-003",
+  "status": "architecture_complete_professional_review_required",
+  "date": "2026-08-28",
+  "baseline": {
+    "parent_company": "single_parent_operating_company",
+    "product_structure": "internal_product_lines_until_subsidiary_gate",
+    "foundryos": "internal_first",
+    "core_ip_control": "parent_company",
+    "existing_ip_rule": "provenance_and_written_transfer_required"
+  },
+  "contribution_classes": ["cash","equipment_property","existing_ip","future_services","network_reputation_intangibles"],
+  "compensation_instruments": ["hourly_cash","fixed_phase_payment","parent_equity_incentive","product_economic_units","revenue_royalty","profit_participation","performance_bonus"],
+  "builder_levels": ["apprentice","qualified_builder","venture_builder","product_lead_venture_founder"],
+  "capstone_51_percent": {
+    "status": "working_design",
+    "applies_to": "defined_product_founder_pool",
+    "does_not_automatically_convey": ["parent_company_control","source_code_ip","gross_revenue","subsidiary_voting_control"],
+    "requires": ["vesting","continuing_contribution_rules","defined_profit_waterfall","sale_spinout_terms","counsel_review"]
+  },
+  "mark_server": {
+    "treatment": "capital_or_property_transaction_separate_from_builder_equity",
+    "required": ["invoice","specifications","valuation","title_or_use_terms","tax_accounting_review"]
+  },
+  "commercial_extraction_firewall": true,
+  "cohort_launch_blockers": ["entity_formation","classification_review","payroll_wage_compliance","ip_assignment","confidentiality","security_policy","compensation_agreements","equity_securities_process"],
+  "prohibited_until_review": ["informal_equity_promises","blanket_75_percent_post_exit_claim","uncapped_shares_per_phase","unreviewed_campaign_nonprofit_client_ip_transfer"],
+  "next_slice": "CF-004"
+}
