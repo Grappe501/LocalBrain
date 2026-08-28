@@ -55,5 +55,37 @@ Each accepted phase can be assigned a phase value that may be satisfied by appro
 ### CF-DEC-017 — First cohort cannot precede legal foundation
 Paid apprentices may be recruited only after entity formation, employment/contractor classification, IP assignment, wage/payroll, confidentiality, compensation agreements, and securities/equity procedures are established.
 
-### CF-DEC-018 — Next slice
-CF-004 will build the Founder Capitalization + Economic Engine, using scenario modeling rather than prematurely locking founder percentages. It must model capstone residual waterfalls with a company floor of 25%, a capstone-lead ceiling of 51%, and explicit team-member residual allocations.
+## 2026-08-28 — CF-004
+
+### CF-DEC-018 — Four independent economic ledgers
+Parent ownership, production compensation, product residual participation, and capital/property contributions are separate ledgers. A participant may appear in multiple ledgers simultaneously.
+
+### CF-DEC-019 — Co-owners may be separately compensated for production
+Holding parent-company ownership does not erase compensation for bona fide services. Qualified co-owners may earn phase compensation under the Production Ledger, subject to the entity's tax/payroll/classification rules and related-party governance.
+
+### CF-DEC-020 — Phase compensation is based on accepted value, not code volume
+Every production phase receives a Phase Value Record. Pricing considers complexity, business value, risk, scarcity, outcome ownership, urgency, and reuse. Lines of code are not a compensation metric.
+
+### CF-DEC-021 — Apprentices remain hourly during the learning stage
+The working assumption is $20/hour during the finite apprenticeship, subject to legal classification and wage review. Phase acceptance measures capability during training; graduation unlocks phase-priced work eligibility.
+
+### CF-DEC-022 — Capstone residual denominator is Distributable Product Residual
+Residual percentages apply only after the approved product waterfall for refunds/taxes/direct costs/support/sales/shared services/authorized recoupment/reserves. Gross revenue is never called residual.
+
+### CF-DEC-023 — Capstone residual boundaries are hard controls
+Company Foundry receives at least 25% of DPR. Capstone lead receives no more than 51% of DPR. Named team members receive defined residual percentages. All authorized allocations total 100%.
+
+### CF-DEC-024 — Residual allocations are transparent and pre-approved
+The residual denominator, company allocation, lead allocation, team allocations, reserves, shared-service treatment, and amendment process are established before material Capstone work and cannot be manipulated after success becomes visible.
+
+### CF-DEC-025 — Parent equity is rarer than product residual participation
+Parent equity rewards company-wide value creation and long-term Foundry commitment. Product residuals are the primary mechanism for giving successful venture builders founder-scale upside without continuously diluting the parent.
+
+### CF-DEC-026 — Settlement starts monthly
+Residual accruals may be shown weekly or near-real-time, but the baseline accounting close and cash settlement is monthly with quarterly true-up. Weekly settlement can be enabled later for mature products.
+
+### CF-DEC-027 — Sale economics are separate from residual economics
+Residual participation does not automatically convey ownership or a percentage of a product sale. Each Capstone agreement must explicitly define sale, spinout, license, merger, shutdown, and outside-investment treatment.
+
+### CF-DEC-028 — Next slice
+CF-005 will build the Builder Academy + Phase Value System: curriculum, capability ladder, acceptance gates, Capstone Master Plan template, 90-day production standard, team formation, performance ledger, anti-gaming controls, and dashboard requirements.
