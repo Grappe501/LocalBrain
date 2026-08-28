@@ -128,5 +128,33 @@ Referral bonuses and mentoring/team-lead rewards may exist, but no compensation 
 ### CF-DEC-040 — Team behavior is part of ownership-track qualification
 Technical speed alone is insufficient. Hiding errors, credit theft, destructive competition, documentation refusal, security negligence, abuse, or gaming the phase system can block advancement regardless of raw code output.
 
-### CF-DEC-041 — Next slice
-CF-006 will build the actual Company Foundry control plane inside LocalBrain: navigation, portfolio/master-plan registries, builder roster/capability ledger, PVS calculator, phase/acceptance board, Capstone view, residual simulator, separated economic ledgers, metrics, and doctrine navigation. Initial implementation is read-first and cannot issue real payroll/equity or make financial transfers.
+## 2026-08-28 — CF-006
+
+### CF-DEC-041 — Company Foundry is a first-class LocalBrain surface
+The Foundry receives a dedicated `/foundry` route and navigation entry rather than being hidden inside another Executive OS department.
+
+### CF-DEC-042 — Initial control plane is read-first
+CF-006 may model products, Academy, phases, Capstones, residuals, and doctrine but cannot issue payroll, equity, securities, residual settlements, or money transfers.
+
+### CF-DEC-043 — Existing products can train builders without becoming Capstones
+SousChef is the first training completion environment. Work on a pre-existing company product does not automatically grant Capstone residual rights.
+
+## 2026-08-28 — CF-007
+
+### CF-DEC-044 — Foundry truth moves out of the React view
+Product, Phase, Builder, Capstone, and economic-rule truth belongs in a canonical typed registry/data layer. UI components derive state from that contract instead of hardcoding institutional truth.
+
+### CF-DEC-045 — Books remain first-class Product Projects in the registry
+Individual books retain independent product IDs, readiness, source repositories, commercial ranges, training status, and eventual economic ledgers rather than being collapsed into a generic content category.
+
+### CF-DEC-046 — Product records map back to repository provenance
+Canonical Product Projects can reference multiple source repositories so predecessor/component code can be collapsed without losing provenance.
+
+### CF-DEC-047 — Builder and admitted-Capstone registries begin empty
+The Foundry does not invent demo builders, owners, or residual-bearing Capstones. Participants appear only after real admission and approved records exist.
+
+### CF-DEC-048 — Economic safety switches are explicit data
+Payroll, equity issuance, and money movement remain `false` in the canonical economic rule registry until future authenticated/legal gates explicitly enable them.
+
+### CF-DEC-049 — Next slice
+CF-008 will add validation schemas, a read API, frontend fetch/loading/error states, product detail drill-down, Master Build Plan registry, competitor evidence, Phase Value Record and acceptance-evidence schemas, doctrine links, persistence preparation, and build/typecheck gates.
