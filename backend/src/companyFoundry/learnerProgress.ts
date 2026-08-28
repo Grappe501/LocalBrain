@@ -172,11 +172,11 @@ export function getGateRecords(enrollmentId: string): AcademyGateRecord[] {
 
 export function startModule(enrollmentId: string, moduleId: string): AcademyModuleProgress | null {
   const enrollment = getEnrollment(enrollmentId);
-  if (!enrollment || enrollment.status !== "active") return null;
+  if (!enrollment || !["active", "remediation"].includes(enrollment.status)) return null;
   const row = getDatabase().prepare(`SELECT * FROM foundry_academy_module_progress WHERE enrollment_id=? AND module_id=?`).get(enrollmentId, moduleId) as AcademyModuleProgress | undefined;
   if (!row || !["available", "remediation", "in_progress"].includes(row.status)) return null;
   getDatabase().prepare(`UPDATE foundry_academy_module_progress SET status='in_progress', started_at=COALESCE(started_at, datetime('now')), updated_at=datetime('now') WHERE enrollment_id=? AND module_id=?`).run(enrollmentId, moduleId);
-  getDatabase().prepare(`UPDATE foundry_academy_enrollments SET current_stage_id=?, current_module_id=?, updated_at=datetime('now') WHERE id=?`).run(stageForModule(moduleId)?.id ?? enrollment.current_stage_id, moduleId, enrollmentId);
+  getDatabase().prepare(`UPDATE foundry_academy_enrollments SET status='active', current_stage_id=?, current_module_id=?, updated_at=datetime('now') WHERE id=?`).run(stageForModule(moduleId)?.id ?? enrollment.current_stage_id, moduleId, enrollmentId);
   return getDatabase().prepare(`SELECT * FROM foundry_academy_module_progress WHERE enrollment_id=? AND module_id=?`).get(enrollmentId, moduleId) as AcademyModuleProgress;
 }
 
@@ -205,39 +205,61 @@ export function submitModuleAttempt(input: {
     `).run(input.passed ? "complete" : "remediation", attemptNumber, score, score, score, JSON.stringify(input.evidence ?? []), JSON.stringify(input.feedback ?? []), input.passed ? 1 : 0, input.enrollmentId, input.moduleId);
   })();
   if (input.passed) recalculateProgress(input.enrollmentId);
-  else getDatabase().prepare(`UPDATE foundry_academy_enrollments SET status='remediation', updated_at=datetime('now') WHERE id=?`).run(input.enrollmentId);
+  else db.prepare(`UPDATE foundry_academy_enrollments SET status='remediation', current_stage_id=?, current_module_id=?, updated_at=datetime('now') WHERE id=?`).run(stageForModule(input.moduleId)?.id ?? "stage_0", input.moduleId, input.enrollmentId);
   return db.prepare(`SELECT * FROM foundry_academy_module_progress WHERE enrollment_id=? AND module_id=?`).get(input.enrollmentId, input.moduleId) as AcademyModuleProgress;
 }
 
 function recalculateProgress(enrollmentId: string): void {
   const db = getDatabase();
   const progress = getModuleProgress(enrollmentId);
+  const gates = getGateRecords(enrollmentId);
   const completed = new Set(progress.filter((row) => row.status === "complete").map((row) => row.module_id));
 
   for (const stage of academyStages) {
     const allStageModulesComplete = stage.moduleIds.every((id) => completed.has(id));
-    if (allStageModulesComplete) {
+    const gate = gates.find((item) => item.stage_id === stage.id);
+    if (allStageModulesComplete && gate?.status !== "passed") {
       db.prepare(`UPDATE foundry_academy_stage_gates SET status='ready', updated_at=datetime('now') WHERE enrollment_id=? AND stage_id=? AND status!='passed'`).run(enrollmentId, stage.id);
+      const lastModuleId = stage.moduleIds[stage.moduleIds.length - 1] ?? firstModuleId();
+      db.prepare(`UPDATE foundry_academy_enrollments SET status='active', current_stage_id=?, current_module_id=?, updated_at=datetime('now') WHERE id=?`).run(stage.id, lastModuleId, enrollmentId);
+      return;
     }
   }
 
-  const nextModule = academyModules.find((module) => !completed.has(module.id));
+  const passedStages = new Set(getGateRecords(enrollmentId).filter((gate) => gate.status === "passed").map((gate) => gate.stage_id));
+  const nextModule = academyModules.find((module) => {
+    if (completed.has(module.id)) return false;
+    const stage = academyStages.find((item) => item.id === module.stageId);
+    if (!stage) return false;
+    if (stage.order === 0) return true;
+    const previousStage = academyStages.find((item) => item.order === stage.order - 1);
+    return previousStage ? passedStages.has(previousStage.id) : false;
+  });
+
   if (nextModule) {
     const row = progress.find((item) => item.module_id === nextModule.id);
     if (row?.status === "locked") db.prepare(`UPDATE foundry_academy_module_progress SET status='available', updated_at=datetime('now') WHERE enrollment_id=? AND module_id=?`).run(enrollmentId, nextModule.id);
     db.prepare(`UPDATE foundry_academy_enrollments SET status='active', current_stage_id=?, current_module_id=?, updated_at=datetime('now') WHERE id=?`).run(nextModule.stageId, nextModule.id, enrollmentId);
-  } else {
-    db.prepare(`UPDATE foundry_academy_enrollments SET status='graduation_ready', updated_at=datetime('now') WHERE id=?`).run(enrollmentId);
+    return;
+  }
+
+  const allModulesComplete = academyModules.every((module) => completed.has(module.id));
+  const allStagesPassed = academyStages.every((stage) => passedStages.has(stage.id));
+  if (allModulesComplete && allStagesPassed) {
+    db.prepare(`UPDATE foundry_academy_enrollments SET status='graduation_ready', completed_at=COALESCE(completed_at, datetime('now')), updated_at=datetime('now') WHERE id=?`).run(enrollmentId);
   }
 }
 
 export function decideStageGate(input: { enrollmentId: string; stageId: string; evaluatorId: string; passed: boolean; rationale: string }): AcademyGateRecord | null {
   const gate = getDatabase().prepare(`SELECT * FROM foundry_academy_stage_gates WHERE enrollment_id=? AND stage_id=?`).get(input.enrollmentId, input.stageId) as AcademyGateRecord | undefined;
-  if (!gate || gate.status === "not_ready") return null;
+  if (!gate || !["ready", "remediation"].includes(gate.status)) return null;
   const status: GateStatus = input.passed ? "passed" : "remediation";
   getDatabase().prepare(`UPDATE foundry_academy_stage_gates SET status=?, evaluator_type='human', evaluator_id=?, rationale=?, passed_at=CASE WHEN ?=1 THEN datetime('now') ELSE NULL END, updated_at=datetime('now') WHERE enrollment_id=? AND stage_id=?`).run(status, input.evaluatorId, input.rationale, input.passed ? 1 : 0, input.enrollmentId, input.stageId);
-  if (!input.passed) getDatabase().prepare(`UPDATE foundry_academy_enrollments SET status='remediation', updated_at=datetime('now') WHERE id=?`).run(input.enrollmentId);
-  else recalculateProgress(input.enrollmentId);
+  if (!input.passed) {
+    getDatabase().prepare(`UPDATE foundry_academy_enrollments SET status='remediation', current_stage_id=?, updated_at=datetime('now') WHERE id=?`).run(input.stageId, input.enrollmentId);
+  } else {
+    recalculateProgress(input.enrollmentId);
+  }
   return getDatabase().prepare(`SELECT * FROM foundry_academy_stage_gates WHERE enrollment_id=? AND stage_id=?`).get(input.enrollmentId, input.stageId) as AcademyGateRecord;
 }
 
@@ -264,6 +286,7 @@ export function getLearnerDashboard(enrollmentId: string) {
       stagesPassed: gates.filter((gate) => gate.status === "passed").length,
       stagesTotal: academyStages.length,
       capstoneRequiredForGraduation: true,
+      graduationReady: enrollment.status === "graduation_ready",
     },
   };
 }
