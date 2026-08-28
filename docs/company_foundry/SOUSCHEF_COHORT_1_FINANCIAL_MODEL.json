@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "date": "2026-08-28",
+  "product": "SousChef / HomeChef AI",
+  "role": "cohort_1_training_product_not_capstone",
+  "planning_completion_percent": 90,
+  "remaining_percent": 10,
+  "completion_budget_usd": 12000,
+  "implied_full_build_equivalent_usd": 120000,
+  "staffing": {
+    "apprentices": {"count":3,"combined_hours":360,"hourly_rate":20,"cost":7200},
+    "lead_reviewer": {"hours":60,"planning_hourly_rate":40,"cost":2400},
+    "tools_testing_design": 1200,
+    "contingency": 1200
+  },
+  "phases": [
+    {"id":"SC-T01","name":"production_security_dependency_audit","apprentice_hours":25,"lead_hours":6,"tools":60,"direct_budget":800},
+    {"id":"SC-T02","name":"subscription_billing_entitlement_gates","apprentice_hours":45,"lead_hours":8,"tools":180,"direct_budget":1400},
+    {"id":"SC-T03","name":"first_run_onboarding_household_activation","apprentice_hours":35,"lead_hours":5,"tools":100,"direct_budget":1000},
+    {"id":"SC-T04","name":"ai_compute_cost_telemetry_guardrails","apprentice_hours":30,"lead_hours":4,"tools":140,"direct_budget":900},
+    {"id":"SC-T05","name":"mobile_responsive_launch_hardening","apprentice_hours":40,"lead_hours":5,"tools":100,"direct_budget":1100},
+    {"id":"SC-T06","name":"privacy_data_deletion_export_controls","apprentice_hours":35,"lead_hours":7,"tools":120,"direct_budget":1100},
+    {"id":"SC-T07","name":"structured_beta_feedback_issue_triage","apprentice_hours":25,"lead_hours":4,"tools":40,"direct_budget":700},
+    {"id":"SC-T08","name":"paid_beta_funnel_analytics","apprentice_hours":35,"lead_hours":6,"tools":160,"direct_budget":1100},
+    {"id":"SC-T09","name":"stabilization_bug_burndown_support_runbook","apprentice_hours":60,"lead_hours":10,"tools":200,"direct_budget":1800},
+    {"id":"SC-T10","name":"v1_acceptance_launch_evidence_closeout","apprentice_hours":30,"lead_hours":5,"tools":100,"direct_budget":900}
+  ],
+  "direct_phase_budget": 10800,
+  "contingency": 1200,
+  "pricing_test": {"monthly_price":5.99,"annual_price":49,"planning_realized_monthly_arpu":4.5},
+  "revenue_scenarios": [
+    {"paying_households":250,"mrr":1125,"annualized":13500},
+    {"paying_households":500,"mrr":2250,"annualized":27000},
+    {"paying_households":1000,"mrr":4500,"annualized":54000},
+    {"paying_households":2500,"mrr":11250,"annualized":135000},
+    {"paying_households":5000,"mrr":22500,"annualized":270000},
+    {"paying_households":10000,"mrr":45000,"annualized":540000}
+  ],
+  "illustrative_5000_household_waterfall": {
+    "collected_revenue":22500,
+    "payment_refund_allowance":1125,
+    "ai_hosting_data":2700,
+    "direct_support":1350,
+    "marketing_growth":4500,
+    "foundry_shared_services":2250,
+    "reserve":1575,
+    "distributable_product_residual":9000,
+    "dpr_margin":0.4
+  },
+  "training_rule": "apprentices_receive_wages_and_capability_evidence_not_product_residual",
+  "budget_recovery_months_at_5000_household_modeled_dpr": 1.33,
+  "budget_recovery_months_at_1000_households_if_40_percent_dpr_margin": 6.67,
+  "success_metrics": ["budget_variance","hours_per_phase","rework_hours","accepted_rejected_phases","v1_launch_gate","30_day_defects","paid_conversion","retention_30_60_90","ai_cost_per_active_user","support_burden","time_to_first_paid_subscriber","revenue_per_completion_budget_dollar"]
+}
