@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0",
+  "slice": "CF-012",
+  "status": "master_curriculum_defined",
+  "delivery_model": "self_guided_ai_tutor_plus_governed_human_acceptance",
+  "default_duration_weeks": 12,
+  "capstone": {
+    "design_required_for_graduation": true,
+    "application_required_for_graduation": true,
+    "pilot_selection_required_for_graduation": false,
+    "implementation_is_competitive": true,
+    "non_selected_graduates_may_enter_phase_projects": true,
+    "pilot_foundry_funded": true,
+    "recovery_model": {
+      "foundry_advance_balance": true,
+      "eligible_recovery_revenue_percent_to_recovery": 50,
+      "recovery_frequency_model": "weekly_ledger",
+      "after_recovery": "standard_capstone_dpr_formula",
+      "company_dpr_floor_percent": 25,
+      "capstone_lead_dpr_ceiling_percent": 51,
+      "legal_accounting_definition_required": "eligible_recovery_revenue"
+    }
+  },
+  "builder_method": [
+    "understand",
+    "inspect",
+    "plan",
+    "specify",
+    "build",
+    "verify",
+    "explain",
+    "commit",
+    "review",
+    "learn"
+  ],
+  "ai_orchestration": {
+    "strategic_ai": ["product_thinking", "research", "architecture", "master_plans", "critique", "business_modeling"],
+    "cursor_repository_ai": ["repo_inspection", "implementation", "debugging", "local_validation", "implementation_report"],
+    "review_ai": ["independent_critique", "security_review", "alternate_architecture", "copy_or_domain_review"],
+    "human_role": "judgment_architecture_acceptance_and_business_accountability"
+  },
+  "stages": [
+    {
+      "id": "stage_0",
+      "name": "Welcome to Building",
+      "goal": "software_and_ai_fundamentals",
+      "modules": ["0.1_vibe_coding", "0.2_software_systems", "0.3_files_terminal_paths", "0.4_terminology_1", "0.5_ai_team", "0.6_capstone_notebook"],
+      "capstone_checkpoint": "problem_inventory",
+      "gate": "explain_software_components_and_ai_role"
+    },
+    {
+      "id": "stage_1",
+      "name": "Talking to AI Like a Builder",
+      "goal": "prompt_specification_and_multi_ai_orchestration",
+      "modules": ["1.1_prompt_anatomy", "1.2_prompt_repair", "1.3_read_first", "1.4_boundaries", "1.5_proof", "1.6_multi_ai"],
+      "capstone_checkpoint": "top_three_problem_statements",
+      "gate": "bounded_verifiable_prompt"
+    },
+    {
+      "id": "stage_2",
+      "name": "Cursor Fundamentals",
+      "goal": "safe_ai_native_repo_operation",
+      "modules": ["2.1_cursor_interface", "2.2_correct_repo", "2.3_repo_inspection", "2.4_safe_edits", "2.5_diffs", "2.6_return_reports"],
+      "capstone_checkpoint": "provisional_idea_and_technical_layers",
+      "gate": "bounded_repo_change_with_explanation"
+    },
+    {
+      "id": "stage_3",
+      "name": "GitHub + Deployment",
+      "goal": "durable_delivery_and_production_literacy",
+      "modules": ["3.1_git_model", "3.2_git_commands", "3.3_branches_recovery", "3.4_github_memory", "3.5_netlify", "3.6_env_secrets", "3.7_failed_deploy"],
+      "capstone_checkpoint": "hosting_secrets_data_map",
+      "gate": "push_and_trace_deployment"
+    },
+    {
+      "id": "stage_4",
+      "name": "Concept to Construction",
+      "goal": "product_engineering",
+      "modules": ["4.1_human_problem", "4.2_user_journeys", "4.3_functional_requirements", "4.4_nonfunctional_requirements", "4.5_data_design", "4.6_human_approval", "4.7_v1_scope", "4.8_build_buy_integrate"],
+      "capstone_checkpoint": "problem_user_v1_architecture",
+      "gate": "problem_solution_clarity_review"
+    },
+    {
+      "id": "stage_5",
+      "name": "Phase-Based Production",
+      "goal": "accepted_real_project_work",
+      "modules": ["5.1_phase_definition", "5.2_pvs", "5.3_acceptance_criteria", "5.4_production_packet", "5.5_real_phase_1", "5.6_rework", "5.7_real_phase_2", "5.8_team_phase", "5.9_review_work"],
+      "capstone_checkpoint": "phase_decomposition_and_foundry_reuse",
+      "gate": "minimum_real_accepted_production"
+    },
+    {
+      "id": "stage_6",
+      "name": "Master Build Plan Engineering",
+      "goal": "executable_product_plan",
+      "modules": ["6.1_mbp_anatomy", "6.2_why_how_what", "6.3_architecture", "6.4_phase_sequence", "6.5_acceptance_gates", "6.6_budget", "6.7_commercial_model", "6.8_risk_register", "6.9_kill_criteria", "6.10_red_team"],
+      "capstone_checkpoint": "complete_master_plan_draft",
+      "gate": "team_other_than_inventor_can_execute_plan"
+    },
+    {
+      "id": "stage_7",
+      "name": "Capstone Application + Graduation",
+      "goal": "product_builder_defense",
+      "modules": ["7.1_capstone_application", "7.2_capstone_defense", "7.3_graduation_decision"],
+      "capstone_checkpoint": "final_submission",
+      "gate": "graduation_panel"
+    }
+  ],
+  "graduation_outcomes": [
+    "graduate_capstone_pilot_selected",
+    "graduate_phase_production_track",
+    "extension_remediation",
+    "program_complete_not_invited_to_continue"
+  ],
+  "software_build_slices": ["CF-012A", "CF-012B", "CF-012C", "CF-012D", "CF-012E", "CF-012F", "CF-012G"]
+}
