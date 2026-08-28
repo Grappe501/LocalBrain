@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0",
+  "slice": "CF-004",
+  "status": "complete_professional_review_required",
+  "date": "2026-08-28",
+  "ledgers": [
+    "parent_ownership",
+    "production_compensation",
+    "product_residual",
+    "capital_property_contribution"
+  ],
+  "phase_compensation": {
+    "co_owners_may_be_paid_for_services": true,
+    "legal_tax_mechanism_depends_on_entity_and_worker_status": true,
+    "basis": "accepted_phase_value_record",
+    "value_factors": [
+      "complexity",
+      "business_value",
+      "risk",
+      "scarcity",
+      "ownership_of_outcome",
+      "urgency",
+      "reuse_discount"
+    ],
+    "packages": ["cash","hybrid_cash_parent_equity","venture_cash_product_residual","leadership_cash_bonus"]
+  },
+  "apprenticeship": {
+    "working_hourly_rate_usd": 20,
+    "finite_duration_required": true,
+    "phase_acceptance_used_for_capability_measurement": true,
+    "classification_and_wage_review_required": true
+  },
+  "capstone": {
+    "eligibility": "accepted_master_build_plan_approved_as_capstone",
+    "ownership_conveyed": false,
+    "residual_denominator": "distributable_product_residual",
+    "company_min_percent": 25,
+    "lead_max_percent": 51,
+    "team_participation_required": true,
+    "allocations_total_percent": 100,
+    "gross_revenue_share": false
+  },
+  "capability_levels": ["L0_apprentice","L1_guided_builder","L2_independent_builder","L3_venture_builder","L4_product_lead","L5_foundry_architect_executive_technical_leader"],
+  "settlement_baseline": {
+    "dashboard_accrual": "weekly_or_near_real_time",
+    "accounting_close": "monthly",
+    "residual_settlement": "monthly",
+    "true_up": "quarterly",
+    "tax_reconciliation": "annual"
+  },
+  "controls": [
+    "no_capstone_ownership_claim",
+    "company_capstone_residual_not_below_25_percent",
+    "capstone_formula_only_after_master_plan_acceptance",
+    "no_informal_parent_equity_issuance",
+    "no_worker_classification_based_only_on_ownership_or_payment_method",
+    "no_retroactive_residual_denominator_manipulation",
+    "no_gross_revenue_called_residual",
+    "transparent_shared_service_allocations"
+  ],
+  "next_slice": "CF-005"
+}
