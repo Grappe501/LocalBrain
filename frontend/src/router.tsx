@@ -71,10 +71,3 @@ export function AppRouter() {
     </Routes>
   );
 }
-
-function LazyModuleRoute({ moduleId }: { moduleId: string }) {
-  const { getLazyComponent } = useModuleRegistry();
-  const Component = getLazyComponent(moduleId);
-  if (!Component) return <Navigate to="/" replace />;
-  return <Component />;
-}
