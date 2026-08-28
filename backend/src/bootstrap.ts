@@ -29,6 +29,7 @@ import { migrateFoundryEffectTables } from "./companyFoundry/effects.js";
 import { migrateLearnerProgressTables } from "./companyFoundry/learnerProgress.js";
 import { migrateCapstoneNotebookTables } from "./companyFoundry/capstoneNotebook.js";
 import { migrateProductionLabTables } from "./companyFoundry/productionLab.js";
+import { migrateMasterPlanBuilderTables } from "./companyFoundry/masterPlanBuilder.js";
 import { initPermissionEngine } from "./safety/permissionEngine.js";
 import {
   migrateWorkspaceTables,
@@ -66,6 +67,7 @@ export function bootstrapApp(): void {
   migrateLearnerProgressTables();
   migrateCapstoneNotebookTables();
   migrateProductionLabTables();
+  migrateMasterPlanBuilderTables();
   ensureActionStorageDirs();
   refreshIntelligence();
   seedWorkspaces();
