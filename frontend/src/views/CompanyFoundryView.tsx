@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { FoundryGovernanceWorkbench } from "../components/FoundryGovernanceWorkbench";
 import {
   foundryBuilders,
   foundryCapstones,
@@ -42,11 +43,11 @@ export function CompanyFoundryView() {
     <div className="foundry">
       <header className="foundry__hero">
         <div>
-          <p className="foundry__eyebrow">Company Foundry · {foundryRegistryMeta.slice}</p>
+          <p className="foundry__eyebrow">Company Foundry · CF-010</p>
           <h1>Build people. Build products. Build owners.</h1>
           <p>
-            Canonical registry-driven control plane · {foundryRegistryMeta.mode}. No payroll, equity issuance,
-            securities transfer, residual settlement, or money movement is enabled.
+            Governance workbench enabled. Payroll, equity issuance, securities transfer, residual settlement,
+            and money movement remain disabled.
           </p>
         </div>
         <div className="foundry__hero-stats">
@@ -63,6 +64,7 @@ export function CompanyFoundryView() {
           ["academy", "Academy"],
           ["builders", "Builders"],
           ["phases", "Phase Board"],
+          ["governance", "Governance"],
           ["capstones", "Capstones"],
           ["economics", "Economics"],
           ["doctrine", "Doctrine"],
@@ -117,7 +119,7 @@ export function CompanyFoundryView() {
         <section>
           <header className="foundry__section-head"><div><h2>Builder capability ledger</h2><p>Registry source of truth for Academy and post-graduation production evidence.</p></div><strong>{foundryBuilders.length} builders</strong></header>
           {foundryBuilders.length === 0 ? (
-            <p className="foundry__guardrail">No builders have been admitted yet. CF-007 intentionally starts with an empty canonical roster rather than inventing participants.</p>
+            <p className="foundry__guardrail">No builders have been admitted yet. Builder applications now enter through the Governance tab and do not create an admitted builder until a later controlled-effects slice.</p>
           ) : (
             <div className="foundry__table-wrap"><table className="foundry__table"><thead><tr><th>Builder</th><th>Level</th><th>Status</th><th>PVP</th><th>Accepted phases</th></tr></thead><tbody>{foundryBuilders.map((builder) => <tr key={builder.id}><td>{builder.displayName}</td><td>{builder.level}</td><td>{builder.status}</td><td>{builder.phaseValuePoints}</td><td>{builder.acceptedPhases}</td></tr>)}</tbody></table></div>
           )}
@@ -131,6 +133,8 @@ export function CompanyFoundryView() {
           <div className="foundry__cards foundry__cards--3"><article><h3>Apprentice labor</h3><strong>$7,200</strong><p>3 × 120 hours × $20</p></article><article><h3>Lead/reviewer</h3><strong>$2,400</strong><p>60 hours × $40 modeling assumption</p></article><article><h3>Tools + contingency</h3><strong>$2,400</strong><p>$1,200 tooling/testing + $1,200 reserve</p></article></div>
         </section>
       )}
+
+      {tab === "governance" && <FoundryGovernanceWorkbench />}
 
       {tab === "capstones" && (
         <section className="foundry__cards">
@@ -158,7 +162,7 @@ export function CompanyFoundryView() {
         <section className="foundry__cards">
           <article><h2>Four ledgers</h2><ol><li>Parent Ownership</li><li>Production Compensation</li><li>Product Residual</li><li>Capital / Property Contribution</li></ol></article>
           <article><h2>Economic doctrine</h2><p><strong>Ownership</strong> rewards building and bearing risk in the Foundry.</p><p><strong>Phase compensation</strong> rewards accepted production.</p><p><strong>Residual participation</strong> rewards successful product economics.</p><p><strong>Capital contribution</strong> records what someone puts at risk.</p></article>
-          <article><h2>CF-007 safety posture</h2><ul><li>Registry-driven read-first UI</li><li>Payroll enabled: {String(foundryEconomicRules.payrollEnabled)}</li><li>Equity issuance enabled: {String(foundryEconomicRules.equityIssuanceEnabled)}</li><li>Money movement enabled: {String(foundryEconomicRules.moneyMovementEnabled)}</li><li>Monthly settlement remains doctrine only</li><li>No self-acceptance of paid work</li></ul></article>
+          <article><h2>CF-010 safety posture</h2><ul><li>Governance writes enabled</li><li>Builder admission effects disabled</li><li>Phase payment effects disabled</li><li>Payroll enabled: {String(foundryEconomicRules.payrollEnabled)}</li><li>Equity issuance enabled: {String(foundryEconomicRules.equityIssuanceEnabled)}</li><li>Money movement enabled: {String(foundryEconomicRules.moneyMovementEnabled)}</li><li>No self-acceptance of submitted work</li></ul></article>
         </section>
       )}
     </div>
