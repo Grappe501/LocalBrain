@@ -29,25 +29,31 @@ No repository is presumed automatically owned by the new company. Each relevant 
 Cash/equipment contributions and later builder performance are accounted for separately. Mark London's proposed server contribution does not predetermine the equity earned through development work.
 
 ### CF-DEC-009 — No informal share-for-code promises
-Common equity, options, restricted stock, product economic interests, cash milestone payments, and royalties are separate instruments. Securities/tax/employment review is required before issuance.
+Common equity, options, restricted stock, product residual interests, cash milestone payments, and royalties are separate instruments. Securities/tax/employment review is required before issuance.
 
-### CF-DEC-010 — Product pools do not fragment core IP
-A builder may receive substantial product-level economics without owning or controlling the underlying source-code IP. The parent generally retains IP ownership/control.
+### CF-DEC-010 — Residual participation does not fragment core IP
+A builder may receive substantial product-level residual economics without owning or controlling the underlying source-code IP. The parent generally retains IP ownership/control.
 
-### CF-DEC-011 — Capstone 51% means pool economics, not automatic company ownership
-The working 51% concept is interpreted as up to 51% of a specifically defined product founder/profit pool subject to vesting, continuing contribution, recoupment/accounting definitions, and counsel review — not 51% ownership of the parent or automatic 51% ownership of product IP.
+### CF-DEC-011 — Capstone 51% means residual, never ownership
+The capstone leader may receive up to 51% of the defined distributable residual from a qualifying product. This is not 51% ownership of the parent company, product, subsidiary, source code, IP, or gross revenue.
 
-### CF-DEC-012 — Protect the Foundry narrowly and strongly
+### CF-DEC-012 — Capstone residual formula applies only to accepted master-plan capstones
+The special capstone residual formula is available only when a builder launches an accepted Master Build Plan as the builder's approved capstone and the capstone is accepted under Company Foundry gates. Ordinary project phases, existing products, experiments, or unapproved side projects do not automatically qualify.
+
+### CF-DEC-013 — Capstone teams participate in residuals
+A qualifying capstone is a team economic system. The capstone lead may receive up to 51% of distributable residual, participating team members receive defined percentages, and the company retains at least 25% of all distributable residual. The company may retain more than 25% depending on capital, risk, shared services, staffing, product economics, and the approved master plan. All authorized residual allocations must total 100%.
+
+### CF-DEC-014 — Protect the Foundry narrowly and strongly
 Use IP assignment, confidentiality, trade-secret protection, access controls, non-solicitation where lawful, and carefully tailored restrictive covenants. The proposed automatic 75% claim on a former builder's outside projects for two years is rejected as doctrine pending counsel design.
 
-### CF-DEC-013 — Equity pool must be finite and modeled
+### CF-DEC-015 — Equity pool must be finite and modeled
 The company may authorize a large share count for granularity, but economic ownership is percentage-based. Share count itself does not create value or permit unlimited dilution.
 
-### CF-DEC-014 — Builder compensation is modular
-Each accepted phase can be assigned a phase value that may be satisfied by approved combinations of cash, parent-equity instruments, product-pool units, royalty rights, or bonuses, subject to an explicit compensation agreement.
+### CF-DEC-016 — Builder compensation is modular
+Each accepted phase can be assigned a phase value that may be satisfied by approved combinations of cash, parent-equity instruments, product residual participation, royalty rights, or bonuses, subject to an explicit compensation agreement. The special capstone residual formula is separate and only applies to accepted Master Build Plan capstones.
 
-### CF-DEC-015 — First cohort cannot precede legal foundation
+### CF-DEC-017 — First cohort cannot precede legal foundation
 Paid apprentices may be recruited only after entity formation, employment/contractor classification, IP assignment, wage/payroll, confidentiality, compensation agreements, and securities/equity procedures are established.
 
-### CF-DEC-016 — Next slice
-CF-004 will build the Founder Capitalization + Economic Engine, using scenario modeling rather than prematurely locking founder percentages.
+### CF-DEC-018 — Next slice
+CF-004 will build the Founder Capitalization + Economic Engine, using scenario modeling rather than prematurely locking founder percentages. It must model capstone residual waterfalls with a company floor of 25%, a capstone-lead ceiling of 51%, and explicit team-member residual allocations.
