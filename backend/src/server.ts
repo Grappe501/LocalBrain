@@ -29,6 +29,7 @@ import { consolidationRouter } from "./routes/consolidation.js";
 import { integrationRouter } from "./routes/integration.js";
 import { liveSurfaceRouter } from "./routes/liveSurface.js";
 import { companyFoundryRouter } from "./routes/companyFoundry.js";
+import { capstoneNotebookRouter } from "./routes/capstoneNotebook.js";
 import { settingsRouter } from "./settings/settingsRoutes.js";
 import { factoryRouter } from "./factory/factoryRoutes.js";
 import { getRegisteredModules } from "./core/moduleLoader.js";
@@ -70,6 +71,7 @@ app.use("/api", consolidationRouter);
 app.use("/api", integrationRouter);
 app.use("/api", liveSurfaceRouter);
 app.use("/api", companyFoundryRouter);
+app.use("/api", capstoneNotebookRouter);
 app.use("/api", settingsRouter);
 app.use("/api", factoryRouter);
 
