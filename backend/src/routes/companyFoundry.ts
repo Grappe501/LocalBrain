@@ -12,6 +12,13 @@ import {
   submitFoundryProposal,
   type FoundryProposalKind,
 } from "../companyFoundry/persistence.js";
+import {
+  applyAcceptedProposalEffect,
+  listFoundryBuilders,
+  listFoundryCapabilityEvents,
+  listFoundryCohorts,
+  listFoundryMasterPlanRecords,
+} from "../companyFoundry/effects.js";
 
 export const companyFoundryRouter = Router();
 
@@ -20,40 +27,36 @@ companyFoundryRouter.get("/foundry/snapshot", (_req, res) => {
   if (errors.length > 0) return res.status(500).json({ error: "foundry_registry_invalid", errors });
   return res.json(snapshot);
 });
-
 companyFoundryRouter.get("/foundry/products", (_req, res) => res.json({ products }));
 companyFoundryRouter.get("/foundry/master-plans", (_req, res) => res.json({ masterPlans }));
 companyFoundryRouter.get("/foundry/phases", (_req, res) => res.json({ phases }));
+companyFoundryRouter.get("/foundry/builders", (_req, res) => res.json({ builders: listFoundryBuilders() }));
+companyFoundryRouter.get("/foundry/capability-events", (req, res) => res.json({ events: listFoundryCapabilityEvents(req.query.builderId ? String(req.query.builderId) : undefined) }));
+companyFoundryRouter.get("/foundry/cohorts", (_req, res) => res.json({ cohorts: listFoundryCohorts() }));
+companyFoundryRouter.get("/foundry/admitted-master-plans", (_req, res) => res.json({ masterPlans: listFoundryMasterPlanRecords() }));
 
 companyFoundryRouter.get("/foundry/products/:productId", (req, res) => {
   const product = products.find((item) => item.id === req.params.productId);
   if (!product) return res.status(404).json({ error: "product_not_found" });
-  return res.json({
-    product,
-    masterPlans: masterPlans.filter((plan) => plan.productId === product.id),
-    phases: phases.filter((phase) => phase.productId === product.id),
-  });
+  return res.json({ product, masterPlans: masterPlans.filter((plan) => plan.productId === product.id), phases: phases.filter((phase) => phase.productId === product.id) });
 });
 
 companyFoundryRouter.get("/foundry/validation", (_req, res) => {
   const errors = validateSnapshot(snapshot);
   return res.status(errors.length === 0 ? 200 : 500).json({ valid: errors.length === 0, errors, schemaVersion: snapshot.meta.schemaVersion, slice: snapshot.meta.slice });
 });
-
 companyFoundryRouter.get("/foundry/proposals", (_req, res) => res.json({ proposals: listFoundryProposals() }));
 companyFoundryRouter.get("/foundry/proposals/:proposalId", (req, res) => {
   const proposal = getFoundryProposal(req.params.proposalId);
   if (!proposal) return res.status(404).json({ error: "proposal_not_found" });
   return res.json({ proposal, evidence: listFoundryEvidence(proposal.id), reviews: listFoundryReviews(proposal.id) });
 });
-
 companyFoundryRouter.post("/foundry/proposals", (req, res) => {
   const { kind, subjectId, submittedBy, title, summary, payload } = req.body ?? {};
   const allowedKinds: FoundryProposalKind[] = ["product_change", "builder_application", "phase_submission", "capstone_application", "master_plan_proposal", "registry_change"];
   if (!allowedKinds.includes(kind) || !submittedBy || !title || !summary) return res.status(400).json({ error: "invalid_proposal" });
   return res.status(201).json({ proposal: createFoundryProposal({ kind, subjectId, submittedBy, title, summary, payload }) });
 });
-
 companyFoundryRouter.post("/foundry/proposals/:proposalId/submit", (req, res) => {
   const actorId = String(req.body?.actorId ?? "").trim();
   if (!actorId) return res.status(400).json({ error: "actor_required" });
@@ -61,7 +64,6 @@ companyFoundryRouter.post("/foundry/proposals/:proposalId/submit", (req, res) =>
   if (!proposal) return res.status(409).json({ error: "proposal_not_draft_or_missing" });
   return res.json({ proposal });
 });
-
 companyFoundryRouter.post("/foundry/proposals/:proposalId/evidence", (req, res) => {
   const { actorId, evidenceType, label, uri, contentHash, notes } = req.body ?? {};
   if (!actorId || !evidenceType || !label) return res.status(400).json({ error: "invalid_evidence" });
@@ -69,7 +71,6 @@ companyFoundryRouter.post("/foundry/proposals/:proposalId/evidence", (req, res) 
   if (!evidence) return res.status(404).json({ error: "proposal_not_found" });
   return res.status(201).json({ evidence });
 });
-
 companyFoundryRouter.post("/foundry/proposals/:proposalId/review", (req, res) => {
   const { reviewerId, decision, rationale } = req.body ?? {};
   if (!reviewerId || !["accepted", "rejected", "rework"].includes(decision) || !rationale) return res.status(400).json({ error: "invalid_review" });
@@ -80,17 +81,24 @@ companyFoundryRouter.post("/foundry/proposals/:proposalId/review", (req, res) =>
   if (!review) return res.status(409).json({ error: "proposal_not_reviewable" });
   return res.status(201).json({ review, proposal: getFoundryProposal(proposal.id) });
 });
-
+companyFoundryRouter.post("/foundry/proposals/:proposalId/apply-effect", (req, res) => {
+  const actorId = String(req.body?.actorId ?? "").trim();
+  if (!actorId) return res.status(400).json({ error: "actor_required" });
+  const result = applyAcceptedProposalEffect(req.params.proposalId, actorId);
+  if (!result.ok) return res.status(409).json(result);
+  return res.status(201).json(result);
+});
 companyFoundryRouter.get("/foundry/audit", (req, res) => {
   const limit = Number(req.query.limit ?? 100);
   return res.json({ events: getFoundryAudit(Number.isFinite(limit) ? limit : 100) });
 });
-
 companyFoundryRouter.get("/foundry/write-capabilities", (_req, res) => res.json({
   governanceWritesEnabled: true,
+  controlledOperationalEffectsEnabled: true,
+  builderAdmissionEnabled: true,
+  acceptedMasterPlanAdmissionEnabled: true,
+  phaseCapabilityCreditEnabled: true,
   productMutationEnabled: false,
-  builderAdmissionEnabled: false,
-  phaseAcceptanceEffectsEnabled: false,
   payrollEnabled: false,
   equityIssuanceEnabled: false,
   residualSettlementEnabled: false,
