@@ -30,60 +30,15 @@ import { migrateLearnerProgressTables } from "./companyFoundry/learnerProgress.j
 import { migrateCapstoneNotebookTables } from "./companyFoundry/capstoneNotebook.js";
 import { migrateProductionLabTables } from "./companyFoundry/productionLab.js";
 import { migrateMasterPlanBuilderTables } from "./companyFoundry/masterPlanBuilder.js";
+import { migrateCapstoneDefenseTables } from "./companyFoundry/capstoneDefense.js";
 import { initPermissionEngine } from "./safety/permissionEngine.js";
-import {
-  migrateWorkspaceTables,
-  seedWorkspaces,
-  syncFilesystemRootsToAllowedFolders,
-} from "./workspaces/workspaceRegistry.js";
+import { migrateWorkspaceTables, seedWorkspaces, syncFilesystemRootsToAllowedFolders } from "./workspaces/workspaceRegistry.js";
 
-export function refreshPermissionEngine(): void {
-  const folders = getAllowedFoldersFromDb();
-  initPermissionEngine(folders.map((f) => f.path));
-}
-
+export function refreshPermissionEngine(): void { const folders=getAllowedFoldersFromDb(); initPermissionEngine(folders.map((f)=>f.path)); }
 export function bootstrapApp(): void {
-  runMigrations();
-  migrateWorkspaceTables();
-  migrateKnowledgeExplorerTables();
-  migrateDigitalAssetTables();
-  migrateCommandLogTable();
-  migrateProviderTables();
-  migrateFilesystemAuditTables();
-  migrateProofTables();
-  migratePlanningTables();
-  migrateApprovalTables();
-  migrateCutoverTables();
-  migrateConsolidationTables();
-  migrateFileReadLogTable();
-  migrateActionTables();
-  migrateCosTables();
-  migrateMemoryTables();
-  migrateContactTables();
-  migrateUcieTables();
-  migrateVopTables();
-  migrateCompanyFoundryTables();
-  migrateFoundryEffectTables();
-  migrateLearnerProgressTables();
-  migrateCapstoneNotebookTables();
-  migrateProductionLabTables();
-  migrateMasterPlanBuilderTables();
-  ensureActionStorageDirs();
-  refreshIntelligence();
-  seedWorkspaces();
-  syncFilesystemRootsToAllowedFolders();
-  loadModuleManifests();
-  refreshPermissionEngine();
+  runMigrations(); migrateWorkspaceTables(); migrateKnowledgeExplorerTables(); migrateDigitalAssetTables(); migrateCommandLogTable(); migrateProviderTables(); migrateFilesystemAuditTables(); migrateProofTables(); migratePlanningTables(); migrateApprovalTables(); migrateCutoverTables(); migrateConsolidationTables(); migrateFileReadLogTable(); migrateActionTables(); migrateCosTables(); migrateMemoryTables(); migrateContactTables(); migrateUcieTables(); migrateVopTables(); migrateCompanyFoundryTables(); migrateFoundryEffectTables(); migrateLearnerProgressTables(); migrateCapstoneNotebookTables(); migrateProductionLabTables(); migrateMasterPlanBuilderTables(); migrateCapstoneDefenseTables(); ensureActionStorageDirs(); refreshIntelligence(); seedWorkspaces(); syncFilesystemRootsToAllowedFolders(); loadModuleManifests(); refreshPermissionEngine();
 }
-
-export function shutdownApp(): void {
-  closeDatabase();
-}
-
+export function shutdownApp():void{closeDatabase();}
 export { isDatabaseConnected };
-
-/** @deprecated use bootstrapApp */
-export const bootstrapSafety = bootstrapApp;
-
-/** @deprecated use shutdownApp */
-export const shutdownSafety = shutdownApp;
+/** @deprecated use bootstrapApp */ export const bootstrapSafety=bootstrapApp;
+/** @deprecated use shutdownApp */ export const shutdownSafety=shutdownApp;
