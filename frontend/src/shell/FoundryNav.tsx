@@ -1,6 +1,7 @@
 import {NavLink,useLocation} from 'react-router-dom';import '../styles/company-foundry.css';
 const items=[
  {label:'Overview',path:'/foundry',end:true},
+ {label:'Inventory',path:'/foundry/inventory'},
  {label:'Academy',path:'/foundry/academy'},
  {label:'Cohorts',path:'/foundry/academy/cohorts'},
  {label:'Operator',path:'/foundry/academy/operator'},
